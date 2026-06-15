@@ -340,6 +340,112 @@
             .article-navigation { flex-direction: column; }
             .feedback-popup { left: 20px; right: 20px; bottom: 20px; text-align: center; }
         }
+        /* ========================================== */
+        /* SECTION AUTEUR & RESSOURCES OPEN SOURCE    */
+        /* ========================================== */
+        .author-section {
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            border-top: 4px solid var(--sun-yellow);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 900px;
+        }
+
+        .author-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .author-avatar {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .author-bio h3 {
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-family: var(--font-ui);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .author-bio p {
+            color: #a0aab5;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .author-bio .tags {
+            color: var(--bio-green);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .resources-title {
+            color: var(--sun-yellow);
+            font-family: var(--font-ui);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .resource-card {
+            display: block;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--stone-grey);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--water-blue);
+            background: rgba(0, 204, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.1);
+        }
+
+        .resource-card.green:hover {
+            border-color: var(--bio-green);
+            background: rgba(68, 238, 119, 0.05);
+            box-shadow: 0 5px 15px rgba(68, 238, 119, 0.1);
+        }
+
+        .resource-card h4 {
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+            font-family: var(--font-ui);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .resource-card p {
+            color: #888;
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body class="lang-en">
@@ -946,7 +1052,90 @@
             <img src="NautileNakamotoIM.png" alt="Nautile Nakamoto">
         </a>
     </div>
+    <div class="author-section">
+        <div class="author-header">
+            <div class="author-avatar">🐇</div>
+            <div class="author-bio">
+                <h3>Pascal Ranoroarijaona</h3>
+                <p>
+                    <span lang="fr">Citoyen du Monde (Australie, Madagascar, France) | Informaticien (très) curieux et ouvert d'esprit. Code + IA + Data Sciences. Créateur de contenu Web. Travaillant dans la Big Tech et créateur en parallèle. Lémurien Hardcore.</span>
+                    <span lang="en">World Citizen (Australia, Madagascar, France) | A (very) Curious and open-minded Computer Scientist. Coding + AI + Data Sciences + curiosity, Web Content Creator. Working in top Big Tech and creating stuff on the side. Hardcore Lemurian.</span>
+                </p>
+                <span class="tags">// He/Him // Human INFJ-A // White Rabbit Follower</span>
+            </div>
+        </div>
 
+        <div class="resources-title">
+            <span lang="fr">Ressources Open Source & Projets</span>
+            <span lang="en">Open Source Resources & Projects</span>
+        </div>
+
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4>☀ The Sun Standard</h4>
+                <p>
+                    <span lang="fr">Recherche fondamentale pour monétiser l'entropie et la thermodynamique.</span>
+                    <span lang="en">Fundamental research to Monetise Entropy and thermodynamics.</span>
+                </p>
+            </a>
+
+            <a href="https://pascalranoroarijaona.github.io/Trinity" target="_blank" class="resource-card">
+                <h4>👁️ Trinity</h4>
+                <p>
+                    <span lang="fr">Développé au cas où l'on ne pourrait plus faire confiance à l'Information.</span>
+                    <span lang="en">Developed in case Information can't be trusted anymore.</span>
+                </p>
+            </a>
+
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" class="resource-card">
+                <h4>⚖️ Wellbeing Framework</h4>
+                <p>
+                    <span lang="fr">Implémentation d'une Unité de Bien-être (WU). Quitter l'ère du PIB.</span>
+                    <span lang="en">Ideas for the Wellbeing Unit (WU) implementation. Exit the GDP Era.</span>
+                </p>
+            </a>
+
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-identity" target="_blank" class="resource-card">
+                <h4>🌍 Wellbeing Identity</h4>
+                <p>
+                    <span lang="fr">Une décomposition augmentée par le bien-être des émissions anthropiques de CO₂.</span>
+                    <span lang="en">A wellbeing-augmented decomposition of anthropogenic CO₂ emissions.</span>
+                </p>
+            </a>
+
+            <a href="https://github.com/pascalranoroarijaona/HomoBiodiversitas" target="_blank" class="resource-card">
+                <h4>🧬 HomoBiodiversitas</h4>
+                <p>
+                    <span lang="fr">Travaux futuristes. Les mineurs Bitcoin rendent l'énergie à la Terre Mère.</span>
+                    <span lang="en">Futurist Work. Bitcoin Diggers and Jedi Tiers Philosophy - Mining back to Mother Earth.</span>
+                </p>
+            </a>
+
+            <a href="https://www.compteur-bitcoin.fr/" target="_blank" class="resource-card">
+                <h4>⏱️ Count The Revolution</h4>
+                <p>
+                    <span lang="fr">Outil de suivi et d'analyse en temps réel.</span>
+                    <span lang="en">Real-time tracking and analysis tool.</span>
+                </p>
+            </a>
+
+            <a href="https://www.simulateur-bitcoin.fr/" target="_blank" class="resource-card green">
+                <h4>🌱 Simulation Good Organic Food</h4>
+                <p>
+                    <span lang="fr">Simulation d'agriculture de surface couplée au minage.</span>
+                    <span lang="en">Surface-level organic food agriculture coupled with mining simulation.</span>
+                </p>
+            </a>
+
+            <a href="https://www.angovo.ngo/?m=PITCH&LG=FR" target="_blank" class="resource-card green">
+                <h4>🇲🇬 Give Back (Angovo NGO)</h4>
+                <p>
+                    <span lang="fr">Action sur le terrain à Madagascar. Aidez-nous à restaurer la biosphère.</span>
+                    <span lang="en">Field action in Madagascar. Help us restore the biosphere.</span>
+                </p>
+            </a>
+        </div>
+    </div>
 </article>
 
 <footer>
