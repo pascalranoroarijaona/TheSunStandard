@@ -813,10 +813,202 @@
                     <span lang="en">This state equation charts the total thermal energy $\dot{Q}_{cond}$ (W) released during liquefaction. The massive dissipation of latent heat $\Delta H_{vap}$ is immediately intercepted by high-efficiency plate heat exchangers linked to the root heating networks of Level 2. The thermodynamic "waste" of the Atmospheric Well is thus recycled to boost surface crop metabolism, sealing the symbiotic pact between computer silicon and life.</span>
                 </p>
             </div>
+
+            <div style="margin-top: 3rem; border: 1px solid rgba(0, 204, 255, 0.3); border-radius: 12px; overflow: hidden; background: #000; position: relative;">
+                
+                <div style="padding: 15px 20px; background: rgba(0, 204, 255, 0.05); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 204, 255, 0.1);">
+                    <span style="font-family: var(--font-mono); font-size: 0.85em; color: var(--water-blue);">
+                        <span lang="fr">// VUE 3D : COUPE THERMODYNAMIQUE DU PUITS</span>
+                        <span lang="en">// 3D VIEW: THERMODYNAMIC CROSS-SECTION</span>
+                    </span>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 0.8em; color: #aaa; font-family: var(--font-ui); text-transform: uppercase;">
+                            <span lang="fr">Puissance (Sion)</span><span lang="en">Power (Zion)</span>
+                        </span>
+                        <input type="range" id="thermo-slider" min="1" max="100" value="20" style="width: 120px; accent-color: var(--magma-orange);">
+                    </div>
+                </div>
+
+                <div id="three-container" style="width: 100%; height: 500px; position: relative; cursor: grab;">
+                    <div style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); color: #44ee77; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none; text-shadow: 0 0 5px #000;">▲ SURFACE (SERRES)</div>
+                    <div style="position: absolute; top: 35%; left: 55%; color: #fff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none; text-shadow: 0 0 5px #000;">⚙️ ROUE DE ZÉOLITHE</div>
+                    <div style="position: absolute; bottom: 15%; right: 15%; color: var(--magma-orange); font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none; text-shadow: 0 0 5px #000;">🔥 SION (DATACENTER)</div>
+                    <div style="position: absolute; bottom: 25%; left: 15%; color: var(--water-blue); font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none; text-shadow: 0 0 5px #000;">❄️ CONDENSEUR (ROCHE FROIDE)</div>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+            <script>
+                // Encapsulation pour éviter les conflits
+                (function() {
+                    const container = document.getElementById('three-container');
+                    const slider = document.getElementById('thermo-slider');
+
+                    // 1. SCÈNE, CAMÉRA, RENDU
+                    const scene = new THREE.Scene();
+                    scene.background = new THREE.Color('#05070a'); // Fond très sombre
+
+                    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+                    camera.position.set(0, 0, 15);
+
+                    const renderer = new THREE.WebGLRenderer({ antialias: true });
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                    container.appendChild(renderer.domElement);
+
+                    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                    controls.enableDamping = true;
+                    controls.dampingFactor = 0.05;
+
+                    // 2. ÉLÉMENTS GÉOMÉTRIQUES (MACHINES)
+                    const materialWireframe = new THREE.MeshBasicMaterial({ color: 0x334455, wireframe: true, transparent: true, opacity: 0.3 });
+                    const materialZion = new THREE.MeshBasicMaterial({ color: 0xff5500, wireframe: true });
+                    const materialZeolite = new THREE.MeshBasicMaterial({ color: 0xaaaaaa, wireframe: true });
+                    const materialCondenser = new THREE.MeshBasicMaterial({ color: 0x00ccff, wireframe: true });
+
+                    // Coupe de la Terre (Boîte englobante)
+                    const earthMesh = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 4), materialWireframe);
+                    scene.add(earthMesh);
+
+                    // Sion (en bas à droite)
+                    const zionMesh = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.5, 1.5), materialZion);
+                    zionMesh.position.set(2.5, -3.5, 0);
+                    scene.add(zionMesh);
+
+                    // Roue de Zéolithe (en haut au centre)
+                    const zeoliteMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 0.4, 16), materialZeolite);
+                    zeoliteMesh.position.set(0, 1.5, 0);
+                    zeoliteMesh.rotation.x = Math.PI / 2;
+                    scene.add(zeoliteMesh);
+
+                    // Condenseur (en bas à gauche)
+                    const condenserMesh = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2, 1), materialCondenser);
+                    condenserMesh.position.set(-2.5, -3, 0);
+                    scene.add(condenserMesh);
+
+                    // Serre (en haut)
+                    const greenhouseMesh = new THREE.Mesh(new THREE.BoxGeometry(2, 0.5, 1), new THREE.MeshBasicMaterial({ color: 0x44ee77, wireframe: true }));
+                    greenhouseMesh.position.set(-2.5, 4.5, 0);
+                    scene.add(greenhouseMesh);
+
+                    // 3. FLUX DE PARTICULES (THERMODYNAMIQUE)
+                    function createParticleFlow(color, count, size) {
+                        const geometry = new THREE.BufferGeometry();
+                        const positions = new Float32Array(count * 3);
+                        const progress = new Float32Array(count); // Suivi du trajet de 0 à 1
+
+                        for (let i = 0; i < count; i++) {
+                            positions[i * 3] = 0; positions[i * 3 + 1] = 0; positions[i * 3 + 2] = 0;
+                            progress[i] = Math.random(); // Position de départ aléatoire
+                        }
+
+                        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                        geometry.setAttribute('progress', new THREE.BufferAttribute(progress, 1));
+
+                        const material = new THREE.PointsMaterial({
+                            color: new THREE.Color(color),
+                            size: size,
+                            transparent: true,
+                            blending: THREE.AdditiveBlending,
+                            depthWrite: false
+                        });
+
+                        return new THREE.Points(geometry, material);
+                    }
+
+                    // Création des 4 flux distincts
+                    const coldAir = createParticleFlow('#cceeff', 400, 0.08); // Surface -> Sion
+                    const hotAir = createParticleFlow('#ff3300', 500, 0.1);  // Sion -> Roue
+                    const saturatedAir = createParticleFlow('#0066ff', 300, 0.12); // Roue -> Condenseur
+                    const pureWater = createParticleFlow('#44ee77', 150, 0.15); // Condenseur -> Surface
+
+                    scene.add(coldAir);
+                    scene.add(hotAir);
+                    scene.add(saturatedAir);
+                    scene.add(pureWater);
+
+                    // 4. ANIMATION ET LOGIQUE DE DÉPLACEMENT
+                    // Interpolation linéaire entre deux points 3D
+                    function lerp3D(p1, p2, t) {
+                        return {
+                            x: p1.x + (p2.x - p1.x) * t,
+                            y: p1.y + (p2.y - p1.y) * t,
+                            z: p1.z + (p2.z - p1.z) * t
+                        };
+                    }
+
+                    function updateFlow(points, startPoint, endPoint, speed, turbulence = 0.5) {
+                        const positions = points.geometry.attributes.position.array;
+                        const progress = points.geometry.attributes.progress.array;
+
+                        for (let i = 0; i < progress.length; i++) {
+                            progress[i] += speed;
+                            if (progress[i] > 1.0) progress[i] = 0; // Réinitialisation du cycle
+
+                            const currentPos = lerp3D(startPoint, endPoint, progress[i]);
+                            
+                            // Ajout de dispersion/turbulence
+                            positions[i * 3] = currentPos.x + (Math.random() - 0.5) * turbulence;
+                            positions[i * 3 + 1] = currentPos.y + (Math.random() - 0.5) * turbulence;
+                            positions[i * 3 + 2] = currentPos.z + (Math.random() - 0.5) * turbulence;
+                        }
+                        points.geometry.attributes.position.needsUpdate = true;
+                        points.geometry.attributes.progress.needsUpdate = true;
+                    }
+
+                    // Points clés du circuit
+                    const ptSurface = { x: 1, y: 5, z: 0 };
+                    const ptZionIn = { x: 2.5, y: -3.5, z: 0 };
+                    const ptZionOut = { x: 2, y: -2.5, z: 0 };
+                    const ptWheel = { x: 0, y: 1.5, z: 0 };
+                    const ptCondenserIn = { x: -2.5, y: -2, z: 0 };
+                    const ptCondenserOut = { x: -2.5, y: -2.5, z: 0 };
+                    const ptGreenhouse = { x: -2.5, y: 4.5, z: 0 };
+
+                    function animate() {
+                        requestAnimationFrame(animate);
+
+                        // Vitesse basée sur le slider (thermodynamique)
+                        const power = parseInt(slider.value);
+                        const baseSpeed = power * 0.0001;
+
+                        // Animation de la machinerie
+                        zeoliteMesh.rotation.y += baseSpeed * 5;
+                        zionMesh.rotation.x += baseSpeed * 2;
+                        zionMesh.rotation.y += baseSpeed * 3;
+
+                        // Mise à jour des flux
+                        // 1. Descente air froid (Bleu clair)
+                        updateFlow(coldAir, ptSurface, ptZionIn, baseSpeed * 2, 0.8);
+                        
+                        // 2. Remontée air chaud (Rouge/Orange)
+                        updateFlow(hotAir, ptZionOut, ptWheel, baseSpeed * 3, 1.2);
+                        
+                        // 3. Air Saturé (Bleu dense)
+                        updateFlow(saturatedAir, ptWheel, ptCondenserIn, baseSpeed * 1.5, 0.5);
+                        
+                        // 4. Remontée de l'eau (Vert/Bleu)
+                        updateFlow(pureWater, ptCondenserOut, ptGreenhouse, baseSpeed * 4, 0.2);
+
+                        controls.update();
+                        renderer.render(scene, camera);
+                    }
+
+                    // Gérer le redimensionnement
+                    window.addEventListener('resize', () => {
+                        camera.aspect = container.clientWidth / container.clientHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(container.clientWidth, container.clientHeight);
+                    });
+
+                    animate();
+                })();
+            </script>
             
         </div>
     </details>
-
+    
     <details class="level-4">
         <summary style="border-left-color: var(--carbon-red); color: var(--carbon-red);">
             <span lang="fr">Niveau 4 : L'Alchimie du Carbone (Hybridation & Biochar)</span>
@@ -1261,7 +1453,7 @@
     <div class="intro-hero">
         <img src="Lemeus.png" alt="Lemeus, le Jedi Solaire Lémurien" loading="lazy">
         <div class="quote-block">
-            <span lang="fr">"Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Trouvons de nouveaux amis Agriculteurs, Jardiniers & du Bâtiment. Oeuvrons pour le bien commun et non uniquement pour la défiance dans un système sous-optimale. Rendons le système optimale, ensemble. Prenons la Pilule Verte."</span>
+            <span lang="fr">"Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Trouvons de nouveaux amis Agriculteurs, Jardiniers & du Bâtiment. Oeuvrons pour le bien commun et non uniquement pour la défiance dans un système sous-optimal. Rendons le système optimal, ensemble. Prenons la Pilule Verte."</span>
             <span lang="en">"Let's unite, bury FUD, silence the noise, and create beautiful gardens. Organic life on the surface, machines underground. Let's find new friends in farming, gardening, and construction. Let's work for the common good, not just for defiance in a suboptimal system. Let's make the system optimal, together. Let's take the Green Pill."</span>
             <br>
             <span lang="fr" style="font-size: 0.85em; color: var(--bio-green);">- Lemeus, vieux cousin lointain de Morpheus</span>
