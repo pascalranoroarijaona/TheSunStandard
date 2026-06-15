@@ -883,30 +883,83 @@
 </footer>
 
 <script>
-    // --- 1. SCRIPT API DASHBOARD ---
+    // --- 1. SCRIPT API DASHBOARD (Version Robuste & Anti-Spam) ---
+    const CACHE_KEY = 'matrice_hashrate_cache';
+    const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes d'intervalle (anti-spam)
+
     async function fetchNetworkData() {
         try {
-            const response = await fetch('https://mempool.space/api/v1/mining/hashrate/3d');
+            // 1. Vérification du Cache Local
+            const cachedData = localStorage.getItem(CACHE_KEY);
+            if (cachedData) {
+                const { timestamp, hashrate } = JSON.parse(cachedData);
+                const isCacheValid = (Date.now() - timestamp) < CACHE_DURATION_MS;
+                
+                if (isCacheValid) {
+                    updateDashboardUI(hashrate);
+                    return; // On sort de la fonction, pas besoin de requêter l'API
+                }
+            }
+
+            // 2. Requête API avec un Timeout (évite que le navigateur bloque)
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 secondes max
+
+            const response = await fetch('https://mempool.space/api/v1/mining/hashrate/3d', {
+                signal: controller.signal,
+                headers: { 'Accept': 'application/json' }
+            });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
             const data = await response.json();
             const currentHashrateData = data.currentHashrate; 
             
-            const hashrateEH = (currentHashrateData / 1e18).toFixed(2);
-            document.getElementById('live-hashrate').innerText = hashrateEH + ' EH/s';
+            // 3. Sauvegarde dans le Cache Local
+            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                timestamp: Date.now(),
+                hashrate: currentHashrateData
+            }));
 
-            const powerWatts = currentHashrateData * 25 / 1e12;
-            const powerGW = (powerWatts / 1e9).toFixed(2);
-            document.getElementById('live-power').innerText = powerGW + ' GW';
-
-            const waterLiters = Math.round(powerGW * 5000).toLocaleString();
-            document.getElementById('live-water').innerText = waterLiters + (document.body.classList.contains('lang-en') ? ' L/day' : ' L/jour');
+            // 4. Mise à jour de l'interface
+            updateDashboardUI(currentHashrateData);
 
         } catch (error) {
-            console.error('API Error:', error);
-            document.getElementById('live-hashrate').innerText = 'Error';
+            console.warn('Télémétrie API inaccessible, tentative de récupération locale...', error);
+            
+            // 5. Dégradation gracieuse : Si l'API est hors ligne, on utilise l'ancienne valeur du cache
+            const cachedData = localStorage.getItem(CACHE_KEY);
+            if (cachedData) {
+                const { hashrate } = JSON.parse(cachedData);
+                updateDashboardUI(hashrate);
+                document.getElementById('live-hashrate').innerHTML += ' <span style="font-size:0.4em; color:#888;">(Cache)</span>';
+            } else {
+                // Si vraiment rien n'est disponible (première visite + API down)
+                document.getElementById('live-hashrate').innerText = 'Réseau Hors Ligne';
+            }
         }
     }
+
+    // Fonction séparée pour calculer et afficher les données mathématiques
+    function updateDashboardUI(currentHashrateData) {
+        const hashrateEH = (currentHashrateData / 1e18).toFixed(2);
+        document.getElementById('live-hashrate').innerText = hashrateEH + ' EH/s';
+
+        const powerWatts = currentHashrateData * 25 / 1e12; // Hypothèse: 25 Joules / Terahash
+        const powerGW = (powerWatts / 1e9).toFixed(2);
+        document.getElementById('live-power').innerText = powerGW + ' GW';
+
+        const waterLiters = Math.round(powerGW * 5000).toLocaleString();
+        const isEn = document.body.classList.contains('lang-en');
+        document.getElementById('live-water').innerText = waterLiters + (isEn ? ' L/day' : ' L/jour');
+    }
+
+    // Lancement initial
     fetchNetworkData();
-    setInterval(fetchNetworkData, 60000);
+    
+    // Répétition toutes les 5 minutes au lieu de 60 secondes
+    setInterval(fetchNetworkData, CACHE_DURATION_MS);
 
     // Update units on language toggle
     document.querySelector('.lang-toggle').addEventListener('click', () => {
