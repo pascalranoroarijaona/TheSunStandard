@@ -68,14 +68,28 @@
 
         /* Language Toggle Buttons */
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 1.5rem;
         }
+
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.4rem;
-            cursor: pointer; opacity: 0.3; transition: all 0.3s ease; filter: grayscale(100%);
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            color: white; /* <-- Ajout principal pour rendre le texte/icône blanc */
+            cursor: pointer;
+            opacity: 0.5; /* J'ai légèrement augmenté l'opacité (de 0.3 à 0.5) pour qu'ils soient plus visibles même inactifs */
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.8; transform: scale(1.1); }
+
+        .lang-toggle button:hover {
+            opacity: 0.9; /* Plus lumineux au survol */
+            transform: scale(1.1);
+        }
         body.lang-en #btn-en,
         body.lang-fr #btn-fr {
             opacity: 1; /* Pleine visibilité pour la langue active */
