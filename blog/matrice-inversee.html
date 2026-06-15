@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>La Matrice Inversée | The Inverted Matrix</title>
+    <meta name="description" content="Architecture zéro horizon : enfouissement du minage, récupération thermique, biochar et sanctuarisation de la biosphère. / Zero horizon architecture: subterranean mining, thermal recovery, biochar, and biosphere sanctuary." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg-deep: #080a0b;
+            --text-main: #d4d4d4;
+            --sun-yellow: #ffcc00;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --carbon-red: #d35400;
+            --gold-gov: #ffd700;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --bg-dark: #050505;
+            --border-glow: rgba(255, 170, 0, 0.2);
+            --note-bg: rgba(255, 204, 0, 0.03);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at top center, rgba(255, 204, 0, 0.05) 0%, transparent 50%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body .lang-en { display: none; }
+        body.en .lang-fr { display: none; }
+        body.en .lang-en { display: inline-block; }
+        
+        /* Pour les blocs (div, p) */
+        div.lang-en, p.lang-en, ul.lang-en { display: none; }
+        body.en div.lang-en, body.en p.lang-en, body.en ul.lang-en { display: block; }
+        body.en div.lang-fr, body.en p.lang-fr, body.en ul.lang-fr { display: none; }
+
+        /* Bouton de langue */
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid var(--sun-yellow);
+            color: var(--sun-yellow);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .lang-toggle:hover {
+            background: rgba(255, 204, 0, 0.1);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--sun-yellow);
+            font-style: italic;
+        }
+
+        .intro-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(68, 238, 119, 0.15);
+            border: 1px solid rgba(68, 238, 119, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-block {
+            border-left: 3px solid var(--sun-yellow);
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        details {
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--stone-grey);
+            border-radius: 0 8px 8px 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        details[open] {
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #fff;
+            outline: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        summary::before {
+            content: '▶';
+            color: inherit;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content {
+            padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+            color: #b0c4de;
+        }
+
+        .level-1 { border-color: var(--stone-grey); }
+        .level-1 summary { color: #a0aab5; }
+        .level-2 { border-color: var(--magma-orange); }
+        .level-2 summary { color: var(--magma-orange); }
+        .level-3 { border-color: var(--water-blue); }
+        .level-3 summary { color: var(--water-blue); }
+        .level-4 { border-color: var(--carbon-red); }
+        .level-4 summary { color: var(--carbon-red); }
+        .level-5 { border-color: var(--gold-gov); }
+        .level-5 summary { color: var(--gold-gov); }
+
+        .level-img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+        }
+
+        .dashboard-box {
+            background: rgba(0, 0, 0, 0.8); 
+            border: 1px solid var(--sun-yellow); 
+            border-radius: 8px; 
+            padding: 2rem; 
+            margin: 4rem 0; 
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.1);
+        }
+
+
+        /* Footer */
+        footer { font-family: 'Helvetica Neue', sans-serif; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem; }
+        
+        /* ========================================== */
+        /* SECTION FEEDBACK (FORMSPREE & POPUP)       */
+        /* ========================================== */
+        .feedback-container {
+            margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 170, 0, 0.2); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 700px; text-align: center;
+        }
+        .feedback-title {
+            color: var(--sun-yellow); font-size: 1.5rem; text-transform: uppercase; 
+            letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800; font-family: 'Helvetica Neue', sans-serif;
+        }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; }
+        .feedback-label { display: block; color: #d4d4d4; margin-bottom: 0.8rem; font-size: 1.05rem; }
+        .feedback-anon { font-size: 0.85rem; color: #888; font-style: italic; margin-bottom: 1.5rem; }
+        
+        .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .star-rating input { display: none; }
+        .star-rating label { color: #333; font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease, transform 0.2s ease; }
+        .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label {
+            color: var(--sun-yellow); text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+        .star-rating label:hover { transform: scale(1.1); }
+        
+        .feedback-textarea {
+            width: 100%; background: #050505; border: 1px solid rgba(255, 204, 0, 0.2);
+            border-radius: 8px; color: #fff; padding: 1.2rem; font-family: 'Georgia', serif;
+            font-size: 1.1rem; min-height: 180px; resize: vertical; margin-bottom: 1.5rem;
+            outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .feedback-textarea:focus { border-color: var(--sun-yellow); box-shadow: 0 0 15px rgba(255, 204, 0, 0.15); }
+        
+        .feedback-submit {
+            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow); 
+            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: 'Helvetica Neue', sans-serif; 
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; backdrop-filter: blur(4px);
+        }
+        .feedback-submit:hover:not(:disabled) {
+            background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05);
+        }
+        .feedback-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .feedback-popup {
+            display: none; position: fixed; bottom: 30px; right: 30px; 
+            background: rgba(68, 255, 102, 0.1); border: 1px solid #44ff66; color: #44ff66; 
+            padding: 15px 25px; border-radius: 8px; box-shadow: 0 5px 20px rgba(68, 255, 102, 0.2); 
+            z-index: 1000; backdrop-filter: blur(5px); align-items: center; gap: 10px; 
+            font-family: 'Helvetica Neue', sans-serif; font-weight: bold; letter-spacing: 1px; 
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        @media (max-width: 768px) {
+            .nav-center { display: none; }
+            .lang-toggle { margin-left: auto; border-left: none; padding-left: 0; }
+            .research-note { padding: 1.5rem; }
+            .feedback-popup { left: 20px; right: 20px; bottom: 20px; text-align: center; }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a0aab5;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--stone-grey);
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-family: var(--font-main);
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--bio-green);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: transparent;
+            border: 1px solid var(--bio-green);
+            color: var(--bio-green);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: rgba(68, 238, 119, 0.1);
+            box-shadow: 0 0 15px rgba(68, 238, 119, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<button class="lang-toggle" onclick="document.body.classList.toggle('en')">FR / EN</button>
+
+<div class="container">
+    <header>
+        <h1>
+            <span class="lang-fr">La Matrice Inversée</span>
+            <span class="lang-en">The Inverted Matrix</span>
+        </h1>
+        <div class="subtitle">
+            <span class="lang-fr">Minage Souterrain, Thermodynamique & Régénération de la Biosphère</span>
+            <span class="lang-en">Subterranean Mining, Thermodynamics & Biosphere Regeneration</span>
+        </div>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
+            <span class="lang-fr">// UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
+            <span class="lang-en">// AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
+        </p>
+    </header>
+
+    <div class="intro-hero">
+        <img src="Lemeus.png" alt="Lemeus, le Jedi Solaire Lémurien" loading="lazy">
+        <div class="quote-block">
+            <span class="lang-fr">"Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Prenez la Pilule Verte."</span>
+            <span class="lang-en">"Let us unite, bury the FUD, silence the noise and create beautiful gardens. Organic life on the surface, machines underground. Take the Green Pill."</span>
+            <br>
+            <span style="font-size: 0.85em; color: var(--bio-green);">- Lemeus</span>
+        </div>
+    </div>
+
+    <details class="level-1" open>
+        <summary>
+            <span class="lang-fr">Niveau 1 : Enterrer le Bruit (Topologie de l'Enfouissement)</span>
+            <span class="lang-en">Level 1: Burying the Noise (Burial Topology)</span>
+        </summary>
+        <div class="drawer-content">
+            <p class="lang-fr">La première agression de l'ère de l'information est sonore et visuelle. Les immenses centres de calculs génèrent un bruit mécanique constant et défigurent le paysage. Pour faire taire les machines, l'enfouissement doit s'adapter à toutes les échelles.</p>
+            <p class="lang-en">The first aggression of the information age is sonic and visual. Massive data centers generate a constant mechanical noise and disfigure the landscape. To silence the machines, subterranean burial must adapt to all scales.</p>
+            
+            <img src="M1.png" class="level-img" alt="Illustration de l'enfouissement et de la topologie" loading="lazy">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-top: 3px solid var(--stone-grey); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">⬡ Le Forage Profond (Din)</span>
+                        <span class="lang-en">⬡ Deep Drilling (Din)</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0aab5;">L'approche <em>Tabula Rasa</em> pour les supercalculateurs en zone vierge. La roche isole le bruit, la surface est laissée à la reforestation.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0aab5;">The <em>Tabula Rasa</em> approach for supercomputers in virgin areas. The rock insulates the noise, leaving the surface for reforestation.</p>
+                </div>
+                <div style="background: rgba(68, 153, 255, 0.05); padding: 1.2rem; border-top: 3px solid #4499ff; border-radius: 6px;">
+                    <h4 style="color: #88bbff; margin-top: 0;">
+                        <span class="lang-fr">🏢 La Symbiose Urbaine</span>
+                        <span class="lang-en">🏢 Urban Symbiosis</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #b0c4de;">Colonisation des parkings sous-utilisés. Le béton armé absorbe le bruit, la chaleur alimente le réseau urbain.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #b0c4de;">Colonization of underutilized parking lots. Reinforced concrete absorbs noise, while heat feeds the urban thermal network.</p>
+                </div>
+                <div style="background: rgba(68, 238, 119, 0.05); padding: 1.2rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
+                    <h4 style="color: var(--bio-green); margin-top: 0;">
+                        <span class="lang-fr">🚜 Le Micro-Pod Artisanal</span>
+                        <span class="lang-en">🚜 Artisanal Micro-Pod</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0d4b5;">La pelleteuse et le jardinier. Un caisson étanche enfoui sous un champ, surmonté d'une serre. Souveraineté énergétique locale.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0d4b5;">The excavator and the gardener. A waterproof pod buried under a field, topped with a greenhouse. Local energy sovereignty.</p>
+                </div>
+                <div style="background: rgba(255, 85, 0, 0.05); padding: 1.2rem; border-top: 3px solid var(--magma-orange); border-radius: 6px;">
+                    <h4 style="color: var(--magma-orange); margin-top: 0;">
+                        <span class="lang-fr">⛰️ Les Cicatrices Oubliées</span>
+                        <span class="lang-en">⛰️ Forgotten Scars</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #e5bca8;">Réutiliser les anciennes mines de charbon. Transformer les désastres écologiques industriels en moteurs de régénération.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #e5bca8;">Reusing abandoned coal mines. Transforming industrial ecological disasters into engines of regeneration.</p>
+                </div>
+                <div style="background: rgba(155, 89, 182, 0.05); padding: 1.2rem; border-top: 3px solid #9b59b6; border-radius: 6px;">
+                    <h4 style="color: #9b59b6; margin-top: 0;">
+                        <span class="lang-fr">🛡️ Le Sanctuaire Militaire</span>
+                        <span class="lang-en">🛡️ Military Sanctuary</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #d7bde2;">Réquisition des bunkers de la Guerre Froide pour la paix. Murs blindés et isolation parfaite pour sanctuariser la biosphère.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #d7bde2;">Requisitioning Cold War bunkers for peace. Armored walls and perfect insulation to sanctuary the biosphere.</p>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details class="level-2">
+        <summary style="border-left-color: var(--magma-orange); color: var(--magma-orange);">
+            <span class="lang-fr">Niveau 2 : La Symbiose Thermique (Gestion & Flux Énergétiques)</span>
+            <span class="lang-en">Level 2: Thermal Symbiosis (Energy Management & Flows)</span>
+        </summary>
+        <div class="drawer-content">
+            
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 85, 0, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
+                <p class="lang-fr">
+                    Une fois la machine isolée acoustiquement dans les profondeurs, l'ingénierie doit faire face au second principe de la thermodynamique : la dissipation inévitable de chaleur. Dans le modèle de la Matrice Inversée, cette énergie thermique n'est plus traitée comme une nuisance à évacuer, mais comme une ressource de haute qualité. Le <strong>Vecteur Thermique</strong> est le lien ombilical qui connecte la puissance de calcul à la puissance biologique :
+                </p>
+                <p class="lang-en">
+                    Once the machine is acoustically isolated in the depths, engineering must face the second law of thermodynamics: the inevitable dissipation of heat. In the Inverted Matrix model, this thermal energy is no longer treated as a nuisance to be evacuated, but as a high-quality resource. The <strong>Thermal Vector</strong> is the umbilical cord that connects computational power to biological power:
+                </p>
+                <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--magma-orange);">A. La Captation par Immersion (Le Coeur) :</strong> Pour maximiser l'exergie, les serveurs sont immergés dans un fluide diélectrique. Ce liquide capture 95% de la chaleur fatale à des températures constantes (50°C-75°C), optimisant le transfert énergétique.</span>
+                        <span class="lang-en"><strong style="color: var(--magma-orange);">A. Immersion Capture (The Core):</strong> To maximize exergy, servers are immersed in a dielectric fluid. This liquid captures 95% of the waste heat at constant temperatures (50°C-75°C), optimizing energy transfer.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid #fff; padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: #fff;">B. La Convection de Sion (Le Flux) :</strong> L'infrastructure utilise l'effet cheminée ou des boucles hydrauliques isolées. L'énergie monte sans surconsommation électrique, suivant les lois de la convection thermodynamique.</span>
+                        <span class="lang-en"><strong style="color: #fff;">B. The Convection of Zion (The Flow):</strong> The infrastructure uses a chimney effect or isolated hydraulic loops. Energy rises without extra electrical consumption, following the laws of thermodynamic convection.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--bio-green); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--bio-green);">C. Le Chauffage Racinaire (La Vie) :</strong> À la surface, la chaleur est distribuée dans des serpentins sous les lits de culture. Chauffer les racines accélère le métabolisme végétal, assurant des récoltes abondantes toute l'année.</span>
+                        <span class="lang-en"><strong style="color: var(--bio-green);">C. Root Heating (Life):</strong> On the surface, heat is distributed in coils beneath the grow beds. Heating the roots accelerates plant metabolism, ensuring abundant harvests year-round.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <img src="M2.png" class="level-img" alt="Illustration de la symbiose thermique et des serres" loading="lazy">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(255, 85, 0, 0.02); padding: 1.2rem; border-top: 3px solid var(--magma-orange); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">♨️ Captation Exergétique</span>
+                        <span class="lang-en">♨️ Exergetic Capture</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #e5bca8;">L'utilisation de fluides caloporteurs permet de maintenir une chaleur constante et exploitable.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #e5bca8;">The use of heat transfer fluids maintains constant and exploitable heat.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-top: 3px solid #fff; border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">⇈ L'Effet Cheminée</span>
+                        <span class="lang-en">⇈ Chimney Effect</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0aab5;">Le design vertical facilite la remontée passive de l'air chaud vers la surface.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0aab5;">The vertical design facilitates the passive rise of hot air to the surface.</p>
+                </div>
+                <div style="background: rgba(68, 238, 119, 0.02); padding: 1.2rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
+                    <h4 style="color: var(--bio-green); margin-top: 0;">
+                        <span class="lang-fr">🌿 Accélération Métabolique</span>
+                        <span class="lang-en">🌿 Metabolic Acceleration</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0d4b5;">Le chauffage racinaire permet une production de nourriture bio continue et souveraine.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0d4b5;">Root heating allows for continuous and sovereign organic food production.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--magma-orange);">
+                $$J_q = - \kappa \nabla T \quad \Longrightarrow \quad P_{surface} = \iint_{S} \vec{J}_q \cdot d\vec{A}$$
+            </div>
+        </div>
+    </details>
+
+    <details class="level-3">
+        <summary style="border-left-color: var(--water-blue); color: var(--water-blue);">
+            <span class="lang-fr">Niveau 3 : Le Puits Atmosphérique (Cycle de l'Eau)</span>
+            <span class="lang-en">Level 3: Atmospheric Well (Water Cycle)</span>
+        </summary>
+        <div class="drawer-content">
+            
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0, 204, 255, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
+                <p class="lang-fr">Le <strong>Puits Atmosphérique</strong> représente le point d'articulation exact où la théorie abstraite de l'information se transmute en matière biologique. Pour forcer la vapeur d'eau de l'atmosphère à précipiter localement au cœur de Sion, le système exploite les lois du <strong>point de rosée</strong> :</p>
+                <p class="lang-en">The <strong>Atmospheric Well</strong> represents the exact articulation point where the abstract theory of information transmutates into biological matter. To force atmospheric water vapor to precipitate locally deep within Zion, the system exploits the laws of the <strong>dew point</strong>:</p>
+                
+                <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--water-blue); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--water-blue);">A. L'Absorption Moléculaire :</strong> L'air de surface traverse des matrices dessiccantes capables de piéger les molécules de H₂O, même en environnement aride.</span>
+                        <span class="lang-en"><strong style="color: var(--water-blue);">A. Molecular Absorption:</strong> Surface air passes through desiccant matrices capable of trapping H₂O molecules, even in arid environments.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--magma-orange);">B. La Désorption par Chaleur :</strong> La chaleur fatale des serveurs régénère la matrice dessiccante, libérant un air à très haute densité d'humidité.</span>
+                        <span class="lang-en"><strong style="color: var(--magma-orange);">B. Heat Desorption:</strong> The waste heat from the servers regenerates the desiccant matrix, releasing highly humid air.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid #fff; padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: #fff;">C. La Précipitation Cinétique :</strong> Le choc thermique contre les parois rocheuses froides (12°C) provoque l'effondrement de la vapeur en eau liquide pure.</span>
+                        <span class="lang-en"><strong style="color: #fff;">C. Kinetic Precipitation:</strong> The thermal shock against the cold rock walls (12°C) causes the vapor to collapse into pure liquid water.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <img src="M3.png" class="level-img" alt="Illustration du puits atmosphérique et de l'eau distillée" loading="lazy">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(0, 204, 255, 0.02); padding: 1.2rem; border-top: 3px solid var(--water-blue); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">❄️ Le Point de Rosée</span>
+                        <span class="lang-en">❄️ The Dew Point</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #b3e6ff;">Le choc thermique force la libération immédiate de l'humidité atmosphérique.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #b3e6ff;">Thermal shock forces the immediate release of atmospheric humidity.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-top: 3px solid #fff; border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">💧 L'Eau Cryptographique</span>
+                        <span class="lang-en">💧 Cryptographic Water</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0aab5;">Chaque Terahash exécuté extrait physiquement de l'eau distillée de l'atmosphère.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0aab5;">Each Terahash executed physically extracts distilled water from the atmosphere.</p>
+                </div>
+                <div style="background: rgba(68, 238, 119, 0.02); padding: 1.2rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
+                    <h4 style="color: var(--bio-green); margin-top: 0;">
+                        <span class="lang-fr">🌱 La Permaloop Hydrique</span>
+                        <span class="lang-en">🌱 Hydric Permaloop</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0d4b5;">La machine "transpire" l'eau nécessaire pour nourrir les cultures hydroponiques en circuit fermé.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0d4b5;">The machine "sweats" the water needed to nourish closed-loop hydroponic crops.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--water-blue);">
+                $$\dot{m}_{w} = \dot{m}_{a} \left( x_{in} - x_{out} \right) \quad \text{où} \quad x(T, \varphi)$$
+            </div>
+        </div>
+    </details>
+
+    <details class="level-4">
+        <summary style="border-left-color: var(--carbon-red); color: var(--carbon-red);">
+            <span class="lang-fr">Niveau 4 : L'Alchimie du Carbone (Pyrolyse & Biochar)</span>
+            <span class="lang-en">Level 4: Carbon Alchemy (Pyrolysis & Biochar)</span>
+        </summary>
+        <div class="drawer-content">
+            
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(211, 84, 0, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
+                <p class="lang-fr">Le métabolisme de la Matrice Inversée atteint son apogée biophysique avec <strong>l'Alchimie du Carbone</strong>. Pour ressusciter durablement les sols ravagés, il faut recréer la matrice du vivant, inspirée de la <em>Terra Preta</em>. En concentrant la chaleur fatale, l'infrastructure boucle le cycle du carbone naturel :</p>
+                <p class="lang-en">The metabolism of the Inverted Matrix reaches its biophysical peak with <strong>Carbon Alchemy</strong>. To sustainably resurrect ravaged soils, we must recreate the matrix of life, inspired by <em>Terra Preta</em>. By concentrating waste heat, the infrastructure closes the natural carbon cycle:</p>
+                
+                <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--magma-orange);">A. La Pyrolyse Cryptographique :</strong> Les déchets agricoles sont cuits dans des bioréacteurs par la chaleur des ASICs. Sans oxygène, la matière subit une décomposition thermochimique.</span>
+                        <span class="lang-en"><strong style="color: var(--magma-orange);">A. Cryptographic Pyrolysis:</strong> Agricultural waste is baked in bioreactors using ASIC heat. In an oxygen-free environment, the matter undergoes thermochemical decomposition.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--carbon-red); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--carbon-red);">B. La Cristallisation du Carbone :</strong> La pyrolyse cristallise le carbone sous forme inerte, empêchant sa libération en CO₂. Le calcul devient mathématiquement carbone-négatif.</span>
+                        <span class="lang-en"><strong style="color: var(--carbon-red);">B. Carbon Crystallization:</strong> Pyrolysis crystallizes carbon into an inert form, preventing its release as CO₂. Computation becomes mathematically carbon-negative.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--bio-green); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--bio-green);">C. La Symbiose Mycorhizienne :</strong> Ce charbon poreux (Biochar) est enfoui. Il agit comme une éponge pour l'eau et un habitat pour les champignons mycorhiziens.</span>
+                        <span class="lang-en"><strong style="color: var(--bio-green);">C. Mycorrhizal Symbiosis:</strong> This porous charcoal (Biochar) is buried. It acts as a sponge for water and a habitat for mycorrhizal fungi.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <img src="M4.png" class="level-img" alt="Illustration du réacteur à Biochar et Terra Preta" loading="lazy">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(211, 84, 0, 0.02); padding: 1.2rem; border-top: 3px solid var(--carbon-red); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">🔥 Le Bioréacteur Souterrain</span>
+                        <span class="lang-en">🔥 Subterranean Bioreactor</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #e6b398;">La biomasse est cuite à très haute température sans combustion grâce au flux informatique.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #e6b398;">Biomass is baked at high temperatures without combustion using computational heat flux.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-top: 3px solid #fff; border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0;">
+                        <span class="lang-fr">⬢ Séquestration Millénaire</span>
+                        <span class="lang-en">⬢ Millennial Sequestration</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #a0aab5;">Le carbone est piégé sous forme solide pour des milliers d'années, purgeant l'atmosphère.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #a0aab5;">Carbon is trapped in a solid form for thousands of years, purging the atmosphere.</p>
+                </div>
+                <div style="background: rgba(211, 84, 0, 0.05); padding: 1.2rem; border-top: 3px solid var(--carbon-red); border-radius: 6px;">
+                    <h4 style="color: var(--carbon-red); margin-top: 0;">
+                        <span class="lang-fr">🪨 L'Éponge à Vie</span>
+                        <span class="lang-en">🪨 Sponge of Life</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #e6b398;">Le biochar enfoui devient l'habitat parfait pour la microbiologie des sols stériles.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #e6b398;">Buried biochar becomes the perfect habitat for microbiology in sterile soils.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--carbon-red);">
+                $$C_{seq} = \int_{0}^{T} \eta_{pyro}(T_{ASIC}) \cdot \dot{M}_{biomasse} \, dt$$
+            </div>
+        </div>
+    </details>
+
+    <details class="level-5">
+        <summary style="border-left-color: var(--gold-gov); color: var(--gold-gov);">
+            <span class="lang-fr">Niveau 5 : La Gouvernance Organique (Résolution de l'Effet Cantillon)</span>
+            <span class="lang-en">Level 5: Organic Governance (Resolving the Cantillon Effect)</span>
+        </summary>
+        <div class="drawer-content">
+            
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 215, 0, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
+                <p class="lang-fr">Toute ingénierie biophysique échoue si le système macroéconomique est corrompu. La Matrice Inversée neutralise l'<strong>Effet Cantillon</strong> (l'enrichissement asymétrique via l'impression monétaire) par un couplage mathématique direct entre le consensus et le vivant :</p>
+                <p class="lang-en">Any biophysical engineering fails if the macroeconomic system is corrupted. The Inverted Matrix neutralizes the <strong>Cantillon Effect</strong> (asymmetrical enrichment via money printing) through a direct mathematical coupling between consensus and the living:</p>
+                
+                <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--gold-gov); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--gold-gov);">A. L'Ancrage Émergétique :</strong> Chaque satoshi exige une preuve de travail physique, supprimant la discrétion politique de la masse monétaire.</span>
+                        <span class="lang-en"><strong style="color: var(--gold-gov);">A. Emergetic Anchoring:</strong> Each satoshi requires a physical proof of work, eliminating political discretion over the money supply.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--bio-green); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--bio-green);">B. Le Routage Programmatique (Multisigs) :</strong> Les capitaux numériques sont directement routés vers des portefeuilles cogérés par les paysans et les communautés locales.</span>
+                        <span class="lang-en"><strong style="color: var(--bio-green);">B. Programmatic Routing (Multisigs):</strong> Digital capital is directly routed to wallets co-managed by farmers and local communities.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; border-left: 2px solid var(--water-blue); padding-left: 15px;">
+                        <span class="lang-fr"><strong style="color: var(--water-blue);">C. Le KPI du Karma Biophysique :</strong> L'étalon de réussite est le niveau de vie et l'accès aux ressources des populations les plus démunies.</span>
+                        <span class="lang-en"><strong style="color: var(--water-blue);">C. Biophysical Karma KPI:</strong> The benchmark for success is the living standard and resource access of the most vulnerable populations.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <img src="M5.png" class="level-img" alt="Illustration de l'utopie de la Lémurie et des Jedi solaires" loading="lazy">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(255, 215, 0, 0.03); padding: 1.2rem; border-top: 3px solid var(--gold-gov); border-radius: 6px;">
+                    <h4 style="color: var(--gold-gov); margin-top: 0;">
+                        <span class="lang-fr">⚖️ La Fin du Privilège</span>
+                        <span class="lang-en">⚖️ End of Privilege</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #fff4b3;">Dépenser de l'énergie réelle élimine la création monétaire à coût nul, détruisant la racine des inégalités.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #fff4b3;">Spending real energy eliminates zero-cost money creation, destroying the root of inequality.</p>
+                </div>
+                <div style="background: rgba(255, 215, 0, 0.03); padding: 1.2rem; border-top: 3px solid var(--gold-gov); border-radius: 6px;">
+                    <h4 style="color: var(--gold-gov); margin-top: 0;">
+                        <span class="lang-fr">🤝 Contrats Intelligents Vitaux</span>
+                        <span class="lang-en">🤝 Vital Smart Contracts</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #fff4b3;">Les satoshis générés financent automatiquement les semences, l'eau et les outils de permaculture.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #fff4b3;">Generated satoshis automatically finance seeds, water, and permaculture tools.</p>
+                </div>
+                <div style="background: rgba(255, 215, 0, 0.03); padding: 1.2rem; border-top: 3px solid var(--gold-gov); border-radius: 6px;">
+                    <h4 style="color: var(--gold-gov); margin-top: 0;">
+                        <span class="lang-fr">👁️ Transparence Absolue</span>
+                        <span class="lang-en">👁️ Absolute Transparency</span>
+                    </h4>
+                    <p class="lang-fr" style="font-size: 0.9em; color: #fff4b3;">Le registre public empêche le détournement des ressources. Chaque centime est auditable.</p>
+                    <p class="lang-en" style="font-size: 0.9em; color: #fff4b3;">The public ledger prevents resource embezzlement. Every cent is auditable.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--gold-gov);">
+                $$\frac{d\,\text{Sat}_{jardin}}{dt} = \Lambda \cdot \left( \kappa_N \cdot \mathcal{H}_{Sion} \right) \quad \text{avec} \quad \nabla \cdot \vec{V}_{Cantillon} = 0$$
+            </div>
+            
+            <div class="quote-block" style="border-left-color: var(--gold-gov); background: rgba(255, 215, 0, 0.02); padding: 1rem 1.5rem; border-radius: 0 8px 8px 0;">
+                <strong style="color: var(--gold-gov);">
+                    <span class="lang-fr">L'Ordre Jedi Humain :</span>
+                    <span class="lang-en">The Human Jedi Order:</span>
+                </strong> 
+                <span class="lang-fr">Ce niveau transforme l'installation technique en Atlantide. L'énergie (Angovo) rend sa souveraineté alimentaire, énergétique et financière à la biosphère.</span>
+                <span class="lang-en">This level transforms the technical installation into Atlantis. Energy (Angovo) restores food, energy, and financial sovereignty to the biosphere.</span>
+            </div>
+        </div>
+    </details>
+
+    <div class="dashboard-box">
+        <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase;">
+            <span class="lang-fr">🌍 Télémétrie Globale : Potentiel de la Matrice</span>
+            <span class="lang-en">🌍 Global Telemetry: Matrix Potential</span>
+        </h3>
+        <p style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 2rem;">
+            <span class="lang-fr">Données Bitcoin en temps réel converties selon l'Étalon Solaire (Hypothèse : 25 J/TH).</span>
+            <span class="lang-en">Real-time Bitcoin data converted under the Sun Standard (Assumption: 25 J/TH).</span>
+        </p>
+        
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center;">
+            <div>
+                <div style="font-size: 0.9em; color: #aaa;">
+                    <span class="lang-fr">Hashrate Actuel</span>
+                    <span class="lang-en">Current Hashrate</span>
+                </div>
+                <div id="live-hashrate" style="font-size: 2.2rem; font-family: var(--font-mono); color: #fff; font-weight: bold;">-- EH/s</div>
+            </div>
+            <div>
+                <div style="font-size: 0.9em; color: var(--magma-orange);">
+                    <span class="lang-fr">Chaleur Récupérable (Potentiel)</span>
+                    <span class="lang-en">Recoverable Heat (Potential)</span>
+                </div>
+                <div id="live-power" style="font-size: 2.2rem; font-family: var(--font-mono); color: var(--magma-orange); font-weight: bold;">-- GW</div>
+            </div>
+            <div>
+                <div style="font-size: 0.9em; color: var(--water-blue);">
+                    <span class="lang-fr">Eau Distillable (Estimation)</span>
+                    <span class="lang-en">Distillable Water (Estimate)</span>
+                </div>
+                <div id="live-water" style="font-size: 2.2rem; font-family: var(--font-mono); color: var(--water-blue); font-weight: bold;">-- L/j</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 4rem 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; background: #050505;">
+        <div style="padding: 10px 20px; background: rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--font-mono); font-size: 0.8em; color: #888;">
+                <span class="lang-fr">// SIMULATION INTERACTIVE : SION -> SURFACE</span>
+                <span class="lang-en">// INTERACTIVE SIMULATION: ZION -> SURFACE</span>
+            </span>
+            <input type="range" id="hashrate-slider" min="10" max="200" value="50" style="width: 150px; accent-color: var(--sun-yellow);">
+        </div>
+        <canvas id="matriceCanvas" width="800" height="400" style="width: 100%; display: block;"></canvas>
+    </div>
+
+    <div class="feedback-container">
+        <h3 lang="en" class="feedback-title">Help Improve This Article / Join The Effort</h3>
+        <h3 lang="fr" class="feedback-title">Aidez à améliorer cet article et les applications potentiels</h3>
+        
+        <p lang="en" class="feedback-desc">This is an ongoing phenomenological research effort. Your feedback is vital to clarify the mechanics and correct potential flaws.</p>
+        <p lang="fr" class="feedback-desc">Il s'agit d'un effort de recherche phénoménologique en cours. Vos retours sont vitaux pour clarifier la mécanique et corriger d'éventuelles failles.</p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="La matrice inverse">
+            
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" required />
+                <label for="star5" title="Excellent">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" title="Very Good">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="Average">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" title="Poor">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" title="Bad">&#9733;</label>
+            </div>
+
+            <label lang="en" class="feedback-label">Which concepts seem obscure? What could be improved?</label>
+            <label lang="fr" class="feedback-label">Quels concepts vous semblent obscurs ? Qu'est-ce qui pourrait être amélioré ?</label>
+            
+            <textarea name="feedback" class="feedback-textarea" required></textarea>
+
+            <p lang="en" class="feedback-anon">🔒 This survey is 100% anonymous unless you specify your name in the comment.</p>
+            <p lang="fr" class="feedback-anon">🔒 Ce retour est 100 % anonyme, à moins que vous n'indiquiez explicitement votre nom dans le commentaire.</p>
+            
+            <button type="submit" class="feedback-submit" id="feedback-btn">
+                <span lang="en">Submit Feedback</span>
+                <span lang="fr">Envoyer le retour</span>
+            </button>
+        </form>
+    </div>
+
+    <div id="success-popup" class="feedback-popup">
+        <span lang="en">✅ Feedback successfully submitted! Thank you.</span>
+        <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <p style="color: var(--bio-green); font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+            <span class="lang-fr">La Lémurie répond à l'appel.</span>
+            <span class="lang-en">Lemuria answers the call.</span>
+        </p>
+    </div>
+</div>
+<footer>
+    <div style="font-size: 1.1rem; font-weight: 700; letter-spacing: 4px; color: var(--sun-yellow); margin-bottom: 1rem;">
+        <span lang="en"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none;">☀ THE SUN STANDARD</a></span>
+        <span lang="fr"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none;">☀ L'ÉTALON SOLAIRE</a></span>
+    </div>
+    <p>Pascal Ranoroarijaona · 2026</p>
+</footer>
+<script>
+    // --- 1. SCRIPT API DASHBOARD ---
+    async function fetchNetworkData() {
+        try {
+            const response = await fetch('https://mempool.space/api/v1/mining/hashrate/3d');
+            const data = await response.json();
+            const currentHashrateData = data.currentHashrate; 
+            
+            const hashrateEH = (currentHashrateData / 1e18).toFixed(2);
+            document.getElementById('live-hashrate').innerText = hashrateEH + ' EH/s';
+
+            const powerWatts = currentHashrateData * 25 / 1e12;
+            const powerGW = (powerWatts / 1e9).toFixed(2);
+            document.getElementById('live-power').innerText = powerGW + ' GW';
+
+            const waterLiters = Math.round(powerGW * 5000).toLocaleString();
+            document.getElementById('live-water').innerText = waterLiters + (document.body.classList.contains('en') ? ' L/day' : ' L/jour');
+
+        } catch (error) {
+            console.error('API Error:', error);
+            document.getElementById('live-hashrate').innerText = 'Error';
+        }
+    }
+    fetchNetworkData();
+    setInterval(fetchNetworkData, 60000);
+
+    // Update units on language toggle
+    document.querySelector('.lang-toggle').addEventListener('click', () => {
+        let waterText = document.getElementById('live-water').innerText;
+        if(waterText.includes('L/')) {
+            document.getElementById('live-water').innerText = waterText.split(' L/')[0] + (document.body.classList.contains('en') ? ' L/day' : ' L/jour');
+        }
+    });
+
+    // --- 2. SCRIPT CANVAS INTERACTIF ---
+    const canvas = document.getElementById('matriceCanvas');
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('hashrate-slider');
+
+    let particles = [];
+    let time = 0;
+
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.baseX = x;
+            this.speed = Math.random() * 2 + 1;
+            this.size = Math.random() * 2 + 1;
+            this.type = Math.random() > 0.4 ? 'heat' : 'water';
+        }
+        update(intensity) {
+            this.y -= this.speed * (intensity / 50);
+            this.x = this.baseX + Math.sin(time * 0.05 + this.baseX) * 10;
+            if (this.y < 150) {
+                this.y = canvas.height - 20;
+                this.baseX = Math.random() * canvas.width;
+            }
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.type === 'heat' ? 'rgba(255, 85, 0, 0.6)' : 'rgba(0, 204, 255, 0.6)';
+            ctx.fill();
+        }
+    }
+
+    for(let i = 0; i < 100; i++) {
+        particles.push(new Particle(Math.random() * canvas.width, canvas.height - Math.random() * 50));
+    }
+
+    function animate() {
+        time++;
+        const intensity = parseInt(slider.value);
+        const isEn = document.body.classList.contains('en');
+
+        ctx.fillStyle = '#050505';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 150);
+        ctx.lineTo(canvas.width, 150);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(255, 85, 0, ${intensity / 1000})`;
+        ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
+
+        const plantHeight = 20 + (intensity * 0.6);
+        ctx.fillStyle = 'rgba(68, 238, 119, 0.8)';
+        for(let i = 0; i < canvas.width; i += 40) {
+            ctx.fillRect(i, 150 - plantHeight * (0.8 + Math.random()*0.4), 8, plantHeight * (0.8 + Math.random()*0.4));
+        }
+
+        particles.forEach(p => {
+            p.update(intensity);
+            p.draw();
+        });
+
+        ctx.fillStyle = '#fff';
+        ctx.font = '14px Arial';
+        ctx.fillText(isEn ? 'SURFACE (Organic Biosphere / Gardens)' : 'SURFACE (Biosphère Organique / Jardins)', 20, 30);
+        ctx.fillText(isEn ? 'ZION (Cryptographic Compute / Heat)' : 'SION (Calcul Cryptographique / Chaleur)', 20, canvas.height - 60);
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("feedback-form");
+    const popup = document.getElementById("success-popup");
+    const btn = document.getElementById("feedback-btn");
+
+    if (form) {
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); 
+            
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = "⏳ ...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    popup.style.display = "flex";
+                    setTimeout(() => { popup.style.display = "none"; }, 4000);
+                } else {
+                    alert("Erreur lors de l'envoi. / Error during submission.");
+                }
+            } catch (error) {
+                alert("Erreur réseau. / Network error.");
+            } finally {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            }
+        });
+    }
+});
+</script>
+<script>
+    function setLang(lang) {
+        lang = lang.toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'en';
+        
+        document.body.className = 'lang-' + lang;
+        try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
+        
+        const url = new URL(window.location);
+        url.searchParams.set('lg', lang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'en');
+        setLang(savedLang);
+    });
+</script>
+
+</body>
+</html>
