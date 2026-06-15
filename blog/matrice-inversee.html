@@ -280,6 +280,64 @@
         }
         .nav-card:hover img { border-color: rgba(255, 204, 0, 0.4); }
 
+        /* --- Style du Bloc Simulateur --- */
+        .simulator-box {
+            background: #0b0e11;
+            border: 1px solid rgba(255, 204, 0, 0.25);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            font-family: var(--font-ui);
+        }
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .sim-control {
+            margin-bottom: 1.2rem;
+        }
+        .sim-control label {
+            display: block;
+            font-size: 0.85rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .sim-control input[type="range"] {
+            width: 100%;
+            accent-color: var(--sun-yellow);
+            background: #222;
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+        }
+        .sim-value {
+            float: right;
+            color: var(--sun-yellow);
+            font-family: var(--font-mono);
+            font-weight: bold;
+        }
+        .sim-outputs {
+            background: #050709;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sim-metric {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .sim-metric:last-child { border: none; padding: 0; margin: 0; }
+        .sim-metric-label { font-size: 0.85rem; color: #888; }
+        .sim-metric-value { font-size: 1.6rem; font-family: var(--font-mono); color: #fff; font-weight: bold; }
         /* ========================================== */
         /* SECTION FEEDBACK (FORMSPREE & POPUP)       */
         /* ========================================== */
@@ -611,29 +669,51 @@
         </div>
     </details>
 
-    <details class="level-3">
+    <details class="level-3" open>
         <summary style="border-left-color: var(--water-blue); color: var(--water-blue);">
-            <span lang="fr">Niveau 3 : Le Puits Atmosphérique (Cycle de l'Eau)</span>
-            <span lang="en">Level 3: Atmospheric Well (Water Cycle)</span>
+            <span lang="fr">Niveau 3 : Le Puits Atmosphérique (Thermodynamique, Psychrométrie & Dessiccation)</span>
+            <span lang="en">Level 3: Atmospheric Well (Thermodynamics, Psychrometrics & Desiccation)</span>
         </summary>
         <div class="drawer-content">
             
-            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0, 204, 255, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
-                <p lang="fr">Le <strong>Puits Atmosphérique</strong> représente le point d'articulation exact où la théorie abstraite de l'information se transmute en matière biologique. Pour forcer la vapeur d'eau de l'atmosphère à précipiter localement au cœur de Sion, le système exploite les lois du <strong>point de rosée</strong> :</p>
-                <p lang="en">The <strong>Atmospheric Well</strong> represents the exact articulation point where the abstract theory of information transmutates into biological matter. To force atmospheric water vapor to precipitate locally deep within Zion, the system exploits the laws of the <strong>dew point</strong>:</p>
-                
-                <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
-                    <li style="margin-bottom: 10px; border-left: 2px solid var(--water-blue); padding-left: 15px;">
-                        <span lang="fr"><strong style="color: var(--water-blue);">A. L'Absorption Moléculaire :</strong> L'air de surface traverse des matrices dessiccantes capables de piéger les molécules de H₂O, même en environnement aride.</span>
-                        <span lang="en"><strong style="color: var(--water-blue);">A. Molecular Absorption:</strong> Surface air passes through desiccant matrices capable of trapping H₂O molecules, even in arid environments.</span>
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0, 204, 255, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>
+                        Le <strong>Puits Atmosphérique</strong> représente le point de rupture ontologique où la pure théorie de l'information s'incarne dans la matière biologique. L'atmosphère terrestre agit comme un réservoir thermique et hydrique colossal, abritant en permanence un océan invisible estimé à plus de 12 900 kilomètres cubes de vapeur d'eau douce en suspension. Cependant, extraire cette ressource de manière passive dans un environnement aride ou semi-aride se heurte à un mur physique inviolable imposé par le premier et le second principe de la thermodynamique : la <strong>chaleur latente de changement de phase</strong> ($\Delta H_{vap} \approx 2257 \text{ kJ/kg}$). 
+                    </p>
+                    <p>
+                        Dans un système de condensation classique, le passage de l'état gazeux à l'état liquide libère une quantité massive d'énergie thermique directement accumulée par les surfaces d'échange. La conductivité thermique de la roche environnante étant extrêmement faible ($\kappa_{roche} \approx 2.0 \text{ W/m}\cdot\text{K}$), toute tentative de condensation passive sature thermiquement les parois de la cavité en quelques heures. Le gradient thermique s'effondre, la température interne augmente jusqu'à dépasser le point de rosée local, et le puits se transforme en un hammam stérile où le processus de précipitation s'arrête net.
+                    </p>
+                    <p>
+                        Pour contourner cette barrière cinétique, la Matrice Inversée rejette le paradigme du refroidissement brut et déploie un cycle à trois temps fondé sur la <strong>psychrométrie de l'air</strong>, l'asservissement du flux exergétique des ASICs, et la séparation mécanique des phases d'adsorption et de condensation. En couplant la dynamique des fluides souterrains à la géométrie moléculaire des aluminosilicates, l'infrastructure résout l'équation de la sécheresse, transmutant chaque Terahash calculé en une source d'eau distillée pure, exempte de polluants, prête à alimenter la biomasse de surface et à briser définitivement les cycles climatiques mortifères.
+                    </p>
+                </div>
+                <div lang="en">
+                    <p>
+                        The <strong>Atmospheric Well</strong> represents the ontological breaking point where pure information theory materializes into biological matter. The Earth's atmosphere acts as a colossal thermal and hydric reservoir, permanently sheltering an invisible ocean estimated at over 12,900 cubic kilometers of suspended fresh water vapor. However, extracting this resource passively in an arid or semi-arid environment hits an inviolable physical wall imposed by the first and second laws of thermodynamics: the <strong>latent heat of phase change</strong> ($\Delta H_{vap} \approx 2257 \text{ kJ/kg}$).
+                    </p>
+                    <p>
+                        In a classical condensation system, the transition from gaseous to liquid state releases a massive amount of thermal energy directly accumulated by the exchange surfaces. Since the thermal conductivity of the surrounding rock is extremely low ($\kappa_{rock} \approx 2.0 \text{ W/m}\cdot\text{K}$), any attempt at passive condensation thermally saturates the cavity walls within hours. The thermal gradient collapses, the internal temperature rises until it exceeds the local dew point, and the well transforms into a sterile steam room where the precipitation process stops instantly.
+                    </p>
+                    <p>
+                        To bypass this kinetic barrier, the Inverted Matrix rejects the paradigm of raw cooling and deploys a three-stage cycle based on <strong>air psychrometrics</strong>, the slaving of the ASICs' exergetic flux, and the mechanical separation of adsorption and condensation phases. By coupling underground fluid dynamics with the molecular geometry of aluminosilicates, the infrastructure solves the equation of drought, transmuting every calculated Terahash into a source of pure distilled water, free of pollutants, ready to feed the surface biomass and permanently break deadly climate cycles.
+                    </p>
+                </div>
+
+                <ul style="list-style-type: none; padding-left: 0; margin: 2rem 0;">
+                    <li style="margin-bottom: 20px; border-left: 3px solid var(--water-blue); padding-left: 20px;">
+                        <span lang="fr"><strong style="color: var(--water-blue);">A. Le Moteur Convectif et l'Effet Cheminée :</strong> L'aspiration de l'air de surface n'est pas confiée à des ventilateurs mécaniques énergivores, qui détruiraient le bilan énergétique net du système. Elle est générée par le différentiel de masse volumique ($\Delta \rho$) entre la colonne d'air glacée descendante et la colonne d'air surchauffée ascendante sortant du dôme informatique de Sion. Ce tirage thermique naturel engendre une pression motrice stable, convertissant la chaleur fatale du silicium en énergie cinétique de ventilation.</span>
+                        <span lang="en"><strong style="color: var(--water-blue);">A. The Convective Engine and Stack Effect:</strong> The suction of surface air is not left to energy-intensive mechanical fans, which would destroy the system's net energy balance. It is generated by the density differential ($\Delta \rho$) between the descending cold air column and the ascending superheated air column exiting Zion's computer dome. This natural thermal draft creates a stable driving pressure, converting the waste heat of silicon into kinetic ventilation energy.</span>
                     </li>
-                    <li style="margin-bottom: 10px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
-                        <span lang="fr"><strong style="color: var(--magma-orange);">B. La Désorption par Chaleur :</strong> La chaleur fatale des serveurs régénère la matrice dessiccante, libérant un air à très haute densité d'humidité.</span>
-                        <span lang="en"><strong style="color: var(--magma-orange);">B. Heat Desorption:</strong> The waste heat from the servers regenerates the desiccant matrix, releasing highly humid air.</span>
+                    
+                    <li style="margin-bottom: 20px; border-left: 3px solid var(--magma-orange); padding-left: 20px;">
+                        <span lang="fr"><strong style="color: var(--magma-orange);">B. Séparation de Phase par Roue Dessiccante (Zéolithe) :</strong> L'air ambiant aspiré traverse en premier lieu une matrice rotative hautement poreuse saturée de zéolithe synthétique. Les pores nanométriques capturent sélectivement les molécules d'H₂O par interaction électrostatique, augmentant l'entropie locale du matériau sans condensation liquide immédiate. La roue bascule ensuite dans le flux d'air brûlant (65°C-80°C) issu du refroidissement par immersion des ASICs. Cette énergie thermique force la désorption des molécules d'eau, créant un micro-flux secondaire d'air ultra-saturé à une humidité relative proche de 100%.</span>
+                        <span lang="en"><strong style="color: var(--magma-orange);">B. Phase Separation via Desiccant Wheel (Zeolite):</strong> The drawn ambient air first passes through a highly porous rotary matrix saturated with synthetic zeolite. Nanometric pores selectively capture H₂O molecules via electrostatic interaction, increasing the material's local entropy without immediate liquid condensation. The wheel then rotates into the hot airflow (65°C-80°C) stemming from the ASICs' immersion cooling. This thermal energy forces the desorption of water molecules, creating a secondary micro-flux of ultra-saturated air near 100% relative humidity.</span>
                     </li>
-                    <li style="margin-bottom: 10px; border-left: 2px solid #fff; padding-left: 15px;">
-                        <span lang="fr"><strong style="color: #fff;">C. La Précipitation Cinétique :</strong> Le choc thermique contre les parois rocheuses froides (12°C) provoque l'effondrement de la vapeur en eau liquide pure.</span>
-                        <span lang="en"><strong style="color: #fff;">C. Kinetic Precipitation:</strong> The thermal shock against the cold rock walls (12°C) causes the vapor to collapse into pure liquid water.</span>
+                    
+                    <li style="margin-bottom: 20px; border-left: 3px solid #fff; padding-left: 20px;">
+                        <span lang="fr"><strong style="color: #fff;">C. Précipitation Isolée sous Point de Rosée :</strong> Ce flux secondaire d'air saturé, dont le volume est considérablement réduit par rapport au flux primaire, est canalisé vers un échangeur géothermique en acier inoxydable marine immergé dans la zone de nappe fraîche ou en contact avec la roche profonde (12°C-15°C). L'humidité absolue étant maximale, le franchissement du point de rosée est immédiat et violent. La vapeur s'effondre en gouttes d'eau distillée pure, tandis que la chaleur latente libérée est évacuée activement par un circuit hydraulique secondaire connecté aux lits de culture hydroponiques du Niveau 2.</span>
+                        <span lang="en"><strong style="color: #fff;">C. Isolated Precipitation Below Dew Point:</strong> This secondary saturated airflow, whose volume is significantly reduced compared to the primary flow, is channeled to a marine stainless steel geothermal heat exchanger submerged in the cool water table zone or in contact with deep rock (12°C-15°C). Since absolute humidity is at its peak, the crossing of the dew point is immediate and violent. The vapor collapses into pure distilled water droplets, while the released latent heat is actively evacuated by a secondary hydraulic loop connected to the hydroponic grow beds of Level 2.</span>
                     </li>
                 </ul>
             </div>
@@ -641,35 +721,99 @@
             <img src="M3.png" class="level-img" alt="Illustration du puits atmosphérique et de l'eau distillée" loading="lazy">
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
-                <div style="background: rgba(0, 204, 255, 0.02); padding: 1.2rem; border-top: 3px solid var(--water-blue); border-radius: 6px;">
-                    <h4 style="color: #fff; margin-top: 0;">
-                        <span lang="fr">❄️ Le Point de Rosée</span>
-                        <span lang="en">❄️ The Dew Point</span>
+                
+                <div style="background: rgba(0, 204, 255, 0.02); padding: 1.5rem; border-top: 3px solid var(--water-blue); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--water-blue);">🌪️</span>
+                        <span lang="fr">Tirage Convectif</span>
+                        <span lang="en">Convective Draft</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #b3e6ff;">Le choc thermique force la libération immédiate de l'humidité atmosphérique.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #b3e6ff;">Thermal shock forces the immediate release of atmospheric humidity.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #b3e6ff; text-align: justify;">
+                        Exploitation de la poussée d'Archimède thermique. La chaleur dissipée au fond des puits verticaux engendre une dépression motrice capable d'auto-ventiler les infrastructures sans recours aux grilles d'aération mécaniques conventionnelles.
+                    </p>
+                    <p lang="en" style="font-size: 0.9em; color: #b3e6ff; text-align: justify;">
+                        Exploitation of thermal buoyancy. Heat dissipated at the bottom of vertical shafts generates a driving depression capable of self-ventilating the infrastructure without resorting to conventional mechanical ventilation grids.
+                    </p>
                 </div>
-                <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-top: 3px solid #fff; border-radius: 6px;">
-                    <h4 style="color: #fff; margin-top: 0;">
-                        <span lang="fr">💧 L'Eau Cryptographique</span>
-                        <span lang="en">💧 Cryptographic Water</span>
+
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-top: 3px solid #fff; border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #fff;">🧽</span>
+                        <span lang="fr">Cinétique de Dessiccation</span>
+                        <span lang="en">Desiccation Kinetics</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5;">Chaque Terahash exécuté extrait physiquement de l'eau distillée de l'atmosphère.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #a0aab5;">Each Terahash executed physically extracts distilled water from the atmosphere.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5; text-align: justify;">
+                        Utilisation de structures cristallines d'aluminosilicates. La captation de l'eau en phase gazeuse s'affranchit des contraintes d'humidité relative externe, permettant un fonctionnement optimal même au cœur des déserts les plus arides.
+                    </p>
+                    <p lang="en" style="font-size: 0.9em; color: #a0aab5; text-align: justify;">
+                        Utilization of crystalline aluminosilicate frameworks. Capturing water in the gaseous phase bypasses external relative humidity constraints, ensuring optimal operation even in the heart of the most arid deserts.
+                    </p>
                 </div>
-                <div style="background: rgba(68, 238, 119, 0.02); padding: 1.2rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
-                    <h4 style="color: var(--bio-green); margin-top: 0;">
-                        <span lang="fr">🌱 La Permaloop Hydrique</span>
-                        <span lang="en">🌱 Hydric Permaloop</span>
+
+                <div style="background: rgba(68, 238, 119, 0.02); padding: 1.5rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
+                    <h4 style="color: #fff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--bio-green);">🌱</span>
+                        <span lang="fr">Régénération Hydrique</span>
+                        <span lang="en">Hydric Regeneration</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #a0d4b5;">La machine "transpire" l'eau nécessaire pour nourrir les cultures hydroponiques en circuit fermé.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #a0d4b5;">The machine "sweats" the water needed to nourish closed-loop hydroponic crops.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #a0d4b5; text-align: justify;">
+                        L'eau extraite présente une conductivité électrique nulle ($EC = 0$). Ce substrat liquide vierge élimine tout risque d'entartrage des infrastructures et garantit une absorption ionique parfaite par le système racinaire de surface.
+                    </p>
+                    <p lang="en" style="font-size: 0.9em; color: #a0d4b5; text-align: justify;">
+                        Extracted water exhibits zero electrical conductivity ($EC = 0$). This blank liquid substrate eliminates scaling risks within the infrastructure and guarantees perfect ionic absorption by the surface root network.
+                    </p>
                 </div>
+                
             </div>
 
-            <div class="math-block" style="color: var(--water-blue);">
-                $$\dot{m}_{w} = \dot{m}_{a} \left( x_{in} - x_{out} \right) \quad \text{où} \quad x(T, \varphi)$$
+            <div class="math-block" style="color: var(--water-blue); text-align: left; padding: 2rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">1. Équation Fondamentale du Tirage Convectif (Effet Cheminée)</span>
+                    <span lang="en">1. Fundamental Equation of Convective Draft (Stack Effect)</span>
+                </div>
+                $$ \Delta P = \rho_{ext} \cdot g \cdot H \cdot \left( 1 - \frac{T_{ext}}{T_{int}} \right) $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">La pression motrice $\Delta P$ (Pa) disponible pour vaincre les pertes de charge est une fonction linéaire directe de la profondeur totale du puits verticaux $H$ (m) et du différentiel de température absolue entre l'atmosphère de surface $T_{ext}$ (K) et l'air réchauffé par le dôme de calcul $T_{int}$ (K). Plus la cavité est profonde et plus le silicium dissipe d'énergie, plus le débit d'air auto-généré s'accélère.</span>
+                    <span lang="en">The driving pressure $\Delta P$ (Pa) available to overcome pressure drops is a direct linear function of the total vertical shaft depth $H$ (m) and the absolute temperature differential between the surface atmosphere $T_{ext}$ (K) and the air heated by the compute dome $T_{int}$ (K). The deeper the cavity and the more energy the silicon dissipates, the faster the self-generated airflow accelerates.</span>
+                </p>
             </div>
+
+            <div class="math-block" style="color: var(--water-blue); text-align: left; padding: 2rem; margin-top: 1.5rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">2. Vitesse de Flux et Limitation par Perte de Charge (Darcy-Weisbach)</span>
+                    <span lang="en">2. Flux Velocity and Pressure Drop Limitation (Darcy-Weisbach)</span>
+                </div>
+                $$ v = \sqrt{ \frac{2 \cdot \Delta P}{\rho_{ext} \left( 1 + f \frac{H}{D} + \sum K \right)} } \quad \Longrightarrow \quad \dot{m}_{air} = \rho_{ext} \cdot \frac{\pi D^2}{4} \cdot v $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">La vitesse de l'air $v$ (m/s) au sein de la galerie est sévèrement limitée par le facteur de friction $f$ découlant de la rugosité de la roche brute. Le ratio entre la profondeur $H$ et le diamètre du trou $D$ dicte l'étranglement aérodynamique. Pour maximiser le débit massique d'air sec $\dot{m}_{air}$ (kg/s) sans surconsommation mécanique, l'architecture impose un diamètre critique minimal $D \ge 2.5\text{m}$, minimisant les pertes de charge singulières $\sum K$.</span>
+                    <span lang="en">The air velocity $v$ (m/s) within the gallery is severely limited by the friction factor $f$ resulting from the roughness of the raw rock faces. The ratio between depth $H$ and shaft diameter $D$ dictates the aerodynamic throttling. To maximize the dry air mass flow rate $\dot{m}_{air}$ (kg/s) without mechanical overconsumption, the architecture enforces a minimal critical diameter $D \ge 2.5\text{m}$, minimizing singular pressure drops $\sum K$.</span>
+                </p>
+            </div>
+
+            <div class="math-block" style="color: var(--water-blue); text-align: left; padding: 2rem; margin-top: 1.5rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">3. Limite Thermodynamique d'Extraction de l'Eau Condensée</span>
+                    <span lang="en">3. Thermodynamic Extraction Limit of Condensed Water</span>
+                </div>
+                $$ \dot{m}_{w} = \dot{m}_{air} \cdot \left( x_{in} - x_{out} \right) \quad \text{avec} \quad x = 0.622 \cdot \frac{\varphi \cdot p_{sat}(T)}{p_{atm} - \varphi \cdot p_{sat}(T)} $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">Le débit d'eau liquide extrait $\dot{m}_{w}$ (kg/s) dépend de l'écart d'humidité absolue $x$ entre l'entrée du dessiccateur et la sortie du condenseur géothermique. L'humidité absolue est régie par la pression de vapeur saturante $p_{sat}(T)$, calculée selon la loi de Clausius-Clapeyron. La roue de zéolithe artificielle agit en déplaçant artificiellement l'humidité relative $\varphi$ à l'intérieur du flux secondaire, forçant la précipitation moléculaire là où les systèmes de climatisation classiques s'égarent.</span>
+                    <span lang="en">The extracted liquid water flow rate $\dot{m}_{w}$ (kg/s) depends on the absolute humidity gap $x$ between the desiccant inlet and the geothermal condenser outlet. Absolute humidity is governed by the saturation vapor pressure $p_{sat}(T)$, calculated according to the Clausius-Clapeyron relation. The artificial zeolite wheel operates by artificially shifting the relative humidity $\varphi$ inside the secondary loop, forcing molecular precipitation where classical HVAC systems fail.</span>
+                </p>
+            </div>
+
+            <div class="math-block" style="color: var(--water-blue); text-align: left; padding: 2rem; margin-top: 1.5rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">4. Bilan Enthalpique et Neutralisation du Choc Thermique</span>
+                    <span lang="en">4. Enthalpy Balance and Thermal Shock Neutralization</span>
+                </div>
+                $$ \dot{Q}_{cond} = \dot{m}_{air} \cdot \left( h_{in} - h_{out} \right) = \dot{m}_{w} \cdot \Delta H_{vap} + \dot{m}_{air} \cdot C_{p,air} \cdot \left( T_{in} - T_{out} \right) $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">Cette équation d'état dresse le bilan de l'énergie thermique totale $\dot{Q}_{cond}$ (W) libérée lors de la liquéfaction. La dissipation massive de la chaleur latente $\Delta H_{vap}$ est immédiatement interceptée par des échangeurs à plaques haute efficacité reliés aux circuits de chauffage racinaire du Niveau 2. Le "déchet" thermodynamique du Puits Atmosphérique est ainsi recyclé pour doper le métabolisme des cultures de surface, scellant le pacte symbiotique entre le silicium informatique et le vivant.</span>
+                    <span lang="en">This state equation charts the total thermal energy $\dot{Q}_{cond}$ (W) released during liquefaction. The massive dissipation of latent heat $\Delta H_{vap}$ is immediately intercepted by high-efficiency plate heat exchangers linked to the root heating networks of Level 2. The thermodynamic "waste" of the Atmospheric Well is thus recycled to boost surface crop metabolism, sealing the symbiotic pact between computer silicon and life.</span>
+                </p>
+            </div>
+            
         </div>
     </details>
 
@@ -679,23 +823,25 @@
             <span lang="en">Level 4: Carbon Alchemy (Hybridization & Biochar)</span>
         </summary>
         <div class="drawer-content">
-            
-            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(211, 84, 0, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem;">
-                <p lang="fr">Le métabolisme de la Matrice Inversée atteint son apogée biophysique avec <strong>l'Alchimie du Carbone</strong>. Pour ressusciter durablement les sols ravagés, il faut recréer la matrice du vivant, inspirée de la <em>Terra Preta</em>. Puisque le silicium informatique fond bien avant d'atteindre les températures de pyrolyse (400°C+), l'infrastructure utilise une ingénierie thermique hybride pour boucler le cycle du carbone naturel :</p>
-                <p lang="en">The metabolism of the Inverted Matrix reaches its biophysical peak with <strong>Carbon Alchemy</strong>. To sustainably resurrect ravaged soils, we must recreate the matrix of life, inspired by <em>Terra Preta</em>. Since computer silicon melts long before reaching pyrolysis temperatures (400°C+), the infrastructure uses hybrid thermal engineering to close the natural carbon cycle:</p>
-                
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(211, 84, 0, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>Le métabolisme macro-économique de la Matrice Inversée trouve son ancrage biophysique le plus profond dans <strong>l'Alchimie du Carbone</strong>. Pour ressusciter durablement les sols ravagés, il faut recréer la matrice du vivant, inspirée de la <em>Terra Preta</em>. Puisque le silicium informatique subit une dégradation irréversible au-delà de $105^\circ\text{C}$, alors que la pyrolyse lente du bois exige entre $350^\circ\text{C}$ et $700^\circ\text{C}$, l'infrastructure déploie une **ingénierie thermique hybride en cascade** :</p>
+                </div>
+                <div lang="en">
+                    <p>The macroeconomic metabolism of the Inverted Matrix finds its deepest biophysical anchor in <strong>Carbon Alchemy</strong>. To sustainably resurrect ravaged soils, we must recreate the matrix of life, inspired by <em>Terra Preta</em>. Since computer silicon undergoes irreversible degradation beyond $105^\circ\text{C}$, whereas slow biomass pyrolysis requires between $350^\circ\text{C}$ and $700^\circ\text{C}$, the infrastructure deploys a **cascaded hybrid thermal engineering**:</p>
+                </div>
                 <ul style="list-style-type: none; padding-left: 0; margin: 1.5rem 0;">
-                    <li style="margin-bottom: 10px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
-                        <span lang="fr"><strong style="color: var(--magma-orange);">A. Le Pré-séchage Thermodynamique :</strong> L'étape la plus coûteuse en énergie n'est pas la pyrolyse, mais l'évaporation de l'eau. La chaleur fatale des ASICs (60°C-80°C) est injectée dans des séchoirs continus, préparant parfaitement la biomasse de surface.</span>
-                        <span lang="en"><strong style="color: var(--magma-orange);">A. Thermodynamic Pre-drying:</strong> The most energy-intensive step is not pyrolysis, but water evaporation. The waste heat from ASICs (60°C-80°C) is injected into continuous dryers, perfectly preparing the surface biomass.</span>
+                    <li style="margin-bottom: 15px; border-left: 2px solid var(--magma-orange); padding-left: 15px;">
+                        <span lang="fr"><strong style="color: var(--magma-orange);">A. Le Pré-séchage Thermodynamique :</strong> La basse calorie des ASICs ($55^\circ\text{C}-75^\circ\text{C}$) accomplit la tâche la plus lourde : évaporer l'eau intracellulaire de la biomasse humide (70% du bilan d'une pyrolyse standard) dans des séchoirs continus gratuits.</span>
+                        <span lang="en"><strong style="color: var(--magma-orange);">A. Thermodynamic Pre-drying:</strong> Low-grade ASIC heat ($55^\circ\text{C}-75^\circ\text{C}$) accomplishes the heaviest task: evaporating intracellular water from wet biomass (70% of a standard pyrolysis energy bill) in continuous free dryers.</span>
                     </li>
-                    <li style="margin-bottom: 10px; border-left: 2px solid var(--carbon-red); padding-left: 15px;">
-                        <span lang="fr"><strong style="color: var(--carbon-red);">B. Hybridation Solaire et Cristallisation :</strong> La biomasse sèche subit ensuite un flash thermique sans oxygène via des concentrateurs solaires de surface ou des pompes à chaleur industrielles. Le carbone se cristallise sous forme inerte. Le calcul devient mathématiquement carbone-négatif.</span>
-                        <span lang="en"><strong style="color: var(--carbon-red);">B. Solar Hybridization and Crystallization:</strong> The dry biomass then undergoes an oxygen-free thermal flash via surface solar concentrators or industrial heat pumps. Carbon crystallizes into an inert form. Computation becomes mathematically carbon-negative.</span>
+                    <li style="margin-bottom: 15px; border-left: 2px solid var(--carbon-red); padding-left: 15px;">
+                        <span lang="fr"><strong style="color: var(--carbon-red);">B. Pyrolyse Flash Solaire Concentrée :</strong> Libérée de son humidité, la biomasse anhydre subit un flash sous vide à $450^\circ\text{C}$ alimenté par des concentrateurs solaires de surface (L'Étalon Solaire direct). Le carbone se cristallise sous forme inerte solide.</span>
+                        <span lang="en"><strong style="color: var(--carbon-red);">B. Concentrated Solar Flash Pyrolysis:</strong> Stripped of moisture, the anhydrous biomass undergoes a vacuum flash at $450^\circ\text{C}$ driven by surface solar concentrators (the direct Sun Standard). Carbon crystallizes into a solid inert form.</span>
                     </li>
-                    <li style="margin-bottom: 10px; border-left: 2px solid var(--bio-green); padding-left: 15px;">
-                        <span lang="fr"><strong style="color: var(--bio-green);">C. La Symbiose Mycorhizienne :</strong> Ce charbon poreux (Biochar) est enfoui. Il agit comme une éponge pour l'eau et un habitat pour les champignons mycorhiziens.</span>
-                        <span lang="en"><strong style="color: var(--bio-green);">C. Mycorrhizal Symbiosis:</strong> This porous charcoal (Biochar) is buried. It acts as a sponge for water and a habitat for mycorrhizal fungi.</span>
+                    <li style="margin-bottom: 15px; border-left: 2px solid var(--bio-green); padding-left: 15px;">
+                        <span lang="fr"><strong style="color: var(--bio-green);">C. Activation Mycorhizienne :</strong> Ce charbon pur poreux (Biochar) est trempé dans les effluents d'aquaponie puis enfoui. Il démultiplie la capacité d'échange cationique (CEC) et retient l'eau du Niveau 3.</span>
+                        <span lang="en"><strong style="color: var(--bio-green);">C. Mycorrhizal Activation:</strong> This pure porous charcoal (Biochar) is soaked in aquaponic effluents then buried. It multiplies the soil's cation exchange capacity (CEC) and retains water from Level 3.</span>
                     </li>
                 </ul>
             </div>
@@ -708,33 +854,32 @@
                         <span lang="fr">🔥 Le Séchoir Souterrain</span>
                         <span lang="en">🔥 Subterranean Dryer</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #e6b398;">La chaleur informatique extrait l'humidité de la biomasse, réduisant drastiquement le coût énergétique de la pyrolyse finale.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #e6b398;">Compute heat extracts moisture from the biomass, drastically reducing the energy cost of the final pyrolysis.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #e6b398;">La chaleur informatique rompt les ponts hydro-structurels avant la cuisson finale.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #e6b398;">Compute heat breaks hydro-structural bonds prior to the final baking process.</p>
                 </div>
                 <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-top: 3px solid #fff; border-radius: 6px;">
                     <h4 style="color: #fff; margin-top: 0;">
-                        <span lang="fr">⬢ Séquestration Millénaire</span>
-                        <span lang="en">⬢ Millennial Sequestration</span>
+                        <span lang="fr">⬢ Séquestration Durable</span>
+                        <span lang="en">⬢ Long-term Sequestration</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5;">L'hybridation (ASIC + Soleil) piège le carbone sous forme solide pour des milliers d'années, purgeant l'atmosphère.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #a0aab5;">Hybridization (ASIC + Sun) traps carbon in a solid form for thousands of years, purging the atmosphere.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5;">Le carbone solide reste stable plus de 2000 ans, purgeant l'atmosphère de son CO₂.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #a0aab5;">Solid carbon remains stable for over 2000 years, actively purging CO₂ from the atmosphere.</p>
                 </div>
                 <div style="background: rgba(211, 84, 0, 0.05); padding: 1.2rem; border-top: 3px solid var(--carbon-red); border-radius: 6px;">
                     <h4 style="color: var(--carbon-red); margin-top: 0;">
-                        <span lang="fr">🪨 L'Éponge à Vie</span>
-                        <span lang="en">🪨 Sponge of Life</span>
+                        <span lang="fr">🪨 Éponge Biophysique</span>
+                        <span lang="en">🪨 Biophysical Sponge</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #e6b398;">Le biochar enfoui devient l'habitat parfait pour la microbiologie des sols stériles.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #e6b398;">Buried biochar becomes the perfect habitat for microbiology in sterile soils.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #e6b398;">Le Biochar structure les sols latéritiques en micro-réservoirs d'eau et de mycorhizes.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #e6b398;">Biochar structures lateritic soils into micro-reservoirs for water and mycorrhizae.</p>
                 </div>
             </div>
 
-            <div class="math-block" style="color: var(--carbon-red);">
-                $$C_{seq} = \int_{0}^{T} \eta_{hybride}(T_{ASIC}, T_{soleil}) \cdot \dot{M}_{biomasse} \, dt$$
-                <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-family: var(--font-main);">
-                    <span lang="fr">La masse de carbone séquestrée $C_{seq}$ dépend du rendement hybride combinant la chaleur de pré-séchage $T_{ASIC}$ et le flash solaire de pyrolyse $T_{soleil}$.</span>
-                    <span lang="en">The sequestered carbon mass $C_{seq}$ depends on the hybrid efficiency combining the pre-drying heat $T_{ASIC}$ and the solar pyrolysis flash $T_{soleil}$.</span>
-                </p>
+            <div class="math-block" style="color: var(--carbon-red); text-align: left; padding: 1.5rem;">
+                <p style="font-weight: bold; color: #fff; margin-bottom: 0.5rem;">I. Énergie d'Évaporation Requise (Phase ASIC) :</p>
+                $$ Q_{sechage} = \dot{M}_{biomasse} \cdot \left[ C_{p,humide} \cdot (T_{eb} - T_{init}) + X_{eau} \cdot \Delta H_{vap} \right] $$
+                <p style="font-weight: bold; color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">II. Masse de Carbone Séquestrée (Phase Solaire Hybride) :</p>
+                $$ C_{seq} = f_{C} \cdot \int_{0}^{T} \eta_{hybride}(T_{ASIC}, T_{soleil}) \cdot \dot{M}_{biomasse} \, dt $$
             </div>
         </div>
     </details>
@@ -883,6 +1028,74 @@
             </div>
         </div>
     </details>
+
+    <div class="simulator-box">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
+            <span lang="fr">📊 Simulateur d'Équilibre Biophysique</span>
+            <span lang="en">📊 Biophysical Balance Simulator</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 1.5rem; line-height: 1.4;">
+            <span lang="fr">⚠️ ATTENTION : Ce modèle est une abstraction macroéconomique simplifiée destinée exclusivement à illustrer la cinétique des fluides et le recouvrement du CAPEX des <strong>Niveaux 3 et 4</strong> pour une infrastructure isolée sous roche saine. Une base de travail de départ à étendre.</span>
+            <span lang="en">⚠️ WARNING: This model is a simplified macroeconomic abstraction intended exclusively to illustrate fluid kinetics and CAPEX recovery of <strong>Levels 3 and 4</strong> for an isolated infrastructure under bedrock.</span>
+        </p>
+
+        <div class="sim-grid">
+            <div>
+                <div class="sim-control">
+                    <label for="param-power">
+                        <span lang="fr">Puissance du Calcul (P)</span><span lang="en">Compute Power (P)</span>
+                        <span class="sim-value" id="val-power">5 MW</span>
+                    </label>
+                    <input type="range" id="param-power" min="1" max="50" value="5">
+                </div>
+                <div class="sim-control">
+                    <label for="param-depth">
+                        <span lang="fr">Profondeur d'Enfouissement (H)</span><span lang="en">Burial Depth (H)</span>
+                        <span class="sim-value" id="val-depth">30 m</span>
+                    </label>
+                    <input type="range" id="param-depth" min="10" max="100" value="30">
+                </div>
+                <div class="sim-control">
+                    <label for="param-cost">
+                        <span lang="fr">Coût d'Excavation Rocheuse</span><span lang="en">Rock Excavation Cost</span>
+                        <span class="sim-value" id="val-cost">350 $/m³</span>
+                    </label>
+                    <input type="range" id="param-cost" min="100" max="1000" value="350" step="50">
+                </div>
+                <div class="sim-control">
+                    <label for="param-carbon">
+                        <span lang="fr">Prix du Carbone Séquestré</span><span lang="en">Sequestered Carbon Price</span>
+                        <span class="sim-value" id="val-carbon">80 $/t</span>
+                    </label>
+                    <input type="range" id="param-carbon" min="20" max="200" value="80" step="10">
+                </div>
+            </div>
+
+            <div class="sim-outputs">
+                <div class="sim-metric">
+                    <div class="sim-metric-label"><span lang="fr">CAPEX Excavation Initial</span><span lang="en">Initial Excavation CAPEX</span></div>
+                    <div class="sim-metric-value" id="out-capex">0 $</div>
+                </div>
+                <div class="sim-metric">
+                    <div class="sim-metric-label"><span lang="fr">Économies Électriques Annuelles (PUE)</span><span lang="en">Annual Electricity Savings (PUE)</span></div>
+                    <div class="sim-metric-value" id="out-opex" style="color: var(--bio-green);">0 $</div>
+                </div>
+                <div class="sim-metric">
+                    <div class="sim-metric-label"><span lang="fr">Production d'Eau Pure Estimée</span><span lang="en">Estimated Pure Water Production</span></div>
+                    <div class="sim-metric-value" id="out-water" style="color: var(--water-blue);">0 L/jour</div>
+                </div>
+                <div class="sim-metric">
+                    <div class="sim-metric-label"><span lang="fr">Horizon de Rétribution Net (ROI)</span><span lang="en">Net Return Horizon (ROI)</span></div>
+                    <div class="sim-metric-value" id="out-roi" style="color: var(--sun-yellow);">0 Ans</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; background: #050709; border-radius: 8px; padding: 1rem; border: 1px solid rgba(255,255,255,0.05);">
+            <canvas id="simulationChart" width="800" height="300" style="width:100%; display:block;"></canvas>
+        </div>
+    </div>
+
     <div class="dashboard-box">
         <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase;">
             <span lang="fr">🌍 Télémétrie Globale : Potentiel de la Matrice</span>
@@ -929,7 +1142,72 @@
         <canvas id="matriceCanvas" width="800" height="400" style="width: 100%; display: block;"></canvas>
     </div>
 
+    <div class="catalogue-box" style="margin: 4rem 0; padding: 2.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 204, 0, 0.2); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-top: 0; margin-bottom: 1rem; font-family: var(--font-ui);">
+            <span lang="fr">📋 Catalogue de Déploiement : Les Matrices d'Ancrage</span>
+            <span lang="en">📋 Deployment Catalog: Anchoring Matrices</span>
+        </h3>
+        <p style="text-align: center; color: #a0aab5; font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            <span lang="fr">L'architecture de la Matrice Inversée n'est pas monolithique. Elle s'adapte selon une fonction d'état locale liant l'énergie disponible (Angovo), la psychrométrie du climat et la géologie. Voici les trois archétypes de déploiement d'ingénierie symbiotique :</span>
+            <span lang="en">The Inverted Matrix architecture is not monolithic. It adapts according to a local state function linking available energy (Angovo), climate psychrometrics, and geology. Here are the three archetypes of symbiotic engineering deployment:</span>
+        </p>
 
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            
+            <div style="background: rgba(155, 89, 182, 0.05); border: 1px solid #9b59b6; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(155, 89, 182, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">🏠♨️</div>
+                <h4 style="color: #9b59b6; text-align: center; font-family: var(--font-ui); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                    <span lang="fr">Nano-Node Domestique</span>
+                    <span lang="en">Residential Nano-Node</span>
+                </h4>
+                <div style="text-align: center; color: #fff; font-family: var(--font-mono); font-weight: bold; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(155, 89, 182, 0.2);">1 kW — 100 kW</div>
+                
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>📍 <span lang="fr">Biôme :</span><span lang="en">Biome:</span></strong> <span lang="fr">Cave résidentielle, garage urbain, ou éco-habitat hors-réseau.</span><span lang="en">Residential basement, urban garage, or off-grid eco-home.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>⚙️ <span lang="fr">Intrants :</span><span lang="en">Inputs:</span></strong> <span lang="fr">Solaire en toiture, micro-éolien individuel, ou talon de consommation réseau.</span><span lang="en">Rooftop solar, individual micro-wind, or grid baseload.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Décentralisation maximale. Remplacement de la chaudière classique par le minage : chauffage de l'eau sanitaire (ECS) et plancher chauffant. Minage souverain incensurable.</span><span lang="en">Maximum decentralization. Replacing the classic boiler with mining: domestic hot water (DHW) and underfloor heating. Sovereign, uncensorable mining.</span></p>
+            </div>
+            
+            <div style="background: rgba(68, 238, 119, 0.05); border: 1px solid var(--bio-green); border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(68, 238, 119, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">🌊🌱</div>
+                <h4 style="color: var(--bio-green); text-align: center; font-family: var(--font-ui); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                    <span lang="fr">Micro-Pod Hydro</span>
+                    <span lang="en">Hydro Micro-Pod</span>
+                </h4>
+                <div style="text-align: center; color: #fff; font-family: var(--font-mono); font-weight: bold; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(68, 238, 119, 0.2);">100 kW — 500 kW</div>
+                
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>📍 <span lang="fr">Biôme :</span><span lang="en">Biome:</span></strong> <span lang="fr">Rural isolé, près d'un cours d'eau à fort débit.</span><span lang="en">Isolated rural, near a high-flow water stream.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>⚙️ <span lang="fr">Intrants :</span><span lang="en">Inputs:</span></strong> <span lang="fr">Pico-turbine au fil de l'eau. Roche meuble.</span><span lang="en">Run-of-the-river pico-turbine. Soft rock.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Modèle coopératif villageois. Séchage de semences agricoles (Niveau 2 priorisé) et autonomie énergétique. Niveau 4 désactivé.</span><span lang="en">Village cooperative model. Agricultural seed drying (Level 2 prioritized) and energy autonomy. Level 4 disabled.</span></p>
+            </div>
+
+            <div style="background: rgba(255, 204, 0, 0.05); border: 1px solid var(--sun-yellow); border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255, 204, 0, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">☀️🪨</div>
+                <h4 style="color: var(--sun-yellow); text-align: center; font-family: var(--font-ui); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                    <span lang="fr">Dôme Solaire Aride</span>
+                    <span lang="en">Arid Solar Dome</span>
+                </h4>
+                <div style="text-align: center; color: #fff; font-family: var(--font-mono); font-weight: bold; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 204, 0, 0.2);">1 MW — 5 MW</div>
+                
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>📍 <span lang="fr">Biôme :</span><span lang="en">Biome:</span></strong> <span lang="fr">Désertique ou latéritique aride (ex: Grand Sud de Madagascar).</span><span lang="en">Desert or arid lateritic (e.g., Deep South Madagascar).</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>⚙️ <span lang="fr">Intrants :</span><span lang="en">Inputs:</span></strong> <span lang="fr">Champ photovoltaïque survolté + Concentrateurs solaires.</span><span lang="en">Overclocked PV array + Solar concentrators.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Extraction d'eau massive via Puits Atmosphérique (Niveau 3) couplée à la pyrolyse flash (Niveau 4) pour terraformer les sols morts.</span><span lang="en">Massive water extraction via Atmospheric Well (Level 3) coupled with flash pyrolysis (Level 4) to terraform dead soils.</span></p>
+            </div>
+
+            <div style="background: rgba(255, 85, 0, 0.05); border: 1px solid var(--magma-orange); border-radius: 8px; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255, 85, 0, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">⛰️🏭</div>
+                <h4 style="color: var(--magma-orange); text-align: center; font-family: var(--font-ui); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                    <span lang="fr">Mine Profonde</span>
+                    <span lang="en">Deep Mine Base</span>
+                </h4>
+                <div style="text-align: center; color: #fff; font-family: var(--font-mono); font-weight: bold; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 85, 0, 0.2);">10 MW — 50+ MW</div>
+                
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>📍 <span lang="fr">Biôme :</span><span lang="en">Biome:</span></strong> <span lang="fr">Ancienne mine, base souterraine ou site d'industrie lourde. Roche dure.</span><span lang="en">Former mine, underground base, or heavy industry site. Hard rock.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; margin-bottom: 0.8rem; line-height: 1.4;"><strong>⚙️ <span lang="fr">Intrants :</span><span lang="en">Inputs:</span></strong> <span lang="fr">"Stranded energy" fatale de réseau industriel ou géothermique.</span><span lang="en">Stranded fatal energy from industrial grids or geothermal.</span></p>
+                <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Effet cheminée géant. Télémétrie LEO totale (Niveau 6). Création de puissance de calcul et sécurité du registre Bitcoin.</span><span lang="en">Giant stack effect. Total LEO telemetry (Level 6). Massive compute power creation and Bitcoin ledger security.</span></p>
+            </div>
+
+        </div>
+    </div>
     <div class="feedback-container">
         <h3 class="feedback-title">
             <span lang="fr">Aidez à améliorer cet article</span>
@@ -984,7 +1262,7 @@
         <img src="Lemeus.png" alt="Lemeus, le Jedi Solaire Lémurien" loading="lazy">
         <div class="quote-block">
             <span lang="fr">"Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Trouvons de nouveaux amis Agriculteurs, Jardiniers & du Bâtiment. Oeuvrons pour le bien commun et non uniquement pour la défiance dans un système sous-optimale. Rendons le système optimale, ensemble. Prenons la Pilule Verte."</span>
-            <span lang="en">"Let us unite, bury the FUD, silence the noise and create beautiful gardens. Organic life on the surface, machines underground. Take the Green Pill."</span>
+            <span lang="en">"Let's unite, bury FUD, silence the noise, and create beautiful gardens. Organic life on the surface, machines underground. Let's find new friends in farming, gardening, and construction. Let's work for the common good, not just for defiance in a suboptimal system. Let's make the system optimal, together. Let's take the Green Pill."</span>
             <br>
             <span lang="fr" style="font-size: 0.85em; color: var(--bio-green);">- Lemeus, vieux cousin lointain de Morpheus</span>
             <span lang="en" style="font-size: 0.85em; color: var(--bio-green);">- Lemeus, very old cousin of Morpheus</span>
@@ -1373,6 +1651,122 @@
         setLang(savedLang);
     });
 </script>
+<script>
+    // --- 2. SCRIPT INTERACTIF DU MODULE DE SIMULATION ÉCONOPHYSIQUE ---
+    const sPower = document.getElementById('param-power');
+    const sDepth = document.getElementById('param-depth');
+    const sCost = document.getElementById('param-cost');
+    const sCarbon = document.getElementById('param-carbon');
 
+    const chartCanvas = document.getElementById('simulationChart');
+    const chartCtx = chartCanvas.getContext('2d');
+
+    function runSimulation() {
+        const P = parseFloat(sPower.value); // MW
+        const H = parseFloat(sDepth.value); // meters
+        const costPerM3 = parseFloat(sCost.value); // $/m³
+        const carbonPrice = parseFloat(sCarbon.value); // $/t
+
+        // Mise à jour des labels textuels
+        document.getElementById('val-power').innerText = P + " MW";
+        document.getElementById('val-depth').innerText = H + " m";
+        document.getElementById('val-cost').innerText = costPerM3 + " $/m³";
+        document.getElementById('val-carbon').innerText = carbonPrice + " $/t";
+
+        // Calculs Biophysiques & Financiers
+        const baseVolume = P * 150; // 150m³ requis par MW de serveurs immergés
+        const complexityFactor = 1 + Math.pow(H / 60, 2); // Croissance non-linéaire avec la profondeur
+        const CAPEX = Math.round(baseVolume * complexityFactor * costPerM3);
+
+        // Gains d'OPEX (PUE de surface 1.35 vs Souterrain Tirage Naturel 1.03)
+        const powerSavedKW = P * (1.35 - 1.03) * 1000;
+        const annualOpexSavings = Math.round(powerSavedKW * 24 * 365 * 0.08); // Hypothèse: 0.08$/kWh
+
+        // Externalités environnementales monétisées
+        const waterProducedLitersDay = Math.round(P * 4500 * (H / 30)); // Niveau 3 amplifié par H
+        const carbonSequesteredTonsYear = Math.round(P * 300); // Niveau 4
+        const dynamicValueGen = (waterProducedLitersDay * 365 * 0.002) + (carbonSequesteredTonsYear * carbonPrice);
+
+        const totalAnnualBenefit = annualOpexSavings + dynamicValueGen;
+        const ROI = totalAnnualBenefit > 0 ? (CAPEX / totalAnnualBenefit).toFixed(1) : "∞";
+
+        // Affichage des métriques
+        document.getElementById('out-capex').innerText = CAPEX.toLocaleString() + " $";
+        document.getElementById('out-opex').innerText = Math.round(totalAnnualBenefit).toLocaleString() + " $/an";
+        document.getElementById('out-water').innerText = Math.round(waterProducedLitersDay).toLocaleString() + " L/jour";
+        document.getElementById('out-roi').innerText = ROI + (document.body.classList.contains('lang-fr') ? " Ans" : " Years");
+
+        drawSimulationChart(CAPEX, totalAnnualBenefit);
+    }
+
+    function drawSimulationChart(capex, annualBenefit) {
+        const w = chartCanvas.width;
+        const h = chartCanvas.height;
+        chartCtx.clearRect(0, 0, w, h);
+
+        // Grille de fond
+        chartCtx.strokeStyle = 'rgba(255,255,255,0.05)';
+        chartCtx.lineWidth = 1;
+        for(let i = 1; i < 10; i++) {
+            let x = (w / 10) * i;
+            chartCtx.beginPath(); chartCtx.moveTo(x, 0); chartCtx.lineTo(x, h - 30); chartCtx.stroke();
+        }
+
+        // Axe des temps (10 Ans Horizon)
+        chartCtx.fillStyle = '#666';
+        chartCtx.font = '11px sans-serif';
+        for(let year = 0; year <= 10; year++) {
+            let x = 40 + ((w - 80) / 10) * year;
+            chartCtx.fillText("An " + year, x - 10, h - 10);
+        }
+
+        const maxVal = Math.max(capex * 1.2, annualBenefit * 10 * 1.2);
+        if (maxVal === 0) return; // Sécurité anti-division par zéro
+
+        function getY(val) { return (h - 50) - ((val / maxVal) * (h - 80)); }
+        function getX(year) { return 40 + ((w - 80) / 10) * year; }
+
+        // Courbe 1 : Coût Cumulé de l'Enfouissement (CAPEX)
+        chartCtx.strokeStyle = '#ff5500';
+        chartCtx.lineWidth = 3;
+        chartCtx.beginPath();
+        chartCtx.moveTo(getX(0), getY(capex));
+        chartCtx.lineTo(getX(10), getY(capex));
+        chartCtx.stroke();
+
+        // Courbe 2 : Gains & Retours Symbiotiques Cumulés
+        chartCtx.strokeStyle = '#44ee77';
+        chartCtx.lineWidth = 3;
+        chartCtx.beginPath();
+        chartCtx.moveTo(getX(0), getY(0));
+        // Boucle corrigée ici
+        for(let currentYear = 1; currentYear <= 10; currentYear++) {
+            chartCtx.lineTo(getX(currentYear), getY(annualBenefit * currentYear));
+        }
+        chartCtx.stroke();
+
+        // Calcul de l'intersection de rétribution (Breakeven point)
+        if (annualBenefit > 0) {
+            const breakevenYear = capex / annualBenefit;
+            if(breakevenYear > 0 && breakevenYear <= 10) {
+                let cx = getX(breakevenYear);
+                let cy = getY(capex);
+
+                // Couleur hexadécimale corrigée
+                chartCtx.fillStyle = '#ffcc00'; 
+                chartCtx.beginPath();
+                chartCtx.arc(cx, cy, 6, 0, Math.PI * 2);
+                chartCtx.fill();
+
+                chartCtx.fillStyle = '#fff';
+                // Décalage du texte pour éviter qu'il ne coupe le point
+                chartCtx.fillText("Breakeven: " + breakevenYear.toFixed(1) + " Ans", cx + 10, cy - 15);
+            }
+        }
+    }
+
+    [sPower, sDepth, sCost, sCarbon].forEach(el => el.addEventListener('input', runSimulation));
+    window.addEventListener('DOMContentLoaded', runSimulation);
+</script>
 </body>
 </html>
