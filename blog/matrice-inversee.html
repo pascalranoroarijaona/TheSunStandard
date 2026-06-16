@@ -1333,7 +1333,7 @@
             <span lang="en">Real-time Bitcoin data converted under the Sun Standard (Assumption: 25 J/TH).</span>
         </p>
         
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center;">
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center; margin-bottom: 2rem;">
             <div>
                 <div style="font-size: 0.9em; color: #aaa;">
                     <span lang="fr">Hashrate Actuel</span>
@@ -1356,6 +1356,32 @@
                 <div id="live-water" style="font-size: 2.2rem; font-family: var(--font-mono); color: var(--water-blue); font-weight: bold;">-- L/j</div>
             </div>
         </div>
+
+        <details style="margin-top: 2rem; background: rgba(0, 204, 255, 0.03); border-left: 3px solid var(--water-blue); border-radius: 4px; box-shadow: none;">
+            <summary style="padding: 1rem 1.5rem; font-size: 0.95rem; color: var(--water-blue); border-bottom: none; background: transparent; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">📐 Afficher la démonstration thermodynamique (L/jour)</span>
+                <span lang="en">📐 Show thermodynamic proof (L/day)</span>
+            </summary>
+            <div style="padding: 0 1.5rem 1.5rem 2.5rem; color: #b3e6ff; font-size: 0.9em; font-family: var(--font-main); text-align: justify;">
+                <p style="margin-bottom: 1rem;">
+                    <span lang="fr">La conversion de l'énergie de calcul en eau liquide repose sur la chaleur latente de vaporisation de l'eau ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$) et l'efficience énergétique des puces de minage ($E_{ASIC} \approx 25 \text{ J/TH}$). En intégrant un rendement d'extraction endothermique de 12.5% pour le puits atmosphérique à dessiccation ($\eta_{puits} = 0.125$), le volume d'eau extrait par Terahash s'écrit :</span>
+                    <span lang="en">The conversion of compute energy to liquid water relies on the latent heat of vaporization of water ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$) and the energy efficiency of the mining chips ($E_{ASIC} \approx 25 \text{ J/TH}$). By integrating an endothermic extraction yield of 12.5% for the desiccant atmospheric well ($\eta_{puits} = 0.125$), the volume of water extracted per Terahash is written as:</span>
+                </p>
+                
+                <div class="math-block" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(0,204,255,0.2); margin: 1.5rem 0; padding: 1.2rem; color: var(--water-blue);">
+                    $$ V_{TH} = \frac{E_{ASIC} \cdot \eta_{puits}}{\Delta H_{vap}} = \frac{25 \cdot 0.125}{2\,400\,000} \approx 1.3 \times 10^{-6} \text{ Litres / TH} $$
+                </div>
+                
+                <p style="margin-top: 1rem;">
+                    <span lang="fr"><strong>Mise à l'échelle (Flux Continu) :</strong> 1 Mégawatt (MW) de puissance continue dissipe $10^6 \text{ Joules/seconde}$. Sur une durée de 24 heures ($86\,400 \text{ s}$), l'énergie thermique utile captée par la roue de zéolithe est de $10^6 \times 86\,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divisé par la chaleur latente $\Delta H_{vap}$, nous obtenons la constante utilisée dans ce tableau de bord :</span>
+                    <span lang="en"><strong>Scaling (Continuous Flux):</strong> 1 Megawatt (MW) of continuous power dissipates $10^6 \text{ Joules/second}$. Over a 24-hour period ($86,400 \text{ s}$), the useful thermal energy captured by the zeolite wheel is $10^6 \times 86,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divided by the latent heat $\Delta H_{vap}$, we obtain the constant used in this dashboard:</span>
+                </p>
+
+                <div class="math-block" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(0,204,255,0.2); margin: 1.5rem 0; padding: 1.2rem; color: #fff;">
+                    $$ V_{1\text{MW}} = \frac{10.8 \times 10^9}{2.4 \times 10^6} = \mathbf{4\,500 \text{ Litres / jour}} $$
+                </div>
+            </div>
+        </details>
     </div>
 
     <div style="margin: 4rem 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; background: #050505;">
