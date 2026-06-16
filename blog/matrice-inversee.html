@@ -1393,8 +1393,8 @@
             <span lang="en">🌍 Global Telemetry: Matrix Potential</span>
         </h3>
         <p style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 2rem;">
-            <span lang="fr">Données Bitcoin en temps réel converties selon l'Étalon Solaire (Hypothèse : 25 J/TH).</span>
-            <span lang="en">Real-time Bitcoin data converted under the Sun Standard (Assumption: 25 J/TH).</span>
+            <span lang="fr">Données Bitcoin en temps réel converties selon l'Étalon Solaire (Hypothèse d'efficience : 25 J/TH).</span>
+            <span lang="en">Real-time Bitcoin data converted under the Sun Standard (Efficiency Assumption: 25 J/TH).</span>
         </p>
         
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center; margin-bottom: 2rem;">
@@ -1428,8 +1428,13 @@
             </summary>
             <div style="padding: 0 1.5rem 1.5rem 2.5rem; color: #b3e6ff; font-size: 0.9em; font-family: var(--font-main); text-align: justify;">
                 <p style="margin-bottom: 1rem;">
-                    <span lang="fr">La conversion de l'énergie de calcul en eau liquide repose sur la chaleur latente de vaporisation de l'eau ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$) et l'efficience énergétique des puces de minage ($E_{ASIC} \approx 25 \text{ J/TH}$). En intégrant un rendement d'extraction endothermique de 12.5% pour le puits atmosphérique à dessiccation ($\eta_{puits} = 0.125$), le volume d'eau extrait par Terahash s'écrit :</span>
-                    <span lang="en">The conversion of compute energy to liquid water relies on the latent heat of vaporization of water ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$) and the energy efficiency of the mining chips ($E_{ASIC} \approx 25 \text{ J/TH}$). By integrating an endothermic extraction yield of 12.5% for the desiccant atmospheric well ($\eta_{puits} = 0.125$), the volume of water extracted per Terahash is written as:</span>
+                    <span lang="fr">La conversion de l'énergie de calcul en eau liquide pure ne relève pas de la magie, mais du franchissement de la <strong>chaleur latente de vaporisation</strong> de l'eau ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$). L'efficience énergétique moyenne des ASICs modernes est de $E_{ASIC} \approx 25 \text{ Joules par Terahash}$.</span>
+                    <span lang="en">The conversion of compute energy into pure liquid water is not magic, but overcoming the <strong>latent heat of vaporization</strong> of water ($\Delta H_{vap} \approx 2.4 \times 10^6 \text{ J/L}$). The average energy efficiency of modern ASICs is $E_{ASIC} \approx 25 \text{ Joules per Terahash}$.</span>
+                </p>
+                
+                <p style="margin-bottom: 1rem;">
+                    <span lang="fr">En intégrant un rendement industriel conservateur de 12.5% pour le cycle d'adsorption/désorption du puits atmosphérique souterrain ($\eta_{puits} = 0.125$), le volume d'eau extrait pour **1 Terahash** s'écrit :</span>
+                    <span lang="en">By integrating a conservative industrial yield of 12.5% for the adsorption/desorption cycle of the underground atmospheric well ($\eta_{puits} = 0.125$), the volume of water extracted per **1 Terahash** is written as:</span>
                 </p>
                 
                 <div class="math-block" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(0,204,255,0.2); margin: 1.5rem 0; padding: 1.2rem; color: var(--water-blue);">
@@ -1437,13 +1442,18 @@
                 </div>
                 
                 <p style="margin-top: 1rem;">
-                    <span lang="fr"><strong>Mise à l'échelle (Flux Continu) :</strong> 1 Mégawatt (MW) de puissance continue dissipe $10^6 \text{ Joules/seconde}$. Sur une durée de 24 heures ($86\,400 \text{ s}$), l'énergie thermique utile captée par la roue de zéolithe est de $10^6 \times 86\,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divisé par la chaleur latente $\Delta H_{vap}$, nous obtenons la constante utilisée dans ce tableau de bord :</span>
-                    <span lang="en"><strong>Scaling (Continuous Flux):</strong> 1 Megawatt (MW) of continuous power dissipates $10^6 \text{ Joules/second}$. Over a 24-hour period ($86,400 \text{ s}$), the useful thermal energy captured by the zeolite wheel is $10^6 \times 86,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divided by the latent heat $\Delta H_{vap}$, we obtain the constant used in this dashboard:</span>
+                    <span lang="fr"><strong>Mise à l'échelle Macroéconomique :</strong> 1 Mégawatt (MW) de puissance continue dissipe $10^6 \text{ Joules/seconde}$. Sur une durée de 24 heures ($86\,400 \text{ s}$), l'énergie thermique utile captée par la roue de zéolithe est de $10^6 \times 86\,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divisé par la chaleur latente $\Delta H_{vap}$, nous obtenons la production hydrique absolue par Mégawatt :</span>
+                    <span lang="en"><strong>Macroeconomic Scaling:</strong> 1 Megawatt (MW) of continuous power dissipates $10^6 \text{ Joules/second}$. Over a 24-hour period ($86,400 \text{ s}$), the useful thermal energy captured by the zeolite wheel is $10^6 \times 86,400 \times 0.125 = 10.8 \times 10^9 \text{ Joules}$. Divided by the latent heat $\Delta H_{vap}$, we obtain the absolute hydric production per Megawatt:</span>
                 </p>
 
                 <div class="math-block" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(0,204,255,0.2); margin: 1.5rem 0; padding: 1.2rem; color: #fff;">
-                    $$ V_{1\text{MW}} = \frac{10.8 \times 10^9}{2.4 \times 10^6} = \mathbf{4\,500 \text{ Litres / jour}} $$
+                    $$ V_{1\text{MW}} = \frac{10.8 \times 10^9}{2.4 \times 10^6} = \mathbf{4\,500 \text{ Litres / jour / MW}} $$
                 </div>
+
+                <p style="margin-top: 1rem; color: #888; font-style: italic;">
+                    <span lang="fr">Le Hashrate global actuel (en Exahashes) génère des dizaines de Gigawatts (GW) de chaleur. Sachant que 1 GW = 1000 MW, le potentiel global se chiffre en dizaines de millions de litres d'eau pure extractibles chaque jour depuis l'atmosphère, annulant mathématiquement les sécheresses de surface.</span>
+                    <span lang="en">The current global Hashrate (in Exahashes) generates tens of Gigawatts (GW) of heat. Knowing that 1 GW = 1000 MW, the global potential translates to tens of millions of liters of pure water extractable daily from the atmosphere, mathematically canceling surface droughts.</span>
+                </p>
             </div>
         </details>
     </div>
@@ -2055,16 +2065,26 @@
 
     // Fonction séparée pour calculer et afficher les données mathématiques
     function updateDashboardUI(currentHashrateData) {
+        // Le Hashrate de Mempool.space est en Hashes/seconde (H/s)
         const hashrateEH = (currentHashrateData / 1e18).toFixed(2);
         document.getElementById('live-hashrate').innerText = hashrateEH + ' EH/s';
 
-        const powerWatts = currentHashrateData * 25 / 1e12; // Hypothèse: 25 Joules / Terahash
+        // Puissance en Watts = (H/s converti en TH/s) * 25 Joules/TH
+        const powerWatts = (currentHashrateData / 1e12) * 25; 
+        
+        // Affichage en Gigawatts (GW)
         const powerGW = (powerWatts / 1e9).toFixed(2);
         document.getElementById('live-power').innerText = powerGW + ' GW';
 
-        const waterLiters = Math.round(powerGW * 5000).toLocaleString();
+        // Production d'eau : 4500 Litres par Mégawatt (MW)
+        const powerMW = powerWatts / 1e6; // Conversion des Watts en Mégawatts
+        const waterLiters = Math.round(powerMW * 4500); // L'eau totale en Litres
+        
+        // Formatage lisible (ex: 103,500,000)
+        const formattedWater = waterLiters.toLocaleString();
+        
         const isEn = document.body.classList.contains('lang-en');
-        document.getElementById('live-water').innerText = waterLiters + (isEn ? ' L/day' : ' L/jour');
+        document.getElementById('live-water').innerText = formattedWater + (isEn ? ' L/day' : ' L/jour');
     }
 
     // Lancement initial
