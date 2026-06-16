@@ -1,0 +1,18 @@
+{
+  "kind": 1040,
+  "created_at": 1781590680,
+  "tags": [
+    [
+      "x",
+      "2e1ad0b0df0577767286c066c40131beccaa5b1eb8b268b9703bedbf74de106b"
+    ],
+    [
+      "filename",
+      "matrice-inversee.html"
+    ]
+  ],
+  "content": "D-Trinity Proof of Provenance",
+  "pubkey": "929b62d1d54090b224f6e73f31e78ebe76df5e3822f891a4a542343dba8eed51",
+  "id": "ecfa4baa71a24a6a01ba70c3a2b834f282d707258899e195f5115716a59bcc40",
+  "sig": "886be9bfb6799ee59874bf7de80cc6696f66a1580b7c996d5b25d5ffcc3368997f473bd86b163bcad569545edccd696d6a3a04f7965b465a8908a74e4bd25779"
+}
