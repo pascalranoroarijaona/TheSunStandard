@@ -740,8 +740,8 @@
 
                 <ul style="list-style-type: none; padding-left: 0; margin: 2rem 0;">
                     <li style="margin-bottom: 20px; border-left: 3px solid var(--water-blue); padding-left: 20px;">
-                        <span lang="fr"><strong style="color: var(--water-blue);">A. Gravité Thermique (Tirage Descendant) :</strong> Bien que la présence de vapeur d'eau allège paradoxalement l'air d'un point de vue de la masse molaire, l'air nocturne subit une forte contraction thermique. Le différentiel de température le rend plus dense que l'atmosphère de la mine. Il chute par gravité dans le puits d'admission, gavant naturellement la matrice MOF située au fond, sans aucune assistance mécanique.</span>
-                        <span lang="en"><strong style="color: var(--water-blue);">A. Thermal Gravity (Downdraft):</strong> Although the presence of water vapor paradoxically lightens air from a molar mass perspective, night air undergoes strong thermal contraction. The temperature differential makes it denser than the mine's atmosphere. It falls by gravity down the intake shaft, naturally gorging the MOF matrix at the bottom without any mechanical assistance.</span>
+                        <span lang="fr"><strong style="color: var(--water-blue);">A. Topologie en U & Gravité Thermique :</strong> L'air froid ne peut pas chuter dans un puits où l'air chaud tente de monter (bouchon thermique). L'architecture exige des <em>puits jumeaux (Dual-Shaft)</em>. L'air nocturne, dont la contraction thermique compense la légèreté molaire de sa vapeur d'eau, chute par gravité dans le puits d'admission (Intake). Il gave naturellement la matrice MOF au fond, tandis que l'air chaud est expulsé par le puits d'échappement (Exhaust).</span>
+                        <span lang="en"><strong style="color: var(--water-blue);">A. U-Tube Topology & Thermal Gravity:</strong> Cold air cannot fall down a shaft where hot air is trying to rise (thermal plugging). The architecture mandates <em>twin shafts (Dual-Shaft)</em>. The night air, whose thermal contraction offsets the molar lightness of its water vapor, falls by gravity into the intake shaft. It naturally gorges the MOF matrix at the bottom, while the hot air is expelled through the exhaust shaft.</span>
                     </li>
                     
                     <li style="margin-bottom: 20px; border-left: 3px solid var(--magma-orange); padding-left: 20px;">
@@ -1272,8 +1272,12 @@
             </div>
 
             <div class="math-block" style="color: var(--carbon-red); text-align: left; padding: 1.5rem;">
-                <p style="font-weight: bold; color: #fff; margin-bottom: 0.5rem;">I. Énergie d'Évaporation Requise (Phase ASIC) :</p>
-                $$ Q_{sechage} = \dot{M}_{biomasse} \cdot \left[ C_{p,humide} \cdot (T_{eb} - T_{init}) + X_{eau} \cdot \Delta H_{vap} \right] $$
+                <p style="font-weight: bold; color: #fff; margin-bottom: 0.5rem;">I. Énergie de Séchage Convectif (Phase ASIC) :</p>
+                $$ Q_{sechage} = \dot{M}_{biomasse} \cdot \left[ C_{p,humide} \cdot (T_{sechage} - T_{init}) + X_{eau} \cdot \Delta H_{vap}(T_{sechage}) \right] $$
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 0.5rem;">
+                    <span lang="fr"><em>Note : La basse calorie des ASICs ($T_{sechage} \approx 65^\circ\text{C}$) n'atteint pas l'ébullition. L'évaporation est pilotée par le déficit de pression de vapeur (VPD) de l'air sec sortant de la matrice MOF.</em></span>
+                    <span lang="en"><em>Note: The low-grade heat of ASICs ($T_{sechage} \approx 65^\circ\text{C}$) does not reach boiling. Evaporation is driven by the Vapor Pressure Deficit (VPD) of the dry air exiting the MOF matrix.</em></span>
+                </p>
                 <p style="font-weight: bold; color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">II. Masse de Carbone Séquestrée (Phase Solaire Hybride) :</p>
                 $$ C_{seq} = f_{C} \cdot \int_{0}^{T} \eta_{hybride}(T_{ASIC}, T_{soleil}) \cdot \dot{M}_{biomasse} \, dt $$
             </div>
