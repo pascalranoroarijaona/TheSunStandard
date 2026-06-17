@@ -548,58 +548,85 @@
         </div>
     </div>
 
-    <details class="level-1" open>
+    <details class="level-1">
         <summary>
-            <span lang="fr">Niveau 1 : Enterrer le Bruit (Topologie de l'Enfouissement)</span>
-            <span lang="en">Level 1: Burying the Noise (Burial Topology)</span>
+            <span lang="fr">Niveau 1 : Enterrer le Bruit (Topologie & Ingénierie de l'Enfouissement)</span>
+            <span lang="en">Level 1: Burying the Noise (Topology & Burial Engineering)</span>
         </summary>
         <div class="drawer-content">
-            <p lang="fr">La première agression de l'ère de l'information est sonore et visuelle. Les immenses centres de calculs génèrent un bruit mécanique constant et défigurent le paysage. Pour faire taire les machines, l'enfouissement doit s'adapter à toutes les échelles.</p>
-            <p lang="en">The first aggression of the information age is sonic and visual. Massive data centers generate a constant mechanical noise and disfigure the landscape. To silence the machines, subterranean burial must adapt to all scales.</p>
             
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(42, 45, 48, 0.5); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>La première agression de l'ère de l'information est sensorielle : sonore et visuelle. Un centre de calcul de haute densité moderne, rempli d'ASICs ou de clusters GPU, génère une pollution acoustique mécanique assourdissante, dépassant fréquemment le seuil critique des 85 décibels (dB) en raison des millions de ventilateurs tournant à plus de 6000 RPM. En parallèle, ces architectures horizontales classiques stérilisent des dizaines d'hectares de terres arables sous d'immenses hangars de tôle dystopiques.</p>
+                    <p>Pour faire taire la machine et restaurer l'intégrité de la biosphère, la première étape de la Matrice Inversée est donc purement topologique : l'effacement total sous la ligne d'horizon. L'enfouissement géologique tire parti de l'impédance acoustique colossale de la croûte terrestre. La roche et la terre agissent comme un filtre absolu, convertissant l'énergie sonore en micro-vibrations inoffensives absorbées par la masse planétaire. Le paysage est libéré, la surface redevient un sanctuaire pour la biodiversité, et l'infrastructure informatique est protégée des aléas climatiques extrêmes. Cette topologie n'est pas monolithique, elle est fractale et s'adapte à tous les biomes existants.</p>
+                </div>
+                <div lang="en">
+                    <p>The first aggression of the information age is sensory: sonic and visual. A modern high-density data center, packed with ASICs or GPU clusters, generates deafening mechanical acoustic pollution, frequently exceeding the critical threshold of 85 decibels (dB) due to millions of fans spinning at over 6000 RPM. Simultaneously, these classic horizontal architectures sterilize dozens of acres of arable land beneath massive, dystopian metal hangars.</p>
+                    <p>To silence the machine and restore the integrity of the biosphere, the first step of the Inverted Matrix is therefore purely topological: total erasure below the horizon line. Geological burial takes advantage of the colossal acoustic impedance of the Earth's crust. Rock and soil act as an absolute filter, converting sound energy into harmless micro-vibrations absorbed by the planetary mass. The landscape is liberated, the surface becomes a sanctuary for biodiversity once more, and the IT infrastructure is protected from extreme surface weather events. This topology is not monolithic; it is fractal and adapts to all existing biomes.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: #a0aab5; text-align: left; padding: 2rem; border-color: var(--stone-grey);">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">Loi de Masse & Atténuation Acoustique Géologique</span>
+                    <span lang="en">Mass Law & Geological Acoustic Attenuation</span>
+                </div>
+                $$ TL \approx 20 \log_{10}(f \cdot m) - 47 \quad \text{[dB]} \quad \text{et} \quad Z = \rho \cdot c $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">La perte de transmission sonore ($TL$) à travers un milieu dense croît logarithmiquement avec la fréquence de résonance des serveurs ($f$) et la masse surfacique ($m$) de la couche géologique. Couplée à l'impédance acoustique élevée de la roche dure ($Z$, où $\rho$ est la densité et $c$ la célérité du son dans le milieu), une couverture d'enfouissement de seulement 3 mètres suffit à diviser la puissance acoustique perçue en surface par un facteur de $10^5$, garantissant un silence absolu à la biosphère (0 dB d'émergence).</span>
+                    <span lang="en">The sound transmission loss ($TL$) through a dense medium increases logarithmically with the resonant frequency of the servers ($f$) and the surface mass ($m$) of the geological layer. Coupled with the high acoustic impedance of hard rock ($Z$, where $\rho$ is density and $c$ the speed of sound in the medium), a burial cover of just 3 meters is enough to divide the perceived acoustic power at the surface by a factor of $10^5$, guaranteeing absolute silence for the biosphere (0 dB emergence).</span>
+                </p>
+            </div>
+
             <img src="img/M1.png" class="level-img" alt="Illustration de l'enfouissement et de la topologie" loading="lazy">
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
-                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-top: 3px solid var(--stone-grey); border-radius: 6px;">
-                    <h4 style="color: #fff; margin-top: 0;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-top: 3px solid var(--stone-grey); border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <h4 style="color: #fff; margin-top: 0; font-size: 1.1rem; margin-bottom: 1rem;">
                         <span lang="fr">⬡ Le Forage Profond (Din)</span>
                         <span lang="en">⬡ Deep Drilling (Din)</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5;">L'approche <em>Tabula Rasa</em> pour les supercalculateurs en zone vierge. La roche isole le bruit, la surface est laissée à la reforestation.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #a0aab5;">The <em>Tabula Rasa</em> approach for supercomputers in virgin areas. The rock insulates the noise, leaving the surface for reforestation.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #a0aab5; text-align: justify;">L'approche <em>Tabula Rasa</em> conçue pour les supercalculateurs de classe gigawatt en zone vierge. Des puits verticaux sont forés directement dans le socle rocheux igné (granite, basalte) à des profondeurs allant de -50 à -200 mètres. La roche dure encaisse naturellement les contraintes thermiques et offre une isolation sismique suprême. La surface, vierge de tout béton, est strictement sanctuarisée pour la reforestation de climax.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #a0aab5; text-align: justify;">The <em>Tabula Rasa</em> approach designed for gigawatt-class supercomputers in virgin zones. Vertical shafts are drilled directly into the igneous bedrock (granite, basalt) at depths ranging from -50 to -200 meters. The hard rock naturally absorbs thermal stresses and offers supreme seismic isolation. The surface, void of any concrete, is strictly sanctified for climax reforestation.</p>
                 </div>
-                <div style="background: rgba(68, 153, 255, 0.05); padding: 1.2rem; border-top: 3px solid #4499ff; border-radius: 6px;">
-                    <h4 style="color: #88bbff; margin-top: 0;">
+                
+                <div style="background: rgba(68, 153, 255, 0.05); padding: 1.5rem; border-top: 3px solid #4499ff; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <h4 style="color: #88bbff; margin-top: 0; font-size: 1.1rem; margin-bottom: 1rem;">
                         <span lang="fr">🏢 La Symbiose Urbaine</span>
                         <span lang="en">🏢 Urban Symbiosis</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #b0c4de;">Colonisation des parkings sous-utilisés. Le béton armé absorbe le bruit, la chaleur alimente le réseau urbain.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #b0c4de;">Colonization of underutilized parking lots. Reinforced concrete absorbs noise, while heat feeds the urban thermal network.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #b0c4de; text-align: justify;">La colonisation intelligente des infrastructures souterraines sous-utilisées (niveaux inférieurs de parkings désertés, anciennes stations de métro). Les mètres d'épaisseur de béton armé agissent comme des bunkers acoustiques. L'avantage d'ingénierie réside dans la proximité immédiate avec les réseaux de chaleur urbains, permettant de chauffer des quartiers entiers avec une déperdition de transport quasi nulle.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #b0c4de; text-align: justify;">The intelligent colonization of underutilized underground infrastructures (deserted lower parking levels, abandoned subway stations). Meters of reinforced concrete act as acoustic bunkers. The engineering advantage lies in the immediate proximity to urban district heating networks, making it possible to heat entire neighborhoods with near-zero transport energy loss.</p>
                 </div>
-                <div style="background: rgba(68, 238, 119, 0.05); padding: 1.2rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
-                    <h4 style="color: var(--bio-green); margin-top: 0;">
+                
+                <div style="background: rgba(68, 238, 119, 0.05); padding: 1.5rem; border-top: 3px solid var(--bio-green); border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <h4 style="color: var(--bio-green); margin-top: 0; font-size: 1.1rem; margin-bottom: 1rem;">
                         <span lang="fr">🚜 Le Micro-Pod Artisanal</span>
                         <span lang="en">🚜 Artisanal Micro-Pod</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #a0d4b5;">La pelleteuse et le jardinier. Un caisson étanche enfoui sous un champ, surmonté d'une serre. Souveraineté énergétique locale.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #a0d4b5;">The excavator and the gardener. A waterproof pod buried under a field, topped with a greenhouse. Local energy sovereignty.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #a0d4b5; text-align: justify;">L'alliance de la pelleteuse et du Cypherpunk. À l'échelle de l'individu, un caisson d'immersion étanche (certifié IP68) est enfoui à 3 mètres de profondeur dans un terrain privé, surmonté d'une serre aquaponique. Ce modèle garantit une décentralisation extrême de la puissance de calcul tout en offrant à la famille une souveraineté énergétique et alimentaire locale.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #a0d4b5; text-align: justify;">The alliance of the excavator and the Cypherpunk. At the individual scale, a waterproof immersion pod (IP68 certified) is buried 3 meters deep in a private plot, topped by an aquaponic greenhouse. This model guarantees extreme decentralization of compute power while offering the family local energy and food sovereignty.</p>
                 </div>
-                <div style="background: rgba(255, 85, 0, 0.05); padding: 1.2rem; border-top: 3px solid var(--magma-orange); border-radius: 6px;">
-                    <h4 style="color: var(--magma-orange); margin-top: 0;">
+                
+                <div style="background: rgba(255, 85, 0, 0.05); padding: 1.5rem; border-top: 3px solid var(--magma-orange); border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <h4 style="color: var(--magma-orange); margin-top: 0; font-size: 1.1rem; margin-bottom: 1rem;">
                         <span lang="fr">⛰️ Les Cicatrices Oubliées</span>
                         <span lang="en">⛰️ Forgotten Scars</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #e5bca8;">Réutiliser les anciennes mines de charbon. Transformer les désastres écologiques industriels en moteurs de régénération.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #e5bca8;">Reusing abandoned coal mines. Transforming industrial ecological disasters into engines of regeneration.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #e5bca8; text-align: justify;">La remédiation écologique par la reconversion d'anciennes mines de charbon ou de métaux abandonnées. Les réseaux de galeries préexistants annihilent le CAPEX de forage initial. Cette topologie permet de stabiliser les réseaux électriques ruraux isolés tout en transformant des désastres écologiques hérités de l'ère industrielle en moteurs de régénération vitale.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #e5bca8; text-align: justify;">Ecological remediation through the repurposing of abandoned coal or metal mines. Pre-existing gallery networks annihilate initial drilling CAPEX. This topology stabilizes isolated rural electrical grids while transforming ecological disasters inherited from the industrial era into engines of vital regeneration.</p>
                 </div>
-                <div style="background: rgba(155, 89, 182, 0.05); padding: 1.2rem; border-top: 3px solid #9b59b6; border-radius: 6px;">
-                    <h4 style="color: #9b59b6; margin-top: 0;">
+                
+                <div style="background: rgba(155, 89, 182, 0.05); padding: 1.5rem; border-top: 3px solid #9b59b6; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <h4 style="color: #9b59b6; margin-top: 0; font-size: 1.1rem; margin-bottom: 1rem;">
                         <span lang="fr">🛡️ Le Sanctuaire Militaire</span>
                         <span lang="en">🛡️ Military Sanctuary</span>
                     </h4>
-                    <p lang="fr" style="font-size: 0.9em; color: #d7bde2;">Réquisition des bunkers de la Guerre Froide pour la paix. Murs blindés et isolation parfaite pour sanctuariser la biosphère.</p>
-                    <p lang="en" style="font-size: 0.9em; color: #d7bde2;">Requisitioning Cold War bunkers for peace. Armored walls and perfect insulation to sanctuary the biosphere.</p>
+                    <p lang="fr" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">Transformer les vestiges de la paranoïa géopolitique en sanctuaires pour la vie. La réquisition de silos de missiles et de bunkers de la Guerre Froide offre des dalles de béton colossales et un blindage géologique anti-IEM (Impulsion Électromagnétique). Une protection de niveau militaire dédiée à la sécurisation du registre décentralisé et de la biosphère sus-jacente.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">Transforming the remnants of geopolitical paranoia into sanctuaries for life. Requisitioning decommissioned missile silos and Cold War bunkers provides colossal concrete slabs and geological EMP (Electromagnetic Pulse) shielding. Military-grade protection dedicated to securing the decentralized ledger and the overlying biosphere.</p>
                 </div>
+
             </div>
         </div>
     </details>
@@ -1347,7 +1374,7 @@
             </div>
         </div>
     </details>
-    <details class="level-6" open>
+    <details class="level-6">
         <summary style="border-left-color: var(--water-blue); color: var(--water-blue);">
             <span lang="fr">Niveau 6 : Le Relais de Surface, Essaim Hydrique & Supervision Métabolique</span>
             <span lang="en">Level 6: The Surface Relay, Hydric Swarm & Metabolic Supervision</span>
