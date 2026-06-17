@@ -2498,12 +2498,15 @@
         const complexityFactor = 1 + Math.pow(H / 60, 2); // Croissance non-linéaire avec la profondeur
         const CAPEX = Math.round(baseVolume * complexityFactor * costPerM3);
 
-        // Gains d'OPEX (PUE de surface 1.35 vs Souterrain Tirage Naturel 1.03)
-        const powerSavedKW = P * (1.35 - 1.03) * 1000;
+        // Gains d'OPEX (PUE de surface 1.35 vs Souterrain). 
+        // L'effet cheminée (tirage naturel) s'améliore avec la profondeur H.
+        const pueSouterrain = Math.max(1.01, 1.05 - (H * 0.0005)); // Plus c'est profond, plus le PUE s'approche de 1.01
+        const powerSavedKW = P * (1.35 - pueSouterrain) * 1000;
         const annualOpexSavings = Math.round(powerSavedKW * 24 * 365 * 0.08); // Hypothèse: 0.08$/kWh
 
-        // Externalités environnementales monétisées
-        const waterProducedLitersDay = Math.round(P * 4500 * (H / 30)); // Niveau 3 amplifié par H
+        // Externalités environnementales monétisées (Soumis au 1er Principe de la Thermodynamique)
+        // La production d'eau est strictement bornée par P (la chaleur disponible), PAS par la profondeur H.
+        const waterProducedLitersDay = Math.round(P * 4500); 
         const carbonSequesteredTonsYear = Math.round(P * 300); // Niveau 4
         const dynamicValueGen = (waterProducedLitersDay * 365 * 0.002) + (carbonSequesteredTonsYear * carbonPrice);
 
