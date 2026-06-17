@@ -1008,7 +1008,240 @@
             
         </div>
     </details>
-    
+    <details style="margin-bottom: 2rem; background: rgba(0, 204, 255, 0.02); border-left: 4px solid var(--water-blue); border-radius: 0 8px 8px 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: var(--font-ui);">
+        <summary style="padding: 1.5rem; cursor: pointer; font-weight: 600; font-size: 1.2rem; color: #fff; background: rgba(0, 204, 255, 0.08); border-bottom: 1px solid rgba(0, 204, 255, 0.2); display: flex; align-items: center; gap: 15px;">
+            <span style="color: var(--water-blue);">🔬</span>
+            <span lang="fr">Deep Dive : Science du Zéolithe & Architecture Modulaire</span>
+            <span lang="en">Deep Dive: Zeolite Science & Modular Architecture</span>
+        </summary>
+        <div class="drawer-content" style="padding: 2rem;">
+            
+            <div class="well-introduction" style="margin-bottom: 2.5rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>Le Puits Atmosphérique repose sur un cristal microporeux : le <strong>Zéolithe synthétique (type 13X)</strong>. Ce matériau cristallin d'aluminosilicate possède des pores d'exactement 10 Ångströms, agissant comme un piège moléculaire parfait pour l'eau ($H_2O$), tout en ignorant l'azote et l'oxygène. Cependant, concevoir une roue dessiccante industrielle capable d'absorber la chaleur de 10 à 50 MW d'ASICs sans défaillance structurelle exige une ingénierie de précision spatiale.</p>
+                </div>
+                <div lang="en">
+                    <p>The Atmospheric Well relies on a microporous crystal: <strong>Synthetic Zeolite (type 13X)</strong>. This crystalline aluminosilicate material has pores of exactly 10 Angstroms, acting as a perfect molecular trap for water ($H_2O$), while ignoring nitrogen and oxygen. However, designing an industrial desiccant wheel capable of absorbing the heat of 10 to 50 MW of ASICs without structural failure requires space-grade engineering.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    
+                    <div style="background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h4 style="color: var(--water-blue); margin-top: 0; font-size: 1.1rem;">💎 <span lang="fr">Composition Matérielle</span><span lang="en">Material Composition</span></h4>
+                        <ul style="padding-left: 1.2rem; color: #d4d4d4; font-size: 0.9em;">
+                            <li style="margin-bottom: 0.5rem;"><span lang="fr"><strong>Matrice :</strong> Structure en nid d'abeille (Honeycomb) en fibre de verre ou céramique, enduite de Zéolithe 13X dopée au Graphène pour maximiser la conductivité thermique.</span><span lang="en"><strong>Matrix:</strong> Honeycomb structure made of fiberglass or ceramic, coated with 13X Zeolite doped with Graphene to maximize thermal conductivity.</span></li>
+                            <li style="margin-bottom: 0.5rem;"><span lang="fr"><strong>Châssis :</strong> Acier Inoxydable qualité marine (316L) résistant à la corrosion et aux chocs thermiques répétés.</span><span lang="en"><strong>Frame:</strong> Marine-grade Stainless Steel (316L) resistant to corrosion and repeated thermal shocks.</span></li>
+                            <li><span lang="fr"><strong>Joints :</strong> Joints à brosse en PTFE (Téflon) pour assurer l'étanchéité absolue entre la zone d'air froid et la zone d'air chaud.</span><span lang="en"><strong>Seals:</strong> PTFE (Teflon) brush seals to ensure absolute airtightness between the cold and hot air zones.</span></li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h4 style="color: var(--water-blue); margin-top: 0; font-size: 1.1rem;">📐 <span lang="fr">Aérodynamique & Angle (32.5°)</span><span lang="en">Aerodynamics & Angle (32.5°)</span></h4>
+                        <p style="color: #d4d4d4; font-size: 0.9em; margin-bottom: 0.5rem;">
+                            <span lang="fr">Contrairement aux roues HVAC classiques (verticales), les matrices de Sion sont inclinées à un <strong>angle optimal de 32.5°</strong> par rapport au flux convectif ascendant.</span>
+                            <span lang="en">Unlike classic HVAC wheels (vertical), Zion's matrices are tilted at an <strong>optimal angle of 32.5°</strong> relative to the ascending convective updraft.</span>
+                        </p>
+                        <p style="color: #a0aab5; font-size: 0.85em; font-style: italic;">
+                            <span lang="fr">Cet "angle d'attaque" minimise le détachement de la couche limite turbulente (réduisant la perte de charge $\Delta P$) tout en forçant l'air chaud à traverser le nid d'abeille avec un léger effet cyclonique, augmentant le temps de séjour moléculaire de 18%.</span>
+                            <span lang="en">This "angle of attack" minimizes the detachment of the turbulent boundary layer (reducing pressure drop $\Delta P$) while forcing the hot air through the honeycomb with a slight cyclonic effect, increasing molecular residence time by 18%.</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--water-blue); text-align: left; padding: 2rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">Équation de Masse et Mise à l'Échelle (Scalability)</span>
+                    <span lang="en">Mass Equation and Scalability</span>
+                </div>
+                $$ M_{zeo} = \frac{\dot{m}_{w} \cdot t_{cycle}}{\Delta X_{cap}} \quad \text{avec} \quad \Delta X_{cap} \approx 0.18 \text{ kg}_{eau} / \text{kg}_{zeo} $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">La masse totale de Zéolithe requise ($M_{zeo}$) dépend du débit d'eau cible ($\dot{m}_{w}$), de la durée d'une rotation complète ($t_{cycle}$) et de la capacité de travail dynamique du matériau ($\Delta X_{cap}$). Constat d'ingénierie : Construire une roue unique de 20 mètres de diamètre pour 50 MW s'effondrerait sous son propre poids.</span>
+                    <span lang="en">The total mass of Zeolite required ($M_{zeo}$) depends on the target water flow rate ($\dot{m}_{w}$), the duration of a full rotation ($t_{cycle}$), and the dynamic working capacity of the material ($\Delta X_{cap}$). Engineering fact: Building a single 20-meter diameter wheel for 50 MW would collapse under its own weight.</span>
+                </p>
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(0, 204, 255, 0.2);">
+                    <strong style="color: #fff;"><span lang="fr">La Solution : La Matrice Fractale (Array).</span><span lang="en">The Solution: The Fractal Array.</span></strong><br>
+                    <span lang="fr" style="font-size: 0.9em; color: #b3e6ff;">Le système est modulable à la hausse (scalable). L'architecture standardisée utilise des <em>Cassettes Hexagonales</em> de 3 mètres de diamètre gérant chacune ~2.5 MW de puissance thermique. Pour une base de 50 MW, 20 modules sont arrangés en essaim dans la cheminée principale, activables ou désactivables individuellement par l'IA en fonction de la maintenance ou du flux d'air.</span>
+                    <span lang="en" style="font-size: 0.9em; color: #b3e6ff;">The system is highly scalable. The standardized architecture uses <em>Hexagonal Cassettes</em> of 3 meters in diameter, each handling ~2.5 MW of thermal power. For a 50 MW base, 20 modules are arrayed in a swarm within the main shaft, individually toggled by the AI depending on maintenance or airflow.</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; border: 1px solid rgba(0, 204, 255, 0.3); border-radius: 12px; overflow: hidden; background: #020304; position: relative;">
+                <div style="padding: 15px 20px; background: rgba(0, 204, 255, 0.08); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 204, 255, 0.2);">
+                    <span style="font-family: var(--font-mono); font-size: 0.85em; color: var(--water-blue);">
+                        <span lang="fr">// VUE 3D : CASSETTE ZÉOLITHE (INCLINAISON 32.5°) & NID D'ABEILLE</span>
+                        <span lang="en">// 3D VIEW: ZEOLITE CASSETTE (32.5° TILT) & HONEYCOMB</span>
+                    </span>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 0.8em; color: #aaa; font-family: var(--font-ui); text-transform: uppercase;">
+                            <span lang="fr">Vitesse (RPM)</span><span lang="en">Speed (RPM)</span>
+                        </span>
+                        <input type="range" id="zeo-slider" min="1" max="100" value="30" style="width: 100px; accent-color: var(--water-blue);">
+                    </div>
+                </div>
+
+                <div id="zeo-container" style="width: 100%; height: 450px; position: relative; cursor: grab;">
+                    <div style="position: absolute; top: 10%; left: 10%; color: #00ccff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">ADSSORPTION (Air Ambiant / Bleu)</div>
+                    <div style="position: absolute; bottom: 10%; right: 10%; color: #ff5500; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">DÉSORPTION (Chaleur ASIC / Rouge)</div>
+                    <div style="position: absolute; top: 10%; right: 10%; color: #fff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">VAPEUR PURE (Extraction)</div>
+                </div>
+            </div>
+
+            <script>
+                (function() {
+                    const container = document.getElementById('zeo-container');
+                    const slider = document.getElementById('zeo-slider');
+
+                    const scene = new THREE.Scene();
+                    // Fog pour donner de la profondeur à l'intérieur du puits
+                    scene.fog = new THREE.FogExp2('#020304', 0.05);
+
+                    const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+                    camera.position.set(0, 5, 12); // Caméra légèrement en hauteur
+
+                    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                    container.appendChild(renderer.domElement);
+
+                    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                    controls.enableDamping = true;
+                    controls.dampingFactor = 0.05;
+                    controls.autoRotate = true;
+                    controls.autoRotateSpeed = 0.5;
+
+                    // GROUPE DE LA ROUE (pour appliquer l'inclinaison de 32.5°)
+                    const wheelGroup = new THREE.Group();
+                    // 32.5 degrés en radians
+                    wheelGroup.rotation.x = 32.5 * (Math.PI / 180);
+                    scene.add(wheelGroup);
+
+                    // 1. Matériau de la matrice (Aspect nid d'abeille / wireframe technique)
+                    const matrixMaterial = new THREE.MeshBasicMaterial({ 
+                        color: 0x445566, 
+                        wireframe: true, 
+                        transparent: true, 
+                        opacity: 0.5 
+                    });
+                    const frameMaterial = new THREE.MeshStandardMaterial({ 
+                        color: 0x8899aa, 
+                        metalness: 0.8, 
+                        roughness: 0.2 
+                    });
+
+                    // Cylindre central (La zéolithe)
+                    const zeoliteCore = new THREE.Mesh(new THREE.CylinderGeometry(4, 4, 1, 32, 4), matrixMaterial);
+                    // Anneau extérieur (Le châssis Inox 316L)
+                    const outerRing = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.2, 16, 64), frameMaterial);
+                    outerRing.rotation.x = Math.PI / 2;
+                    
+                    // Axe central et rayons
+                    const centerHub = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1.2, 16), frameMaterial);
+                    
+                    wheelGroup.add(zeoliteCore);
+                    wheelGroup.add(outerRing);
+                    wheelGroup.add(centerHub);
+
+                    // Ajout de 3 rayons (spokes) pour voir la rotation
+                    for(let i=0; i<3; i++) {
+                        const spoke = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1, 8), frameMaterial);
+                        spoke.rotation.y = (i * Math.PI) / 3;
+                        wheelGroup.add(spoke);
+                    }
+
+                    // Lumières pour les reflets sur l'Inox
+                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+                    scene.add(ambientLight);
+                    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                    dirLight.position.set(5, 10, 5);
+                    scene.add(dirLight);
+
+                    // SYSTÈMES DE PARTICULES
+                    // Fonction pour générer un flux traversant la roue
+                    function createParticleStream(colorHex, count, size, startY, endY, spreadX, spreadZ) {
+                        const geometry = new THREE.BufferGeometry();
+                        const positions = new Float32Array(count * 3);
+                        for(let i=0; i<count; i++){
+                            positions[i*3] = (Math.random() - 0.5) * spreadX;
+                            positions[i*3+1] = startY + Math.random() * (endY - startY);
+                            positions[i*3+2] = (Math.random() - 0.5) * spreadZ;
+                        }
+                        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                        
+                        const material = new THREE.PointsMaterial({
+                            color: new THREE.Color(colorHex),
+                            size: size,
+                            transparent: true,
+                            blending: THREE.AdditiveBlending,
+                            depthWrite: false
+                        });
+                        return { mesh: new THREE.Points(geometry, material), positions, startY, endY };
+                    }
+
+                    // Flux 1 : Air Humide (Bleu clair) - Tombe sur la moitié GAUCHE
+                    const ambientAir = createParticleStream('#00ccff', 600, 0.1, 5, 0, 4, 8);
+                    ambientAir.mesh.position.x = -2; // Décalé à gauche
+                    scene.add(ambientAir.mesh);
+
+                    // Flux 2 : Chaleur ASIC (Rouge) - Monte sur la moitié DROITE
+                    const asicHeat = createParticleStream('#ff5500', 600, 0.15, -5, 0, 4, 8);
+                    asicHeat.mesh.position.x = 2; // Décalé à droite
+                    scene.add(asicHeat.mesh);
+
+                    // Flux 3 : Vapeur Extraite (Blanc/Bleu dense) - Sort de la roue à droite
+                    const steamOut = createParticleStream('#ffffff', 400, 0.2, 0, 4, 3, 3);
+                    steamOut.mesh.position.x = 2;
+                    // On incline légèrement le jet de vapeur sortant
+                    steamOut.mesh.rotation.z = -0.5; 
+                    scene.add(steamOut.mesh);
+
+
+                    // ANIMATION
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        
+                        const rpm = parseInt(slider.value);
+                        const rotationSpeed = rpm * 0.0005;
+
+                        // Rotation de la roue sur elle-même (Axe Y du groupe local)
+                        zeoliteCore.rotation.y += rotationSpeed;
+                        centerHub.rotation.y += rotationSpeed;
+                        wheelGroup.children.forEach(child => {
+                            if(child.geometry.type === 'BoxGeometry') child.rotation.y += rotationSpeed;
+                        });
+
+                        // Animation des particules (Flux continu)
+                        function moveParticles(sys, speedY) {
+                            const pos = sys.mesh.geometry.attributes.position.array;
+                            for(let i=0; i<pos.length; i+=3) {
+                                pos[i+1] += speedY;
+                                // Réinitialisation de la particule si elle dépasse sa limite
+                                if(speedY < 0 && pos[i+1] < sys.endY) pos[i+1] = sys.startY;
+                                if(speedY > 0 && pos[i+1] > sys.endY) pos[i+1] = sys.startY;
+                            }
+                            sys.mesh.geometry.attributes.position.needsUpdate = true;
+                        }
+
+                        moveParticles(ambientAir, -0.05 - (rpm * 0.001)); // Tombe
+                        moveParticles(asicHeat, 0.08 + (rpm * 0.001));   // Monte
+                        moveParticles(steamOut, 0.06 + (rpm * 0.001));   // Monte (Vapeur)
+
+                        controls.update();
+                        renderer.render(scene, camera);
+                    }
+
+                    // Redimensionnement
+                    window.addEventListener('resize', () => {
+                        camera.aspect = container.clientWidth / container.clientHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(container.clientWidth, container.clientHeight);
+                    });
+
+                    animate();
+                })();
+            </script>
+        </div>
+    </details>
     <details class="level-4">
         <summary style="border-left-color: var(--carbon-red); color: var(--carbon-red);">
             <span lang="fr">Niveau 4 : L'Alchimie du Carbone (Hybridation & Biochar)</span>
