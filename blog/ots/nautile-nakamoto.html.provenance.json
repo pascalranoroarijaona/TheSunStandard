@@ -1,6 +1,6 @@
 {
   "kind": 1040,
-  "created_at": 1781592103,
+  "created_at": 1781740891,
   "tags": [
     [
       "x",
@@ -13,6 +13,6 @@
   ],
   "content": "D-Trinity Proof of Provenance",
   "pubkey": "929b62d1d54090b224f6e73f31e78ebe76df5e3822f891a4a542343dba8eed51",
-  "id": "c20a114ae6f1ddf886e3279e8f8c68574392240f5701aac7f088a9ae9e078cdd",
-  "sig": "d6e52f66191929d8e2ca1fb622a72fb17bcd6c3d48c9e57c8bb5c9ce42da53860de858fe7fdc6ebbe4f16c206c4bf9d31dc8291207cb25910ec98a73b9c55bea"
+  "id": "6d5debeba05edc5d08f30e1cd20ccb6231d053f5f27e698af6919a47ac07f4e1",
+  "sig": "e52824a514e9d9bbc8928443f34604baea42b440cf54cac9af8e3a96f5b6a804cd5ef0f579122267cc1d2ff20c3036ef92f91d759d18afd65d16b70f09ff675d"
 }
