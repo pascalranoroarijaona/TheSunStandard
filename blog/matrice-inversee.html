@@ -704,6 +704,55 @@
             <div class="math-block" style="color: var(--magma-orange);">
                 $$J_q = - \kappa \nabla T \quad \Longrightarrow \quad P_{surface} = \iint_{S} \vec{J}_q \cdot d\vec{A}$$
             </div>
+                        <div style="margin-top: 3rem; background: rgba(255, 85, 0, 0.02); border-left: 4px solid var(--magma-orange); border-radius: 0 8px 8px 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: var(--font-ui);">
+                <div style="padding: 1.5rem; font-weight: 600; font-size: 1.2rem; color: #fff; background: rgba(255, 85, 0, 0.08); border-bottom: 1px solid rgba(255, 85, 0, 0.2); display: flex; align-items: center; gap: 15px;">
+                    <span style="color: var(--magma-orange);">⚙️</span>
+                    <span lang="fr">Deep Dive : Ingénierie de l'Échangeur & Classe ASIC-X</span>
+                    <span lang="en">Deep Dive: Exchanger Engineering & ASIC-X Class</span>
+                </div>
+                <div style="padding: 2rem; color: #e5bca8; font-family: var(--font-main); text-align: justify; font-size: 0.95rem;">
+                    
+                    <p lang="fr" style="margin-bottom: 1.5rem;">
+                        Comment transformer un fluide bouillant en une tornade d'air ascendant sans utiliser le moindre compresseur mécanique ? La réponse réside dans la géométrie spatiale des <strong>Batteries d'Échangeurs Lamellaires</strong> placées à la base du puits d'échappement (Exhaust Shaft). Le fluide ou l'eau glycolée ($70^\circ\text{C}$) sortant des mineurs est pompé dans un labyrinthe de microtubes en cuivre ceinturés de millions d'ailettes en aluminium. L'air d'admission, forcé de traverser ces ailettes, subit un choc thermique instantané. Ses molécules s'agitent, sa densité ($\rho$) s'effondre, et la pression atmosphérique l'éjecte violemment vers le ciel. C'est l'étincelle du moteur convectif.
+                    </p>
+                    <p lang="en" style="margin-bottom: 1.5rem;">
+                        How do you transform a boiling fluid into an ascending tornado of air without using a single mechanical compressor? The answer lies in the spatial geometry of the <strong>Lamellar Heat Exchanger Batteries</strong> placed at the base of the exhaust shaft. The fluid or glycol water ($70^\circ\text{C}$) exiting the miners is pumped through a labyrinth of copper microtubes wrapped in millions of aluminum fins. The intake air, forced through these fins, undergoes an instant thermal shock. Its molecules agitate, its density ($\rho$) collapses, and atmospheric pressure violently ejects it skyward. This is the spark of the convective engine.
+                    </p>
+
+                    <div class="math-block" style="color: var(--magma-orange); background: rgba(0,0,0,0.5); border: 1px solid rgba(255, 85, 0, 0.2);">
+                        $$ \dot{Q} = U \cdot A \cdot \Delta T_{LMTD} $$
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                            <span lang="fr">La puissance thermique transférée à l'air ($\dot{Q}$) dépend de la Différence de Température Moyenne Logarithmique ($\Delta T_{LMTD}$). Pour maximiser le tirage convectif avec une chaleur de "bas grade" ($70^\circ\text{C}$), l'architecture exige une surface de contact ($A$) monumentale, comparable aux radiateurs de l'industrie nucléaire.</span>
+                            <span lang="en">The thermal power transferred to the air ($\dot{Q}$) depends on the Logarithmic Mean Temperature Difference ($\Delta T_{LMTD}$). To maximize convective draft with "low-grade" heat ($70^\circ\text{C}$), the architecture requires a monumental contact surface area ($A$), comparable to nuclear industry radiators.</span>
+                        </p>
+                    </div>
+
+                    <h4 style="color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-family: var(--font-ui); font-size: 1.1rem; text-transform: uppercase;">
+                        <span lang="fr">Évolution Matérielle : Vers la classe "ASIC-X"</span>
+                        <span lang="en">Hardware Evolution: Toward the "ASIC-X" Class</span>
+                    </h4>
+                    
+                    <p lang="fr" style="margin-bottom: 1rem;">
+                        Aujourd'hui, l'industrie utilise le refroidissement liquide direct (DLC - ex: <em>Whatsminer M63S, Antminer S21 Hydro</em>) pour extraire l'eau à $70^\circ\text{C}$. Mais le silicium classique se dégrade au-delà. Pour que la Matrice Inversée atteigne son potentiel ultime (désorption parfaite des MOFs et effet cheminée maximal), il faut concevoir une nouvelle génération de matériel optimisée non plus seulement pour le "Hash/Watt", mais pour le <strong>"Hash/Exergie"</strong>.
+                    </p>
+                    <p lang="en" style="margin-bottom: 1rem;">
+                        Today, the industry uses Direct Liquid Cooling (DLC - e.g., <em>Whatsminer M63S, Antminer S21 Hydro</em>) to extract water at $70^\circ\text{C}$. But classic silicon degrades beyond this point. For the Inverted Matrix to reach its ultimate potential (perfect MOF desorption and maximum stack effect), a new generation of hardware must be designed, optimized not just for "Hash/Watt", but for <strong>"Hash/Exergy"</strong>.
+                    </p>
+
+                    <ul style="padding-left: 1.2rem; color: #d4d4d4; font-size: 0.9em; margin-bottom: 0;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <span lang="fr"><strong>Puces SiC / GaN :</strong> Le remplacement du Silicium par du Carbure de Silicium (SiC) ou du Nitrure de Gallium (GaN), matériaux capables d'opérer sous stress de calcul massif à plus de $120^\circ\text{C}$ sans perte de rendement.</span>
+                            <span lang="en"><strong>SiC / GaN Chips:</strong> Replacing Silicon with Silicon Carbide (SiC) or Gallium Nitride (GaN), materials capable of operating under massive computational stress at over $120^\circ\text{C}$ without yield loss.</span>
+                        </li>
+                        <li>
+                            <span lang="fr"><strong>Packaging Thermo-Résilient :</strong> Assemblage avec des interfaces thermiques en métal liquide pur (Indium) et soudure haute-température, permettant d'extraire un fluide géothermique bouillant ($85^\circ\text{C}-95^\circ\text{C}$) directement des serveurs.</span>
+                            <span lang="en"><strong>Thermo-Resilient Packaging:</strong> Assembly with pure liquid metal thermal interfaces (Indium) and high-temperature soldering, allowing the extraction of a boiling geothermal fluid ($85^\circ\text{C}-95^\circ\text{C}$) directly from the servers.</span>
+                        </li>
+                    </ul>
+
+                </div>
+                        </div>
+            
         </div>
     </details>
 
