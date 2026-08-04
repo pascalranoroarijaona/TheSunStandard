@@ -604,7 +604,177 @@
             </span>
         </div>
     </div>
+    <!-- PLOTLY LIBRARY (To be placed once, ideally before the new section) -->
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
+<!-- NEW SECTION: LIVE THERMODYNAMIC VALUE -->
+<hr class="divider">
+<section id="live-thermodynamics">
+    <p class="section-label">
+        <span lang="en">Live Network Data</span>
+        <span lang="fr">Données Réseau en Direct</span>
+    </p>
+    <h2 class="section-title">
+        <span lang="en">Objective Thermodynamic Value<br>(nChainWork)</span>
+        <span lang="fr">Valeur Thermodynamique Objective<br>(nChainWork)</span>
+    </h2>
+    <p class="section-body">
+        <span lang="en">The <code>nChainWork</code> variable in the Nakamoto consensus represents the cumulative expected number of hashes required to produce the current chain. By applying a historical efficiency proxy within the Emergy Framework, we can observe the continuous, irreversible accumulation of thermodynamic work (Solar Emjoules, seJ) anchored into the ledger.</span>
+        <span lang="fr">La variable <code>nChainWork</code> du consensus de Nakamoto représente le nombre total attendu de hachages requis pour produire la chaîne actuelle. En appliquant un proxy d'efficacité historique via le cadre de l'Émergie, nous pouvons observer l'accumulation continue et irréversible de travail thermodynamique (Emjoules Solaires, seJ) ancré dans le registre.</span>
+    </p>
+
+    <div class="stats-row" style="margin-bottom: 2.5rem; max-width: 1000px;">
+        <div class="stat-item">
+            <span class="stat-number" id="live-chainwork">...</span>
+            <span class="stat-label">
+                <span lang="en">Current nChainWork (Cumulative Hashes)</span>
+                <span lang="fr">nChainWork Actuel (Hachages Cumulés)</span>
+            </span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="live-sej">...</span>
+            <span class="stat-label">
+                <span lang="en">Estimated Embedded Work (seJ)</span>
+                <span lang="fr">Travail Embarqué Estimé (seJ)</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- PLOTLY CHART CONTAINER -->
+    <div id="plotly-chainwork" style="width:100%; height: 500px; background: rgba(8, 8, 8, 0.75); border: 1px solid var(--border-glow); border-radius: 12px; padding: 1rem; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></div>
+</section>
+
+<!-- SCRIPT FOR LIVE DATA FETCHING & PLOTTING -->
+<script>
+    async function fetchAndPlotChainwork() {
+        try {
+            // 1. Fetch the latest block to get the exact current nChainWork
+            const blocksRes = await fetch('https://mempool.space/api/v1/blocks');
+            const blocks = await blocksRes.json();
+            const latestBlock = blocks[0]; // Most recent block
+            const currentChainworkHex = latestBlock.chainwork;
+            
+            // Convert Hex to Number (precision loss at the very end of large integers is fine for macro charting)
+            const currentChainwork = Number(BigInt("0x" + currentChainworkHex));
+
+            // 2. Fetch historical hashrate (last 3 years) to construct the curve's shape
+            const hrRes = await fetch('https://mempool.space/api/v1/mining/hashrate/3y');
+            const hrData = await hrRes.json();
+
+            let cumulativeHashes = [];
+            let dates = [];
+            let totalEstimated = 0;
+
+            // Reconstruct cumulative hashes over the time period
+            for (let i = 0; i < hrData.length; i++) {
+                const point = hrData[i];
+                dates.push(new Date(point.timestamp * 1000));
+
+                if (i === 0) {
+                    cumulativeHashes.push(0);
+                } else {
+                    const dt = point.timestamp - hrData[i-1].timestamp;
+                    const hashes = point.avgHashrate * dt;
+                    totalEstimated += hashes;
+                    cumulativeHashes.push(totalEstimated);
+                }
+            }
+
+            // 3. Align the historical curve to end exactly on today's true nChainWork
+            const baseline = currentChainwork - totalEstimated;
+            let finalChainwork = [];
+            let finalSeJ = [];
+
+            // Macro Proxy: Assuming an illustrative historical avg efficiency of ~30 J/TH (3e-11 J/hash)
+            // Transformity Tr_e = 2e5 sej/J -> sej_per_hash = 3e-11 * 2e5 = 6e-6
+            const SEJ_PER_HASH = 6e-6; 
+
+            for (let i = 0; i < cumulativeHashes.length; i++) {
+                const val = baseline + cumulativeHashes[i];
+                finalChainwork.push(val);
+                finalSeJ.push(val * SEJ_PER_HASH);
+            }
+
+            // 4. Update UI Stats with MathJax formatting for beautiful scientific notation
+            const formatSci = (num) => "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
+            
+            document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
+            document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
+
+            // Re-trigger MathJax to render the newly injected equations
+            if (window.MathJax) {
+                MathJax.typesetPromise([
+                    document.getElementById('live-chainwork'), 
+                    document.getElementById('live-sej')
+                ]);
+            }
+
+            // 5. Render Plotly Chart
+            const isFrench = document.body.classList.contains('lang-fr');
+            
+            const trace = {
+                x: dates,
+                y: finalChainwork,
+                type: 'scatter',
+                mode: 'lines',
+                line: {
+                    color: '#ffcc00', // Matches --sun-yellow
+                    width: 3,
+                    shape: 'spline'
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(255, 170, 0, 0.1)', // Matches --border-glow
+                name: 'nChainWork',
+                hovertemplate: 
+                    '<b>Date</b>: %{x|%Y-%m-%d}<br>' +
+                    '<b>nChainWork</b>: %{y:.2e} Hashes<br>' +
+                    '<b>' + (isFrench ? 'Émergie (seJ)' : 'Emergy (seJ)') + '</b>: %{customdata:.2e} seJ<extra></extra>',
+                customdata: finalSeJ
+            };
+
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                margin: { t: 30, r: 20, l: 60, b: 40 },
+                font: { color: '#888888', family: "'Helvetica Neue', Helvetica, Arial, sans-serif" },
+                xaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(255, 170, 0, 0.1)',
+                    linecolor: 'rgba(255, 170, 0, 0.3)',
+                    tickfont: { color: '#888' }
+                },
+                yaxis: {
+                    title: isFrench ? 'Hachages Cumulés (nChainWork)' : 'Cumulative Hashes (nChainWork)',
+                    showgrid: true,
+                    gridcolor: 'rgba(255, 170, 0, 0.1)',
+                    linecolor: 'rgba(255, 170, 0, 0.3)',
+                    tickfont: { color: '#888' },
+                    exponentformat: 'E'
+                },
+                hovermode: 'x unified',
+                hoverlabel: {
+                    bgcolor: 'rgba(5, 5, 5, 0.9)',
+                    font: { color: '#ffcc00' },
+                    bordercolor: 'rgba(255, 170, 0, 0.5)'
+                }
+            };
+
+            const config = { responsive: true, displayModeBar: false };
+
+            Plotly.newPlot('plotly-chainwork', [trace], layout, config);
+
+        } catch (error) {
+            console.error("Error fetching or plotting chainwork data:", error);
+            document.getElementById('live-chainwork').innerHTML = "API Error";
+            document.getElementById('live-sej').innerHTML = "API Error";
+        }
+    }
+
+    // Initialize the chart once DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+        fetchAndPlotChainwork();
+    });
+</script>
     <div class="scroll-indicator" style="margin-top:3rem;">
         <span lang="en">Scroll</span>
         <span lang="fr">Défiler</span>
