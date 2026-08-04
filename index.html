@@ -553,12 +553,6 @@
         <span lang="fr">Un satoshi est adossé à l'<span class="highlight">Énergie</span>. C'est un moyen naturel de mesurer le coût thermodynamique objectif des Biens et Services en utilisant le <a href="https://doi.org/10.1016/j.ecolmodel.2003.12.002" class="highlight" target="_blank">Cadre de l'Émergie</a>. Bitcoin est le premier système monétaire informatique ancré à la source d'énergie ultime de toute vie sur Terre : le Soleil.</span>
     </p>
     <div class="cta-group fade-in-delay-3">
-        <!-- <a href="https://open.spotify.com/playlist/4BIYpE4exfv5JWwtZ6zKyH?si=cxWwITSRTSaUmjOx82mPEg" lang="fr" target="_blank" class="btn btn-primary" style="background-color:darkgreen">
-            <span lang="fr">💚 Musique 🌀☯🕊️🤝 </span>
-        </a>
-         <a href="https://open.spotify.com/playlist/4BIYpE4exfv5JWwtZ6zKyH?si=cxWwITSRTSaUmjOx82mPEg" lang="en" target="_blank" class="btn btn-primary" style="background-color:darkgreen">
-            <span lang="en">💚 Music 🌀☯🕊️🤝</span>
-        </a> -->
         <a href="https://www.thesunstandard.net/blog/nautile-nakamoto.html?lg=FR" lang="fr" target="_blank" class="btn btn-primary">
             <span lang="fr">Lire L'Article</span>
         </a>
@@ -579,7 +573,7 @@
 
     <div class="stats-row fade-in-delay-3" style="max-width:1000px;width:100%;">
         <div class="stat-item">
-            <span class="stat-number">\(\approx 6.49 \times 10^9\)</span>
+            <span class="stat-number" id="hero-sej-sat">\(\approx 6.49 \times 10^9\)</span>
             <span class="stat-label">sej / Satoshi</span>
         </div>
         <div class="stat-item">
@@ -604,8 +598,18 @@
             </span>
         </div>
     </div>
-    <!-- PLOTLY LIBRARY (To be placed once, ideally before the new section) -->
+
+<!-- PLOTLY LIBRARY -->
 <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <div class="scroll-indicator" style="margin-top:3rem;">
+        <span lang="en">Scroll</span>
+        <span lang="fr">Défiler</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+    </div>
+</section>
 
 <!-- NEW SECTION: LIVE THERMODYNAMIC VALUE -->
 <hr class="divider">
@@ -619,8 +623,8 @@
         <span lang="fr">Valeur Thermodynamique Objective<br>(nChainWork)</span>
     </h2>
     <p class="section-body">
-        <span lang="en">The <code>nChainWork</code> variable in the Nakamoto consensus represents the cumulative expected number of hashes required to produce the current chain. By applying a historical efficiency proxy within the Emergy Framework, we can observe the continuous, irreversible accumulation of thermodynamic work (Solar Emjoules, seJ) anchored into the ledger.</span>
-        <span lang="fr">La variable <code>nChainWork</code> du consensus de Nakamoto représente le nombre total attendu de hachages requis pour produire la chaîne actuelle. En appliquant un proxy d'efficacité historique via le cadre de l'Émergie, nous pouvons observer l'accumulation continue et irréversible de travail thermodynamique (Emjoules Solaires, seJ) ancré dans le registre.</span>
+        <span lang="en"><strong>One of the greatest problems in our society is how we measure value creation. We believe that the value of a good or service should be indexed to the real energy required to create and maintain it.</strong><br><br>The <code>nChainWork</code> variable in the Nakamoto consensus represents the cumulative expected number of hashes required to produce the current chain. By applying a historical efficiency proxy within the Emergy Framework, we can observe the continuous, irreversible accumulation of thermodynamic work (Solar Emjoules, seJ) anchored into the ledger.</span>
+        <span lang="fr"><strong>Un des grands problèmes de notre société est la façon dont nous mesurons la création de valeur. Nous estimons que la valeur d'un bien ou d'un service devrait être indexée à l'énergie réelle qu'il a fallu dépenser pour le créer et le maintenir.</strong><br><br>La variable <code>nChainWork</code> du consensus de Nakamoto représente le nombre total attendu de hachages requis pour produire la chaîne actuelle. En appliquant un proxy d'efficacité historique via le cadre de l'Émergie, nous pouvons observer l'accumulation continue et irréversible de travail thermodynamique (Emjoules Solaires, seJ) ancré dans le registre.</span>
     </p>
 
     <div class="stats-row" style="margin-bottom: 2.5rem; max-width: 1000px;">
@@ -644,72 +648,91 @@
     <div id="plotly-chainwork" style="width:100%; height: 500px; background: rgba(8, 8, 8, 0.75); border: 1px solid var(--border-glow); border-radius: 12px; padding: 1rem; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></div>
 </section>
 
-<!-- SCRIPT FOR LIVE DATA FETCHING & PLOTTING -->
 <script>
     async function fetchAndPlotChainwork() {
         try {
-            // 1. Fetch the latest block to get the exact current nChainWork
-            const blocksRes = await fetch('https://mempool.space/api/v1/blocks');
-            const blocks = await blocksRes.json();
-            const latestBlock = blocks[0]; // Most recent block
-            const currentChainworkHex = latestBlock.chainwork;
+            // 1. Point d'ancrage absolu : Bloc 840,000 (Halving 4 - 19 Avril 2024)
+            const ANCHOR_TIMESTAMP = 1713571767;
+            const ANCHOR_CHAINWORK = Number(BigInt("0x570b5993e506d862d2d091db")); 
+
+            // 2. Récupérer TOUT l'historique du Hashrate depuis Genesis
+            const hrRes = await fetch('https://mempool.space/api/v1/mining/hashrate/all');
+            const payload = await hrRes.json();
             
-            // Convert Hex to Number (precision loss at the very end of large integers is fine for macro charting)
-            const currentChainwork = Number(BigInt("0x" + currentChainworkHex));
+            // L'API renvoie un objet contenant la clé 'hashrates'
+            const hrData = payload.hashrates;
 
-            // 2. Fetch historical hashrate (last 3 years) to construct the curve's shape
-            const hrRes = await fetch('https://mempool.space/api/v1/mining/hashrate/3y');
-            const hrData = await hrRes.json();
+            // Sécurité : trier par ordre chronologique
+            hrData.sort((a, b) => a.timestamp - b.timestamp);
 
-            let cumulativeHashes = [];
             let dates = [];
-            let totalEstimated = 0;
+            let stepHashes = [];
 
-            // Reconstruct cumulative hashes over the time period
+            // 3. Calculer les hachages générés entre chaque point de donnée
             for (let i = 0; i < hrData.length; i++) {
-                const point = hrData[i];
-                dates.push(new Date(point.timestamp * 1000));
-
+                dates.push(new Date(hrData[i].timestamp * 1000));
                 if (i === 0) {
-                    cumulativeHashes.push(0);
+                    stepHashes.push(0);
                 } else {
-                    const dt = point.timestamp - hrData[i-1].timestamp;
-                    const hashes = point.avgHashrate * dt;
-                    totalEstimated += hashes;
-                    cumulativeHashes.push(totalEstimated);
+                    const dt = hrData[i].timestamp - hrData[i-1].timestamp;
+                    const hashes = hrData[i].avgHashrate * dt;
+                    stepHashes.push(hashes);
                 }
             }
 
-            // 3. Align the historical curve to end exactly on today's true nChainWork
-            const baseline = currentChainwork - totalEstimated;
-            let finalChainwork = [];
-            let finalSeJ = [];
-
-            // Macro Proxy: Assuming an illustrative historical avg efficiency of ~30 J/TH (3e-11 J/hash)
-            // Transformity Tr_e = 2e5 sej/J -> sej_per_hash = 3e-11 * 2e5 = 6e-6
-            const SEJ_PER_HASH = 6e-6; 
-
-            for (let i = 0; i < cumulativeHashes.length; i++) {
-                const val = baseline + cumulativeHashes[i];
-                finalChainwork.push(val);
-                finalSeJ.push(val * SEJ_PER_HASH);
+            // 4. Trouver l'index temporel le plus proche de notre bloc d'ancrage
+            let anchorIndex = 0;
+            let minDiff = Infinity;
+            for (let i = 0; i < hrData.length; i++) {
+                const diff = Math.abs(hrData[i].timestamp - ANCHOR_TIMESTAMP);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    anchorIndex = i;
+                }
             }
 
-            // 4. Update UI Stats with MathJax formatting for beautiful scientific notation
+            // 5. Construire la courbe cumulative de nChainWork par intégration mathématique
+            let finalChainwork = new Array(hrData.length).fill(0);
+            finalChainwork[anchorIndex] = ANCHOR_CHAINWORK;
+
+            // Intégration vers le passé (jusqu'à Genesis)
+            for (let i = anchorIndex - 1; i >= 0; i--) {
+                finalChainwork[i] = finalChainwork[i+1] - stepHashes[i+1];
+            }
+
+            // Intégration vers le présent
+            for (let i = anchorIndex + 1; i < hrData.length; i++) {
+                finalChainwork[i] = finalChainwork[i-1] + stepHashes[i];
+            }
+
+            const currentChainwork = finalChainwork[finalChainwork.length - 1];
+            
+            // Calcul du coût marginal en Émergie dynamique (seJ / sat)
+            const SEJ_PER_HASH = 6e-6; 
+            const latestHashrate = hrData[hrData.length - 1].avgHashrate;
+            // Satoshi émis par seconde (Post-Halving: 3.125 BTC = 312,500,000 sats toutes les 600s)
+            const satsPerSecond = 312500000 / 600; 
+            const dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
+
+            let finalSeJ = finalChainwork.map(cw => cw * SEJ_PER_HASH);
+
+            // 7. Formatage scientifique élégant avec MathJax
             const formatSci = (num) => "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
             
             document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
             document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
+            // Mise à jour dynamique du bloc statique originel
+            document.getElementById('hero-sej-sat').innerHTML = formatSci(dynamicSejPerSat);
 
-            // Re-trigger MathJax to render the newly injected equations
             if (window.MathJax) {
                 MathJax.typesetPromise([
                     document.getElementById('live-chainwork'), 
-                    document.getElementById('live-sej')
+                    document.getElementById('live-sej'),
+                    document.getElementById('hero-sej-sat')
                 ]);
             }
 
-            // 5. Render Plotly Chart
+            // 8. Rendu du graphique Plotly
             const isFrench = document.body.classList.contains('lang-fr');
             
             const trace = {
@@ -718,16 +741,16 @@
                 type: 'scatter',
                 mode: 'lines',
                 line: {
-                    color: '#ffcc00', // Matches --sun-yellow
+                    color: '#ffcc00', 
                     width: 3,
                     shape: 'spline'
                 },
                 fill: 'tozeroy',
-                fillcolor: 'rgba(255, 170, 0, 0.1)', // Matches --border-glow
+                fillcolor: 'rgba(255, 170, 0, 0.1)',
                 name: 'nChainWork',
                 hovertemplate: 
                     '<b>Date</b>: %{x|%Y-%m-%d}<br>' +
-                    '<b>nChainWork</b>: %{y:.2e} Hashes<br>' +
+                    '<b>nChainWork</b>: %{y:.2e} Hachages<br>' +
                     '<b>' + (isFrench ? 'Émergie (seJ)' : 'Emergy (seJ)') + '</b>: %{customdata:.2e} seJ<extra></extra>',
                 customdata: finalSeJ
             };
@@ -760,29 +783,19 @@
             };
 
             const config = { responsive: true, displayModeBar: false };
-
             Plotly.newPlot('plotly-chainwork', [trace], layout, config);
 
         } catch (error) {
             console.error("Error fetching or plotting chainwork data:", error);
-            document.getElementById('live-chainwork').innerHTML = "API Error";
-            document.getElementById('live-sej').innerHTML = "API Error";
+            document.getElementById('live-chainwork').innerHTML = "Erreur de synchronisation API";
+            document.getElementById('live-sej').innerHTML = "Erreur de synchronisation API";
         }
     }
 
-    // Initialize the chart once DOM is ready
     window.addEventListener('DOMContentLoaded', () => {
         fetchAndPlotChainwork();
     });
 </script>
-    <div class="scroll-indicator" style="margin-top:3rem;">
-        <span lang="en">Scroll</span>
-        <span lang="fr">Défiler</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-    </div>
-</section>
 
 <hr class="divider">
 
@@ -797,7 +810,6 @@
     </h2>
     <div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/GIIq-xShYTI?si=MrknOZLvT0Ipwr7_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Je22xKQekCk?si=Szkc-GF652sBDblh&amp;start=1033" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
     </div>
     <p class="section-body">
         <span lang="en">In his later work, Nobel laureate John F. Nash Jr. outlined the theoretical framework for "<a href="https://doi.org/10.2307/1061553" target="_blank">Ideal Money</a>" — a globally stable currency free from the Triffin dilemma and domestic political inflation. He was critique on <a href="https://web.math.princeton.edu/jfnj/texts_and_graphics/Main.Content/IDEAL_MONEY.../Lindau.2008/IyAIMoney.landscape.2008.812.rm.pdf" target="_blank">the Keynesian view</a> of money management. He argued that money should function like a physical unit of measure — immutable, objective, independent of political will. Our work builds upon John Nash's work, particularly in examining how the proof-of-work mechanism of the asymptotic currency Bitcoin is precisely this anchor: a thermodynamic proof linked to each satoshi by a measurable quantity of solar work embedded in the biosphere.</span>
@@ -1133,19 +1145,6 @@
             </p>
             <div><img src="BitcoinMiningResearch.jpg" alt="A Complex World" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);"/></div>
         </div>
-        <!-- <div class="timeline-item">
-            <p class="timeline-date">Scientific Paper - Complex System / Biology - April 4th, 2026 — Satoshi Nakamoto Cybernetics</p>
-            <h4 class="timeline-title">
-                <a href="https://doi.org/10.5281/zenodo.19411598" target="_blank">
-                    <span lang="en">Bitcoin as a Cybernetic Super-Organism</span>
-                    <span lang="fr">Bitcoin comme un Super-Organisme Cybernétique</span>
-                </a>
-            </h4>
-            <p class="timeline-text">
-                <span lang="en">This paper proposes a paradigm shift, analyzing the Nakamoto Consensus through the lens of systems biology and cybernetics. By mapping the network's architecture to biological functions—where full nodes act as an immune system, ASIC miners as mitochondria, and the Lightning Network as a peripheral nervous system—we demonstrate that Bitcoin operates as an artificially maintained, planetary-scale super-organism. Furthermore, we map the protocol's core survival mechanisms: homeostasis, achieved via the difficulty adjustment algorithm, and cellular autophagy, driven by the scheduled "Halving".</span>
-                <span lang="fr">Cet article propose un changement de paradigme en analysant le Consensus de Nakamoto à travers le prisme de la biologie des systèmes et de la cybernétique. En établissant un parallèle entre l'architecture du réseau et les fonctions biologiques – où les nœuds complets jouent le rôle d'un système immunitaire, les mineurs ASIC celui de mitochondries et le Lightning Network celui d'un système nerveux périphérique – nous démontrons que Bitcoin fonctionne comme un super-organisme à l'échelle planétaire, maintenu artificiellement. De plus, nous cartographions les mécanismes de survie fondamentaux du protocole : l'homéostasie, assurée par l'algorithme d'ajustement de la difficulté, et l'autophagie cellulaire, induite par la réduction de moitié programmée de l'offre tout les 4 ans.</span>
-            </p>
-        </div> -->
         <div class="timeline-item">
             <p class="timeline-date">Scientific Paper - Statistical Physics - April 13th, 2026 — PRE Manuscript</p>
             <h4 class="timeline-title">
@@ -1217,7 +1216,7 @@
             <h4 class="timeline-title">
                 <a href="blog/matrice-inversee.html" target="_blank">
                     <span lang="en">The Inversed Matrix Model : What Mining Intelligence/Bitcoin could become one day</span>
-                    <span lang="fr">Le modèle de la matrice inverse : ce que pourrait devenir, un jour, le minage de l'information.</span>
+                    <span lang="fr">Le modèle de la matrice inverse : ce que pourrait devenir, un jour, le minage de l'information.</span>
                 </a>
             </h4>
             <div>
