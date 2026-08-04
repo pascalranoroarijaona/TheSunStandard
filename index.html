@@ -645,8 +645,15 @@
         <div class="stat-item">
             <span class="stat-number" id="live-sej">...</span>
             <span class="stat-label">
-                <span lang="en">Estimated Embedded Work (seJ)</span>
-                <span lang="fr">Travail Embarqué Estimé (seJ)</span>
+                <span lang="en">Total Embedded Work (seJ)</span>
+                <span lang="fr">Travail Embarqué Total (seJ)</span>
+            </span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="live-dynamic-sej">...</span>
+            <span class="stat-label">
+                <span lang="en">Current Marginal Cost (seJ / sat)</span>
+                <span lang="fr">Coût Marginal Actuel (seJ / sat)</span>
             </span>
         </div>
     </div>
@@ -658,11 +665,7 @@
 <script>
     async function fetchAndPlotChainwork() {
         try {
-            // 1. Point d'ancrage absolu : Bloc 840,000 (Halving 4 - 19 Avril 2024)
-            const ANCHOR_TIMESTAMP = 1713571767;
-            const ANCHOR_CHAINWORK = Number(BigInt("0x570b5993e506d862d2d091db")); 
-
-            // 2. Récupérer TOUT l'historique du Hashrate depuis Genesis
+            // 1. Récupérer TOUT l'historique du Hashrate depuis Genesis
             const hrRes = await fetch('https://mempool.space/api/v1/mining/hashrate/all');
             const payload = await hrRes.json();
             
@@ -673,78 +676,67 @@
             hrData.sort((a, b) => a.timestamp - b.timestamp);
 
             let dates = [];
-            let stepHashes = [];
+            let cumulativeHashes = [];
+            let runningTotal = 0; // Au bloc Genesis, nChainWork = 0
 
-            // 3. Calculer les hachages générés entre chaque point de donnée
+            // 2. Intégration mathématique vers le futur
             for (let i = 0; i < hrData.length; i++) {
                 dates.push(new Date(hrData[i].timestamp * 1000));
-                if (i === 0) {
-                    stepHashes.push(0);
-                } else {
+                
+                if (i > 0) {
                     const dt = hrData[i].timestamp - hrData[i-1].timestamp;
-                    const hashes = hrData[i].avgHashrate * dt;
-                    stepHashes.push(hashes);
+                    const hashesInPeriod = hrData[i].avgHashrate * dt;
+                    runningTotal += hashesInPeriod;
                 }
+                cumulativeHashes.push(runningTotal);
             }
 
-            // 4. Trouver l'index temporel le plus proche de notre bloc d'ancrage
-            let anchorIndex = 0;
-            let minDiff = Infinity;
-            for (let i = 0; i < hrData.length; i++) {
-                const diff = Math.abs(hrData[i].timestamp - ANCHOR_TIMESTAMP);
-                if (diff < minDiff) {
-                    minDiff = diff;
-                    anchorIndex = i;
-                }
-            }
-
-            // 5. Construire la courbe cumulative de nChainWork par intégration mathématique
-            let finalChainwork = new Array(hrData.length).fill(0);
-            finalChainwork[anchorIndex] = ANCHOR_CHAINWORK;
-
-            // Intégration vers le passé (jusqu'à Genesis)
-            for (let i = anchorIndex - 1; i >= 0; i--) {
-                finalChainwork[i] = finalChainwork[i+1] - stepHashes[i+1];
-            }
-
-            // Intégration vers le présent
-            for (let i = anchorIndex + 1; i < hrData.length; i++) {
-                finalChainwork[i] = finalChainwork[i-1] + stepHashes[i];
-            }
-
-            const currentChainwork = finalChainwork[finalChainwork.length - 1];
+            const currentChainwork = cumulativeHashes[cumulativeHashes.length - 1];
             
-            // Calcul du coût marginal en Émergie dynamique (seJ / sat)
+            // 3. Constantes Thermodynamiques (Proxy Macro)
             const SEJ_PER_HASH = 6e-6; 
+            
+            // Calcul de la courbe seJ
+            let finalSeJ = cumulativeHashes.map(cw => cw * SEJ_PER_HASH);
+
+            // 4. Calcul du coût marginal ACTUEL (Émergie / Satoshi)
+            // On prend le dernier hashrate moyen mesuré
             const latestHashrate = hrData[hrData.length - 1].avgHashrate;
             // Satoshi émis par seconde (Post-Halving: 3.125 BTC = 312,500,000 sats toutes les 600s)
             const satsPerSecond = 312500000 / 600; 
             const dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
 
-            let finalSeJ = finalChainwork.map(cw => cw * SEJ_PER_HASH);
-
-            // 7. Formatage scientifique élégant avec MathJax
-            const formatSci = (num) => "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
+            // 5. Formatage scientifique élégant avec MathJax
+            const formatSci = (num) => {
+                if (num === 0) return "\\(0\\)";
+                return "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
+            };
             
+            // Mise à jour de l'UI
             document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
             document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
-            // Mise à jour dynamique du bloc statique originel
-            document.getElementById('hero-sej-sat').innerHTML = formatSci(dynamicSejPerSat);
+            document.getElementById('live-dynamic-sej').innerHTML = formatSci(dynamicSejPerSat);
 
+            // Met aussi à jour le bloc statique "Hero" tout en haut de la page s'il existe
+            const heroBlock = document.getElementById('hero-sej-sat');
+            if(heroBlock) heroBlock.innerHTML = formatSci(dynamicSejPerSat);
+
+            // Forcer MathJax à re-calculer les formules
             if (window.MathJax) {
                 MathJax.typesetPromise([
                     document.getElementById('live-chainwork'), 
                     document.getElementById('live-sej'),
+                    document.getElementById('live-dynamic-sej'),
                     document.getElementById('hero-sej-sat')
                 ]);
             }
 
-            // 8. Rendu du graphique Plotly
+            // 6. Rendu du graphique Plotly
             const isFrench = document.body.classList.contains('lang-fr');
             
             const trace = {
                 x: dates,
-                y: finalChainwork,
+                y: cumulativeHashes,
                 type: 'scatter',
                 mode: 'lines',
                 line: {
@@ -758,7 +750,7 @@
                 hovertemplate: 
                     '<b>Date</b>: %{x|%Y-%m-%d}<br>' +
                     '<b>nChainWork</b>: %{y:.2e} Hachages<br>' +
-                    '<b>' + (isFrench ? 'Émergie (seJ)' : 'Emergy (seJ)') + '</b>: %{customdata:.2e} seJ<extra></extra>',
+                    '<b>' + (isFrench ? 'Émergie Cumulée' : 'Cumulative Emergy') + '</b>: %{customdata:.2e} seJ<extra></extra>',
                 customdata: finalSeJ
             };
 
@@ -794,8 +786,9 @@
 
         } catch (error) {
             console.error("Error fetching or plotting chainwork data:", error);
-            document.getElementById('live-chainwork').innerHTML = "Erreur de synchronisation API";
-            document.getElementById('live-sej').innerHTML = "Erreur de synchronisation API";
+            document.getElementById('live-chainwork').innerHTML = "API Error";
+            document.getElementById('live-sej').innerHTML = "API Error";
+            document.getElementById('live-dynamic-sej').innerHTML = "API Error";
         }
     }
 
