@@ -755,7 +755,26 @@
             </span>
         </div>
     </div>
+    <!-- TRANSPARENT CODE BLOCK -->
+    <div style="background: #060608; border: 1px solid var(--border-glow); border-radius: 12px; padding: 1.5rem 2rem; overflow-x: auto; margin-bottom: 3rem; box-shadow: inset 0 0 15px rgba(0,0,0,0.8);">
+        <div style="font-family: var(--font-ui); color: var(--sun-orange); font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+            <span lang="en">Transparent Ledger Logic (Live Execution)</span>
+            <span lang="fr">Logique Transparente du Registre (Exécution en direct)</span>
+        </div>
+        <pre style="color: #a1a1aa; font-family: monospace; font-size: 0.9rem; line-height: 1.6;">
+<span style="color: #ffaa00;">// Constants (Emergy Framework & Physics)</span>
+<span style="color: #c864ff;">const</span> SEJ_PER_HASH = <span style="color: #44ee77;">6e-6</span>; 
+<span style="color: #c864ff;">const</span> JOULES_PER_HASH = <span style="color: #44ee77;">3e-11</span>; <span style="color: #ffaa00;">// ~30 J/TH Conservative proxy</span>
 
+<span style="color: #ffaa00;">// 1. Digital Energy (Joules per Block & Byte)</span>
+<span style="color: #c864ff;">const</span> energyPerBlockJoules = (latestHashrate * JOULES_PER_HASH) * <span style="color: #44ee77;">600</span>;
+<span style="color: #c864ff;">const</span> energyPerByteJoules = energyPerBlockJoules / currentBlockSizeBytes;
+
+<span style="color: #ffaa00;">// 2. Thermodynamic Cost of a Satoshi (seJ)</span>
+<span style="color: #c864ff;">const</span> satsPerSecond = <span style="color: #44ee77;">312500000</span> / <span style="color: #44ee77;">600</span>; <span style="color: #ffaa00;">// Post-Halving 4 (3.125 BTC)</span>
+<span style="color: #c864ff;">const</span> dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
+        </pre>
+    </div>
     <!-- PLOTLY CHART -->
     <div id="plotly-chainwork" style="width:100%; height: 550px; background: rgba(10, 10, 12, 0.7); border: 1px solid var(--border-glow); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 40px rgba(0,0,0,0.6);"></div>
 </section>
@@ -769,12 +788,12 @@
             const payload = await hrRes.json();
             const hrData = payload.hashrates;
             
-            // Sécurité : trier par ordre chronologique
             hrData.sort((a, b) => a.timestamp - b.timestamp);
 
             let dates = [];
             let cumulativeHashes = [];
-            let runningTotal = 0; // Au bloc Genesis, nChainWork = 0
+            // On démarre à 1 pour éviter l'erreur de Log(0) sur le graphique Plotly
+            let runningTotal = 1; 
 
             // --- 2. FORWARD INTEGRATION FROM GENESIS ---
             for (let i = 0; i < hrData.length; i++) {
@@ -794,38 +813,31 @@
             
             const blockRes = await fetch(`https://mempool.space/api/block/${tipHash}`);
             const blockData = await blockRes.json();
-            const currentBlockSizeBytes = blockData.size; // Taille exacte en octets
+            const currentBlockSizeBytes = blockData.size; 
 
             // --- 4. THERMODYNAMIC CALCULATIONS ---
-            const SEJ_PER_HASH = 6e-6; // Macro proxy d'Émergie
-            const JOULES_PER_HASH = 3e-11; // Proxy physique conservateur (~30 J/TH)
+            const SEJ_PER_HASH = 6e-6; 
+            const JOULES_PER_HASH = 3e-11; 
             
             let finalSeJ = cumulativeHashes.map(cw => cw * SEJ_PER_HASH);
 
-            const latestHashrate = hrData[hrData.length - 1].avgHashrate; // Hachages par seconde
-            const satsPerSecond = 312500000 / 600; // Post-Halving 4 (3.125 BTC / 600s)
+            const latestHashrate = hrData[hrData.length - 1].avgHashrate; 
+            const satsPerSecond = 312500000 / 600; 
             
-            // Émergie par Satoshi
             const dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
-            
-            // Énergie (Joules) par Bloc
             const energyPerBlockJoules = (latestHashrate * JOULES_PER_HASH) * 600;
-            
-            // Énergie Numérique (Joules) par Octet
             const energyPerByteJoules = energyPerBlockJoules / currentBlockSizeBytes;
 
             // --- 5. UI UPDATES WITH MATHJAX ---
             const formatSci = (num) => {
-                if (num === 0) return "\\(0\\)";
+                if (num <= 1) return "\\(0\\)";
                 return "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
             };
             
-            // Mise à jour des HUD Data
             document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
             document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
             document.getElementById('live-dynamic-sej').innerHTML = formatSci(dynamicSejPerSat);
 
-            // Mise à jour des HUD Hero
             const heroSej = document.getElementById('hero-sej-sat');
             const heroEnergyBlock = document.getElementById('hero-energy-block');
             const heroEnergyByte = document.getElementById('hero-energy-byte');
@@ -834,19 +846,16 @@
             if(heroEnergyBlock) heroEnergyBlock.innerHTML = formatSci(energyPerBlockJoules);
             if(heroEnergyByte) heroEnergyByte.innerHTML = formatSci(energyPerByteJoules);
 
-            // Forcer MathJax à re-calculer les formules
             if (window.MathJax) {
                 MathJax.typesetPromise([
                     document.getElementById('live-chainwork'), 
                     document.getElementById('live-sej'),
                     document.getElementById('live-dynamic-sej'),
-                    heroSej,
-                    heroEnergyBlock,
-                    heroEnergyByte
+                    heroSej, heroEnergyBlock, heroEnergyByte
                 ]);
             }
 
-            // --- 6. RENDER PLOTLY ---
+            // --- 6. RENDER PLOTLY (SEMI-LOG SCALE) ---
             const isFrench = document.body.classList.contains('lang-fr');
             
             const trace = {
@@ -876,10 +885,10 @@
                 },
                 yaxis: {
                     title: isFrench ? 'Hachages Cumulés (nChainWork)' : 'Cumulative Hashes (nChainWork)',
+                    type: 'log', // PASSAGE EN ECHELLE LOGARITHMIQUE
                     showgrid: true, gridcolor: 'rgba(255, 170, 0, 0.08)', linecolor: 'rgba(255, 170, 0, 0.3)',
                     tickfont: { color: '#9ba3af', family: "'Space Grotesk', sans-serif" },
-                    exponentformat: 'E',
-                    rangemode: 'tozero'
+                    exponentformat: 'E'
                 },
                 hovermode: 'x unified',
                 hoverlabel: {
