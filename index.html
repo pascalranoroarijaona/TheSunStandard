@@ -534,8 +534,8 @@
 
 <section id="hero">
     <div class="badge fade-in">
-        <span lang="en">Biophysical Monetary Theory · Pascal ranoroarijaona · 2026</span>
-        <span lang="fr">Théorie Monétaire Biophysique · Pascal ranoroarijaona · 2026</span>
+        <span lang="en">Biophysical Monetary Theory · Pascal Ranoroarijaona · 2026</span>
+        <span lang="fr">Théorie Monétaire Biophysique · Pascal Ranoroarijaona · 2026</span>
     </div>
     
     <h1 class="title fade-in-delay-1">
@@ -549,22 +549,24 @@
         <span lang="en">What is a satoshi measuring exactly?</span>
         <span lang="fr">Que mesure exactement un satoshi ?</span>
     </h2>
+    
     <p class="description fade-in-delay-3">
-        <span lang="en">A satoshi is backed by <span class="highlight">Energy</span>. It is a natural way to measure the objective thermodynamic cost of Goods and Services using the <a href="https://doi.org/10.1016/j.ecolmodel.2003.12.002" class="highlight" target="_blank">Emergy Framework</a>. Bitcoin is the first electronic monetary system anchored to the ultimate energy source of all life on Earth: the Sun.</span>
-        <span lang="fr">Un satoshi est adossé à l'<span class="highlight">Énergie</span>. C'est un moyen naturel de mesurer le coût thermodynamique objectif des Biens et Services en utilisant le <a href="https://doi.org/10.1016/j.ecolmodel.2003.12.002" class="highlight" target="_blank">Cadre de l'Émergie</a>. Bitcoin est le premier système monétaire informatique ancré à la source d'énergie ultime de toute vie sur Terre : le Soleil.</span>
+        <span lang="en">A Satoshi is effectively crystallized sunlight. It represents a discrete, irreversible unit of thermodynamic work. It provides a natural way to measure the objective biophysical cost of goods and services using the <a href="https://doi.org/10.1016/j.ecolmodel.2003.12.002" class="highlight" target="_blank">Emergy Framework</a>. Bitcoin is the first electronic monetary system anchored to the ultimate energy source of all life on Earth: the Sun.</span>
+        <span lang="fr">Un Satoshi est, fondamentalement, de la lumière du soleil cristallisée. Il représente une unité discrète et irréversible de travail thermodynamique. Il offre un moyen naturel de mesurer le coût biophysique objectif des biens et services via le <a href="https://doi.org/10.1016/j.ecolmodel.2003.12.002" class="highlight" target="_blank">Cadre de l'Émergie</a>. Bitcoin est le premier système monétaire électronique ancré à la source d'énergie ultime de toute vie sur Terre : le Soleil.</span>
     </p>
+    
     <div class="cta-group fade-in-delay-3">
         <a href="https://www.thesunstandard.net/blog/nautile-nakamoto.html?lg=FR" lang="fr" target="_blank" class="btn btn-primary">
-            <span lang="fr">Lire L'Article</span>
+            <span lang="fr">Entrer dans le Paradigme</span>
         </a>
          <a href="https://www.thesunstandard.net/blog/nautile-nakamoto.html?lg=EN" lang="en" target="_blank" class="btn btn-primary">
-            <span lang="en">Read Article</span>
+            <span lang="en">Enter the Paradigm</span>
         </a>
-        <a href="https://www.thesunstandard.net/sun_standard_fr.pdf" lang="fr" target="_blank" class="btn btn-primary">
-            <span lang="fr">PDF</span>
+        <a href="https://www.thesunstandard.net/sun_standard_fr.pdf" lang="fr" target="_blank" class="btn btn-outline">
+            <span lang="fr">Livre Blanc PDF</span>
         </a>
-         <a href="https://www.thesunstandard.net/sun_standard.pdf" lang="en" target="_blank" class="btn btn-primary">
-            <span lang="en">PDF</span>
+         <a href="https://www.thesunstandard.net/sun_standard.pdf" lang="en" target="_blank" class="btn btn-outline">
+            <span lang="en">Whitepaper PDF</span>
         </a>
         <a href="#methodology" class="btn btn-outline">
             <span lang="en">Explore Methodology</span>
@@ -572,16 +574,27 @@
         </a>
     </div>
 
-    <div class="stats-row fade-in-delay-3" style="max-width:1000px;width:100%;">
+    <!-- MAIN HUD DASHBOARD -->
+    <div class="stats-row fade-in-delay-3" style="max-width:1200px;width:100%;">
         <div class="stat-item">
-            <span class="stat-number" id="hero-sej-sat">\(\approx 6.49 \times 10^9\)</span>
-            <span class="stat-label">sej / Satoshi</span>
+            <span class="stat-number" id="hero-sej-sat">Sync...</span>
+            <span class="stat-label">
+                <span lang="en">Live seJ / Satoshi</span>
+                <span lang="fr">seJ / Satoshi en direct</span>
+            </span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">\(\approx 10^{13} \text{ J}\)</span>
+            <span class="stat-number" id="hero-energy-block">Sync...</span>
             <span class="stat-label">
-                <span lang="en">Energy per Block</span>
-                <span lang="fr">Énergie par Bloc</span>
+                <span lang="en">Energy per Block (J)</span>
+                <span lang="fr">Énergie par Bloc (J)</span>
+            </span>
+        </div>
+        <div class="stat-item" style="background: rgba(68, 238, 119, 0.05); border-bottom: 2px solid rgba(68, 238, 119, 0.3);">
+            <span class="stat-number" id="hero-energy-byte" style="color: #44ee77; text-shadow: 0 0 20px rgba(68, 238, 119, 0.4);">Sync...</span>
+            <span class="stat-label">
+                <span lang="en">Digital Energy (J / Byte)</span>
+                <span lang="fr">Énergie Numérique (J / Octet)</span>
             </span>
         </div>
         <div class="stat-item">
@@ -594,8 +607,8 @@
         <div class="stat-item">
             <span class="stat-number">\(h \to h_N\)</span>
             <span class="stat-label">
-                <span lang="en">Planck Constant \(\to\) Nakamoto Action</span>
-                <span lang="fr">Constante de Planck \(\to\) Action de Nakamoto</span>
+                <span lang="en">Planck Const. \(\to\) Nakamoto Action</span>
+                <span lang="fr">Constante Planck \(\to\) Action Nakamoto</span>
             </span>
         </div>
     </div>
@@ -747,16 +760,15 @@
     <div id="plotly-chainwork" style="width:100%; height: 550px; background: rgba(10, 10, 12, 0.7); border: 1px solid var(--border-glow); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 40px rgba(0,0,0,0.6);"></div>
 </section>
 
+<!-- SCIENTIFIC DATA SCRIPT -->
 <script>
     async function fetchAndPlotChainwork() {
         try {
-            // 1. Récupérer TOUT l'historique du Hashrate depuis Genesis
+            // --- 1. GET HISTORICAL HASHRATE (GENESIS TO NOW) ---
             const hrRes = await fetch('https://mempool.space/api/v1/mining/hashrate/all');
             const payload = await hrRes.json();
-            
-            // L'API renvoie un objet contenant la clé 'hashrates'
             const hrData = payload.hashrates;
-
+            
             // Sécurité : trier par ordre chronologique
             hrData.sort((a, b) => a.timestamp - b.timestamp);
 
@@ -764,47 +776,63 @@
             let cumulativeHashes = [];
             let runningTotal = 0; // Au bloc Genesis, nChainWork = 0
 
-            // 2. Intégration mathématique vers le futur
+            // --- 2. FORWARD INTEGRATION FROM GENESIS ---
             for (let i = 0; i < hrData.length; i++) {
                 dates.push(new Date(hrData[i].timestamp * 1000));
-                
                 if (i > 0) {
                     const dt = hrData[i].timestamp - hrData[i-1].timestamp;
-                    const hashesInPeriod = hrData[i].avgHashrate * dt;
-                    runningTotal += hashesInPeriod;
+                    runningTotal += hrData[i].avgHashrate * dt;
                 }
                 cumulativeHashes.push(runningTotal);
             }
 
             const currentChainwork = cumulativeHashes[cumulativeHashes.length - 1];
+
+            // --- 3. GET LATEST BLOCK SIZE (For Digital Energy / Byte) ---
+            const tipHashRes = await fetch('https://mempool.space/api/blocks/tip/hash');
+            const tipHash = await tipHashRes.text();
             
-            // 3. Constantes Thermodynamiques (Proxy Macro)
-            const SEJ_PER_HASH = 6e-6; 
+            const blockRes = await fetch(`https://mempool.space/api/block/${tipHash}`);
+            const blockData = await blockRes.json();
+            const currentBlockSizeBytes = blockData.size; // Taille exacte en octets
+
+            // --- 4. THERMODYNAMIC CALCULATIONS ---
+            const SEJ_PER_HASH = 6e-6; // Macro proxy d'Émergie
+            const JOULES_PER_HASH = 3e-11; // Proxy physique conservateur (~30 J/TH)
             
-            // Calcul de la courbe seJ
             let finalSeJ = cumulativeHashes.map(cw => cw * SEJ_PER_HASH);
 
-            // 4. Calcul du coût marginal ACTUEL (Émergie / Satoshi)
-            // On prend le dernier hashrate moyen mesuré
-            const latestHashrate = hrData[hrData.length - 1].avgHashrate;
-            // Satoshi émis par seconde (Post-Halving: 3.125 BTC = 312,500,000 sats toutes les 600s)
-            const satsPerSecond = 312500000 / 600; 
+            const latestHashrate = hrData[hrData.length - 1].avgHashrate; // Hachages par seconde
+            const satsPerSecond = 312500000 / 600; // Post-Halving 4 (3.125 BTC / 600s)
+            
+            // Émergie par Satoshi
             const dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
+            
+            // Énergie (Joules) par Bloc
+            const energyPerBlockJoules = (latestHashrate * JOULES_PER_HASH) * 600;
+            
+            // Énergie Numérique (Joules) par Octet
+            const energyPerByteJoules = energyPerBlockJoules / currentBlockSizeBytes;
 
-            // 5. Formatage scientifique élégant avec MathJax
+            // --- 5. UI UPDATES WITH MATHJAX ---
             const formatSci = (num) => {
                 if (num === 0) return "\\(0\\)";
                 return "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
             };
             
-            // Mise à jour de l'UI
+            // Mise à jour des HUD Data
             document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
             document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
             document.getElementById('live-dynamic-sej').innerHTML = formatSci(dynamicSejPerSat);
 
-            // Met aussi à jour le bloc statique "Hero" tout en haut de la page s'il existe
-            const heroBlock = document.getElementById('hero-sej-sat');
-            if(heroBlock) heroBlock.innerHTML = formatSci(dynamicSejPerSat);
+            // Mise à jour des HUD Hero
+            const heroSej = document.getElementById('hero-sej-sat');
+            const heroEnergyBlock = document.getElementById('hero-energy-block');
+            const heroEnergyByte = document.getElementById('hero-energy-byte');
+            
+            if(heroSej) heroSej.innerHTML = formatSci(dynamicSejPerSat);
+            if(heroEnergyBlock) heroEnergyBlock.innerHTML = formatSci(energyPerBlockJoules);
+            if(heroEnergyByte) heroEnergyByte.innerHTML = formatSci(energyPerByteJoules);
 
             // Forcer MathJax à re-calculer les formules
             if (window.MathJax) {
@@ -812,11 +840,13 @@
                     document.getElementById('live-chainwork'), 
                     document.getElementById('live-sej'),
                     document.getElementById('live-dynamic-sej'),
-                    document.getElementById('hero-sej-sat')
+                    heroSej,
+                    heroEnergyBlock,
+                    heroEnergyByte
                 ]);
             }
 
-            // 6. Rendu du graphique Plotly
+            // --- 6. RENDER PLOTLY ---
             const isFrench = document.body.classList.contains('lang-fr');
             
             const trace = {
@@ -824,11 +854,7 @@
                 y: cumulativeHashes,
                 type: 'scatter',
                 mode: 'lines',
-                line: {
-                    color: '#ffcc00', 
-                    width: 3,
-                    shape: 'spline'
-                },
+                line: { color: '#ffcc00', width: 3, shape: 'spline' },
                 fill: 'tozeroy',
                 fillcolor: 'rgba(255, 170, 0, 0.1)',
                 name: 'nChainWork',
@@ -843,44 +869,39 @@
                 paper_bgcolor: 'transparent',
                 plot_bgcolor: 'transparent',
                 margin: { t: 30, r: 20, l: 60, b: 40 },
-                font: { color: '#888888', family: "'Helvetica Neue', Helvetica, Arial, sans-serif" },
+                font: { color: '#888888', family: "'Space Grotesk', sans-serif" },
                 xaxis: {
-                    showgrid: true,
-                    gridcolor: 'rgba(255, 170, 0, 0.1)',
-                    linecolor: 'rgba(255, 170, 0, 0.3)',
-                    tickfont: { color: '#888' }
+                    showgrid: true, gridcolor: 'rgba(255, 170, 0, 0.08)', linecolor: 'rgba(255, 170, 0, 0.3)',
+                    tickfont: { color: '#9ba3af' }
                 },
                 yaxis: {
                     title: isFrench ? 'Hachages Cumulés (nChainWork)' : 'Cumulative Hashes (nChainWork)',
-                    showgrid: true,
-                    gridcolor: 'rgba(255, 170, 0, 0.1)',
-                    linecolor: 'rgba(255, 170, 0, 0.3)',
-                    tickfont: { color: '#888' },
+                    showgrid: true, gridcolor: 'rgba(255, 170, 0, 0.08)', linecolor: 'rgba(255, 170, 0, 0.3)',
+                    tickfont: { color: '#9ba3af', family: "'Space Grotesk', sans-serif" },
                     exponentformat: 'E',
                     rangemode: 'tozero'
                 },
                 hovermode: 'x unified',
                 hoverlabel: {
-                    bgcolor: 'rgba(5, 5, 5, 0.9)',
-                    font: { color: '#ffcc00' },
+                    bgcolor: 'rgba(10, 10, 12, 0.95)',
+                    font: { color: '#ffcc00', family: "'Space Grotesk', sans-serif" },
                     bordercolor: 'rgba(255, 170, 0, 0.5)'
                 }
             };
 
-            const config = { responsive: true, displayModeBar: false };
-            Plotly.newPlot('plotly-chainwork', [trace], layout, config);
+            Plotly.newPlot('plotly-chainwork', [trace], layout, { responsive: true, displayModeBar: false });
 
         } catch (error) {
-            console.error("Error fetching or plotting chainwork data:", error);
-            document.getElementById('live-chainwork').innerHTML = "API Error";
-            document.getElementById('live-sej').innerHTML = "API Error";
-            document.getElementById('live-dynamic-sej').innerHTML = "API Error";
+            console.error("API Error:", error);
+            const errStr = "API Error";
+            ['live-chainwork', 'live-sej', 'live-dynamic-sej', 'hero-sej-sat', 'hero-energy-block', 'hero-energy-byte'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = errStr;
+            });
         }
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        fetchAndPlotChainwork();
-    });
+    window.addEventListener('DOMContentLoaded', fetchAndPlotChainwork);
 </script>
 
 <hr class="divider">
