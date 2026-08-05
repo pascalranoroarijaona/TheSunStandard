@@ -1925,337 +1925,370 @@
         animateGalaxies();
       })();
       </script>
-    <!-- PHILOSOPHICAL EPILOGUE -->
-    <div class="epilogue-container">
-        <h2 class="epilogue-title" lang="fr">Épilogue philosophique</h2>
-        <h2 class="epilogue-title" lang="en">Philosophical Epilogue</h2>
+   <!-- PHILOSOPHICAL EPILOGUE -->
+   <div class="epilogue-container">
+    <h2 class="epilogue-title" lang="fr">Épilogue philosophique</h2>
+    <h2 class="epilogue-title" lang="en">Philosophical Epilogue</h2>
 
-        <p class="model-note" lang="fr">Cette section quitte volontairement le registre scientifique strict pour proposer une interprétation philosophique et symbolique du protocole Nakamoto.</p>
-        <p class="model-note" lang="en">This section intentionally leaves the strict scientific register and offers a philosophical and symbolic interpretation of the Nakamoto protocol.</p>
-        <!-- DEBUT ANIMATION 3D -->
-        <div id="wave-collapse-container-v2" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
-            <div lang="en" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-                MACROSCOPIC COLLAPSE & THE GRAVITY OF TIME
-            </div>
-            <div lang="fr" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-                EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
-            </div>
+    <p class="model-note" lang="fr">Cette section quitte volontairement le registre scientifique strict pour proposer une interprétation philosophique et symbolique du protocole Nakamoto.</p>
+    <p class="model-note" lang="en">This section intentionally leaves the strict scientific register and offers a philosophical and symbolic interpretation of the Nakamoto protocol.</p>
+    
+    <!-- INTRODUCTION FR -->
+    <div lang="fr" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
+        <p style="margin-bottom: 1.5rem;"><strong>Au-delà des artifices, les devises de l'univers sont le souffle de l'énergie et la clarté de l'information, échangés d'âme à âme.</strong> Au fond, l'univers est en nous et l'a toujours été : nous sommes cette poussière d'étoiles qui s'éveille et nous formons, ensemble, la grande constellation humaine. Nous ne faisons que nous souvenir d'une loi oubliée. Peut-être qu'un jour, notre résonance sera si pure que nous n'aurons plus besoin de boucliers de preuve pour nous reconnaître et nous faire confiance.</p>
+        <p style="margin-bottom: 1.5rem;">La véritable grandeur d'une civilisation ne réside pas seulement dans l'éclat de ses possessions, mais dans sa capacité à bâtir des cathédrales de temps et de lumière, des institutions de confiance que le temps, la corruption et la violence peinent à éroder.</p>
+    </div>
+
+    <!-- INTRODUCTION EN -->
+    <div lang="en" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
+        <p style="margin-bottom: 1.5rem;"><strong>Beyond human constructs, the true currencies of the universe are the breath of energy and the clarity of information, exchanged soul to soul.</strong> Deep down, the universe is within us and always has been: we are this stardust awakening, weaving together the great human constellation. We are simply remembering a forgotten law. Perhaps one day, our resonance will be so pure that we will no longer need shields of proof to recognize and trust one another.</p>
+        <p style="margin-bottom: 1.5rem;">The true greatness of a civilization lies not merely in the splendor of its possessions, but in its capacity to build cathedrals of time and light, institutions of trust that time, corruption, and violence struggle to erode.</p>
+    </div>
+
+    <!-- SHARED 3D ANIMATION -->
+    <div id="wave-collapse-container-v2" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
+        <div lang="en" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
+            MACROSCOPIC COLLAPSE & THE GRAVITY OF TIME
         </div>
+        <div lang="fr" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
+            EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
+        </div>
+    </div>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("wave-collapse-container-v2");
+        if (!container || typeof THREE === "undefined") return;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x02050f); 
+
+        const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(-25, 28, 40);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        if (typeof THREE.OrbitControls !== "undefined") {
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = true;
+            controls.maxDistance = 60;
+            controls.target.set(-2.4, 1.7, -8.5); 
+        } else {
+            camera.lookAt(-2.4, 1.7, -8.5);
+        }
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
+        scene.add(ambientLight);
         
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById("wave-collapse-container-v2");
-            if (!container || typeof THREE === "undefined") return;
+        const singularityLight = new THREE.PointLight(0x4499ff, 5, 60);
+        singularityLight.position.set(0, -25, 0);
+        scene.add(singularityLight);
 
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x02050f); 
+        const flashLight = new THREE.PointLight(0xffffff, 0, 40);
+        scene.add(flashLight);
 
-            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(-25, 28, 40);
+        const wormholeGroup = new THREE.Group();
+        scene.add(wormholeGroup);
+        
+        const segments = 40;
+        const radialSegments = 32;
+        const funnelGeo = new THREE.CylinderGeometry(15, 1.5, 40, radialSegments, segments, true, Math.PI * 0.25, Math.PI * 1.5);
+        
+        const pos = funnelGeo.attributes.position;
+        for (let i = 0; i < pos.count; i++) {
+            let y = pos.getY(i);
+            let normalizedY = (y + 20) / 40; 
+            let r = 1.5 + 14 * Math.pow(normalizedY, 4);
+            let x = pos.getX(i);
+            let z = pos.getZ(i);
+            let angle = Math.atan2(z, x);
+            pos.setX(i, Math.cos(angle) * r);
+            pos.setZ(i, Math.sin(angle) * r);
+        }
+        funnelGeo.computeVertexNormals();
 
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
+        const funnelMat = new THREE.MeshBasicMaterial({ color: 0x2266ff, wireframe: true, transparent: true, opacity: 0.4, side: THREE.DoubleSide });
+        const funnel = new THREE.Mesh(funnelGeo, funnelMat);
+        wormholeGroup.add(funnel);
 
-            if (typeof THREE.OrbitControls !== "undefined") {
-                const controls = new THREE.OrbitControls(camera, renderer.domElement);
-                controls.enableDamping = true;
-                controls.dampingFactor = 0.05;
-                controls.enableZoom = true;
-                controls.maxDistance = 60;
-                controls.target.set(-2.4, 1.7, -8.5); 
-            } else {
-                camera.lookAt(-2.4, 1.7, -8.5);
-            }
+        const starsMat = new THREE.PointsMaterial({ color: 0x88bbff, size: 0.2, transparent: true, opacity: 0.8 });
+        const stars = new THREE.Points(funnelGeo, starsMat);
+        wormholeGroup.add(stars);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
-            scene.add(ambientLight);
-            
-            const singularityLight = new THREE.PointLight(0x4499ff, 5, 60);
-            singularityLight.position.set(0, -25, 0);
-            scene.add(singularityLight);
+        const singGeo = new THREE.SphereGeometry(1.4, 32, 32);
+        const singMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const singularity = new THREE.Mesh(singGeo, singMat);
+        singularity.position.set(0, -21, 0);
+        wormholeGroup.add(singularity);
 
-            const flashLight = new THREE.PointLight(0xffffff, 0, 40);
-            scene.add(flashLight);
+        const haloGeo = new THREE.SphereGeometry(2.0, 32, 32);
+        const haloMat = new THREE.MeshBasicMaterial({ color: 0x4499ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
+        const halo = new THREE.Mesh(haloGeo, haloMat);
+        halo.position.copy(singularity.position);
+        wormholeGroup.add(halo);
 
-            const wormholeGroup = new THREE.Group();
-            scene.add(wormholeGroup);
-            
-            const segments = 40;
-            const radialSegments = 32;
-            const funnelGeo = new THREE.CylinderGeometry(15, 1.5, 40, radialSegments, segments, true, Math.PI * 0.25, Math.PI * 1.5);
-            
-            const pos = funnelGeo.attributes.position;
-            for (let i = 0; i < pos.count; i++) {
-                let y = pos.getY(i);
-                let normalizedY = (y + 20) / 40; 
-                let r = 1.5 + 14 * Math.pow(normalizedY, 4);
-                let x = pos.getX(i);
-                let z = pos.getZ(i);
-                let angle = Math.atan2(z, x);
-                pos.setX(i, Math.cos(angle) * r);
-                pos.setZ(i, Math.sin(angle) * r);
-            }
-            funnelGeo.computeVertexNormals();
+        const getPos = (i) => {
+            const y = 18.5 - i * 1.6; 
+            const clampedY = Math.max(-21, y);
+            const r_funnel = 1.5 + 14 * Math.pow((clampedY + 20) / 40, 4);
+            const r = r_funnel * 0.35; 
+            const theta = i * 0.7; 
+            return new THREE.Vector3(r * Math.cos(theta), clampedY, r * Math.sin(theta));
+        };
 
-            const funnelMat = new THREE.MeshBasicMaterial({ color: 0x2266ff, wireframe: true, transparent: true, opacity: 0.4, side: THREE.DoubleSide });
-            const funnel = new THREE.Mesh(funnelGeo, funnelMat);
-            wormholeGroup.add(funnel);
+        const chainBlocks = [];
+        const blockGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+        const edgesGeo = new THREE.EdgesGeometry(blockGeo);
+        const solidMat = new THREE.MeshPhysicalMaterial({ color: 0xffcc00, transparent: true, opacity: 0.9, roughness: 0.2, metalness: 0.8 });
+        const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
 
-            const starsMat = new THREE.PointsMaterial({ color: 0x88bbff, size: 0.2, transparent: true, opacity: 0.8 });
-            const stars = new THREE.Points(funnelGeo, starsMat);
-            wormholeGroup.add(stars);
+        for(let i = 1; i <= 20; i++) {
+            const block = new THREE.Mesh(blockGeo, solidMat);
+            block.add(new THREE.LineSegments(edgesGeo, edgeMat));
+            block.userData = { currentIndex: i, targetIndex: i };
+            block.position.copy(getPos(i));
+            block.lookAt(getPos(i + 1));
+            const scale = Math.max(0.1, 1 - (i / 25));
+            block.scale.setScalar(scale);
+            wormholeGroup.add(block);
+            chainBlocks.push(block);
+        }
 
-            const singGeo = new THREE.SphereGeometry(1.4, 32, 32);
-            const singMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
-            const singularity = new THREE.Mesh(singGeo, singMat);
-            singularity.position.set(0, -21, 0);
-            wormholeGroup.add(singularity);
+        const lineMat = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.6, linewidth: 2 });
+        let hashLine;
 
-            const haloGeo = new THREE.SphereGeometry(2.0, 32, 32);
-            const haloMat = new THREE.MeshBasicMaterial({ color: 0x4499ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
-            const halo = new THREE.Mesh(haloGeo, haloMat);
-            halo.position.copy(singularity.position);
-            wormholeGroup.add(halo);
+        const numClusters = 10;
+        const ghostsPerCluster = 5;
+        let ghostClusters = [];
+        const ghostColors = [0x4499ff, 0xff4444, 0x88ffaa, 0xc864ff, 0x00ffcc, 0xff5733, 0x33c3ff, 0x8d33ff, 0xff33c4, 0x33ffa1]; 
 
-            const getPos = (i) => {
-                const y = 18.5 - i * 1.6; 
-                const clampedY = Math.max(-21, y);
-                const r_funnel = 1.5 + 14 * Math.pow((clampedY + 20) / 40, 4);
-                const r = r_funnel * 0.35; 
-                const theta = i * 0.7; 
-                return new THREE.Vector3(r * Math.cos(theta), clampedY, r * Math.sin(theta));
-            };
-
-            const chainBlocks = [];
-            const blockGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-            const edgesGeo = new THREE.EdgesGeometry(blockGeo);
-            const solidMat = new THREE.MeshPhysicalMaterial({ color: 0xffcc00, transparent: true, opacity: 0.9, roughness: 0.2, metalness: 0.8 });
-            const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
-
-            for(let i = 1; i <= 20; i++) {
-                const block = new THREE.Mesh(blockGeo, solidMat);
-                block.add(new THREE.LineSegments(edgesGeo, edgeMat));
-                block.userData = { currentIndex: i, targetIndex: i };
-                block.position.copy(getPos(i));
-                block.lookAt(getPos(i + 1));
-                const scale = Math.max(0.1, 1 - (i / 25));
-                block.scale.setScalar(scale);
-                wormholeGroup.add(block);
-                chainBlocks.push(block);
-            }
-
-            const lineMat = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.6, linewidth: 2 });
-            let hashLine;
-
-            const numClusters = 10;
-            const ghostsPerCluster = 5;
-            let ghostClusters = [];
-            const ghostColors = [0x4499ff, 0xff4444, 0x88ffaa, 0xc864ff, 0x00ffcc, 0xff5733, 0x33c3ff, 0x8d33ff, 0xff33c4, 0x33ffa1]; 
-
-            function spawnGhosts() {
-                ghostClusters.forEach(c => wormholeGroup.remove(c));
-                ghostClusters = [];
-                for(let i = 0; i < numClusters; i++) {
-                    const cluster = new THREE.Group();
-                    cluster.userData = { 
-                        angle: (i / numClusters) * Math.PI * 2, speed: 0.4 + Math.random() * 0.6, 
-                        r: 12 + Math.random() * 3, y: 18.5 + Math.random() * 2,
-                        rotXSpeed: (Math.random() - 0.5) * 2, rotZSpeed: (Math.random() - 0.5) * 2
+        function spawnGhosts() {
+            ghostClusters.forEach(c => wormholeGroup.remove(c));
+            ghostClusters = [];
+            for(let i = 0; i < numClusters; i++) {
+                const cluster = new THREE.Group();
+                cluster.userData = { 
+                    angle: (i / numClusters) * Math.PI * 2, speed: 0.4 + Math.random() * 0.6, 
+                    r: 12 + Math.random() * 3, y: 18.5 + Math.random() * 2,
+                    rotXSpeed: (Math.random() - 0.5) * 2, rotZSpeed: (Math.random() - 0.5) * 2
+                };
+                for(let j = 0; j < ghostsPerCluster; j++) {
+                    let color = ghostColors[j % ghostColors.length];
+                    let ghost = new THREE.Mesh(blockGeo, new THREE.MeshPhysicalMaterial({ color: color, transparent: true, opacity: 0.3 }));
+                    ghost.add(new THREE.LineSegments(edgesGeo, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.6 })));
+                    ghost.scale.setScalar(0.6);
+                    ghost.userData = {
+                        localAngle: (j / ghostsPerCluster) * Math.PI * 2,
+                        localSpeed: 1.0 + Math.random() * 1.5, localR: 2.0 + Math.random() * 1.5
                     };
-                    for(let j = 0; j < ghostsPerCluster; j++) {
-                        let color = ghostColors[j % ghostColors.length];
-                        let ghost = new THREE.Mesh(blockGeo, new THREE.MeshPhysicalMaterial({ color: color, transparent: true, opacity: 0.3 }));
-                        ghost.add(new THREE.LineSegments(edgesGeo, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.6 })));
-                        ghost.scale.setScalar(0.6);
-                        ghost.userData = {
-                            localAngle: (j / ghostsPerCluster) * Math.PI * 2,
-                            localSpeed: 1.0 + Math.random() * 1.5, localR: 2.0 + Math.random() * 1.5
-                        };
-                        cluster.add(ghost);
-                    }
-                    wormholeGroup.add(cluster);
-                    ghostClusters.push(cluster);
+                    cluster.add(ghost);
                 }
+                wormholeGroup.add(cluster);
+                ghostClusters.push(cluster);
             }
+        }
 
-            spawnGhosts();
+        spawnGhosts();
 
-            const clock = new THREE.Clock();
-            let isVisible = false;
-            let animationFrameId;
-            let timer = 0;
-            const collapseInterval = 2.0; 
+        const clock = new THREE.Clock();
+        let isVisible = false;
+        let animationFrameId;
+        let timer = 0;
+        const collapseInterval = 2.0; 
 
-            function animate() {
-                if (!isVisible) return; 
-                animationFrameId = requestAnimationFrame(animate);
-                
-                let dt = clock.getDelta();
-                if (dt > 0.1) dt = 0.1; 
-                timer += dt;
+        function animate() {
+            if (!isVisible) return; 
+            animationFrameId = requestAnimationFrame(animate);
+            
+            let dt = clock.getDelta();
+            if (dt > 0.1) dt = 0.1; 
+            timer += dt;
 
-                wormholeGroup.rotation.y -= dt * 0.05;
+            wormholeGroup.rotation.y -= dt * 0.05;
 
-                ghostClusters.forEach(cluster => {
-                    cluster.userData.angle += cluster.userData.speed * dt;
-                    cluster.position.set(
-                        cluster.userData.r * Math.cos(cluster.userData.angle),
-                        cluster.userData.y + Math.sin(timer * 2 + cluster.userData.angle) * 1.5,
-                        cluster.userData.r * Math.sin(cluster.userData.angle)
+            ghostClusters.forEach(cluster => {
+                cluster.userData.angle += cluster.userData.speed * dt;
+                cluster.position.set(
+                    cluster.userData.r * Math.cos(cluster.userData.angle),
+                    cluster.userData.y + Math.sin(timer * 2 + cluster.userData.angle) * 1.5,
+                    cluster.userData.r * Math.sin(cluster.userData.angle)
+                );
+                cluster.rotation.x += cluster.userData.rotXSpeed * dt;
+                cluster.rotation.z += cluster.userData.rotZSpeed * dt;
+                cluster.children.forEach(ghost => {
+                    ghost.userData.localAngle += ghost.userData.localSpeed * dt;
+                    ghost.position.set(
+                        ghost.userData.localR * Math.cos(ghost.userData.localAngle),
+                        Math.sin(timer * 4 + ghost.userData.localAngle) * 0.8,
+                        ghost.userData.localR * Math.sin(ghost.userData.localAngle)
                     );
-                    cluster.rotation.x += cluster.userData.rotXSpeed * dt;
-                    cluster.rotation.z += cluster.userData.rotZSpeed * dt;
-                    cluster.children.forEach(ghost => {
-                        ghost.userData.localAngle += ghost.userData.localSpeed * dt;
-                        ghost.position.set(
-                            ghost.userData.localR * Math.cos(ghost.userData.localAngle),
-                            Math.sin(timer * 4 + ghost.userData.localAngle) * 0.8,
-                            ghost.userData.localR * Math.sin(ghost.userData.localAngle)
-                        );
-                        ghost.rotation.x += dt * 1.5; ghost.rotation.y += dt * 1.5;
-                    });
+                    ghost.rotation.x += dt * 1.5; ghost.rotation.y += dt * 1.5;
                 });
+            });
 
-                if (timer > collapseInterval) {
-                    timer = 0;
-                    if (ghostClusters.length > 0) {
-                        let winnerCluster = ghostClusters.shift();
-                        wormholeGroup.remove(winnerCluster); 
-                        flashLight.position.copy(getPos(0));
-                        flashLight.intensity = 80;
-                        flashLight.color.setHex(0xffffff); 
-                        
-                        let winner = new THREE.Mesh(blockGeo, solidMat.clone());
-                        winner.add(new THREE.LineSegments(edgesGeo, edgeMat));
-                        winner.userData = { currentIndex: -1, targetIndex: 0 }; 
-                        chainBlocks.unshift(winner);
-                        wormholeGroup.add(winner);
-                        chainBlocks.forEach((b, i) => b.userData.targetIndex = i);
-                    } else {
-                        spawnGhosts();
-                    }
+            if (timer > collapseInterval) {
+                timer = 0;
+                if (ghostClusters.length > 0) {
+                    let winnerCluster = ghostClusters.shift();
+                    wormholeGroup.remove(winnerCluster); 
+                    flashLight.position.copy(getPos(0));
+                    flashLight.intensity = 80;
+                    flashLight.color.setHex(0xffffff); 
+                    
+                    let winner = new THREE.Mesh(blockGeo, solidMat.clone());
+                    winner.add(new THREE.LineSegments(edgesGeo, edgeMat));
+                    winner.userData = { currentIndex: -1, targetIndex: 0 }; 
+                    chainBlocks.unshift(winner);
+                    wormholeGroup.add(winner);
+                    chainBlocks.forEach((b, i) => b.userData.targetIndex = i);
+                } else {
+                    spawnGhosts();
                 }
-
-                flashLight.intensity = THREE.MathUtils.lerp(flashLight.intensity, 0, dt * 5);
-
-                const points = [];
-                chainBlocks.forEach(b => {
-                    b.userData.currentIndex = THREE.MathUtils.lerp(b.userData.currentIndex, b.userData.targetIndex, dt * 2.5);
-                    const currentPos = getPos(b.userData.currentIndex);
-                    b.position.copy(currentPos);
-                    const nextPos = getPos(b.userData.currentIndex + 1);
-                    b.lookAt(nextPos);
-                    const scale = Math.max(0.05, 1 - (b.userData.currentIndex / 25));
-                    b.scale.setScalar(scale);
-                    b.material.opacity = Math.max(0, scale * 0.9);
-                    points.push(currentPos);
-                });
-
-                while (chainBlocks.length > 25) {
-                    let old = chainBlocks.pop();
-                    wormholeGroup.remove(old);
-                    old.geometry.dispose(); old.material.dispose();
-                }
-
-                if (hashLine) wormholeGroup.remove(hashLine);
-                if (points.length > 1) {
-                    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-                    hashLine = new THREE.Line(lineGeo, lineMat);
-                    wormholeGroup.add(hashLine);
-                }
-
-                halo.scale.setScalar(1 + Math.sin(clock.getElapsedTime() * 4) * 0.15);
-                
-                renderer.render(scene, camera);
             }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!isVisible) {
-                            isVisible = true; clock.start(); animate(); 
-                        }
-                    } else {
-                        isVisible = false;
-                        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            flashLight.intensity = THREE.MathUtils.lerp(flashLight.intensity, 0, dt * 5);
+
+            const points = [];
+            chainBlocks.forEach(b => {
+                b.userData.currentIndex = THREE.MathUtils.lerp(b.userData.currentIndex, b.userData.targetIndex, dt * 2.5);
+                const currentPos = getPos(b.userData.currentIndex);
+                b.position.copy(currentPos);
+                const nextPos = getPos(b.userData.currentIndex + 1);
+                b.lookAt(nextPos);
+                const scale = Math.max(0.05, 1 - (b.userData.currentIndex / 25));
+                b.scale.setScalar(scale);
+                b.material.opacity = Math.max(0, scale * 0.9);
+                points.push(currentPos);
+            });
+
+            while (chainBlocks.length > 25) {
+                let old = chainBlocks.pop();
+                wormholeGroup.remove(old);
+                old.geometry.dispose(); old.material.dispose();
+            }
+
+            if (hashLine) wormholeGroup.remove(hashLine);
+            if (points.length > 1) {
+                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                hashLine = new THREE.Line(lineGeo, lineMat);
+                wormholeGroup.add(hashLine);
+            }
+
+            halo.scale.setScalar(1 + Math.sin(clock.getElapsedTime() * 4) * 0.15);
+            
+            renderer.render(scene, camera);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!isVisible) {
+                        isVisible = true; clock.start(); animate(); 
                     }
-                });
-            }, { threshold: 0.05, rootMargin: "100px" });
-
-            observer.observe(container);
-
-            window.addEventListener("resize", () => {
-                if (container.clientWidth > 0) {
-                    camera.aspect = container.clientWidth / container.clientHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
+                } else {
+                    isVisible = false;
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 }
             });
+        }, { threshold: 0.05, rootMargin: "100px" });
+
+        observer.observe(container);
+
+        window.addEventListener("resize", () => {
+            if (container.clientWidth > 0) {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            }
         });
-        </script>
-        <!-- FIN ANIMATION 3D -->
-        <p lang="fr" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
-            <strong>Au-delà des artifices, les devises de l'univers sont le souffle de l'énergie et la clarté de l'information, échangés d'âme à âme.</strong> Au fond, l'univers est en nous et l'a toujours été : nous sommes cette poussière d'étoiles qui s'éveille et nous formons, ensemble, la grande constellation humaine. Nous ne faisons que nous souvenir d'une loi oubliée. Peut-être qu'un jour, notre résonance sera si pure que nous n'aurons plus besoin de boucliers de preuve pour nous reconnaître et nous faire confiance.<br /><br />
-            
-            La véritable grandeur d'une civilisation ne réside pas seulement dans l'éclat de ses possessions, mais dans sa capacité à bâtir des cathédrales de temps et de lumière, des institutions de confiance que le temps, la corruption et la violence peinent à éroder.<br /><br />
+    });
+    </script>
+    <!-- FIN ANIMATION 3D -->
 
-            Pendant des siècles, notre espèce a ployé sous le fardeau insoutenable de confier la mesure de sa valeur et de ses échanges à des esprits faillibles, fatalement corruptibles par l'attraction du pouvoir. La gestion de l'argent mondial par l'arbitraire humain s'est invariablement érigée en un centre mortifère — un trou noir institutionnel aspirant l'énergie vitale et la souveraineté des peuples. En substituant à ce diktat un consensus distribué, transparent et organiquement évolutif, l'acte de création de Satoshi transcende la simple ingénierie : <strong>il libère l'humanité de la tyrannie du centre.</strong> Il dissout l'illusion de l'autorité absolue pour redistribuer le pouvoir de la vérité à la périphérie, dans l'espace partagé de notre réseau.<br /><br />
-            
-            Cependant, cette libération technologique ne saurait s'accomplir sans une profonde mutation intérieure. Tel un miroir alchimique, ce réseau d'une transparence impitoyable nous confronte d'abord à la part la plus sombre de notre psyché collective : notre cupidité, notre égoïsme et notre peur viscérale du manque. Dans la pure tradition de Carl Jung, le système agit comme un puissant catalyseur pour notre processus d'individuation. En exploitant nos propres pulsions d'accumulation pour sécuriser son architecture, le protocole nous force à regarder notre Ombre en face. Il nous fait traverser le feu de l'avidité spéculative pour nous faire prendre conscience qu'elle n'est pas la solution, mais seulement le combustible brut d'une transition. Cette confrontation vertigineuse avec nos propres démons n'est pas un défaut du réseau. C'est une épreuve initiatique — un passage psychologique nécessaire à la maturation et à l'évolution de notre espèce.<br /><br />
-            
-            <strong>La Dissonance Cognitive : Redéfinir le Travail et la Valeur</strong><br />
-            C'est ici que le protocole dérange profondément et opère sa plus grande révolution anthropologique : il crée une dissonance cognitive insoutenable en remettant en question tout ce que nous tenions pour acquis. Pendant des décennies, l'illusion fiduciaire a fonctionné comme une pouponnière infantilisante, nous conditionnant à croire que la richesse pouvait être décrétée à partir de rien. <strong>Satoshi nous oblige à réexaminer ce que nous appelons "travail" et "valeur".</strong> Si de l'argent peut être créé à l'infini d'une simple frappe sur le clavier d'une banque centrale, quelle est la valeur réelle des 40 heures que vous passez chaque semaine à "travailler" pour en obtenir ? Le système fiat a instauré une hiérarchie arrogante, déconnectant l'effort humain des lois de la thermodynamique. En nous obligeant soudainement à payer le juste prix thermodynamique (\(J \cdot s\)) de chaque octet d'information sécurisé, le réseau agit comme un électrochoc. Comme le soulignait Kant, la maturité se définit précisément comme la sortie de l'homme hors de l'état de tutelle dont il est responsable. Bitcoin est la matérialisation de cette émancipation : devenir des adultes responsables du coût réel de nos choix.<br /><br />
-            
-            <strong>La Rareté Absolue face au Déluge Numérique</strong><br />
-            Ce réalignement physique intervient à l'instant le plus critique de notre histoire. À l'ère de l'Intelligence Artificielle générative, le coût marginal de production de l'information (textes, images, vidéos, et bientôt la "vérité" elle-même) s'effondre vers zéro. Nous entrons dans une ère d'inflation infinie du faux contenu numérique. Face à ce déluge, le protocole Nakamoto s'érige comme notre seul rempart épistémologique. <strong>Il introduit la Rareté Numérique Absolue.</strong> C'est la seule donnée dans l'univers numérique qui ne peut être ni falsifiée, ni générée par une IA, ni dupliquée à l'infini, car elle exige une dépense d'énergie physique irréversible. Le Satoshi devient l'ancre de réalité dans un océan d'illusions virtuelles.<br /><br />
-            
-            En achevant cette transmutation de l'énergie en information rare, le protocole nous offre un paradoxe profondément libérateur : l'information incorruptible devrait, à terme, guérir notre matérialisme. L'histoire a prouvé que la monnaie fiduciaire — abstraite mais infinie — poussait l'humanité vers un hyper-matérialisme destructeur, nous forçant à acheter frénétiquement des objets physiques et de l'immobilier pour fuir la dévaluation de notre temps. Bitcoin démontre que si le registre est absolument rare, la valeur n'a plus besoin d'être stockée dans des objets physiques qui consument la biosphère. Si le coffre-fort le plus impénétrable de l'univers ne pèse pas un gramme, l'accumulation d'objets perd son sens absolu. Protégés de la dilution, la peur du manque qui alimente notre fièvre consumériste s'apaise. Le protocole nous rend notre temps, dépouillé de ses artifices matériels, pour nous forcer à admettre que le véritable trésor réside dans la chaleur de nos foyers, la fulgurance de la vie, et la reconquête de notre humanité nue et organique.<br /><br />
-            
-            Au fond, Nakamoto nous pose l'ultime question existentielle : serons-nous capables de sceller une mémoire commune et de nous accorder sur une vérité mathématique partagée et inébranlable pour l'ensemble de l'Humanité ? Ou condamnerons-nous notre civilisation à sombrer dans le bruit de la fragmentation, l'entropie du doute, et l'abîme de l'oubli ?<br /><br />
-            
-            Il est crucial de rappeler qu'aucune idéologie précise n'est adossée à un protocole mathématique. Comme l'affirmait Wittgenstein, la logique et les mathématiques ne contiennent aucune valeur morale ; elles ne sont que l'échafaudage silencieux du monde. Le code de Nakamoto est d'une stricte neutralité. Il nous offre simplement l'opportunité inouïe — un espace topologique vierge — d'opérer un changement structurel profond. Le choix de notre destin n'est pas écrit dans les algorithmes ; il réside dans notre libre arbitre.<br /><br />
-            
-            L'enjeu ultime ne devrait pas être de mener une guerre d'usure pour détruire ou remplacer telle ou telle institution bancaire, mais d'apporter au système sa complétude historique sous un horizon de réconciliation. L'heure n'est pas à la recherche des coupables. Nous sommes tous fautifs d'avoir voulu choisir le confort de l'illusion plutôt que la rigueur de la physique. Il va falloir nous le pardonner et avancer, ensemble. Nakamoto nous invite à converger pacifiquement vers un référentiel commun où l'entropie de nos sociétés pourrait être monétisée à des fins utiles.<br /><br />
-            
-            En attendant cette aube, il nous appartient de cultiver la Voie du Milieu (Le Dharma) au cœur du Code Source. Car c'est là le sens profond de <em>Satoshi Nakamoto</em> (聡 - Satoshi : Sage/Intelligent ; 中本 - Nakamoto : Racine du Milieu) : la sagesse issue du centre. Une racine invisible et souterraine, semblable au mycélium originel, qui relie secrètement chaque arbre de la forêt humaine à une même nappe phréatique de vérité objective. Un équilibre (de Nash) dynamique et vibrant entre la force et le silence, l'ordre et la liberté, l'homme et la machine.<br /><br />
-            
-            En empêchant la capture de la valeur par la force ou la coercition, Satoshi Nakamoto nous invite à créer une harmonie juste et fraternelle pour que la puissance de l'esprit puisse - un jour - s'effacer devant la sagesse du cœur. <br /><br />
-            
-            <span style="color: var(--sun-yellow); font-size: 1.1em;">Le temps est la ressource la plus précieuse dont vous disposez et que vous ne pouvez pas miner. De combien de zéros avez-vous besoin sur votre compte en banque pour enfin le comprendre ?</span>
-        </p>
+    <!-- CORPS DU TEXTE FR -->
+    <div lang="fr" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
+        <p style="margin-bottom: 1.5rem;">Pendant des siècles, notre espèce a ployé sous le fardeau insoutenable de confier la mesure de sa valeur et de ses échanges à des esprits faillibles, fatalement corruptibles par l'attraction du pouvoir. La gestion de l'argent mondial par l'arbitraire humain s'est invariablement érigée en un centre mortifère — un trou noir institutionnel aspirant l'énergie vitale et la souveraineté des peuples. En substituant à ce diktat un consensus distribué, transparent et organiquement évolutif, l'acte de création de Satoshi transcende la simple ingénierie : <strong>il libère l'humanité de la tyrannie du centre.</strong> Il dissout l'illusion de l'autorité absolue pour redistribuer le pouvoir de la vérité à la périphérie, dans l'espace partagé de notre réseau.</p>
+        
+        <p style="margin-bottom: 1.5rem;">Cependant, cette libération technologique ne saurait s'accomplir sans une profonde mutation intérieure. Tel un miroir alchimique, ce réseau d'une transparence impitoyable nous confronte d'abord à la part la plus sombre de notre psyché collective : notre cupidité, notre égoïsme et notre peur viscérale du manque. Dans la pure tradition de Carl Jung, le système agit comme un puissant catalyseur pour notre processus d'individuation. En exploitant nos propres pulsions d'accumulation pour sécuriser son architecture, le protocole nous force à regarder notre Ombre en face. Il nous fait traverser le feu de l'avidité spéculative pour nous faire prendre conscience qu'elle n'est pas la solution, mais seulement le combustible brut d'une transition. Cette confrontation vertigineuse avec nos propres démons n'est pas un défaut du réseau. C'est une épreuve initiatique — un passage psychologique nécessaire à la maturation et à l'évolution de notre espèce.</p>
+        
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">La Dissonance Cognitive : Redéfinir le Travail et la Valeur</strong><br />
+        C'est ici que le protocole dérange profondément et opère sa plus grande révolution anthropologique : il crée une dissonance cognitive insoutenable en remettant en question tout ce que nous tenions pour acquis. Pendant des décennies, l'illusion fiduciaire a fonctionné comme une pouponnière infantilisante, nous conditionnant à croire que la richesse pouvait être décrétée à partir de rien. <strong>Satoshi nous oblige à réexaminer ce que nous appelons "travail" et "valeur".</strong> Si de l'argent peut être créé à l'infini d'une simple frappe sur le clavier d'une banque centrale, quelle est la valeur réelle des 40 heures que vous passez chaque semaine à "travailler" pour en obtenir ? Le système fiat a instauré une hiérarchie arrogante, déconnectant l'effort humain des lois de la thermodynamique. En nous obligeant soudainement à payer le juste prix thermodynamique (\(J \cdot s\)) de chaque octet d'information sécurisé, le réseau agit comme un électrochoc. Comme le soulignait Kant, la maturité se définit précisément comme la sortie de l'homme hors de l'état de tutelle dont il est responsable. Bitcoin est la matérialisation de cette émancipation : devenir des adultes responsables du coût réel de nos choix.</p>
 
-        <p lang="en" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
-            <strong>Beyond human constructs, the true currencies of the universe are the breath of energy and the clarity of information, exchanged soul to soul.</strong> Deep down, the universe is within us and always has been: we are this stardust awakening, weaving together the great human constellation. We are simply remembering a forgotten law. Perhaps one day, our resonance will be so pure that we will no longer need shields of proof to recognize and trust one another.<br /><br />
-            
-            The true greatness of a civilization lies not merely in the splendor of its possessions, but in its capacity to build cathedrals of time and light, institutions of trust that time, corruption, and violence struggle to erode.<br /><br />
-            
-            For centuries, our species has bowed under the unsustainable burden of entrusting the measure of its value and exchange to fallible minds, fatally corruptible by the lure of power. The management of global money through human arbitrariness has invariably established itself as a deadly center—an institutional black hole draining the vital energy and sovereignty of peoples. By substituting this dictate with a distributed, transparent, and organically evolving consensus, Satoshi's act of creation transcends mere engineering: <strong>it liberates humanity from the tyranny of the center.</strong> It dissolves the illusion of absolute authority to redistribute the power of truth to the periphery, within the shared space of our network.<br /><br />
-            
-            However, this technological liberation cannot be achieved without a profound inner mutation. Like an alchemical mirror, this ruthlessly transparent network first confronts us with the darkest part of our collective psyche: our greed, our selfishness, and our visceral fear of scarcity. In the pure tradition of Carl Jung, the system acts as a powerful catalyst for our individuation process. By harnessing our own accumulation drives to secure its architecture, the protocol forces us to face our Shadow. It makes us walk through the fire of speculative greed to make us realize that it is not the solution, but merely the raw fuel of a transition. This dizzying confrontation with our own demons is not a flaw in the network, but an initiatory trial—a psychological rite of passage necessary for the maturation and evolution of our species.<br /><br />
-            
-            <strong>Cognitive Dissonance: Redefining Work and Value</strong><br />
-            It is here that the protocol becomes deeply unsettling and executes its greatest anthropological revolution: it creates an unbearable cognitive dissonance by questioning everything we took for granted. For decades, the fiat illusion has functioned as an infantilizing nursery, conditioning us to believe that wealth could be decreed from nothing. <strong>Satoshi forces us to fundamentally re-examine what we call "work" and "value".</strong> If money can be infinitely created with a single keystroke at a central bank, what is the real value of the 40 hours you spend every week "working" to obtain it? The fiat system has established an arrogant hierarchy, disconnecting human effort from the laws of thermodynamics. By suddenly forcing us to pay the exact thermodynamic price (\(J \cdot s\)) for every secured byte of information, the network acts as a shock to the system. As Kant emphasized, maturity (Enlightenment) is defined precisely as man's emergence from his self-incurred immaturity. Bitcoin is the technical materialization of this emancipation: becoming adults fully responsible for the real cost of our choices.<br /><br />
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">La Constitution Immuable du Réseau</strong><br />
+        Mais ce qui est fascinant, ce ne sont pas seulement les mathématiques froides de ce réseau, ce sont les règles éthiques qui y sont incrustées, indélébiles. Codées et maintenues par l'intelligence collective humaine, ces règles agissent comme une loi naturelle, gravée dans le marbre et qui n'évoluera que si un nouveau consensus universel est trouvé. Ces principes moraux de base forment le fondement même de notre survie numérique :</p>
+        
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
+            <li><span style="color: #d1d5db;">Vous ne devez pas confisquer (Clés Privées).</span></li>
+            <li><span style="color: #d1d5db;">Vous ne devez pas censurer vos pairs (Réseau P2P et Noeuds Libres).</span></li>
+            <li><span style="color: #d1d5db;">Vous ne devez pas dévaluer le travail (Limite des 21 Millions).</span></li>
+            <li><span style="color: #d1d5db;">Vous ne devez pas contrefaire (Preuve de Travail).</span></li>
+        </ul>
 
-            <strong>Absolute Scarcity against the Digital Deluge</strong><br />
-            This physical realignment occurs at the most critical juncture in our history. In the era of generative Artificial Intelligence, the marginal cost of producing information (texts, images, videos, and soon "truth" itself) is collapsing to zero. We are entering an era of infinite inflation of fake digital content. Faced with this deluge, the Nakamoto protocol stands as our only epistemological bulwark. <strong>It introduces Absolute Digital Scarcity.</strong> It is the only data in the digital universe that cannot be forged, generated by AI, or infinitely duplicated, because it demands an irreversible expenditure of physical energy. The Satoshi becomes the anchor of reality in an ocean of virtual illusions.<br /><br />
-            
-            By completing this transmutation of energy into scarce information, the protocol offers a profoundly liberating paradox: incorruptible information should, ultimately, cure our materialism. History has proven that fiat money—abstract yet infinite—pushed humanity toward destructive hyper-materialism, forcing us to frantically buy physical objects and real estate to escape the devaluation of our time. Bitcoin demonstrates that if the ledger is absolutely scarce, value no longer needs to be stored in physical objects that consume the biosphere. If the most impenetrable vault in the universe doesn't weigh a single gram, the frantic accumulation of physical objects loses its absolute meaning. Protected from dilution, the fear of scarcity that fuels our consumerist fever subsides. The protocol gives us back our time, stripped of its material artifices, forcing us to admit that the real treasure lies in the warmth of our homes, the brilliance of life, and the reclamation of our bare, organic humanity.<br /><br />
-            
-            In the end, Nakamoto poses perhaps the ultimate existential question of our species: will we be capable of sealing a common memory and agreeing upon a shared, unshakeable mathematical truth for the whole of Humanity? Or will we condemn our civilization to sink into the noise of fragmentation, the entropy of doubt, and the abyss of oblivion?<br /><br />
-            
-            It is crucial to remember that no specific ideology is attached to a mathematical protocol. As Wittgenstein asserted, logic and mathematics contain no moral values; they are merely the silent scaffolding of the world. Nakamoto's code is of strict neutrality. It simply offers us the unprecedented opportunity—a blank topological space—to enact a profound structural change. The choice of our destiny is not written in the algorithms; it resides in our free will.<br /><br />
-            
-            The ultimate stake should not be to wage a war of attrition to destroy or replace this or that banking institution, but rather to bring about its historical completion within a horizon of reconciliation. The time is not for finding scapegoats. We are all at fault for choosing the comfort of illusion over the rigor of physics. We must forgive ourselves and move forward, together. Nakamoto invites us to converge peacefully toward a shared infrastructure where the entropy of our societies could be monetized for useful purposes.<br /><br />
-            
-            Until that dawn breaks, it is up to us to cultivate the Middle Way (The Dharma) at the heart of the Source Code. For that is the profound meaning of <em>Satoshi Nakamoto</em> (聡 - Satoshi: Wise/Intelligent ; 中本 - Nakamoto: Central Root): wisdom born from the center. An invisible, subterranean root, akin to the primal mycelium, secretly connecting every tree within the human forest to the same water table of objective truth. A vibrant (Nash) equilibrium between force and silence, order and freedom, humans and machines.<br /><br />
-            
-            By preventing the capture of value by force or coercion, Satoshi Nakamoto invites us to create a just and fraternal harmony so that the power of the mind can - one day - step aside for the wisdom of the heart. <br /><br />
-            
-            <span style="color: var(--sun-yellow); font-size: 1.1em;">Time is the most precious resource you have, and you cannot mine it. How many zeros do you need in your bank account to finally understand this?</span>
-        </p>
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">La Redéfinition de la Richesse et de l'Héritage</strong><br />
+        Puisque le protocole rend la coercition et la confiscation physiquement impossibles, il métamorphose notre rapport ultime à la richesse et à la mort. Que se passe-t-il lorsqu'un nœud s'éteint sans transmettre sa mémoire (ses clés privées) ? La valeur n'est pas saisie par un État ou une entité centrale ; elle est mathématiquement verrouillée à jamais. Cette perte irréversible agit comme un don silencieux et universel à l'ensemble du réseau, rendant chaque Satoshi existant exponentiellement plus rare pour tous les autres humains. À l'inverse, la transmission de cette valeur à la génération suivante ne peut plus se faire par défaut ou par obligation légale : elle redevient un acte pur, conscient et volontaire de confiance et d'amour. La redistribution des richesses n'est plus un mécanisme extractif ou coercitif ; elle devient soit un héritage organique, soit un sacrifice thermodynamique au profit du collectif.</p>
+        
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">La Rareté Absolue face au Déluge Numérique</strong><br />
+        Ce réalignement éthique et physique intervient à l'instant le plus critique de notre histoire. À l'ère de l'Intelligence Artificielle générative, le coût marginal de production de l'information (textes, images, vidéos, et bientôt la "vérité" elle-même) s'effondre vers zéro. Nous entrons dans une ère d'inflation infinie du faux contenu numérique. Face à ce déluge, le protocole Nakamoto s'érige comme notre seul rempart épistémologique. <strong>Il introduit la Rareté Numérique Absolue.</strong> C'est la seule donnée dans l'univers numérique qui ne peut être ni falsifiée, ni générée par une IA, ni dupliquée à l'infini, car elle exige une dépense d'énergie physique irréversible. Le Satoshi devient l'ancre de réalité dans un océan d'illusions virtuelles.</p>
+        
+        <p style="margin-bottom: 1.5rem;">En achevant cette transmutation de l'énergie en information rare, le protocole nous offre un paradoxe profondément libérateur : l'information incorruptible devrait, à terme, guérir notre matérialisme. L'histoire a prouvé que la monnaie fiduciaire — abstraite mais infinie — poussait l'humanité vers un hyper-matérialisme destructeur, nous forçant à acheter frénétiquement des objets physiques et de l'immobilier pour fuir la dévaluation de notre temps. Bitcoin démontre que si le registre est absolument rare, la valeur n'a plus besoin d'être stockée dans des objets physiques qui consument la biosphère. Si le coffre-fort le plus impénétrable de l'univers ne pèse pas un gramme, l'accumulation d'objets perd son sens absolu. Protégés de la dilution, la peur du manque qui alimente notre fièvre consumériste s'apaise. Le protocole nous rend notre temps, dépouillé de ses artifices matériels, pour nous forcer à admettre que le véritable trésor réside dans la chaleur de nos foyers, la fulgurance de la vie, et la reconquête de notre humanité nue et organique.</p>
+        
+        <p style="margin-bottom: 1.5rem;">Au fond, Nakamoto nous pose l'ultime question existentielle : serons-nous capables de sceller une mémoire commune et de nous accorder sur une vérité mathématique partagée et inébranlable pour l'ensemble de l'Humanité ? Ou condamnerons-nous notre civilisation à sombrer dans le bruit de la fragmentation, l'entropie du doute, et l'abîme de l'oubli ?</p>
+        
+        <p style="margin-bottom: 1.5rem;">Il est crucial de rappeler qu'aucune idéologie précise n'est adossée à un protocole mathématique. Comme l'affirmait Wittgenstein, la logique et les mathématiques ne contiennent aucune valeur morale ; elles ne sont que l'échafaudage silencieux du monde. Le code de Nakamoto est d'une stricte neutralité. Il nous offre simplement l'opportunité inouïe — un espace topologique vierge — d'opérer un changement structurel profond. Le choix de notre destin n'est pas écrit dans les algorithmes ; il réside dans notre libre arbitre.</p>
+        
+        <p style="margin-bottom: 1.5rem;">L'enjeu ultime ne devrait pas être de mener une guerre d'usure pour détruire ou remplacer telle ou telle institution bancaire, mais d'apporter au système sa complétude historique sous un horizon de réconciliation. L'heure n'est pas à la recherche des coupables. Nous sommes tous fautifs d'avoir voulu choisir le confort de l'illusion plutôt que la rigueur de la physique. Il va falloir nous le pardonner et avancer, ensemble. Nakamoto nous invite à converger pacifiquement vers un référentiel commun où l'entropie de nos sociétés pourrait être monétisée à des fins utiles.</p>
+        
+        <p style="margin-bottom: 1.5rem;">En attendant cette aube, il nous appartient de cultiver la Voie du Milieu (Le Dharma) au cœur du Code Source. Car c'est là le sens profond de <em>Satoshi Nakamoto</em> (聡 - Satoshi : Sage/Intelligent ; 中本 - Nakamoto : Racine du Milieu) : la sagesse issue du centre. Une racine invisible et souterraine, semblable au mycélium originel, qui relie secrètement chaque arbre de la forêt humaine à une même nappe phréatique de vérité objective. Un équilibre (de Nash) dynamique et vibrant entre la force et le silence, l'ordre et la liberté, l'homme et la machine.</p>
+        
+        <p style="margin-bottom: 1.5rem;">En empêchant la capture de la valeur par la force ou la coercition, Satoshi Nakamoto nous invite à créer une harmonie juste et fraternelle pour que la puissance de l'esprit puisse - un jour - s'effacer devant la sagesse du cœur.</p>
+        
+        <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Le temps est la ressource la plus précieuse dont vous disposez et que vous ne pouvez pas miner. De combien de zéros avez-vous besoin sur votre compte en banque pour enfin le comprendre ?</span></p>
     </div>
-<!-- FIN PHILOSOPHICAL EPILOGUE -->
+
+    <!-- CORPS DU TEXTE EN -->
+    <div lang="en" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
+        <p style="margin-bottom: 1.5rem;">For centuries, our species has bowed under the unsustainable burden of entrusting the measure of its value and exchange to fallible minds, fatally corruptible by the lure of power. The management of global money through human arbitrariness has invariably established itself as a deadly center—an institutional black hole draining the vital energy and sovereignty of peoples. By substituting this dictate with a distributed, transparent, and organically evolving consensus, Satoshi's act of creation transcends mere engineering: <strong>it liberates humanity from the tyranny of the center.</strong> It dissolves the illusion of absolute authority to redistribute the power of truth to the periphery, within the shared space of our network.</p>
+        
+        <p style="margin-bottom: 1.5rem;">However, this technological liberation cannot be achieved without a profound inner mutation. Like an alchemical mirror, this ruthlessly transparent network first confronts us with the darkest part of our collective psyche: our greed, our selfishness, and our visceral fear of scarcity. In the pure tradition of Carl Jung, the system acts as a powerful catalyst for our individuation process. By harnessing our own accumulation drives to secure its architecture, the protocol forces us to face our Shadow. It makes us walk through the fire of speculative greed to make us realize that it is not the solution, but merely the raw fuel of a transition. This dizzying confrontation with our own demons is not a flaw in the network, but an initiatory trial—a psychological rite of passage necessary for the maturation and evolution of our species.</p>
+        
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">Cognitive Dissonance: Redefining Work and Value</strong><br />
+        It is here that the protocol becomes deeply unsettling and executes its greatest anthropological revolution: it creates an unbearable cognitive dissonance by questioning everything we took for granted. For decades, the fiat illusion has functioned as an infantilizing nursery, conditioning us to believe that wealth could be decreed from nothing. <strong>Satoshi forces us to fundamentally re-examine what we call "work" and "value".</strong> If money can be infinitely created with a single keystroke at a central bank, what is the real value of the 40 hours you spend every week "working" to obtain it? The fiat system has established an arrogant hierarchy, disconnecting human effort from the laws of thermodynamics. By suddenly forcing us to pay the exact thermodynamic price (\(J \cdot s\)) for every secured byte of information, the network acts as a shock to the system. As Kant emphasized, maturity (Enlightenment) is defined precisely as man's emergence from his self-incurred immaturity. Bitcoin is the technical materialization of this emancipation: becoming adults fully responsible for the real cost of our choices.</p>
+
+        <p style="margin-bottom: 1.5rem;" style="color: #F7931A;"><strong style="color: #F7931A;">The Immutable Constitution of the Network</strong><br />
+        But what is truly fascinating is not just the cold mathematics of this network; it is the ethical rules inextricably embedded within it. Coded and maintained by human collective intelligence, these rules act as natural law, carved in stone, evolving only if a new universal consensus is reached. These fundamental moral principles form the very foundation of our digital survival:</p>
+        
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
+            <li><span style="color: #d1d5db;">You shall not confiscate (Private Keys).</span></li>
+            <li><span style="color: #d1d5db;">You shall not censor your peers (P2P Network and Free Nodes).</span></li>
+            <li><span style="color: #d1d5db;">You shall not devalue labor (The 21 Million Limit).</span></li>
+            <li><span style="color: #d1d5db;">You shall not counterfeit (Proof-of-Work).</span></li>
+        </ul>
+
+        <p style="margin-bottom: 1.5rem;" ><strong style="color: #F7931A;">Redefining Wealth and Legacy</strong><br />
+        Since the protocol makes coercion and confiscation physically impossible, it completely transforms our ultimate relationship with wealth and death. What happens when a node powers down permanently without passing on its memory (its private keys)? The value is not seized by a state or a central entity; it is mathematically locked forever. This irreversible loss acts as a silent, universal donation to the entire network, making every remaining Satoshi exponentially scarcer for all other humans. Conversely, transmitting this value to the next generation can no longer happen by default or legal obligation: it returns to being a pure, conscious, and voluntary act of trust and love. Wealth redistribution is no longer an extractive or coercive mechanism; it becomes either an organic inheritance or a thermodynamic sacrifice for the benefit of the collective.</p>
+        
+        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Absolute Scarcity against the Digital Deluge</strong><br />
+        This physical and ethical realignment occurs at the most critical juncture in our history. In the era of generative Artificial Intelligence, the marginal cost of producing information (texts, images, videos, and soon "truth" itself) is collapsing to zero. We are entering an era of infinite inflation of fake digital content. Faced with this deluge, the Nakamoto protocol stands as our only epistemological bulwark. <strong>It introduces Absolute Digital Scarcity.</strong> It is the only data in the digital universe that cannot be forged, generated by AI, or infinitely duplicated, because it demands an irreversible expenditure of physical energy. The Satoshi becomes the anchor of reality in an ocean of virtual illusions.</p>
+        
+        <p style="margin-bottom: 1.5rem;">By completing this transmutation of energy into scarce information, the protocol offers a profoundly liberating paradox: incorruptible information should, ultimately, cure our materialism. History has proven that fiat money—abstract yet infinite—pushed humanity toward destructive hyper-materialism, forcing us to frantically buy physical objects and real estate to escape the devaluation of our time. Bitcoin demonstrates that if the ledger is absolutely scarce, value no longer needs to be stored in physical objects that consume the biosphere. If the most impenetrable vault in the universe doesn't weigh a single gram, the frantic accumulation of physical objects loses its absolute meaning. Protected from dilution, the fear of scarcity that fuels our consumerist fever subsides. The protocol gives us back our time, stripped of its material artifices, forcing us to admit that the real treasure lies in the warmth of our homes, the brilliance of life, and the reclamation of our bare, organic humanity.</p>
+        
+        <p style="margin-bottom: 1.5rem;">In the end, Nakamoto poses perhaps the ultimate existential question of our species: will we be capable of sealing a common memory and agreeing upon a shared, unshakeable mathematical truth for the whole of Humanity? Or will we condemn our civilization to sink into the noise of fragmentation, the entropy of doubt, and the abyss of oblivion?</p>
+        
+        <p style="margin-bottom: 1.5rem;">It is crucial to remember that no specific ideology is attached to a mathematical protocol. As Wittgenstein asserted, logic and mathematics contain no moral values; they are merely the silent scaffolding of the world. Nakamoto's code is of strict neutrality. It simply offers us the unprecedented opportunity—a blank topological space—to enact a profound structural change. The choice of our destiny is not written in the algorithms; it resides in our free will.</p>
+        
+        <p style="margin-bottom: 1.5rem;">The ultimate stake should not be to wage a war of attrition to destroy or replace this or that banking institution, but rather to bring about its historical completion within a horizon of reconciliation. The time is not for finding scapegoats. We are all at fault for choosing the comfort of illusion over the rigor of physics. We must forgive ourselves and move forward, together. Nakamoto invites us to converge peacefully toward a shared infrastructure where the entropy of our societies could be monetized for useful purposes.</p>
+        
+        <p style="margin-bottom: 1.5rem;">Until that dawn breaks, it is up to us to cultivate the Middle Way (The Dharma) at the heart of the Source Code. For that is the profound meaning of <em>Satoshi Nakamoto</em> (聡 - Satoshi: Wise/Intelligent ; 中本 - Nakamoto: Central Root): wisdom born from the center. An invisible, subterranean root, akin to the primal mycelium, secretly connecting every tree within the human forest to the same water table of objective truth. A vibrant (Nash) equilibrium between force and silence, order and freedom, humans and machines.</p>
+        
+        <p style="margin-bottom: 1.5rem;">By preventing the capture of value by force or coercion, Satoshi Nakamoto invites us to create a just and fraternal harmony so that the power of the mind can - one day - step aside for the wisdom of the heart.</p>
+        
+        <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Time is the most precious resource you have, and you cannot mine it. How many zeros do you need in your bank account to finally understand this?</span></p>
+    </div>
+</div>
         <span
             style="
                 font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive;
