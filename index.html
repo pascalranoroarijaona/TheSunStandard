@@ -242,7 +242,7 @@
             font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 800;
             color: var(--sun-yellow); display: block; line-height: 1; margin-bottom: 0.5rem;
         }
-        .stat-number .MathJax { font-size: 1.1em !important; }
+        .stat-number .MathJax { font-size: 0.96em !important; }
         .stat-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
 
         /* ── DIVIDER ── */
@@ -575,7 +575,7 @@
     </div>
 
     <!-- MAIN HUD DASHBOARD -->
-    <div class="stats-row fade-in-delay-3" style="max-width:1200px;width:100%;">
+    <div class="stats-row fade-in-delay-3" style="width:100%;">
         <div class="stat-item">
             <span class="stat-number" id="hero-sej-sat">Sync...</span>
             <span class="stat-label">
@@ -1102,6 +1102,7 @@
             const payload = await hrRes.json();
             const hrData = payload.hashrates;
             
+            // Sécurité : trier par ordre chronologique
             hrData.sort((a, b) => a.timestamp - b.timestamp);
 
             let dates = [];
@@ -1132,25 +1133,23 @@
             // --- 4. THERMODYNAMIC CALCULATIONS ---
             const SEJ_PER_HASH = 6e-6; 
             const JOULES_PER_HASH = 3e-11; 
+            const EMR_USD = 1.45e11; // Constante EMR issue du papier
             
             let finalSeJ = cumulativeHashes.map(cw => cw * SEJ_PER_HASH);
 
             const latestHashrate = hrData[hrData.length - 1].avgHashrate; 
-            const satsPerSecond = 312500000 / 600; 
+            const satsPerSecond = 312500000 / 600; // Post-Halving 4 (3.125 BTC)
             
+            // Calculs dynamiques
             const dynamicSejPerSat = (latestHashrate * SEJ_PER_HASH) / satsPerSecond;
             const energyPerBlockJoules = (latestHashrate * JOULES_PER_HASH) * 600;
             const energyPerByteJoules = energyPerBlockJoules / currentBlockSizeBytes;
-            // --- 5. METHODOLOGY CALCULATIONS (Dynamic USD Value) ---
-            // EMR Constant from the paper
-            const EMR_USD = 1.45e11; // sej/USD
             
-            // Value of 1 Satoshi in USD based on biophysical cost
+            // Calcul de la valeur monétaire
             const satoshiValueUSD = dynamicSejPerSat / EMR_USD;
-            // Value of 1 Full Bitcoin (10^8 sats)
             const bitcoinValueUSD = satoshiValueUSD * 1e8;
 
-            // --- 6. UI UPDATES WITH MATHJAX ---
+            // --- 5. UI FORMATTING FUNCTIONS ---
             const formatSci = (num) => {
                 if (num <= 1) return "\\(0\\)";
                 return "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
@@ -1159,11 +1158,17 @@
             const formatCurrency = (num) => {
                 return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
             };
+
+            // --- 6. DOM UPDATES ---
             
-            // Update HUD Data
-            document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
-            document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
-            document.getElementById('live-dynamic-sej').innerHTML = formatSci(dynamicSejPerSat);
+            // Update Live Dashboard
+            const elChainwork = document.getElementById('live-chainwork');
+            const elLiveSej = document.getElementById('live-sej');
+            const elDynSej = document.getElementById('live-dynamic-sej');
+            
+            if(elChainwork) elChainwork.innerHTML = formatSci(currentChainwork);
+            if(elLiveSej) elLiveSej.innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
+            if(elDynSej) elDynSej.innerHTML = formatSci(dynamicSejPerSat);
 
             // Update Hero HUD
             const heroSej = document.getElementById('hero-sej-sat');
@@ -1186,41 +1191,13 @@
             // Force MathJax to re-render formulas
             if (window.MathJax) {
                 MathJax.typesetPromise([
-                    document.getElementById('live-chainwork'), 
-                    document.getElementById('live-sej'),
-                    document.getElementById('live-dynamic-sej'),
+                    elChainwork, elLiveSej, elDynSej,
                     heroSej, heroEnergyBlock, heroEnergyByte,
                     methCostSej, methSatUsd
                 ]);
             }
-            // --- 5. UI UPDATES WITH MATHJAX ---
-            formatSci = (num) => {
-                if (num <= 1) return "\\(0\\)";
-                return "\\(" + num.toExponential(4).replace(/e\+?(\d+)/, '\\times 10^{$1}') + "\\)";
-            };
-            
-            document.getElementById('live-chainwork').innerHTML = formatSci(currentChainwork);
-            document.getElementById('live-sej').innerHTML = formatSci(currentChainwork * SEJ_PER_HASH);
-            document.getElementById('live-dynamic-sej').innerHTML = formatSci(dynamicSejPerSat);
 
-            heroSej = document.getElementById('hero-sej-sat');
-            heroEnergyBlock = document.getElementById('hero-energy-block');
-            heroEnergyByte = document.getElementById('hero-energy-byte');
-            
-            if(heroSej) heroSej.innerHTML = formatSci(dynamicSejPerSat);
-            if(heroEnergyBlock) heroEnergyBlock.innerHTML = formatSci(energyPerBlockJoules);
-            if(heroEnergyByte) heroEnergyByte.innerHTML = formatSci(energyPerByteJoules);
-
-            if (window.MathJax) {
-                MathJax.typesetPromise([
-                    document.getElementById('live-chainwork'), 
-                    document.getElementById('live-sej'),
-                    document.getElementById('live-dynamic-sej'),
-                    heroSej, heroEnergyBlock, heroEnergyByte
-                ]);
-            }
-
-            // --- 6. RENDER PLOTLY (SEMI-LOG SCALE) ---
+            // --- 7. RENDER PLOTLY (SEMI-LOG SCALE) ---
             const isFrench = document.body.classList.contains('lang-fr');
             
             const trace = {
@@ -1268,7 +1245,11 @@
         } catch (error) {
             console.error("API Error:", error);
             const errStr = "API Error";
-            ['live-chainwork', 'live-sej', 'live-dynamic-sej', 'hero-sej-sat', 'hero-energy-block', 'hero-energy-byte'].forEach(id => {
+            [
+                'live-chainwork', 'live-sej', 'live-dynamic-sej', 
+                'hero-sej-sat', 'hero-energy-block', 'hero-energy-byte',
+                'meth-cost-sej', 'meth-sat-usd', 'meth-btc-usd'
+            ].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.innerHTML = errStr;
             });
@@ -1276,8 +1257,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', fetchAndPlotChainwork);
-
-    
 </script>
 <hr class="divider">
 
