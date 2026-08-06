@@ -1508,463 +1508,452 @@
 </section>
 
 <hr class="divider">
-<section id="philo">
+<section id="philo" style="padding-top: 2rem;">
     <p class="section-label">
         <span lang="en">Philosophical Essay</span>
         <span lang="fr">Essai Philosophique</span>
     </p>
-<!-- PHILOSOPHICAL EPILOGUE -->
-<div class="epilogue-container" id="philo">
 
-    <p class="model-note" lang="fr">Cette section quitte volontairement le registre scientifique strict pour proposer une interprétation philosophique et symbolique du protocole Nakamoto.</p>
-    <p class="model-note" lang="en">This section intentionally leaves the strict scientific register and offers a philosophical and symbolic interpretation of the Nakamoto protocol.</p>
-    
-    <!-- SHARED 3D ANIMATION -->
-    <div id="wave-collapse-container-v2" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
-        <div lang="en" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-            BLOCKCHAIN : MACROSCOPIC COLLAPSE & THE GRAVITY OF TIME
+    <!-- PHILOSOPHICAL EPILOGUE -->
+    <div class="epilogue-container">
+
+        <p class="model-note" lang="fr">Cette section quitte volontairement le registre scientifique strict pour proposer une interprétation philosophique et symbolique du protocole Nakamoto.</p>
+        <p class="model-note" lang="en">This section intentionally leaves the strict scientific register and offers a philosophical and symbolic interpretation of the Nakamoto protocol.</p>
+        
+        <!-- SHARED 3D ANIMATION -->
+        <div id="wave-collapse-container-v2" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
+            <div lang="en" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
+                BLOCKCHAIN : MACROSCOPIC COLLAPSE & THE GRAVITY OF TIME
+            </div>
+            <div lang="fr" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
+                BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
+            </div>
         </div>
-        <div lang="fr" style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-            BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
-        </div>
-    </div>
-    
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const container = document.getElementById("wave-collapse-container-v2");
-        if (!container || typeof THREE === "undefined") return;
-
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x02050f); 
-
-        const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.set(-25, 28, 40);
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        container.appendChild(renderer.domElement);
-
-        if (typeof THREE.OrbitControls !== "undefined") {
-            const controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
-            controls.enableZoom = true;
-            controls.maxDistance = 60;
-            controls.target.set(-2.4, 1.7, -8.5); 
-        } else {
-            camera.lookAt(-2.4, 1.7, -8.5);
-        }
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
-        scene.add(ambientLight);
         
-        const singularityLight = new THREE.PointLight(0x4499ff, 5, 60);
-        singularityLight.position.set(0, -25, 0);
-        scene.add(singularityLight);
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("wave-collapse-container-v2");
+            if (!container || typeof THREE === "undefined") return;
 
-        const flashLight = new THREE.PointLight(0xffffff, 0, 40);
-        scene.add(flashLight);
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x02050f); 
 
-        const wormholeGroup = new THREE.Group();
-        scene.add(wormholeGroup);
-        
-        const segments = 40;
-        const radialSegments = 32;
-        const funnelGeo = new THREE.CylinderGeometry(15, 1.5, 40, radialSegments, segments, true, Math.PI * 0.25, Math.PI * 1.5);
-        
-        const pos = funnelGeo.attributes.position;
-        for (let i = 0; i < pos.count; i++) {
-            let y = pos.getY(i);
-            let normalizedY = (y + 20) / 40; 
-            let r = 1.5 + 14 * Math.pow(normalizedY, 4);
-            let x = pos.getX(i);
-            let z = pos.getZ(i);
-            let angle = Math.atan2(z, x);
-            pos.setX(i, Math.cos(angle) * r);
-            pos.setZ(i, Math.sin(angle) * r);
-        }
-        funnelGeo.computeVertexNormals();
+            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(-25, 28, 40);
 
-        const funnelMat = new THREE.MeshBasicMaterial({ color: 0x2266ff, wireframe: true, transparent: true, opacity: 0.4, side: THREE.DoubleSide });
-        const funnel = new THREE.Mesh(funnelGeo, funnelMat);
-        wormholeGroup.add(funnel);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
 
-        const starsMat = new THREE.PointsMaterial({ color: 0x88bbff, size: 0.2, transparent: true, opacity: 0.8 });
-        const stars = new THREE.Points(funnelGeo, starsMat);
-        wormholeGroup.add(stars);
+            if (typeof THREE.OrbitControls !== "undefined") {
+                const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+                controls.enableZoom = true;
+                controls.maxDistance = 60;
+                controls.target.set(-2.4, 1.7, -8.5); 
+            } else {
+                camera.lookAt(-2.4, 1.7, -8.5);
+            }
 
-        const singGeo = new THREE.SphereGeometry(1.4, 32, 32);
-        const singMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
-        const singularity = new THREE.Mesh(singGeo, singMat);
-        singularity.position.set(0, -21, 0);
-        wormholeGroup.add(singularity);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
+            scene.add(ambientLight);
+            
+            const singularityLight = new THREE.PointLight(0x4499ff, 5, 60);
+            singularityLight.position.set(0, -25, 0);
+            scene.add(singularityLight);
 
-        const haloGeo = new THREE.SphereGeometry(2.0, 32, 32);
-        const haloMat = new THREE.MeshBasicMaterial({ color: 0x4499ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
-        const halo = new THREE.Mesh(haloGeo, haloMat);
-        halo.position.copy(singularity.position);
-        wormholeGroup.add(halo);
+            const flashLight = new THREE.PointLight(0xffffff, 0, 40);
+            scene.add(flashLight);
 
-        const getPos = (i) => {
-            const y = 18.5 - i * 1.6; 
-            const clampedY = Math.max(-21, y);
-            const r_funnel = 1.5 + 14 * Math.pow((clampedY + 20) / 40, 4);
-            const r = r_funnel * 0.35; 
-            const theta = i * 0.7; 
-            return new THREE.Vector3(r * Math.cos(theta), clampedY, r * Math.sin(theta));
-        };
+            const wormholeGroup = new THREE.Group();
+            scene.add(wormholeGroup);
+            
+            const segments = 40;
+            const radialSegments = 32;
+            const funnelGeo = new THREE.CylinderGeometry(15, 1.5, 40, radialSegments, segments, true, Math.PI * 0.25, Math.PI * 1.5);
+            
+            const pos = funnelGeo.attributes.position;
+            for (let i = 0; i < pos.count; i++) {
+                let y = pos.getY(i);
+                let normalizedY = (y + 20) / 40; 
+                let r = 1.5 + 14 * Math.pow(normalizedY, 4);
+                let x = pos.getX(i);
+                let z = pos.getZ(i);
+                let angle = Math.atan2(z, x);
+                pos.setX(i, Math.cos(angle) * r);
+                pos.setZ(i, Math.sin(angle) * r);
+            }
+            funnelGeo.computeVertexNormals();
 
-        const chainBlocks = [];
-        const blockGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-        const edgesGeo = new THREE.EdgesGeometry(blockGeo);
-        const solidMat = new THREE.MeshPhysicalMaterial({ color: 0xffcc00, transparent: true, opacity: 0.9, roughness: 0.2, metalness: 0.8 });
-        const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
+            const funnelMat = new THREE.MeshBasicMaterial({ color: 0x2266ff, wireframe: true, transparent: true, opacity: 0.4, side: THREE.DoubleSide });
+            const funnel = new THREE.Mesh(funnelGeo, funnelMat);
+            wormholeGroup.add(funnel);
 
-        for(let i = 1; i <= 20; i++) {
-            const block = new THREE.Mesh(blockGeo, solidMat);
-            block.add(new THREE.LineSegments(edgesGeo, edgeMat));
-            block.userData = { currentIndex: i, targetIndex: i };
-            block.position.copy(getPos(i));
-            block.lookAt(getPos(i + 1));
-            const scale = Math.max(0.1, 1 - (i / 25));
-            block.scale.setScalar(scale);
-            wormholeGroup.add(block);
-            chainBlocks.push(block);
-        }
+            const starsMat = new THREE.PointsMaterial({ color: 0x88bbff, size: 0.2, transparent: true, opacity: 0.8 });
+            const stars = new THREE.Points(funnelGeo, starsMat);
+            wormholeGroup.add(stars);
 
-        const lineMat = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.6, linewidth: 2 });
-        let hashLine;
+            const singGeo = new THREE.SphereGeometry(1.4, 32, 32);
+            const singMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const singularity = new THREE.Mesh(singGeo, singMat);
+            singularity.position.set(0, -21, 0);
+            wormholeGroup.add(singularity);
 
-        const numClusters = 10;
-        const ghostsPerCluster = 5;
-        let ghostClusters = [];
-        const ghostColors = [0x4499ff, 0xff4444, 0x88ffaa, 0xc864ff, 0x00ffcc, 0xff5733, 0x33c3ff, 0x8d33ff, 0xff33c4, 0x33ffa1]; 
+            const haloGeo = new THREE.SphereGeometry(2.0, 32, 32);
+            const haloMat = new THREE.MeshBasicMaterial({ color: 0x4499ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
+            const halo = new THREE.Mesh(haloGeo, haloMat);
+            halo.position.copy(singularity.position);
+            wormholeGroup.add(halo);
 
-        function spawnGhosts() {
-            ghostClusters.forEach(c => wormholeGroup.remove(c));
-            ghostClusters = [];
-            for(let i = 0; i < numClusters; i++) {
-                const cluster = new THREE.Group();
-                cluster.userData = { 
-                    angle: (i / numClusters) * Math.PI * 2, speed: 0.4 + Math.random() * 0.6, 
-                    r: 12 + Math.random() * 3, y: 18.5 + Math.random() * 2,
-                    rotXSpeed: (Math.random() - 0.5) * 2, rotZSpeed: (Math.random() - 0.5) * 2
-                };
-                for(let j = 0; j < ghostsPerCluster; j++) {
-                    let color = ghostColors[j % ghostColors.length];
-                    let ghost = new THREE.Mesh(blockGeo, new THREE.MeshPhysicalMaterial({ color: color, transparent: true, opacity: 0.3 }));
-                    ghost.add(new THREE.LineSegments(edgesGeo, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.6 })));
-                    ghost.scale.setScalar(0.6);
-                    ghost.userData = {
-                        localAngle: (j / ghostsPerCluster) * Math.PI * 2,
-                        localSpeed: 1.0 + Math.random() * 1.5, localR: 2.0 + Math.random() * 1.5
+            const getPos = (i) => {
+                const y = 18.5 - i * 1.6; 
+                const clampedY = Math.max(-21, y);
+                const r_funnel = 1.5 + 14 * Math.pow((clampedY + 20) / 40, 4);
+                const r = r_funnel * 0.35; 
+                const theta = i * 0.7; 
+                return new THREE.Vector3(r * Math.cos(theta), clampedY, r * Math.sin(theta));
+            };
+
+            const chainBlocks = [];
+            const blockGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+            const edgesGeo = new THREE.EdgesGeometry(blockGeo);
+            const solidMat = new THREE.MeshPhysicalMaterial({ color: 0xffcc00, transparent: true, opacity: 0.9, roughness: 0.2, metalness: 0.8 });
+            const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
+
+            for(let i = 1; i <= 20; i++) {
+                const block = new THREE.Mesh(blockGeo, solidMat);
+                block.add(new THREE.LineSegments(edgesGeo, edgeMat));
+                block.userData = { currentIndex: i, targetIndex: i };
+                block.position.copy(getPos(i));
+                block.lookAt(getPos(i + 1));
+                const scale = Math.max(0.1, 1 - (i / 25));
+                block.scale.setScalar(scale);
+                wormholeGroup.add(block);
+                chainBlocks.push(block);
+            }
+
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.6, linewidth: 2 });
+            let hashLine;
+
+            const numClusters = 10;
+            const ghostsPerCluster = 5;
+            let ghostClusters = [];
+            const ghostColors = [0x4499ff, 0xff4444, 0x88ffaa, 0xc864ff, 0x00ffcc, 0xff5733, 0x33c3ff, 0x8d33ff, 0xff33c4, 0x33ffa1]; 
+
+            function spawnGhosts() {
+                ghostClusters.forEach(c => wormholeGroup.remove(c));
+                ghostClusters = [];
+                for(let i = 0; i < numClusters; i++) {
+                    const cluster = new THREE.Group();
+                    cluster.userData = { 
+                        angle: (i / numClusters) * Math.PI * 2, speed: 0.4 + Math.random() * 0.6, 
+                        r: 12 + Math.random() * 3, y: 18.5 + Math.random() * 2,
+                        rotXSpeed: (Math.random() - 0.5) * 2, rotZSpeed: (Math.random() - 0.5) * 2
                     };
-                    cluster.add(ghost);
-                }
-                wormholeGroup.add(cluster);
-                ghostClusters.push(cluster);
-            }
-        }
-
-        spawnGhosts();
-
-        const clock = new THREE.Clock();
-        let isVisible = false;
-        let animationFrameId;
-        let timer = 0;
-        const collapseInterval = 2.0; 
-
-        function animate() {
-            if (!isVisible) return; 
-            animationFrameId = requestAnimationFrame(animate);
-            
-            let dt = clock.getDelta();
-            if (dt > 0.1) dt = 0.1; 
-            timer += dt;
-
-            wormholeGroup.rotation.y -= dt * 0.05;
-
-            ghostClusters.forEach(cluster => {
-                cluster.userData.angle += cluster.userData.speed * dt;
-                cluster.position.set(
-                    cluster.userData.r * Math.cos(cluster.userData.angle),
-                    cluster.userData.y + Math.sin(timer * 2 + cluster.userData.angle) * 1.5,
-                    cluster.userData.r * Math.sin(cluster.userData.angle)
-                );
-                cluster.rotation.x += cluster.userData.rotXSpeed * dt;
-                cluster.rotation.z += cluster.userData.rotZSpeed * dt;
-                cluster.children.forEach(ghost => {
-                    ghost.userData.localAngle += ghost.userData.localSpeed * dt;
-                    ghost.position.set(
-                        ghost.userData.localR * Math.cos(ghost.userData.localAngle),
-                        Math.sin(timer * 4 + ghost.userData.localAngle) * 0.8,
-                        ghost.userData.localR * Math.sin(ghost.userData.localAngle)
-                    );
-                    ghost.rotation.x += dt * 1.5; ghost.rotation.y += dt * 1.5;
-                });
-            });
-
-            if (timer > collapseInterval) {
-                timer = 0;
-                if (ghostClusters.length > 0) {
-                    let winnerCluster = ghostClusters.shift();
-                    wormholeGroup.remove(winnerCluster); 
-                    flashLight.position.copy(getPos(0));
-                    flashLight.intensity = 80;
-                    flashLight.color.setHex(0xffffff); 
-                    
-                    let winner = new THREE.Mesh(blockGeo, solidMat.clone());
-                    winner.add(new THREE.LineSegments(edgesGeo, edgeMat));
-                    winner.userData = { currentIndex: -1, targetIndex: 0 }; 
-                    chainBlocks.unshift(winner);
-                    wormholeGroup.add(winner);
-                    chainBlocks.forEach((b, i) => b.userData.targetIndex = i);
-                } else {
-                    spawnGhosts();
-                }
-            }
-
-            flashLight.intensity = THREE.MathUtils.lerp(flashLight.intensity, 0, dt * 5);
-
-            const points = [];
-            chainBlocks.forEach(b => {
-                b.userData.currentIndex = THREE.MathUtils.lerp(b.userData.currentIndex, b.userData.targetIndex, dt * 2.5);
-                const currentPos = getPos(b.userData.currentIndex);
-                b.position.copy(currentPos);
-                const nextPos = getPos(b.userData.currentIndex + 1);
-                b.lookAt(nextPos);
-                const scale = Math.max(0.05, 1 - (b.userData.currentIndex / 25));
-                b.scale.setScalar(scale);
-                b.material.opacity = Math.max(0, scale * 0.9);
-                points.push(currentPos);
-            });
-
-            while (chainBlocks.length > 25) {
-                let old = chainBlocks.pop();
-                wormholeGroup.remove(old);
-                old.geometry.dispose(); old.material.dispose();
-            }
-
-            if (hashLine) wormholeGroup.remove(hashLine);
-            if (points.length > 1) {
-                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-                hashLine = new THREE.Line(lineGeo, lineMat);
-                wormholeGroup.add(hashLine);
-            }
-
-            halo.scale.setScalar(1 + Math.sin(clock.getElapsedTime() * 4) * 0.15);
-            
-            renderer.render(scene, camera);
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (!isVisible) {
-                        isVisible = true; clock.start(); animate(); 
+                    for(let j = 0; j < ghostsPerCluster; j++) {
+                        let color = ghostColors[j % ghostColors.length];
+                        let ghost = new THREE.Mesh(blockGeo, new THREE.MeshPhysicalMaterial({ color: color, transparent: true, opacity: 0.3 }));
+                        ghost.add(new THREE.LineSegments(edgesGeo, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.6 })));
+                        ghost.scale.setScalar(0.6);
+                        ghost.userData = {
+                            localAngle: (j / ghostsPerCluster) * Math.PI * 2,
+                            localSpeed: 1.0 + Math.random() * 1.5, localR: 2.0 + Math.random() * 1.5
+                        };
+                        cluster.add(ghost);
                     }
-                } else {
-                    isVisible = false;
-                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    wormholeGroup.add(cluster);
+                    ghostClusters.push(cluster);
+                }
+            }
+
+            spawnGhosts();
+
+            const clock = new THREE.Clock();
+            let isVisible = false;
+            let animationFrameId;
+            let timer = 0;
+            const collapseInterval = 2.0; 
+
+            function animate() {
+                if (!isVisible) return; 
+                animationFrameId = requestAnimationFrame(animate);
+                
+                let dt = clock.getDelta();
+                if (dt > 0.1) dt = 0.1; 
+                timer += dt;
+
+                wormholeGroup.rotation.y -= dt * 0.05;
+
+                ghostClusters.forEach(cluster => {
+                    cluster.userData.angle += cluster.userData.speed * dt;
+                    cluster.position.set(
+                        cluster.userData.r * Math.cos(cluster.userData.angle),
+                        cluster.userData.y + Math.sin(timer * 2 + cluster.userData.angle) * 1.5,
+                        cluster.userData.r * Math.sin(cluster.userData.angle)
+                    );
+                    cluster.rotation.x += cluster.userData.rotXSpeed * dt;
+                    cluster.rotation.z += cluster.userData.rotZSpeed * dt;
+                    cluster.children.forEach(ghost => {
+                        ghost.userData.localAngle += ghost.userData.localSpeed * dt;
+                        ghost.position.set(
+                            ghost.userData.localR * Math.cos(ghost.userData.localAngle),
+                            Math.sin(timer * 4 + ghost.userData.localAngle) * 0.8,
+                            ghost.userData.localR * Math.sin(ghost.userData.localAngle)
+                        );
+                        ghost.rotation.x += dt * 1.5; ghost.rotation.y += dt * 1.5;
+                    });
+                });
+
+                if (timer > collapseInterval) {
+                    timer = 0;
+                    if (ghostClusters.length > 0) {
+                        let winnerCluster = ghostClusters.shift();
+                        wormholeGroup.remove(winnerCluster); 
+                        flashLight.position.copy(getPos(0));
+                        flashLight.intensity = 80;
+                        flashLight.color.setHex(0xffffff); 
+                        
+                        let winner = new THREE.Mesh(blockGeo, solidMat.clone());
+                        winner.add(new THREE.LineSegments(edgesGeo, edgeMat));
+                        winner.userData = { currentIndex: -1, targetIndex: 0 }; 
+                        chainBlocks.unshift(winner);
+                        wormholeGroup.add(winner);
+                        chainBlocks.forEach((b, i) => b.userData.targetIndex = i);
+                    } else {
+                        spawnGhosts();
+                    }
+                }
+
+                flashLight.intensity = THREE.MathUtils.lerp(flashLight.intensity, 0, dt * 5);
+
+                const points = [];
+                chainBlocks.forEach(b => {
+                    b.userData.currentIndex = THREE.MathUtils.lerp(b.userData.currentIndex, b.userData.targetIndex, dt * 2.5);
+                    const currentPos = getPos(b.userData.currentIndex);
+                    b.position.copy(currentPos);
+                    const nextPos = getPos(b.userData.currentIndex + 1);
+                    b.lookAt(nextPos);
+                    const scale = Math.max(0.05, 1 - (b.userData.currentIndex / 25));
+                    b.scale.setScalar(scale);
+                    b.material.opacity = Math.max(0, scale * 0.9);
+                    points.push(currentPos);
+                });
+
+                while (chainBlocks.length > 25) {
+                    let old = chainBlocks.pop();
+                    wormholeGroup.remove(old);
+                    old.geometry.dispose(); old.material.dispose();
+                }
+
+                if (hashLine) wormholeGroup.remove(hashLine);
+                if (points.length > 1) {
+                    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                    hashLine = new THREE.Line(lineGeo, lineMat);
+                    wormholeGroup.add(hashLine);
+                }
+
+                halo.scale.setScalar(1 + Math.sin(clock.getElapsedTime() * 4) * 0.15);
+                
+                renderer.render(scene, camera);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!isVisible) {
+                            isVisible = true; clock.start(); animate(); 
+                        }
+                    } else {
+                        isVisible = false;
+                        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: "100px" });
+
+            observer.observe(container);
+
+            window.addEventListener("resize", () => {
+                if (container.clientWidth > 0) {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
                 }
             });
-        }, { threshold: 0.05, rootMargin: "100px" });
-
-        observer.observe(container);
-
-        window.addEventListener("resize", () => {
-            if (container.clientWidth > 0) {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            }
         });
-    });
-    </script>
-    <!-- FIN ANIMATION 3D -->
+        </script>
+        <!-- FIN ANIMATION 3D -->
 
-    <!-- CORPS DU TEXTE FR -->
-    <div lang="fr" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
-        
-        <p style="margin-bottom: 1.5rem;"><strong>Au-delà des artifices, les devises de l'univers sont le souffle de l'énergie et la clarté de l'information, échangés d'âme à âme.</strong> La véritable grandeur d'une civilisation ne réside pas dans l'accumulation frénétique de ses artefacts, mais dans sa capacité à instituer ce que le philosophe Cornelius Castoriadis appelait des « significations imaginaires sociales » capables de résister à l'entropie du temps et à la corruption du pouvoir. Bâtir des institutions de confiance que la violence peine à éroder.</p>
+        <!-- CORPS DU TEXTE FR -->
+        <div lang="fr" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
+            
+            <p style="margin-bottom: 1.5rem;"><strong>Au-delà des artifices, les devises de l'univers sont le souffle de l'énergie et la clarté de l'information, échangés d'âme à âme.</strong> La véritable grandeur d'une civilisation ne réside pas dans l'accumulation frénétique de ses artefacts, mais dans sa capacité à instituer ce que le philosophe Cornelius Castoriadis appelait des « significations imaginaires sociales » capables de résister à l'entropie du temps et à la corruption du pouvoir. Bâtir des institutions de confiance que la violence peine à éroder.</p>
 
-        <p style="margin-bottom: 1.5rem;">Pendant des siècles, l'humanité a ployé sous le fardeau insoutenable de confier la mesure de sa valeur et la médiation de ses échanges à des souverainetés centralisées (le Léviathan hobbesien), structurellement soumises à l'hybris et à l'arbitraire. La monnaie fiduciaire contemporaine, gérée par l'illusion de l'autorité absolue, s'est invariablement érigée en un centre extractif et mortifère. En substituant à cette asymétrie un consensus distribué, transparent et mathématiquement vérifiable, l'invention de Satoshi Nakamoto ne relève pas de la simple ingénierie cryptographique : elle constitue une rupture épistémologique. Elle dissout l'illusion du Tiers-Garant pour redistribuer l'autorité de la vérité à la périphérie, dans l'espace partagé de notre réseau.</p>
-        
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">L'Épreuve du Désir Mimétique et l'Ombre Jungienne</strong><br />
-        Cependant, cette émancipation technologique est indissociable d'une profonde confrontation psychologique. Dans son architecture, ce réseau d'une transparence radicale nous tend un miroir implacable : il nous confronte à la part la plus sombre de notre psyché collective. En exploitant la théorie des jeux pour sécuriser son registre, le protocole utilise notre propre cupidité comme vecteur de sa résilience. Dans la lignée de Carl Jung, le système agit comme un catalyseur de notre Ombre. Mieux encore, il répond à l'angoisse du désir mimétique théorisée par René Girard : dans un monde monétaire infini, la rivalité mimétique conduit inexorablement à l'inflation et à la destruction. En instaurant une rareté absolue, le protocole force l'humanité à traverser le feu de l'avidité spéculative pour comprendre que l'accumulation n'est pas la finalité, mais seulement le combustible brut d'une transition vers une valeur pacificatrice.</p>
+            <p style="margin-bottom: 1.5rem;">Pendant des siècles, l'humanité a ployé sous le fardeau insoutenable de confier la mesure de sa valeur et la médiation de ses échanges à des souverainetés centralisées (le Léviathan hobbesien), structurellement soumises à l'hybris et à l'arbitraire. La monnaie fiduciaire contemporaine, gérée par l'illusion de l'autorité absolue, s'est invariablement érigée en un centre extractif et mortifère. En substituant à cette asymétrie un consensus distribué, transparent et mathématiquement vérifiable, l'invention de Satoshi Nakamoto ne relève pas de la simple ingénierie cryptographique : elle constitue une rupture épistémologique. Elle dissout l'illusion du Tiers-Garant pour redistribuer l'autorité de la vérité à la périphérie, dans l'espace partagé de notre réseau.</p>
+            
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">L'Épreuve du Désir Mimétique et l'Ombre Jungienne</strong><br />
+            Cependant, cette émancipation technologique est indissociable d'une profonde confrontation psychologique. Dans son architecture, ce réseau d'une transparence radicale nous tend un miroir implacable : il nous confronte à la part la plus sombre de notre psyché collective. En exploitant la théorie des jeux pour sécuriser son registre, le protocole utilise notre propre cupidité comme vecteur de sa résilience. Dans la lignée de Carl Jung, le système agit comme un catalyseur de notre Ombre. Mieux encore, il répond à l'angoisse du désir mimétique théorisée par René Girard : dans un monde monétaire infini, la rivalité mimétique conduit inexorablement à l'inflation et à la destruction. En instaurant une rareté absolue, le protocole force l'humanité à traverser le feu de l'avidité spéculative pour comprendre que l'accumulation n'est pas la finalité, mais seulement le combustible brut d'une transition vers une valeur pacificatrice.</p>
 
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">De la Dunamis au Hamiltonien : Une Ontologie de la Valeur</strong><br />
-        Aristote, dans sa <em>Métaphysique</em>, distingue l'être en puissance (<em>dunamis</em>) et l'être en acte (<em>energeia</em>). La physique moderne n'a fait que mettre des équations sur cette intuition en séparant l'Énergie Potentielle (stockée, immobile) de l'Énergie Cinétique (en mouvement, active). La tragédie de l'économie monétariste moderne est d'avoir sacrifié la puissance à l'acte. Pour le système fiat, seule l'énergie cinétique — la vélocité de la monnaie, la dépense immédiate, le mouvement perpétuel — fait figure de croissance. C'est une vision du monde que Martin Heidegger qualifierait de <em>Gestell</em> (l'Arraisonnement) : la nature et le temps humain y sont réduits à un « fonds disponible » (<em>Bestand</em>) qu'il faut consommer de plus en plus vite pour compenser la dilution monétaire.</p>
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">De la Dunamis au Hamiltonien : Une Ontologie de la Valeur</strong><br />
+            Aristote, dans sa <em>Métaphysique</em>, distingue l'être en puissance (<em>dunamis</em>) et l'être en acte (<em>energeia</em>). La physique moderne n'a fait que mettre des équations sur cette intuition en séparant l'Énergie Potentielle (stockée, immobile) de l'Énergie Cinétique (en mouvement, active). La tragédie de l'économie monétariste moderne est d'avoir sacrifié la puissance à l'acte. Pour le système fiat, seule l'énergie cinétique — la vélocité de la monnaie, la dépense immédiate, le mouvement perpétuel — fait figure de croissance. C'est une vision du monde que Martin Heidegger qualifierait de <em>Gestell</em> (l'Arraisonnement) : la nature et le temps humain y sont réduits à un « fonds disponible » (<em>Bestand</em>) qu'il faut consommer de plus en plus vite pour compenser la dilution monétaire.</p>
 
-        <p style="margin-bottom: 1.5rem;">L'économie fiduciaire est ontologiquement inflationniste car elle refuse la finitude. Elle dévore sa propre structure pour maintenir l'illusion d'un mouvement perpétuel. En mécanique analytique, l'énergie totale d'un système est décrite par son Hamiltonien (\(H = E_k + E_p\)). Bitcoin, en introduisant la rigueur de la thermodynamique dans la sphère sociale, optimise ce Hamiltonien. Il permet l'épargne véritable en devenant le réceptacle incorruptible de l'énergie potentielle humaine. En liant chaque fraction de valeur à une dépense énergétique réelle, il réconcilie la monnaie avec le monde physique. La Preuve de Travail n'est pas un gaspillage ; elle est l'ancrage matériel (les Joules) qui dresse un mur d'antifragilité mathématique contre la prédation politique.</p>
-        
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Kant, la Promesse et la Redéfinition du Travail</strong><br />
-        Ce protocole génère une dissonance cognitive insoutenable car il détruit le confort de notre hétéronomie. Pendant des décennies, l'illusion fiduciaire a fonctionné comme une tutelle infantilisante, nous habituant à l'idée que la valeur pouvait être décrétée <em>ex nihilo</em>. Comme l'écrivait Emmanuel Kant dans <em>Qu'est-ce que les Lumières ?</em>, la maturité se définit comme « la sortie de l'homme de sa minorité dont il est lui-même responsable ». Bitcoin est la matérialisation technologique de l'impératif catégorique kantien appliqué à la monnaie. En nous obligeant à assumer le coût thermodynamique inviolable de la sécurisation de nos échanges, il nous émancipe.</p>
+            <p style="margin-bottom: 1.5rem;">L'économie fiduciaire est ontologiquement inflationniste car elle refuse la finitude. Elle dévore sa propre structure pour maintenir l'illusion d'un mouvement perpétuel. En mécanique analytique, l'énergie totale d'un système est décrite par son Hamiltonien (\(H = E_k + E_p\)). Bitcoin, en introduisant la rigueur de la thermodynamique dans la sphère sociale, optimise ce Hamiltonien. Il permet l'épargne véritable en devenant le réceptacle incorruptible de l'énergie potentielle humaine. En liant chaque fraction de valeur à une dépense énergétique réelle, il réconcilie la monnaie avec le monde physique. La Preuve de Travail n'est pas un gaspillage ; elle est l'ancrage matériel (les Joules) qui dresse un mur d'antifragilité mathématique contre la prédation politique.</p>
+            
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Kant, la Promesse et la Redéfinition du Travail</strong><br />
+            Ce protocole génère une dissonance cognitive insoutenable car il détruit le confort de notre hétéronomie. Pendant des décennies, l'illusion fiduciaire a fonctionné comme une tutelle infantilisante, nous habituant à l'idée que la valeur pouvait être décrétée <em>ex nihilo</em>. Comme l'écrivait Emmanuel Kant dans <em>Qu'est-ce que les Lumières ?</em>, la maturité se définit comme « la sortie de l'homme de sa minorité dont il est lui-même responsable ». Bitcoin est la matérialisation technologique de l'impératif catégorique kantien appliqué à la monnaie. En nous obligeant à assumer le coût thermodynamique inviolable de la sécurisation de nos échanges, il nous émancipe.</p>
 
-        <p style="margin-bottom: 1.5rem;">Si la monnaie fiduciaire est à la racine de l'extinction de 75 % du vivant en cinq décennies, c'est parce qu'elle repose sur l'accumulation d'une dette fictive représentant des droits de tirage infinis sur la biosphère que l'on ne souhaite jamais rembourser : c'est l'économie de la promesse politique. Face à cela, si de l'argent peut être créé à l'infini par le décret d'une banque centrale, quelle est la dignité du temps que nous passons à travailler pour l'obtenir ? L'énergie colossale dépensée pour chaque octet par la Preuve de Travail illustre l'épaisseur exacte du trait qui sépare les nœuds de la confiance absolue les uns envers les autres. Bitcoin restitue au travail humain sa mesure exacte et objective.</p>
+            <p style="margin-bottom: 1.5rem;">Si la monnaie fiduciaire est à la racine de l'extinction de 75 % du vivant en cinq décennies, c'est parce qu'elle repose sur l'accumulation d'une dette fictive représentant des droits de tirage infinis sur la biosphère que l'on ne souhaite jamais rembourser : c'est l'économie de la promesse politique. Face à cela, si de l'argent peut être créé à l'infini par le décret d'une banque centrale, quelle est la dignité du temps que nous passons à travailler pour l'obtenir ? L'énergie colossale dépensée pour chaque octet par la Preuve de Travail illustre l'épaisseur exacte du trait qui sépare les nœuds de la confiance absolue les uns envers les autres. Bitcoin restitue au travail humain sa mesure exacte et objective.</p>
 
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">La Constitution Immuable du Réseau</strong><br />
-        Ces mathématiques froides sont le socle de règles éthiques indélébiles, agissant comme une loi naturelle qui n'évoluera que si un nouveau consensus universel est trouvé. Ces principes moraux forment le fondement de notre survie numérique :</p>
-        
-        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
-            <li><span style="color: #d1d5db;">Vous ne devez pas confisquer (Clés Privées).</span></li>
-            <li><span style="color: #d1d5db;">Vous ne devez pas censurer vos pairs (Réseau P2P et Noeuds Libres).</span></li>
-            <li><span style="color: #d1d5db;">Vous ne devez pas dévaluer le travail (Limite des 21 Millions).</span></li>
-            <li><span style="color: #d1d5db;">Vous ne devez pas contrefaire (Preuve de Travail).</span></li>
-        </ul>
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">La Constitution Immuable du Réseau</strong><br />
+            Ces mathématiques froides sont le socle de règles éthiques indélébiles, agissant comme une loi naturelle qui n'évoluera que si un nouveau consensus universel est trouvé. Ces principes moraux forment le fondement de notre survie numérique :</p>
+            
+            <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
+                <li><span style="color: #d1d5db;">Vous ne devez pas confisquer (Clés Privées).</span></li>
+                <li><span style="color: #d1d5db;">Vous ne devez pas censurer vos pairs (Réseau P2P et Noeuds Libres).</span></li>
+                <li><span style="color: #d1d5db;">Vous ne devez pas dévaluer le travail (Limite des 21 Millions).</span></li>
+                <li><span style="color: #d1d5db;">Vous ne devez pas contrefaire (Preuve de Travail).</span></li>
+            </ul>
 
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">La Redéfinition de la Richesse et de l'Héritage</strong><br />
-        Puisque le protocole rend la coercition physiquement impossible, il métamorphose notre rapport ultime à la mort. Que se passe-t-il lorsqu'un nœud s'éteint sans transmettre sa mémoire (ses clés privées) ? La valeur n'est pas saisie par un Léviathan ; elle est mathématiquement verrouillée à jamais. Cette perte irréversible agit comme un don silencieux à l'ensemble du réseau. À l'inverse, la transmission de cette valeur à la génération suivante redevient un acte pur, conscient et volontaire de confiance et d'amour. La redistribution n'est plus un mécanisme extractif ; elle devient un héritage organique ou un sacrifice thermodynamique au profit du collectif.</p>
-        
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">L'Alètheia face au Déluge Numérique</strong><br />
-        Cette transition intervient à l'instant le plus critique de l'ère de l'information. À l'heure où l'Intelligence Artificielle réduit le coût marginal de production de l'information falsifiée à zéro, nous entrons dans l'ère de l'hyper-relativisme. Face à ce déluge, le protocole érige l'ultime rempart : la Rareté Numérique Absolue. Julian Assange soulignait que l'essence de Bitcoin est d'être une preuve de publication vérifiable à l'échelle globale <em>(preuve de concept : le projet Trinity détaillé dans la section <a href="#about" style="color: #4499ff;">Open Source</a>)</em>. La blockchain (la Timechain) brise le cauchemar de George Orwell : la réécriture perpétuelle du passé. Le réseau trace une flèche du temps inaltérable, une mémoire collective cryptographique que nul révisionnisme ne peut effacer. C'est l'avènement de l'<em>Alètheia</em> (la vérité comme dévoilement) à l'échelle du code.</p>
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">La Redéfinition de la Richesse et de l'Héritage</strong><br />
+            Puisque le protocole rend la coercition physiquement impossible, il métamorphose notre rapport ultime à la mort. Que se passe-t-il lorsqu'un nœud s'éteint sans transmettre sa mémoire (ses clés privées) ? La valeur n'est pas saisie par un Léviathan ; elle est mathématiquement verrouillée à jamais. Cette perte irréversible agit comme un don silencieux à l'ensemble du réseau. À l'inverse, la transmission de cette valeur à la génération suivante redevient un acte pur, conscient et volontaire de confiance et d'amour. La redistribution n'est plus un mécanisme extractif ; elle devient un héritage organique ou un sacrifice thermodynamique au profit du collectif.</p>
+            
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">L'Alètheia face au Déluge Numérique</strong><br />
+            Cette transition intervient à l'instant le plus critique de l'ère de l'information. À l'heure où l'Intelligence Artificielle réduit le coût marginal de production de l'information falsifiée à zéro, nous entrons dans l'ère de l'hyper-relativisme. Face à ce déluge, le protocole érige l'ultime rempart : la Rareté Numérique Absolue. Julian Assange soulignait que l'essence de Bitcoin est d'être une preuve de publication vérifiable à l'échelle globale <em>(preuve de concept : le projet Trinity détaillé dans la section <a href="#about" style="color: #4499ff;">Open Source</a>)</em>. La blockchain (la Timechain) brise le cauchemar de George Orwell : la réécriture perpétuelle du passé. Le réseau trace une flèche du temps inaltérable, une mémoire collective cryptographique que nul révisionnisme ne peut effacer. C'est l'avènement de l'<em>Alètheia</em> (la vérité comme dévoilement) à l'échelle du code.</p>
 
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Relativité Monétaire et Gravité du Temps</strong><br />
-        Nous pouvons poser l'équivalence physique suivante : la Masse est à la Gravité ce que la Rareté est à la Valeur en économie. Le système fiat, s'imprimant sans limite, possède une masse virtuellement nulle et s'effondre dans le trou noir de l'hyperinflation. À l'inverse, par son inélasticité totale, Bitcoin crée un puits de gravité monétaire si dense qu'il courbe l'espace-temps économique autour de lui. La perception de l'écoulement du temps économique devient inversement proportionnelle à la dureté du référentiel utilisé. Plus la monnaie est dure, plus le futur devient proche, tangible et planifiable.</p>
-        
-        <!-- DÉBUT : LA DICTATURE DE LA QUANTITÉ & LA FIN DE L'HYPERMATÉRIALISME -->
-        <div style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db; margin-bottom: 2rem;">
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Relativité Monétaire et Gravité du Temps</strong><br />
+            Nous pouvons poser l'équivalence physique suivante : la Masse est à la Gravité ce que la Rareté est à la Valeur en économie. Le système fiat, s'imprimant sans limite, possède une masse virtuellement nulle et s'effondre dans le trou noir de l'hyperinflation. À l'inverse, par son inélasticité totale, Bitcoin crée un puits de gravité monétaire si dense qu'il courbe l'espace-temps économique autour de lui. La perception de l'écoulement du temps économique devient inversement proportionnelle à la dureté du référentiel utilisé. Plus la monnaie est dure, plus le futur devient proche, tangible et planifiable.</p>
             
             <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">La Dictature de la Quantité : Vers la fin de l'Hypermatérialisme</strong><br />
-            <span lang="fr">
-                Nous vivons aujourd'hui le paradoxe de l'abondance. Jamais l'humanité n'a eu accès à autant de choses, et pourtant, un malaise diffus s'installe : la sensation que tout est devenu fragile, éphémère et superficiel. Vos bottes en cuir qui duraient dix ans ont été remplacées par des baskets collées qui tiennent six mois. Les discussions profondes au coin du feu cèdent la place aux milliers de *likes* distraits sur des réseaux sociaux. La nourriture est abondante mais nutritionnellement vide. Nous avons sacrifié la Qualité sur l'autel de la Quantité.
-            </span>
-            <span lang="en">
-                We are living today in the paradox of abundance. Never has humanity had access to so many things, and yet, a diffuse unease is setting in: the feeling that everything has become fragile, ephemeral, and superficial. Your leather boots that lasted a decade have been replaced by glued sneakers that hold up for six months. Deep fireside conversations yield to thousands of distracted *likes* on social media. Food is abundant but nutritionally empty. We have sacrificed Quality on the altar of Quantity.
-            </span>
-            </p>
+            Nous vivons aujourd'hui le paradoxe de l'abondance. Jamais l'humanité n'a eu accès à autant de choses, et pourtant, un malaise diffus s'installe : la sensation que tout est devenu fragile, éphémère et superficiel. Vos bottes en cuir qui duraient dix ans ont été remplacées par des baskets collées qui tiennent six mois. Les discussions profondes au coin du feu cèdent la place aux milliers de <em>likes</em> distraits sur des réseaux sociaux. La nourriture est abondante mais nutritionnellement vide. Nous avons sacrifié la Qualité sur l'autel de la Quantité.</p>
 
-            <p style="margin-bottom: 1.5rem;">
-            <span lang="fr">
-                Ce glissement n'est pas un accident culturel, c'est la conséquence thermodynamique directe du système monétaire que nous utilisons. Une monnaie imprimable à l'infini (fiat) dilue inévitablement la valeur du temps humain. Pour survivre à cette inflation sans effrayer le consommateur avec des prix qui explosent, les producteurs n'ont qu'une seule stratégie : dégrader secrètement la matière. C'est la *Skimpflation* (réduire la qualité). Le bois massif devient de l'aggloméré, l'architecture millénaire devient du béton gris périssable. Dans ce monde, on ne répare plus, on jette. L'entropie gagne. La monnaie molle pousse structurellement l'humanité vers un hyper-matérialisme destructeur : nous sommes contraints d'acheter frénétiquement des objets physiques et de l'immobilier juste pour fuir la dévaluation de notre épargne, épuisant la biosphère dans une course vers le bas.
-            </span>
-            <span lang="en">
-                This slide is not a cultural accident; it is the direct thermodynamic consequence of the monetary system we use. A currency that can be printed infinitely (fiat) inevitably dilutes the value of human time. To survive this inflation without terrifying consumers with exploding prices, producers have only one strategy: secretly degrading the material. This is *Skimpflation* (reducing quality). Solid wood becomes particleboard; millennial architecture becomes perishable gray concrete. In this world, we no longer repair, we discard. Entropy wins. Soft money structurally pushes humanity toward destructive hyper-materialism: we are forced to frantically buy physical objects and real estate simply to escape the devaluation of our savings, exhausting the biosphere in a race to the bottom.
-            </span>
-            </p>
+            <p style="margin-bottom: 1.5rem;">Ce glissement n'est pas un accident culturel, c'est la conséquence thermodynamique directe du système monétaire que nous utilisons. Une monnaie imprimable à l'infini (fiat) dilue inévitablement la valeur du temps humain. Pour survivre à cette inflation sans effrayer le consommateur avec des prix qui explosent, les producteurs n'ont qu'une seule stratégie : dégrader secrètement la matière. C'est la <em>Skimpflation</em> (réduire la qualité). Le bois massif devient de l'aggloméré, l'architecture millénaire devient du béton gris périssable. Dans ce monde, on ne répare plus, on jette. L'entropie gagne. La monnaie molle pousse structurellement l'humanité vers un hyper-matérialisme destructeur : nous sommes contraints d'acheter frénétiquement des objets physiques et de l'immobilier juste pour fuir la dévaluation de notre épargne, épuisant la biosphère dans une course vers le bas.</p>
 
-            <p style="margin-bottom: 1.5rem;">
-            <span lang="fr">
-                En achevant la transmutation de l'énergie en information absolument rare, le protocole Nakamoto nous offre un paradoxe profondément libérateur : l'information incorruptible guérit notre matérialisme. Dans un réseau où l'unité de compte est fixe et inélastique (les 21 millions), la monnaie s'apprécie avec le temps. La seule façon pour un artisan de convaincre un individu de se séparer d'une monnaie aussi dure est de lui offrir une qualité supérieure et durable.
-            </span>
-            <span lang="en">
-                By completing the transmutation of energy into absolutely scarce information, the Nakamoto protocol offers us a profoundly liberating paradox: incorruptible information cures our materialism. In a network where the unit of account is fixed and inelastic (the 21 million), the currency appreciates over time. The only way for an artisan to convince an individual to part with such hard money is to offer them superior, durable quality.
-            </span>
-            </p>
+            <p style="margin-bottom: 1.5rem;">En achevant la transmutation de l'énergie en information absolument rare, le protocole Nakamoto nous offre un paradoxe profondément libérateur : l'information incorruptible guérit notre matérialisme. Dans un réseau où l'unité de compte est fixe et inélastique (les 21 millions), la monnaie s'apprécie avec le temps. La seule façon pour un artisan de convaincre un individu de se séparer d'une monnaie aussi dure est de lui offrir une qualité supérieure et durable.</p>
 
-            <p style="margin-bottom: 1.5rem;">
-            <span lang="fr">
-                Bitcoin démontre que si le registre est virtuellement inviolable et infiniment rare, la valeur n'a plus besoin d'être stockée dans l'accaparement frénétique d'objets physiques. Si le coffre-fort le plus impénétrable de l'univers ne pèse pas un gramme, l'accumulation d'artefacts perd son sens absolu. Protégés de la dilution, la peur du manque qui alimente notre fièvre consumériste s'apaise. Une monnaie de Qualité (finie) nous force à ralentir, à favoriser le signal sur le bruit et à construire pour l'éternité. Le protocole nous rend notre temps, dépouillé de ses artifices matériels, pour nous forcer à admettre que le véritable trésor réside dans la chaleur de nos foyers, la fulgurance de la vie, et la reconquête de notre humanité organique.
-            </span>
-            <span lang="en">
-                Bitcoin demonstrates that if the ledger is virtually inviolable and infinitely scarce, value no longer needs to be stored in the frantic hoarding of physical objects. If the most impenetrable vault in the universe does not weigh a single gram, the accumulation of artifacts loses its absolute meaning. Protected from dilution, the fear of scarcity that fuels our consumerist fever subsides. A currency of Quality (finite) forces us to slow down, to favor the signal over the noise, and to build for eternity. The protocol gives us back our time, stripped of its material artifices, forcing us to admit that the real treasure lies in the warmth of our homes, the brilliance of life, and the reclamation of our organic humanity.
-            </span>
-            </p>
+            <p style="margin-bottom: 1.5rem;">Bitcoin démontre que si le registre est virtuellement inviolable et infiniment rare, la valeur n'a plus besoin d'être stockée dans l'accaparement frénétique d'objets physiques. Si le coffre-fort le plus impénétrable de l'univers ne pèse pas un gramme, l'accumulation d'artefacts perd son sens absolu. Protégés de la dilution, la peur du manque qui alimente notre fièvre consumériste s'apaise. Une monnaie de Qualité (finie) nous force à ralentir, à favoriser le signal sur le bruit et à construire pour l'éternité. Le protocole nous rend notre temps, dépouillé de ses artifices matériels, pour nous forcer à admettre que le véritable trésor réside dans la chaleur de nos foyers, la fulgurance de la vie, et la reconquête de notre humanité organique.</p>
+            
+            <p style="margin-bottom: 1.5rem;">Nakamoto ne propose aucune téléologie morale : comme le rappelle Wittgenstein, les mathématiques sont silencieuses sur le sens de la vie, elles ne sont que l'échafaudage logique du monde. Ce code est d'une neutralité stricte, une page blanche topologique. Mais en empêchant la capture de la valeur par la violence étatique ou l'inflation silencieuse, il nous confronte à notre responsabilité ontologique ultime.</p>
+
+            <p style="margin-bottom: 1.5rem;">En signant la fin de l'extractivisme sous toutes ses formes, le protocole nous impose les conditions mathématiques d'une véritable société de sagesse. Pour les physiciens de la conscience, cette transition laisse entrevoir une promesse vertigineuse. Symboliquement, le nombre de Joules nécessaires pour sécuriser un octet représente le coût exact de la méfiance humaine. C'est la mesure physique de notre incapacité structurelle à nous faire confiance. L'énergie que nous brûlons aujourd'hui est le bouclier nécessaire pour nous assurer que nous pouvons rester propriétaires du fruit de notre propre travail face à la nature prédatrice de notre espèce.</p>
+
+            <p style="margin-bottom: 1.5rem;">Cette métrique — affichée en vert au début de cette page — est peut-être la seule qui compte vraiment à l'échelle anthropologique. Elle chiffre l'entropie de notre morale. Si un jour ce consensus universel de non-prédation ne devait plus consommer la moindre énergie, cela signifierait que la prédation systémique de notre espèce s'est dissipée. Que « l'homme n'est plus un loup pour l'homme ». Le jour où cette métrique sera nulle, nous aurons atteint un état de <em>flow</em> pour notre espèce.</p>
+
+            <p style="margin-bottom: 1.5rem;">Le réseau ne sera plus un bouclier défensif, mais l'expression lumineuse d'une conscience unifiée, en parfaite harmonie avec la conscience planétaire. Une société enfin libre de se rebâtir sur une confiance absolue des uns envers les autres, sur l'amour et l'unité. Une civilisation qui aura intimement compris que nous nous élevons ensemble, et non pas les uns contre les autres.</p>
+            
+            <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Le temps est la seule véritable ressource irréversible que nous possédions. Il est la seule rareté que nous ne pouvons "miner". En rendant à l'humanité un instrument de mesure inaltérable, le protocole ne sauve pas le monde : il nous rend simplement l'exactitude de notre temps, nous laissant libres, enfin, d'en faire un usage digne.</span></p>
+
         </div>
-        <!-- FIN : LA DICTATURE DE LA QUANTITÉ -->
-        
-        <p style="margin-bottom: 1.5rem;">Nakamoto ne propose aucune téléologie morale : comme le rappelle Wittgenstein, les mathématiques sont silencieuses sur le sens de la vie, elles ne sont que l'échafaudage logique du monde. Ce code est d'une neutralité stricte, une page blanche topologique. Mais en empêchant la capture de la valeur par la violence étatique ou l'inflation silencieuse, il nous confronte à notre responsabilité ontologique ultime.</p>
 
-        <p style="margin-bottom: 1.5rem;">En signant la fin de l'extractivisme sous toutes ses formes, le protocole nous impose les conditions mathématiques d'une véritable société de sagesse. Pour les physiciens de la conscience, cette transition laisse entrevoir une promesse vertigineuse : si le nombre de Joules nécessaires pour sécuriser un octet tend un jour vers zéro, c'est que nous aurons atteint un état de <em>flow</em> pour notre espèce. Le réseau ne sera plus un bouclier défensif, mais la vision d'une conscience unifiée en parfaite harmonie avec la conscience planétaire. Une société libre de se rebâtir sur une confiance absolue des uns envers les autres, sur l'amour et l'unité.</p>
+        <!-- CORPS DU TEXTE EN -->
+        <div lang="en" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db; display: none;">
+            
+            <p style="margin-bottom: 1.5rem;"><strong>Beyond human constructs, the true currencies of the universe are the breath of energy and the clarity of information, exchanged soul to soul.</strong> The true greatness of a civilization lies not in the frantic accumulation of its artifacts, but in its capacity to institute what the philosopher Cornelius Castoriadis called "social imaginary significations" capable of resisting the entropy of time and the corruption of power. Building institutions of trust that violence struggles to erode.</p>
+
+            <p style="margin-bottom: 1.5rem;">For centuries, humanity has bowed under the unsustainable burden of entrusting the measure of its value and the mediation of its exchange to centralized sovereignties (the Hobbesian Leviathan), structurally subject to hubris and arbitrariness. Contemporary fiat money, managed by the illusion of absolute authority, has invariably established itself as an extractive and deadly center. By substituting this asymmetry with a distributed, transparent, and mathematically verifiable consensus, Satoshi Nakamoto's invention transcends mere cryptographic engineering: it constitutes an epistemological rupture. It dissolves the illusion of the institutional Third-Party Guarantor to redistribute the authority of truth to the periphery, within the shared space of our network.</p>
+            
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">The Trial of Mimetic Desire and the Jungian Shadow</strong><br />
+            However, this technological emancipation is inseparable from a profound psychological confrontation. In its architecture, this ruthlessly transparent network holds up an implacable mirror: it confronts us with the darkest part of our collective psyche. By harnessing game theory to secure its ledger, the protocol uses our own greed as the vector of its resilience. In the tradition of Carl Jung, the system acts as a catalyst for our Shadow. Better still, it responds to the anxiety of mimetic desire theorized by René Girard: in an infinite monetary world, mimetic rivalry leads inexorably to inflation and destruction. By instilling absolute scarcity, the protocol forces humanity to walk through the fire of speculative greed to understand that accumulation is not the end goal, but merely the raw fuel of a transition toward a pacifying value.</p>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">From Dunamis to the Hamiltonian: An Ontology of Value</strong><br />
+            Aristotle, in his <em>Metaphysics</em>, distinguishes being in potency (<em>dunamis</em>) from being in act (<em>energeia</em>). Modern physics merely placed equations on this intuition by separating Potential Energy (stored, immobile) from Kinetic Energy (in motion, active). The tragedy of modern monetarist economics is having sacrificed potency to act. For the fiat system, only kinetic energy—the velocity of money, immediate spending, perpetual motion—is considered growth. It is a worldview that Martin Heidegger would call <em>Gestell</em> (Enframing): nature and human time are reduced to a "standing-reserve" (<em>Bestand</em>) that must be consumed faster and faster to compensate for monetary dilution.</p>
+
+            <p style="margin-bottom: 1.5rem;">The fiat economy is ontologically inflationary because it refuses finitude. It devours its own structure to maintain the illusion of perpetual motion. In analytical mechanics, the total energy of a system is described by its Hamiltonian (\(H = E_k + E_p\)). Bitcoin, by introducing the rigor of thermodynamics into the social sphere, optimizes this Hamiltonian. It enables true savings by becoming the incorruptible receptacle of human potential energy. By linking every fraction of value to a real energy expenditure, it reconciles money with the physical world. Proof-of-Work is not a waste; it is the material anchor (Joules) that builds a wall of mathematical antifragility against political predation.</p>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Kant, the Promise, and the Redefinition of Work</strong><br />
+            This protocol generates an unbearable cognitive dissonance because it shatters the comfort of our heteronomy. For decades, the fiat illusion has functioned as an infantilizing nursery, conditioning us to believe that value could be decreed <em>ex nihilo</em>. As Immanuel Kant wrote in <em>What is Enlightenment?</em>, maturity is defined as "man's emergence from his self-incurred immaturity." Bitcoin is the technological materialization of the Kantian categorical imperative applied to money. By forcing us to bear the inviolable thermodynamic cost of securing our exchanges, it emancipates us.</p>
+
+            <p style="margin-bottom: 1.5rem;">If fiat money is at the root of the extinction of 75% of living species in five decades, it is because it relies on the accumulation of fictitious debt representing infinite drawing rights on the biosphere that we never intend to repay: this is the economy of political promise. In the face of this, if money can be infinitely created by the decree of a central bank, what is the dignity of the time we spend working to obtain it? The colossal energy spent for each byte by Proof-of-Work illustrates the exact thickness of the line separating network nodes from absolute trust in one another. Bitcoin restores human labor to its exact and objective measure.</p>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">The Immutable Constitution of the Network</strong><br />
+            These cold mathematics are the bedrock of indelible ethical rules, acting as a natural law that will only evolve if a new universal consensus is reached. These fundamental moral principles form the foundation of our digital survival:</p>
+            
+            <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
+                <li><span style="color: #d1d5db;">You shall not confiscate (Private Keys).</span></li>
+                <li><span style="color: #d1d5db;">You shall not censor your peers (P2P Network and Free Nodes).</span></li>
+                <li><span style="color: #d1d5db;">You shall not devalue labor (The 21 Million Limit).</span></li>
+                <li><span style="color: #d1d5db;">You shall not counterfeit (Proof-of-Work).</span></li>
+            </ul>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Redefining Wealth and Legacy</strong><br />
+            Since the protocol makes coercion physically impossible, it completely transforms our ultimate relationship with death. What happens when a node powers down permanently without passing on its memory (its private keys)? The value is not seized by a Leviathan; it is mathematically locked forever. This irreversible loss acts as a silent donation to the entire network. Conversely, transmitting this value to the next generation returns to being a pure, conscious, and voluntary act of trust and love. Redistribution is no longer an extractive mechanism; it becomes either an organic inheritance or a thermodynamic sacrifice for the benefit of the collective.</p>
+            
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Aletheia against the Digital Deluge</strong><br />
+            This transition occurs at the most critical juncture in the information age. At a time when Artificial Intelligence is reducing the marginal cost of producing falsified information to zero, we are entering an era of hyper-relativism. Faced with this deluge, the protocol erects the ultimate bulwark: Absolute Digital Scarcity. Julian Assange pointed out that the essence of Bitcoin is to be a globally verifiable proof of publication <em>(proof of concept: the Trinity project detailed in the <a href="#about" style="color: #4499ff;">Open Source</a> section)</em>. The blockchain (the Timechain) shatters George Orwell’s nightmare: the perpetual rewriting of the past. The network draws an unalterable arrow of time, a cryptographic collective memory that no revisionism can erase. It is the advent of <em>Aletheia</em> (truth as disclosure) at the scale of code.</p>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Monetary Relativity and the Gravity of Time</strong><br />
+            We can establish the following physical equivalence: Mass is to Gravity what Scarcity is to Value in economics. The fiat system, printed without limits, possesses virtually zero mass and collapses into the black hole of hyperinflation. Conversely, through its total inelasticity, Bitcoin creates a monetary gravity well so dense that it curves economic spacetime around it. The perception of the passage of economic time becomes inversely proportional to the hardness of the reference frame used. The harder the currency, the closer, more tangible, and more plannable the future becomes.</p>
+
+            <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">The Dictatorship of Quantity: Towards the end of Hypermaterialism</strong><br />
+            We are living today in the paradox of abundance. Never has humanity had access to so many things, and yet, a diffuse unease is setting in: the feeling that everything has become fragile, ephemeral, and superficial. Your leather boots that lasted a decade have been replaced by glued sneakers that hold up for six months. Deep fireside conversations yield to thousands of distracted <em>likes</em> on social media. Food is abundant but nutritionally empty. We have sacrificed Quality on the altar of Quantity.</p>
+
+            <p style="margin-bottom: 1.5rem;">This slide is not a cultural accident; it is the direct thermodynamic consequence of the monetary system we use. A currency that can be printed infinitely (fiat) inevitably dilutes the value of human time. To survive this inflation without terrifying consumers with exploding prices, producers have only one strategy: secretly degrading the material. This is <em>Skimpflation</em> (reducing quality). Solid wood becomes particleboard; millennial architecture becomes perishable gray concrete. In this world, we no longer repair, we discard. Entropy wins. Soft money structurally pushes humanity toward destructive hyper-materialism: we are forced to frantically buy physical objects and real estate simply to escape the devaluation of our savings, exhausting the biosphere in a race to the bottom.</p>
+
+            <p style="margin-bottom: 1.5rem;">By completing the transmutation of energy into absolutely scarce information, the Nakamoto protocol offers us a profoundly liberating paradox: incorruptible information cures our materialism. In a network where the unit of account is fixed and inelastic (the 21 million), the currency appreciates over time. The only way for an artisan to convince an individual to part with such hard money is to offer them superior, durable quality.</p>
+
+            <p style="margin-bottom: 1.5rem;">Bitcoin demonstrates that if the ledger is virtually inviolable and infinitely scarce, value no longer needs to be stored in the frantic hoarding of physical objects. If the most impenetrable vault in the universe does not weigh a single gram, the accumulation of artifacts loses its absolute meaning. Protected from dilution, the fear of scarcity that fuels our consumerist fever subsides. A currency of Quality (finite) forces us to slow down, to favor the signal over the noise, and to build for eternity. The protocol gives us back our time, stripped of its material artifices, forcing us to admit that the real treasure lies in the warmth of our homes, the brilliance of life, and the reclamation of our organic humanity.</p>
+            
+            <p style="margin-bottom: 1.5rem;">Nakamoto proposes no moral teleology: as Wittgenstein reminds us, mathematics are silent on the meaning of life; they are merely the logical scaffolding of the world. This code is of strict neutrality, a blank topological page. But by preventing the capture of value by state violence or silent inflation, it confronts us with our ultimate ontological responsibility.</p>
+
+            <p style="margin-bottom: 1.5rem;">By signaling the end of extractivism in all its forms, the protocol enforces the mathematical conditions for a true society of wisdom. For physicists of consciousness, this transition hints at a staggering promise. Symbolically, the number of Joules required to secure a byte represents the exact cost of human mistrust. It is the physical measure of our structural inability to trust one another. The energy we burn today is the shield we must wield simply to ensure we remain the rightful owners of our own labor against the predatory nature of our species.</p>
+
+            <p style="margin-bottom: 1.5rem;">This metric—displayed in green at the top of this page—is perhaps the only one that truly matters on an anthropological scale. It quantifies the entropy of our morality. If one day this universal consensus of non-predation were to consume no energy at all, it would mean that the systemic predation of our species had finally dissipated. That "man is no longer a wolf to man." The day this metric reaches zero, we will have reached a state of <em>flow</em> for our species.</p>
+
+            <p style="margin-bottom: 1.5rem;">The network will no longer be a defensive shield, but the luminous expression of a unified consciousness, in perfect harmony with planetary consciousness. A society finally free to rebuild itself on absolute trust in one another, on love, and unity. A civilization that has deeply understood that we rise together, not against one another.</p>
+            
+            <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Time is the only truly irreversible resource we possess. It is the only scarcity we cannot "mine." By giving humanity back an unalterable measuring instrument, the protocol does not save the world: it simply restores the exactness of our time, leaving us free, at last, to make worthy use of it.</span></p>
+
+        </div>
+
+        <!-- SIGNATURE & SPOTIFY -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
+                Pascal Ranoroarijaona
+            </span>
+
+            <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; color: #ffcc00; filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.6)); vertical-align: top; margin-left: 1rem; margin-top: 2.5rem;">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 100%; height: 100%">
+                    <circle cx="50" cy="50" r="16" />
+                    <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2" />
+                    <g>
+                        <polygon points="50,2 54,18 46,18" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(45 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(90 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(135 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(180 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(225 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(270 50 50)" />
+                        <polygon points="50,2 54,18 46,18" transform="rotate(315 50 50)" />
+                    </g>
+                    <g opacity="0.7">
+                        <polygon points="50,12 52,24 48,24" transform="rotate(22.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(67.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(112.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(157.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(202.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(247.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(292.5 50 50)" />
+                        <polygon points="50,12 52,24 48,24" transform="rotate(337.5 50 50)" />
+                    </g>
+                </svg>
+            </span>  
+        </div>
         
-        <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Le temps est la seule véritable ressource irréversible que nous possédions. Il est la seule rareté que nous ne pouvons "miner". En rendant à l'humanité un instrument de mesure inaltérable, le protocole ne sauve pas le monde : il nous rend simplement l'exactitude de notre temps, nous laissant libres, enfin, d'en faire un usage digne.</span></p>
+        <iframe
+            title="Lecteur Spotify : Playlist d'ambiance"
+            data-testid="embed-iframe"
+            style="border-radius: 12px; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);"
+            src="https://open.spotify.com/embed/playlist/4BIYpE4exfv5JWwtZ6zKyH?utm_source=generator"
+            width="100%"
+            height="704"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture;"
+            loading="lazy"
+        ></iframe>
+
     </div>
+</section>
 
-    <!-- CORPS DU TEXTE EN -->
-    <div lang="en" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
-        
-        <p style="margin-bottom: 1.5rem;"><strong>Beyond human constructs, the true currencies of the universe are the breath of energy and the clarity of information, exchanged soul to soul.</strong> The true greatness of a civilization lies not in the frantic accumulation of its artifacts, but in its capacity to institute what the philosopher Cornelius Castoriadis called "social imaginary significations" capable of resisting the entropy of time and the corruption of power. Building institutions of trust that violence struggles to erode.</p>
-
-        <p style="margin-bottom: 1.5rem;">For centuries, humanity has bowed under the unsustainable burden of entrusting the measure of its value and the mediation of its exchange to centralized sovereignties (the Hobbesian Leviathan), structurally subject to hubris and arbitrariness. Contemporary fiat money, managed by the illusion of absolute authority, has invariably established itself as an extractive and deadly center. By substituting this asymmetry with a distributed, transparent, and mathematically verifiable consensus, Satoshi Nakamoto's invention transcends mere cryptographic engineering: it constitutes an epistemological rupture. It dissolves the illusion of the institutional Third-Party Guarantor to redistribute the authority of truth to the periphery, within the shared space of our network.</p>
-        
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">The Trial of Mimetic Desire and the Jungian Shadow</strong><br />
-        However, this technological emancipation is inseparable from a profound psychological confrontation. In its architecture, this ruthlessly transparent network holds up an implacable mirror: it confronts us with the darkest part of our collective psyche. By harnessing game theory to secure its ledger, the protocol uses our own greed as the vector of its resilience. In the tradition of Carl Jung, the system acts as a catalyst for our Shadow. Better still, it responds to the anxiety of mimetic desire theorized by René Girard: in an infinite monetary world, mimetic rivalry leads inexorably to inflation and destruction. By instilling absolute scarcity, the protocol forces humanity to walk through the fire of speculative greed to understand that accumulation is not the end goal, but merely the raw fuel of a transition toward a pacifying value.</p>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">From Dunamis to the Hamiltonian: An Ontology of Value</strong><br />
-        Aristotle, in his <em>Metaphysics</em>, distinguishes being in potency (<em>dunamis</em>) from being in act (<em>energeia</em>). Modern physics merely placed equations on this intuition by separating Potential Energy (stored, immobile) from Kinetic Energy (in motion, active). The tragedy of modern monetarist economics is having sacrificed potency to act. For the fiat system, only kinetic energy—the velocity of money, immediate spending, perpetual motion—is considered growth. It is a worldview that Martin Heidegger would call <em>Gestell</em> (Enframing): nature and human time are reduced to a "standing-reserve" (<em>Bestand</em>) that must be consumed faster and faster to compensate for monetary dilution.</p>
-
-        <p style="margin-bottom: 1.5rem;">The fiat economy is ontologically inflationary because it refuses finitude. It devours its own structure to maintain the illusion of perpetual motion. In analytical mechanics, the total energy of a system is described by its Hamiltonian (\(H = E_k + E_p\)). Bitcoin, by introducing the rigor of thermodynamics into the social sphere, optimizes this Hamiltonian. It enables true savings by becoming the incorruptible receptacle of human potential energy. By linking every fraction of value to a real energy expenditure, it reconciles money with the physical world. Proof-of-Work is not a waste; it is the material anchor (Joules) that builds a wall of mathematical antifragility against political predation.</p>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Kant, the Promise, and the Redefinition of Work</strong><br />
-        This protocol generates an unbearable cognitive dissonance because it shatters the comfort of our heteronomy. For decades, the fiat illusion has functioned as an infantilizing nursery, conditioning us to believe that value could be decreed <em>ex nihilo</em>. As Immanuel Kant wrote in <em>What is Enlightenment?</em>, maturity is defined as "man's emergence from his self-incurred immaturity." Bitcoin is the technological materialization of the Kantian categorical imperative applied to money. By forcing us to bear the inviolable thermodynamic cost of securing our exchanges, it emancipates us.</p>
-
-        <p style="margin-bottom: 1.5rem;">If fiat money is at the root of the extinction of 75% of living species in five decades, it is because it relies on the accumulation of fictitious debt representing infinite drawing rights on the biosphere that we never intend to repay: this is the economy of political promise. In the face of this, if money can be infinitely created by the decree of a central bank, what is the dignity of the time we spend working to obtain it? The colossal energy spent for each byte by Proof-of-Work illustrates the exact thickness of the line separating network nodes from absolute trust in one another. Bitcoin restores human labor to its exact and objective measure.</p>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">The Immutable Constitution of the Network</strong><br />
-        These cold mathematics are the bedrock of indelible ethical rules, acting as a natural law that will only evolve if a new universal consensus is reached. These fundamental moral principles form the foundation of our digital survival:</p>
-        
-        <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem; line-height: 1.6;">
-            <li><span style="color: #d1d5db;">You shall not confiscate (Private Keys).</span></li>
-            <li><span style="color: #d1d5db;">You shall not censor your peers (P2P Network and Free Nodes).</span></li>
-            <li><span style="color: #d1d5db;">You shall not devalue labor (The 21 Million Limit).</span></li>
-            <li><span style="color: #d1d5db;">You shall not counterfeit (Proof-of-Work).</span></li>
-        </ul>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Redefining Wealth and Legacy</strong><br />
-        Since the protocol makes coercion physically impossible, it completely transforms our ultimate relationship with death. What happens when a node powers down permanently without passing on its memory (its private keys)? The value is not seized by a Leviathan; it is mathematically locked forever. This irreversible loss acts as a silent donation to the entire network. Conversely, transmitting this value to the next generation returns to being a pure, conscious, and voluntary act of trust and love. Redistribution is no longer an extractive mechanism; it becomes either an organic inheritance or a thermodynamic sacrifice for the benefit of the collective.</p>
-        
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Aletheia against the Digital Deluge</strong><br />
-        This transition occurs at the most critical juncture in the information age. At a time when Artificial Intelligence is reducing the marginal cost of producing falsified information to zero, we are entering an era of hyper-relativism. Faced with this deluge, the protocol erects the ultimate bulwark: Absolute Digital Scarcity. Julian Assange pointed out that the essence of Bitcoin is to be a globally verifiable proof of publication <em>(proof of concept: the Trinity project detailed in the <a href="#about" style="color: #4499ff;">Open Source</a> section)</em>. The blockchain (the Timechain) shatters George Orwell’s nightmare: the perpetual rewriting of the past. The network draws an unalterable arrow of time, a cryptographic collective memory that no revisionism can erase. It is the advent of <em>Aletheia</em> (truth as disclosure) at the scale of code.</p>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Monetary Relativity and the Gravity of Time</strong><br />
-        We can establish the following physical equivalence: Mass is to Gravity what Scarcity is to Value in economics. The fiat system, printed without limits, possesses virtually zero mass and collapses into the black hole of hyperinflation. Conversely, through its total inelasticity, Bitcoin creates a monetary gravity well so dense that it curves economic spacetime around it. The perception of the passage of economic time becomes inversely proportional to the hardness of the reference frame used. The harder the currency, the closer, more tangible, and more plannable the future becomes.</p>
-
-        <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A;">Bitcoin and the End of Hypermaterialism</strong><br />
-        By completing this transmutation of energy into scarce information, the protocol offers a profoundly liberating paradox: incorruptible information cures our materialism. History has proven that fiat money—abstract yet infinite—pushes humanity toward destructive hyper-materialism. To escape the constant devaluation of our savings, we are forced to frantically buy physical objects, real estate, or corporate stocks (the financialization of the world). This desperate flight forward exhausts the biosphere.<br />
-        Bitcoin demonstrates that if the ledger is virtually inviolable and absolutely scarce, value no longer needs to be stored by hoarding physical objects. If the most impenetrable vault in the universe doesn't weigh a single gram, the frenzy of material accumulation loses its absolute meaning. Protected from dilution, the fear of scarcity that fuels our consumerist fever subsides. The protocol gives us back our time, stripped of its material artifices, forcing us to admit that the real treasure lies in the warmth of our homes, the brilliance of life, and the reclamation of our bare, organic humanity.</p>
-        
-        <p style="margin-bottom: 1.5rem;">Nakamoto proposes no moral teleology: as Wittgenstein reminds us, mathematics are silent on the meaning of life; they are merely the logical scaffolding of the world. This code is of strict neutrality, a blank topological page. But by preventing the capture of value by state violence or silent inflation, it confronts us with our ultimate ontological responsibility.</p>
-
-        <p style="margin-bottom: 1.5rem;">By signaling the end of extractivism in all its forms, the protocol enforces the mathematical conditions for a true society of wisdom. For physicists of consciousness, this transition hints at a staggering prophecy: if the number of Joules required to secure a byte ever approaches zero, it will mean we have reached a state of <em>flow</em> for our species. The network will no longer be a defensive shield, but the vision of a unified consciousness in perfect harmony with planetary consciousness. A society free to rebuild itself on absolute trust in one another, on love, and unity.</p>
-        
-        <p><span style="color: var(--sun-yellow); font-size: 1.1em; font-weight: bold;">Time is the only truly irreversible resource we possess. It is the only scarcity we cannot "mine." By giving humanity back an unalterable measuring instrument, the protocol does not save the world: it simply restores the exactness of our time, leaving us free, at last, to make worthy use of it.</span></p>
-    </div>
-
-    <!-- SIGNATURE & SPOTIFY -->
-    <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block; margin-top: 2rem;">
-        Pascal Ranoroarijaona
-    </span>
-
-    <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; color: #ffcc00; filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.6)); vertical-align: top; margin-left: 1rem; margin-top: 2.5rem;">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 100%; height: 100%">
-            <circle cx="50" cy="50" r="16" />
-            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2" />
-            <g>
-                <polygon points="50,2 54,18 46,18" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(45 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(90 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(135 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(180 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(225 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(270 50 50)" />
-                <polygon points="50,2 54,18 46,18" transform="rotate(315 50 50)" />
-            </g>
-            <g opacity="0.7">
-                <polygon points="50,12 52,24 48,24" transform="rotate(22.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(67.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(112.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(157.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(202.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(247.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(292.5 50 50)" />
-                <polygon points="50,12 52,24 48,24" transform="rotate(337.5 50 50)" />
-            </g>
-        </svg>
-    </span>  
-    
-    <iframe
-        title="Lecteur Spotify : Playlist d'ambiance"
-        data-testid="embed-iframe"
-        style="border-radius: 12px; margin-top: 4rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);"
-        src="https://open.spotify.com/embed/playlist/4BIYpE4exfv5JWwtZ6zKyH?utm_source=generator"
-        width="100%"
-        height="704"
-        frameborder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture;"
-        loading="lazy"
-    ></iframe>
-</div>
 <section id="about">
     <p class="section-label">
         <span lang="en">About</span>
