@@ -3206,7 +3206,7 @@
     });
 </script>
 
-<hr class="divider">
+    <hr class="divider">
 <section id="philo" style="padding-top: 2rem;">
     <p class="section-label">
         <span lang="en">Philosophical Essay</span>
@@ -3237,7 +3237,62 @@
                 BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
             </div>
         </div>
+        <!-- ANIMATION TIKZ FR -->
+        <div class="wave-collapse-container" role="img" aria-label="Animation interactive du Nautile de Nakamoto" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(247, 147, 26, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative;">
+            <div style="position: absolute; top: 20px; left: 20px; color: #F7931A; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(247, 147, 26, 0.8);">
+                LE NAUTILE DE NAKAMOTO : GRAVITÉ DU TEMPS THERMIQUE
+            </div>
+            
+            <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                <script type="text/tikz">
+                \begin{tikzpicture}[scale=3.3, transform shape]
+                    \def\a{0.2}
+                    \def\b{0.14}
+                    \def\numblocks{40}
+                    \def\angstep{24}
+                    
+                    % Les strates du Nautile (Les blocs)
+                    \foreach \n in {1,...,\numblocks} {
+                        \pgfmathsetmacro{\ang}{\n * \angstep}
+                        \pgfmathsetmacro{\prevang}{(\n-1) * \angstep}
+                        
+                        \pgfmathsetmacro{\r}{\a * exp(\b * \ang * pi/180)}
+                        \pgfmathsetmacro{\prevr}{\a * exp(\b * \prevang * pi/180)}
 
+                        % Dégradé de couleur: les anciens (bas n) sont lourds/denses (bleu foncé)
+                        % Les récents (haut n) sont chauds (orange)
+                        \pgfmathsetmacro{\colorratio}{\n/\numblocks * 100}
+                        
+                        \filldraw[fill=cyan!\colorratio!blue!15, draw=cyan!\colorratio!blue!60, thick, line join=round] 
+                            (0,0) -- (\prevang:\prevr) 
+                            plot[domain=\prevang:\ang, samples=15, smooth] (\x: {\a * exp(\b * \x * pi/180)}) 
+                            -- cycle;
+                            
+                        % Épaisseur croissante des parois pour simuler la gravité thermodynamique (Poids cumulé)
+                        \pgfmathsetmacro{\lw}{0.2 + (\numblocks - \n)*0.06}
+                        \draw[draw=orange!\colorratio!red!80, line width=\lw pt] (0,0) -- (\prevang:\prevr);
+                    }
+                    
+                    % Le bloc en cours de minage (Présent)
+                    \pgfmathsetmacro{\ang}{(\numblocks+1) * \angstep}
+                    \pgfmathsetmacro{\prevang}{\numblocks * \angstep}
+                    \pgfmathsetmacro{\r}{\a * exp(\b * \ang * pi/180)}
+                    \pgfmathsetmacro{\prevr}{\a * exp(\b * \prevang * pi/180)}
+                    
+                    \draw[draw=orange, line width=1.2pt, dashed] 
+                            (0,0) -- (\prevang:\prevr) 
+                            plot[domain=\prevang:\ang, samples=15, smooth] (\x: {\a * exp(\b * \x * pi/180)}) 
+                            -- cycle;
+                            
+                    % Annotations (en blanc)
+                    \node[color=orange, font=\sffamily\tiny, rotate=\ang-90] at (\ang-12:\r+0.15) {Présent ($t$)};
+                    \node[color=cyan!50, font=\sffamily\tiny] at (180:1.1) {Puits Gravitationnel};
+                    \node[color=red!60, font=\sffamily\tiny] at (0,0) {$\bullet$};
+                    \node[color=blue!40, font=\sffamily\tiny] at (-60:0.25) {Genèse};
+                \end{tikzpicture}
+                </script>
+            </div>
+        </div>
         <!-- CORPS DU TEXTE FR -->
         <div class="bitcoin-essay" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
             <h2 style="color: #F7931A; text-align: left;">
@@ -4344,6 +4399,102 @@
     <!-- ========================================== -->
     <!-- SCRIPT COMMUN POUR L'ANIMATION 3D          -->
     <!-- ========================================== -->
+     <!-- ========================================== -->
+    <!-- SCRIPT COMMUN POUR L'ANIMATION TIKZ/SVG    -->
+    <!-- ========================================== -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Sélectionner les conteneurs (FR et EN)
+        const containers = document.querySelectorAll(".wave-collapse-container");
+
+        containers.forEach(container => {
+            // Un observateur de mutation attend que TikZJax compile le script et génère le <svg>
+            const observer = new MutationObserver((mutations, obs) => {
+                const svg = container.querySelector("svg");
+                if (svg) {
+                    obs.disconnect(); // Le SVG est là, on arrête l'observation
+                    animateTikZNautilus(svg);
+                }
+            });
+
+            // On lance l'observation sur le conteneur
+            observer.observe(container, { childList: true, subtree: true });
+        });
+
+        function animateTikZNautilus(svg) {
+            // Ajustement stylistique du SVG pour s'adapter parfaitement au conteneur
+            svg.style.width = "100%";
+            svg.style.height = "100%";
+            svg.style.overflow = "visible";
+
+            // Récupérer tous les éléments graphiques générés par TikZ
+            const elements = Array.from(svg.querySelectorAll("path, text"));
+            
+            // Cacher tous les éléments au départ pour l'effet d'apparition
+            elements.forEach(el => {
+                el.style.opacity = '0';
+            });
+
+            // On anime séquentiellement pour simuler le temps thermique et le minage des blocs
+            let delay = 300;
+            
+            elements.forEach((el, index) => {
+                // Animation de tracé progressif pour les chemins (paths TikZ)
+                if (el.tagName.toLowerCase() === 'path') {
+                    // Calcul de la longueur de la courbe pour l'effet "dessin"
+                    const length = el.getTotalLength ? el.getTotalLength() : 150;
+                    
+                    el.style.strokeDasharray = length;
+                    el.style.strokeDashoffset = length;
+                    
+                    el.animate([
+                        { opacity: 0, strokeDashoffset: length },
+                        { opacity: 1, strokeDashoffset: 0 }
+                    ], {
+                        duration: 800,
+                        delay: delay,
+                        fill: 'forwards',
+                        easing: 'ease-out'
+                    });
+                } 
+                // Apparition simple pour les textes
+                else {
+                    el.animate([
+                        { opacity: 0, transform: 'translateY(5px) scale(0.9)' },
+                        { opacity: 1, transform: 'translateY(0) scale(1)' }
+                    ], {
+                        duration: 1000,
+                        delay: delay + 200, // Les textes apparaissent légèrement après le tracé
+                        fill: 'forwards',
+                        easing: 'ease-out'
+                    });
+                }
+                
+                // Le délai d'apparition se raccourcit légèrement au fur et à mesure 
+                // Simule l'accélération d'une spirale logarithmique
+                delay += Math.max(15, 80 - (index * 1.5)); 
+            });
+            
+            // Effet de pulsation (respiration) infini sur le bloc "Présent"
+            // Le bloc "Présent" est constitué des derniers chemins dessinés (le bloc pointillé orange)
+            setTimeout(() => {
+                const presentPaths = elements.slice(-4).filter(el => el.tagName.toLowerCase() === 'path');
+                
+                presentPaths.forEach(path => {
+                    path.animate([
+                        { opacity: 0.5, filter: 'drop-shadow(0 0 2px rgba(255, 165, 0, 0.3))' },
+                        { opacity: 1, filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.9))' },
+                        { opacity: 0.5, filter: 'drop-shadow(0 0 2px rgba(255, 165, 0, 0.3))' }
+                    ], {
+                        duration: 2500,
+                        iterations: Infinity,
+                        easing: 'ease-in-out'
+                    });
+                });
+            }, delay + 600);
+        }
+    });
+    </script>
     <script>
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof THREE === "undefined") return;
