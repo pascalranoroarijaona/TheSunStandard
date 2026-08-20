@@ -3234,65 +3234,10 @@
         <!-- ANIMATION 3D FR -->
         <div class="wave-collapse-container" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
             <div style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-                BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS
+                BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS THERMIQUE
             </div>
         </div>
-        <!-- ANIMATION TIKZ FR -->
-        <div class="wave-collapse-container" role="img" aria-label="Animation interactive du Nautile de Nakamoto" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(247, 147, 26, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative;">
-            <div style="position: absolute; top: 20px; left: 20px; color: #F7931A; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(247, 147, 26, 0.8);">
-                LE NAUTILE DE NAKAMOTO : GRAVITÉ DU TEMPS THERMIQUE
-            </div>
-            
-            <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                <script type="text/tikz">
-                \begin{tikzpicture}[scale=3.3, transform shape]
-                    \def\a{0.2}
-                    \def\b{0.14}
-                    \def\numblocks{40}
-                    \def\angstep{24}
-                    
-                    % Les strates du Nautile (Les blocs)
-                    \foreach \n in {1,...,\numblocks} {
-                        \pgfmathsetmacro{\ang}{\n * \angstep}
-                        \pgfmathsetmacro{\prevang}{(\n-1) * \angstep}
-                        
-                        \pgfmathsetmacro{\r}{\a * exp(\b * \ang * pi/180)}
-                        \pgfmathsetmacro{\prevr}{\a * exp(\b * \prevang * pi/180)}
-
-                        % Dégradé de couleur: les anciens (bas n) sont lourds/denses (bleu foncé)
-                        % Les récents (haut n) sont chauds (orange)
-                        \pgfmathsetmacro{\colorratio}{\n/\numblocks * 100}
-                        
-                        \filldraw[fill=cyan!\colorratio!blue!15, draw=cyan!\colorratio!blue!60, thick, line join=round] 
-                            (0,0) -- (\prevang:\prevr) 
-                            plot[domain=\prevang:\ang, samples=15, smooth] (\x: {\a * exp(\b * \x * pi/180)}) 
-                            -- cycle;
-                            
-                        % Épaisseur croissante des parois pour simuler la gravité thermodynamique (Poids cumulé)
-                        \pgfmathsetmacro{\lw}{0.2 + (\numblocks - \n)*0.06}
-                        \draw[draw=orange!\colorratio!red!80, line width=\lw pt] (0,0) -- (\prevang:\prevr);
-                    }
-                    
-                    % Le bloc en cours de minage (Présent)
-                    \pgfmathsetmacro{\ang}{(\numblocks+1) * \angstep}
-                    \pgfmathsetmacro{\prevang}{\numblocks * \angstep}
-                    \pgfmathsetmacro{\r}{\a * exp(\b * \ang * pi/180)}
-                    \pgfmathsetmacro{\prevr}{\a * exp(\b * \prevang * pi/180)}
-                    
-                    \draw[draw=orange, line width=1.2pt, dashed] 
-                            (0,0) -- (\prevang:\prevr) 
-                            plot[domain=\prevang:\ang, samples=15, smooth] (\x: {\a * exp(\b * \x * pi/180)}) 
-                            -- cycle;
-                            
-                    % Annotations (en blanc)
-                    \node[color=orange, font=\sffamily\tiny, rotate=\ang-90] at (\ang-12:\r+0.15) {Présent ($t$)};
-                    \node[color=cyan!50, font=\sffamily\tiny] at (180:1.1) {Puits Gravitationnel};
-                    \node[color=red!60, font=\sffamily\tiny] at (0,0) {$\bullet$};
-                    \node[color=blue!40, font=\sffamily\tiny] at (-60:0.25) {Genèse};
-                \end{tikzpicture}
-                </script>
-            </div>
-        </div>
+        
         <!-- CORPS DU TEXTE FR -->
         <div class="bitcoin-essay" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
             <h2 style="color: #F7931A; text-align: left;">
@@ -3849,10 +3794,10 @@
         <!-- ANIMATION 3D EN -->
         <div class="wave-collapse-container" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
             <div style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-                BLOCKCHAIN : MACROSCOPIC COLLAPSE & THE GRAVITY OF TIME
+                BLOCKCHAIN : MACROSCOPIC COLLAPSE & THE GRAVITY OF THERMAL TIME
             </div>
         </div>
-
+        
         <!-- CORPS DU TEXTE EN -->
         <div class="bitcoin-essay" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
             
