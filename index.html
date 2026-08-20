@@ -717,7 +717,7 @@
         </p>
 
         <!-- L'ÉTAT RÉGALIEN 2.0 -->
-        <div style="margin-bottom: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--sun-yellow); border-radius: 0 12px 12px 0;">
+        <!-- <div style="margin-bottom: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--sun-yellow); border-radius: 0 12px 12px 0;">
             <h4 style="color: var(--sun-yellow); font-size: 1.2rem; margin-bottom: 1rem;">
                 <span lang="en">The Foundation: The Regalian State 2.0 in the Age of Automation</span>
                 <span lang="fr">Le Socle : L'État Régalien 2.0 à l'ère de l'Automatisation</span>
@@ -748,7 +748,7 @@
                     <span lang="fr"><strong style="color: #fff;">Finances Publiques (La Fin de l'Impôt sur le Revenu) :</strong> Le budget est financé par la taxation de l'extraction d'énergie, de l'occupation spatiale ou de la rente computationnelle. La MMT sert d'outil direct pour financer le filet de sécurité biologique.</span>
                 </li>
             </ul>
-        </div>
+        </div> -->
 
         <!-- LA MATRICE DE GOUVERNANCE -->
         <h4 style="color: #F7931A; font-size: 1.2rem; margin-bottom: 1rem; text-align: center;">
@@ -4341,118 +4341,194 @@
     </div>
 
 
-    <!-- ========================================== -->
-    <!-- SCRIPT COMMUN POUR L'ANIMATION 3D          -->
-    <!-- ========================================== -->
-    <script>
+    <!-- Inclusions requises (ajustez les URLs selon votre projet) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
-    if (typeof THREE === "undefined") return;
-
-    const containers = document.querySelectorAll(
-        ".wave-collapse-container"
-    );
-
-    const instances = [];
+    const containers = document.querySelectorAll(".wave-collapse-container");
+    if (!containers.length) return;
 
     /* =========================================================
-       CONFIGURATION
-
-       q : part de calcul hypothétique de l'attaquant
-       p : part du réseau honnête
-
-       Modèle pédagogique :
-       P_reorg(z) ≈ (q / p)^z
-       G(z) = -ln(P_reorg)
+       1. DÉTECTION WEBGL (Vérification préalable)
     ========================================================= */
+    function isWebGLAvailable() {
+        try {
+            const canvas = document.createElement("canvas");
+            return !!(
+                window.WebGLRenderingContext &&
+                (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+            );
+        } catch (e) {
+            return false;
+        }
+    }
+
+    const webglSupported = isWebGLAvailable() && typeof THREE !== "undefined";
+
+    /* =========================================================
+       2. FALLBACK PIXI.JS (Si WebGL indisponible ou défaillant)
+    ========================================================= */
+    function initPixiFallback(container) {
+        if (typeof PIXI === "undefined") {
+            container.innerHTML = `<div style="color:#fff;background:#02050f;padding:20px;text-align:center;">
+                Animation indisponible sur ce navigateur.
+            </div>`;
+            return;
+        }
+
+        const width = container.clientWidth || 800;
+        const height = container.clientHeight || 550;
+
+        const app = new PIXI.Application({
+            width,
+            height,
+            backgroundColor: 0x02050f,
+            antialias: true,
+            resolution: Math.min(window.devicePixelRatio || 1, 2),
+            autoDensity: true
+        });
+
+        container.appendChild(app.view);
+
+        // Simulation 2D de la spirale
+        const graphics = new PIXI.Graphics();
+        app.stage.addChild(graphics);
+
+        const blocks = [];
+        const numBlocks = 20;
+
+        for (let i = 0; i < numBlocks; i++) {
+            blocks.push({
+                depth: i,
+                angle: i * 0.72,
+                radius: 40 + i * 8
+            });
+        }
+
+        let time = 0;
+
+        app.ticker.add((delta) => {
+            time += 0.02 * delta;
+            graphics.clear();
+
+            // Fond / Puits
+            graphics.lineStyle(1, 0x2266ff, 0.25);
+            graphics.drawCircle(width / 2, height / 2, 180 + Math.sin(time) * 5);
+
+            graphics.lineStyle(1, 0xff9900, 0.4);
+            graphics.drawCircle(width / 2, height / 2, 40);
+
+            // Connexions
+            graphics.lineStyle(2, 0xffaa00, 0.6);
+            blocks.forEach((block, index) => {
+                const angle = block.angle + time * 0.2;
+                const r = block.radius;
+                const x = width / 2 + Math.cos(angle) * r;
+                const y = height / 2 + Math.sin(angle) * (r * 0.5);
+
+                if (index === 0) {
+                    graphics.moveTo(x, y);
+                } else {
+                    graphics.lineTo(x, y);
+                }
+            });
+
+            // Blocs
+            blocks.forEach((block) => {
+                const angle = block.angle + time * 0.2;
+                const r = block.radius;
+                const x = width / 2 + Math.cos(angle) * r;
+                const y = height / 2 + Math.sin(angle) * (r * 0.5);
+
+                const size = 12 - (block.depth * 0.3);
+                graphics.beginFill(0xffcc00, 0.9);
+                graphics.lineStyle(1, 0xffffff, 0.8);
+                graphics.drawRect(x - size / 2, y - size / 2, size, size);
+                graphics.endFill();
+            });
+        });
+
+        // Gestion du redimensionnement
+        const resizeObserver = new ResizeObserver((entries) => {
+            const entry = entries[0];
+            const w = entry.contentRect.width;
+            const h = entry.contentRect.height;
+            if (w > 0 && h > 0) {
+                app.renderer.resize(w, h);
+            }
+        });
+        resizeObserver.observe(container);
+    }
+
+    /* =========================================================
+       3. ENGINE THREE.JS OPTIMISÉ (Mode principal)
+    ========================================================= */
+    if (webglSupported) {
+        containers.forEach(initPixiFallback);
+        return;
+    }
+
+    const instances = [];
 
     const CONFIG = {
         initialBlocks: 20,
         maxBlocks: 28,
         candidateClusters: 10,
         candidatesPerCluster: 5,
-
         blockInterval: 2.5,
-
         presentY: 18.5,
         historyY: -21,
-
         outerRadius: 15,
         innerRadius: 1.7,
-
         spiralRate: 0.72,
         chainRadiusFactor: 0.37,
-
         attackerShare: 0.30,
         honestShare: 0.70,
-
         transitionSpeed: 3
     };
 
-    const SECURITY_PER_CONFIRMATION = Math.log(
-        CONFIG.honestShare / CONFIG.attackerShare
-    );
-
-    /* =========================================================
-       NETTOYAGE GLOBAL
-    ========================================================= */
+    const SECURITY_PER_CONFIRMATION = Math.log(CONFIG.honestShare / CONFIG.attackerShare);
 
     function disposeMaterial(material) {
         if (!material) return;
-
-        const materials = Array.isArray(material)
-            ? material
-            : [material];
-
+        const materials = Array.isArray(material) ? material : [material];
         materials.forEach(item => {
             Object.keys(item).forEach(key => {
-                const value = item[key];
-
-                if (value && value.isTexture) {
-                    value.dispose();
-                }
+                if (item[key] && item[key].isTexture) item[key].dispose();
             });
-
             item.dispose();
         });
     }
 
     function disposeObject(root) {
         root.traverse(object => {
-            if (object.geometry) {
-                object.geometry.dispose();
-            }
-
-            if (object.material) {
-                disposeMaterial(object.material);
-            }
+            if (object.geometry) object.geometry.dispose();
+            if (object.material) disposeMaterial(object.material);
         });
     }
 
     function destroyInstance(instance) {
         instance.destroyed = true;
-
-        if (instance.animationFrameId) {
-            cancelAnimationFrame(instance.animationFrameId);
-        }
+        if (instance.animationFrameId) cancelAnimationFrame(instance.animationFrameId);
 
         instance.intersectionObserver?.disconnect();
         instance.resizeObserver?.disconnect();
 
         disposeObject(instance.scene);
 
-        instance.renderer.dispose();
-        instance.renderer.forceContextLoss();
-
-        instance.renderer.domElement.remove();
+        // OPTIMISATION : Suppression de forceContextLoss() pour éviter de tuer le contexte du navigateur
+        if (instance.renderer) {
+            instance.renderer.dispose();
+            instance.renderer.domElement.remove();
+        }
     }
 
     window.addEventListener("beforeunload", () => {
         instances.forEach(destroyInstance);
     });
-
-    /* =========================================================
-       CRÉATION D'UNE INSTANCE PAR CONTENEUR
-    ========================================================= */
 
     containers.forEach(container => {
         const width = container.clientWidth || 800;
@@ -4462,24 +4538,19 @@ document.addEventListener("DOMContentLoaded", () => {
         scene.background = new THREE.Color(0x02050f);
         scene.fog = new THREE.FogExp2(0x02050f, 0.011);
 
-        const camera = new THREE.PerspectiveCamera(
-            50,
-            width / height,
-            0.1,
-            500
-        );
-
+        const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 500);
         camera.position.set(-25, 28, 40);
 
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true
-        });
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        } catch (e) {
+            // Fallback si la création du renderer WebGL échoue
+            initPixiFallback(container);
+            return;
+        }
 
-        renderer.setPixelRatio(
-            Math.min(window.devicePixelRatio || 1, 2)
-        );
-
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         renderer.setSize(width, height);
 
         if ("outputColorSpace" in renderer && THREE.SRGBColorSpace) {
@@ -4489,13 +4560,8 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(renderer.domElement);
 
         let controls = null;
-
         if (typeof THREE.OrbitControls !== "undefined") {
-            controls = new THREE.OrbitControls(
-                camera,
-                renderer.domElement
-            );
-
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
             controls.enablePan = false;
@@ -4508,270 +4574,107 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const instance = {
-            container,
-            scene,
-            camera,
-            renderer,
-            controls,
-            animationFrameId: null,
-            intersectionObserver: null,
-            resizeObserver: null,
-            visible: false,
-            destroyed: false
+            container, scene, camera, renderer, controls,
+            animationFrameId: null, intersectionObserver: null, resizeObserver: null,
+            visible: false, destroyed: false
         };
-
         instances.push(instance);
 
         const world = new THREE.Group();
         scene.add(world);
 
-        /* =====================================================
-           ÉCLAIRAGE
-        ===================================================== */
+        scene.add(new THREE.AmbientLight(0xaabbff, 0.32));
 
-        scene.add(
-            new THREE.AmbientLight(0xaabbff, 0.32)
-        );
-
-        const presentLight = new THREE.PointLight(
-            0x4499ff,
-            7,
-            60
-        );
-
-        presentLight.position.set(
-            0,
-            CONFIG.presentY + 3,
-            0
-        );
-
+        const presentLight = new THREE.PointLight(0x4499ff, 7, 60);
+        presentLight.position.set(0, CONFIG.presentY + 3, 0);
         scene.add(presentLight);
 
-        const historyLight = new THREE.PointLight(
-            0xff9900,
-            5,
-            55
-        );
-
-        historyLight.position.set(
-            0,
-            CONFIG.historyY + 2,
-            0
-        );
-
+        const historyLight = new THREE.PointLight(0xff9900, 5, 55);
+        historyLight.position.set(0, CONFIG.historyY + 2, 0);
         scene.add(historyLight);
 
-        const flashLight = new THREE.PointLight(
-            0xffffff,
-            0,
-            45
-        );
-
+        const flashLight = new THREE.PointLight(0xffffff, 0, 45);
         scene.add(flashLight);
 
-        /* =====================================================
-           MODÈLE DE PROFONDEUR
-        ===================================================== */
-
         function securityDepth(depth) {
-            return Math.max(0, depth) *
-                SECURITY_PER_CONFIRMATION;
+            return Math.max(0, depth) * SECURITY_PER_CONFIRMATION;
         }
 
         function reorgProbability(depth) {
             if (depth <= 0) return 1;
-
-            return Math.pow(
-                CONFIG.attackerShare /
-                CONFIG.honestShare,
-                depth
-            );
+            return Math.pow(CONFIG.attackerShare / CONFIG.honestShare, depth);
         }
 
         function normalizedSecurity(depth) {
-            const maxSecurity = securityDepth(
-                CONFIG.maxBlocks
-            );
-
-            return THREE.MathUtils.clamp(
-                securityDepth(depth) / maxSecurity,
-                0,
-                1
-            );
+            const maxSecurity = securityDepth(CONFIG.maxBlocks);
+            return THREE.MathUtils.clamp(securityDepth(depth) / maxSecurity, 0, 1);
         }
 
         function visualDepth(depth) {
             const gravity = securityDepth(depth);
             const maximum = securityDepth(CONFIG.maxBlocks);
-
-            return THREE.MathUtils.clamp(
-                Math.log1p(gravity) /
-                Math.log1p(maximum),
-                0,
-                1
-            );
+            return THREE.MathUtils.clamp(Math.log1p(gravity) / Math.log1p(maximum), 0, 1);
         }
 
         function funnelRadius(t) {
-            return (
-                CONFIG.innerRadius +
-                (
-                    CONFIG.outerRadius -
-                    CONFIG.innerRadius
-                ) *
-                Math.exp(-3.3 * t)
-            );
+            return CONFIG.innerRadius + (CONFIG.outerRadius - CONFIG.innerRadius) * Math.exp(-3.3 * t);
         }
 
         function getBlockPosition(depth) {
             const t = visualDepth(depth);
-
-            const y = THREE.MathUtils.lerp(
-                CONFIG.presentY,
-                CONFIG.historyY,
-                t
-            );
-
-            const radius =
-                funnelRadius(t) *
-                CONFIG.chainRadiusFactor;
-
-            const angle =
-                depth * CONFIG.spiralRate;
-
-            return new THREE.Vector3(
-                radius * Math.cos(angle),
-                y,
-                radius * Math.sin(angle)
-            );
+            const y = THREE.MathUtils.lerp(CONFIG.presentY, CONFIG.historyY, t);
+            const radius = funnelRadius(t) * CONFIG.chainRadiusFactor;
+            const angle = depth * CONFIG.spiralRate;
+            return new THREE.Vector3(radius * Math.cos(angle), y, radius * Math.sin(angle));
         }
-
-        /* =====================================================
-           PUITS DE SÉCURITÉ HISTORIQUE
-        ===================================================== */
 
         function createSecurityWell() {
             const verticalSegments = 44;
             const radialSegments = 64;
-
-            const positions = [];
-            const colors = [];
-            const indices = [];
-
+            const positions = [], colors = [], indices = [];
             const presentColor = new THREE.Color(0x2266ff);
             const historyColor = new THREE.Color(0xff9900);
 
-            for (
-                let ring = 0;
-                ring <= verticalSegments;
-                ring++
-            ) {
+            for (let ring = 0; ring <= verticalSegments; ring++) {
                 const t = ring / verticalSegments;
-
-                const y = THREE.MathUtils.lerp(
-                    CONFIG.presentY,
-                    CONFIG.historyY,
-                    t
-                );
-
+                const y = THREE.MathUtils.lerp(CONFIG.presentY, CONFIG.historyY, t);
                 const radius = funnelRadius(t);
+                const color = presentColor.clone().lerp(historyColor, t * 0.78);
 
-                const color = presentColor
-                    .clone()
-                    .lerp(historyColor, t * 0.78);
-
-                for (
-                    let segment = 0;
-                    segment <= radialSegments;
-                    segment++
-                ) {
-                    const angle =
-                        segment /
-                        radialSegments *
-                        Math.PI * 2;
-
-                    positions.push(
-                        radius * Math.cos(angle),
-                        y,
-                        radius * Math.sin(angle)
-                    );
-
-                    colors.push(
-                        color.r,
-                        color.g,
-                        color.b
-                    );
+                for (let segment = 0; segment <= radialSegments; segment++) {
+                    const angle = (segment / radialSegments) * Math.PI * 2;
+                    positions.push(radius * Math.cos(angle), y, radius * Math.sin(angle));
+                    colors.push(color.r, color.g, color.b);
                 }
             }
 
             const rowLength = radialSegments + 1;
-
-            for (
-                let ring = 0;
-                ring < verticalSegments;
-                ring++
-            ) {
-                for (
-                    let segment = 0;
-                    segment < radialSegments;
-                    segment++
-                ) {
-                    const a =
-                        ring * rowLength + segment;
-
+            for (let ring = 0; ring < verticalSegments; ring++) {
+                for (let segment = 0; segment < radialSegments; segment++) {
+                    const a = ring * rowLength + segment;
                     const b = a + rowLength;
                     const c = b + 1;
                     const d = a + 1;
-
-                    indices.push(a, b, d);
-                    indices.push(b, c, d);
+                    indices.push(a, b, d, b, c, d);
                 }
             }
 
             const geometry = new THREE.BufferGeometry();
-
-            geometry.setAttribute(
-                "position",
-                new THREE.Float32BufferAttribute(
-                    positions,
-                    3
-                )
-            );
-
-            geometry.setAttribute(
-                "color",
-                new THREE.Float32BufferAttribute(
-                    colors,
-                    3
-                )
-            );
-
+            geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+            geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
             geometry.setIndex(indices);
             geometry.computeVertexNormals();
 
             const well = new THREE.Mesh(
                 geometry,
-                new THREE.MeshBasicMaterial({
-                    vertexColors: true,
-                    wireframe: true,
-                    transparent: true,
-                    opacity: 0.32,
-                    side: THREE.DoubleSide
-                })
+                new THREE.MeshBasicMaterial({ vertexColors: true, wireframe: true, transparent: true, opacity: 0.32, side: THREE.DoubleSide })
             );
-
             world.add(well);
 
             const particles = new THREE.Points(
                 geometry,
-                new THREE.PointsMaterial({
-                    vertexColors: true,
-                    size: 0.12,
-                    transparent: true,
-                    opacity: 0.62
-                })
+                new THREE.PointsMaterial({ vertexColors: true, size: 0.12, transparent: true, opacity: 0.62 })
             );
-
             world.add(particles);
 
             return { well, particles };
@@ -4779,69 +4682,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const securityWell = createSecurityWell();
 
-        /* =====================================================
-           HORIZON ÉCONOMIQUE
-
-           Il ne représente pas une finalité absolue, mais une zone
-           où la réorganisation devient fortement improbable.
-        ===================================================== */
-
         const horizon = new THREE.Mesh(
-            new THREE.TorusGeometry(
-                CONFIG.innerRadius + 0.45,
-                0.13,
-                16,
-                80
-            ),
-            new THREE.MeshBasicMaterial({
-                color: 0xffaa00,
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            })
+            new THREE.TorusGeometry(CONFIG.innerRadius + 0.45, 0.13, 16, 80),
+            new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending })
         );
-
         horizon.rotation.x = Math.PI / 2;
         horizon.position.y = CONFIG.historyY;
         world.add(horizon);
 
         const horizonGlow = new THREE.Mesh(
-            new THREE.TorusGeometry(
-                CONFIG.innerRadius + 0.45,
-                0.5,
-                16,
-                80
-            ),
-            new THREE.MeshBasicMaterial({
-                color: 0xff6600,
-                transparent: true,
-                opacity: 0.13,
-                blending: THREE.AdditiveBlending
-            })
+            new THREE.TorusGeometry(CONFIG.innerRadius + 0.45, 0.5, 16, 80),
+            new THREE.MeshBasicMaterial({ color: 0xff6600, transparent: true, opacity: 0.13, blending: THREE.AdditiveBlending })
         );
-
         horizonGlow.rotation.x = Math.PI / 2;
         horizonGlow.position.copy(horizon.position);
         world.add(horizonGlow);
 
-        /* =====================================================
-           RESSOURCES DES BLOCS
-        ===================================================== */
-
-        const blockGeometry =
-            new THREE.BoxGeometry(1.5, 1.5, 1.5);
-
-        const edgeGeometry =
-            new THREE.EdgesGeometry(blockGeometry);
+        const blockGeometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+        const edgeGeometry = new THREE.EdgesGeometry(blockGeometry);
 
         function createEdges(color, opacity = 0.6) {
             return new THREE.LineSegments(
                 edgeGeometry,
-                new THREE.LineBasicMaterial({
-                    color,
-                    transparent: true,
-                    opacity
-                })
+                new THREE.LineBasicMaterial({ color, transparent: true, opacity })
             );
         }
 
@@ -4849,55 +4712,25 @@ document.addEventListener("DOMContentLoaded", () => {
             const block = new THREE.Mesh(
                 blockGeometry,
                 new THREE.MeshPhysicalMaterial({
-                    color: 0xffcc00,
-                    emissive: 0x553000,
-                    emissiveIntensity: 0.7,
-                    roughness: 0.25,
-                    metalness: 0.78,
-                    transparent: true,
-                    opacity: 0.95
+                    color: 0xffcc00, emissive: 0x553000, emissiveIntensity: 0.7,
+                    roughness: 0.25, metalness: 0.78, transparent: true, opacity: 0.95
                 })
             );
-
             block.add(createEdges(0xffffff, 0.65));
-
             block.userData.currentDepth = depth;
             block.userData.targetDepth = depth;
-            block.userData.reorgProbability =
-                reorgProbability(depth);
-
-            block.position.copy(
-                getBlockPosition(depth)
-            );
-
+            block.userData.reorgProbability = reorgProbability(depth);
+            block.position.copy(getBlockPosition(depth));
             world.add(block);
-
             return block;
         }
 
         const chainBlocks = [];
-
-        for (
-            let depth = 0;
-            depth < CONFIG.initialBlocks;
-            depth++
-        ) {
-            chainBlocks.push(
-                createChainBlock(depth)
-            );
+        for (let depth = 0; depth < CONFIG.initialBlocks; depth++) {
+            chainBlocks.push(createChainBlock(depth));
         }
 
-        /* =====================================================
-           LIGNE DE HACHAGE
-        ===================================================== */
-
-        const chainLineMaterial =
-            new THREE.LineBasicMaterial({
-                color: 0xffaa00,
-                transparent: true,
-                opacity: 0.72
-            });
-
+        const chainLineMaterial = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.72 });
         let chainLine = null;
 
         function updateChainLine(points) {
@@ -4906,141 +4739,58 @@ document.addEventListener("DOMContentLoaded", () => {
                 chainLine.geometry.dispose();
                 chainLine = null;
             }
-
             if (points.length < 2) return;
-
-            chainLine = new THREE.Line(
-                new THREE.BufferGeometry()
-                    .setFromPoints(points),
-                chainLineMaterial
-            );
-
+            chainLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), chainLineMaterial);
             world.add(chainLine);
         }
 
-        /* =====================================================
-           BLOCS CANDIDATS
-
-           Ils représentent des blocs possibles en compétition,
-           et non une superposition quantique.
-        ===================================================== */
-
         const candidateClusters = [];
-
-        const candidateColors = [
-            0x4499ff,
-            0xff4444,
-            0x88ffaa,
-            0xc864ff,
-            0x00ffcc,
-            0xff5733
-        ];
+        const candidateColors = [0x4499ff, 0xff4444, 0x88ffaa, 0xc864ff, 0x00ffcc, 0xff5733];
 
         function removeCandidateCluster(cluster) {
             world.remove(cluster);
-
             cluster.traverse(object => {
-                /*
-                 Les géométries blockGeometry et edgeGeometry sont
-                 partagées : elles ne sont pas supprimées ici.
-                */
-
-                if (object.material) {
-                    disposeMaterial(object.material);
-                }
+                if (object.material) disposeMaterial(object.material);
             });
         }
 
         function clearCandidateClusters() {
-            candidateClusters.forEach(
-                removeCandidateCluster
-            );
-
+            candidateClusters.forEach(removeCandidateCluster);
             candidateClusters.length = 0;
         }
 
         function createCandidateClusters() {
             clearCandidateClusters();
-
-            for (
-                let i = 0;
-                i < CONFIG.candidateClusters;
-                i++
-            ) {
+            for (let i = 0; i < CONFIG.candidateClusters; i++) {
                 const cluster = new THREE.Group();
-
                 cluster.userData = {
-                    angle:
-                        i /
-                        CONFIG.candidateClusters *
-                        Math.PI * 2,
-
-                    speed:
-                        0.28 + Math.random() * 0.45,
-
-                    radius:
-                        11.5 + Math.random() * 3,
-
-                    height:
-                        CONFIG.presentY +
-                        1 +
-                        Math.random() * 2,
-
-                    rotationX:
-                        (Math.random() - 0.5) * 1.5,
-
-                    rotationZ:
-                        (Math.random() - 0.5) * 1.5
+                    angle: (i / CONFIG.candidateClusters) * Math.PI * 2,
+                    speed: 0.28 + Math.random() * 0.45,
+                    radius: 11.5 + Math.random() * 3,
+                    height: CONFIG.presentY + 1 + Math.random() * 2,
+                    rotationX: (Math.random() - 0.5) * 1.5,
+                    rotationZ: (Math.random() - 0.5) * 1.5
                 };
 
-                for (
-                    let j = 0;
-                    j < CONFIG.candidatesPerCluster;
-                    j++
-                ) {
-                    const color =
-                        candidateColors[
-                            j % candidateColors.length
-                        ];
-
+                for (let j = 0; j < CONFIG.candidatesPerCluster; j++) {
+                    const color = candidateColors[j % candidateColors.length];
                     const candidate = new THREE.Mesh(
                         blockGeometry,
                         new THREE.MeshPhysicalMaterial({
-                            color,
-                            emissive: color,
-                            emissiveIntensity: 0.18,
-                            roughness: 0.4,
-                            metalness: 0.25,
-                            transparent: true,
-                            opacity: 0.28
+                            color, emissive: color, emissiveIntensity: 0.18,
+                            roughness: 0.4, metalness: 0.25, transparent: true, opacity: 0.28
                         })
                     );
-
-                    candidate.add(
-                        createEdges(color, 0.62)
-                    );
-
+                    candidate.add(createEdges(color, 0.62));
                     candidate.scale.setScalar(0.58);
-
                     candidate.userData = {
-                        angle:
-                            j /
-                            CONFIG.candidatesPerCluster *
-                            Math.PI * 2,
-
-                        speed:
-                            0.8 + Math.random() * 1.4,
-
-                        radius:
-                            1.7 + Math.random() * 1.4,
-
-                        phase:
-                            Math.random() * Math.PI * 2
+                        angle: (j / CONFIG.candidatesPerCluster) * Math.PI * 2,
+                        speed: 0.8 + Math.random() * 1.4,
+                        radius: 1.7 + Math.random() * 1.4,
+                        phase: Math.random() * Math.PI * 2
                     };
-
                     cluster.add(candidate);
                 }
-
                 world.add(cluster);
                 candidateClusters.push(cluster);
             }
@@ -5048,38 +4798,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         createCandidateClusters();
 
-        /* =====================================================
-           AJOUT D'UN BLOC
-        ===================================================== */
-
         function discoverBlock() {
             if (candidateClusters.length === 0) {
                 createCandidateClusters();
                 return;
             }
-
-            const winnerIndex = Math.floor(
-                Math.random() *
-                candidateClusters.length
-            );
-
-            const winnerCluster =
-                candidateClusters.splice(
-                    winnerIndex,
-                    1
-                )[0];
-
-            const winnerPosition =
-                winnerCluster.position.clone();
+            const winnerIndex = Math.floor(Math.random() * candidateClusters.length);
+            const winnerCluster = candidateClusters.splice(winnerIndex, 1)[0];
+            const winnerPosition = winnerCluster.position.clone();
 
             removeCandidateCluster(winnerCluster);
 
-            chainBlocks.forEach(block => {
-                block.userData.targetDepth += 1;
-            });
+            chainBlocks.forEach(block => { block.userData.targetDepth += 1; });
 
             const winner = createChainBlock(0);
-
             winner.position.copy(winnerPosition);
             winner.userData.currentDepth = -1.4;
             winner.userData.targetDepth = 0;
@@ -5087,92 +4819,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
             chainBlocks.unshift(winner);
 
-            flashLight.position.copy(
-                getBlockPosition(0)
-            );
-
+            flashLight.position.copy(getBlockPosition(0));
             flashLight.intensity = 65;
 
-            while (
-                chainBlocks.length >
-                CONFIG.maxBlocks
-            ) {
+            while (chainBlocks.length > CONFIG.maxBlocks) {
                 const oldest = chainBlocks.pop();
-
                 world.remove(oldest);
-
-                /*
-                 Seuls les matériaux propres au bloc sont supprimés.
-                 Les géométries sont partagées par tous les blocs.
-                */
-
                 oldest.traverse(object => {
-                    if (object.material) {
-                        disposeMaterial(object.material);
-                    }
+                    if (object.material) disposeMaterial(object.material);
                 });
             }
 
             if (candidateClusters.length === 0) {
                 window.setTimeout(() => {
-                    if (!instance.destroyed) {
-                        createCandidateClusters();
-                    }
+                    if (!instance.destroyed) createCandidateClusters();
                 }, 500);
             }
         }
 
-        /* =====================================================
-           ANIMATION
-        ===================================================== */
-
         const clock = new THREE.Clock(false);
-
         let timer = 0;
 
         function animateCandidates(elapsed, dt) {
             candidateClusters.forEach(cluster => {
                 const data = cluster.userData;
-
                 data.angle += data.speed * dt;
-
                 cluster.position.set(
                     data.radius * Math.cos(data.angle),
-
-                    data.height +
-                    Math.sin(
-                        elapsed * 1.7 + data.angle
-                    ) * 1.2,
-
+                    data.height + Math.sin(elapsed * 1.7 + data.angle) * 1.2,
                     data.radius * Math.sin(data.angle)
                 );
-
-                cluster.rotation.x +=
-                    data.rotationX * dt;
-
-                cluster.rotation.z +=
-                    data.rotationZ * dt;
+                cluster.rotation.x += data.rotationX * dt;
+                cluster.rotation.z += data.rotationZ * dt;
 
                 cluster.children.forEach(candidate => {
-                    const candidateData =
-                        candidate.userData;
-
-                    candidateData.angle +=
-                        candidateData.speed * dt;
-
+                    const candidateData = candidate.userData;
+                    candidateData.angle += candidateData.speed * dt;
                     candidate.position.set(
-                        candidateData.radius *
-                        Math.cos(candidateData.angle),
-
-                        Math.sin(
-                            elapsed * 3 +
-                            candidateData.phase
-                        ) * 0.65,
-
-                        candidateData.radius *
-                        Math.sin(candidateData.angle)
+                        candidateData.radius * Math.cos(candidateData.angle),
+                        Math.sin(elapsed * 3 + candidateData.phase) * 0.65,
+                        candidateData.radius * Math.sin(candidateData.angle)
                     );
-
                     candidate.rotation.x += dt;
                     candidate.rotation.y += dt * 1.25;
                 });
@@ -5181,81 +4868,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function animateChain(dt) {
             const points = [];
-
             chainBlocks.forEach((block, index) => {
-                block.userData.currentDepth =
-                    THREE.MathUtils.damp(
-                        block.userData.currentDepth,
-                        block.userData.targetDepth,
-                        CONFIG.transitionSpeed,
-                        dt
-                    );
-
-                const depth = Math.max(
-                    0,
-                    block.userData.currentDepth
+                block.userData.currentDepth = THREE.MathUtils.damp(
+                    block.userData.currentDepth, block.userData.targetDepth, CONFIG.transitionSpeed, dt
                 );
+                const depth = Math.max(0, block.userData.currentDepth);
+                const targetPosition = getBlockPosition(depth);
 
-                const targetPosition =
-                    getBlockPosition(depth);
+                block.position.lerp(targetPosition, 1 - Math.exp(-6 * dt));
+                block.lookAt(getBlockPosition(depth + 0.15));
 
-                block.position.lerp(
-                    targetPosition,
-                    1 - Math.exp(-6 * dt)
-                );
-
-                block.lookAt(
-                    getBlockPosition(depth + 0.15)
-                );
-
-                const scale = THREE.MathUtils.lerp(
-                    1,
-                    0.34,
-                    normalizedSecurity(depth)
-                );
-
-                const dampedScale =
-                    THREE.MathUtils.damp(
-                        block.scale.x,
-                        scale,
-                        4,
-                        dt
-                    );
+                const scale = THREE.MathUtils.lerp(1, 0.34, normalizedSecurity(depth));
+                const dampedScale = THREE.MathUtils.damp(block.scale.x, scale, 4, dt);
 
                 block.scale.setScalar(dampedScale);
-
-                block.material.opacity =
-                    THREE.MathUtils.lerp(
-                        0.95,
-                        0.55,
-                        normalizedSecurity(depth)
-                    );
-
-                block.userData.reorgProbability =
-                    reorgProbability(index);
+                block.material.opacity = THREE.MathUtils.lerp(0.95, 0.55, normalizedSecurity(depth));
+                block.userData.reorgProbability = reorgProbability(index);
 
                 points.push(block.position.clone());
             });
-
             updateChainLine(points);
         }
 
         function animate() {
-            if (
-                !instance.visible ||
-                instance.destroyed
-            ) return;
+            if (!instance.visible || instance.destroyed) return;
+            instance.animationFrameId = requestAnimationFrame(animate);
 
-            instance.animationFrameId =
-                requestAnimationFrame(animate);
-
-            const dt = Math.min(
-                clock.getDelta(),
-                0.1
-            );
-
+            const dt = Math.min(clock.getDelta(), 0.1);
             const elapsed = clock.getElapsedTime();
-
             timer += dt;
 
             world.rotation.y -= dt * 0.035;
@@ -5268,116 +4908,53 @@ document.addEventListener("DOMContentLoaded", () => {
                 discoverBlock();
             }
 
-            flashLight.intensity =
-                THREE.MathUtils.damp(
-                    flashLight.intensity,
-                    0,
-                    6,
-                    dt
-                );
-
-            const horizonPulse =
-                1 + Math.sin(elapsed * 2.4) * 0.08;
-
-            horizon.scale.setScalar(horizonPulse);
-
-            horizonGlow.scale.setScalar(
-                1.05 +
-                Math.sin(elapsed * 2.4) * 0.14
-            );
-
-            securityWell.well.material.opacity =
-                0.3 +
-                Math.sin(elapsed * 0.7) * 0.035;
+            flashLight.intensity = THREE.MathUtils.damp(flashLight.intensity, 0, 6, dt);
+            horizon.scale.setScalar(1 + Math.sin(elapsed * 2.4) * 0.08);
+            horizonGlow.scale.setScalar(1.05 + Math.sin(elapsed * 2.4) * 0.14);
+            securityWell.well.material.opacity = 0.3 + Math.sin(elapsed * 0.7) * 0.035;
 
             controls?.update();
-
             renderer.render(scene, camera);
         }
 
-        /* =====================================================
-           VISIBILITÉ
-        ===================================================== */
-
-        instance.intersectionObserver =
-            new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (
-                        entry.isIntersecting &&
-                        !instance.visible
-                    ) {
-                        instance.visible = true;
-
-                        clock.start();
-                        clock.getDelta();
-
-                        animate();
-                    } else if (!entry.isIntersecting) {
-                        instance.visible = false;
-                        clock.stop();
-
-                        if (instance.animationFrameId) {
-                            cancelAnimationFrame(
-                                instance.animationFrameId
-                            );
-
-                            instance.animationFrameId = null;
-                        }
+        instance.intersectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !instance.visible) {
+                    instance.visible = true;
+                    clock.start();
+                    clock.getDelta();
+                    animate();
+                } else if (!entry.isIntersecting) {
+                    instance.visible = false;
+                    clock.stop();
+                    if (instance.animationFrameId) {
+                        cancelAnimationFrame(instance.animationFrameId);
+                        instance.animationFrameId = null;
                     }
-                });
-            }, {
-                threshold: 0.05,
-                rootMargin: "100px"
+                }
             });
+        }, { threshold: 0.05, rootMargin: "100px" });
 
         instance.intersectionObserver.observe(container);
 
-        /* =====================================================
-           REDIMENSIONNEMENT
+        instance.resizeObserver = new ResizeObserver(entries => {
+            const entry = entries[0];
+            const newWidth = entry.contentRect.width;
+            const newHeight = entry.contentRect.height;
 
-           Fonctionne également lorsque le conteneur passe de
-           display:none à display:block.
-        ===================================================== */
+            if (newWidth <= 0 || newHeight <= 0) return;
 
-        instance.resizeObserver =
-            new ResizeObserver(entries => {
-                const entry = entries[0];
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
 
-                const newWidth =
-                    entry.contentRect.width;
-
-                const newHeight =
-                    entry.contentRect.height;
-
-                if (
-                    newWidth <= 0 ||
-                    newHeight <= 0
-                ) return;
-
-                camera.aspect =
-                    newWidth / newHeight;
-
-                camera.updateProjectionMatrix();
-
-                renderer.setPixelRatio(
-                    Math.min(
-                        window.devicePixelRatio || 1,
-                        2
-                    )
-                );
-
-                renderer.setSize(
-                    newWidth,
-                    newHeight,
-                    false
-                );
-            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setSize(newWidth, newHeight, false);
+        });
 
         instance.resizeObserver.observe(container);
     });
 });
 </script>
-
 </section>
 
 <section id="about">
