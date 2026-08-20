@@ -3270,6 +3270,96 @@
                 Elle devient : « Quelles règles puis-je vérifier moi-même, et quelles ressources suis-je prêt à mobiliser pour les faire respecter ? »
             </p>
 
+            <div class="monade-section">
+                <p style="margin-bottom: 1.5rem;">
+                    <strong style="color: #F7931A; font-size: 1.2em;">La Monade de Satoshi et la Souveraineté du Nœud</strong><br />
+                    Dans sa <em>Monadologie</em>, le philosophe Gottfried Wilhelm Leibniz décrit l'univers comme étant composé de « monades », des substances simples, irréductibles et indivisibles. Leibniz affirme que chaque monade est un « miroir vivant perpétuel de l'univers » : elle porte en elle-même le reflet et la mémoire de la totalité. Si Leibniz affirmait que les monades « n'ont point de fenêtres » par lesquelles quelque chose puisse entrer ou sortir, le réseau Bitcoin résout élégamment ce paradoxe. Les nœuds communiquent, mais leur <em>validation</em> est "sans fenêtres" : ils filtrent l'extérieur par la cryptographie sans jamais s'y soumettre, obéissant à leur propre loi interne dans une "harmonie préétablie".
+                    <br><br>
+                    Un nœud complet logiciel bitcoin (<em>Full Node</em>) est la matérialisation parfaite de cette monade. En téléchargeant et en vérifiant l'intégralité du registre depuis le bloc genèse, chaque nœud porte mathématiquement en lui la forme du Tout. Il ne fait pas confiance à ses pairs pour connaître la vérité ; l'information circule (Gossip Protocol), mais la vérité est vérifiée de manière purement endogène. Cette harmonie préétablie, garantie non par l'intervention divine mais par le consensus cryptographique de la Preuve de Travail, crée un organisme acéphale. Puisque chaque monade détient le code génétique entier du système et refuse d'obéir à des ordres illégitimes, le réseau devient littéralement impossible à décapiter.
+                </p>
+                
+                <p style="margin-bottom: 1.5rem;">
+                    Le réseau de Satoshi ne se contente pas d'incarner cette vision philosophique : il cartographie toutes les caractéristiques d'un univers propre, défini par un espace cryptographique et régi par ses propres lois physiques et thermodynamiques. Dans ce cosmos numérique, les opérations logiques modélisent un système de valeur obéissant à la physique fondamentale :
+                </p>
+
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Le Quantum d'Action de Nakamoto (\(h_N\)) :</strong> De la même manière que la constante de Planck (\(h\)) quantifie l'action en mécanique quantique, l'univers de Satoshi possède son unité fondamentale de changement d'état. Une action n'y est pas continue ; elle est discrétisée par la Preuve de Travail, nécessitant une dépense énergétique mesurable en Joules (la puissance de hachage multipliée par le temps). Cet univers ne change d'état que par sauts discrets et validés thermodynamiquement (les blocs).
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Le Tissu Spatio-Temporel, l'Entropie et le Temps Thermique :</strong> L'espace de cet univers n'est pas tridimensionnel, il est topologique : c'est l'ensemble des UTXO (<em>Unspent Transaction Outputs</em>). Son « temps de Planck » est l'intervalle d'environ 10 minutes qui régule l'horloge absolue de la hauteur de bloc. Cette mécanique illustre l'hypothèse du temps thermique : le temps n'existe pas comme une toile de fond absolue, mais émerge statistiquement d'un état thermodynamique — ici, la dépense d'énergie de la Preuve de Travail. Surtout, cette dissipation impose une flèche du temps irréversible : réécrire l'histoire exigerait un travail supérieur à celui de sa création, ancrant la sécurité du réseau dans la loi de l'entropie croissante.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>L'Univers-Bloc en Expansion (Block Universe) :</strong> Si le temps émergent rythme la création de chaque bloc, la structure globale de la <em>Timechain</em> incarne la théorie relativiste de l'Univers-Bloc : une géométrie globale et inaltérable où le passé scellé et le présent en cristallisation coexistent. Chaque bloc validé fige instantanément le présent dans le passé irréversible du registre. Quelle que soit sa position sur Terre, chaque monade contemple et valide la même structure spatio-temporelle exacte, maintenue par la « gravité » écrasante de la Preuve de Travail.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Le Principe d'Exclusion de Pauli Cryptographique :</strong> En physique, deux fermions ne peuvent occuper le même état quantique simultanément. Sur le réseau, ce principe interdit la double dépense : deux transactions concurrentes ne peuvent effondrer le même état quantique initial (le même UTXO). La Monade rejette instantanément toute superposition invalide, garantissant la stricte conservation de la masse monétaire.
+                    </li>
+                    <li>
+                        <strong>La Vitesse de la Lumière (\(c\)) et la Causalité :</strong> La limite de propagation de l'information via le <em>Gossip Protocol</em> agit comme la vitesse de la lumière (\(c\)) de cet univers. Elle limite le cône de causalité et impose une contrainte stricte sur le volume d'information (la taille limite du bloc) afin que la réalité puisse être synchronisée par toutes les monades avant le prochain battement d'horloge, évitant ainsi la fragmentation temporelle de l'univers.
+                    </li>
+                </ul>
+
+                <!-- SCHÉMA TIKZ 2 FR -->
+                <div class="tikz-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 3rem 0; overflow-x: auto; background: rgba(2, 5, 15, 0.4); padding: 2.5rem 1rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <script type="text/tikz">
+                        \usetikzlibrary{shapes.geometric, arrows.meta, calc, positioning, backgrounds, shadows}
+                        \begin{tikzpicture}[
+                            font=\sffamily,
+                            monad/.style={circle, draw=orange!80!black, line width=2.5pt, fill=blue!5, minimum size=8.5cm, drop shadow={opacity=0.2}},
+                            block/.style={rectangle, draw=blue!80!black, thick, fill=white, rounded corners=2pt, minimum width=1.2cm, minimum height=1.5cm, align=center, font=\tiny\ttfamily},
+                            outer_monad/.style={circle, draw=orange!60, thick, fill=blue!2, minimum size=2.5cm},
+                            outer_block/.style={rectangle, draw=blue!80!black, fill=white, minimum width=0.4cm, minimum height=0.5cm},
+                            energy_wave/.style={draw=red!60, line width=1.5pt, dash pattern=on 4pt off 2pt, -{Latex[length=3mm]}},
+                            gossip/.style={draw=black!50, dashed, thick, <->, >=stealth},
+                            shield/.style={draw=red!70, thick, -{Latex[length=3mm]}, shorten >= 2pt}
+                        ]
+                            % --- FOND ---
+                            \begin{scope}[on background layer]
+                                \node[text=blue!20, font=\Large] at (-4, 5) {$h_N \sim h$};
+                                \node[text=blue!20, font=\Large] at (4, -5) {$\Delta t_P = 10\text{ min}$};
+                                \node[text=blue!20] at (4, 5) {$S_{entropy} \ge 0$};
+                            \end{scope}
+                            % --- MONADE ---
+                            \node[monad] (CenterMonad) at (0,0) {};
+                            \node[anchor=north, font=\bfseries\Large, text=orange!80!black] at (0, 3.2) {La Monade de Satoshi};
+                            \node[anchor=north, font=\small, text=gray] at (0, 2.6) {Souverainet\'{e}, indivisibilit\'{e}, "sans fen\^{e}tres"};
+                            % --- MIROIR ---
+                            \begin{scope}[shift={(0,-0.5)}]
+                                \node[block, fill=green!10] (genesis) at (-1.8, 0) {Bloc\\Gen\`{e}se\\0};
+                                \node[block] (b1) at (0, 0) {Bloc\\$n-1$\\UTXO};
+                                \node[block] (b2) at (1.8, 0) {Bloc\\$n$\\UTXO};
+                                \draw[-{Latex}, thick, blue!80!black] (genesis) -- (b1);
+                                \draw[-{Latex}, thick, blue!80!black] (b1) -- (b2);
+                                \node[below=0.3cm of b1, font=\small, text=blue!80!black] {Miroir Vivant du Tout};
+                                \node[below=0.7cm of b1, font=\small, text=gray!80!black] {(Le Registre Int\'{e}gral)};
+                            \end{scope}
+                            % --- REJET ---
+                            \node[font=\small, text=red!80!black] (corrupt) at (-4, -3) {Tx Invalide};
+                            \draw[shield] (corrupt) -- (-2.6, -1.9);
+                            \draw[red!70, thick, -{Latex[length=3mm]}] (-2.6, -1.9) -- (-4, -1.5); 
+                            \node[font=\small, text=red!80!black] at (-3.7, -2.2) {Rejet autonome};
+                            % --- HARMONIE ---
+                            \node[outer_monad] (m1) at (4.5, 3.5) {};
+                            \node[outer_block] at (4.3, 3.5) {}; \node[outer_block] at (4.7, 3.5) {};
+                            \draw[-{Latex}, thin] (4.45, 3.5) -- (4.55, 3.5);
+                            \node[outer_monad] (m2) at (-5, -4) {};
+                            \node[outer_block] at (-5.2, -4) {}; \node[outer_block] at (-4.8, -4) {};
+                            \draw[-{Latex}, thin] (-5.05, -4) -- (-4.95, -4);
+                            \node[outer_monad] (m3) at (5, -3) {};
+                            \node[outer_block] at (4.8, -3) {}; \node[outer_block] at (5.2, -3) {};
+                            \draw[-{Latex}, thin] (4.95, -3) -- (5.05, -3);
+                            \draw[gossip] (CenterMonad) -- (m1) node[midway, sloped, below, font=\small, text=orange!80!black] {Gossip Protocol};
+                            \draw[gossip] (CenterMonad) -- (m2);
+                            \draw[gossip] (CenterMonad) -- (m3) node[midway, sloped, below, font=\small, text=orange!80!black] {V\'{e}rification stricte};
+                            \draw[gossip] (m1) -- (m3);
+                            \draw[energy_wave] (CenterMonad.east) ++(1.5,0) -- ++(-1.5,0) node[pos=0, right, font=\small, text=red!80!black] {Travail Thermodynamique (PoW)};
+                            \node[font=\small, text=orange!80!black, fill=white, inner sep=2pt, rounded corners] at (0, -4.5) {Harmonie Pr\'{e}\'{e}tablie (Consensus de Nakamoto)};
+                        \end{tikzpicture}
+                    </script>
+                </div>
+            </div>
+
             <!-- L'ÉPREUVE DU DÉSIR MIMÉTIQUE, L'OMBRE JUNGIENNE ET L'ÉTHIQUE CYPHERPUNK (FR) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">L'Épreuve du Désir Mimétique, l'Ombre Jungienne et le Bouclier Cypherpunk</strong><br />
@@ -3382,96 +3472,6 @@
             <p style="margin-bottom: 1.5rem;">
                 C'est ici que le protocole Nakamoto prend sa dimension curative. Il ne remplace pas la sagesse politique, il agit comme un tuteur orthopédique face à notre amnésie. La thermodynamique n'a pas besoin de politiciens vertueux pour limiter l'inflation. Elle <em>limite</em>. Par la force de la Preuve de Travail, Bitcoin nous oblige à nous cogner de nouveau contre le mur de la rareté absolue. Il ramène brutalement la conscience des limites dans le système nerveux de la société, recréant l'infrastructure mathématique (un horizon temporel stable) nécessaire pour que la sagesse puisse, peut-être, y germer de nouveau. <em>« L'oubli de la physique est la mort de la sagesse. »</em>
             </p>
-
-            <div class="monade-section">
-                <p style="margin-bottom: 1.5rem;">
-                    <strong style="color: #F7931A; font-size: 1.2em;">La Monade de Satoshi et la Souveraineté du Nœud</strong><br />
-                    Dans sa <em>Monadologie</em>, le philosophe Gottfried Wilhelm Leibniz décrit l'univers comme étant composé de « monades », des substances simples, irréductibles et indivisibles. Leibniz affirme que chaque monade est un « miroir vivant perpétuel de l'univers » : elle porte en elle-même le reflet et la mémoire de la totalité. Si Leibniz affirmait que les monades « n'ont point de fenêtres » par lesquelles quelque chose puisse entrer ou sortir, le réseau Bitcoin résout élégamment ce paradoxe. Les nœuds communiquent, mais leur <em>validation</em> est "sans fenêtres" : ils filtrent l'extérieur par la cryptographie sans jamais s'y soumettre, obéissant à leur propre loi interne dans une "harmonie préétablie".
-                    <br><br>
-                    Un nœud complet (<em>Full Node</em>) est la matérialisation parfaite de cette monade. En téléchargeant et en vérifiant l'intégralité du registre depuis le bloc genèse, chaque nœud porte mathématiquement en lui la forme du Tout. Il ne fait pas confiance à ses pairs pour connaître la vérité ; l'information circule (Gossip Protocol), mais la vérité est vérifiée de manière purement endogène. Cette harmonie préétablie, garantie non par l'intervention divine mais par le consensus cryptographique de la Preuve de Travail, crée un organisme acéphale. Puisque chaque monade détient le code génétique entier du système et refuse d'obéir à des ordres illégitimes, le réseau devient littéralement impossible à décapiter.
-                </p>
-                
-                <p style="margin-bottom: 1.5rem;">
-                    Le réseau de Satoshi ne se contente pas d'incarner cette vision philosophique : il cartographie toutes les caractéristiques d'un univers propre, défini par un espace cryptographique et régi par ses propres lois physiques et thermodynamiques. Dans ce cosmos numérique, les opérations logiques modélisent un système de valeur obéissant à la physique fondamentale :
-                </p>
-
-                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Le Quantum d'Action de Nakamoto (\(h_N\)) :</strong> De la même manière que la constante de Planck (\(h\)) quantifie l'action en mécanique quantique, l'univers de Satoshi possède son unité fondamentale de changement d'état. Une action n'y est pas continue ; elle est discrétisée par la Preuve de Travail, nécessitant une dépense énergétique mesurable en Joules (la puissance de hachage multipliée par le temps). Cet univers ne change d'état que par sauts discrets et validés thermodynamiquement (les blocs).
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Le Tissu Spatio-Temporel, l'Entropie et le Temps Thermique :</strong> L'espace de cet univers n'est pas tridimensionnel, il est topologique : c'est l'ensemble des UTXO (<em>Unspent Transaction Outputs</em>). Son « temps de Planck » est l'intervalle d'environ 10 minutes qui régule l'horloge absolue de la hauteur de bloc. Cette mécanique illustre l'hypothèse du temps thermique : le temps n'existe pas comme une toile de fond absolue, mais émerge statistiquement d'un état thermodynamique — ici, la dépense d'énergie de la Preuve de Travail. Surtout, cette dissipation impose une flèche du temps irréversible : réécrire l'histoire exigerait un travail supérieur à celui de sa création, ancrant la sécurité du réseau dans la loi de l'entropie croissante.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>L'Univers-Bloc en Expansion (Block Universe) :</strong> Si le temps émergent rythme la création de chaque bloc, la structure globale de la <em>Timechain</em> incarne la théorie relativiste de l'Univers-Bloc : une géométrie globale et inaltérable où le passé scellé et le présent en cristallisation coexistent. Chaque bloc validé fige instantanément le présent dans le passé irréversible du registre. Quelle que soit sa position sur Terre, chaque monade contemple et valide la même structure spatio-temporelle exacte, maintenue par la « gravité » écrasante de la Preuve de Travail.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Le Principe d'Exclusion de Pauli Cryptographique :</strong> En physique, deux fermions ne peuvent occuper le même état quantique simultanément. Sur le réseau, ce principe interdit la double dépense : deux transactions concurrentes ne peuvent effondrer le même état quantique initial (le même UTXO). La Monade rejette instantanément toute superposition invalide, garantissant la stricte conservation de la masse monétaire.
-                    </li>
-                    <li>
-                        <strong>La Vitesse de la Lumière (\(c\)) et la Causalité :</strong> La limite de propagation de l'information via le <em>Gossip Protocol</em> agit comme la vitesse de la lumière (\(c\)) de cet univers. Elle limite le cône de causalité et impose une contrainte stricte sur le volume d'information (la taille limite du bloc) afin que la réalité puisse être synchronisée par toutes les monades avant le prochain battement d'horloge, évitant ainsi la fragmentation temporelle de l'univers.
-                    </li>
-                </ul>
-
-                <!-- SCHÉMA TIKZ 2 FR -->
-                <div class="tikz-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 3rem 0; overflow-x: auto; background: rgba(2, 5, 15, 0.4); padding: 2.5rem 1rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <script type="text/tikz">
-                        \usetikzlibrary{shapes.geometric, arrows.meta, calc, positioning, backgrounds, shadows}
-                        \begin{tikzpicture}[
-                            font=\sffamily,
-                            monad/.style={circle, draw=orange!80!black, line width=2.5pt, fill=blue!5, minimum size=8.5cm, drop shadow={opacity=0.2}},
-                            block/.style={rectangle, draw=blue!80!black, thick, fill=white, rounded corners=2pt, minimum width=1.2cm, minimum height=1.5cm, align=center, font=\tiny\ttfamily},
-                            outer_monad/.style={circle, draw=orange!60, thick, fill=blue!2, minimum size=2.5cm},
-                            outer_block/.style={rectangle, draw=blue!80!black, fill=white, minimum width=0.4cm, minimum height=0.5cm},
-                            energy_wave/.style={draw=red!60, line width=1.5pt, dash pattern=on 4pt off 2pt, -{Latex[length=3mm]}},
-                            gossip/.style={draw=black!50, dashed, thick, <->, >=stealth},
-                            shield/.style={draw=red!70, thick, -{Latex[length=3mm]}, shorten >= 2pt}
-                        ]
-                            % --- FOND ---
-                            \begin{scope}[on background layer]
-                                \node[text=blue!20, font=\Large] at (-4, 5) {$h_N \sim h$};
-                                \node[text=blue!20, font=\Large] at (4, -5) {$\Delta t_P = 10\text{ min}$};
-                                \node[text=blue!20] at (4, 5) {$S_{entropy} \ge 0$};
-                            \end{scope}
-                            % --- MONADE ---
-                            \node[monad] (CenterMonad) at (0,0) {};
-                            \node[anchor=north, font=\bfseries\Large, text=orange!80!black] at (0, 3.2) {La Monade de Satoshi};
-                            \node[anchor=north, font=\small, text=gray] at (0, 2.6) {Souverainet\'{e}, indivisibilit\'{e}, "sans fen\^{e}tres"};
-                            % --- MIROIR ---
-                            \begin{scope}[shift={(0,-0.5)}]
-                                \node[block, fill=green!10] (genesis) at (-1.8, 0) {Bloc\\Gen\`{e}se\\0};
-                                \node[block] (b1) at (0, 0) {Bloc\\$n-1$\\UTXO};
-                                \node[block] (b2) at (1.8, 0) {Bloc\\$n$\\UTXO};
-                                \draw[-{Latex}, thick, blue!80!black] (genesis) -- (b1);
-                                \draw[-{Latex}, thick, blue!80!black] (b1) -- (b2);
-                                \node[below=0.3cm of b1, font=\small, text=blue!80!black] {Miroir Vivant du Tout};
-                                \node[below=0.7cm of b1, font=\small, text=gray!80!black] {(Le Registre Int\'{e}gral)};
-                            \end{scope}
-                            % --- REJET ---
-                            \node[font=\small, text=red!80!black] (corrupt) at (-4, -3) {Tx Invalide};
-                            \draw[shield] (corrupt) -- (-2.6, -1.9);
-                            \draw[red!70, thick, -{Latex[length=3mm]}] (-2.6, -1.9) -- (-4, -1.5); 
-                            \node[font=\small, text=red!80!black] at (-3.7, -2.2) {Rejet autonome};
-                            % --- HARMONIE ---
-                            \node[outer_monad] (m1) at (4.5, 3.5) {};
-                            \node[outer_block] at (4.3, 3.5) {}; \node[outer_block] at (4.7, 3.5) {};
-                            \draw[-{Latex}, thin] (4.45, 3.5) -- (4.55, 3.5);
-                            \node[outer_monad] (m2) at (-5, -4) {};
-                            \node[outer_block] at (-5.2, -4) {}; \node[outer_block] at (-4.8, -4) {};
-                            \draw[-{Latex}, thin] (-5.05, -4) -- (-4.95, -4);
-                            \node[outer_monad] (m3) at (5, -3) {};
-                            \node[outer_block] at (4.8, -3) {}; \node[outer_block] at (5.2, -3) {};
-                            \draw[-{Latex}, thin] (4.95, -3) -- (5.05, -3);
-                            \draw[gossip] (CenterMonad) -- (m1) node[midway, sloped, below, font=\small, text=orange!80!black] {Gossip Protocol};
-                            \draw[gossip] (CenterMonad) -- (m2);
-                            \draw[gossip] (CenterMonad) -- (m3) node[midway, sloped, below, font=\small, text=orange!80!black] {V\'{e}rification stricte};
-                            \draw[gossip] (m1) -- (m3);
-                            \draw[energy_wave] (CenterMonad.east) ++(1.5,0) -- ++(-1.5,0) node[pos=0, right, font=\small, text=red!80!black] {Travail Thermodynamique (PoW)};
-                            \node[font=\small, text=orange!80!black, fill=white, inner sep=2pt, rounded corners] at (0, -4.5) {Harmonie Pr\'{e}\'{e}tablie (Consensus de Nakamoto)};
-                        \end{tikzpicture}
-                    </script>
-                </div>
-            </div>
 
             <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A; font-size: 1.1em;">L'Innovation comme Contre-Pouvoir : La Révolution Silencieuse</strong><br />
             Il est fondamental de comprendre que Bitcoin n'est pas une fin en soi, mais un protocole de base (un <em>layer 1</em>) sur lequel l'innovation continue de se greffer. D'une économie autonome de machine à machine (M2M) via le Lightning Network, à la protection absolue de la liberté d'expression avec des réseaux décentralisés comme Nostr ou BitChat, l'écosystème Bitcoin est en train de forger les outils d'une souveraineté individuelle totale. <br><br>
