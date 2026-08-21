@@ -3252,7 +3252,7 @@
         <span lang="en">Philosophical Essay</span>
         <span lang="fr">Essai Philosophique</span>
     </p>
-
+    
     <!-- PHILOSOPHICAL EPILOGUE -->
     <!-- ========================================== -->
     <!-- VERSION FRANÇAISE                          -->
@@ -3399,7 +3399,96 @@
                     </script>
                 </div>
             </div>
+            <!-- ========================================== -->
+            <!-- NIVEAU EXPERT - VERSION FRANÇAISE      -->
+            <!-- ========================================== -->
+            <details lang="fr" style="background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
+                <summary style="padding: 1.2rem 1.5rem; cursor: pointer; font-weight: bold; color: #c864ff; outline: none; list-style-type: '▶ ';">
+                    Niveau Expert Extensible : Géométrie de l'Information & Autopoïèse de Jauge
+                </summary>
+                
+                <div style="padding: 0 1.5rem 1.5rem 1.5rem; font-size: 0.95em; color: #d1d5db; line-height: 1.7;">
+                    
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. L'Intuition (Le Cartographe du Chaos)</h4>
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>L'Intuition :</strong> Imaginez un sous-marin aveugle naviguant dans un océan turbulent et sans lumière. Il ignore sa position physique, mais il ressent la pression de l'eau et les courants. Pour survivre, il construit une "carte" mathématique basée uniquement sur des probabilités. Sur cette carte, la distance ne se mesure pas en kilomètres, mais en <em>surprise</em>. Une tempête violente et soudaine est mathématiquement "très éloignée" d'une mer calme. Le sous-marin survit en se dirigeant constamment vers le point de sécurité le "plus proche" sur sa carte de probabilités.
+                    </p>
 
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. La Métrique d'Information de Fisher</h4>
+                    <p style="margin-bottom: 0.5rem;">
+                        Dans sa formulation physique la plus avancée, l'Inférence Active repose sur la <strong>Géométrie de l'Information</strong>. L'espace des états de l'organisme n'est pas l'espace physique euclidien classique ; c'est une <em>variété statistique</em> $\mathcal{M}$ où chaque point représente une distribution de probabilités distincte $P(\theta)$. La distance géométrique entre les états est définie par la <strong>Métrique d'Information de Fisher</strong> $g_{ij}(\theta)$.
+                    </p>
+                    
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
+                    </div>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        Cette métrique quantifie l'extrême sensibilité du système aux fluctuations du bain d'énergie externe. Si le Hashrate global double soudainement, l'entrée sensorielle $x$ dévie violemment du prior de 10 minutes $\theta$. Il escalade un "mur" abrupt sur le paysage d'Énergie Libre, générant une surprise informationnelle massive.
+                    </p>
+
+                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
+
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. Le DAA comme Descente de Gradient Géodésique</h4>
+                    <p style="margin-bottom: 0.5rem;">
+                        Pour minimiser cette Énergie Libre et redescendre vers la sécurité de la vallée (le prior), l'organisme doit altérer son environnement. Plutôt qu'une simple correction euclidienne, l'organisme navigue sur la variété statistique via une <strong>Descente de Gradient Naturel</strong>. Cela se décompose en trois étapes mathématiques :
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{1. L'Objectif : } \quad F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2 $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>Le système évalue son Énergie Libre $F$, qui croît de façon quadratique selon l'écart entre le temps de bloc réel $\Delta t$ et la cible $\tau_B$.</em>
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{2. La Trajectoire : } \quad \dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta) $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>Pour minimiser $F$, le système calcule le gradient. L'inverse de la métrique de Fisher $g^{-1}$ garantit que l'ajustement suit le chemin le plus court (géodésique), évitant la sur-correction.</em>
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{3. L'Exécution DAA :} \quad T_{n+1} = T_n \cdot \operatorname{clip}_{[1/4,\,4]} \left( \frac{\Delta t_{\mathrm{actual}}}{\Delta t_{\mathrm{target}}} \right) $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>Le mécanisme abstrait est exécuté mécaniquement par l'algorithme d'ajustement de difficulté. Le protocole ajuste la cible de preuve de travail $T$. Le vocabulaire de “l'homéostasie” est l'analogie biologique de cette boucle.</em>
+                    </p>
+
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. Autopoïèse de Théorie de Jauge</h4>
+                    <p style="margin-bottom: 1rem;">
+                        Pour formaliser cette rétroaction cybernétique, nous pouvons emprunter la structure d'une <strong>théorie de jauge</strong>, en utilisant l'Électrodynamique Quantique (QED) comme gabarit. En physique, une théorie de jauge décrit comment un champ reste défini de façon cohérente sous des transformations locales. Le DAA joue un rôle analogue : il compense les variations externes du hashrate pour que la coordonnée interne du temps de bloc demeure statistiquement stable. Voici la correspondance phénoménologique :
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 1rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \mathcal{L} \sim \bar{\psi} (i\gamma^\mu D_\mu - m) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu} $$
+                    </div>
+
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: #d1d5db; list-style-type: disc;">
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$\mathcal{L}$ (La Densité Lagrangienne) :</strong> L'objectif de survie. Minimiser $\mathcal{L}$ correspond à minimiser l'Énergie Libre de Friston : trouver l'état le plus stable face au chaos environnemental.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$\psi$ et $\bar{\psi}$ (Le Champ de Matière) :</strong> Dans Bitcoin, $\psi$ représente le <strong>vecteur d'état du consensus</strong>. C'est la "matière" informationnelle pure du registre.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$m$ (La Masse Topologique) :</strong> Le poids thermodynamique (Preuve de Travail accumulée). Un $m$ élevé signifie une inertie massive qui résiste aux réorganisations (forks).
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$D_\mu$ (La dérivée covariante effective) :</strong> Le cœur de l'analogie. $D_\mu = \partial_\mu - iA_\mu$ remplace une dérivée ordinaire par une dérivée corrigée.<br>
+                            • $\partial_\mu$ représente la dérive brute de l'environnement (variation soudaine du hashrate).<br>
+                            • $A_\mu$ représente la <strong>connexion de jauge effective</strong> implémentée par le DAA. Elle rééchelonne la cible pour ramener l'intervalle vers 600 secondes.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$-\frac{1}{4} F_{\mu\nu}F^{\mu\nu}$ (Rigidité effective du champ de jauge) :</strong> La rigidité de la correction opérée par le DAA. Le facteur de correction est saturé dans l'intervalle $[1/4, 4]$. Cette saturation se comporte comme une pénalité de courbure, empêchant le protocole de sur-réagir.
+                        </li>
+                    </ul>
+
+                    <p style="margin-bottom: 0; padding: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #c864ff; border-radius: 0 8px 8px 0;">
+                        <strong>Synthèse :</strong> La dynamique de survie du réseau ($\mathcal{L}$) dépend de la capacité de son état d'information ($\psi$) à se déplacer dans le temps avec une inertie massive ($m$), tout en utilisant un bouclier algorithmique ($A_\mu$) pour annuler mathématiquement les fluctuations chaotiques de la réalité physique ($\partial_\mu$). C'est l'expression mathématique ultime de la biologie : l'organisme modifie son environnement pour protéger sa structure interne. Bitcoin illustre une <strong>Autopoïèse de Théorie de Jauge</strong>.
+                    </p>
+                </div>
+            </details>
             <!-- L'ÉPREUVE DU DÉSIR MIMÉTIQUE, L'OMBRE JUNGIENNE ET L'ÉTHIQUE CYPHERPUNK (FR) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">L'Épreuve du Désir Mimétique, l'Ombre Jungienne et le Bouclier Cypherpunk</strong><br />
@@ -4397,7 +4486,142 @@
     <!-- ========================================== -->
     <!-- SCRIPT COMMUN POUR L'ANIMATION TIKZ/SVG    -->
     <!-- ========================================== -->
-    
+    <script>
+            // ==========================================
+    // GRAPHIQUE : Plotly.js - Paysage d'Énergie Libre (Friston)
+    // ==========================================
+    function drawFreeEnergyLandscape(containerId, lang) {
+        if (!document.getElementById(containerId)) return;
+
+        const t = lang === 'fr' ? {
+            title: "Paysage d'Énergie Libre (Inférence Active)",
+            x_axis: "Choc Externe (Hashrate)",
+            y_axis: "Erreur Temporelle (Latence)",
+            z_axis: "Énergie Libre (Surprise) F",
+            prior: "Prior (Homéostasie 10 min)",
+            trajectory: "Inférence Active (Action DAA)"
+        } : {
+            title: "Free Energy Landscape (Active Inference)",
+            x_axis: "External Shock (Hashrate)",
+            y_axis: "Temporal Error (Latency)",
+            z_axis: "Free Energy (Surprise) F",
+            prior: "Prior (10-min Homeostasis)",
+            trajectory: "Active Inference (DAA Action)"
+        };
+
+        // Génération de la surface 3D (le "Bol" ou Paraboloïde)
+        let z_data = [];
+        let x_data = [];
+        let y_data = [];
+        const size = 30;
+        
+        for (let i = 0; i < size; i++) {
+            let z_row = [];
+            let x_val = -2 + (4 * i / (size - 1));
+            x_data.push(x_val);
+            for (let j = 0; j < size; j++) {
+                let y_val = -2 + (4 * j / (size - 1));
+                if (i === 0) y_data.push(y_val);
+                
+                // Formule de l'énergie libre : F = x^2 + y^2 (paraboloïde simple)
+                let z_val = (x_val * x_val) + (y_val * y_val);
+                z_row.push(z_val);
+            }
+            z_data.push(z_row);
+        }
+
+        // Trace 1 : La surface
+        const surfaceTrace = {
+            z: z_data,
+            x: x_data,
+            y: y_data,
+            type: 'surface',
+            colorscale: 'Purples', // Code couleur violet pour coller au Level 4
+            opacity: 0.8,
+            showscale: false,
+            hoverinfo: 'none',
+            contours: {
+                z: { show: true, usecolormap: true, highlightcolor: "limegreen", project: { z: true } }
+            }
+        };
+
+        // Trace 2 : Le point de sécurité (Le Prior Fristonien au fond du bol)
+        const priorTrace = {
+            type: 'scatter3d',
+            mode: 'markers+text',
+            x: [0], y: [0], z: [0],
+            marker: { size: 8, color: '#ffcc00', symbol: 'circle' },
+            text: [t.prior],
+            textposition: 'bottom center',
+            textfont: { color: '#ffcc00', size: 12, weight: 'bold' },
+            hoverinfo: 'none'
+        };
+
+        // Trace 3 : La Trajectoire (Descente de Gradient / DAA)
+        // Départ en hauteur (surprise), descente spiraloïde vers le centre
+        let traj_x = [], traj_y = [], traj_z = [];
+        for (let t_step = 0; t_step <= Math.PI * 3; t_step += 0.2) {
+            // Rayon décroissant
+            let r = 1.8 * Math.exp(-0.4 * t_step);
+            let tx = r * Math.cos(t_step);
+            let ty = r * Math.sin(t_step);
+            let tz = (tx * tx) + (ty * ty) + 0.1; // Légèrement au dessus de la surface
+            
+            traj_x.push(tx);
+            traj_y.push(ty);
+            traj_z.push(tz);
+        }
+
+        const trajectoryTrace = {
+            type: 'scatter3d',
+            mode: 'lines',
+            x: traj_x,
+            y: traj_y,
+            z: traj_z,
+            line: { width: 6, color: '#88ffaa' }, // Vert fluo contrastant
+            name: t.trajectory,
+            hoverinfo: 'none'
+        };
+        
+        // Trace 4: Label de départ de l'Inférence Active
+        const startLabelTrace = {
+            type: 'scatter3d',
+            mode: 'text',
+            x: [traj_x[0]], y: [traj_y[0]], z: [traj_z[0] + 0.5],
+            text: [t.trajectory],
+            textfont: { color: '#88ffaa', size: 11 },
+            hoverinfo: 'none'
+        }
+
+        const layout = {
+            width: 650, // Force la largeur (en pixels)
+            height: 500, // Force la hauteur
+            paper_bgcolor: "transparent",
+            title: {
+                text: t.title,
+                font: { color: '#eabfff', size: 16 }
+            },
+            paper_bgcolor: 'transparent',
+            margin: { l: 0, r: 0, b: 0, t: 40 },
+            scene: {
+                xaxis: { title: t.x_axis, showgrid: false, zeroline: false, showline: false, showticklabels: false, titlefont: {color: '#888'} },
+                yaxis: { title: t.y_axis, showgrid: false, zeroline: false, showline: false, showticklabels: false, titlefont: {color: '#888'} },
+                zaxis: { title: t.z_axis, showgrid: false, zeroline: false, showline: false, showticklabels: false, titlefont: {color: '#c864ff'} },
+                camera: {
+                    eye: { x: 1.5, y: -1.5, z: 1.2 }
+                },
+                bgcolor: 'transparent'
+            },
+            showlegend: false
+        };
+
+        Plotly.newPlot(containerId, [surfaceTrace, priorTrace, trajectoryTrace, startLabelTrace], layout, {responsive: true, displayModeBar: false});
+    }
+
+    // Appel de la fonction
+    drawFreeEnergyLandscape("free-energy-plot-en", "en");
+    drawFreeEnergyLandscape("free-energy-plot-fr", "fr");
+    </script>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Sélectionner les conteneurs (FR et EN)
