@@ -32,6 +32,46 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+            .scene-container {
+                position: relative;
+                width: 300px;
+                height: 500px;
+                margin: 0 auto;
+                /* Léger flottement de la scène complète */
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .statue-svg {
+                width: 100%;
+                height: 100%;
+                filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+            }
+
+            /* Le canvas est positionné exactement au-dessus de la torche du SVG */
+            #flameCanvas {
+                position: absolute;
+                top: -45px;
+                left: 140px;
+                width: 120px;
+                height: 160px;
+                pointer-events: none; /* Laisse passer les clics au travers */
+            }
+
+            /* Pulsation du symbole Bitcoin */
+            .btc-glow {
+                filter: drop-shadow(0 0 10px #F7931A);
+                animation: pulse-btc 2.5s infinite alternate;
+            }
+
+            @keyframes pulse-btc {
+                0% { filter: drop-shadow(0 0 5px rgba(247, 147, 26, 0.6)); }
+                100% { filter: drop-shadow(0 0 25px rgba(247, 147, 26, 1)); }
+            }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --text-main: #f0f0f0;
@@ -3756,12 +3796,13 @@
                 </svg>
             </span>
             
+
             <!-- DÉDICACE PIERRE RABHI & PÈRE PEDRO (AKAMASOA) FR -->
             <div style="margin-top: 4rem; max-width: 850px; margin-left: auto; margin-right: auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
                 <p style="color: var(--text-muted, #9ca3af); font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
                     Cet essai est dédié à Pierre Rabhi, au Père Pedro Opeka et aux bâtisseurs d'Akamasoa (Madagascar)
                 </p>
-
+                
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
                     <!-- Quote Pierre Rabhi -->
                     <blockquote style="border-left: 3px solid var(--sun-yellow); padding-left: 1.2rem; color: #d1d5db; font-size: 0.95rem; font-style: italic; text-align: left; background: rgba(255, 204, 0, 0.02); padding-top: 1.2rem; padding-bottom: 1.2rem; padding-right: 1.2rem; border-radius: 0 8px 8px 0; margin: 0;">
@@ -4353,9 +4394,10 @@
     <!-- ========================================== -->
     <!-- SCRIPT COMMUN POUR L'ANIMATION 3D          -->
     <!-- ========================================== -->
-     <!-- ========================================== -->
+    <!-- ========================================== -->
     <!-- SCRIPT COMMUN POUR L'ANIMATION TIKZ/SVG    -->
     <!-- ========================================== -->
+    
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Sélectionner les conteneurs (FR et EN)
@@ -6001,6 +6043,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/0yhv0Z_fOGk?si=0FaZMyRZRcvidzPU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
               </details>
         </div>
+        
       <script>
       // Encapsulation dans une IIFE pour éviter les conflits globaux
       (() => {
@@ -6500,6 +6543,51 @@ document.addEventListener("DOMContentLoaded", () => {
 </section>
 
 <footer>
+     <div class="scene-container">
+            <!-- Particules de la flamme -->
+            <canvas id="flameCanvas"></canvas>
+
+            <!-- Dessin Vectoriel de la Statue et du Piédestal -->
+            <svg class="statue-svg" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg">
+                
+                <!-- PIÉDESTAL -->
+                <polygon points="90,500 210,500 190,400 110,400" fill="#0f172a"/>
+                <polygon points="100,400 200,400 180,350 120,350" fill="#1e293b"/>
+                <rect x="120" y="350" width="60" height="50" fill="#0f172a" />
+                <!-- SYMBOLE BITCOIN & DEVISE -->
+                <text x="150" y="465" fill="#F7931A" font-size="60" font-family="sans-serif" font-weight="bold" text-anchor="middle" class="btc-glow">☀</text>
+                <text x="150" y="388" fill="#64748b" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="3">VIRES IN</text>
+                <text x="150" y="488" fill="#64748b" font-size="9" text-anchor="middle" letter-spacing="4">NUMERIS</text>
+                <!-- TRIPTYQUE CYPHERPUNK -->
+                <text x="150" y="508" fill="#64748b" font-size="8.5" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="1">LIBERTÉ PAR LA CRYPTOGRAPHIE</text>
+                <text x="150" y="523" fill="#64748b" font-size="8.5" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="1">ÉGALITÉ DEVANT LA THERMODYNAMIQUE</text>
+                <text x="150" y="538" fill="#64748b" font-size="8.5" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="1">FRATERNITÉ DANS LE CONSENSUS</text>
+                <text x="150" y="553" fill="#64748b" font-size="8.5" font-weight="bold" font-family="sans-serif" text-anchor="middle" letter-spacing="1">Veritas in Energia - Lex in Codice - Tempus Incorruptum</text>
+                
+                <!-- STATUE (Cuivre oxydé - Cyan/Vert) -->
+                <!-- Robe principale -->
+                <path d="M 120 350 L 180 350 L 165 220 L 125 220 Z" fill="#14b8a6"/>
+                <!-- Bras gauche (Tablette) -->
+                <path d="M 125 220 L 100 270 L 115 285 L 140 240 Z" fill="#0d9488"/>
+                <polygon points="95,260 110,248 125,275 110,285" fill="#0f766e"/>
+                
+                <!-- Tête et Cou -->
+                <rect x="135" y="195" width="20" height="25" fill="#0d9488"/>
+                <circle cx="145" cy="185" r="16" fill="#14b8a6"/>
+                
+                <!-- Couronne (Pointes) -->
+                <path d="M 125,185 L 105,180 M 128,173 L 112,158 M 135,169 L 130,140 M 145,169 L 145,135 M 155,169 L 160,140 M 162,173 L 178,158 M 165,185 L 185,180" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+                
+                <!-- Bras droit (Portant la torche) -->
+                <polygon points="145,225 195,120 205,125 160,235" fill="#0d9488"/>
+                
+                <!-- Base de la torche (Bronze/Or) -->
+                <polygon points="190,125 210,125 215,100 185,100" fill="#d97706"/>
+                <rect x="180" y="95" width="40" height="5" fill="#fbbf24" />
+                <text x="200" y="115" fill="#000" font-size="20" font-family="sans-serif" font-weight="bold" text-anchor="middle" class="btc-glow">₿</text>
+                
+            </svg>
+        </div>
     <div class="footer-logo">
         <span lang="en">☀ THE SUN STANDARD</span>
         <span lang="fr">☀ L'ÉTALON SOLAIRE</span>
@@ -6820,6 +6908,154 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('load', init);
+</script>
+<script>
+    const canvas = document.getElementById('flameCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Résolution interne du canvas
+    canvas.width = 120;
+    canvas.height = 160;
+
+    const particles = [];
+    const bees = [];
+
+    // --- CLASSE 1 : LA FLAMME (LE CONSENSUS) ---
+    class Particle {
+        constructor() {
+            // Émission au centre bas du canvas (correspondant au sommet de la torche)
+            this.x = canvas.width / 2 + (Math.random() - 0.5) * 15 - 10;
+            this.y = canvas.height - 20;
+            
+            // Vélocité (Mouvement ascendant avec légère dispersion horizontale)
+            this.vx = (Math.random() - 0.5) * 1.5;
+            this.vy = (Math.random() * -2.5) - 1.5; 
+            
+            // Durée de vie et taille
+            this.life = Math.random() * 0.6 + 0.4;
+            this.maxLife = this.life;
+            this.size = Math.random() * 10 + 5;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life -= 0.015; // Refroidissement
+            this.size *= 0.96;  // Rétractation
+        }
+
+        draw() {
+            const ratio = this.life / this.maxLife;
+            
+            // Transition thermodynamique des couleurs : Blanc -> Jaune -> Orange -> Rouge
+            const r = 255;
+            const g = Math.floor(255 * ratio); 
+            const b = Math.floor(100 * Math.pow(ratio, 3)); 
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, Math.max(0, this.size), 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${ratio})`;
+            ctx.fill();
+        }
+    }
+
+    // --- CLASSE 2 : LES ABEILLES HUMAINES (LES NOEUDS) ---
+    class HumanBee {
+        constructor(index, totalBees) {
+            // Répartition égale sur l'orbite au départ
+            this.angle = (Math.PI * 2 / totalBees) * index;
+            // Vitesse de rotation (Proof of work continuel)
+            this.speed = 0.015 + Math.random() * 0.01;
+            
+            // Géométrie de l'orbite (Ellipse pour simuler la 3D)
+            this.radiusX = 35 + Math.random() * 8; // Largeur de l'orbite
+            this.radiusY = 8 + Math.random() * 4;  // Inclinaison de l'orbite
+            this.baseY = canvas.height - 45 + (Math.random() - 0.5) * 15; // Hauteur de vol
+            
+            this.size = 1.5; // Taille du coeur du noeud
+        }
+
+        update() {
+            this.angle += this.speed;
+        }
+
+        draw() {
+            // Calcul de la position 3D projetée en 2D
+            const centerX = canvas.width / 2 - 10;
+            const x = centerX + Math.cos(this.angle) * this.radiusX;
+            const y = this.baseY + Math.sin(this.angle) * this.radiusY;
+            
+            // Profondeur (Z) : Math.sin(angle) va de -1 (derrière) à 1 (devant)
+            const z = Math.sin(this.angle); 
+            const scale = 0.8 + (z * 0.4); // Plus gros devant, plus petit derrière
+
+            // --- 1. Dessin du noyau (Humain) ---
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.beginPath();
+            ctx.arc(x, y, this.size * scale, 0, Math.PI * 2);
+            ctx.fillStyle = '#2dd4bf'; // Couleur Cyan/Cuivre de la statue
+            ctx.fill();
+
+            // --- 2. Halo d'énergie ---
+            ctx.globalCompositeOperation = 'lighter';
+            ctx.beginPath();
+            ctx.arc(x, y, this.size * scale * 4, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(45, 212, 191, 0.4)';
+            ctx.fill();
+            
+            // --- 3. Nourrir le feu (Transfert d'énergie) ---
+            // Si l'abeille est au premier plan (z > 0.8) avec une faible probabilité, elle tire un trait d'énergie
+            if (z > 0.8 && Math.random() > 0.85) {
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(centerX, canvas.height - 20); // Coeur du brasier
+                ctx.strokeStyle = 'rgba(247, 147, 26, 0.4)'; // Orange Bitcoin
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+    }
+
+    // Initialisation de la colonie (7 noeuds/abeilles)
+    const TOTAL_BEES = 7;
+    for(let i = 0; i < TOTAL_BEES; i++) {
+        bees.push(new HumanBee(i, TOTAL_BEES));
+    }
+
+    function animateFlame() {
+        // Nettoyage à chaque frame
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 1. Mise à jour de toutes les abeilles
+        bees.forEach(bee => bee.update());
+
+        // 2. DESSIN ARRIÈRE-PLAN : Abeilles qui sont derrière la flamme (z < 0)
+        bees.filter(b => Math.sin(b.angle) < 0).forEach(bee => bee.draw());
+
+        // 3. DESSIN DU FEU (Le centre / Le consensus)
+        ctx.globalCompositeOperation = 'lighter';
+        for(let i = 0; i < 4; i++) {
+            particles.push(new Particle());
+        }
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            if (particles[i].life <= 0) {
+                particles.splice(i, 1);
+                i--;
+            }
+        }
+
+        // 4. DESSIN PREMIER-PLAN : Abeilles qui sont devant la flamme (z >= 0)
+        bees.filter(b => Math.sin(b.angle) >= 0).forEach(bee => bee.draw());
+
+        requestAnimationFrame(animateFlame);
+    }
+
+    // Lancement de l'animation
+    animateFlame();
 </script>
 <!-- Charger TikZJax de manière asynchrone à la fin du body -->
 <script async src="https://tikzjax.com/v1/tikzjax.js"></script>
