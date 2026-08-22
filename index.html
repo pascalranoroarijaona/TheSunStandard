@@ -4060,6 +4060,96 @@
                     </script>
                 </div>
             </div>
+            <!-- ========================================== -->
+            <!-- EXPERT LEVEL - ENGLISH VERSION             -->
+            <!-- ========================================== -->
+            <details lang="en" style="background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
+                <summary style="padding: 1.2rem 1.5rem; cursor: pointer; font-weight: bold; color: #c864ff; outline: none; list-style-type: '▶ ';">
+                    Expandable Expert Level: Information Geometry & Gauge Autopoiesis
+                </summary>
+                
+                <div style="padding: 0 1.5rem 1.5rem 1.5rem; font-size: 0.95em; color: #d1d5db; line-height: 1.7;">
+                    
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. Intuition (The Cartographer of Chaos)</h4>
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Intuition:</strong> Imagine a blind submarine navigating a turbulent, lightless ocean. It is unaware of its physical coordinates, but it senses water pressure and surrounding currents. To survive, it constructs a mathematical "map" based purely on probabilities. On this map, distance is not measured in kilometers, but in <em>surprise</em>. A sudden, violent storm is mathematically "very distant" from a calm sea. The submarine survives by continuously steering toward the "nearest" point of safety on its probability manifold.
+                    </p>
+
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. The Fisher Information Metric</h4>
+                    <p style="margin-bottom: 0.5rem;">
+                        In its most advanced physical formulation, Active Inference relies on <strong>Information Geometry</strong>. The organism's state space is not classical Euclidean physical space; it is a <em>statistical manifold</em> $\mathcal{M}$ where each point represents a distinct probability distribution $P(\theta)$. The geometric distance between states is defined by the <strong>Fisher Information Metric</strong> $g_{ij}(\theta)$.
+                    </p>
+                    
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
+                    </div>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        This metric quantifies the system's extreme sensitivity to fluctuations in the external energy bath. If the global hashrate suddenly doubles, sensory input $x$ violently deviates from the 10-minute prior $\theta$. It ascends a steep "wall" on the Free Energy landscape, generating massive informational surprise.
+                    </p>
+
+                    <div id="free-energy-plot-en" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
+
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. The DAA as a Geodesic Natural Gradient Descent</h4>
+                    <p style="margin-bottom: 0.5rem;">
+                        To minimize this Free Energy and descend back toward the safety of the valley (the prior), the organism must alter its environment. Rather than a simple Euclidean correction, the organism navigates the statistical manifold via a <strong>Natural Gradient Descent</strong>. This decomposes into three mathematical steps:
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{1. The Objective: } \quad F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2 $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>The system evaluates its Free Energy $F$, which grows quadratically with the deviation between the actual block time $\Delta t$ and the target $\tau_B$.</em>
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{2. The Trajectory: } \quad \dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta) $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>To minimize $F$, the system computes the gradient. The inverse of the Fisher metric $g^{-1}$ ensures the adjustment follows the shortest path (geodesic), preventing over-correction.</em>
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \text{3. DAA Execution: } \quad T_{n+1} = T_n \cdot \operatorname{clip}_{[1/4,\,4]} \left( \frac{\Delta t_{\mathrm{actual}}}{\Delta t_{\mathrm{target}}} \right) $$
+                    </div>
+                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
+                        <em>The abstract mechanism is executed mechanically by the difficulty adjustment algorithm. The protocol rescales the Proof-of-Work target $T$. The concept of "homeostasis" serves as the biological analogy for this cybernetic loop.</em>
+                    </p>
+
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. Gauge Theory Autopoiesis</h4>
+                    <p style="margin-bottom: 1rem;">
+                        To formalize this cybernetic feedback, we can borrow the mathematical structure of a <strong>gauge theory</strong>, using Quantum Electrodynamics (QED) as a template. In physics, a gauge theory describes how a field remains consistently defined under local transformations. The DAA plays an analogous role: it compensates for external hashrate variations so that the internal coordinate of block time remains statistically invariant. Here is the phenomenological correspondence:
+                    </p>
+
+                    <div class="math-block" style="background: transparent; border: none; margin: 1rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
+                        $$ \mathcal{L} \sim \bar{\psi} (i\gamma^\mu D_\mu - m) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu} $$
+                    </div>
+
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: #d1d5db; list-style-type: disc;">
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$\mathcal{L}$ (Lagrangian Density):</strong> The survival objective. Minimizing $\mathcal{L}$ corresponds to minimizing Friston's Free Energy: finding the most stable state against environmental entropy.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$\psi$ and $\bar{\psi}$ (Matter Field):</strong> In Bitcoin, $\psi$ represents the <strong>consensus state vector</strong>—the pure informational "matter" of the ledger.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$m$ (Topological Mass):</strong> Thermodynamic weight (accumulated Proof-of-Work). A high $m$ denotes massive inertia that resists chain reorganizations (forks).
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$D_\mu$ (Effective Covariant Derivative):</strong> The core of the analogy. $D_\mu = \partial_\mu - iA_\mu$ replaces an ordinary derivative with a gauge-corrected derivative.<br>
+                            • $\partial_\mu$ represents raw environmental drift (sudden hashrate fluctuations).<br>
+                            • $A_\mu$ represents the <strong>effective gauge connection</strong> implemented by the DAA. It rescales the target to restore the interval back toward 600 seconds.
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <strong>$-\frac{1}{4} F_{\mu\nu}F^{\mu\nu}$ (Effective Gauge Field Rigidity):</strong> The curvature constraint applied by the DAA. The adjustment factor is clamped within the interval $[1/4, 4]$. This saturation acts as a curvature penalty, preventing the protocol from overreacting.
+                        </li>
+                    </ul>
+
+                    <p style="margin-bottom: 0; padding: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #c864ff; border-radius: 0 8px 8px 0;">
+                        <strong>Synthesis:</strong> The network's survival dynamics ($\mathcal{L}$) depend on the ability of its informational state ($\psi$) to move through time with massive inertia ($m$), while deploying an algorithmic shield ($A_\mu$) to mathematically negate chaotic fluctuations in physical reality ($\partial_\mu$). This stands as the ultimate mathematical expression of biological autopoiesis: the organism regulates its environment to protect its internal invariants. Bitcoin exemplifies <strong>Gauge Theory Autopoiesis</strong>.
+                    </p>
+                </div>
+            </details>
             <!-- THE ORDEAL OF MIMETIC DESIRE, THE JUNGIAN SHADOW, AND THE CYPHERPUNK ETHIC (EN) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">The Ordeal of Mimetic Desire, the Jungian Shadow, and the Cypherpunk Shield</strong><br />
