@@ -5892,7 +5892,200 @@ document.addEventListener("DOMContentLoaded", () => {
  
         <canvas id="holoNetworkCanvas" width="800" height="800" style="width: 100%; background: #05050a; border-radius: 6px; border: 1px solid #333; box-shadow: inset 0 0 40px rgba(0,0,0,0.8);"></canvas>
       </div>
- 
+      <!-- ========================================== -->
+<!-- SECTION SLIDER PDF : BitBioLife.PDF        -->
+<!-- ========================================== -->
+<div class="pdf-slider-wrapper" style="margin-top: 3rem; background: rgba(5, 5, 10, 0.75); border: 1px solid var(--border-glow); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 35px rgba(0,0,0,0.6);">
+    
+    <!-- En-tête du document -->
+    <div style="text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 204, 0, 0.15); padding-bottom: 1rem;">
+        <h4 lang="en" style="color: var(--sun-yellow); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 0.5rem 0;">
+            📄 BitBioLife — Slide Deck & Technical Overview
+        </h4>
+        <h4 lang="fr" style="color: var(--sun-yellow); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 0.5rem 0;">
+            📄 BitBioLife — Présentation & Synthèse Technique
+        </h4>
+        <p lang="en" style="color: var(--text-muted); font-size: 0.88rem; font-style: italic; margin: 0;">
+            Interactive slide deck reader · Navigate through the document below
+        </p>
+        <p lang="fr" style="color: var(--text-muted); font-size: 0.88rem; font-style: italic; margin: 0;">
+            Lecteur de diaporama interactif · Parcourez le document ci-dessous
+        </p>
+    </div>
+
+    <!-- Barre d'outils / Contrôles du Slider -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; background: rgba(0, 0, 0, 0.5); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 204, 0, 0.2); margin-bottom: 1.2rem;">
+        
+        <!-- Navigation Pages -->
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <button id="pdf-prev-btn" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 4px; cursor: pointer;">
+                <span lang="en">◀ Prev</span>
+                <span lang="fr">◀ Préc</span>
+            </button>
+            <span style="color: #fff; font-family: monospace; font-size: 0.9rem;">
+                <span id="pdf-page-num" style="color: var(--sun-yellow); font-weight: bold;">1</span> / <span id="pdf-page-count">--</span>
+            </span>
+            <button id="pdf-next-btn" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 4px; cursor: pointer;">
+                <span lang="en">Next ▶</span>
+                <span lang="fr">Suiv ▶</span>
+            </button>
+        </div>
+
+        <!-- Curseur Glissière (Slider rapide) -->
+        <div style="flex: 1; min-width: 180px; display: flex; align-items: center; gap: 0.5rem;">
+            <input type="range" id="pdf-page-slider" min="1" max="1" value="1" style="width: 100%; cursor: pointer; accent-color: var(--sun-yellow);">
+        </div>
+
+        <!-- Actions Externes -->
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <a href="BitBioLife.pdf" target="_blank" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <span>↗</span>
+                <span lang="en">Full PDF</span>
+                <span lang="fr">Ouvrir PDF</span>
+            </a>
+            <a href="BitBioLife.pdf" download class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <span>⬇</span>
+                <span lang="en">Download</span>
+                <span lang="fr">Télécharger</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Zone de rendu du Canvas PDF -->
+    <div id="pdf-render-container" style="position: relative; width: 100%; min-height: 450px; background: #000; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; display: flex; justify-content: center; align-items: center;">
+        
+        <canvas id="pdf-canvas" style="display: block; max-width: 100%; height: auto; box-shadow: 0 5px 25px rgba(0,0,0,0.8);"></canvas>
+        
+        <!-- Indicateur de chargement -->
+        <div id="pdf-loading-spinner" style="position: absolute; color: var(--sun-yellow); font-family: monospace; font-size: 0.95rem;">
+            [ Loading BitBioLife.pdf... ]
+        </div>
+    </div>
+</div>
+
+<!-- Inclusion de PDF.js via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    (() => {
+        const url = 'BitBioLife.pdf';
+        
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        
+        const canvas = document.getElementById('pdf-canvas');
+        const ctx = canvas.getContext('2d');
+        const spinner = document.getElementById('pdf-loading-spinner');
+        const pageNumDisplay = document.getElementById('pdf-page-num');
+        const pageCountDisplay = document.getElementById('pdf-page-count');
+        const pageSlider = document.getElementById('pdf-page-slider');
+        const container = document.getElementById('pdf-render-container');
+
+        function renderPage(num) {
+            pageRendering = true;
+            
+            pdfDoc.getPage(num).then((page) => {
+                const containerWidth = container.clientWidth || 800;
+                const unscaledViewport = page.getViewport({ scale: 1 });
+                
+                // Calcul de l'échelle pour s'adapter parfaitement à la largeur du conteneur
+                const scale = (containerWidth / unscaledViewport.width);
+                const viewport = page.getViewport({ scale: Math.max(scale, 0.8) });
+
+                // Résolution Retina
+                const outputScale = window.devicePixelRatio || 1;
+                canvas.width = Math.floor(viewport.width * outputScale);
+                canvas.height = Math.floor(viewport.height * outputScale);
+                canvas.style.width = Math.floor(viewport.width) + "px";
+                canvas.style.height = Math.floor(viewport.height) + "px";
+
+                const transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    transform: transform,
+                    viewport: viewport
+                };
+
+                const renderTask = page.render(renderContext);
+
+                renderTask.promise.then(() => {
+                    pageRendering = false;
+                    if (spinner) spinner.style.display = 'none';
+
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+
+            // Mise à jour de l'interface
+            pageNumDisplay.textContent = num;
+            pageSlider.value = num;
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        }
+
+        function onNextPage() {
+            if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        }
+
+        document.getElementById('pdf-prev-btn').addEventListener('click', onPrevPage);
+        document.getElementById('pdf-next-btn').addEventListener('click', onNextPage);
+        
+        pageSlider.addEventListener('input', (e) => {
+            const targetPage = parseInt(e.target.value, 10);
+            if (targetPage >= 1 && targetPage <= (pdfDoc ? pdfDoc.numPages : 1)) {
+                pageNum = targetPage;
+                queueRenderPage(pageNum);
+            }
+        });
+
+        // Chargement du PDF
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
+                pdfDoc = pdfDoc_;
+                pageCountDisplay.textContent = pdfDoc.numPages;
+                pageSlider.max = pdfDoc.numPages;
+                renderPage(pageNum);
+            }).catch((err) => {
+                console.error('Erreur chargement PDF:', err);
+                if (spinner) {
+                    spinner.innerHTML = `<span style="color: #ff4444;">Impossible de charger BitBioLife.pdf. Vérifiez que le fichier est bien présent à la racine.</span>`;
+                }
+            });
+        }
+
+        // Redimensionnement réactif
+        let resizeTimeout;
+        window.addEventListener('resize', () => {   
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (pdfDoc) queueRenderPage(pageNum);
+            }, 200);
+        });
+    })();
+</script>
       <script>
       // Encapsulation pour éviter tout conflit
       (() => {
