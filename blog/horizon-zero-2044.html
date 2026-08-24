@@ -350,21 +350,6 @@
         </div>
     </div>
 
-    <!-- CANVAS ANIMÉ DE LA PYRAMIDE -->
-    <div class="interactive-stack-container">
-        <div class="stack-toolbar">
-            <span style="color: var(--purple-l4);">
-                <span lang="fr">// VAD STACK ENGINE (FLUX THERMODYNAMIQUES & VETO ONTOLOGIQUE)</span>
-                <span lang="en">// VAD STACK ENGINE (THERMODYNAMIC FLOWS & ONTOLOGICAL VETO)</span>
-            </span>
-            <div>
-                <span style="color: #aaa; margin-right: 8px;">Flux :</span>
-                <input type="range" id="stack-slider" min="10" max="100" value="50" style="accent-color: var(--purple-l4);">
-            </div>
-        </div>
-        <canvas id="stackCanvas" width="880" height="520" style="width: 100%; display: block;"></canvas>
-    </div>
-
     <!-- COUCHE 0 -->
     <details id="det-l0" class="layer-0" open>
         <summary>
@@ -573,7 +558,361 @@
             </tbody>
         </table>
     </div>
+    <!-- ============================================================================== -->
+<!-- MODULE D'ANIMATION CYBERNÉTIQUE TOTALE : VAD INTERACTION ENGINE (L0 à L4)       -->
+<!-- ============================================================================== -->
+<div style="margin: 5rem 0; background: #030407; border: 1px solid rgba(179, 102, 255, 0.35); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85); font-family: var(--font-ui);">
+    
+    <!-- En-tête et barre de contrôle des filtres -->
+    <div style="padding: 1.2rem 1.8rem; background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <span style="font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; color: var(--sun-yellow); letter-spacing: 1px;">
+                <span lang="fr">⚡ TOPOLOGIE CYBERNÉTIQUE & INTERACTIONS DE COUCHES</span>
+                <span lang="en">⚡ CYBERNETIC TOPOLOGY & CROSS-LAYER INTERACTIONS</span>
+            </span>
+            <span style="display: block; font-size: 0.78rem; color: #8899aa; margin-top: 3px;">
+                <span lang="fr">Survolez les modules pour inspecter les liens · Filtrez les flux logiques</span>
+                <span lang="en">Hover modules to inspect links · Filter logical flows</span>
+            </span>
+        </div>
 
+        <!-- Filtres thématiques -->
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="flow-filters">
+            <button class="filter-btn active" data-filter="all">Tous les Flux</button>
+            <button class="filter-btn" data-filter="thermo" style="border-color: var(--orange-l1);">Thermodynamique (L0-L1)</button>
+            <button class="filter-btn" data-filter="veto" style="border-color: #ff3344;">Veto & Souveraineté</button>
+            <button class="filter-btn" data-filter="logic" style="border-color: var(--magenta-l3);">Logique & ZKP (L2-L3)</button>
+            <button class="filter-btn" data-filter="gov" style="border-color: var(--purple-l4);">Cybernétique L4</button>
+        </div>
+    </div>
+
+    <!-- Zone de rendu Canvas -->
+    <div style="position: relative; width: 100%; height: 680px; background: radial-gradient(circle at center, #080a10 0%, #020305 100%);">
+        <canvas id="cyberneticsCanvas" width="920" height="680" style="width: 100%; height: 100%; display: block; cursor: crosshair;"></canvas>
+        
+        <!-- Infobulle dynamique -->
+        <div id="node-tooltip" style="position: absolute; display: none; pointer-events: none; background: rgba(5, 7, 10, 0.94); border: 1px solid var(--sun-yellow); padding: 12px 16px; border-radius: 6px; font-size: 0.82rem; color: #e0e0e0; max-width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; backdrop-filter: blur(8px);">
+            <div id="tooltip-title" style="font-weight: bold; font-family: var(--font-mono); margin-bottom: 4px; color: var(--sun-yellow);"></div>
+            <div id="tooltip-desc" style="line-height: 1.4; color: #b0c4de;"></div>
+        </div>
+    </div>
+
+    <!-- Légende interactive en pied de bloc -->
+    <div style="padding: 1rem 1.8rem; background: rgba(0,0,0,0.6); border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-around; flex-wrap: wrap; gap: 0.8rem; font-size: 0.78rem; font-family: var(--font-mono);">
+        <span style="display: flex; align-items: center; gap: 6px; color: var(--orange-l1);"><span style="width: 8px; height: 8px; background: var(--orange-l1); border-radius: 50%; box-shadow: 0 0 6px var(--orange-l1);"></span> Énergie / PoW (Joules)</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: var(--magma-orange);"><span style="width: 8px; height: 8px; background: var(--magma-orange); border-radius: 50%; box-shadow: 0 0 6px var(--magma-orange);"></span> Chaleur Cogénérée</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: #ff3344;"><span style="width: 8px; height: 8px; background: #ff3344; border-radius: 50%; box-shadow: 0 0 6px #ff3344);"></span> Veto Ontologique Direct</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: var(--magenta-l3);"><span style="width: 8px; height: 8px; background: var(--magenta-l3); border-radius: 50%; box-shadow: 0 0 6px var(--magenta-l3);"></span> ZK-Roots & Preuves</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: var(--cyan-l2);"><span style="width: 8px; height: 8px; background: var(--cyan-l2); border-radius: 50%; box-shadow: 0 0 6px var(--cyan-l2);"></span> Satoshis / Requêtes IND</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: var(--teal-l0);"><span style="width: 8px; height: 8px; background: var(--teal-l0); border-radius: 50%; box-shadow: 0 0 6px var(--teal-l0);"></span> Télémétrie PoPhW / PMN</span>
+    </div>
+</div>
+
+<style>
+    .filter-btn {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #aaa;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-family: var(--font-ui);
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+    .filter-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .filter-btn.active {
+        color: #fff;
+        background: rgba(179, 102, 255, 0.25);
+        border-color: var(--purple-l4);
+        box-shadow: 0 0 10px rgba(179, 102, 255, 0.3);
+    }
+</style>
+
+<script>
+(function() {
+    const canvas = document.getElementById('cyberneticsCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const tooltip = document.getElementById('node-tooltip');
+    const tooltipTitle = document.getElementById('tooltip-title');
+    const tooltipDesc = document.getElementById('tooltip-desc');
+    const filterButtons = document.querySelectorAll('#flow-filters .filter-btn');
+
+    let currentFilter = 'all';
+    let hoveredNode = null;
+    let animFrame = null;
+
+    // --- 1. DÉFINITION DES NŒUDS STRUCTURELS (UML / GRAFCET MODULES) ---
+    const nodes = [
+        // L4 : Conscience & Éthique (Y: 60 - 110)
+        { id: 'citoyen', label: 'Citoyen Souverain', layer: 'L4', x: 160, y: 75, w: 140, h: 42, color: '#b366ff', desc: 'Agent libre détenteur des clés ultimes, initiateur du Chaos Créatif (PCV) et du Veto Ontologique direct.' },
+        { id: 'ad', label: 'Algorithme du Doute', layer: 'L4', x: 380, y: 75, w: 150, h: 42, color: '#b366ff', desc: 'Module d’autocontrôle testant en permanence la validité des politiques de l’IHA contre l’ossification.' },
+        { id: 'msc', label: 'MSC (Sim. Conflits)', layer: 'L4', x: 590, y: 75, w: 140, h: 42, color: '#b366ff', desc: 'Simulations prédictives de crise stochastiques pour désamorcer les tensions sociales en amont.' },
+        { id: 'iha', label: 'IHA "Homme d\'État"', layer: 'L4', x: 790, y: 75, w: 140, h: 42, color: '#b366ff', desc: 'Exécuteur cybernétique orchestrant la logistique sous la fonction de coût du Protocole d’Optimisme (PO).' },
+
+        // L3 : Moteur Logique & Confidentialité (Y: 195 - 245)
+        { id: 'jnp', label: 'JNP (Santé / PODs)', layer: 'L3', x: 180, y: 210, w: 150, h: 42, color: '#e040fb', desc: 'Jumeau Numérique du Patient : stockage off-chain chiffré, vérifié par preuves à divulgation nulle (ZKP).' },
+        { id: 'rbu_contracts', label: 'Smart Contracts RBU', layer: 'L3', x: 480, y: 210, w: 160, h: 42, color: '#e040fb', desc: 'Règles décentralisées d’allocation inconditionnelle de ressources de base (NBU, Énergie, Logement).' },
+        { id: 'oracles', label: 'Oracles PoPhW', layer: 'L3', x: 760, y: 210, w: 140, h: 42, color: '#00bfa5', desc: 'Enclaves matérielles scellées (TPM) injectant la preuve de travail physique dans le moteur logique L3.' },
+
+        // L2 : Le Flux Quotidien (Y: 330 - 380)
+        { id: 'ind', label: 'IND + Pare-Feu FNA', layer: 'L2', x: 260, y: 345, w: 160, h: 42, color: '#00e5ff', desc: 'Interface Neurale Directe protégée par une diode matérielle asymétrique interdisant les intrusions.' },
+        { id: 'lightning', label: 'Réseau Lightning (L2)', layer: 'L2', x: 620, y: 345, w: 170, h: 42, color: '#00e5ff', desc: 'Réseau de canaux à haute fréquence pour le versement instantané du Capital de Réputation (CR/ECV).' },
+
+        // L1 : Vérité Thermodynamique (Y: 465 - 515)
+        { id: 'glid', label: 'Bitcoin PoW (GLID)', layer: 'L1', x: 380, y: 480, w: 200, h: 46, color: '#f7931a', desc: 'Ancre ontologique immuable garantie par la physique. Point d’ancrage des racines ZK et du Veto direct.' },
+        { id: 'minage', label: 'Minage PoW (ASICs)', layer: 'L1', x: 720, y: 480, w: 160, h: 46, color: '#f7931a', desc: 'Conversion irréversible de Joules électriques en sécurité cryptographique et chaleur fatale utile.' },
+
+        // L0 : Socle Physique & Matière (Y: 600 - 645)
+        { id: 'energie', label: 'Énergie (SMR/Fusion)', layer: 'L0', x: 180, y: 615, w: 160, h: 42, color: '#00bfa5', desc: 'Production d’énergie bas-carbone alimentant le minage de vérité et les convertisseurs biologiques.' },
+        { id: 'agrotech', label: 'Agro-Tech & FVI', layer: 'L0', x: 440, y: 615, w: 140, h: 42, color: '#44ee77', desc: 'Fermes Verticales Intégrées et bioréacteurs recevant la chaleur des ASICs pour produire les nutriments NBU.' },
+        { id: 'pmn_rli', label: 'PMN / RLI / COP', layer: 'L0', x: 740, y: 615, w: 160, h: 42, color: '#00bfa5', desc: 'Passeport Matériel Numérique, flottes de transport circulaire (RLI) et restauration planétaire (COP).' }
+    ];
+
+    // --- 2. DÉFINITION DES INTERACTIONS LOGIQUES & FLUX ---
+    const connections = [
+        // Thermodynamique (L0 <-> L1)
+        { from: 'energie', to: 'minage', type: 'thermo', color: '#f7931a', label: 'Joules Électriques', particles: 5, speed: 1.2 },
+        { from: 'minage', to: 'glid', type: 'thermo', color: '#f7931a', label: 'Hash Security', particles: 4, speed: 1.5 },
+        { from: 'minage', to: 'agrotech', type: 'thermo', color: '#ff5500', label: 'Chaleur Fatale (Cogénération)', particles: 5, speed: 1.1, dashed: true },
+        
+        // Veto Ontologique Direct (L4 -> L1)
+        { from: 'citoyen', to: 'glid', type: 'veto', color: '#ff3344', label: 'Script Timelock (Veto)', particles: 3, speed: 2.2, direct: true, width: 2.5 },
+
+        // Cybernétique & Alignement L4
+        { from: 'citoyen', to: 'ad', type: 'gov', color: '#b366ff', label: 'PCV (Chaos Créatif)', particles: 3, speed: 0.9 },
+        { from: 'ad', to: 'msc', type: 'gov', color: '#b366ff', label: 'Stress-Tests', particles: 3, speed: 1.0 },
+        { from: 'msc', to: 'iha', type: 'gov', color: '#b366ff', label: 'Contraintes Risque', particles: 3, speed: 1.0 },
+        { from: 'iha', to: 'rbu_contracts', type: 'gov', color: '#b366ff', label: 'Politiques PO (WU)', particles: 4, speed: 1.2 },
+
+        // Moteur Logique & Confidentialité (L3 <-> L1 / L2)
+        { from: 'jnp', to: 'glid', type: 'logic', color: '#e040fb', label: 'Ancrage ZK-Root', particles: 3, speed: 1.1, dashed: true },
+        { from: 'ind', to: 'jnp', type: 'logic', color: '#00e5ff', label: 'Requête Chiffrée', particles: 3, speed: 1.4 },
+        { from: 'citoyen', to: 'ind', type: 'logic', color: '#00e5ff', label: 'Intention / Auth', particles: 4, speed: 1.6 },
+        { from: 'lightning', to: 'rbu_contracts', type: 'logic', color: '#00e5ff', label: 'Règlement Micro-CR', particles: 4, speed: 1.5 },
+        { from: 'glid', to: 'lightning', type: 'logic', color: '#f7931a', label: 'Canaux Ouverts', particles: 3, speed: 1.0 },
+
+        // Oracles Physiques & Logistique (L0 <-> L3)
+        { from: 'pmn_rli', to: 'oracles', type: 'logic', color: '#00bfa5', label: 'Télémétrie Scellée', particles: 3, speed: 1.2, dashed: true },
+        { from: 'oracles', to: 'rbu_contracts', type: 'logic', color: '#00bfa5', label: 'Preuve d’État (PoPhW)', particles: 3, speed: 1.3 },
+        { from: 'rbu_contracts', to: 'pmn_rli', type: 'logic', color: '#e040fb', label: 'Ordres de Dispatch', particles: 3, speed: 1.1 }
+    ];
+
+    // Initialisation des paquets de particules le long des arêtes
+    const packetStreams = connections.map(conn => {
+        const packets = [];
+        for (let i = 0; i < (conn.particles || 3); i++) {
+            packets.push({ progress: Math.random() });
+        }
+        return { ...conn, packets };
+    });
+
+    // Helper pour trouver les coordonnées d'un nœud
+    function getNode(id) {
+        return nodes.find(n => n.id === id);
+    }
+
+    // --- 3. RENDU CANVAS DYNAMIQUE ---
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Grille de fond cybernétique subtile
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+        ctx.lineWidth = 1;
+        for (let x = 40; x < canvas.width; x += 40) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 40; y < canvas.height; y += 40) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+
+        // Lignes indicatrices de couches en arrière-plan
+        const layerY = [115, 250, 385, 520];
+        const layerNames = [
+            'COUCHE 4 : CONSCIENCE & ÉTHIQUE (IAG / PO / PCV / AD)',
+            'COUCHE 3 : MOTEUR LOGIQUE & ZKP (RGB / Smart Contracts / JNP)',
+            'COUCHE 2 : LE FLUX QUOTIDIEN (Lightning Network + Pare-Feu IND)',
+            'COUCHE 1 : VÉRITÉ THERMODYNAMIQUE (Bitcoin PoW / GLID)',
+            'COUCHE 0 : SOCLE PHYSIQUE & ÉNERGIE (SMR/Fusion, PMN, COP)'
+        ];
+
+        ctx.font = '10px "Fira Code", monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        layerNames.forEach((name, i) => {
+            const y = i === 0 ? 25 : layerY[i - 1] + 20;
+            ctx.fillText(name, 25, y);
+        });
+
+        layerY.forEach(y => {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.setLineDash([4, 8]);
+            ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(canvas.width - 20, y); ctx.stroke();
+            ctx.setLineDash([]);
+        });
+
+        // --- A. DESSIN DES ARÊTES & FLUX DE PARTICULES ---
+        packetStreams.forEach(stream => {
+            const isVisible = currentFilter === 'all' || stream.type === currentFilter;
+            const isHighlighted = hoveredNode && (stream.from === hoveredNode.id || stream.to === hoveredNode.id);
+            const alpha = isHighlighted ? 1.0 : (isVisible ? (hoveredNode ? 0.2 : 0.6) : 0.05);
+
+            if (alpha <= 0.05) return;
+
+            const fromNode = getNode(stream.from);
+            const toNode = getNode(stream.to);
+            if (!fromNode || !toNode) return;
+
+            const startX = fromNode.x;
+            const startY = fromNode.y;
+            const endX = toNode.x;
+            const endY = toNode.y;
+
+            // Calcul du point de contrôle pour trajectoire courbe
+            const midX = (startX + endX) / 2;
+            const midY = (startY + endY) / 2;
+            const dx = endX - startX;
+            const dy = endY - startY;
+            const curveOffset = stream.direct ? -40 : (Math.abs(dx) > 150 ? 25 : 0);
+            const cpX = midX - (dy / Math.hypot(dx, dy)) * curveOffset;
+            const cpY = midY + (dx / Math.hypot(dx, dy)) * curveOffset;
+
+            // Trait de connexion
+            ctx.strokeStyle = stream.color;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = stream.width || (isHighlighted ? 2.5 : 1.5);
+            if (stream.dashed) ctx.setLineDash([4, 4]);
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.quadraticCurveTo(cpX, cpY, endX, endY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Animation des paquets le long de la courbe de Bézier quadratique
+            stream.packets.forEach(packet => {
+                packet.progress += 0.004 * stream.speed;
+                if (packet.progress > 1) packet.progress = 0;
+
+                const t = packet.progress;
+                // B(t) = (1-t)^2 * P0 + 2(1-t)t * P1 + t^2 * P2
+                const px = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * cpX + t * t * endX;
+                const py = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * cpY + t * t * endY;
+
+                ctx.fillStyle = stream.color;
+                ctx.shadowColor = stream.color;
+                ctx.shadowBlur = 8;
+                ctx.beginPath();
+                ctx.arc(px, py, isHighlighted ? 4 : 2.8, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+
+            ctx.globalAlpha = 1.0;
+        });
+
+        // --- B. DESSIN DES NŒUDS MODULES ---
+        nodes.forEach(node => {
+            const isHovered = hoveredNode && hoveredNode.id === node.id;
+            const isConnected = hoveredNode && connections.some(c => (c.from === hoveredNode.id && c.to === node.id) || (c.to === hoveredNode.id && c.from === node.id));
+            const isDimmed = hoveredNode && !isHovered && !isConnected;
+
+            ctx.save();
+            ctx.translate(node.x - node.w / 2, node.y - node.h / 2);
+
+            // Fond du module
+            ctx.fillStyle = isHovered ? 'rgba(15, 20, 30, 0.98)' : 'rgba(8, 10, 15, 0.85)';
+            ctx.strokeStyle = isHovered ? '#ffcc00' : (isDimmed ? 'rgba(255,255,255,0.1)' : node.color);
+            ctx.lineWidth = isHovered ? 2.5 : 1.5;
+
+            if (isHovered) {
+                ctx.shadowColor = node.color;
+                ctx.shadowBlur = 15;
+            }
+
+            ctx.beginPath();
+            ctx.roundRect(0, 0, node.w, node.h, 6);
+            ctx.fill();
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Tag Couche
+            ctx.font = 'bold 9px "Fira Code", monospace';
+            ctx.fillStyle = isDimmed ? 'rgba(255,255,255,0.2)' : node.color;
+            ctx.fillText(node.layer, 8, 14);
+
+            // Label du module
+            ctx.font = isHovered ? 'bold 11px var(--font-ui)' : '11px var(--font-ui)';
+            ctx.fillStyle = isDimmed ? 'rgba(255,255,255,0.3)' : '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.fillText(node.label, node.w / 2, node.h / 2 + 5);
+            ctx.textAlign = 'left';
+
+            ctx.restore();
+        });
+
+        animFrame = requestAnimationFrame(draw);
+    }
+
+    // --- 4. GESTION DES ÉVÉNEMENTS (HOVER & TOOLTIP) ---
+    canvas.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        const mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+
+        let found = null;
+        for (const node of nodes) {
+            if (mouseX >= node.x - node.w / 2 && mouseX <= node.x + node.w / 2 &&
+                mouseY >= node.y - node.h / 2 && mouseY <= node.y + node.h / 2) {
+                found = node;
+                break;
+            }
+        }
+
+        hoveredNode = found;
+
+        if (found) {
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+            tooltip.style.top = `${e.clientY - rect.top + 15}px`;
+            tooltipTitle.innerText = `[${found.layer}] ${found.label}`;
+            tooltipDesc.innerText = found.desc;
+        } else {
+            tooltip.style.display = 'none';
+        }
+    });
+
+    canvas.addEventListener('mouseleave', function() {
+        hoveredNode = null;
+        tooltip.style.display = 'none';
+    });
+
+    // --- 5. GESTION DES FILTRES THÉMATIQUES ---
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.getAttribute('data-filter');
+        });
+    });
+
+    draw();
+})();
+</script>
+<!-- CANVAS ANIMÉ DE LA PYRAMIDE -->
+    <div class="interactive-stack-container">
+        <div class="stack-toolbar">
+            <span style="color: var(--purple-l4);">
+                <span lang="fr">// VAD STACK ENGINE (FLUX THERMODYNAMIQUES & VETO ONTOLOGIQUE)</span>
+                <span lang="en">// VAD STACK ENGINE (THERMODYNAMIC FLOWS & ONTOLOGICAL VETO)</span>
+            </span>
+            <div>
+                <span style="color: #aaa; margin-right: 8px;">Flux :</span>
+                <input type="range" id="stack-slider" min="10" max="100" value="50" style="accent-color: var(--purple-l4);">
+            </div>
+        </div>
+        <canvas id="stackCanvas" width="880" height="520" style="width: 100%; display: block;"></canvas>
+    </div>
     <!-- SIMULATEUR KARDASHEV I -->
     <div class="simulator-box">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
