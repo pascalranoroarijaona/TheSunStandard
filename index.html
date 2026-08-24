@@ -4171,7 +4171,7 @@
             <!-- ========================================== -->
             <!-- EXPERT LEVEL - ENGLISH VERSION             -->
             <!-- ========================================== -->
-            <details lang="en" style="display: none; background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
+            <details lang="en" style="background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
                 <summary style="padding: 1.2rem 1.5rem; cursor: pointer; font-weight: bold; color: #c864ff; outline: none; list-style-type: '▶ ';">
                     Expert Level: Information Geometry, Thermal Time & Gauge Autopoiesis
                 </summary>
@@ -4193,7 +4193,7 @@
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
                         $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
                     </div>
-                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
+                    <div id="free-energy-plot-en" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
                     
                     <p style="margin-bottom: 1.5rem; text-align: justify;">
                         When subjected to exogenous compute shocks, the network minimizes its Variational Free Energy \(F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2\) through <strong>natural gradient descent</strong>:
@@ -4831,6 +4831,7 @@
             };
 
             Plotly.newPlot('plotly-thermal-time', [trace1, trace2, trace3], layout, { responsive: true, displayModeBar: false });
+            Plotly.newPlot('plotly-thermal-time-en', [trace1, trace2, trace3], layout, { responsive: true, displayModeBar: false });
 
         } catch (err) {
             console.error("Erreur lors du rendu du tracé thermique :", err);
