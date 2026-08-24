@@ -12,7 +12,6 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Forces the browser to validate the content with the server -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Blog | L'Étalon Solaire</title>
     
@@ -34,6 +33,7 @@
             --text-muted: #888888;
             --sun-yellow: #ffcc00;
             --sun-orange: #ff6600;
+            --purple-l4: #b366ff;
             --bg-dark: #050505;
             --border-glow: rgba(255, 170, 0, 0.2);
             --card-bg: rgba(8, 8, 8, 0.75);
@@ -113,7 +113,7 @@
         }
     </style>
 </head>
-<body class="lang-en">
+<body class="lang-fr">
 
 <nav>
     <a href="../index.html" class="logo">
@@ -143,17 +143,37 @@
 </header>
 
 <main class="blog-grid">
+    <!-- NOUVEAU POST : HORIZON ZERO 2044 -->
+    <a href="horizon-zero-2044.html" class="article-card" style="border-color: rgba(179, 102, 255, 0.35); box-shadow: 0 0 25px rgba(179, 102, 255, 0.08);">
+        <span class="article-date" style="color: var(--purple-l4);">
+            <span lang="en">August 24, 2026 · Systems Architecture, AGI Alignment & Cardinal Wellbeing</span>
+            <span lang="fr">24 Août 2026 · Architecture Système, Alignement IAG & Bien-Être Cardinal</span>
+        </span>
+        <img src="img/HorizonZero2044.png" alt="Horizon Zéro 2044 Architecture Pyramide" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(179, 102, 255, 0.3); margin-bottom: 1.5rem;">
+        
+        <h2 lang="en">Horizon Zero 2044: The Trust Blueprint & Cardinal Wellbeing (VAD Architecture)</h2>
+        <h2 lang="fr">Horizon Zéro 2044 : La Vérité Algorithmique Décentralisée (VAD) & Bien-Être Cardinal</h2>
+        
+        <p lang="fr">Une architecture en 5 couches articulant l'irréversibilité thermodynamique (Bitcoin PoW), la vitesse transactionnelle (Lightning), la confidentialité ZKP et une IAG d'État régie par le Protocole d'Optimisme et le Wellbeing Framework. Modélisation de la symbiose post-singularité.</p>
+        <p lang="en">A 5-layer architecture bridging thermodynamic irreversibility (Bitcoin PoW), high-throughput settlement (Lightning), ZKP privacy, and an Algorithmic Statesman governed by the Optimism Protocol and the Wellbeing Framework. Modeling post-singularity symbiosis.</p>
+
+        <span class="read-more" style="color: var(--purple-l4);">
+            <span lang="en">Read architecture essay →</span>
+            <span lang="fr">Lire l'annexe architecturale →</span>
+        </span>
+    </a>
+
     <a href="matrice-inversee.html" class="article-card">
         <span class="article-date">
             <span lang="en">June 15, 2026 · Thermodynamics, Biosphere, Soil Regeneration & Bitcoin</span>
-            <span lang="fr">15 June 2026 · Thermodynamique, Environnement, Régénération du Vivant & Bitcoin</span>
+            <span lang="fr">15 Juin 2026 · Thermodynamique, Environnement, Régénération du Vivant & Bitcoin</span>
         </span>
         <img src="img/VieOrganiqueSurface.jpg" alt="La Vie De Surface" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2); margin-bottom: 1.5rem;">
         
         <h2 lang="en">The Inversed Matrix Model : What Mining Intelligence/Bitcoin could become one day</h2>
         <h2 lang="fr">Le modèle de la matrice inverse : ce que pourrait devenir un jour le minage d'intelligence artificielle et le Bitcoin.</h2>
         
-        <p lang="fr">Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Prenez la Pilule Verte."</p>
+        <p lang="fr">Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Prenez la Pilule Verte.</p>
         <p lang="en">Let us unite, bury the FUD, silence the noise and create beautiful gardens. Organic life on the surface, machines underground. Take the Green Pill.</p>
 
         <span class="read-more">
@@ -165,7 +185,7 @@
     <a href="nautile-nakamoto.html" class="article-card">
         <span class="article-date">
             <span lang="en">June 14, 2026 · Thermodynamics & Bitcoin</span>
-            <span lang="fr">14 June 2026 · Thermodynamique & Bitcoin</span>
+            <span lang="fr">14 Juin 2026 · Thermodynamique & Bitcoin</span>
         </span>
         <img src="img/NautileNakamotoIM.png" alt="Le Nautile de Nakamoto" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2); margin-bottom: 1.5rem;">
         
@@ -234,7 +254,7 @@
 <script>
     function setLang(lang) {
         lang = lang.toLowerCase();
-        if (lang !== 'en' && lang !== 'fr') lang = 'en';
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
         
         document.body.className = 'lang-' + lang;
         try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
@@ -247,7 +267,7 @@
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lg');
-        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'en');
+        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'fr');
         setLang(savedLang);
     });
 </script>

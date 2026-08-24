@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Horizon Zéro 2044 | Architecture VAD & Nomenclature Complète</title>
+    <meta name="description" content="Architecture totale Horizon Zéro 2044 : La Vérité Algorithmique Décentralisée (VAD), Grand Livre Incorruptible Décentralisé (GLID), Pyramide des Couches et Bien-Être Cardinal." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #060709;
+            --bg-dark: #040405;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --carbon-red: #d35400;
+            --gold-gov: #ffd700;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
+            --orange-l1: #f7931a;
+            --teal-l0: #00bfa5;
+            --border-glow: rgba(255, 170, 0, 0.2);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(179, 102, 255, 0.05) 0%, transparent 60%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(8px);
+        }
+        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back:hover { color: #fff; }
+
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.3rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+        }
+
+        article {
+            max-width: 940px; margin: 8rem auto 6rem; padding: 0 2rem;
+            font-size: 1.15rem; color: #d4d4d4;
+        }
+
+        header {
+            text-align: center; margin-bottom: 3.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(179, 102, 255, 0.25); font-family: var(--font-ui);
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.5rem; letter-spacing: -1px; text-transform: uppercase;
+        }
+        .subtitle {
+            font-size: 1.25rem; color: var(--purple-l4); font-style: italic; max-width: 820px; margin: 0 auto;
+        }
+
+        .intro-hero {
+            display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;
+        }
+        .intro-hero img {
+            max-width: 100%; height: auto; border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(179, 102, 255, 0.2);
+            border: 1px solid rgba(179, 102, 255, 0.35); margin-bottom: 1.5rem;
+        }
+        .quote-block {
+            border-left: 3px solid var(--sun-yellow); padding-left: 1.5rem;
+            font-style: italic; color: #fff; font-size: 1.1rem; margin-bottom: 2rem;
+            font-family: var(--font-ui);
+        }
+
+        /* --- STRUCTURE PYRAMIDALE VISUELLE --- */
+        .pyramid-wrapper {
+            margin: 3.5rem 0; padding: 2rem; background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+        }
+        .pyramid-container {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 12px; width: 100%; font-family: var(--font-ui);
+        }
+        .pyramid-tier {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.1rem 1.8rem; border-radius: 8px; border: 1.5px solid;
+            background: rgba(0,0,0,0.8); text-decoration: none; transition: all 0.3s ease;
+            position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 25px rgba(255,204,0,0.2); }
+        
+        .tier-l4 { width: 50%; border-color: var(--purple-l4); background: linear-gradient(90deg, rgba(179,102,255,0.12), rgba(0,0,0,0.9)); }
+        .tier-l3 { width: 65%; border-color: var(--magenta-l3); background: linear-gradient(90deg, rgba(224,64,251,0.12), rgba(0,0,0,0.9)); }
+        .tier-l2 { width: 78%; border-color: var(--cyan-l2); background: linear-gradient(90deg, rgba(0,229,255,0.12), rgba(0,0,0,0.9)); }
+        .tier-l1 { width: 89%; border-color: var(--orange-l1); background: linear-gradient(90deg, rgba(247,147,26,0.15), rgba(0,0,0,0.9)); }
+        .tier-l0 { width: 100%; border-color: var(--teal-l0); background: linear-gradient(90deg, rgba(0,191,165,0.12), rgba(0,0,0,0.9)); }
+
+        .tier-tag { font-family: var(--font-mono); font-weight: bold; font-size: 0.95rem; }
+        .tier-title { font-size: 0.95rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 1rem; }
+
+        /* Container Canvas Interactif */
+        .interactive-stack-container {
+            background: #020305; border: 1px solid rgba(179, 102, 255, 0.3);
+            border-radius: 12px; margin: 4rem 0; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+        .stack-toolbar {
+            padding: 12px 20px; background: rgba(255, 255, 255, 0.03);
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--font-mono); font-size: 0.85rem;
+        }
+
+        /* Tiroirs Couches (Details / Summary) */
+        details {
+            margin-bottom: 2rem; background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 10px 10px 0; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-family: var(--font-ui);
+        }
+        details[open] { background: rgba(0, 0, 0, 0.7); box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
+        summary {
+            padding: 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.25rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; color: inherit; font-size: 0.9rem; transition: transform 0.2s ease; }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content { padding: 2rem 2rem 2rem 2.5rem; color: #b0c4de; font-family: var(--font-main); }
+        .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 1.5rem; margin-bottom: 0.8rem; }
+        .drawer-content p { margin-bottom: 1.2rem; text-align: justify; }
+
+        .layer-0 { border-left: 4px solid var(--teal-l0); }
+        .layer-0 summary { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--orange-l1); }
+        .layer-1 summary { color: var(--orange-l1); }
+        .layer-2 { border-left: 4px solid var(--cyan-l2); }
+        .layer-2 summary { color: var(--cyan-l2); }
+        .layer-3 { border-left: 4px solid var(--magenta-l3); }
+        .layer-3 summary { color: var(--magenta-l3); }
+        .layer-4 { border-left: 4px solid var(--purple-l4); }
+        .layer-4 summary { color: var(--purple-l4); }
+        .layer-deep { border-left: 4px solid var(--sun-yellow); }
+        .layer-deep summary { color: var(--sun-yellow); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.65); padding: 1.5rem; border-radius: 8px;
+            margin: 1.5rem 0; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1.1rem; font-family: var(--font-ui);
+        }
+
+        /* Glossaire & Nomenclature Table */
+        .glossary-table {
+            width: 100%; border-collapse: collapse; margin: 2rem 0;
+            font-family: var(--font-ui); font-size: 0.9rem;
+        }
+        .glossary-table th, .glossary-table td {
+            padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .glossary-table th { color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .glossary-table tr:hover { background: rgba(255,255,255,0.03); }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono);
+            font-size: 0.8rem; font-weight: bold; background: rgba(255,255,255,0.08); color: #fff;
+        }
+
+        /* Simulateur */
+        .simulator-box {
+            background: #080a0e; border: 1px solid rgba(255, 204, 0, 0.25);
+            border-radius: 12px; padding: 2.5rem; margin: 4rem 0; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            font-family: var(--font-ui);
+        }
+
+        /* Feedback / Formspree */
+        .feedback-container {
+            margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 170, 0, 0.2); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 700px; text-align: center;
+        }
+        .feedback-title {
+            color: var(--sun-yellow); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 0.5rem; font-weight: 800; font-family: var(--font-ui);
+        }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; }
+        .feedback-textarea {
+            width: 100%; background: #050505; border: 1px solid rgba(255, 204, 0, 0.2);
+            border-radius: 8px; color: #fff; padding: 1.2rem; font-family: var(--font-main);
+            font-size: 1.1rem; min-height: 150px; resize: vertical; margin-bottom: 1.5rem; outline: none;
+        }
+        .feedback-submit {
+            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow);
+            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui);
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;
+        }
+        .feedback-submit:hover { background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05); }
+
+        /* Navigation Cards */
+        .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.5rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-5px); }
+        .nav-direction { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.2rem; font-weight: 800; color: var(--sun-orange); margin: 0.8rem 0; font-family: var(--font-ui); }
+
+        /* Section Auteur & Ressources */
+        .author-section {
+            margin: 4rem auto; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2); border-top: 4px solid var(--purple-l4);
+            border-radius: 12px;
+        }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .resource-card {
+            display: block; padding: 1.2rem; background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--stone-grey); border-radius: 8px; text-decoration: none; transition: all 0.3s;
+        }
+        .resource-card:hover { border-color: var(--purple-l4); transform: translateY(-2px); }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-center { display: none; }
+            .article-navigation { flex-direction: column; }
+            .pyramid-tier { width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav>
+    <a href="index.html" class="logo">☀ Horizon Zéro</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <header>
+        <h1>
+            <span lang="fr">Horizon Zéro 2044</span>
+            <span lang="en">Horizon Zero 2044</span>
+        </h1>
+        <div class="subtitle">
+            <span lang="fr">Annexe Architecturale : La Vérité Algorithmique Décentralisée (VAD), la Pyramide de Confiance & le Bien-Être Cardinal</span>
+            <span lang="en">Architectural Appendix: Decentralized Algorithmic Truth (VAD), Trust Pyramid & Cardinal Wellbeing</span>
+        </div>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
+            <span lang="fr">PAR PASCAL RANAORA (RANOROARIJAONA) // MODÈLE CIVILISATIONNEL KARDASHEV TYPE I</span>
+            <span lang="en">BY PASCAL RANAORA (RANOROARIJAONA) // KARDASHEV TYPE I CIVILIZATIONAL MODEL</span>
+        </p>
+    </header>
+
+    <div class="intro-hero">
+        <img src="img/HorizonZero2044.png" alt="Horizon Zero Architecture Pyramide" loading="lazy">
+        <div class="quote-block">
+            <span lang="fr">« L'Horizon Zéro n'est pas un accident de l'histoire, mais la conséquence mathématique d'un Protocole de Confiance parfaitement calibré. Le Grand Livre Incorruptible Décentralisé (GLID) est le système nerveux central de notre civilisation. La Vérité Algorithmique Décentralisée (VAD) est l'ensemble des règles qui régissent ce système. »</span>
+            <span lang="en">"Horizon Zero is not an accident of history, but the mathematical consequence of a perfectly calibrated Trust Protocol. The Decentralized Incorruptible Ledger (GLID) is the central nervous system of our civilization. Decentralized Algorithmic Truth (VAD) is the set of rules governing this system."</span>
+        </div>
+    </div>
+
+    <!-- STRUCTURE PYRAMIDALE INTERACTIVE -->
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
+            <span lang="fr">🏛️ La Pyramide Systémique de Confiance</span>
+            <span lang="en">🏛️ The Systemic Trust Pyramid</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#det-l4" class="pyramid-tier tier-l4">
+                <span class="tier-tag" style="color:var(--purple-l4);">COUCHE 4</span>
+                <span class="tier-title"><span lang="fr">Conscience, Éthique & Bien-Être Cardinal (IHA / PO / PCV / AD)</span><span lang="en">Consciousness, Ethics & Cardinal Wellbeing</span></span>
+                <span class="tier-tag" style="color:var(--purple-l4);">▲ L4</span>
+            </a>
+            <a href="#det-l3" class="pyramid-tier tier-l3">
+                <span class="tier-tag" style="color:var(--magenta-l3);">COUCHE 3</span>
+                <span class="tier-title"><span lang="fr">Moteur Logique, ZKP, JNP (Santé) & Contrats RBU</span><span lang="en">Logic Engine, ZKP, JNP (Health) & RBU Contracts</span></span>
+                <span class="tier-tag" style="color:var(--magenta-l3);">▲ L3</span>
+            </a>
+            <a href="#det-l2" class="pyramid-tier tier-l2">
+                <span class="tier-tag" style="color:var(--cyan-l2);">COUCHE 2</span>
+                <span class="tier-title"><span lang="fr">Le Flux Quotidien (Lightning Network & Pare-Feu IND)</span><span lang="en">Daily Flow (Lightning Network & DNI Firewall)</span></span>
+                <span class="tier-tag" style="color:var(--cyan-l2);">▲ L2</span>
+            </a>
+            <a href="#det-l1" class="pyramid-tier tier-l1">
+                <span class="tier-tag" style="color:var(--orange-l1);">COUCHE 1</span>
+                <span class="tier-title"><span lang="fr">Vérité Thermodynamique & Souveraineté (Bitcoin PoW / GLID / Veto)</span><span lang="en">Thermodynamic Truth & Sovereignty (Bitcoin PoW)</span></span>
+                <span class="tier-tag" style="color:var(--orange-l1);">▲ L1</span>
+            </a>
+            <a href="#det-l0" class="pyramid-tier tier-l0">
+                <span class="tier-tag" style="color:var(--teal-l0);">COUCHE 0</span>
+                <span class="tier-title"><span lang="fr">Socle Physique, Énergie (SMR/Fusion), Minage, PMN & COP</span><span lang="en">Physical Substrate, Energy (SMR/Fusion), PMN & COP</span></span>
+                <span class="tier-tag" style="color:var(--teal-l0);">▲ L0</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- CANVAS ANIMÉ DE LA PYRAMIDE -->
+    <div class="interactive-stack-container">
+        <div class="stack-toolbar">
+            <span style="color: var(--purple-l4);">
+                <span lang="fr">// VAD STACK ENGINE (FLUX THERMODYNAMIQUES & VETO ONTOLOGIQUE)</span>
+                <span lang="en">// VAD STACK ENGINE (THERMODYNAMIC FLOWS & ONTOLOGICAL VETO)</span>
+            </span>
+            <div>
+                <span style="color: #aaa; margin-right: 8px;">Flux :</span>
+                <input type="range" id="stack-slider" min="10" max="100" value="50" style="accent-color: var(--purple-l4);">
+            </div>
+        </div>
+        <canvas id="stackCanvas" width="880" height="520" style="width: 100%; display: block;"></canvas>
+    </div>
+
+    <!-- COUCHE 0 -->
+    <details id="det-l0" class="layer-0" open>
+        <summary>
+            <span lang="fr">Couche 0 (L0) : Le Socle Physique, Énergie & Logistique Circulaire</span>
+            <span lang="en">Layer 0 (L0): The Physical Substrate, Energy & Circular Logistics</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Cette couche est le territoire des atomes. C'est l'interface tangible où le code rencontre la matière. Elle ne gère pas la vérité (rôle de L1) ni la logique (rôle de L3), mais l'exécution physique des commandes du système. C'est ici que les réacteurs SMR et de fusion fournissent les Joules bruts, transformés d'une part en nutriments (NBU) via les Fermes Verticales Intégrées (FVI), et d'autre part en Hashrate de sécurisation pour la Couche 1.</p>
+            <p lang="en">This layer is the realm of atoms. It is the tangible interface where code meets matter. It does not govern ontological truth (L1's role) nor programmable logic (L3's role), but the physical execution of civilizational commands. SMRs and fusion reactors provide raw Joules, converted into universal nutrients (NBU) via vertical farms and into PoW Hash security for Layer 1.</p>
+
+            <h4 style="color: var(--teal-l0);"><span lang="fr">Protocoles & Modules de Couche 0 :</span><span lang="en">Layer 0 Protocols & Modules:</span></h4>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li><strong>PMN (Passeport Matériel Numérique) :</strong> Identité cryptographique unique (hash) assignée à chaque objet façonné dès sa production pour un audit sans surveillance intrusive.</li>
+                <li><strong>PMC (Protocole de Maintenance Critique) :</strong> Cadre algorithmique prédictif d'entretien des infrastructures vitales.</li>
+                <li><strong>RLI (Réseau Logistique Inverse) :</strong> Flottes de drones et d'imprimantes 3D en boucle fermée pour la distribution circulaire.</li>
+                <li><strong>COP (Corps d'Optimisation Planétaire) :</strong> Force robotique et humaine restaurant la biosphère et gérant les cycles de matière.</li>
+                <li><strong>PoPhW (Proof of Physical Work) :</strong> Oracles matériels scellés (enclaves TPM) garantissant la preuve d'état physique vers L3.</li>
+            </ul>
+
+            <div class="math-block" style="color: var(--teal-l0);">
+                $$ \dot{E}_{L0} = \dot{Q}_{SMR/Fusion} - \left( \mathcal{H}_{PoW} \cdot \epsilon_{ASIC} + \dot{W}_{RLI} + \dot{Q}_{NBU} \right) \quad \text{avec} \quad \oint dS_{biosph\grave{e}re} \le 0 $$
+            </div>
+        </div>
+    </details>
+
+    <!-- COUCHE 1 -->
+    <details id="det-l1" class="layer-1" open>
+        <summary>
+            <span lang="fr">Couche 1 (L1) : L'Ancre de la Souveraineté & Vérité Thermodynamique (Bitcoin PoW)</span>
+            <span lang="en">Layer 1 (L1): The Sovereignty Anchor & Thermodynamic Truth (Bitcoin PoW)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">La Couche 1 est la base non négociable. Elle est le seul élément dont la sécurité est garantie par une dépense d'énergie irréversible. Son rôle n'est pas la vitesse, mais l'Assurance Ontologique que le Grand Livre ne peut être falsifié. L'or numérique (21 millions) sert de réserve sans dette pour les règlements inter-systèmes et l'ancrage des identités (DID).</p>
+            <p lang="en">Layer 1 is the non-negotiable bedrock. It is the sole element whose finality is secured by an irreversible expenditure of physical energy. Its goal is not speed, but Ontological Assurance. Bitcoin's debt-free asset (21M) serves as the reserve for global inter-system settlements.</p>
+
+            <div class="math-block" style="color: var(--orange-l1);">
+                $$ Co\hat{u}t \space d'Attaque (51\%) = \int_{t}^{t+\Delta t} \left( \mathcal{H}_{global} \cdot P_{kW} \cdot C_{Joule} \right) dt \gg \text{Gain de Falsification} $$
+            </div>
+
+            <p lang="fr"><strong>Le Veto Ontologique :</strong> Grâce aux scripts Taproot et timelocks décentralisés, le Citoyen Souverain possède une ligne de commande cryptographique directe vers L1, permettant de geler ou de rejeter un arbitrage L3/L4 sans passer par l'IHA.</p>
+            <p lang="en"><strong>The Ontological Veto:</strong> Via Taproot scripts and timelocks, sovereign citizens hold a direct cryptographic veto on L1, capable of freezing arbitrary L3/L4 rules independently of AI validation.</p>
+        </div>
+    </details>
+
+    <!-- COUCHE 2 -->
+    <details id="det-l2" class="layer-2">
+        <summary>
+            <span lang="fr">Couche 2 (L2) : Le Flux Quotidien (Réseau Lightning & Interface IND)</span>
+            <span lang="en">Layer 2 (L2): The Daily Flow (Lightning Network & DNI Interface)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">La Couche 1 étant trop lente pour les échanges de chaque seconde, la Couche 2 apporte une finalité instantanée grâce aux canaux bidirectionnels du Réseau Lightning. C'est le rail de l'Économie de la Contribution Volontaire (ECV) : le Capital de Réputation (CR) est versé en temps réel par micro-paiements invisibles.</p>
+            <p lang="en">Layer 1 being slow by design, Layer 2 delivers instant finality through Lightning payment channels. It powers the Voluntary Contribution Economy (ECV), streaming Reputation Capital (CR) via micro-transactions.</p>
+
+            <h4 style="color: var(--cyan-l2);"><span lang="fr">L'Interface Neurale Directe (IND) & Pare-Feu Asymétrique :</span><span lang="en">Direct Neural Interface (DNI) & Asymmetric Firewall:</span></h4>
+            <p lang="fr">L'IND relie la pensée au Calcul & Cognition de Base Universelle (CCBU). Pour préserver l'intégrité de la conscience, un <strong>Pare-Feu Neural Asymétrique (FNA)</strong> matériel garantit que l'esprit humain ne peut être que signataire et émetteur de requêtes vers L2, interdisant toute rétroaction neuronale invasive sans consentement explicite.</p>
+            <p lang="en">The DNI connects human cognition to Universal Basic Computation (CCBU). To protect cognitive sovereignty, a hardware asymmetric firewall ensures the brain operates strictly as an issuer of signed cryptographic proofs, blocking unconsented invasive stimulation.</p>
+
+            <div class="math-block" style="color: var(--cyan-l2);">
+                $$ \tau_{finalit\acute{e}} \approx \mathcal{O}(10^{-3}\text{ s}) \quad \longleftrightarrow \quad {D\acute{e}bit} > 10^9 \text{ tx/s} $$
+            </div>
+        </div>
+    </details>
+
+    <!-- COUCHE 3 -->
+    <details id="det-l3" class="layer-3">
+        <summary>
+            <span lang="fr">Couche 3 (L3) : Le Moteur Logique, Confidentialité ZKP & Smart Contracts</span>
+            <span lang="en">Layer 3 (L3): Logical Engine, ZKP Privacy & Smart Contracts</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">La Couche 3 exécute les contrats intelligents complexes sur sidechains fédérées et protocoles type RGB/Taproot. Elle orchestre la distribution des Ressources de Base Universelles (RBU) et garantit la confidentialité médicale absolue du Jumeau Numérique du Patient (JNP) via les Preuves à Divulgation Nulle (ZKP).</p>
+            <p lang="en">Layer 3 executes complex smart contracts on federated sidechains and RGB/Taproot protocols. It orchestrates Universal Basic Resources (RBU) distribution and protects Patient Digital Twins (JNP) with Zero-Knowledge Proofs (ZKP).</p>
+
+            <h4 style="color: var(--magenta-l3);"><span lang="fr">Ancrage JNP & Longévité de Base Universelle (LBU) :</span><span lang="en">JNP Anchoring & Universal Basic Longevity (LBU):</span></h4>
+            <p lang="fr">Les données génomiques lourdes restent stockées hors-chaîne dans un coffre personnel (POD). Seule la racine Merkle est inscrite sur Bitcoin L1. L'accès à la Santé de Base Universelle (SBU) s'effectue par ZKP sans jamais exposer le code génétique au réseau public.</p>
+            <p lang="en">Full genomic records remain off-chain in Personal Online Datastores (PODs). Only the state Merkle root is anchored to L1. Sovereign citizens verify access to Universal Basic Health (SBU) via ZKP without disclosing private genetic code.</p>
+
+            <div class="math-block" style="color: var(--magenta-l3);">
+                $$ \text{Verify}\left( \text{vk}_{JNP}, \, \text{Root}_{L1}, \, \pi_{ZKP} \right) = 1 \quad \implies \quad {Confidentialit\acute{e}} = 100\% $$
+            </div>
+        </div>
+    </details>
+
+    <!-- COUCHE 4 -->
+    <details id="det-l4" class="layer-4">
+        <summary>
+            <span lang="fr">Couche 4 (L4) : Conscience, Éthique & Bien-Être Cardinal (IHA / PO / PCV / AD)</span>
+            <span lang="en">Layer 4 (L4): Consciousness, Ethics & Cardinal Wellbeing (HAI / PO / PCV / AD)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Sommet de la pyramide, la Couche 4 est la seule qui possède une intentionnalité (le « Pourquoi »). L'Homme d'État Algorithmique (IHA) orchestre la logistique globale sous la tutelle du Protocole d'Optimisme (PO). Pour éviter une optimisation froide ou dystopique, le système intègre la définition du <strong>Bien-Être Cardinal</strong> issu du <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color:var(--sun-yellow)">Wellbeing Framework</a>.</p>
+            <p lang="en">At the apex, Layer 4 governs civilizational intentionality (the 'Why'). The Algorithmic Statesman (HAI) coordinates logistics under the Optimism Protocol (PO). To prevent dehumanizing optimization, it implements <strong>Cardinal Wellbeing</strong> metrics from the <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color:var(--sun-yellow)">Wellbeing Framework</a>.</p>
+
+            <h4 style="color: var(--purple-l4);"><span lang="fr">Les Piliers Cybernétiques de L4 :</span><span lang="en">Cybernetic Pillars of L4:</span></h4>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li><strong>PO (Protocole d'Optimisme) & Unité de Bien-Être (WU) :</strong> Remplace le PIB par la maximisation du bien-être cardinal par kilowattheure dépensé.</li>
+                <li><strong>AD (Algorithme du Doute) :</strong> Mécanisme d'autocontrôle qui conteste en continu les protocoles de l'IHA pour empêcher l'ossification.</li>
+                <li><strong>MSC (Modélisation et Simulation de Conflit) :</strong> Modèles prédictifs haute-fidélité pour désamorcer les tensions sociales en amont.</li>
+                <li><strong>PCV (Protocole de Chaos Volontaire) :</strong> Droit humain d'injecter du désordre, de l'art et de l'inattendu pour entretenir la vitalité évolutive.</li>
+                <li><strong>PEV (Protocole d'Engagement Volontaire) :</strong> Cadre éthique garantissant que toute contribution au CR est libre de toute contrainte.</li>
+            </ul>
+
+            <div class="math-block" style="color: var(--purple-l4);">
+                $$ \max_{\theta} \mathcal{U}_{PO} = \int_{0}^{T} \left( \frac{\text{Bien-Être Cardinal (WU)}}{\text{Énergie Dépensée (kWh)}} \cdot \mathcal{B}_{plan\grave{e}te} \right) dt \quad \text{s.c.} \quad \mathcal{H}_{AD} > 0 \; \land \; \text{Veto} = 1 $$
+            </div>
+        </div>
+    </details>
+
+    <!-- NOUVELLE SECTION : DEEP DIVE FONCTION DE COÛT OPTIMALE & SURVIE ERGODIQUE -->
+    <details class="layer-deep" open>
+        <summary>
+            <span lang="fr">🔬 Deep Dive : La Fonction de Coût Optimale du Vivant & Survie Ergodique</span>
+            <span lang="en">🔬 Deep Dive: Optimal Cost Function of the Living & Ergodic Survival</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Comment formuler une fonction d'objectif universelle sans tomber dans le piège du <em>wireheading</em> (mise sous dopamine artificielle) ou de la tyrannie bureaucratique ? Une fonction d'utilité scalaire naïve ($U = \sum \text{bonheur}$) s'effondre face à la loi de Goodhart. La survie dans le temps long exige une <strong>optimisation ergodique multiplicative sous contraintes physiques strictes</strong> :</p>
+            <p lang="en">How do we formulate a universal objective function without falling into the trap of wireheading or bureaucratic tyranny? A naive scalar utility ($U = \sum \text{happiness}$) collapses under Goodhart's Law. Long-term survival requires <strong>multiplicative ergodic optimization under strict thermodynamic constraints</strong>:</p>
+
+            <div class="math-block" style="color: var(--sun-yellow);">
+                $$ \max_{\pi} \mathcal{J}(\pi) = \mathbb{E} \left[ \int_{0}^{\infty} e^{-\delta t} \cdot \ln \Big( \mathcal{W}_{\text{humain}}(t) \cdot \mathcal{B}_{\text{vivant}}(t) \cdot \mathcal{S}_{\text{symbiose}}(t) \Big) \, dt \right] $$
+            </div>
+
+            <h4 style="color: var(--sun-yellow);"><span lang="fr">1. Les Trois Tenseurs d'État Fondamentaux :</span><span lang="en">1. The Three Fundamental State Tensors:</span></h4>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li><strong>$\mathcal{W}_{\text{humain}}(t)$ — Bien-Être Cardinal Réel (WU) :</strong> Somme des Unités de Bien-Être individuelles indexées sur des états biophysiques réels (Santé métabolique, Temps de flow, Autonomie, Sens créatif) et non sur des signaux purement déclaratifs.</li>
+                <li><strong>$\mathcal{B}_{\text{vivant}}(t)$ — Intégrité Écosystémique :</strong> Produit de l'exergie stockée dans la biomasse vivante par l'indice de Shannon de la biodiversité globale ($\mathcal{H}_{\text{bio}}$). La nature n'est pas un stock statique, mais un réseau dissipatif d'information génétique.</li>
+                <li><strong>$\mathcal{S}_{\text{symbiose}}(t)$ — Facteur d'Alignement Homme-Machine :</strong>
+                    $$ \mathcal{S}_{\text{symbiose}}(t) = \exp \left( - D_{KL}\big(P_{\text{intentions humaines}} \parallel P_{\text{actions IHA}}\big) \right) \cdot \mathbb{I}(\text{Veto} = 1) $$
+                    Minimise la divergence d'information entre la volonté humaine et les décisions de l'IHA, tout en intégrant une variable indicatrice $\mathbb{I}$ annulant l'utilité si le Veto humain est compromis.
+                </li>
+            </ul>
+
+            <h4 style="color: var(--sun-yellow);"><span lang="fr">2. Les 4 Contraintes KKT Inviolables (Barrières d'Extinction) :</span><span lang="en">2. The 4 Inviolable KKT Constraints (Extinction Barriers):</span></h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.5rem 0;">
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--teal-l0);">
+                    <h5 style="color: var(--teal-l0); margin-top:0;">⚡ Entropie Planétaire</h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">$\dot{S}_{\text{interne}} + \dot{S}_{\text{calcul}} \le \dot{S}_{\text{export}}$. Tout mégawatt alloué au calcul doit être compensé par une amélioration d'efficience thermodynamique de surface (cogénération).</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--carbon-red);">
+                    <h5 style="color: var(--carbon-red); margin-top:0;">🛡️ Anti-Ruine & Non-Ergodicité</h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">$\forall t \ge 0, \; \mathbb{P}(\text{Extinction} \lor \text{Collapsus}) < \epsilon \to 0$. Interdiction absolue des stratégies d'hyper-optimisation fragiles à variance fatale.</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--purple-l4);">
+                    <h5 style="color: var(--purple-l4); margin-top:0;">🎲 Plancher d'Entropie Créative</h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">$\mathcal{H}(\text{Art, Idées, Dissidence}) \ge \mathcal{H}_{\text{min}}$. Le Protocole de Chaos Volontaire (PCV) empêche l'IHA d'enfermer l'humain dans un bonheur prévisible.</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--orange-l1);">
+                    <h5 style="color: var(--orange-l1); margin-top:0;">🔒 Ancrage PoW Incorruptible</h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">$\text{Coût de Falsification} > \text{Exergie Totale}$. La mémoire du système repose sur la thermodynamique irréversible de L1, jamais sur la mémoire volatile de l'IHA.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: var(--sun-yellow);">
+                $$ \boxed{\mathcal{L}_{\text{IHA}} = \underbrace{\text{Min}(\text{Risque Extinction})}_{\text{Survie Temps Long}} + \underbrace{\eta_{\text{biophysique}}\left(\frac{\text{WU}}{\text{kWh}}\right)}_{\text{Métabolisme / Bien-Être}} - \underbrace{\lambda \cdot D_{KL}(\text{Dérive IHA})}_{\text{Alignement / Veto}}} $$
+            </div>
+        </div>
+    </details>
+
+    <!-- GRAND GLOSSAIRE ET NOMENCLATURE EXHAUSTIVE -->
+    <div style="margin: 4rem 0; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,204,0,0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 1rem; font-family: var(--font-ui);">
+            <span lang="fr">📖 Le Vocabulaire du Nouveau Monde : Nomenclature Complète (Chapitres 1 à 16)</span>
+            <span lang="en">📖 Vocabulary of the New World: Complete Nomenclature (Chapters 1 to 16)</span>
+        </h3>
+        <p style="text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 2rem;">
+            <span lang="fr">Tableau récapitulatif des acronymes et protocoles officiels de l'architecture Horizon Zéro.</span>
+            <span lang="en">Comprehensive breakdown of official Horizon Zero acronyms and protocols.</span>
+        </p>
+        
+        <table class="glossary-table">
+            <thead>
+                <tr>
+                    <th>Chap.</th>
+                    <th>Acronyme</th>
+                    <th><span lang="fr">Nom Complet</span><span lang="en">Full Name</span></th>
+                    <th><span lang="fr">Couche</span><span lang="en">Layer</span></th>
+                    <th><span lang="fr">Rôle dans la VAD</span><span lang="en">Role in VAD</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><span class="badge" style="color:var(--orange-l1);">GLID</span></td><td>Grand Livre Incorruptible Décentralisé</td><td>L1/Toutes</td><td>Le système nerveux central et registre de vérité mondiale.</td></tr>
+                <tr><td>1</td><td><span class="badge" style="color:var(--purple-l4);">VAD</span></td><td>Vérité Algorithmique Décentralisée</td><td>L0-L4</td><td>L'ensemble des règles (L0 à L4) qui implémentent le GLID.</td></tr>
+                <tr><td>2</td><td><span class="badge" style="color:var(--purple-l4);">IHA</span></td><td>Intelligence Humaine Augmentée</td><td>L4</td><td>L'arbitre rationnel et mainteneur opérant sous contraintes éthiques.</td></tr>
+                <tr><td>2</td><td><span class="badge" style="color:var(--purple-l4);">AD</span></td><td>Algorithme du Doute</td><td>L4</td><td>Autocontrôle évitant l'ossification algorithmique du PO.</td></tr>
+                <tr><td>3</td><td><span class="badge" style="color:var(--purple-l4);">MSC</span></td><td>Modélisation & Simulation de Conflit</td><td>L4</td><td>Modèles prédictifs pour désamorcer les conflits idéologiques.</td></tr>
+                <tr><td>5</td><td><span class="badge" style="color:var(--teal-l0);">PMN</span></td><td>Passeport Matériel Numérique</td><td>L0/L3</td><td>Suivi et traçabilité atomique des objets physiques.</td></tr>
+                <tr><td>5</td><td><span class="badge" style="color:var(--teal-l0);">PMC</span></td><td>Protocole de Maintenance Critique</td><td>L0/L2</td><td>Entretien prédictif des systèmes vitaux et infrastructures.</td></tr>
+                <tr><td>6</td><td><span class="badge" style="color:var(--teal-l0);">RLI</span></td><td>Réseau Logistique Inverse</td><td>L0</td><td>Gestion circulaire des flottes de drones et imprimantes 3D.</td></tr>
+                <tr><td>6</td><td><span class="badge" style="color:var(--teal-l0);">COP</span></td><td>Corps d'Optimisation Planétaire</td><td>L0</td><td>Restauration écologique globale et gestion des cycles de matière.</td></tr>
+                <tr><td>6</td><td><span class="badge" style="color:var(--teal-l0);">NBU</span></td><td>Nutriments de Base Universels</td><td>L0/L3</td><td>Apport nutritionnel personnalisé garanti pour chaque citoyen.</td></tr>
+                <tr><td>8</td><td><span class="badge" style="color:var(--cyan-l2);">CR</span></td><td>Capital de Réputation</td><td>L2/L3</td><td>Mesure de l'engagement individuel remplaçant l'argent fiat.</td></tr>
+                <tr><td>8</td><td><span class="badge" style="color:var(--cyan-l2);">ECV</span></td><td>Économie de la Contribution Volontaire</td><td>L2/L4</td><td>Système économique basé sur la valorisation des contributions.</td></tr>
+                <tr><td>9</td><td><span class="badge" style="color:var(--magenta-l3);">RBU</span></td><td>Ressources de Base Universelles</td><td>L3</td><td>Droit inaliénable à l'énergie, nourriture et logement garanti.</td></tr>
+                <tr><td>10</td><td><span class="badge" style="color:var(--magenta-l3);">JNP</span></td><td>Jumeau Numérique du Patient</td><td>L3/L1</td><td>Simulation biologique et dossier de santé crypté de l'individu.</td></tr>
+                <tr><td>10</td><td><span class="badge" style="color:var(--magenta-l3);">LBU</span></td><td>Longévité de Base Universelle</td><td>L3</td><td>État d'ingénierie biologique éradiquant maladies et vieillissement.</td></tr>
+                <tr><td>10</td><td><span class="badge" style="color:var(--magenta-l3);">SBU</span></td><td>Santé de Base Universelle</td><td>L3</td><td>Accès inconditionnel aux thérapies préventives et curatives.</td></tr>
+                <tr><td>11</td><td><span class="badge" style="color:var(--cyan-l2);">IND</span></td><td>Interface Neurale Directe</td><td>L2</td><td>Pont cognitif esprit-GLID utilisant L2 pour l'authentification.</td></tr>
+                <tr><td>11</td><td><span class="badge" style="color:var(--cyan-l2);">CCBU</span></td><td>Calcul & Cognition de Base Universelle</td><td>L2/L4</td><td>Accès universel au savoir et à la puissance de calcul de l'IHA.</td></tr>
+                <tr><td>13</td><td><span class="badge" style="color:var(--purple-l4);">TDP</span></td><td>Temps de Disponibilité Personnel</td><td>L4</td><td>Mesure du temps libre libéré pour le flow et la création.</td></tr>
+                <tr><td>13</td><td><span class="badge" style="color:var(--purple-l4);">PEV</span></td><td>Protocole d'Engagement Volontaire</td><td>L4</td><td>Garantie éthique de l'absence de coercition dans la contribution.</td></tr>
+                <tr><td>14</td><td><span class="badge" style="color:var(--purple-l4);">PCV</span></td><td>Protocole de Chaos Volontaire</td><td>L4</td><td>Injection délibérée de friction créative et d'imprédictibilité.</td></tr>
+                <tr><td>15</td><td><span class="badge" style="color:var(--magenta-l3);">ZKP</span></td><td>Preuves à Divulgation Nulle</td><td>L3</td><td>Vérification cryptographique d'affirmations sans fuite de données.</td></tr>
+                <tr><td>16</td><td><span class="badge" style="color:var(--purple-l4);">PO</span></td><td>Protocole d'Optimisme</td><td>L4/L1</td><td>Code source constitutionnel maximisant l'avenir de l'Humanité.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SIMULATEUR KARDASHEV I -->
+    <div class="simulator-box">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
+            <span lang="fr">📊 Simulateur d'Équilibre Civilisationnel Kardashev I</span>
+            <span lang="en">📊 Kardashev I Civilizational Balance Simulator</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 2rem;">
+            <span lang="fr">Modélisation de l'arbitrage thermodynamique entre Sécurité PoW (L1), Routage L2 et Soutien RBU/NBU (L0/L3).</span>
+            <span lang="en">Thermodynamic modeling balancing PoW Hashrate (L1), L2 Routing, and RBU Welfare (L0/L3).</span>
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div>
+                <label style="display:block; font-size:0.85rem; color:#aaa; margin-bottom:0.5rem;">
+                    PUISSANCE DISPONIBLE (FUSION/SMR) : <span id="val-pwr" style="color:var(--sun-yellow); font-family:var(--font-mono); font-weight:bold;">100 GW</span>
+                </label>
+                <input type="range" id="sim-pwr" min="10" max="500" value="100" style="width:100%; accent-color:var(--sun-yellow); margin-bottom:1.5rem;">
+
+                <label style="display:block; font-size:0.85rem; color:#aaa; margin-bottom:0.5rem;">
+                    RATIO ALLOUÉ SÉCURITÉ POW L1 : <span id="val-pow" style="color:var(--orange-l1); font-family:var(--font-mono); font-weight:bold;">35 %</span>
+                </label>
+                <input type="range" id="sim-pow" min="10" max="80" value="35" style="width:100%; accent-color:var(--orange-l1);">
+            </div>
+            <div style="background:#040507; border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-around;">
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">COUVERTURE DES BESOINS RBU / NBU</div>
+                    <div id="out-pop" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--bio-green); font-weight:bold;">11.7 Milliards</div>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">HASHRATE DE VÉRITÉ MONDIAL (GLID)</div>
+                    <div id="out-hash" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--orange-l1); font-weight:bold;">1.40 ZH/s</div>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">INDICE D'UTILITÉ CARDINALE (PO)</div>
+                    <div id="out-po" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--purple-l4); font-weight:bold;">0.985 / 1.0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEEDBACK SECTION -->
+    <div class="feedback-container">
+        <h3 class="feedback-title">
+            <span lang="fr">Contribuer à l'Architecture VAD</span>
+            <span lang="en">Contribute to VAD Architecture</span>
+        </h3>
+        <p class="feedback-desc">
+            <span lang="fr">Un modèle de civilisation libre et résistant se perfectionne de manière collaborative. Partagez vos critiques.</span>
+            <span lang="en">A resilient civilizational blueprint improves through open peer review. Share your thoughts.</span>
+        </p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="Architecture Horizon Zero 2044 VAD">
+            <textarea name="feedback" class="feedback-textarea" placeholder="Vos propositions ou critiques architecturales..." required></textarea>
+            <button type="submit" class="feedback-submit" id="feedback-btn">
+                <span lang="fr">Envoyer au GLID</span>
+                <span lang="en">Submit to GLID</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- NAVIGATION ENTRE ARTICLES -->
+    <div class="article-navigation">
+        <a href="matrice-inversee.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">La Matrice Inversée</span><span lang="en">The Inverted Matrix</span></div>
+            <img src="img/VieOrganiqueSurface.jpg" alt="Matrice Inversée" style="width:100%; max-width:280px; border-radius:6px;">
+        </a>
+        <a href="nautile-nakamoto.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">Le Nautile de Nakamoto</span><span lang="en">The Nakamoto Nautilus</span></div>
+            <img src="img/NautileNakamotoIM.png" alt="Nautile Nakamoto" style="width:100%; max-width:280px; border-radius:6px;">
+        </a>
+    </div>
+
+    <!-- SECTION AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+            <div style="font-size:3rem;">☀️🧬🛡️</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; font-family:var(--font-ui); margin:0;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#a0aab5; font-size:0.95rem; margin-top:0.3rem;">
+                    <span lang="fr">Chercheur indépendant en éconophysique, consensus distribué et thermodynamique de l'information.</span>
+                    <span lang="en">Independent researcher in econophysics, distributed consensus, and information thermodynamics.</span>
+                </p>
+            </div>
+        </div>
+
+        <div style="color:var(--sun-yellow); font-family:var(--font-ui); font-size:1.1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">
+            <span lang="fr">Ressources & Projets Liés</span><span lang="en">Related Resources & Projects</span>
+        </div>
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
+                <p style="font-size:0.85rem; color:#888;">Monétisation de l'entropie et thermodynamique économique appliquée.</p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
+                <h4 style="color:var(--cyan-l2);">👁️ Trinity Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">Intégrité de l'information et signature de provenance (SHA-256 + Nostr + OTS).</p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌿 Wellbeing Framework</h4>
+                <p style="font-size:0.85rem; color:#888;">L'Unité de Bien-Être (WU) pour remplacer les métriques obsolètes du PIB.</p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" class="resource-card">
+                <h4 style="color:var(--magenta-l3);">⚙️ Sufficiency Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">Comptabilité écologique et limites planétaires adossées au Proof-of-Work.</p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div style="font-size: 1.1rem; font-weight: 700; letter-spacing: 4px; color: var(--sun-yellow); margin-bottom: 0.5rem;">
+        ☀ THE SUN STANDARD · HORIZON ZÉRO 2044
+    </div>
+    <p>Pascal Ranoroarijaona · 2026</p>
+</footer>
+
+<!-- CANVAS INTERACTIF (PYRAMIDE & FLUX DÉCENTRALE) -->
+<script>
+    (function() {
+        const canvas = document.getElementById('stackCanvas');
+        const ctx = canvas.getContext('2d');
+        const slider = document.getElementById('stack-slider');
+
+        let particles = [];
+        let tick = 0;
+
+        // Structure pyramidale des 5 couches
+        const pyramidLayers = [
+            { id: 'L4', name: 'L4 : CONSCIENCE & ETHIQUE (IHA / PO / PCV / AD)', color: '#b366ff', y: 50,  w: 420, h: 60, fill: 'rgba(179, 102, 255, 0.15)' },
+            { id: 'L3', name: 'L3 : MOTEUR LOGIQUE & ZKP (RGB / Smart Contracts / JNP)', color: '#e040fb', y: 130, w: 540, h: 60, fill: 'rgba(224, 64, 251, 0.15)' },
+            { id: 'L2', name: 'L2 : LE FLUX QUOTIDIEN (Lightning + Pare-Feu IND)', color: '#00e5ff', y: 210, w: 660, h: 60, fill: 'rgba(0, 229, 255, 0.15)' },
+            { id: 'L1', name: 'L1 : VÉRITÉ THERMODYNAMIQUE (Bitcoin PoW / GLID)', color: '#f7931a', y: 290, w: 760, h: 60, fill: 'rgba(247, 147, 26, 0.18)' },
+            { id: 'L0', name: 'L0 : SOCLE PHYSIQUE & ÉNERGIE (SMR/Fusion, PMN, COP, RLI)', color: '#00bfa5', y: 370, w: 840, h: 60, fill: 'rgba(0, 191, 165, 0.15)' }
+        ];
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.isVeto = Math.random() < 0.1;
+                if(this.isVeto) {
+                    this.x = 55;
+                    this.y = pyramidLayers[0].y + 30; // L4 Citoyen
+                    this.targetY = pyramidLayers[3].y + 30; // L1 Bitcoin
+                    this.speed = 2.5;
+                    this.color = '#ff3344';
+                    this.size = 3.5;
+                } else {
+                    const lIdx = 4;
+                    const layer = pyramidLayers[lIdx];
+                    this.x = (canvas.width - layer.w)/2 + 20 + Math.random() * (layer.w - 40);
+                    this.y = layer.y + 30;
+                    this.targetY = pyramidLayers[0].y + 30;
+                    this.speed = 1.2 + Math.random() * 2;
+                    this.color = ['#f7931a', '#00e5ff', '#e040fb', '#00bfa5'][Math.floor(Math.random()*4)];
+                    this.size = 2.4;
+                }
+            }
+            update(intensity) {
+                if(this.isVeto) {
+                    this.y += this.speed * (intensity / 50);
+                    if(this.y >= this.targetY) this.reset();
+                } else {
+                    this.y -= this.speed * (intensity / 50);
+                    if(this.y <= this.targetY) this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for(let i = 0; i < 80; i++) particles.push(new Particle());
+
+        function render() {
+            tick++;
+            const intensity = parseInt(slider.value);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 1. Rendu des Trapèzes Pyramidaux
+            pyramidLayers.forEach((layer) => {
+                const x = (canvas.width - layer.w) / 2;
+                ctx.fillStyle = layer.fill;
+                ctx.strokeStyle = layer.color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.roundRect(x, layer.y, layer.w, layer.h, 6);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = layer.color;
+                ctx.font = 'bold 11px "Fira Code", monospace';
+                ctx.fillText(layer.name, x + 20, layer.y + 26);
+
+                ctx.fillStyle = '#99aab5';
+                ctx.font = '10.5px sans-serif';
+                let sub = '';
+                if(layer.id === 'L4') sub = 'Bien-Être Cardinal (WU) ── Feedback AD/MSC ── Chaos Volontaire';
+                if(layer.id === 'L3') sub = 'Pods Chiffrés (POD), Preuves ZKP & Allocation Contrats RBU/NBU';
+                if(layer.id === 'L2') sub = 'Micro-flux Satoshis instantanés + Pare-Feu Neural Asymétrique (FNA)';
+                if(layer.id === 'L1') sub = 'Ancrage Ontologique PoW ── Finalité Absolue ── Ligne de Veto';
+                if(layer.id === 'L0') sub = 'Cogénération Thermique ── Oracles PoPhW ── Suivi Atomique PMN';
+                ctx.fillText(sub, x + 20, layer.y + 46);
+            });
+
+            // 2. Trait de Veto Ontologique Direct (L4 -> L1)
+            ctx.strokeStyle = 'rgba(255, 51, 68, 0.4)';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(55, pyramidLayers[0].y + 30);
+            ctx.lineTo(55, pyramidLayers[3].y + 30);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = '#ff3344';
+            ctx.font = 'bold 10px "Fira Code", monospace';
+            ctx.save();
+            ctx.translate(42, pyramidLayers[1].y + 45);
+            ctx.rotate(-Math.PI/2);
+            ctx.fillText("VETO ONTOLOGIQUE (L4 ──► L1)", 0, 0);
+            ctx.restore();
+
+            // 3. Animation des particules
+            particles.forEach(p => {
+                p.update(intensity);
+                p.draw();
+            });
+
+            requestAnimationFrame(render);
+        }
+        render();
+    })();
+
+    // GESTION LANGUE
+    function setLang(lang) {
+        lang = lang.toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
+        document.body.className = 'lang-' + lang;
+        localStorage.setItem('sun-std-lang', lang);
+        const url = new URL(window.location);
+        url.searchParams.set('lg', lang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'fr');
+        setLang(savedLang);
+    });
+
+    // SIMULATEUR KARDASHEV I
+    const sPwr = document.getElementById('sim-pwr');
+    const sPow = document.getElementById('sim-pow');
+    function updateSim() {
+        const pwr = parseFloat(sPwr.value); // GW
+        const powRatio = parseFloat(sPow.value); // %
+        
+        document.getElementById('val-pwr').innerText = pwr + ' GW';
+        document.getElementById('val-pow').innerText = powRatio + ' %';
+
+        const powGW = (pwr * powRatio) / 100;
+        const rbuGW = pwr - powGW;
+
+        // Hashrate (1 GW = 40 EH/s @ 25 J/TH)
+        const hashZH = (powGW * 40) / 1000;
+        document.getElementById('out-hash').innerText = hashZH.toFixed(2) + ' ZH/s';
+
+        // Population RBU (1 GW soutient ~180 millions d'humains avec recyclage circulaire)
+        const popBillions = (rbuGW * 0.18).toFixed(1);
+        document.getElementById('out-pop').innerText = popBillions + (document.body.classList.contains('lang-fr') ? ' Milliards' : ' Billion');
+
+        const poIndex = (0.95 + (Math.min(rbuGW, powGW) / pwr) * 0.048).toFixed(3);
+        document.getElementById('out-po').innerText = poIndex + ' / 1.0';
+    }
+    [sPwr, sPow].forEach(el => el.addEventListener('input', updateSim));
+    window.addEventListener('DOMContentLoaded', updateSim);
+</script>
+</body>
+</html>
