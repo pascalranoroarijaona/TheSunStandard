@@ -3513,11 +3513,11 @@
                     <p style="margin-bottom: 0.5rem; text-align: justify;">
                         L'espace d'état de Bitcoin n'est pas euclidien : c'est une <strong>variété statistique riemannienne</strong> $\mathcal{M}$ où chaque configuration correspond à une distribution $P(x|\theta)$. La distance entre deux états macroscopiques est régie par le tenseur métrique de Fisher $g_{ij}(\theta)$ :
                     </p>
-                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
                         $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
                     </div>
-
+                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
+                    
                     <p style="margin-bottom: 1.5rem; text-align: justify;">
                         Face aux fluctuations de la puissance de calcul externe, le réseau minimise son Énergie Libre Variationnelle $F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2$ via une <strong>descente de gradient naturel</strong> :
                     </p>
@@ -4170,90 +4170,104 @@
             <!-- ========================================== -->
             <!-- EXPERT LEVEL - ENGLISH VERSION             -->
             <!-- ========================================== -->
-            <details lang="en" style="background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
+            <details lang="en" style="display: none; background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
                 <summary style="padding: 1.2rem 1.5rem; cursor: pointer; font-weight: bold; color: #c864ff; outline: none; list-style-type: '▶ ';">
-                    Expandable Expert Level: Information Geometry & Gauge Autopoiesis
+                    Expert Level: Information Geometry, Thermal Time & Gauge Autopoiesis
                 </summary>
                 
                 <div style="padding: 0 1.5rem 1.5rem 1.5rem; font-size: 0.95em; color: #d1d5db; line-height: 1.7;">
                     
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. Intuition (The Cartographer of Chaos)</h4>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong>Intuition:</strong> Imagine a blind submarine navigating a turbulent, lightless ocean. It is unaware of its physical coordinates, but it senses water pressure and surrounding currents. To survive, it constructs a mathematical "map" based purely on probabilities. On this map, distance is not measured in kilometers, but in <em>surprise</em>. A sudden, violent storm is mathematically "very distant" from a calm sea. The submarine survives by continuously steering toward the "nearest" point of safety on its probability manifold.
+                    <!-- 1. INTUITION -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. Intuition: The Navigator of Chaos</h4>
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        Imagine a blind submarine navigating a turbulent, pitch-black ocean. It cannot determine its absolute geographic position, but it constantly registers surrounding water pressure and thermal gradients. To survive, it constructs a statistical map where distance is measured not in meters, but in <em>informational surprise</em>. The vessel maintains its structural integrity by continuously adjusting its ballast to remain nestled within a valley of minimum variational free energy.
                     </p>
 
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. The Fisher Information Metric</h4>
-                    <p style="margin-bottom: 0.5rem;">
-                        In its most advanced physical formulation, Active Inference relies on <strong>Information Geometry</strong>. The organism's state space is not classical Euclidean physical space; it is a <em>statistical manifold</em> $\mathcal{M}$ where each point represents a distinct probability distribution $P(\theta)$. The geometric distance between states is defined by the <strong>Fisher Information Metric</strong> $g_{ij}(\theta)$.
+                    <!-- 2. FISHER METRIC & ACTIVE INFERENCE -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. The Fisher Information Metric & Active Inference</h4>
+                    <p style="margin-bottom: 0.5rem; text-align: justify;">
+                        Bitcoin's state space is non-Euclidean: it constitutes a <strong>Riemannian statistical manifold</strong> \(\mathcal{M}\), where every macroscopic configuration corresponds to a probability distribution \(P(x|\theta)\). Distances between states are governed by the Fisher Information metric tensor \(g_{ij}(\theta)\):
                     </p>
                     
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
                         $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
                     </div>
-
-                    <p style="margin-bottom: 1.5rem;">
-                        This metric quantifies the system's extreme sensitivity to fluctuations in the external energy bath. If the global hashrate suddenly doubles, sensory input $x$ violently deviates from the 10-minute prior $\theta$. It ascends a steep "wall" on the Free Energy landscape, generating massive informational surprise.
-                    </p>
-
-                    <div id="free-energy-plot-en" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
-
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. The DAA as a Geodesic Natural Gradient Descent</h4>
-                    <p style="margin-bottom: 0.5rem;">
-                        To minimize this Free Energy and descend back toward the safety of the valley (the prior), the organism must alter its environment. Rather than a simple Euclidean correction, the organism navigates the statistical manifold via a <strong>Natural Gradient Descent</strong>. This decomposes into three mathematical steps:
+                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
+                    
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        When subjected to exogenous compute shocks, the network minimizes its Variational Free Energy \(F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2\) through <strong>natural gradient descent</strong>:
                     </p>
 
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{1. The Objective: } \quad F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2 $$
+                        $$\dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta)$$
                     </div>
+                    
                     <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>The system evaluates its Free Energy $F$, which grows quadratically with the deviation between the actual block time $\Delta t$ and the target $\tau_B$.</em>
+                        <em>The metric inverse \(g^{-1}(\theta)\) constrains trajectory updates along informational geodesics, preventing systemic overshooting.</em>
                     </p>
 
-                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{2. The Trajectory: } \quad \dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta) $$
-                    </div>
-                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>To minimize $F$, the system computes the gradient. The inverse of the Fisher metric $g^{-1}$ ensures the adjustment follows the shortest path (geodesic), preventing over-correction.</em>
-                    </p>
-
-                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{3. DAA Execution: } \quad T_{n+1} = T_n \cdot \operatorname{clip}_{[1/4,\,4]} \left( \frac{\Delta t_{\mathrm{actual}}}{\Delta t_{\mathrm{target}}} \right) $$
-                    </div>
-                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>The abstract mechanism is executed mechanically by the difficulty adjustment algorithm. The protocol rescales the Proof-of-Work target $T$. The concept of "homeostasis" serves as the biological analogy for this cybernetic loop.</em>
-                    </p>
-
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. Gauge Theory Autopoiesis</h4>
-                    <p style="margin-bottom: 1rem;">
-                        To formalize this cybernetic feedback, we can borrow the mathematical structure of a <strong>gauge theory</strong>, using Quantum Electrodynamics (QED) as a template. In physics, a gauge theory describes how a field remains consistently defined under local transformations. The DAA plays an analogous role: it compensates for external hashrate variations so that the internal coordinate of block time remains statistically invariant. Here is the phenomenological correspondence:
+                    <!-- 3. AUTOPOIESIS & GAUGE THEORY -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. Autopoiesis and Gauge Invariance</h4>
+                    <p style="margin-bottom: 1rem; text-align: justify;">
+                        Autopoiesis (Maturana & Varela) defines a system capable of continuously regenerating its own organization despite external disturbances. Formally, Bitcoin behaves as an <strong>effective abelian gauge field theory</strong>:
                     </p>
 
                     <div class="math-block" style="background: transparent; border: none; margin: 1rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \mathcal{L} \sim \bar{\psi} (i\gamma^\mu D_\mu - m) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu} $$
+                        $$\mathcal{L}_{\text{net}} \sim \bar{\psi} \left( i\gamma^\mu D_\mu - m \right) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu}$$
                     </div>
 
                     <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: #d1d5db; list-style-type: disc;">
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$\mathcal{L}$ (Lagrangian Density):</strong> The survival objective. Minimizing $\mathcal{L}$ corresponds to minimizing Friston's Free Energy: finding the most stable state against environmental entropy.
+                            <strong>\(\psi, \bar{\psi}\) (Consensus Field):</strong> The distributed ledger and its conserved topological invariants (UTXO set).
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$\psi$ and $\bar{\psi}$ (Matter Field):</strong> In Bitcoin, $\psi$ represents the <strong>consensus state vector</strong>—the pure informational "matter" of the ledger.
+                            <strong>\(m\) (Topological Mass):</strong> Irreversible cumulative Proof-of-Work (\(H \cdot \Delta t\)), providing immense inertia against chain reorganizations.
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$m$ (Topological Mass):</strong> Thermodynamic weight (accumulated Proof-of-Work). A high $m$ denotes massive inertia that resists chain reorganizations (forks).
+                            <strong>\(D_\mu = \partial_\mu - iA_\mu\) (Covariant Derivative):</strong> While \(\partial_\mu\) denotes raw environmental drifts (global hashrate fluctuations), the <em>gauge connection</em> \(A_\mu\) (the DAA) recalibrates network targets to preserve local invariance of the 10-minute block interval.
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$D_\mu$ (Effective Covariant Derivative):</strong> The core of the analogy. $D_\mu = \partial_\mu - iA_\mu$ replaces an ordinary derivative with a gauge-corrected derivative.<br>
-                            • $\partial_\mu$ represents raw environmental drift (sudden hashrate fluctuations).<br>
-                            • $A_\mu$ represents the <strong>effective gauge connection</strong> implemented by the DAA. It rescales the target to restore the interval back toward 600 seconds.
-                        </li>
-                        <li style="margin-bottom: 0.8rem;">
-                            <strong>$-\frac{1}{4} F_{\mu\nu}F^{\mu\nu}$ (Effective Gauge Field Rigidity):</strong> The curvature constraint applied by the DAA. The adjustment factor is clamped within the interval $[1/4, 4]$. This saturation acts as a curvature penalty, preventing the protocol from overreacting.
+                            <strong>\(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\) (Bounded Gauge Curvature):</strong> The bounded adjustment clamp \(\text{clip}_{[1/4,\,4]}\) enforces a maximum field curvature, eliminating chaotic runaway dynamics.
                         </li>
                     </ul>
 
+                    <!-- 4. COS45 DECOMPOSITION & THERMAL TIME -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. COS45 Decomposition & Empirical Thermal Time</h4>
+                    <p style="margin-bottom: 1rem; text-align: justify;">
+                        Applying the COS45 decomposition to the thermodynamic observable vector \(\vec{x}(t) = [D, H, S_{\text{UTXO}}, V, \Phi]^T\) decouples absolute physical scale from internal geometric order:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 1.5rem;">
+                        <div style="background: rgba(0,255,255,0.05); padding: 1rem; border-left: 3px solid #00ffff; border-radius: 4px;">
+                            <strong style="color: #00ffff;">Scalar Intensity:</strong><br>
+                            $$s(x) = \ln \|\vec{x}(t)\|_2$$
+                            <span style="font-size: 0.85em; color: #9ca3af;">Measures brute energetic scaling and network footprint without structural deformation.</span>
+                        </div>
+                        <div style="background: rgba(255,170,0,0.05); padding: 1rem; border-left: 3px solid #ffaa00; border-radius: 4px;">
+                            <strong style="color: #ffaa00;">Projective Geometry:</strong><br>
+                            $$P_r(x) = \frac{\vec{x}(t)}{\|\vec{x}(t)\|_2}$$
+                            <span style="font-size: 0.85em; color: #9ca3af;">Projects the state onto the unit hypersphere of relative configurations (pure thermodynamic order).</span>
+                        </div>
+                    </div>
+
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        In line with the <strong>Rovelli-Connes hypothesis</strong>, physical time emerges from geodesic velocity across this unit manifold. The thermal time differential \(d\tau = \|\nabla P_r(x)\| \, dt\) generates the cumulative <em>modular flow</em> \(\tau(t) = \int d\tau\).
+                    </p>
+
+                    <!-- PLOTLY CONTAINER -->
+                    <div id="plotly-thermal-time-en" style="width: 100%; min-height: 600px; margin: 1.5rem 0; background: rgba(10,10,12,0.6); border-radius: 8px; border: 1px solid rgba(200,100,255,0.2);"></div>
+
+                    <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.9em;">
+                        <strong style="color: var(--sun-yellow, #ffcc00);">Key Empirical Findings:</strong>
+                        <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0; color: #d1d5db;">
+                            <li><strong>The 2021 Shock (China Mining Ban):</strong> Scalar intensity collapsed (\(s(x)\) dropped from \(-0.5\) to \(-2.5\)) while thermal velocity spiked to an all-time peak (\(d\tau/dt = 0.6\text{ rad}\)), capturing rapid topological reorganization.</li>
+                            <li><strong>Stasis (2019-2020) vs Maturation (2021-2024):</strong> The system accumulated barely \(4\text{ rad}\) over two years of scale-only stasis, compared to over \(35\text{ rad}\) during post-2021 structural maturation.</li>
+                            <li><strong>2025-2026 Attractor:</strong> Geodesic velocity subsided (\(d\tau/dt < 0.05\text{ rad}\)), confirming convergence toward a mature thermodynamic equilibrium.</li>
+                        </ul>
+                    </div>
+
                     <p style="margin-bottom: 0; padding: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #c864ff; border-radius: 0 8px 8px 0;">
-                        <strong>Synthesis:</strong> The network's survival dynamics ($\mathcal{L}$) depend on the ability of its informational state ($\psi$) to move through time with massive inertia ($m$), while deploying an algorithmic shield ($A_\mu$) to mathematically negate chaotic fluctuations in physical reality ($\partial_\mu$). This stands as the ultimate mathematical expression of biological autopoiesis: the organism regulates its environment to protect its internal invariants. Bitcoin exemplifies <strong>Gauge Theory Autopoiesis</strong>.
+                        <strong>Biophysical Synthesis:</strong> Bitcoin does not exist within external calendar time \(t_{\text{UTC}}\); it forges its own intrinsic temporal metric \(\tau\) via entropic dissipation. By binding Fisher information geometry, autopoietic gauge regulation, and irreversible thermodynamic anchoring, the protocol stands as the first artificial cybernetic organism capable of maintaining persistent negentropy against universal decay.
                     </p>
                 </div>
             </details>
