@@ -3493,92 +3493,105 @@
                 </div>
             </div>
             <!-- ========================================== -->
-            <!-- NIVEAU EXPERT - VERSION FRANÇAISE      -->
+            <!-- NIVEAU EXPERT - VERSION FRANÇAISE          -->
             <!-- ========================================== -->
             <details lang="fr" style="background: rgba(200, 100, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; margin: 2rem 0;">
                 <summary style="padding: 1.2rem 1.5rem; cursor: pointer; font-weight: bold; color: #c864ff; outline: none; list-style-type: '▶ ';">
-                    Niveau Expert Extensible : Géométrie de l'Information & Autopoïèse de Jauge
+                    Niveau Expert Extensible : Géométrie de l'Information, Temps Thermique & Autopoïèse de Jauge
                 </summary>
                 
                 <div style="padding: 0 1.5rem 1.5rem 1.5rem; font-size: 0.95em; color: #d1d5db; line-height: 1.7;">
                     
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. L'Intuition (Le Cartographe du Chaos)</h4>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong>L'Intuition :</strong> Imaginez un sous-marin aveugle naviguant dans un océan turbulent et sans lumière. Il ignore sa position physique, mais il ressent la pression de l'eau et les courants. Pour survivre, il construit une "carte" mathématique basée uniquement sur des probabilités. Sur cette carte, la distance ne se mesure pas en kilomètres, mais en <em>surprise</em>. Une tempête violente et soudaine est mathématiquement "très éloignée" d'une mer calme. Le sous-marin survit en se dirigeant constamment vers le point de sécurité le "plus proche" sur sa carte de probabilités.
+                    <!-- 1. INTUITION -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem; margin-top: 1rem;">1. L'Intuition : Le Cartographe du Chaos</h4>
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        Imagine un sous-marin aveugle naviguant dans un océan turbulent. Il ignore sa position géographique absolue, mais ressent la pression de l'eau et les gradients thermiques. Pour survivre, il construit une carte statistique où la distance ne se mesure pas en mètres, mais en <em>surprise informationnelle</em>. Le sous-marin maintient son intégrité en ajustant en continu ses ballasts pour demeurer dans une vallée de faible énergie libre.
                     </p>
 
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. La Métrique d'Information de Fisher</h4>
-                    <p style="margin-bottom: 0.5rem;">
-                        Dans sa formulation physique la plus avancée, l'Inférence Active repose sur la <strong>Géométrie de l'Information</strong>. L'espace des états de l'organisme n'est pas l'espace physique euclidien classique ; c'est une <em>variété statistique</em> $\mathcal{M}$ où chaque point représente une distribution de probabilités distincte $P(\theta)$. La distance géométrique entre les états est définie par la <strong>Métrique d'Information de Fisher</strong> $g_{ij}(\theta)$.
+                    <!-- 2. MÉTRIQUE DE FISHER & INFÉRENCE ACTIVE -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">2. La Métrique d'Information de Fisher & Inférence Active</h4>
+                    <p style="margin-bottom: 0.5rem; text-align: justify;">
+                        L'espace d'état de Bitcoin n'est pas euclidien : c'est une <strong>variété statistique riemannienne</strong> $\mathcal{M}$ où chaque configuration correspond à une distribution $P(x|\theta)$. La distance entre deux états macroscopiques est régie par le tenseur métrique de Fisher $g_{ij}(\theta)$ :
                     </p>
                     
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
                         $$g_{ij}(\theta) = \mathbb{E} \left[ \frac{\partial \ln P(x|\theta)}{\partial \theta^i} \frac{\partial \ln P(x|\theta)}{\partial \theta^j} \right]$$
                     </div>
 
-                    <p style="margin-bottom: 1.5rem;">
-                        Cette métrique quantifie l'extrême sensibilité du système aux fluctuations du bain d'énergie externe. Si le Hashrate global double soudainement, l'entrée sensorielle $x$ dévie violemment du prior de 10 minutes $\theta$. Il escalade un "mur" abrupt sur le paysage d'Énergie Libre, générant une surprise informationnelle massive.
-                    </p>
-
-                    <div id="free-energy-plot-fr" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,100,255,0.2); max-width: 650px; margin: 1.5rem auto;"></div>
-
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. Le DAA comme Descente de Gradient Géodésique</h4>
-                    <p style="margin-bottom: 0.5rem;">
-                        Pour minimiser cette Énergie Libre et redescendre vers la sécurité de la vallée (le prior), l'organisme doit altérer son environnement. Plutôt qu'une simple correction euclidienne, l'organisme navigue sur la variété statistique via une <strong>Descente de Gradient Naturel</strong>. Cela se décompose en trois étapes mathématiques :
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        Face aux fluctuations de la puissance de calcul externe, le réseau minimise son Énergie Libre Variationnelle $F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2$ via une <strong>descente de gradient naturel</strong> :
                     </p>
 
                     <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{1. L'Objectif : } \quad F(\theta) \approx \frac{1}{2} \kappa (\Delta t - \tau_B)^2 $$
+                        $$\dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta)$$
                     </div>
+                    
                     <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>Le système évalue son Énergie Libre $F$, qui croît de façon quadratique selon l'écart entre le temps de bloc réel $\Delta t$ et la cible $\tau_B$.</em>
+                        <em>L'opérateur $g^{-1}(\theta)$ contraint la correction le long des géodésiques d'information, évitant la sur-oscillation du protocole.</em>
                     </p>
 
-                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{2. La Trajectoire : } \quad \dot{\theta} = -\eta \cdot g^{-1}(\theta) \nabla_\theta F(\theta) $$
-                    </div>
-                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>Pour minimiser $F$, le système calcule le gradient. L'inverse de la métrique de Fisher $g^{-1}$ garantit que l'ajustement suit le chemin le plus court (géodésique), évitant la sur-correction.</em>
-                    </p>
-
-                    <div class="math-block" style="background: transparent; border: none; margin: 0.5rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \text{3. L'Exécution DAA :} \quad T_{n+1} = T_n \cdot \operatorname{clip}_{[1/4,\,4]} \left( \frac{\Delta t_{\mathrm{actual}}}{\Delta t_{\mathrm{target}}} \right) $$
-                    </div>
-                    <p style="margin-bottom: 1.5rem; font-size: 0.9em; text-align: center; color: #9ca3af;">
-                        <em>Le mécanisme abstrait est exécuté mécaniquement par l'algorithme d'ajustement de difficulté. Le protocole ajuste la cible de preuve de travail $T$. Le vocabulaire de “l'homéostasie” est l'analogie biologique de cette boucle.</em>
-                    </p>
-
-                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. Autopoïèse de Théorie de Jauge</h4>
-                    <p style="margin-bottom: 1rem;">
-                        Pour formaliser cette rétroaction cybernétique, nous pouvons emprunter la structure d'une <strong>théorie de jauge</strong>, en utilisant l'Électrodynamique Quantique (QED) comme gabarit. En physique, une théorie de jauge décrit comment un champ reste défini de façon cohérente sous des transformations locales. Le DAA joue un rôle analogue : il compense les variations externes du hashrate pour que la coordonnée interne du temps de bloc demeure statistiquement stable. Voici la correspondance phénoménologique :
+                    <!-- 3. AUTOPOÏÈSE ET THÉORIE DE JAUGE -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">3. Autopoïèse et Invariance de Jauge</h4>
+                    <p style="margin-bottom: 1rem; text-align: justify;">
+                        L'autopoïèse (Maturana & Varela) définit un système capable de régénérer continuellement sa propre organisation malgré les perturbations du milieu. Sur le plan formel, le protocole se comporte comme une <strong>théorie de jauge abélienne effective</strong> :
                     </p>
 
                     <div class="math-block" style="background: transparent; border: none; margin: 1rem 0; font-size: 1.1rem; color: #c864ff; text-align: center;">
-                        $$ \mathcal{L} \sim \bar{\psi} (i\gamma^\mu D_\mu - m) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu} $$
+                        $$\mathcal{L}_{\text{net}} \sim \bar{\psi} \left( i\gamma^\mu D_\mu - m \right) \psi - \frac{1}{4} F_{\mu\nu}F^{\mu\nu}$$
                     </div>
 
                     <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: #d1d5db; list-style-type: disc;">
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$\mathcal{L}$ (La Densité Lagrangienne) :</strong> L'objectif de survie. Minimiser $\mathcal{L}$ correspond à minimiser l'Énergie Libre de Friston : trouver l'état le plus stable face au chaos environnemental.
+                            <strong>$\psi, \bar{\psi}$ (Champ de consensus) :</strong> Le registre distribué et son état d'invariants (UTXO).
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$\psi$ et $\bar{\psi}$ (Le Champ de Matière) :</strong> Dans Bitcoin, $\psi$ représente le <strong>vecteur d'état du consensus</strong>. C'est la "matière" informationnelle pure du registre.
+                            <strong>$m$ (Masse topologique) :</strong> L'accumulation de preuve de travail irréversible ($H \cdot \Delta t$), conférant une inertie colossale contre les réorganisations de chaîne.
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$m$ (La Masse Topologique) :</strong> Le poids thermodynamique (Preuve de Travail accumulée). Un $m$ élevé signifie une inertie massive qui résiste aux réorganisations (forks).
+                            <strong>$D_\mu = \partial_\mu - iA_\mu$ (Dérivée covariante) :</strong> $\partial_\mu$ représente la dérivée brute du hashrate mondial, tandis que la <em>connexion de jauge</em> $A_\mu$ (le DAA) ajuste la cible pour préserver l'invariance locale de l'intervalle de dix minutes.
                         </li>
                         <li style="margin-bottom: 0.8rem;">
-                            <strong>$D_\mu$ (La dérivée covariante effective) :</strong> Le cœur de l'analogie. $D_\mu = \partial_\mu - iA_\mu$ remplace une dérivée ordinaire par une dérivée corrigée.<br>
-                            • $\partial_\mu$ représente la dérive brute de l'environnement (variation soudaine du hashrate).<br>
-                            • $A_\mu$ représente la <strong>connexion de jauge effective</strong> implémentée par le DAA. Elle rééchelonne la cible pour ramener l'intervalle vers 600 secondes.
-                        </li>
-                        <li style="margin-bottom: 0.8rem;">
-                            <strong>$-\frac{1}{4} F_{\mu\nu}F^{\mu\nu}$ (Rigidité effective du champ de jauge) :</strong> La rigidité de la correction opérée par le DAA. Le facteur de correction est saturé dans l'intervalle $[1/4, 4]$. Cette saturation se comporte comme une pénalité de courbure, empêchant le protocole de sur-réagir.
+                            <strong>$-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}$ (Courbure de jauge bornée) :</strong> Le facteur de correction borné $\text{clip}_{[1/4,\,4]}$ agit comme une rigidité de champ empêchant les bifurcations chaotiques.
                         </li>
                     </ul>
 
+                    <!-- 4. DÉCOMPOSITION COS45 & TEMPS THERMIQUE -->
+                    <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.05rem;">4. Décomposition COS45 & Preuve du Temps Thermique</h4>
+                    <p style="margin-bottom: 1rem; text-align: justify;">
+                        En appliquant la méthode COS45 au vecteur d'observables thermodynamiques $\vec{x}(t) = [D, H, S_{\text{UTXO}}, V, \Phi]^T$, nous séparons l'échelle globale de la structure géométrique :
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 1.5rem;">
+                        <div style="background: rgba(0,255,255,0.05); padding: 1rem; border-left: 3px solid #00ffff; border-radius: 4px;">
+                            <strong style="color: #00ffff;">Intensité Scalaire :</strong><br>
+                            $$s(x) = \ln \|\vec{x}(t)\|_2$$
+                            <span style="font-size: 0.85em; color: #9ca3af;">Mesure la puissance énergétique brute et la taille nominale du réseau sans altération structurelle.</span>
+                        </div>
+                        <div style="background: rgba(255,170,0,0.05); padding: 1rem; border-left: 3px solid #ffaa00; border-radius: 4px;">
+                            <strong style="color: #ffaa00;">Géométrie Projective :</strong><br>
+                            $$P_r(x) = \frac{\vec{x}(t)}{\|\vec{x}(t)\|_2}$$
+                            <span style="font-size: 0.85em; color: #9ca3af;">Projette l'état sur la sphère unitaire des configurations relatives (l'ordre thermodynamique pur).</span>
+                        </div>
+                    </div>
+
+                    <p style="margin-bottom: 1.5rem; text-align: justify;">
+                        Conformément à l'hypothèse de <strong>Rovelli-Connes</strong>, le temps émerge de la vitesse géodésique sur cette variété unitaire. Le différentiel de temps thermique $d\tau = \|\nabla P_r(x)\| \, dt$ engendre le <em>flot modulaire</em> cumulé $\tau(t) = \int d\tau$.
+                    </p>
+
+                    <!-- CONTAINER DU PLOT INTERACTIF JAVASCRIPT -->
+                    <div id="plotly-thermal-time" style="width: 100%; min-height: 600px; margin: 1.5rem 0; background: rgba(10,10,12,0.6); border-radius: 8px; border: 1px solid rgba(200,100,255,0.2);"></div>
+
+                    <div style="background: rgba(255, 255, 255, 0.02); padding: 1.2rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.9em;">
+                        <strong style="color: var(--sun-yellow, #ffcc00);">Enseignements empiriques de l'analyse :</strong>
+                        <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0; color: #d1d5db;">
+                            <li><strong>Le choc de 2021 (Bannissement en Chine) :</strong> Chute de l'intensité scalaire ($s(x)$ passe de $-0{,}5$ à $-2{,}5$) couplée à une explosion de la vitesse thermique ($d\tau/dt = 0{,}6\text{ rad}$). Le système s'est réorganisé topologiquement à très haute vitesse.</li>
+                            <li><strong>Stase (2019-2020) vs Maturation (2021-2024) :</strong> Le temps thermique a accumulé à peine $4\text{ rad}$ en deux ans de stase, contre plus de $35\text{ rad}$ lors de la phase de maturation post-2021.</li>
+                            <li><strong>Attracteur 2025-2026 :</strong> Stabilisation de la vitesse géodésique ($d\tau/dt < 0{,}05\text{ rad}$) confirmant la convergence vers un équilibre de maturité thermodynamique.</li>
+                        </ul>
+                    </div>
+
                     <p style="margin-bottom: 0; padding: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #c864ff; border-radius: 0 8px 8px 0;">
-                        <strong>Synthèse :</strong> La dynamique de survie du réseau ($\mathcal{L}$) dépend de la capacité de son état d'information ($\psi$) à se déplacer dans le temps avec une inertie massive ($m$), tout en utilisant un bouclier algorithmique ($A_\mu$) pour annuler mathématiquement les fluctuations chaotiques de la réalité physique ($\partial_\mu$). C'est l'expression mathématique ultime de la biologie : l'organisme modifie son environnement pour protéger sa structure interne. Bitcoin illustre une <strong>Autopoïèse de Théorie de Jauge</strong>.
+                        <strong>Synthèse Biophysique :</strong> Bitcoin ne subit pas le temps calendaire $t_{\text{UTC}}$ ; il engendre sa propre métrique temporelle $\tau$ par dissipation d'énergie. En associant la courbure de Fisher, une compensation de jauge autopoïétique et un ancrage thermodynamique irréversible, le réseau constitue le premier système cybernétique artificiel à maintenir un ordre métastable permanent face à l'entropie universelle.
                     </p>
                 </div>
             </details>
@@ -4684,7 +4697,135 @@
     <!-- SCRIPT COMMUN POUR L'ANIMATION TIKZ/SVG    -->
     <!-- ========================================== -->
     <script>
-            // ==========================================
+    // -----------------------------------------------------------------------------
+    // ANALYSE COS45 & TEMPS THERMIQUE DE BITCOIN (PLOTLY.JS)
+    // -----------------------------------------------------------------------------
+    async function renderThermalTimePlot() {
+        const container = document.getElementById('plotly-thermal-time');
+        if (!container) return;
+
+        try {
+            // 1. Récupération asynchrone des métriques
+            const fetchChart = async (name) => {
+                const res = await fetch(`https://api.blockchain.info/charts/${name}?timespan=8years&format=json&cors=true`);
+                const json = await res.json();
+                return json.values || [];
+            };
+
+            const [diffData, hrData, txData, feeData] = await Promise.all([
+                fetchChart('difficulty'),
+                fetchChart('hash-rate'),
+                fetchChart('n-transactions'),
+                fetchChart('transaction-fees-usd')
+            ]);
+
+            // 2. Alignement des séries par horodatage (échantillonnage hebdomadaire)
+            const dateMap = new Map();
+            diffData.forEach(d => dateMap.set(d.x, { diff: d.y }));
+            hrData.forEach(d => { if (dateMap.has(d.x)) dateMap.get(d.x).hr = d.y; });
+            txData.forEach(d => { if (dateMap.has(d.x)) dateMap.get(d.x).tx = d.y; });
+            feeData.forEach(d => { if (dateMap.has(d.x)) dateMap.get(d.x).fee = d.y; });
+
+            const sortedTimestamps = Array.from(dateMap.keys()).sort((a, b) => a - b);
+            const alignedDates = [];
+            const matrix = [];
+
+            sortedTimestamps.forEach(ts => {
+                const row = dateMap.get(ts);
+                if (row.diff !== undefined && row.hr !== undefined && row.tx !== undefined && row.fee !== undefined) {
+                    alignedDates.push(new Date(ts * 1000));
+                    matrix.push([row.diff, row.hr, row.tx, row.fee]);
+                }
+            });
+
+            const N = matrix.length;
+            const M = 4; // Dimensions observables
+
+            // 3. Normalisation Min-Max
+            const minVals = Array(M).fill(Infinity);
+            const maxVals = Array(M).fill(-Infinity);
+
+            for (let i = 0; i < N; i++) {
+                for (let j = 0; j < M; j++) {
+                    if (matrix[i][j] < minVals[j]) minVals[j] = matrix[i][j];
+                    if (matrix[i][j] > maxVals[j]) maxVals[j] = matrix[i][j];
+                }
+            }
+
+            const normMatrix = matrix.map(row => 
+                row.map((val, j) => (val - minVals[j]) / (maxVals[j] - minVals[j] + 1e-6) + 1e-6)
+            );
+
+            // 4. Décomposition COS45 : Intensité s(x) et Géométrie Projective Pr(x)
+            const intensity_s = [];
+            const projective_Pr = [];
+
+            for (let i = 0; i < N; i++) {
+                const normL2 = Math.sqrt(normMatrix[i].reduce((sum, v) => sum + v * v, 0));
+                intensity_s.push(Math.log(normL2));
+                projective_Pr.push(normMatrix[i].map(v => v / normL2));
+            }
+
+            // 5. Calcul de la vitesse géodésique (dTau) et du temps cumulé (Tau)
+            const d_tau = [0];
+            const cumulative_tau = [0];
+
+            for (let i = 1; i < N; i++) {
+                let dotProduct = 0;
+                for (let j = 0; j < M; j++) {
+                    dotProduct += projective_Pr[i][j] * projective_Pr[i - 1][j];
+                }
+                dotProduct = Math.max(-1.0, Math.min(1.0, dotProduct));
+                const angle = Math.acos(dotProduct); // Distance de Fubini-Study / Riemannienne
+                d_tau.push(angle);
+                cumulative_tau.push(cumulative_tau[i - 1] + angle);
+            }
+
+            // 6. Tracé Multi-Panneaux Plotly
+            const trace1 = {
+                x: alignedDates, y: intensity_s, name: 's(x) = ln ||x||₂',
+                type: 'scatter', mode: 'lines', line: { color: '#00ffff', width: 2 },
+                xaxis: 'x', yaxis: 'y1'
+            };
+
+            const trace2 = {
+                x: alignedDates, y: d_tau, name: 'Vitesse dτ (rad)',
+                type: 'bar', marker: { color: 'rgba(255, 170, 0, 0.6)' },
+                xaxis: 'x', yaxis: 'y2'
+            };
+
+            const trace3 = {
+                x: alignedDates, y: cumulative_tau, name: 'Temps Cumulé τ(t)',
+                type: 'scatter', mode: 'lines', line: { color: '#c864ff', width: 2.5 },
+                xaxis: 'x', yaxis: 'y3'
+            };
+
+            const layout = {
+                grid: { rows: 3, columns: 1, pattern: 'independent', roworder: 'top to bottom' },
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                margin: { t: 40, r: 30, l: 60, b: 40 },
+                font: { color: '#888888', family: "'Space Grotesk', sans-serif" },
+                showlegend: true,
+                legend: { orientation: 'h', x: 0, y: 1.1, font: { color: '#ffffff', size: 10 } },
+                xaxis: { showgrid: true, gridcolor: 'rgba(255,255,255,0.05)', anchor: 'y3' },
+                yaxis: { title: 'Intensité s(x)', titlefont: { color: '#00ffff', size: 10 }, showgrid: true, gridcolor: 'rgba(0,255,255,0.1)' },
+                yaxis2: { title: 'dτ (rad/dt)', titlefont: { color: '#ffaa00', size: 10 }, showgrid: true, gridcolor: 'rgba(255,170,0,0.1)' },
+                yaxis3: { title: 'Flot Modulaire τ', titlefont: { color: '#c864ff', size: 10 }, showgrid: true, gridcolor: 'rgba(200,100,255,0.1)' },
+                hovermode: 'x unified'
+            };
+
+            Plotly.newPlot('plotly-thermal-time', [trace1, trace2, trace3], layout, { responsive: true, displayModeBar: false });
+
+        } catch (err) {
+            console.error("Erreur lors du rendu du tracé thermique :", err);
+            container.innerHTML = `<p style="color:#ff4444; padding:2rem; text-align:center;">Échec de chargement des séries temporelles thermodynamiques.</p>`;
+        }
+    }
+
+    // Déclenchement automatique au chargement du DOM
+    document.addEventListener('DOMContentLoaded', renderThermalTimePlot);
+    // ==========================================
     // GRAPHIQUE : Plotly.js - Paysage d'Énergie Libre (Friston)
     // ==========================================
     function drawFreeEnergyLandscape(containerId, lang) {
