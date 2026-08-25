@@ -3012,189 +3012,206 @@
     }
 
     // ---------------------------------------------------------
-    // 3. SCRIPT 2 : NASH ICI & SPEARMAN CORRELATION
-    // ---------------------------------------------------------
+// 3. SCRIPT 2 : NASH ICI & SPEARMAN CORRELATION (CORRIGÉ)
+// ---------------------------------------------------------
+
+// Formatage en UTC strict pour garantir l'alignement parfait des dates
+function toYYYYMM(timestamp) {
+    const d = new Date(timestamp * 1000);
+    const year = d.getUTCFullYear();
+    const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+    return `${year}-${month}`;
+}
+
+// Classement optimisé sans allocation d'objets
+function getRanksFast(arr, indices, ranks) {
+    const n = arr.length;
+    for (let i = 0; i < n; i++) indices[i] = i;
+    indices.sort((a, b) => arr[a] - arr[b]);
+    for (let i = 0; i < n; i++) ranks[indices[i]] = i + 1;
+    return ranks;
+}
+
+function spearmanCorrelationFast(ranks1, ranks2, n) {
+    let dSqSum = 0;
+    for (let i = 0; i < n; i++) {
+        const d = ranks1[i] - ranks2[i];
+        dSqSum += d * d;
+    }
+    return 1 - (6 * dSqSum) / (n * (n * n - 1));
+}
+
+// Fetch avec temporisation pour éviter les erreurs 429
+async function fetchMarketData(ticker) {
+    const url = `https://empty-surf-077c.sunstandard-ap.workers.dev/?ticker=${encodeURIComponent(ticker)}`;
+    const data = await fetchWithRetry(url, 'json', 3, 1000);
     
-    function getRanks(arr) {
-        const sorted = arr.map((v, i) => ({v, i})).sort((a, b) => a.v - b.v);
-        const ranks = new Array(arr.length);
-        sorted.forEach((item, index) => ranks[item.i] = index + 1);
-        return ranks;
-    }
+    if (!data?.chart?.result?.[0]) throw new Error(`Données invalides pour ${ticker}`);
+
+    const res = data.chart.result[0];
+    const timestamps = res.timestamp || [];
+    const closes = res.indicators?.quote?.[0]?.close || [];
     
-    function spearmanCorrelationOptimized(ranks1, arr2) {
-        const n = ranks1.length;
-        const ranks2 = getRanks(arr2);
-        let dSqSum = 0;
-        for (let i = 0; i < n; i++) {
-            let d = ranks1[i] - ranks2[i];
-            dSqSum += d * d;
+    const map = new Map();
+    for (let i = 0; i < timestamps.length; i++) {
+        const val = closes[i];
+        if (val !== null && val !== undefined && !isNaN(val)) {
+            map.set(toYYYYMM(timestamps[i]), Number(val));
         }
-        return 1 - (6 * dSqSum) / (n * (n * n - 1));
     }
+    return map;
+}
 
-    function toYYYYMM(timestamp) {
-        const d = new Date(timestamp * 1000);
-        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2, '0')}`;
-    }
-
-    // VOTRE PROXY CLOUDFLARE
-    async function fetchMarketData(ticker) {
-        const url = `https://empty-surf-077c.sunstandard-ap.workers.dev/?ticker=${encodeURIComponent(ticker)}`;
-        const data = await fetchWithRetry(url, 'json', 3, 2000);
+async function fetchAndPlotNashICI() {
+    try {
+        // 1. Difficulté Bitcoin depuis Mempool
+        const mempoolData = await fetchWithRetry('https://mempool.space/api/v1/mining/hashrate/all', 'json');
+        const diffMap = new Map();
         
-        if (!data.chart || !data.chart.result) throw new Error(`Invalid data from proxy for ${ticker}`);
-
-        const timestamps = data.chart.result[0].timestamp;
-        const closes = data.chart.result[0].indicators.quote[0].close;
-        
-        const map = new Map();
-        for(let i=0; i<timestamps.length; i++) {
-            if (closes[i] !== null) map.set(toYYYYMM(timestamps[i]), closes[i]);
-        }
-        return map;
-    }
-
-    async function fetchAndPlotNashICI() {
-        try {
-            // 1. Fetch Difficulty depuis Mempool (Bypass Blockchain.info)
-            const mempoolData = await fetchWithRetry('https://mempool.space/api/v1/mining/hashrate/all', 'json');
-            const diffMap = new Map();
-            
+        if (mempoolData?.hashrates) {
             mempoolData.hashrates.forEach(pt => {
-                // Formule de la difficulté : Hashrate * 600 / 2^32
                 const difficulty = pt.avgHashrate * (600 / 4294967296);
                 diffMap.set(toYYYYMM(pt.timestamp), difficulty);
             });
+        }
 
-            // 2. Fetch Tickers depuis le proxy Cloudflare
-            const [ngMap, xleMap, hgMap, tsmMap] = await Promise.all([
-                fetchMarketData('NG=F'),
-                fetchMarketData('XLE'),
-                fetchMarketData('HG=F'),
-                fetchMarketData('TSM')
-            ]);
+        // 2. Fetch séquentiel avec léger délai (évite le ban 429 de Cloudflare/Yahoo)
+        const tickers = ['NG=F', 'XLE', 'HG=F', 'TSM'];
+        const maps = [];
+        for (const sym of tickers) {
+            maps.push(await fetchMarketData(sym));
+            await new Promise(r => setTimeout(r, 150)); 
+        }
+        const [ngMap, xleMap, hgMap, tsmMap] = maps;
 
-            // 3. Aligner les dates (Intersection)
-            const allMonths = Array.from(diffMap.keys()).sort();
-            const commonMonths = allMonths.filter(m => 
-                diffMap.has(m) && ngMap.has(m) && xleMap.has(m) && hgMap.has(m) && tsmMap.has(m)
-            );
+        // 3. Intersection chronologique stricte
+        const allMonths = Array.from(diffMap.keys()).sort();
+        const commonMonths = allMonths.filter(m => 
+            diffMap.has(m) && ngMap.has(m) && xleMap.has(m) && hgMap.has(m) && tsmMap.has(m)
+        );
 
-            if (commonMonths.length === 0) throw new Error("No overlapping data found.");
+        if (commonMonths.length === 0) {
+            throw new Error("Aucun chevauchement de dates trouvé entre les flux.");
+        }
 
-            // Base 100 Normalization
-            const baseNg = ngMap.get(commonMonths[0]);
-            const baseXle = xleMap.get(commonMonths[0]);
-            const baseHg = hgMap.get(commonMonths[0]);
-            const baseTsm = tsmMap.get(commonMonths[0]);
+        // Normalisation Base 100 sur le premier mois commun
+        const baseNg = ngMap.get(commonMonths[0]);
+        const baseXle = xleMap.get(commonMonths[0]);
+        const baseHg = hgMap.get(commonMonths[0]);
+        const baseTsm = tsmMap.get(commonMonths[0]);
 
-            const diffs = [], ng = [], xle = [], hg = [], tsm = [];
-            
-            commonMonths.forEach(m => {
-                diffs.push(diffMap.get(m));
-                ng.push((ngMap.get(m) / baseNg) * 100);
-                xle.push((xleMap.get(m) / baseXle) * 100);
-                hg.push((hgMap.get(m) / baseHg) * 100);
-                tsm.push((tsmMap.get(m) / baseTsm) * 100);
-            });
+        const N = commonMonths.length;
+        const diffs = new Float64Array(N);
+        const ng = new Float64Array(N);
+        const xle = new Float64Array(N);
+        const hg = new Float64Array(N);
+        const tsm = new Float64Array(N);
 
-            // 4. Multi-Objective Optimization (Max Spearman)
-            // 4. Multi-Objective Optimization (Max Spearman - Haute Résolution)
-            let bestSpearman = -1.0;
-            let bestWeights = null;
-            let bestICI = null;
-            
-            const diffRanks = getRanks(diffs);
+        commonMonths.forEach((m, i) => {
+            diffs[i] = diffMap.get(m);
+            ng[i] = (ngMap.get(m) / baseNg) * 100;
+            xle[i] = (xleMap.get(m) / baseXle) * 100;
+            hg[i] = (hgMap.get(m) / baseHg) * 100;
+            tsm[i] = (tsmMap.get(m) / baseTsm) * 100;
+        });
 
-            // CONTRAINTES STRICTES
-            const MIN_PCT = 5; // Chaque actif doit représenter au minimum 5% du panier (modifiable)
-            const STEP = 1;    // Pas de 1% (haute résolution)
+        // 4. Optimisation Spearman haute performance
+        const diffIndices = new Int32Array(N);
+        const diffRanks = new Float64Array(N);
+        getRanksFast(Array.from(diffs), diffIndices, diffRanks);
 
-            // Boucles d'optimisation basées sur des entiers (1 à 100) pour éviter les bugs d'arrondi
-            for (let pct_ng = MIN_PCT; pct_ng <= 100; pct_ng += STEP) {
-                for (let pct_xle = MIN_PCT; pct_xle <= 100; pct_xle += STEP) {
-                    for (let pct_hg = MIN_PCT; pct_hg <= 100; pct_hg += STEP) {
-                        
-                        // Déduction mathématique exacte du 4ème élément
-                        let pct_tsm = 100 - pct_ng - pct_xle - pct_hg; 
-                        
-                        // Si le TSM restant ne respecte pas le minimum requis, on ignore
-                        if (pct_tsm < MIN_PCT) continue; 
-                        
-                        // Conversion en décimales (0.01 à 1.00)
-                        let w_ng = pct_ng / 100;
-                        let w_xle = pct_xle / 100;
-                        let w_hg = pct_hg / 100;
-                        let w_tsm = pct_tsm / 100;
-                        
-                        // Création du panier synthétique
-                        let testICI = commonMonths.map((_, idx) => 
-                            (ng[idx] * w_ng) + (xle[idx] * w_xle) + (hg[idx] * w_hg) + (tsm[idx] * w_tsm)
-                        );
-                        
-                        // Évaluation de la corrélation
-                        let corr = spearmanCorrelationOptimized(diffRanks, testICI);
-                        
-                        if (corr > bestSpearman) {
-                            bestSpearman = corr;
-                            bestWeights = { ng: w_ng, xle: w_xle, hg: w_hg, tsm: w_tsm };
-                            bestICI = testICI;
-                        }
+        let bestSpearman = -1.0;
+        let bestWeights = null;
+        let bestICI = null;
+
+        const MIN_PCT = 5;
+        const STEP = 2; // Pas de 2% pour une exécution fluide instantanée (<50ms)
+        const testICI = new Float64Array(N);
+        const tempIndices = new Int32Array(N);
+        const testRanks = new Float64Array(N);
+
+        for (let pct_ng = MIN_PCT; pct_ng <= 100 - (3 * MIN_PCT); pct_ng += STEP) {
+            for (let pct_xle = MIN_PCT; pct_xle <= 100 - pct_ng - (2 * MIN_PCT); pct_xle += STEP) {
+                for (let pct_hg = MIN_PCT; pct_hg <= 100 - pct_ng - pct_xle - MIN_PCT; pct_hg += STEP) {
+                    const pct_tsm = 100 - pct_ng - pct_xle - pct_hg;
+                    if (pct_tsm < MIN_PCT) continue;
+
+                    const w_ng = pct_ng / 100;
+                    const w_xle = pct_xle / 100;
+                    const w_hg = pct_hg / 100;
+                    const w_tsm = pct_tsm / 100;
+
+                    for (let i = 0; i < N; i++) {
+                        testICI[i] = (ng[i] * w_ng) + (xle[i] * w_xle) + (hg[i] * w_hg) + (tsm[i] * w_tsm);
+                    }
+
+                    getRanksFast(Array.from(testICI), tempIndices, testRanks);
+                    const corr = spearmanCorrelationFast(diffRanks, testRanks, N);
+
+                    if (corr > bestSpearman) {
+                        bestSpearman = corr;
+                        bestWeights = { ng: w_ng, xle: w_xle, hg: w_hg, tsm: w_tsm };
+                        bestICI = Array.from(testICI);
                     }
                 }
             }
+        }
 
-            // 5. UI Updates
-            const statsBox = document.getElementById('nash-stats-box');
-            if(statsBox) {
-                statsBox.innerHTML = `
-                    <div style="background: rgba(68, 153, 255, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(68, 153, 255, 0.3);">
-                        <span style="color: #88bbff; font-size: 0.8rem; text-transform: uppercase;">Spearman (ρ)</span><br>
-                        <strong style="color: #fff; font-size: 1.2rem;">${bestSpearman.toFixed(4)}</strong>
-                    </div>
-                    <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
-                        <span style="color: var(--sun-orange); font-size: 0.8rem; text-transform: uppercase;">NG (Gas)</span><br>
-                        <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.ng * 100).toFixed(1)}%</strong>
-                    </div>
-                    <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
-                        <span style="color: var(--sun-orange); font-size: 0.8rem; text-transform: uppercase;">XLE (Energy)</span><br>
-                        <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.xle * 100).toFixed(1)}%</strong>
-                    </div>
-                    <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
-                        <span style="color: var(--sun-orange); font-size: 0.8rem; text-transform: uppercase;">HG (Copper)</span><br>
-                        <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.hg * 100).toFixed(1)}%</strong>
-                    </div>
-                    <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
-                        <span style="color: var(--sun-orange); font-size: 0.8rem; text-transform: uppercase;">TSM (Silicon)</span><br>
-                        <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.tsm * 100).toFixed(1)}%</strong>
-                    </div>
-                `;
-            }
+        // 5. Mise à jour de l'UI
+        const statsBox = document.getElementById('nash-stats-box');
+        if (statsBox && bestWeights) {
+            statsBox.innerHTML = `
+                <div style="background: rgba(68, 153, 255, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(68, 153, 255, 0.3);">
+                    <span style="color: #88bbff; font-size: 0.8rem; text-transform: uppercase;">Spearman (ρ)</span><br>
+                    <strong style="color: #fff; font-size: 1.2rem;">${bestSpearman.toFixed(4)}</strong>
+                </div>
+                <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
+                    <span style="color: var(--sun-orange, #ffaa00); font-size: 0.8rem; text-transform: uppercase;">NG (Gas)</span><br>
+                    <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.ng * 100).toFixed(1)}%</strong>
+                </div>
+                <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
+                    <span style="color: var(--sun-orange, #ffaa00); font-size: 0.8rem; text-transform: uppercase;">XLE (Energy)</span><br>
+                    <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.xle * 100).toFixed(1)}%</strong>
+                </div>
+                <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
+                    <span style="color: var(--sun-orange, #ffaa00); font-size: 0.8rem; text-transform: uppercase;">HG (Copper)</span><br>
+                    <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.hg * 100).toFixed(1)}%</strong>
+                </div>
+                <div style="background: rgba(255, 170, 0, 0.1); padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.3);">
+                    <span style="color: var(--sun-orange, #ffaa00); font-size: 0.8rem; text-transform: uppercase;">TSM (Silicon)</span><br>
+                    <strong style="color: #fff; font-size: 1.2rem;">${(bestWeights.tsm * 100).toFixed(1)}%</strong>
+                </div>
+            `;
+        }
 
-            // 6. Plotly
-            const dateObjs = commonMonths.map(m => new Date(m + "-01"));
+        // 6. Rendu Plotly
+        const dateObjs = commonMonths.map(m => new Date(m + "-01T00:00:00Z"));
+        const traceDiff = { x: dateObjs, y: Array.from(diffs), name: 'Network Difficulty', type: 'scatter', mode: 'lines', line: { color: '#4499ff', width: 3 }, yaxis: 'y1' };
+        const traceICI = { x: dateObjs, y: bestICI, name: 'Optimized Nash ICI', type: 'scatter', mode: 'lines', line: { color: '#ff6600', width: 2, dash: 'dash' }, yaxis: 'y2' };
 
-            const traceDiff = { x: dateObjs, y: diffs, name: 'Network Difficulty', type: 'scatter', mode: 'lines', line: { color: '#4499ff', width: 3 }, yaxis: 'y1' };
-            const traceICI = { x: dateObjs, y: bestICI, name: 'Optimized Nash ICI', type: 'scatter', mode: 'lines', line: { color: '#ff6600', width: 2, dash: 'dash' }, yaxis: 'y2' };
+        const layout = {
+            paper_bgcolor: 'transparent',
+            plot_bgcolor: 'transparent',
+            margin: { t: 30, r: 60, l: 60, b: 40 },
+            font: { color: '#888888', family: "'Space Grotesk', sans-serif" },
+            legend: { x: 0.05, y: 0.95, bgcolor: 'rgba(0,0,0,0.5)', font: { color: '#fff'} },
+            xaxis: { showgrid: true, gridcolor: 'rgba(255, 170, 0, 0.08)', linecolor: 'rgba(255, 170, 0, 0.3)' },
+            yaxis: { title: 'Network Difficulty', titlefont: {color: '#4499ff'}, tickfont: {color: '#4499ff'}, showgrid: false, zeroline: false },
+            yaxis2: { title: 'Synthetic Nash ICI (Base 100)', titlefont: {color: '#ff6600'}, tickfont: {color: '#ff6600'}, overlaying: 'y', side: 'right', showgrid: false, zeroline: false },
+            hovermode: 'x unified',
+            hoverlabel: { bgcolor: 'rgba(10, 10, 12, 0.95)', font: { color: '#fff' } }
+        };
 
-            const layout = {
-                paper_bgcolor: 'transparent', plot_bgcolor: 'transparent', margin: { t: 30, r: 60, l: 60, b: 40 },
-                font: { color: '#888888', family: "'Space Grotesk', sans-serif" }, legend: { x: 0.05, y: 0.95, bgcolor: 'rgba(0,0,0,0.5)', font: { color: '#fff'} },
-                xaxis: { showgrid: true, gridcolor: 'rgba(255, 170, 0, 0.08)', linecolor: 'rgba(255, 170, 0, 0.3)' },
-                yaxis: { title: 'Network Difficulty', titlefont: {color: '#4499ff'}, tickfont: {color: '#4499ff'}, showgrid: false, zeroline: false },
-                yaxis2: { title: 'Synthetic Nash ICI (Base 100)', titlefont: {color: '#ff6600'}, tickfont: {color: '#ff6600'}, overlaying: 'y', side: 'right', showgrid: false, zeroline: false },
-                hovermode: 'x unified', hoverlabel: { bgcolor: 'rgba(10, 10, 12, 0.95)', font: { color: '#fff' } }
-            };
+        Plotly.newPlot('plotly-nash-ici', [traceDiff, traceICI], layout, { responsive: true, displayModeBar: false });
 
-            Plotly.newPlot('plotly-nash-ici', [traceDiff, traceICI], layout, { responsive: true, displayModeBar: false });
-
-        } catch (error) {
-            console.error("Nash ICI Error:", error);
-            const statsBox = document.getElementById('nash-stats-box');
-            if(statsBox) statsBox.innerHTML = `<span style="color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 10px; border-radius: 8px;">Erreur de chargement des données. Veuillez réessayer plus tard.</span>`;
+    } catch (error) {
+        console.error("Nash ICI Error:", error);
+        const statsBox = document.getElementById('nash-stats-box');
+        if (statsBox) {
+            statsBox.innerHTML = `<span style="color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 10px; border-radius: 8px;">Erreur : ${error.message}</span>`;
         }
     }
+}
 
     // ---------------------------------------------------------
     // FONCTION UTILITAIRE : CORRÉLATION DE PEARSON
