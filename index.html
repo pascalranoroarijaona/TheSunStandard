@@ -3560,9 +3560,6 @@
                     <!-- BLOC FRANÇAIS (lang="fr")                  -->
                     <!-- ========================================== -->
                     <div lang="fr">
-                    <p style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.05rem;">
-                        Pour comprendre le génie derrière le choix de <strong>2016 blocs</strong> (environ 14 jours) par Nakamoto pour la fenêtre du DAA, mettons le réseau à l'épreuve. Que se passe-t-il si 50% des mineurs mondiaux éteignent soudainement leurs machines ? Nous simulons 9 fenêtres d'ajustement différentes ($W$) face à ce choc thermodynamique extrême.
-                    </p>
 
                     <details>
                         <summary style="margin-top: 2rem; margin-bottom: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #ffffff; border-radius: 0 8px 8px 0; overflow: hidden; padding: 1rem 1.5rem; cursor: pointer; font-weight: bold; color: #ffffff; outline: none; list-style-type: '▶ ';">
@@ -3570,6 +3567,9 @@
                             💻 Vue de l'Ingénieur : Le Thermostat Cybernétique (<code>pow.cpp</code>)
                         </div>
                         </summary>
+                        <p style="margin-top: 1rem; color: #b0c4de;">
+                        Dans le fichier <code>pow.cpp</code> de Bitcoin Core, la théorie mathématique devient une réalité logicielle intransigeante. La fonction calcule <code>nActualTimespan</code> (le temps physique réel écoulé durant les 2016 derniers blocs). Pour éviter une instabilité mathématique violente lors de chocs extrêmes, elle borne strictement ce temps par un facteur allant de $0,25$ à $4,0$. Elle applique ensuite le ratio fondamental du DAA : la nouvelle cible cryptographique est simplement l'ancienne cible multipliée par le temps réel et divisée par le temps attendu. Cette fonction C++ minimaliste est le gouverneur cybernétique suprême du réseau.
+                        </p>
                         <pre><code><span class="comment">// pow.cpp</span>
                     <span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
                         <span class="keyword">if</span> (params.fPowNoRetargeting)
@@ -3594,10 +3594,12 @@
 
                         <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
                     }</code></pre>
-                        <p style="margin-top: 1rem; color: #b0c4de;">
-                        Dans le fichier <code>pow.cpp</code> de Bitcoin Core, la théorie mathématique devient une réalité logicielle intransigeante. La fonction calcule <code>nActualTimespan</code> (le temps physique réel écoulé durant les 2016 derniers blocs). Pour éviter une instabilité mathématique violente lors de chocs extrêmes, elle borne strictement ce temps par un facteur allant de $0,25$ à $4,0$. Elle applique ensuite le ratio fondamental du DAA : la nouvelle cible cryptographique est simplement l'ancienne cible multipliée par le temps réel et divisée par le temps attendu. Cette fonction C++ minimaliste est le gouverneur cybernétique suprême du réseau.
-                        </p>
+                        
                     </details>
+
+                    <p style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.05rem;">
+                        Pour comprendre le génie derrière le choix de <strong>2016 blocs</strong> (environ 14 jours) par Nakamoto pour la fenêtre du DAA, mettons le réseau à l'épreuve. Que se passe-t-il si 50% des mineurs mondiaux éteignent soudainement leurs machines ? Nous simulons 9 fenêtres d'ajustement différentes ($W$) face à ce choc thermodynamique extrême.
+                    </p>
 
                     <details class="practical-details">
                         <summary class="practical-summary" style="cursor: pointer; font-weight: bold; color: #ffcc00; margin: 1rem 0;">
