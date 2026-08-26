@@ -3610,29 +3610,29 @@
                         Dans le fichier <code>pow.cpp</code> de Bitcoin Core, la théorie mathématique devient une réalité logicielle intransigeante. La fonction calcule <code>nActualTimespan</code> (le temps physique réel écoulé durant les 2016 derniers blocs). Pour éviter une instabilité mathématique violente lors de chocs extrêmes, elle borne strictement ce temps par un facteur allant de $0,25$ à $4,0$. Elle applique ensuite le ratio fondamental du DAA : la nouvelle cible cryptographique est simplement l'ancienne cible multipliée par le temps réel et divisée par le temps attendu. Cette fonction C++ minimaliste est le gouverneur cybernétique suprême du réseau.
                         </p>
                         <pre><code><span class="comment">// pow.cpp</span>
-                    <span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
-                        <span class="keyword">if</span> (params.fPowNoRetargeting)
-                            <span class="keyword">return</span> pindexLast->nBits;
+<span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
+    <span class="keyword">if</span> (params.fPowNoRetargeting)
+        <span class="keyword">return</span> pindexLast->nBits;
 
-                        <span class="comment">// Limit adjustment step (the factor of 4 guardrails)</span>
-                        <span class="type">int64_t</span> nActualTimespan = pindexLast-><span class="function">GetBlockTime</span>() - nFirstBlockTime;
-                        <span class="keyword">if</span> (nActualTimespan < params.nPowTargetTimespan/<span class="number">4</span>)
-                            nActualTimespan = params.nPowTargetTimespan/<span class="number">4</span>;
-                        <span class="keyword">if</span> (nActualTimespan > params.nPowTargetTimespan*<span class="number">4</span>)
-                            nActualTimespan = params.nPowTargetTimespan*<span class="number">4</span>;
+    <span class="comment">// Limit adjustment step (the factor of 4 guardrails)</span>
+    <span class="type">int64_t</span> nActualTimespan = pindexLast-><span class="function">GetBlockTime</span>() - nFirstBlockTime;
+    <span class="keyword">if</span> (nActualTimespan < params.nPowTargetTimespan/<span class="number">4</span>)
+        nActualTimespan = params.nPowTargetTimespan/<span class="number">4</span>;
+    <span class="keyword">if</span> (nActualTimespan > params.nPowTargetTimespan*<span class="number">4</span>)
+        nActualTimespan = params.nPowTargetTimespan*<span class="number">4</span>;
 
-                        <span class="comment">// Retarget: NewTarget = OldTarget * (ActualTime / ExpectedTime)</span>
-                        <span class="type">arith_uint256</span> bnNew;
-                        bnNew.<span class="function">SetCompact</span>(pindexLast->nBits);
-                        bnNew *= nActualTimespan;
-                        bnNew /= params.nPowTargetTimespan;
+    <span class="comment">// Retarget: NewTarget = OldTarget * (ActualTime / ExpectedTime)</span>
+    <span class="type">arith_uint256</span> bnNew;
+    bnNew.<span class="function">SetCompact</span>(pindexLast->nBits);
+    bnNew *= nActualTimespan;
+    bnNew /= params.nPowTargetTimespan;
 
-                        <span class="comment">// Ensure we do not exceed the Genesis thermodynamic floor</span>
-                        <span class="keyword">if</span> (bnNew > <span class="function">UintToArith256</span>(params.powLimit))
-                            bnNew = <span class="function">UintToArith256</span>(params.powLimit);
+    <span class="comment">// Ensure we do not exceed the Genesis thermodynamic floor</span>
+    <span class="keyword">if</span> (bnNew > <span class="function">UintToArith256</span>(params.powLimit))
+        bnNew = <span class="function">UintToArith256</span>(params.powLimit);
 
-                        <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
-                    }</code></pre>
+    <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
+}</code></pre>
                         
                     </details>
 
@@ -4702,33 +4702,35 @@ if __name__ == "__main__":
                             💻 Engineer's View: The Cybernetic Thermostat (<code>pow.cpp</code>)
                         </div>
                         </summary>
-                        <pre><code><span class="comment">// pow.cpp</span>
-                    <span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
-                        <span class="keyword">if</span> (params.fPowNoRetargeting)
-                            <span class="keyword">return</span> pindexLast->nBits;
-
-                        <span class="comment">// Limit adjustment step (the factor of 4 guardrails)</span>
-                        <span class="type">int64_t</span> nActualTimespan = pindexLast-><span class="function">GetBlockTime</span>() - nFirstBlockTime;
-                        <span class="keyword">if</span> (nActualTimespan < params.nPowTargetTimespan/<span class="number">4</span>)
-                            nActualTimespan = params.nPowTargetTimespan/<span class="number">4</span>;
-                        <span class="keyword">if</span> (nActualTimespan > params.nPowTargetTimespan*<span class="number">4</span>)
-                            nActualTimespan = params.nPowTargetTimespan*<span class="number">4</span>;
-
-                        <span class="comment">// Retarget: NewTarget = OldTarget * (ActualTime / ExpectedTime)</span>
-                        <span class="type">arith_uint256</span> bnNew;
-                        bnNew.<span class="function">SetCompact</span>(pindexLast->nBits);
-                        bnNew *= nActualTimespan;
-                        bnNew /= params.nPowTargetTimespan;
-
-                        <span class="comment">// Ensure we do not exceed the Genesis thermodynamic floor</span>
-                        <span class="keyword">if</span> (bnNew > <span class="function">UintToArith256</span>(params.powLimit))
-                            bnNew = <span class="function">UintToArith256</span>(params.powLimit);
-
-                        <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
-                    }</code></pre>
                         <p style="margin-top: 1rem; color: #b0c4de;">
                         In the <code>pow.cpp</code> file of Bitcoin Core, the mathematical theory becomes an uncompromising software reality. The function calculates <code>nActualTimespan</code> (the real physical time elapsed during the last 2016 blocks). To prevent violent mathematical instability during extreme shocks, it strictly bounds this time between a factor of $0.25$ and $4.0$. It then applies the fundamental DAA ratio: the new cryptographic target is simply the old target multiplied by the actual time and divided by the expected time. This minimalist C++ function is the supreme cybernetic governor of the network.
                         </p>
+                        <pre><code><span class="comment">// pow.cpp</span>
+<span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
+    <span class="keyword">if</span> (params.fPowNoRetargeting)
+        <span class="keyword">return</span> pindexLast->nBits;
+
+    <span class="comment">// Limit adjustment step (the factor of 4 guardrails)</span>
+    <span class="type">int64_t</span> nActualTimespan = pindexLast-><span class="function">GetBlockTime</span>() - nFirstBlockTime;
+    <span class="keyword">if</span> (nActualTimespan < params.nPowTargetTimespan/<span class="number">4</span>)
+        nActualTimespan = params.nPowTargetTimespan/<span class="number">4</span>;
+    <span class="keyword">if</span> (nActualTimespan > params.nPowTargetTimespan*<span class="number">4</span>)
+        nActualTimespan = params.nPowTargetTimespan*<span class="number">4</span>;
+
+    <span class="comment">// Retarget: NewTarget = OldTarget * (ActualTime / ExpectedTime)</span>
+    <span class="type">arith_uint256</span> bnNew;
+    bnNew.<span class="function">SetCompact</span>(pindexLast->nBits);
+    bnNew *= nActualTimespan;
+    bnNew /= params.nPowTargetTimespan;
+
+    <span class="comment">// Ensure we do not exceed the Genesis thermodynamic floor</span>
+    <span class="keyword">if</span> (bnNew > <span class="function">UintToArith256</span>(params.powLimit))
+        bnNew = <span class="function">UintToArith256</span>(params.powLimit);
+
+    <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
+}
+                </code></pre>
+                        
                     </details>
 
                     <details class="practical-details">
@@ -5076,6 +5078,71 @@ if __name__ == "__main__":
                         }
                     </style>
                 </div>
+                <!-- ENGLISH POPULAR SCIENCE -->
+<div style="margin-bottom: 2rem;">
+    <details style="background: rgba(10, 10, 12, 0.8); border: 1px solid rgba(255, 170, 0, 0.3); border-radius: 8px; overflow: hidden; cursor: pointer; margin-bottom: 1rem;">
+        <summary style="padding: 1rem 1.5rem; color: #ffaa00; font-weight: bold; font-size: 1.05rem; outline: none; user-select: none; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid transparent; transition: all 0.3s ease;">
+            <span>💡 Popular Science: The Concept of Thermal Time Explained Simply</span>
+            <span style="font-size: 0.8em; opacity: 0.7;">(Click to expand) ▼</span>
+        </summary>
+        
+        <div style="padding: 1.5rem; border-top: 1px solid rgba(255, 170, 0, 0.1); cursor: auto;">
+            
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">1. The Real Secret of Time: It Doesn't Exist</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                At the microscopic level, the equations of quantum physics work just as well backwards as forwards. Absolute time is an illusion. Our sensation of passing time actually comes from <strong>thermodynamics</strong>. When energy dissipates and disorder (entropy) increases, this heat creates an irreversible movement: the arrow of time.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: C. Rovelli & A. Connes, "Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation" (1994).</em><br>
+                <strong>Why it is fundamental:</strong> Alain Connes (Fields Medalist) and Carlo Rovelli (a pioneer of quantum gravity) disrupted modern physics with the Thermal Time Hypothesis. They mathematically demonstrate that time is not a fundamental property of the universe, but an emergent macroscopic illusion. It is the heat flux of a complex system that "secretes" the sensation of time.
+            </div>
+
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">2. Bitcoin is Not Code, It's a Physical Engine</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                Bitcoin is not just software; it is a <strong>dissipative structure</strong>. Miners spend billions of watts converted into heat and irreversible computations. This engine is described by a quadruplet: Hashrate (the accelerator), Revenue (the fuel), Difficulty (the thermostat), and Chainwork (the scarred memory).
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: I. Prigogine, "Time, Structure, and Fluctuations" (Nobel Prize in Chemistry, 1977).</em><br>
+                <strong>Why it is fundamental:</strong> Ilya Prigogine discovered "dissipative structures." He proved that complex systems survive by pumping in energy and exporting entropy, thereby creating robust order out of disorder.
+            </div>
+
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">3. Why "Difficulty" is an Inverse Temperature</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                In physics, "inverse temperature" ($\beta$) measures a system's rigor. If it is very "cold" (high $\beta$), the system is frozen, highly ordered, and demands phenomenal energy to change state. In Bitcoin, <strong>Difficulty</strong> plays exactly this role. Early on (low difficulty), the network was permissive ("hot"): a laptop could validate a block. Today (immense difficulty), the network is a glacial crystal: it demands billions of calculations to accept a modification.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: E. T. Jaynes, "Information Theory and Statistical Mechanics" (1957).</em><br>
+                <strong>Why it is fundamental:</strong> Edwin Jaynes unified thermodynamics and information theory. He proved that inverse temperature ($\beta$) is the mathematical multiplier that "constrains" a system's energy. In Bitcoin, Difficulty is the exact algorithmic constraint that disciplines the network's energy (Hashrate) to maintain its temporal integrity (10 minutes per block).
+            </div>
+
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">4. Measuring Bitcoin's Clock with Fisher-Rao</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                Since Bitcoin dissipates energy, it secretes its own time. To measure the speed of this "clock," we use <strong>information geometry (Fisher-Rao Metric)</strong>. This tool quantifies the violence with which the network's state mutates. If the network is calm, its time flows slowly. If it suffers a shock, its thermal time accelerates violently.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: S. Amari, "Information Geometry and Its Applications" (2016).</em><br>
+                <strong>Why it is fundamental:</strong> Shun-ichi Amari proved that probability space is curved. The Fisher-Rao metric does not measure meters, but the thermodynamic effort (or "surprise") required for a system to mutate from one information state to another.
+            </div>
+
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">5. The Mathematical Proof: The Thermodynamic Ratchet</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                How do we prove that Bitcoin cannot go backwards? By analyzing network data, our model proves that the rate of entropy dissipation is strictly positive. The accumulation of <em>Chainwork</em> acts as a one-way ratchet. Bitcoin's arrow of time is mathematically irreversible.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: G. E. Crooks, "Entropy production fluctuation theorem" (1999).</em><br>
+                <strong>Why it is fundamental:</strong> Crooks' theorem mathematically links the probability of an event occurring in a forward direction to the probability of it occurring in reverse, based on the heat produced. Since Bitcoin massively produces entropy, Crooks' equation guarantees that the probability of the blockchain "reversing" is physically zero.
+            </div>
+
+            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">6. The Final Shield Against Quantum Computers</h5>
+            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                A quantum computer must operate in perfect isolation, almost outside of time. If it wants to hack Bitcoin in real-time (to beat the miners), it must compute so fast that it generates heat. This heat violently reconnects it to macroscopic reality, causing its qubits to collapse (decoherence). Quantum magic shatters against the wall of Bitcoin's thermal time.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                📚 <em>Ref: R. Landauer (1961) on the energy of computation & W.H. Zurek (1991) on quantum decoherence.</em><br>
+                <strong>Why it is fundamental:</strong> Rolf Landauer proved that erasing a bit of information inevitably releases heat (Landauer's Limit). Wojciech Zurek demonstrated that this heat causes "decoherence." This is the relentless mechanism that destroys the fragile state of a quantum computer when it is forced to compete in the physical world.
+            </div>
+        </div>
+    </details>
             </details>
             <!-- THE ORDEAL OF MIMETIC DESIRE, THE JUNGIAN SHADOW, AND THE CYPHERPUNK ETHIC (EN) -->
             <p style="margin-bottom: 1.5rem;">
