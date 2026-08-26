@@ -5013,102 +5013,102 @@ if __name__ == "__main__":
 
                                     <!-- Scrolling Code Block -->
                                     <pre style="margin: 0; padding: 1.5rem; overflow-x: auto; overflow-y: auto; max-height: 500px; font-family: 'Fira Code', 'Courier New', Courier, monospace; font-size: 0.85em; line-height: 1.5; color: #e5e7eb; scrollbar-width: thin; scrollbar-color: rgba(0,255,255,0.4) transparent;"><code>import numpy as np
-                    import pandas as pd
-                    import requests
-                    from scipy.stats import linregress
-                    from sklearn.cluster import KMeans
+import pandas as pd
+import requests
+from scipy.stats import linregress
+from sklearn.cluster import KMeans
 
-                    # -----------------------------------------------------------------------------
-                    # 1. ACQUISITION OF THE CANONICAL MACROSCOPIC QUADRUPLET
-                    # -----------------------------------------------------------------------------
-                    def load_canonical_quadruplet() -> pd.DataFrame:
-                        """Constructs the macroscopic state space x(t) = [H, D, R, W]."""
-                        charts = ["hash-rate", "difficulty", "miners-revenue"]
-                        dfs = []
-                        for name in charts:
-                            url = f"https://api.blockchain.info/charts/{name}?timespan=8years&format=json&cors=true"
-                            data = requests.get(url).json().get("values", [])
-                            df = pd.DataFrame(data)
-                            df["date"] = pd.to_datetime(df["x"], unit="s")
-                            dfs.append(df.set_index("date").rename(columns={"y": name}).drop(columns=["x"]))
-                        
-                        df = pd.concat(dfs, axis=1).dropna().resample("7D").mean().dropna()
-                        # Derivation of cumulative irreversible work W(t) = integral(H dt)
-                        df["chainwork"] = (df["hash-rate"] * 1e12 * (7 * 86400)).cumsum()
-                        return df
+# -----------------------------------------------------------------------------
+# 1. ACQUISITION OF THE CANONICAL MACROSCOPIC QUADRUPLET
+# -----------------------------------------------------------------------------
+def load_canonical_quadruplet() -> pd.DataFrame:
+    """Constructs the macroscopic state space x(t) = [H, D, R, W]."""
+    charts = ["hash-rate", "difficulty", "miners-revenue"]
+    dfs = []
+    for name in charts:
+        url = f"https://api.blockchain.info/charts/{name}?timespan=8years&format=json&cors=true"
+        data = requests.get(url).json().get("values", [])
+        df = pd.DataFrame(data)
+        df["date"] = pd.to_datetime(df["x"], unit="s")
+        dfs.append(df.set_index("date").rename(columns={"y": name}).drop(columns=["x"]))
+    
+    df = pd.concat(dfs, axis=1).dropna().resample("7D").mean().dropna()
+    # Derivation of cumulative irreversible work W(t) = integral(H dt)
+    df["chainwork"] = (df["hash-rate"] * 1e12 * (7 * 86400)).cumsum()
+    return df
 
-                    # -----------------------------------------------------------------------------
-                    # 2. FISHER-RAO GEOMETRY & PROPER TIME (BURES / WOOTTERS)
-                    # -----------------------------------------------------------------------------
-                    def compute_fisher_rao_metric(df: pd.DataFrame, window: int = 26):
-                        """Calculates the causal state rho(t) and the geodesic velocity of the modular flow."""
-                        rolling_mean = df.rolling(window=window, min_periods=4).mean()
-                        rolling_std = df.rolling(window=window, min_periods=4).std().replace(0, 1)
-                        z_scores = ((df - rolling_mean) / rolling_std).dropna()
+# -----------------------------------------------------------------------------
+# 2. FISHER-RAO GEOMETRY & PROPER TIME (BURES / WOOTTERS)
+# -----------------------------------------------------------------------------
+def compute_fisher_rao_metric(df: pd.DataFrame, window: int = 26):
+    """Calculates the causal state rho(t) and the geodesic velocity of the modular flow."""
+    rolling_mean = df.rolling(window=window, min_periods=4).mean()
+    rolling_std = df.rolling(window=window, min_periods=4).std().replace(0, 1)
+    z_scores = ((df - rolling_mean) / rolling_std).dropna()
 
-                        exp_z = np.exp(np.clip(z_scores.values, -10, 10))
-                        prob_dist = exp_z / np.sum(exp_z, axis=1, keepdims=True)
+    exp_z = np.exp(np.clip(z_scores.values, -10, 10))
+    prob_dist = exp_z / np.sum(exp_z, axis=1, keepdims=True)
 
-                        sqrt_p = np.sqrt(prob_dist)
-                        fidelity = np.clip(np.sum(sqrt_p[1:] * sqrt_p[:-1], axis=1), -1.0, 1.0)
-                        d_tau = 2.0 * np.arccos(fidelity)
-                        
-                        return d_tau, prob_dist
+    sqrt_p = np.sqrt(prob_dist)
+    fidelity = np.clip(np.sum(sqrt_p[1:] * sqrt_p[:-1], axis=1), -1.0, 1.0)
+    d_tau = 2.0 * np.arccos(fidelity)
+    
+    return d_tau, prob_dist
 
-                    # -----------------------------------------------------------------------------
-                    # 3. CROOKS FLUCTUATION THEOREM & JARZYNSKI EQUALITY
-                    # -----------------------------------------------------------------------------
-                    def compute_crooks_fluctuation(df: pd.DataFrame, n_states: int = 6, traj_len: int = 3):
-                        """Evaluates the detailed balance breaking and the non-equilibrium statistics."""
-                        d_log = np.diff(np.log(df.values), axis=0)
-                        norm_diffs = (d_log - np.mean(d_log, axis=0)) / (np.std(d_log, axis=0) + 1e-8)
+# -----------------------------------------------------------------------------
+# 3. CROOKS FLUCTUATION THEOREM & JARZYNSKI EQUALITY
+# -----------------------------------------------------------------------------
+def compute_crooks_fluctuation(df: pd.DataFrame, n_states: int = 6, traj_len: int = 3):
+    """Evaluates the detailed balance breaking and the non-equilibrium statistics."""
+    d_log = np.diff(np.log(df.values), axis=0)
+    norm_diffs = (d_log - np.mean(d_log, axis=0)) / (np.std(d_log, axis=0) + 1e-8)
 
-                        kmeans = KMeans(n_clusters=n_states, random_state=42, n_init=10)
-                        states = kmeans.fit_predict(norm_diffs)
+    kmeans = KMeans(n_clusters=n_states, random_state=42, n_init=10)
+    states = kmeans.fit_predict(norm_diffs)
 
-                        N = np.zeros((n_states, n_states))
-                        for i in range(len(states) - 1):
-                            N[states[i], states[i + 1]] += 1
-                        W = (N + 0.5) / (N.sum(axis=1, keepdims=True) + n_states * 0.5)
+    N = np.zeros((n_states, n_states))
+    for i in range(len(states) - 1):
+        N[states[i], states[i + 1]] += 1
+    W = (N + 0.5) / (N.sum(axis=1, keepdims=True) + n_states * 0.5)
 
-                        eigenvals, eigenvecs = np.linalg.eig(W.T)
-                        pi = np.abs(np.real(eigenvecs[:, np.argmin(np.abs(eigenvals - 1.0))]))
-                        pi /= np.sum(pi)
+    eigenvals, eigenvecs = np.linalg.eig(W.T)
+    pi = np.abs(np.real(eigenvecs[:, np.argmin(np.abs(eigenvals - 1.0))]))
+    pi /= np.sum(pi)
 
-                        sigma_vals = []
-                        for t in range(len(states) - traj_len):
-                            f = states[t : t + traj_len + 1]
-                            r = f[::-1]
-                            
-                            p_f, p_r = pi[f[0]], pi[r[0]]
-                            for k in range(traj_len):
-                                p_f *= W[f[k], f[k + 1]]
-                                p_r *= W[r[k], r[k + 1]]
+    sigma_vals = []
+    for t in range(len(states) - traj_len):
+        f = states[t : t + traj_len + 1]
+        r = f[::-1]
+        
+        p_f, p_r = pi[f[0]], pi[r[0]]
+        for k in range(traj_len):
+            p_f *= W[f[k], f[k + 1]]
+            p_r *= W[r[k], r[k + 1]]
 
-                            if p_f > 0 and p_r > 0:
-                                sigma_vals.append(np.log(p_f / p_r))
+        if p_f > 0 and p_r > 0:
+            sigma_vals.append(np.log(p_f / p_r))
 
-                        sigma = np.array(sigma_vals)
-                        jarzynski_val = np.mean(np.exp(-sigma))
-                        
-                        # Entropy dissipation S_dot
-                        s_dot = np.sum([pi[i]*W[i,j] * np.log((pi[i]*W[i,j])/(pi[j]*W[j,i])) 
-                                        for i in range(n_states) for j in range(n_states) 
-                                        if W[i,j]>0 and W[j,i]>0])
+    sigma = np.array(sigma_vals)
+    jarzynski_val = np.mean(np.exp(-sigma))
+    
+    # Entropy dissipation S_dot
+    s_dot = np.sum([pi[i]*W[i,j] * np.log((pi[i]*W[i,j])/(pi[j]*W[j,i])) 
+                    for i in range(n_states) for j in range(n_states) 
+                    if W[i,j]>0 and W[j,i]>0])
 
-                        return sigma, jarzynski_val, s_dot
+    return sigma, jarzynski_val, s_dot
 
-                    # -----------------------------------------------------------------------------
-                    # 4. EXECUTION
-                    # -----------------------------------------------------------------------------
-                    if __name__ == "__main__":
-                        df = load_canonical_quadruplet()
-                        d_tau, _ = compute_fisher_rao_metric(df)
-                        sigma, jarzynski, s_dot = compute_crooks_fluctuation(df)
-                        
-                        print(f"Mean Modular Velocity <dtau> : {np.mean(d_tau):.4f} rad/week")
-                        print(f"Dissipation Rate S_dot       : {s_dot:.4f} nats/week")
-                        print(f"Jarzynski Equality <e^(-σ)>  : {jarzynski:.4f} (Target = 1.0)")</code></pre>
+# -----------------------------------------------------------------------------
+# 4. EXECUTION
+# -----------------------------------------------------------------------------
+if __name__ == "__main__":
+    df = load_canonical_quadruplet()
+    d_tau, _ = compute_fisher_rao_metric(df)
+    sigma, jarzynski, s_dot = compute_crooks_fluctuation(df)
+    
+    print(f"Mean Modular Velocity <dtau> : {np.mean(d_tau):.4f} rad/week")
+    print(f"Dissipation Rate S_dot       : {s_dot:.4f} nats/week")
+    print(f"Jarzynski Equality <e^(-σ)>  : {jarzynski:.4f} (Target = 1.0)")</code></pre>
                                 </div>
                             </div>
                         </details>
