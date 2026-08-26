@@ -3804,32 +3804,48 @@
                             
                             <div style="padding: 1.5rem; border-top: 1px solid rgba(0, 255, 255, 0.1); cursor: auto;">
                                 <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 1.5rem;">
-                                    Pour formaliser l'opérateur d'évolution du réseau, nous plongeons l'état macroscopique dans une algèbre de von Neumann d'observables $\mathcal{M}$ agissant sur un espace de Hilbert $\mathcal{H} \cong \mathbb{C}^4$. La base orthonormée $\{|e_k\rangle\}_{k=1}^4$ correspond au quadruplet canonique : Flux dissipatif ($H$), Température inverse ($D$), Exergie captée ($R$), et Travail cumulé ($W$).
+                                    Pour formaliser l'opérateur d'évolution du réseau, nous plongeons l'état macroscopique dans une algèbre de von Neumann d'observables $\mathcal{M}$ agissant sur un espace de Hilbert $\mathcal{H} \cong \mathbb{C}^4$. La base orthonormée $\{|e_k\rangle\}_{k=1}^4$ correspond au quadruplet canonique : Flux dissipatif ($H, k=1$), Température inverse ($D, k=2$), Exergie captée ($R, k=3$), et Travail cumulé ($W, k=4$). Les observables associés sont définis par les projecteurs $\hat{O}_k = |e_k\rangle \langle e_k|$.
                                 </p>
 
                                 <h5 style="color: #c864ff; margin-bottom: 0.5rem;">I. L'Hamiltonien Modulaire Intégré</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
-                                    L'état statistique macroscopique causal normalisé (projection de Gibbs) s'écrit sous forme d'un opérateur densité $\rho \in \mathcal{S}(\mathcal{M})$ :
-                                    $$\rho(t) = \frac{e^{-\sum_{k=1}^4 \beta_k(t) \hat{O}_k}}{\mathcal{Z}(t)}$$
-                                    Selon la théorie de Tomita-Takesaki, l'énergie du système n'est pas imposée de l'extérieur, mais est intrinsèque à sa distribution d'information. L'Hamiltonien modulaire $K$ est défini par :
-                                    $$K \equiv -\ln \rho = \ln \mathcal{Z}(t) \cdot \mathbb{I}_4 - \sum_{k=1}^4 z_k(t) \, |e_k\rangle \langle e_k|$$
+                                    Soit $z_k(t)$ le score standardisé (Z-score causal) de chaque métrique. L'état statistique macroscopique causal normalisé (projection de Gibbs) s'écrit sous la forme d'un opérateur densité $\rho \in \mathcal{S}(\mathcal{M})$ :
+                                    $$\rho(t) = \frac{e^{\sum_{k=1}^4 z_k(t) \hat{O}_k}}{\mathcal{Z}(t)} = \sum_{k=1}^4 p_k(t) |e_k\rangle \langle e_k|$$
+                                    où $\mathcal{Z}(t) = \sum_{k=1}^4 e^{z_k(t)}$ est la fonction de partition et $p_k(t) = e^{z_k(t)}/\mathcal{Z}(t)$ est la probabilité d'occupation macroscopique.
+                                    Selon la théorie de Tomita-Takesaki, l'énergie du système n'est pas imposée de l'extérieur, mais est intrinsèque à sa distribution d'information. L'Hamiltonien modulaire $K$ est défini comme le logarithme négatif de la matrice densité :
+                                    $$K \equiv -\ln \rho = \ln \mathcal{Z}(t) \cdot \mathbb{I}_4 - \sum_{k=1}^4 z_k(t) \, |e_k\rangle \langle e_k| = \sum_{k=1}^4 (-\ln p_k(t)) |e_k\rangle \langle e_k|$$
                                 </p>
 
-                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">II. La Dynamique GKSL et l'Irréversibilité</h5>
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">II. La Dynamique GKSL et le Dissipateur</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
                                     Exprimée en fonction de la coordonnée calendaire externe $t \equiv t_{\text{UTC}}$, la dérive séculaire de l'environnement couple le système à un réservoir hors-équilibre. L'opérateur densité obéit à l'équation maîtresse de Gorini-Kossakowski-Sudarshan-Lindblad :
                                     $$\frac{d\rho}{dt} = -i \left(\frac{d\tau}{dt}\right) [K, \rho] + \mathcal{D}[\rho]$$
-                                    Le dissipateur $\mathcal{D}[\rho]$ modélise la cristallisation de l'énergie via l'opérateur de saut de Lindblad $L_W = |e_4\rangle \langle e_1|$ (conversion irréversible du Hashrate en Chainwork) :
+                                    Puisque $[K, \rho] = 0$ par construction (ils sont co-diagonalisables), l'évolution est purement dissipative : $d\rho/dt = \mathcal{D}[\rho]$.
+                                    Le dissipateur $\mathcal{D}[\rho]$ modélise la cristallisation de l'énergie via l'opérateur de saut de Lindblad $L_W = |e_4\rangle \langle e_1|$ (opérateur non-hermitien représentant la conversion irréversible du Hashrate $|e_1\rangle$ en Chainwork $|e_4\rangle$) avec un taux de transition $\gamma_W > 0$ :
                                     $$\mathcal{D}[\rho] = \gamma_W \left( L_W \rho L_W^\dagger - \frac{1}{2} \{ L_W^\dagger L_W, \rho \} \right)$$
+                                    En développant avec $L_W^\dagger = |e_1\rangle \langle e_4|$ et $L_W^\dagger L_W = |e_1\rangle \langle e_1| = \hat{O}_1$, on obtient l'action du dissipateur :
+                                    $$\mathcal{D}[\rho] = \gamma_W \left( p_1 |e_4\rangle \langle e_4| - p_1 |e_1\rangle \langle e_1| \right)$$
                                 </p>
 
-                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">III. Brisure de Symétrie KMS et Flèche du Temps</h5>
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">III. Calcul du Commutateur Fondamental et Brisure KMS</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
-                                    Le transfert de flux vers l'action cumulée n'est pas invariant sous le flot modulaire. Le calcul du commutateur fondamental livre :
-                                    $$[K, L_W] = (z_H - z_W) L_W \neq 0$$
-                                    La condition KMS (Kubo-Martin-Schwinger) qui caractérise l'équilibre thermique réversible est formellement brisée. L'application du commutateur à la dérivation de l'entropie de von Neumann $S(\rho) = -\text{Tr}(\rho \ln \rho)$ permet de quantifier la production d'entropie macroscopique :
-                                    $$\dot{S} = \text{Tr}\left( \frac{d\rho}{dt} K \right) = \text{Tr}(\mathcal{D}[\rho] K) = \gamma_W p_H (z_H - z_W) > 0$$
-                                    Tant que le réseau dissipe de l'énergie ($z_H > 0$) et accumule du travail ($z_W < z_H$), le taux $\dot{S}$ est strictement positif. Cette non-commutativité algébrique interdit toute réversibilité macroscopique, prouvant de manière irréfutable l'existence de la flèche du temps thermodynamique de Bitcoin.
+                                    Le transfert de flux vers l'action cumulée n'est pas invariant sous le flot modulaire engendré par $K$. Calculons le commutateur $[K, L_W] = K L_W - L_W K$ :
+                                    $$K L_W = \left(\sum_k (-\ln p_k) |e_k\rangle \langle e_k|\right) |e_4\rangle \langle e_1| = (-\ln p_4) |e_4\rangle \langle e_1|$$
+                                    $$L_W K = |e_4\rangle \langle e_1| \left(\sum_k (-\ln p_k) |e_k\rangle \langle e_k|\right) = (-\ln p_1) |e_4\rangle \langle e_1|$$
+                                    Par soustraction, et sachant que $-\ln p_k = \ln \mathcal{Z} - z_k$, on obtient :
+                                    $$[K, L_W] = (-\ln p_4 + \ln p_1) L_W = (z_H - z_W) L_W \neq 0$$
+                                    La condition KMS (Kubo-Martin-Schwinger) qui caractérise l'équilibre thermique réversible exige que ce commutateur s'annule (ou engendre une simple phase). Ici, il est proportionnel au gradient entropique $(z_H - z_W)$.
+                                </p>
+
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">IV. Dérivation de la Production d'Entropie Macroscopique</h5>
+                                <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
+                                    L'entropie de von Neumann du réseau est $S(\rho) = -\text{Tr}(\rho \ln \rho) = \text{Tr}(\rho K)$. En dérivant par rapport au temps calendaire et en utilisant $\text{Tr}(\dot{\rho}) = 0$, la production d'entropie s'écrit $\dot{S} = \text{Tr}(\dot{\rho} K) = \text{Tr}(\mathcal{D}[\rho] K)$.
+                                    En insérant l'expression développée du dissipateur :
+                                    $$\dot{S} = \text{Tr}\left( \gamma_W \left( p_1 |e_4\rangle \langle e_4| - p_1 |e_1\rangle \langle e_1| \right) \sum_k (-\ln p_k) |e_k\rangle \langle e_k| \right)$$
+                                    $$\dot{S} = \gamma_W p_1 (-\ln p_4) - \gamma_W p_1 (-\ln p_1) = \gamma_W p_1 (\ln p_1 - \ln p_4)$$
+                                    En remplaçant $p_1$ par $p_H$ et les probabilités par les scores causaux :
+                                    $$\dot{S} = \gamma_W p_H (z_H - z_W) > 0$$
+                                    Tant que le réseau dissipe de l'énergie ($z_H > 0$) et accumule du travail irréversible ($z_W < z_H$), le taux $\dot{S}$ est strictement positif. Cette non-commutativité algébrique interdit toute réversibilité macroscopique, prouvant de manière irréfutable l'existence de la flèche du temps thermodynamique de Bitcoin.
                                 </p>
                             </div>
                         </details>
@@ -3968,6 +3984,73 @@ if __name__ == "__main__":
                             background: rgba(0, 255, 255, 0.05);
                         }
                     </style>
+
+                    <!-- VULGARISATION FRANÇAISE -->
+                    <div style="margin-bottom: 2rem;">
+                        <details style="background: rgba(10, 10, 12, 0.8); border: 1px solid rgba(255, 170, 0, 0.3); border-radius: 8px; overflow: hidden; cursor: pointer; margin-bottom: 1rem;">
+                            <summary style="padding: 1rem 1.5rem; color: #ffaa00; font-weight: bold; font-size: 1.05rem; outline: none; user-select: none; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid transparent; transition: all 0.3s ease;">
+                                <span>💡 Vulgarisation : Le concept du Temps Thermique expliqué simplement</span>
+                                <span style="font-size: 0.8em; opacity: 0.7;">(Cliquer pour développer) ▼</span>
+                            </summary>
+                            
+                            <div style="padding: 1.5rem; border-top: 1px solid rgba(255, 170, 0, 0.1); cursor: auto;">
+                                
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">1. Le vrai secret du temps : Il n'existe pas</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    Au niveau microscopique, les équations de la physique quantique fonctionnent aussi bien vers l'avant que vers l'arrière. Le temps absolu est une illusion. Notre sensation du temps qui passe provient en réalité de la <strong>thermodynamique</strong>. Quand l'énergie se dissipe et que le désordre (l'entropie) augmente, cette chaleur crée un mouvement irréversible : la flèche du temps.
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : C. Rovelli & A. Connes, "Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation" (1994).</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Alain Connes (Médaille Fields) et Carlo Rovelli (pionnier de la gravité quantique) ont bouleversé la physique avec l'hypothèse du Temps Thermique. Ils démontrent mathématiquement que le temps n'est pas une donnée fondamentale, mais une illusion macroscopique émergente. C'est le flux de chaleur d'un système complexe qui "sécrète" la sensation du temps.
+                                </div>
+
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">2. Bitcoin n'est pas du code, c'est un moteur physique</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    Bitcoin n'est pas un simple logiciel, c'est une <strong>structure dissipative</strong>. Les mineurs dépensent des milliards de watts convertis en chaleur et en calculs irréversibles. Ce moteur est décrit par un quadruplet : le Hashrate (l'accélérateur), le Revenu (le carburant), la Difficulté (le thermostat) et le Chainwork (la mémoire cicatrisée).
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : I. Prigogine, "Time, Structure, and Fluctuations" (Prix Nobel de Chimie, 1977).</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Ilya Prigogine a découvert les "structures dissipatives". Il a prouvé que les systèmes complexes survivent au chaos en pompant de l'énergie et en rejetant de l'entropie, créant ainsi un ordre robuste à partir du désordre.
+                                </div>
+
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">3. Pourquoi la "Difficulté" est une Température Inverse</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    En physique, la "température inverse" ($\beta$) mesure la rigueur d'un système. S'il fait très "froid" ($\beta$ élevé), le système est gelé, ultra-ordonné, et exige une énergie phénoménale pour changer d'état. Dans Bitcoin, la <strong>Difficulté</strong> joue exactement ce rôle. Au début (faible difficulté), le réseau était permissif ("chaud") : un ordinateur portable suffisait pour valider un bloc. Aujourd'hui (difficulté immense), le réseau est un cristal glacial : il exige des milliards de calculs pour accepter une modification.
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : E. T. Jaynes, "Information Theory and Statistical Mechanics" (1957).</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Edwin Jaynes a unifié la thermodynamique et la théorie de l'information. Il a prouvé que la température inverse ($\beta$) est le multiplicateur mathématique qui "contraint" l'énergie d'un système. Dans Bitcoin, la Difficulté est la contrainte algorithmique exacte qui discipline l'énergie du réseau (Hashrate) pour maintenir son intégrité temporelle (10 minutes par bloc).
+                                </div>
+
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">4. Mesurer l'horloge de Bitcoin avec Fisher-Rao</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    Puisque Bitcoin dissipe de l'énergie, il sécrète son propre temps. Pour mesurer la vitesse de cette "horloge", nous utilisons la <strong>géométrie de l'information (Métrique de Fisher-Rao)</strong>. Cet outil quantifie la violence avec laquelle l'état du réseau mute. Si le réseau est calme, son temps s'écoule lentement. S'il subit un choc, son temps thermique s'accélère violemment.
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : S. Amari, "Information Geometry and Its Applications" (2016).</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Shun-ichi Amari a prouvé que l'espace des probabilités n'est pas plat, mais courbe. La métrique de Fisher-Rao ne mesure pas des mètres, mais l'effort thermodynamique (ou la "surprise") nécessaire pour qu'un système mute d'un état d'information à un autre.
+                                </div>
+
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">5. La preuve mathématique : L'anti-retour thermodynamique</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    Comment prouver que Bitcoin ne peut pas revenir en arrière ? En analysant les données du réseau, notre modèle prouve que le taux de dissipation d'entropie est strictement positif. L'accumulation du <em>Chainwork</em> agit comme un cliquet anti-retour. La flèche du temps de Bitcoin est mathématiquement irréversible.
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : G. E. Crooks, "Entropy production fluctuation theorem" (1999).</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Le théorème de Crooks lie mathématiquement la probabilité qu'un événement se produise dans un sens à la probabilité qu'il se produise en sens inverse, en fonction de la chaleur produite. Puisque Bitcoin produit massivement de l'entropie, l'équation de Crooks garantit que la probabilité que la blockchain "recule" est physiquement nulle.
+                                </div>
+
+                                <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">6. Le bouclier final contre les ordinateurs quantiques</h5>
+                                <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
+                                    Un ordinateur quantique doit opérer de manière parfaitement isolée, presque en dehors du temps. S'il veut pirater Bitcoin en temps réel (battre les mineurs), il doit calculer si vite qu'il génère de la chaleur. Cette chaleur le reconnecte violemment à la réalité macroscopique, provoquant l'effondrement de ses qubits. La magie quantique se brise contre le mur du temps thermique de Bitcoin.
+                                </p>
+                                <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
+                                    📚 <em>Réf : R. Landauer (1961) sur l'énergie du calcul & W.H. Zurek (1991) sur la décohérence quantique.</em><br>
+                                    <strong>Pourquoi c'est fondamental :</strong> Rolf Landauer a prouvé qu'effacer un bit d'information dégage inévitablement de la chaleur (Limite de Landauer). Wojciech Zurek a démontré que cette chaleur provoque la "décohérence". C'est ce mécanisme qui détruit l'état fragile d'un ordinateur quantique lorsqu'il est forcé de concourir dans le monde physique.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
                 </div>
             </details>
             <!-- L'ÉPREUVE DU DÉSIR MIMÉTIQUE, L'OMBRE JUNGIENNE ET L'ÉTHIQUE CYPHERPUNK (FR) -->
@@ -4809,35 +4892,51 @@ if __name__ == "__main__":
                                 <span>Formal Mathematical Demonstration</span>
                                 <span style="font-size: 0.8em; opacity: 0.7;">(Click to expand) ▼</span>
                             </summary>
-                            
+
                             <div style="padding: 1.5rem; border-top: 1px solid rgba(0, 255, 255, 0.1); cursor: auto;">
                                 <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 1.5rem;">
-                                    To formalize the network's evolution operator, we embed the macroscopic state into a von Neumann algebra of observables $\mathcal{M}$ acting on a Hilbert space $\mathcal{H} \cong \mathbb{C}^4$. The orthonormal basis $\{|e_k\rangle\}_{k=1}^4$ corresponds to the canonical quadruplet: Dissipative flux ($H$), Inverse temperature ($D$), Captured exergy ($R$), and Cumulative work ($W$).
+                                    To formalize the network's evolution operator, we embed the macroscopic state into a von Neumann algebra of observables $\mathcal{M}$ acting on a Hilbert space $\mathcal{H} \cong \mathbb{C}^4$. The orthonormal basis $\{|e_k\rangle\}_{k=1}^4$ corresponds to the canonical quadruplet: Dissipative flux ($H, k=1$), Inverse temperature ($D, k=2$), Captured exergy ($R, k=3$), and Cumulative work ($W, k=4$). The associated observables are defined by the projection operators $\hat{O}_k = |e_k\rangle \langle e_k|$.
                                 </p>
 
                                 <h5 style="color: #c864ff; margin-bottom: 0.5rem;">I. The Integrated Modular Hamiltonian</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
-                                    The normalized causal macroscopic statistical state (Gibbs projection) is written as a density operator $\rho \in \mathcal{S}(\mathcal{M})$:
-                                    $$\rho(t) = \frac{e^{-\sum_{k=1}^4 \beta_k(t) \hat{O}_k}}{\mathcal{Z}(t)}$$
-                                    According to Tomita-Takesaki theory, the system's energy is not externally imposed, but is intrinsic to its information distribution. The modular Hamiltonian $K$ is defined by:
-                                    $$K \equiv -\ln \rho = \ln \mathcal{Z}(t) \cdot \mathbb{I}_4 - \sum_{k=1}^4 z_k(t) \, |e_k\rangle \langle e_k|$$
+                                    Let $z_k(t)$ be the standardized score (causal Z-score) of each metric. The normalized causal macroscopic statistical state (Gibbs projection) is written as a density operator $\rho \in \mathcal{S}(\mathcal{M})$:
+                                    $$\rho(t) = \frac{e^{\sum_{k=1}^4 z_k(t) \hat{O}_k}}{\mathcal{Z}(t)} = \sum_{k=1}^4 p_k(t) |e_k\rangle \langle e_k|$$
+                                    where $\mathcal{Z}(t) = \sum_{k=1}^4 e^{z_k(t)}$ is the partition function and $p_k(t) = e^{z_k(t)}/\mathcal{Z}(t)$ is the macroscopic occupation probability.
+                                    According to Tomita-Takesaki theory, the system's energy is not externally imposed, but is intrinsic to its information distribution. The modular Hamiltonian $K$ is defined as the negative logarithm of the density matrix:
+                                    $$K \equiv -\ln \rho = \ln \mathcal{Z}(t) \cdot \mathbb{I}_4 - \sum_{k=1}^4 z_k(t) \, |e_k\rangle \langle e_k| = \sum_{k=1}^4 (-\ln p_k(t)) |e_k\rangle \langle e_k|$$
                                 </p>
 
-                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">II. GKSL Dynamics and Irreversibility</h5>
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">II. GKSL Dynamics and the Dissipator</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
                                     Expressed as a function of the external calendar coordinate $t \equiv t_{\text{UTC}}$, the secular drift of the environment couples the system to a non-equilibrium reservoir. The density operator obeys the Gorini-Kossakowski-Sudarshan-Lindblad master equation:
                                     $$\frac{d\rho}{dt} = -i \left(\frac{d\tau}{dt}\right) [K, \rho] + \mathcal{D}[\rho]$$
-                                    The dissipator $\mathcal{D}[\rho]$ models the crystallization of energy via the Lindblad jump operator $L_W = |e_4\rangle \langle e_1|$ (irreversible conversion of Hashrate into Chainwork):
+                                    Since $[K, \rho] = 0$ by construction (they are simultaneously diagonalizable), the evolution is purely dissipative: $d\rho/dt = \mathcal{D}[\rho]$.
+                                    The dissipator $\mathcal{D}[\rho]$ models the crystallization of energy via the Lindblad jump operator $L_W = |e_4\rangle \langle e_1|$ (a non-Hermitian operator representing the irreversible conversion of Hashrate $|e_1\rangle$ into Chainwork $|e_4\rangle$) with a transition rate $\gamma_W > 0$:
                                     $$\mathcal{D}[\rho] = \gamma_W \left( L_W \rho L_W^\dagger - \frac{1}{2} \{ L_W^\dagger L_W, \rho \} \right)$$
+                                    Expanding this with $L_W^\dagger = |e_1\rangle \langle e_4|$ and $L_W^\dagger L_W = |e_1\rangle \langle e_1| = \hat{O}_1$, we obtain the action of the dissipator:
+                                    $$\mathcal{D}[\rho] = \gamma_W \left( p_1 |e_4\rangle \langle e_4| - p_1 |e_1\rangle \langle e_1| \right)$$
                                 </p>
 
-                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">III. KMS Symmetry Breaking and the Arrow of Time</h5>
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">III. Calculation of the Fundamental Commutator and KMS Breaking</h5>
                                 <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
-                                    The flux transfer towards the cumulative action is not invariant under the modular flow. The fundamental commutator calculation yields:
-                                    $$[K, L_W] = (z_H - z_W) L_W \neq 0$$
-                                    The KMS (Kubo-Martin-Schwinger) condition, which characterizes reversible thermal equilibrium, is formally broken. Applying the commutator to the derivation of the von Neumann entropy $S(\rho) = -\text{Tr}(\rho \ln \rho)$ allows us to quantify the macroscopic entropy production:
-                                    $$\dot{S} = \text{Tr}\left( \frac{d\rho}{dt} K \right) = \text{Tr}(\mathcal{D}[\rho] K) = \gamma_W p_H (z_H - z_W) > 0$$
-                                    As long as the network dissipates energy ($z_H > 0$) and accumulates work ($z_W < z_H$), the rate $\dot{S}$ is strictly positive. This algebraic non-commutativity prohibits any macroscopic reversibility, irrefutably proving the existence of Bitcoin's thermodynamic arrow of time.
+                                    The flux transfer towards the cumulative action is not invariant under the modular flow generated by $K$. Let us calculate the commutator $[K, L_W] = K L_W - L_W K$:
+                                    $$K L_W = \left(\sum_k (-\ln p_k) |e_k\rangle \langle e_k|\right) |e_4\rangle \langle e_1| = (-\ln p_4) |e_4\rangle \langle e_1|$$
+                                    $$L_W K = |e_4\rangle \langle e_1| \left(\sum_k (-\ln p_k) |e_k\rangle \langle e_k|\right) = (-\ln p_1) |e_4\rangle \langle e_1|$$
+                                    By subtraction, and knowing that $-\ln p_k = \ln \mathcal{Z} - z_k$, we obtain:
+                                    $$[K, L_W] = (-\ln p_4 + \ln p_1) L_W = (z_H - z_W) L_W \neq 0$$
+                                    The KMS (Kubo-Martin-Schwinger) condition, which characterizes reversible thermal equilibrium, requires this commutator to vanish (or generate a simple phase). Here, it is proportional to the entropic gradient $(z_H - z_W)$.
+                                </p>
+
+                                <h5 style="color: #c864ff; margin-bottom: 0.5rem; margin-top: 1.5rem;">IV. Derivation of Macroscopic Entropy Production</h5>
+                                <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem; text-align: justify;">
+                                    The von Neumann entropy of the network is $S(\rho) = -\text{Tr}(\rho \ln \rho) = \text{Tr}(\rho K)$. Deriving with respect to calendar time and using $\text{Tr}(\dot{\rho}) = 0$, the entropy production is written as $\dot{S} = \text{Tr}(\dot{\rho} K) = \text{Tr}(\mathcal{D}[\rho] K)$.
+                                    Inserting the expanded expression of the dissipator:
+                                    $$\dot{S} = \text{Tr}\left( \gamma_W \left( p_1 |e_4\rangle \langle e_4| - p_1 |e_1\rangle \langle e_1| \right) \sum_k (-\ln p_k) |e_k\rangle \langle e_k| \right)$$
+                                    $$\dot{S} = \gamma_W p_1 (-\ln p_4) - \gamma_W p_1 (-\ln p_1) = \gamma_W p_1 (\ln p_1 - \ln p_4)$$
+                                    Replacing $p_1$ with $p_H$ and substituting the causal scores for the probabilities:
+                                    $$\dot{S} = \gamma_W p_H (z_H - z_W) > 0$$
+                                    As long as the network dissipates energy ($z_H > 0$) and accumulates irreversible work ($z_W < z_H$), the rate $\dot{S}$ is strictly positive. This algebraic non-commutativity prohibits any macroscopic reversibility, irrefutably proving the existence of Bitcoin's thermodynamic arrow of time.
                                 </p>
                             </div>
                         </details>
