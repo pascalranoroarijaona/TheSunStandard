@@ -3717,6 +3717,7 @@
                         </div>  
                     </details>
                     </div>
+                    
                     <!-- 4. GÉOMÉTRIE DE FISHER-RAO & TEMPS THERMIQUE -->
                     <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: bold;">
                         4. Métrique de Fisher-Rao & Émergence du Temps Thermique
@@ -3969,8 +3970,8 @@ if __name__ == "__main__":
     print(f"Vitesse Modulaire Moyenne <dtau> : {np.mean(d_tau):.4f} rad/semaine")
     print(f"Taux de Dissipation S_dot       : {s_dot:.4f} nats/semaine")
     print(f"Égalité de Jarzynski <e^(-σ)>   : {jarzynski:.4f} (Cible = 1.0)")</code></pre>
-            </div>
-        </div>
+                                </div>
+                            </div>
                         </details>
                     </div>
 
@@ -4051,8 +4052,9 @@ if __name__ == "__main__":
                             </div>
                         </details>
                     </div>
-                </div>
-            </details>
+                </div> <!-- CLÔTURE DE div lang="fr" -->
+            </details> <!-- CLÔTURE DU NIVEAU EXPERT FR -->
+
             <!-- L'ÉPREUVE DU DÉSIR MIMÉTIQUE, L'OMBRE JUNGIENNE ET L'ÉTHIQUE CYPHERPUNK (FR) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">L'Épreuve du Désir Mimétique, l'Ombre Jungienne et le Bouclier Cypherpunk</strong><br />
@@ -4441,6 +4443,7 @@ if __name__ == "__main__":
                         </p>
                     </div>
                 </details>
+            </div>
             
             <!-- CONCLUSION FR (SANS HEIDEGGER) -->
             <p style="margin-bottom: 1.5rem;">
@@ -4460,7 +4463,6 @@ if __name__ == "__main__":
                 <p style="margin-bottom: 1.5rem;">
                     Si la thermodynamique rend l'homme incapable d'être un loup pour l'homme, elle ne le transforme pas par magie en un saint. Elle le place simplement devant un miroir. Dépouillé de l'alibi de la survie prédatrice, l'humain n'aura d'autre choix que de devenir ce qu'il a toujours eu le potentiel d'être : non plus un loup pour son frère, mais un jardinier pour son monde et un architecte pour l'éternité. C'est ainsi que nous écrirons, ensemble, la suite de l'histoire humaine.
                 </p>
-                </span>
             </p>
         </div>
 
@@ -4496,7 +4498,6 @@ if __name__ == "__main__":
                 </svg>
             </span>
             
-
             <!-- DÉDICACE PIERRE RABHI & PÈRE PEDRO (AKAMASOA) FR -->
             <div style="margin-top: 4rem; max-width: 850px; margin-left: auto; margin-right: auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
                 <p style="color: var(--text-muted, #9ca3af); font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
@@ -4520,7 +4521,6 @@ if __name__ == "__main__":
         </div>
 
     </div>
-
 
     <!-- ========================================== -->
     <!-- VERSION ANGLAISE                           -->
@@ -4668,6 +4668,7 @@ if __name__ == "__main__":
                     </script>
                 </div>
             </div>
+            
             <!-- ========================================== -->
             <!-- EXPERT LEVEL - ENGLISH VERSION             -->
             <!-- ========================================== -->
@@ -4731,24 +4732,25 @@ if __name__ == "__main__":
                             <strong>\(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\) (Bounded Gauge Curvature):</strong> The bounded adjustment clamp \(\text{clip}_{[1/4,\,4]}\) enforces a maximum field curvature, eliminating chaotic runaway dynamics.
                         </li>
                     </ul>
+
                     <!-- ========================================== -->
                     <!-- ENGLISH BLOCK (lang="en")                  -->
                     <!-- ========================================== -->
                     <div lang="en">
-                    <p style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.05rem;">
-                        To understand the genius behind Nakamoto's choice of <strong>2016 blocks</strong> (about 14 days) for the DAA window, let us put the network to the test. What happens if 50% of the world's miners suddenly turn off their machines? We simulate 9 different adjustment windows ($W$) under this extreme thermodynamic shock.
-                    </p>
-
-                    <details>
-                        <summary style="margin-top: 2rem; margin-bottom: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #ffffff; border-radius: 0 8px 8px 0; overflow: hidden; padding: 1rem 1.5rem; cursor: pointer; font-weight: bold; color: #ffffff; outline: none; list-style-type: '▶ ';">
-                        <div class="engineer-title" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: bold; color: #fff;">
-                            💻 Engineer's View: The Cybernetic Thermostat (<code>pow.cpp</code>)
-                        </div>
-                        </summary>
-                        <p style="margin-top: 1rem; color: #b0c4de;">
-                        In the <code>pow.cpp</code> file of Bitcoin Core, the mathematical theory becomes an uncompromising software reality. The function calculates <code>nActualTimespan</code> (the real physical time elapsed during the last 2016 blocks). To prevent violent mathematical instability during extreme shocks, it strictly bounds this time between a factor of $0.25$ and $4.0$. It then applies the fundamental DAA ratio: the new cryptographic target is simply the old target multiplied by the actual time and divided by the expected time. This minimalist C++ function is the supreme cybernetic governor of the network.
+                        <p style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.05rem;">
+                            To understand the genius behind Nakamoto's choice of <strong>2016 blocks</strong> (about 14 days) for the DAA window, let us put the network to the test. What happens if 50% of the world's miners suddenly turn off their machines? We simulate 9 different adjustment windows ($W$) under this extreme thermodynamic shock.
                         </p>
-                        <pre><code><span class="comment">// pow.cpp</span>
+
+                        <details>
+                            <summary style="margin-top: 2rem; margin-bottom: 1rem; background: rgba(200, 100, 255, 0.05); border-left: 3px solid #ffffff; border-radius: 0 8px 8px 0; overflow: hidden; padding: 1rem 1.5rem; cursor: pointer; font-weight: bold; color: #ffffff; outline: none; list-style-type: '▶ ';">
+                            <div class="engineer-title" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: bold; color: #fff;">
+                                💻 Engineer's View: The Cybernetic Thermostat (<code>pow.cpp</code>)
+                            </div>
+                            </summary>
+                            <p style="margin-top: 1rem; color: #b0c4de;">
+                            In the <code>pow.cpp</code> file of Bitcoin Core, the mathematical theory becomes an uncompromising software reality. The function calculates <code>nActualTimespan</code> (the real physical time elapsed during the last 2016 blocks). To prevent violent mathematical instability during extreme shocks, it strictly bounds this time between a factor of $0.25$ and $4.0$. It then applies the fundamental DAA ratio: the new cryptographic target is simply the old target multiplied by the actual time and divided by the expected time. This minimalist C++ function is the supreme cybernetic governor of the network.
+                            </p>
+                            <pre><code><span class="comment">// pow.cpp</span>
 <span class="type">unsigned int</span> <span class="function">CalculateNextWorkRequired</span>(<span class="keyword">const</span> CBlockIndex* pindexLast, <span class="type">int64_t</span> nFirstBlockTime, <span class="keyword">const</span> Consensus::Params& params) {
     <span class="keyword">if</span> (params.fPowNoRetargeting)
         <span class="keyword">return</span> pindexLast->nBits;
@@ -4772,52 +4774,52 @@ if __name__ == "__main__":
 
     <span class="keyword">return</span> bnNew.<span class="function">GetCompact</span>();
 }
-                </code></pre>
-                        
-                    </details>
-
-                    <details class="practical-details">
-                        <summary class="practical-summary" style="cursor: pointer; font-weight: bold; color: #ffcc00; margin: 1rem 0;">
-                        Open the Mathematical Model & Simulation
-                        </summary>
-                        
-                        <div class="practical-content">
-                        <h2>1. The Stochastic Model of Block Discovery</h2>
-                        <p>Bitcoin mining is akin to a Poisson process. The probability of finding a block at a given time is independent of the time elapsed since the last block. The time required to find block $t_i$ follows an exponential distribution.</p>
-                        
-                        <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-                            <p>The mathematical expectation depends on the Difficulty ($D$) and the Hashrate ($H$):</p>
-                            $$\mathbb{E}[T] = T_{target} \times \frac{D}{H}$$
+                            </code></pre>
                             
-                            <p>For each block, the generated time is drawn from:</p>
-                            $$t_i \sim \text{Exp}(\lambda) \quad \text{with} \quad \lambda = \frac{H}{T_{target} \times D}$$
-                        </div>
+                        </details>
 
-                        <h2>2. The Difficulty Adjustment Algorithm (DAA)</h2>
-                        <p>Every $W$ blocks, the protocol compares the actual cumulative time $T_{actual}$ to the expected ideal time $T_{expected}$.</p>
+                        <details class="practical-details">
+                            <summary class="practical-summary" style="cursor: pointer; font-weight: bold; color: #ffcc00; margin: 1rem 0;">
+                            Open the Mathematical Model & Simulation
+                            </summary>
+                            
+                            <div class="practical-content">
+                            <h2>1. The Stochastic Model of Block Discovery</h2>
+                            <p>Bitcoin mining is akin to a Poisson process. The probability of finding a block at a given time is independent of the time elapsed since the last block. The time required to find block $t_i$ follows an exponential distribution.</p>
+                            
+                            <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                                <p>The mathematical expectation depends on the Difficulty ($D$) and the Hashrate ($H$):</p>
+                                $$\mathbb{E}[T] = T_{target} \times \frac{D}{H}$$
+                                
+                                <p>For each block, the generated time is drawn from:</p>
+                                $$t_i \sim \text{Exp}(\lambda) \quad \text{with} \quad \lambda = \frac{H}{T_{target} \times D}$$
+                            </div>
 
-                        <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-                            $$T_{actual} = \sum_{i=1}^{W} t_i \quad \text{and} \quad T_{expected} = W \times T_{target}$$
-                            $$D_{new} = D_{old} \times \max\left(0.25, \, \min\left(4.0, \, \frac{T_{expected}}{T_{actual}}\right)\right)$$
-                        </div>
+                            <h2>2. The Difficulty Adjustment Algorithm (DAA)</h2>
+                            <p>Every $W$ blocks, the protocol compares the actual cumulative time $T_{actual}$ to the expected ideal time $T_{expected}$.</p>
 
-                        <h2>3. Monte Carlo Simulation and Variance</h2>
-                        <p>We measure the Variance ($\sigma^2$) post-stabilization using the Monte Carlo method (empirical mean over $M$ iterations):</p>
+                            <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                                $$T_{actual} = \sum_{i=1}^{W} t_i \quad \text{and} \quad T_{expected} = W \times T_{target}$$
+                                $$D_{new} = D_{old} \times \max\left(0.25, \, \min\left(4.0, \, \frac{T_{expected}}{T_{actual}}\right)\right)$$
+                            </div>
 
-                        <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-                            $$\bar{\sigma}^2 = \frac{1}{M} \sum_{j=1}^{M} \sigma_j^2 \quad \text{with} \quad \sigma^2 = \frac{1}{N} \sum_{k=1}^{N} (D_k - \mu)^2$$
-                        </div>
+                            <h2>3. Monte Carlo Simulation and Variance</h2>
+                            <p>We measure the Variance ($\sigma^2$) post-stabilization using the Monte Carlo method (empirical mean over $M$ iterations):</p>
 
-                        <h2>4. Simulation Results: 50% Hashrate Drop</h2>
-                        
-                        <img src="blog/img/DAA-TP.png" alt="John Nash PoW" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);">
+                            <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                                $$\bar{\sigma}^2 = \frac{1}{M} \sum_{j=1}^{M} \sigma_j^2 \quad \text{with} \quad \sigma^2 = \frac{1}{N} \sum_{k=1}^{N} (D_k - \mu)^2$$
+                            </div>
+
+                            <h2>4. Simulation Results: 50% Hashrate Drop</h2>
+                            
+                            <img src="blog/img/DAA-TP.png" alt="John Nash PoW" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);">
 
 
-                        <h3>Console Output (Dynamically Calculated Variance)</h3>
-                        <p>These results come from the Monte Carlo simulation (50 iterations) calculating the residual "noise":</p>
+                            <h3>Console Output (Dynamically Calculated Variance)</h3>
+                            <p>These results come from the Monte Carlo simulation (50 iterations) calculating the residual "noise":</p>
 
-                        <div class="console-box" style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; color: #44ee77;">
-                            <pre style="margin: 0;">
+                            <div class="console-box" style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; color: #44ee77;">
+                                <pre style="margin: 0;">
                     ============================================================
                     SIMULATION START: BTC-DAA THERMODYNAMIC SHOCK
                     ============================================================
@@ -4843,17 +4845,18 @@ if __name__ == "__main__":
                     [9] W=20160 (140 d)   : Variance = 0.000000  -> TOTAL INERTIA
                     ============================================================
                     SIMULATION COMPLETE.
-                            </pre>
-                        </div>
-                        
-                        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 204, 0, 0.05); border-left: 4px solid #ffcc00; border-radius: 0 8px 8px 0;">
-                            <p style="margin: 0; font-style: italic; color: #ffcc00;">
-                            <strong>Conclusion:</strong> $W=2016$ is the precise mathematical equilibrium point between hyper-vulnerability to noise (short windows skewed by miner luck) and unacceptable temporal network paralysis during a shock (giant windows).
-                            </p>
-                        </div>
-                        </div>  
-                    </details>
-                    </div>
+                                </pre>
+                            </div>
+                            
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 204, 0, 0.05); border-left: 4px solid #ffcc00; border-radius: 0 8px 8px 0;">
+                                <p style="margin: 0; font-style: italic; color: #ffcc00;">
+                                <strong>Conclusion:</strong> $W=2016$ is the precise mathematical equilibrium point between hyper-vulnerability to noise (short windows skewed by miner luck) and unacceptable temporal network paralysis during a shock (giant windows).
+                                </p>
+                            </div>
+                            </div>  
+                        </details>
+                    </div> <!-- CLOSING DIV FOR lang="en" -->
+
                     <!-- 4. FISHER-RAO GEOMETRY & THERMAL TIME -->
                     <h4 style="color: #c864ff; margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: bold;">
                         4. Fisher-Rao Metric & Emergence of Thermal Time
@@ -4923,6 +4926,7 @@ if __name__ == "__main__":
                             </table>
                         </div>
                     </div>
+
                     <!-- CONCLUSION AND NAKAMOTO'S THERMAL TIME THEOREM -->
                     <div style="margin-bottom: 2rem;">
                         <!-- Main insert (Conclusion) -->
@@ -5109,84 +5113,8 @@ if __name__ == "__main__":
                             </div>
                         </details>
                     </div>
-
-                    <!-- CSS Script to handle the <details> animation -->
-                    <style>
-                        details > summary::-webkit-details-marker {
-                            display: none;
-                        }
-                        details[open] > summary {
-                            border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
-                            background: rgba(0, 255, 255, 0.05);
-                        }
-                    </style>
-                </div>
-                <!-- ENGLISH POPULAR SCIENCE -->
-<div style="margin-bottom: 2rem;">
-    <details style="background: rgba(10, 10, 12, 0.8); border: 1px solid rgba(255, 170, 0, 0.3); border-radius: 8px; overflow: hidden; cursor: pointer; margin-bottom: 1rem;">
-        <summary style="padding: 1rem 1.5rem; color: #ffaa00; font-weight: bold; font-size: 1.05rem; outline: none; user-select: none; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid transparent; transition: all 0.3s ease;">
-            <span>💡 Popular Science: The Concept of Thermal Time Explained Simply</span>
-            <span style="font-size: 0.8em; opacity: 0.7;">(Click to expand) ▼</span>
-        </summary>
-        
-        <div style="padding: 1.5rem; border-top: 1px solid rgba(255, 170, 0, 0.1); cursor: auto;">
-            
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">1. The Real Secret of Time: It Doesn't Exist</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                At the microscopic level, the equations of quantum physics work just as well backwards as forwards. Absolute time is an illusion. Our sensation of passing time actually comes from <strong>thermodynamics</strong>. When energy dissipates and disorder (entropy) increases, this heat creates an irreversible movement: the arrow of time.
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: C. Rovelli & A. Connes, "Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation" (1994).</em><br>
-                <strong>Why it is fundamental:</strong> Alain Connes (Fields Medalist) and Carlo Rovelli (a pioneer of quantum gravity) disrupted modern physics with the Thermal Time Hypothesis. They mathematically demonstrate that time is not a fundamental property of the universe, but an emergent macroscopic illusion. It is the heat flux of a complex system that "secretes" the sensation of time.
-            </div>
-
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">2. Bitcoin is Not Code, It's a Physical Engine</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                Bitcoin is not just software; it is a <strong>dissipative structure</strong>. Miners spend billions of watts converted into heat and irreversible computations. This engine is described by a quadruplet: Hashrate (the accelerator), Revenue (the fuel), Difficulty (the thermostat), and Chainwork (the scarred memory).
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: I. Prigogine, "Time, Structure, and Fluctuations" (Nobel Prize in Chemistry, 1977).</em><br>
-                <strong>Why it is fundamental:</strong> Ilya Prigogine discovered "dissipative structures." He proved that complex systems survive by pumping in energy and exporting entropy, thereby creating robust order out of disorder.
-            </div>
-
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">3. Why "Difficulty" is an Inverse Temperature</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                In physics, "inverse temperature" ($\beta$) measures a system's rigor. If it is very "cold" (high $\beta$), the system is frozen, highly ordered, and demands phenomenal energy to change state. In Bitcoin, <strong>Difficulty</strong> plays exactly this role. Early on (low difficulty), the network was permissive ("hot"): a laptop could validate a block. Today (immense difficulty), the network is a glacial crystal: it demands billions of calculations to accept a modification.
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: E. T. Jaynes, "Information Theory and Statistical Mechanics" (1957).</em><br>
-                <strong>Why it is fundamental:</strong> Edwin Jaynes unified thermodynamics and information theory. He proved that inverse temperature ($\beta$) is the mathematical multiplier that "constrains" a system's energy. In Bitcoin, Difficulty is the exact algorithmic constraint that disciplines the network's energy (Hashrate) to maintain its temporal integrity (10 minutes per block).
-            </div>
-
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">4. Measuring Bitcoin's Clock with Fisher-Rao</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                Since Bitcoin dissipates energy, it secretes its own time. To measure the speed of this "clock," we use <strong>information geometry (Fisher-Rao Metric)</strong>. This tool quantifies the violence with which the network's state mutates. If the network is calm, its time flows slowly. If it suffers a shock, its thermal time accelerates violently.
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: S. Amari, "Information Geometry and Its Applications" (2016).</em><br>
-                <strong>Why it is fundamental:</strong> Shun-ichi Amari proved that probability space is curved. The Fisher-Rao metric does not measure meters, but the thermodynamic effort (or "surprise") required for a system to mutate from one information state to another.
-            </div>
-
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">5. The Mathematical Proof: The Thermodynamic Ratchet</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                How do we prove that Bitcoin cannot go backwards? By analyzing network data, our model proves that the rate of entropy dissipation is strictly positive. The accumulation of <em>Chainwork</em> acts as a one-way ratchet. Bitcoin's arrow of time is mathematically irreversible.
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: G. E. Crooks, "Entropy production fluctuation theorem" (1999).</em><br>
-                <strong>Why it is fundamental:</strong> Crooks' theorem mathematically links the probability of an event occurring in a forward direction to the probability of it occurring in reverse, based on the heat produced. Since Bitcoin massively produces entropy, Crooks' equation guarantees that the probability of the blockchain "reversing" is physically zero.
-            </div>
-
-            <h5 style="color: #ffcc00; margin-bottom: 0.5rem;">6. The Final Shield Against Quantum Computers</h5>
-            <p style="color: #d1d5db; line-height: 1.6; margin-bottom: 0.5rem; text-align: justify;">
-                A quantum computer must operate in perfect isolation, almost outside of time. If it wants to hack Bitcoin in real-time (to beat the miners), it must compute so fast that it generates heat. This heat violently reconnects it to macroscopic reality, causing its qubits to collapse (decoherence). Quantum magic shatters against the wall of Bitcoin's thermal time.
-            </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border-left: 2px solid #9ca3af; padding: 0.8rem; margin-bottom: 1.5rem; font-size: 0.85em; color: #9ca3af; text-align: justify;">
-                📚 <em>Ref: R. Landauer (1961) on the energy of computation & W.H. Zurek (1991) on quantum decoherence.</em><br>
-                <strong>Why it is fundamental:</strong> Rolf Landauer proved that erasing a bit of information inevitably releases heat (Landauer's Limit). Wojciech Zurek demonstrated that this heat causes "decoherence." This is the relentless mechanism that destroys the fragile state of a quantum computer when it is forced to compete in the physical world.
-            </div>
-        </div>
-    </details>
-            </details>
+                </div> <!-- THIS IS THE MISSING CLOSING TAG FOR THE CONTENT DIV -->
+            </details> 
             <!-- THE ORDEAL OF MIMETIC DESIRE, THE JUNGIAN SHADOW, AND THE CYPHERPUNK ETHIC (EN) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">The Ordeal of Mimetic Desire, the Jungian Shadow, and the Cypherpunk Shield</strong><br />
@@ -5366,19 +5294,6 @@ if __name__ == "__main__":
                 <em>Two Paths: The inevitable concentration of a fiat-AI paradigm versus the decentralized resilience of cryptographic consensus.</em>
                 </p>
             </div>
-
-            <p style="margin-bottom: 1.5rem;">
-                <strong style="color: #F7931A; font-size: 1.1em;">The Redefinition of Wealth and Legacy</strong><br />
-                Since the protocol makes coercion physically impossible, it metamorphoses our ultimate relationship with death and property. In the traditional fiat system, wealth is ultimately just a temporary lease granted by the State. At the moment of death, the Leviathan automatically steps in to extract its share through inheritance taxes. It is an extractive mechanism by default, based on legal compulsion and the forced transparency of banking ledgers. The transmission of a lifetime of labor is reduced to a cold, administrative procedure.
-            </p>
-
-            <p style="margin-bottom: 1.5rem;">
-                Bitcoin erects a mathematical wall against this predation. What happens when a node goes dark without transmitting its memory (its private keys)? The value is not seized by the State or confiscated by a bank; it is mathematically locked forever in cyberspace. Yet, this irreversible loss is not a destruction of value: it acts as a silent gift to the entire network. By permanently decreasing the circulating money supply, the value of the lost coins is instantly and equitably transferred into the purchasing power of all other holders. It is the ultimate thermodynamic sacrifice for the benefit of the collective.
-            </p>
-
-            <p style="margin-bottom: 1.5rem;">
-                Conversely, if the individual chooses to pass on their deferred energy, the process becomes profoundly intimate once again. Transmitting private keys to the next generation is no longer a notarized act; it is a pure, conscious, and voluntary act of education, trust, and love. It demands preparing one's heirs while still alive, initiating them into the sovereign responsibility of their own digital security. Legacy leaves the realm of bureaucracy to revert to an organic rite of passage, reminding us of a great truth: what we leave behind should not be seized by force, but offered by choice.
-            </p>
             
             <p style="margin-bottom: 1.5rem;"><strong style="color: #F7931A; font-size: 1.1em;">Alètheia Against the Digital Deluge</strong><br />
             This transition occurs at the most critical moment of the information age. At a time when Artificial Intelligence reduces the marginal cost of producing falsified information to zero, we are entering the era of hyper-relativism and infinite inflation of fake digital content. Against this deluge, the protocol erects an ultimate epistemological bulwark: Absolute Digital Scarcity. Julian Assange emphasized that the essence of Bitcoin is to be a verifiable proof of publication on a global scale <em>(proof of concept: the Trinity project detailed in the <a href="#about" style="color: #4499ff;">Open Source</a> section)</em>. 
@@ -5522,6 +5437,11 @@ if __name__ == "__main__":
             <p style="margin-bottom: 1.5rem;">
                 This is where John Wheeler's <em>It from Bit</em> axiom achieves its full ontological weight. If physical reality (<em>It</em>) emerges from information (<em>Bit</em>), the Nakamoto protocol accomplishes a sacred synthesis between pure information and Heideggerian finitude. By anchoring the <em>Bit</em> into thermodynamic irreversibility (Proof of Work), the network endows digital information with the very metric of our mortal finitude. The 21 million asymptote is not an arbitrary accounting rule: it is the cryptographic crystallization of our finite time. The code does not dematerialize value to escape reality; it sanctuaries the irreplaceable quantum of each human lifespan within an incorruptible collective memory.
             </p>
+
+            <!-- ========================================== -->
+            <!-- LE PACEMAKER DE LA CIVILISATION -->
+            <!-- ========================================== -->
+
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">The Civilizational Pacemaker and the Fractal of Hearts</strong><br />
                 Ultimately, we are nothing but stardust desperately trying to organize our own complexity. On this Earth, all life is a thermodynamic poem: we depend on the slow work of photosynthesis, converting the light of our Sun into sap, blood, and movement. Metaphorically, every human being is a biological blockchain. We absorb the warmth of the world, we exchange information, pain, and love, and we engrave these interactions into the unalterable memory of our cells.
@@ -5580,6 +5500,7 @@ if __name__ == "__main__":
                     border-bottom: 1px solid rgba(139, 195, 74, 0.2) !important;
                 }
             </style>
+            
             <!-- CONCLUSION EN (WITHOUT HEIDEGGER) -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">Conclusion: The Hope of a New Age of Enlightenment</strong><br />
@@ -5659,8 +5580,7 @@ if __name__ == "__main__":
 
     </div>
 
-
-    <!-- ========================================== -->
+    <<!-- ========================================== -->
     <!-- SCRIPT COMMUN POUR L'ANIMATION 3D          -->
     <!-- ========================================== -->
     <!-- ========================================== -->
@@ -7538,6 +7458,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </script>
     
 </section>
+
 
 <section id="about">
     <p class="section-label">
