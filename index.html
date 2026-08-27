@@ -7313,7 +7313,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Encapsulation dans une IIFE pour éviter les conflits globaux
       (() => {
         // === CONFIGURATION COMMUNE ===
-        const numStars = 400;
+        const numStars = 400; // You can increase this to 600 if you want a denser Bitcoin galaxy when it's full width
         
         // Classe générique pour une étoile/nœud
         class Star {
@@ -7326,7 +7326,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (this.isBitcoin) {
               // Bitcoin : Orbite stable, distribution en galaxie spirale
-              this.radius = 50 + Math.random() * 180;
+              // If you made it full width, you might want to increase the max radius here
+              this.radius = 50 + Math.random() * 250; // Increased radius for full width
               this.speed = (0.5 + Math.random()) * 0.01 * (250 / this.radius); 
               this.size = Math.random() * 2 + 0.5;
               this.color = Math.random() > 0.5 ? '#ffcc00' : '#ffffff';
@@ -7349,7 +7350,6 @@ document.addEventListener("DOMContentLoaded", () => {
               this.radius -= this.speed * 20; // Le rayon diminue (attraction vers le centre)
               
               // Si l'étoile est avalée par le centre, on la fait réapparaître en périphérie
-              // (représente les nouveaux entrants dans le système vampirisés à leur tour)
               if (this.radius < 5) {
                 this.radius = 250;
                 this.angle = Math.random() * Math.PI * 2;
@@ -7359,7 +7359,9 @@ document.addEventListener("DOMContentLoaded", () => {
       
           draw(ctx) {
             const x = this.cx + Math.cos(this.angle) * this.radius;
-            const y = this.cy + Math.sin(this.angle) * this.radius;
+            // For a wider canvas, you might want to squash the Y axis slightly for a 3D tilt effect:
+            // const y = this.cy + Math.sin(this.angle) * this.radius * 0.6; 
+            const y = this.cy + Math.sin(this.angle) * this.radius; 
             
             ctx.beginPath();
             ctx.arc(x, y, this.size, 0, Math.PI * 2);
@@ -7380,22 +7382,29 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       
-        // === INITIALISATION DES CANEVAS ===
+        // === INITIALISATION SÉCURISÉE DES CANEVAS ===
         const canvasBtc = document.getElementById('galaxyBitcoinCanvas');
-        const ctxBtc = canvasBtc.getContext('2d');
-        const cxBtc = canvasBtc.width / 2;
-        const cyBtc = canvasBtc.height / 2;
-        const starsBtc = Array.from({length: numStars}, () => new Star(cxBtc, cyBtc, true));
+        let ctxBtc, cxBtc, cyBtc, starsBtc;
+        
+        if (canvasBtc) {
+            ctxBtc = canvasBtc.getContext('2d');
+            cxBtc = canvasBtc.width / 2;
+            cyBtc = canvasBtc.height / 2;
+            starsBtc = Array.from({length: numStars}, () => new Star(cxBtc, cyBtc, true));
+        }
       
         const canvasFiat = document.getElementById('galaxyFiatCanvas');
-        const ctxFiat = canvasFiat.getContext('2d');
-        const cxFiat = canvasFiat.width / 2;
-        const cyFiat = canvasFiat.height / 2;
-        const starsFiat = Array.from({length: numStars}, () => new Star(cxFiat, cyFiat, false));
+        let ctxFiat, cxFiat, cyFiat, starsFiat;
+        
+        if (canvasFiat) {
+            ctxFiat = canvasFiat.getContext('2d');
+            cxFiat = canvasFiat.width / 2;
+            cyFiat = canvasFiat.height / 2;
+            starsFiat = Array.from({length: numStars}, () => new Star(cxFiat, cyFiat, false));
+        }
       
         // === DESSIN DES SINGULARITÉS ===
         function drawSingularityBtc(ctx, cx, cy) {
-          // Le centre Bitcoin : Vide noir lumineux, mathématique, stable
           const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
           grad.addColorStop(0, 'rgba(0, 0, 0, 1)');
           grad.addColorStop(0.5, 'rgba(0, 0, 0, 1)');
@@ -7407,7 +7416,6 @@ document.addEventListener("DOMContentLoaded", () => {
           ctx.fillStyle = grad;
           ctx.fill();
       
-          // Petit halo algorithmique autour (le consensus)
           ctx.beginPath();
           ctx.arc(cx, cy, 22, 0, Math.PI * 2);
           ctx.strokeStyle = 'rgba(255, 204, 0, 0.15)';
@@ -7418,7 +7426,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       
         function drawSingularityFiat(ctx, cx, cy, time) {
-          // Le centre Fiat : Un trou rouge supermassif, turbulent, qui aspire
           const pulse = Math.sin(time * 0.05) * 5;
           const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 60 + pulse);
           grad.addColorStop(0, 'rgba(20, 0, 0, 1)');
@@ -7440,40 +7447,46 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!isGalaxyVisible) return;
           time++;
       
-          // Effacement avec effet de rémanence (Motion Blur)
-          ctxBtc.fillStyle = 'rgba(5, 5, 5, 0.2)';
-          ctxBtc.fillRect(0, 0, canvasBtc.width, canvasBtc.height);
+          if (canvasBtc) {
+              ctxBtc.fillStyle = 'rgba(5, 5, 5, 0.2)'; // OR rgba(2, 5, 15, 0.25) depending on your background
+              ctxBtc.fillRect(0, 0, canvasBtc.width, canvasBtc.height);
+              starsBtc.forEach(star => { star.update(); star.draw(ctxBtc); });
+              drawSingularityBtc(ctxBtc, cxBtc, cyBtc);
+          }
           
-          ctxFiat.fillStyle = 'rgba(8, 3, 3, 0.2)';
-          ctxFiat.fillRect(0, 0, canvasFiat.width, canvasFiat.height);
-      
-          // Mise à jour et dessin des étoiles
-          starsBtc.forEach(star => { star.update(); star.draw(ctxBtc); });
-          starsFiat.forEach(star => { star.update(); star.draw(ctxFiat); });
-      
-          // Dessin des centres par-dessus les étoiles
-          drawSingularityBtc(ctxBtc, cxBtc, cyBtc);
-          drawSingularityFiat(ctxFiat, cxFiat, cyFiat, time);
+          if (canvasFiat) {
+              ctxFiat.fillStyle = 'rgba(8, 3, 3, 0.2)';
+              ctxFiat.fillRect(0, 0, canvasFiat.width, canvasFiat.height);
+              starsFiat.forEach(star => { star.update(); star.draw(ctxFiat); });
+              drawSingularityFiat(ctxFiat, cxFiat, cyFiat, time);
+          }
       
           galaxyAnimationFrameId = requestAnimationFrame(animateGalaxies);
         }
         
         // Optimisation : Ne jouer l'animation que lorsque la section est visible
-        const galaxyObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                isGalaxyVisible = entry.isIntersecting;
-                if (isGalaxyVisible) {
-                    animateGalaxies();
-                } else {
-                    if (galaxyAnimationFrameId) cancelAnimationFrame(galaxyAnimationFrameId);
-                }
-            });
-        }, { threshold: 0.1 });
+        // Target the parent element of whatever canvas exists
+        let targetElement = null;
+        if (canvasBtc) targetElement = canvasBtc.parentElement;
+        else if (canvasFiat) targetElement = canvasFiat.parentElement;
         
-        galaxyObserver.observe(canvasBtc.parentElement.parentElement);
+        if (targetElement) {
+            const galaxyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isGalaxyVisible = entry.isIntersecting;
+                    if (isGalaxyVisible) {
+                        animateGalaxies();
+                    } else {
+                        if (galaxyAnimationFrameId) cancelAnimationFrame(galaxyAnimationFrameId);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            galaxyObserver.observe(targetElement);
+        }
       })();
       </script>
-    
+      
 </section>
 
 
