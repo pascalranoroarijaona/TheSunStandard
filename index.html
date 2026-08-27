@@ -7323,7 +7323,237 @@ document.addEventListener("DOMContentLoaded", () => {
                 « Nous sommes de la poussière d'étoiles organisant sa propre complexité. »
             </p>
         </div>
+        <!-- ========================================== -->
+<!-- SCRIPT : HOMO BIODIVERSITAS (CONSTELLATION)-->
+<!-- ========================================== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Check if Three.js is loaded
+    if (typeof THREE === "undefined") {
+        console.error("Three.js is required for the Human Constellation animation.");
+        return;
+    }
 
+    const canvasId = 'humanConstellationCanvas';
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    // --- Configuration ---
+    const width = canvas.parentElement.clientWidth || 600;
+    const height = canvas.parentElement.clientHeight || 500;
+    const numParticles = 4000;
+    
+    // --- Scene Setup ---
+    const scene = new THREE.Scene();
+    // Deep space background to match the galaxy theme
+    scene.background = new THREE.Color(0x02050f); 
+    scene.fog = new THREE.FogExp2(0x02050f, 0.03);
+
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 0, 35); // Look straight at the figure
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // --- Mathematical Human Silhouette Generation ---
+    // Instead of loading an image, we mathematically map points into a rough human silhouette
+    // using probability distributions for head, torso, arms, and legs.
+    const positions = new Float32Array(numParticles * 3);
+    const colors = new Float32Array(numParticles * 3);
+    const sizes = new Float32Array(numParticles);
+    const basePositions = []; // Store base positions for the breathing animation
+
+    const colorGold = new THREE.Color(0xffcc00);
+    const colorWhite = new THREE.Color(0xffffff);
+    const colorBlue = new THREE.Color(0x88bbff);
+
+    for (let i = 0; i < numParticles; i++) {
+        let x, y, z;
+        const part = Math.random();
+
+        // 1. Head (10% of particles)
+        if (part < 0.10) {
+            const angle = Math.random() * Math.PI * 2;
+            const r = Math.random() * 2.5; // Head radius
+            x = Math.cos(angle) * r;
+            y = 12 + Math.sin(angle) * r; // Head height
+            z = (Math.random() - 0.5) * 3;
+        } 
+        // 2. Torso (45% of particles)
+        else if (part < 0.55) {
+            x = (Math.random() - 0.5) * 8; // Torso width
+            y = 2 + Math.random() * 8;     // Torso height
+            z = (Math.random() - 0.5) * 4;
+            // Taper waist
+            x *= (1 + (y - 2) * 0.1); 
+        } 
+        // 3. Arms (15% of particles)
+        else if (part < 0.70) {
+            const isLeft = Math.random() > 0.5;
+            x = (isLeft ? -5 : 5) + (Math.random() - 0.5) * 2; // Arm X offset
+            y = 4 + Math.random() * 6; // Arm height
+            z = (Math.random() - 0.5) * 2;
+            // Slope arms down slightly
+            x += (isLeft ? -1 : 1) * ((10 - y) * 0.3);
+        } 
+        // 4. Legs (30% of particles)
+        else {
+            const isLeft = Math.random() > 0.5;
+            x = (isLeft ? -2 : 2) + (Math.random() - 0.5) * 2.5; // Leg X offset
+            y = -8 + Math.random() * 10; // Leg height
+            z = (Math.random() - 0.5) * 2.5;
+        }
+
+        basePositions.push({ x, y, z });
+
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        // Assign colors based on position
+        // Heart area gets a golden glow
+        let distanceToHeart = Math.sqrt(x*x + Math.pow(y - 8, 2) + z*z);
+        let starColor;
+        
+        if (distanceToHeart < 3.0) {
+            starColor = colorGold;
+            sizes[i] = Math.random() * 0.8 + 0.5; // Bigger stars near heart
+        } else {
+            starColor = Math.random() > 0.7 ? colorBlue : colorWhite;
+            sizes[i] = Math.random() * 0.4 + 0.1; // Smaller stars elsewhere
+        }
+
+        colors[i * 3] = starColor.r;
+        colors[i * 3 + 1] = starColor.g;
+        colors[i * 3 + 2] = starColor.b;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    // Custom Shader Material for glowing, pulsing stars
+    const material = new THREE.ShaderMaterial({
+        uniforms: {
+            time: { value: 0.0 }
+        },
+        vertexShader: `
+            uniform float time;
+            attribute float size;
+            attribute vec3 color;
+            varying vec3 vColor;
+            void main() {
+                vColor = color;
+                
+                // Add subtle turbulence to positions
+                vec3 pos = position;
+                pos.x += sin(time * 0.5 + pos.y) * 0.2;
+                pos.z += cos(time * 0.3 + pos.x) * 0.2;
+                
+                vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+                
+                // Pulse the size of the stars
+                float pulse = 1.0 + sin(time * 2.0 + position.x * 10.0) * 0.3;
+                gl_PointSize = size * pulse * (50.0 / -mvPosition.z);
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        `,
+        fragmentShader: `
+            varying vec3 vColor;
+            void main() {
+                // Create a soft circular glow instead of square pixels
+                float dist = length(gl_PointCoord - vec2(0.5));
+                if (dist > 0.5) discard;
+                
+                float alpha = (0.5 - dist) * 2.0; // Soft edge
+                gl_FragColor = vec4(vColor, alpha * 0.8);
+            }
+        `,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+
+    const starSystem = new THREE.Points(geometry, material);
+    // Center the figure slightly down
+    starSystem.position.y = -2;
+    scene.add(starSystem);
+
+    // --- Orbit Controls (Optional, allowing user to rotate the figure) ---
+    let controls = null;
+    if (typeof THREE.OrbitControls !== "undefined") {
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false; // Disable zoom to keep composition
+        controls.enablePan = false;
+        controls.autoRotate = true;  // Slowly spin the constellation
+        controls.autoRotateSpeed = 0.5;
+    }
+
+    // --- Animation Loop ---
+    const clock = new THREE.Clock();
+    let isVisible = false;
+    let animationId;
+
+    function animate() {
+        if (!isVisible) return;
+        animationId = requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+        
+        // Update shader time for pulsing
+        material.uniforms.time.value = elapsedTime;
+
+        // 5-5-5 Breathing effect (Expansion and Contraction of the whole system)
+        // 15 second cycle = (2 * PI) / 15 frequency
+        const breathCycle = Math.sin(elapsedTime * (Math.PI * 2 / 15)); 
+        // Very subtle expansion factor (1.0 to 1.05)
+        const expansion = 1.0 + (breathCycle + 1) * 0.025; 
+
+        // Apply breathing expansion to particles
+        const posAttribute = geometry.attributes.position;
+        for (let i = 0; i < numParticles; i++) {
+            const base = basePositions[i];
+            posAttribute.setXYZ(
+                i, 
+                base.x * expansion, 
+                base.y * expansion, 
+                base.z * expansion
+            );
+        }
+        posAttribute.needsUpdate = true;
+
+        if (controls) controls.update();
+        renderer.render(scene, camera);
+    }
+
+    // --- Visibility Observer (Performance Optimization) ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            if (isVisible) {
+                animate();
+            } else {
+                if (animationId) cancelAnimationFrame(animationId);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(canvas.parentElement);
+
+    // --- Responsive Design ---
+    window.addEventListener('resize', () => {
+        const newWidth = canvas.parentElement.clientWidth;
+        const newHeight = canvas.parentElement.clientHeight;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+    });
+});
+</script>
       <script>
       // Encapsulation dans une IIFE pour éviter les conflits globaux
       (() => {
