@@ -32,6 +32,160 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+            /* --- IA ASSISTANT WIDGET CSS --- */
+            #ai-widget-container {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 1000;
+                font-family: var(--font-ui, sans-serif);
+            }
+
+            #ai-chat-bubble {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, var(--sun-orange), var(--sun-yellow));
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(255, 170, 0, 0.4);
+                position: relative;
+                transition: transform 0.3s ease;
+            }
+
+            #ai-chat-bubble:hover {
+                transform: scale(1.1);
+            }
+
+            .ai-icon {
+                font-size: 1.8rem;
+                position: relative;
+                z-index: 2;
+            }
+
+            .ai-pulse {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: var(--sun-yellow);
+                border-radius: 50%;
+                z-index: 1;
+                opacity: 0.6;
+                animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+
+            @keyframes ping {
+                75%, 100% {
+                    transform: scale(1.8);
+                    opacity: 0;
+                }
+            }
+
+            #ai-chat-window {
+                position: absolute;
+                bottom: 80px;
+                right: 0;
+                width: 320px;
+                background: rgba(10, 10, 12, 0.95);
+                border: 1px solid var(--border-glow);
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+                display: none;
+                flex-direction: column;
+                overflow: hidden;
+                backdrop-filter: blur(10px);
+                transform-origin: bottom right;
+                animation: popUp 0.3s ease forwards;
+            }
+
+            @keyframes popUp {
+                from { opacity: 0; transform: scale(0.8); }
+                to { opacity: 1; transform: scale(1); }
+            }
+
+            .ai-header {
+                background: rgba(255, 170, 0, 0.1);
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgba(255, 170, 0, 0.2);
+            }
+
+            .ai-header h4 {
+                color: var(--sun-yellow);
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            .ai-header button {
+                background: transparent;
+                border: none;
+                color: #fff;
+                font-size: 1.5rem;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            .ai-body {
+                padding: 1.2rem;
+            }
+
+            .ai-body textarea {
+                width: 100%;
+                height: 80px;
+                background: rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                padding: 0.8rem;
+                color: #fff;
+                font-family: inherit;
+                resize: none;
+                margin-bottom: 1rem;
+            }
+
+            .ai-body textarea:focus {
+                outline: none;
+                border-color: var(--sun-yellow);
+            }
+
+            .ai-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn-ai {
+                padding: 0.6rem;
+                border-radius: 6px;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 0.9rem;
+                transition: background 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .gemini-btn {
+                background: #1a73e8;
+                color: white;
+            }
+            .gemini-btn:hover { background: #1557b0; }
+
+            .chatgpt-btn {
+                background: #10a37f;
+                color: white;
+            }
+            .chatgpt-btn:hover { background: #0b8061; }
+
+            /* Handle Language logic for textareas */
+            body.lang-en #ai-prompt-input-fr { display: none; }
+            body.lang-fr #ai-prompt-input { display: none; }
+            body.lang-fr #ai-prompt-input-fr { display: block !important; }
             .scene-container {
                 position: relative;
                 width: 300px;
@@ -606,9 +760,9 @@
     </div>
     <ul>
         <li><a href="#theo"><span lang="en">Theory of Value</span><span lang="fr">Théorie de la Valeur</span></a></li>
-        <li><a href="#the-basics"><span lang="en">Money Basics</span><span lang="fr">Monnaie 101</span></a></li>
-        <li><a href="#thesis"><span lang="en">Empirical Proof</span><span lang="fr">Preuve Empirique</span></a></li>
-        <li><a href="#monetary-debate"><span lang="en">Debate</span><span lang="fr">Débat</span></a></li>
+        <li><a href="#the-basics"><span lang="en">Money Basics</span><span lang="fr">La Technologie de la Monnaie</span></a></li>
+        <li><a href="#thesis"><span lang="en">Empirical Proof</span><span lang="fr">La Preuve Empirique</span></a></li>
+        <li><a href="#monetary-debate"><span lang="en">Debate</span><span lang="fr">Le Débat MMT vs BTC</span></a></li>
         <li><a href="#methodology"><span lang="en">Methodology</span><span lang="fr">Méthodologie</span></a></li>
         <li><a href="#philo"><span lang="en">Philosophy</span><span lang="fr">Philosophie</span></a></li>
         <li><a href="#updates"><span lang="en">Updates</span><span lang="fr">Updates</span></a></li>
@@ -3407,7 +3561,9 @@
     <div class="epilogue-container" lang="fr">
         
         <p class="model-note">Cette section quitte volontairement le registre scientifique strict pour proposer une interprétation philosophique et symbolique du protocole Nakamoto.</p>
-
+        <h2 style="color: #F7931A; text-align: left;">
+            Bitcoin, l'énergie, le temps et la reconstruction de la confiance
+        </h2>
         <!-- Citation de John Nash -->
         <div style="margin: 3rem auto; max-width: 900px; padding: 2rem; background: rgba(255, 204, 0, 0.05); border-left: 4px solid var(--sun-yellow); border-radius: 0 12px 12px 0;">
             <p style="font-style: italic; color: #d1d5db; line-height: 1.8; margin-bottom: 1rem;">
@@ -3427,9 +3583,6 @@
         
         <!-- CORPS DU TEXTE FR -->
         <div class="bitcoin-essay" style="font-weight: 300; letter-spacing: 0.3px; text-align: justify; line-height: 1.8; color: #d1d5db;">
-            <h2 style="color: #F7931A; text-align: left;">
-                Bitcoin, l'énergie, le temps et la reconstruction de la confiance
-            </h2>
 
             <p style="margin-bottom: 1.5rem;">
                 <strong>
@@ -9671,5 +9824,45 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 <!-- Charger TikZJax de manière asynchrone à la fin du body -->
 <script async src="https://tikzjax.com/v1/tikzjax.js"></script>
+<!-- ========================================== -->
+<!-- IA ASSISTANT WIDGET (GEMINI / CHATGPT)     -->
+<!-- ========================================== -->
+<div id="ai-widget-container">
+    <div id="ai-chat-bubble" onclick="toggleChat()">
+        <span class="ai-icon">💡</span>
+        <span class="ai-pulse"></span>
+    </div>
+
+    <div id="ai-chat-window">
+        <div class="ai-header">
+            <h4 lang="en">☀ Solar AI Assistant</h4>
+            <h4 lang="fr">☀ Assistant IA Solaire</h4>
+            <button onclick="toggleChat()">×</button>
+        </div>
+        
+        <div class="ai-body">
+            <p lang="en" style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">
+                Need help understanding a concept like Emergy, Thermodynamic Time, or John Nash's theories? Ask your personal AI.
+            </p>
+            <p lang="fr" style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">
+                Besoin d'aide pour comprendre un concept comme l'Émergie, le Temps Thermique ou les théories de John Nash ? Posez la question à votre IA personnelle.
+            </p>
+
+            <textarea id="ai-prompt-input" placeholder="What is the difference between fiat and thermodynamic time?..." lang="en"></textarea>
+            <textarea id="ai-prompt-input-fr" placeholder="Quelle est la différence entre la monnaie fiat et le temps thermique ?..." lang="fr" style="display:none;"></textarea>
+
+            <div class="ai-actions">
+                <button onclick="launchAI('gemini')" class="btn-ai gemini-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini" width="16" style="vertical-align: middle; margin-right: 5px;">
+                    Ask Gemini
+                </button>
+                <button onclick="launchAI('chatgpt')" class="btn-ai chatgpt-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" width="16" style="vertical-align: middle; margin-right: 5px;">
+                    Ask ChatGPT
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
