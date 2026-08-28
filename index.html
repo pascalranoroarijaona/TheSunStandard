@@ -9827,6 +9827,9 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ========================================== -->
 <!-- CHATBOT WIDGET EN DIRECT (GEMINI FLASH)     -->
 <!-- ========================================== -->
+<!-- ========================================== -->
+<!-- CHATBOT WIDGET EN DIRECT (GEMINI FLASH)    -->
+<!-- ========================================== -->
 <div id="solar-chat-widget">
     <!-- Bouton Flottant -->
     <div id="chat-bubble" onclick="toggleSolarChat()">
@@ -9836,9 +9839,14 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- Fenêtre de Discussion -->
     <div id="chat-window">
         <div class="chat-header">
-            <span lang="en">☀ Solar AI Assistant</span>
-            <span lang="fr">☀ Assistant IA Solaire</span>
-            <button onclick="toggleSolarChat()">×</button>
+            <div>
+                <span lang="en">☀ Solar AI Assistant</span>
+                <span lang="fr">☀ Assistant IA Solaire</span>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button onclick="downloadChatHistory()" title="Download Conversation" style="font-size: 1.1rem;">📥</button>
+                <button onclick="toggleSolarChat()" title="Close">×</button>
+            </div>
         </div>
         
         <div id="chat-messages">
@@ -9885,8 +9893,14 @@ document.addEventListener("DOMContentLoaded", () => {
     position: absolute;
     bottom: 75px;
     right: 0;
-    width: 350px;
-    height: 450px;
+    
+    /* --- DIMENSIONS OPTIMISÉES (x2) ET REDIMENSIONNABLES --- */
+    width: min(400px, 60vw); /* Taille par défaut : 700px ou la largeur de l'écran si plus petit */
+    height: min(580px, 90vh);
+    min-width: 320px; /* Taille minimale pour éviter que l'utilisateur ne le casse */
+    min-height: 400px;
+    resize: both; /* Permet le redimensionnement manuel par l'utilisateur */
+    
     background: rgba(8, 8, 12, 0.95);
     border: 1px solid var(--border-glow);
     border-radius: 12px;
@@ -9895,6 +9909,8 @@ document.addEventListener("DOMContentLoaded", () => {
     flex-direction: column;
     overflow: hidden;
     backdrop-filter: blur(12px);
+    transform-origin: bottom right;
+    animation: popUp 0.3s ease forwards;
 }
 
 .chat-header {
@@ -9913,23 +9929,29 @@ document.addEventListener("DOMContentLoaded", () => {
     color: #fff;
     font-size: 1.4rem;
     cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+.chat-header button:hover {
+    transform: scale(1.2);
+    color: var(--sun-yellow);
 }
 
 #chat-messages {
     flex: 1;
-    padding: 1rem;
+    padding: 1.5rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 0.9rem;
+    gap: 15px;
+    font-size: 1.05rem; /* Police légèrement plus grande pour la lisibilité */
+    line-height: 1.6;
 }
 
 .chat-msg {
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
     border-radius: 8px;
-    max-width: 85%;
-    line-height: 1.5;
+    max-width: 90%; 
 }
 .bot-msg {
     background: rgba(255, 255, 255, 0.05);
@@ -9942,6 +9964,15 @@ document.addEventListener("DOMContentLoaded", () => {
     color: #fff;
     align-self: flex-end;
 }
+
+/* Gestion du Markdown généré par l'IA */
+.chat-msg p { margin-bottom: 0.8rem; }
+.chat-msg p:last-child { margin-bottom: 0; }
+.chat-msg h1, .chat-msg h2, .chat-msg h3 { margin-top: 1rem; margin-bottom: 0.5rem; color: var(--sun-yellow); font-size: 1.15rem; }
+.chat-msg ul, .chat-msg ol { margin-left: 1.5rem; margin-bottom: 0.8rem; }
+.chat-msg li { margin-bottom: 0.3rem; }
+.chat-msg pre { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 0.8rem; }
+.chat-msg code { font-family: monospace; color: #4499ff; background: rgba(0,0,0,0.3); padding: 0.1rem 0.3rem; border-radius: 3px; }
 
 .chat-input-area {
     padding: 0.8rem;
@@ -9957,7 +9988,7 @@ document.addEventListener("DOMContentLoaded", () => {
     border-radius: 6px;
     padding: 0.6rem;
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 .chat-input-area input:focus {
     outline: none;
@@ -9973,6 +10004,18 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor: pointer;
 }
 
+/* Animation "Réflexion..." */
+.loading-dots:after {
+  content: ' .';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+@keyframes dots {
+  0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);}
+  40% { color: #fff; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);}
+  60% { text-shadow: .25em 0 0 #fff, .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% { text-shadow: .25em 0 0 #fff, .5em 0 0 #fff;}
+}
+
 /* Gestion de la langue pour les inputs */
 body.lang-en #chat-user-input-fr { display: none; }
 body.lang-fr #chat-user-input { display: none; }
@@ -9980,6 +10023,7 @@ body.lang-fr #chat-user-input-fr { display: block !important; flex: 1; }
 </style>
 
 <script>
+// --- LOGIQUE D'AFFICHAGE ---
 function toggleSolarChat() {
     const win = document.getElementById('chat-window');
     win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
@@ -9989,6 +10033,39 @@ function handleChatKey(e) {
     if (e.key === 'Enter') sendSolarMessage();
 }
 
+// --- LOGIQUE DE TÉLÉCHARGEMENT DE LA CONVERSATION ---
+function downloadChatHistory() {
+    const isFrench = document.body.classList.contains('lang-fr');
+    const messages = document.querySelectorAll('.chat-msg');
+    let content = isFrench ? "--- ARCHIVE DE LA CONVERSATION : THE SUN STANDARD ---\n\n" : "--- CHAT ARCHIVE : THE SUN STANDARD ---\n\n";
+
+    messages.forEach(msg => {
+        // Ignorer l'indicateur de chargement
+        if (msg.id === 'loading-resp') return;
+        
+        const isUser = msg.classList.contains('user-msg');
+        const role = isUser ? (isFrench ? "Vous : " : "You : ") : "Solar AI : ";
+        // .innerText préserve un peu mieux la structure du texte (sauts de ligne) que .textContent
+        content += role + msg.innerText + "\n\n"; 
+    });
+
+    // Créer le fichier
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    
+    // Obtenir la date du jour pour nommer le fichier
+    const dateStr = new Date().toISOString().split('T')[0];
+    a.href = url;
+    a.download = `SunStandard_Chat_${dateStr}.txt`;
+    
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// --- LOGIQUE D'ENVOI ET DE RÉCEPTION (API) ---
 async function sendSolarMessage() {
     const isFrench = document.body.classList.contains('lang-fr');
     const inputId = isFrench ? 'chat-user-input-fr' : 'chat-user-input';
@@ -10012,12 +10089,12 @@ async function sendSolarMessage() {
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'chat-msg bot-msg';
     loadingDiv.id = 'loading-resp';
-    loadingDiv.innerHTML = '<span class="loading-dots"></span>'; 
+    loadingDiv.innerHTML = isFrench ? 'Réflexion thermodynamique<span class="loading-dots"></span>' : 'Thinking<span class="loading-dots"></span>'; 
     messagesContainer.appendChild(loadingDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
-        // L'APPEL AU WORKER (Note le /chat à la fin de l'URL)
+        // L'APPEL AU WORKER CLOUDFLARE
         const workerUrl = 'https://empty-surf-077c.sunstandard-ap.workers.dev/chat';
         
         const res = await fetch(workerUrl, {
@@ -10033,12 +10110,22 @@ async function sendSolarMessage() {
         const botDiv = document.createElement('div');
         botDiv.className = 'chat-msg bot-msg';
         
-        // On formate un peu le texte (remplace les retours à la ligne par des <br>)
-        let formattedReply = data.reply || (isFrench ? "Pas de réponse reçue." : "No response received.");
-        formattedReply = formattedReply.replace(/\n/g, '<br>');
+        const rawReply = data.reply || (isFrench ? "Pas de réponse reçue." : "No response received.");
         
-        botDiv.innerHTML = formattedReply;
+        // CONVERSION DU MARKDOWN EN HTML via Marked.js
+        if (typeof marked !== 'undefined') {
+             botDiv.innerHTML = marked.parse(rawReply);
+        } else {
+             // Fallback
+             botDiv.innerHTML = rawReply.replace(/\n/g, '<br>');
+        }
+        
         messagesContainer.appendChild(botDiv);
+
+        // Intégration MathJax si l'IA renvoie du LaTeX
+        if (window.MathJax) {
+            MathJax.typesetPromise([botDiv]);
+        }
 
     } catch (e) {
         document.getElementById('loading-resp').remove();
@@ -10051,6 +10138,10 @@ async function sendSolarMessage() {
 
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+</script>
+<!-- On inclut Marked.js à la toute fin pour la gestion du Markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
 // Ouvre le chat automatiquement 3 secondes après le chargement de la page
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
