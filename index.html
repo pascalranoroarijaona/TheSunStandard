@@ -92,7 +92,7 @@
                 border: 1px solid var(--border-glow);
                 border-radius: 12px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-                display: none;
+                display: flex;
                 flex-direction: column;
                 overflow: hidden;
                 backdrop-filter: blur(10px);
@@ -9825,44 +9825,242 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- Charger TikZJax de manière asynchrone à la fin du body -->
 <script async src="https://tikzjax.com/v1/tikzjax.js"></script>
 <!-- ========================================== -->
-<!-- IA ASSISTANT WIDGET (GEMINI / CHATGPT)     -->
+<!-- CHATBOT WIDGET EN DIRECT (GEMINI FLASH)     -->
 <!-- ========================================== -->
-<div id="ai-widget-container">
-    <div id="ai-chat-bubble" onclick="toggleChat()">
-        <span class="ai-icon">💡</span>
-        <span class="ai-pulse"></span>
+<div id="solar-chat-widget">
+    <!-- Bouton Flottant -->
+    <div id="chat-bubble" onclick="toggleSolarChat()">
+        <span>💬</span>
     </div>
 
-    <div id="ai-chat-window">
-        <div class="ai-header">
-            <h4 lang="en">☀ Solar AI Assistant</h4>
-            <h4 lang="fr">☀ Assistant IA Solaire</h4>
-            <button onclick="toggleChat()">×</button>
+    <!-- Fenêtre de Discussion -->
+    <div id="chat-window">
+        <div class="chat-header">
+            <span lang="en">☀ Solar AI Assistant</span>
+            <span lang="fr">☀ Assistant IA Solaire</span>
+            <button onclick="toggleSolarChat()">×</button>
         </div>
         
-        <div class="ai-body">
-            <p lang="en" style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">
-                Need help understanding a concept like Emergy, Thermodynamic Time, or John Nash's theories? Ask your personal AI.
-            </p>
-            <p lang="fr" style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">
-                Besoin d'aide pour comprendre un concept comme l'Émergie, le Temps Thermique ou les théories de John Nash ? Posez la question à votre IA personnelle.
-            </p>
-
-            <textarea id="ai-prompt-input" placeholder="What is the difference between fiat and thermodynamic time?..." lang="en"></textarea>
-            <textarea id="ai-prompt-input-fr" placeholder="Quelle est la différence entre la monnaie fiat et le temps thermique ?..." lang="fr" style="display:none;"></textarea>
-
-            <div class="ai-actions">
-                <button onclick="launchAI('gemini')" class="btn-ai gemini-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini" width="16" style="vertical-align: middle; margin-right: 5px;">
-                    Ask Gemini
-                </button>
-                <button onclick="launchAI('chatgpt')" class="btn-ai chatgpt-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" width="16" style="vertical-align: middle; margin-right: 5px;">
-                    Ask ChatGPT
-                </button>
+        <div id="chat-messages">
+            <div class="chat-msg bot-msg">
+                <span lang="en">Hello! Ask me anything about the Sun Standard, Thermal Time, or Nash's Ideal Money.</span>
+                <span lang="fr">Bonjour ! Posez-moi vos questions sur l'Étalon Solaire, le Temps Thermique ou la Monnaie de Nash.</span>
             </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" placeholder="Ask a question..." lang="en" onkeypress="handleChatKey(event)">
+            <input type="text" id="chat-user-input-fr" placeholder="Posez une question..." lang="fr" style="display:none;" onkeypress="handleChatKey(event)">
+            <button onclick="sendSolarMessage()">➤</button>
         </div>
     </div>
 </div>
+
+<style>
+/* Style de la boîte de chat en direct */
+#solar-chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: var(--font-ui, sans-serif);
+}
+
+#chat-bubble {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--sun-orange), var(--sun-yellow));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 170, 0, 0.5);
+    font-size: 1.6rem;
+    transition: transform 0.3s;
+}
+#chat-bubble:hover { transform: scale(1.1); }
+
+#chat-window {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background: rgba(8, 8, 12, 0.95);
+    border: 1px solid var(--border-glow);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+
+.chat-header {
+    background: rgba(255, 170, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 170, 0, 0.2);
+    color: var(--sun-yellow);
+    font-weight: bold;
+}
+.chat-header button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.chat-msg {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    max-width: 85%;
+    line-height: 1.5;
+}
+.bot-msg {
+    background: rgba(255, 255, 255, 0.05);
+    color: #d1d5db;
+    align-self: flex-start;
+    border-left: 2px solid var(--sun-yellow);
+}
+.user-msg {
+    background: rgba(255, 170, 0, 0.2);
+    color: #fff;
+    align-self: flex-end;
+}
+
+.chat-input-area {
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 8px;
+}
+.chat-input-area input {
+    flex: 1;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 0.6rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+.chat-input-area input:focus {
+    outline: none;
+    border-color: var(--sun-yellow);
+}
+.chat-input-area button {
+    background: var(--sun-orange);
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    padding: 0 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Gestion de la langue pour les inputs */
+body.lang-en #chat-user-input-fr { display: none; }
+body.lang-fr #chat-user-input { display: none; }
+body.lang-fr #chat-user-input-fr { display: block !important; flex: 1; }
+</style>
+
+<script>
+function toggleSolarChat() {
+    const win = document.getElementById('chat-window');
+    win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function handleChatKey(e) {
+    if (e.key === 'Enter') sendSolarMessage();
+}
+
+async function sendSolarMessage() {
+    const isFrench = document.body.classList.contains('lang-fr');
+    const inputId = isFrench ? 'chat-user-input-fr' : 'chat-user-input';
+    const inputField = document.getElementById(inputId);
+    const text = inputField.value.trim();
+
+    if (!text) return;
+
+    const messagesContainer = document.getElementById('chat-messages');
+
+    // Afficher le message de l'utilisateur
+    const userDiv = document.createElement('div');
+    userDiv.className = 'chat-msg user-msg';
+    userDiv.textContent = text;
+    messagesContainer.appendChild(userDiv);
+
+    inputField.value = '';
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Indicateur de chargement
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'chat-msg bot-msg';
+    loadingDiv.id = 'loading-resp';
+    loadingDiv.innerHTML = '<span class="loading-dots"></span>'; 
+    messagesContainer.appendChild(loadingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        // L'APPEL AU WORKER (Note le /chat à la fin de l'URL)
+        const workerUrl = 'https://empty-surf-077c.sunstandard-ap.workers.dev/chat';
+        
+        const res = await fetch(workerUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text, lang: isFrench ? 'fr' : 'en' })
+        });
+
+        const data = await res.json();
+        document.getElementById('loading-resp').remove();
+
+        // Créer l'élément de réponse
+        const botDiv = document.createElement('div');
+        botDiv.className = 'chat-msg bot-msg';
+        
+        // On formate un peu le texte (remplace les retours à la ligne par des <br>)
+        let formattedReply = data.reply || (isFrench ? "Pas de réponse reçue." : "No response received.");
+        formattedReply = formattedReply.replace(/\n/g, '<br>');
+        
+        botDiv.innerHTML = formattedReply;
+        messagesContainer.appendChild(botDiv);
+
+    } catch (e) {
+        document.getElementById('loading-resp').remove();
+        const errDiv = document.createElement('div');
+        errDiv.className = 'chat-msg bot-msg';
+        errDiv.style.borderColor = '#ff4444';
+        errDiv.textContent = isFrench ? "Erreur de connexion au réseau." : "Network connection error.";
+        messagesContainer.appendChild(errDiv);
+    }
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+// Ouvre le chat automatiquement 3 secondes après le chargement de la page
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const chatWindow = document.getElementById('chat-window');
+        // Vérifie s'il n'est pas DÉJÀ ouvert (si l'utilisateur a cliqué vite)
+        if (chatWindow.style.display !== 'flex') {
+            chatWindow.style.display = 'flex';
+        }
+    }, 800); // 3000 = 3 secondes
+});
+</script>
 </body>
 </html>
