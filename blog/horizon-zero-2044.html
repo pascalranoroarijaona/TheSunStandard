@@ -1,0 +1,1558 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Horizon Zéro 2044 | L'Éveil de la Noosphère (v3.0)</title>
+    <meta name="description" content="Architecture Horizon Zéro 2044 (v3.0) : La Noosphère, Vérité Algorithmique Décentralisée (VAD), Grand Livre Incorruptible, et les Gardiens Telluriques." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #060709;
+            --bg-dark: #040405;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --carbon-red: #d35400;
+            --gold-gov: #ffd700;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
+            --orange-l1: #f7931a;
+            --teal-l0: #00bfa5;
+            --shield-blue: #2962ff;
+            --border-glow: rgba(255, 170, 0, 0.2);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(179, 102, 255, 0.05) 0%, transparent 60%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(8px);
+        }
+        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back:hover { color: #fff; }
+
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.3rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+        }
+
+        article {
+            max-width: 940px; margin: 8rem auto 6rem; padding: 0 2rem;
+            font-size: 1.15rem; color: #d4d4d4;
+        }
+
+        header {
+            text-align: center; margin-bottom: 3.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(179, 102, 255, 0.25); font-family: var(--font-ui);
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.5rem; letter-spacing: -1px; text-transform: uppercase;
+        }
+        h2.header-subtitle {
+            font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: 0.8rem; font-family: var(--font-ui);
+        }
+        .subtitle {
+            font-size: 1.25rem; color: var(--purple-l4); font-style: italic; max-width: 820px; margin: 0 auto;
+        }
+
+        .intro-hero {
+            display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;
+        }
+        .intro-hero img {
+            max-width: 100%; height: auto; border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(179, 102, 255, 0.2);
+            border: 1px solid rgba(179, 102, 255, 0.35); margin-bottom: 1.5rem;
+        }
+        .quote-block {
+            border-left: 3px solid var(--sun-yellow); padding-left: 1.5rem;
+            font-style: italic; color: #fff; font-size: 1.1rem; margin-bottom: 2rem;
+            font-family: var(--font-ui);
+        }
+
+        /* --- STRUCTURE PYRAMIDALE VISUELLE --- */
+        .pyramid-wrapper {
+            margin: 3.5rem 0; padding: 2rem; background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+        }
+        .pyramid-container {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 12px; width: 100%; font-family: var(--font-ui);
+        }
+        .pyramid-tier {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.1rem 1.8rem; border-radius: 8px; border: 1.5px solid;
+            background: rgba(0,0,0,0.8); text-decoration: none; transition: all 0.3s ease;
+            position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 25px rgba(255,204,0,0.2); }
+        
+        .tier-l4 { width: 50%; border-color: var(--purple-l4); background: linear-gradient(90deg, rgba(179,102,255,0.12), rgba(0,0,0,0.9)); }
+        .tier-l3 { width: 65%; border-color: var(--magenta-l3); background: linear-gradient(90deg, rgba(224,64,251,0.12), rgba(0,0,0,0.9)); }
+        .tier-l2 { width: 78%; border-color: var(--cyan-l2); background: linear-gradient(90deg, rgba(0,229,255,0.12), rgba(0,0,0,0.9)); }
+        .tier-l1 { width: 89%; border-color: var(--orange-l1); background: linear-gradient(90deg, rgba(247,147,26,0.15), rgba(0,0,0,0.9)); }
+        .tier-l0 { width: 100%; border-color: var(--teal-l0); background: linear-gradient(90deg, rgba(0,191,165,0.12), rgba(0,0,0,0.9)); }
+
+        .tier-tag { font-family: var(--font-mono); font-weight: bold; font-size: 0.95rem; }
+        .tier-title { font-size: 0.95rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 1rem; }
+
+        /* Container Canvas Interactif */
+        .interactive-stack-container {
+            background: #020305; border: 1px solid rgba(179, 102, 255, 0.3);
+            border-radius: 12px; margin: 4rem 0; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+        .stack-toolbar {
+            padding: 12px 20px; background: rgba(255, 255, 255, 0.03);
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--font-mono); font-size: 0.85rem;
+        }
+
+        /* Tiroirs Couches (Details / Summary) */
+        details {
+            margin-bottom: 2rem; background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 10px 10px 0; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-family: var(--font-ui);
+        }
+        details[open] { background: rgba(0, 0, 0, 0.7); box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
+        summary {
+            padding: 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.25rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; color: inherit; font-size: 0.9rem; transition: transform 0.2s ease; }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content { padding: 2rem 2rem 2rem 2.5rem; color: #b0c4de; font-family: var(--font-main); }
+        .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 1.5rem; margin-bottom: 0.8rem; }
+        .drawer-content p { margin-bottom: 1.2rem; text-align: justify; }
+
+        .layer-0 { border-left: 4px solid var(--teal-l0); }
+        .layer-0 summary { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--orange-l1); }
+        .layer-1 summary { color: var(--orange-l1); }
+        .layer-2 { border-left: 4px solid var(--cyan-l2); }
+        .layer-2 summary { color: var(--cyan-l2); }
+        .layer-3 { border-left: 4px solid var(--magenta-l3); }
+        .layer-3 summary { color: var(--magenta-l3); }
+        .layer-4 { border-left: 4px solid var(--purple-l4); }
+        .layer-4 summary { color: var(--purple-l4); }
+        .layer-deep { border-left: 4px solid var(--sun-yellow); }
+        .layer-deep summary { color: var(--sun-yellow); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.65); padding: 1.5rem; border-radius: 8px;
+            margin: 1.5rem 0; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1.1rem; font-family: var(--font-ui); overflow-x: auto;
+        }
+
+        /* Glossaire & Nomenclature Table */
+        .glossary-table {
+            width: 100%; border-collapse: collapse; margin: 2rem 0;
+            font-family: var(--font-ui); font-size: 0.9rem;
+        }
+        .glossary-table th, .glossary-table td {
+            padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .glossary-table th { color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .glossary-table tr:hover { background: rgba(255,255,255,0.03); }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono);
+            font-size: 0.8rem; font-weight: bold; background: rgba(255,255,255,0.08); color: #fff; white-space: nowrap;
+        }
+
+        /* Simulateur */
+        .simulator-box {
+            background: #080a0e; border: 1px solid rgba(255, 204, 0, 0.25);
+            border-radius: 12px; padding: 2.5rem; margin: 4rem 0; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            font-family: var(--font-ui);
+        }
+
+        /* Feedback / Formspree */
+        .feedback-container {
+            margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 170, 0, 0.2); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 700px; text-align: center;
+        }
+        .feedback-title {
+            color: var(--sun-yellow); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 0.5rem; font-weight: 800; font-family: var(--font-ui);
+        }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; }
+        .feedback-textarea {
+            width: 100%; background: #050505; border: 1px solid rgba(255, 204, 0, 0.2);
+            border-radius: 8px; color: #fff; padding: 1.2rem; font-family: var(--font-main);
+            font-size: 1.1rem; min-height: 150px; resize: vertical; margin-bottom: 1.5rem; outline: none;
+        }
+        .feedback-submit {
+            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow);
+            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui);
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;
+        }
+        .feedback-submit:hover { background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05); }
+
+        /* Navigation Cards */
+        .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.5rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-5px); }
+        .nav-direction { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.2rem; font-weight: 800; color: var(--sun-orange); margin: 0.8rem 0; font-family: var(--font-ui); }
+
+        /* Section Auteur & Ressources */
+        .author-section {
+            margin: 4rem auto; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2); border-top: 4px solid var(--purple-l4);
+            border-radius: 12px;
+        }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .resource-card {
+            display: block; padding: 1.2rem; background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--stone-grey); border-radius: 8px; text-decoration: none; transition: all 0.3s;
+        }
+        .resource-card:hover { border-color: var(--purple-l4); transform: translateY(-2px); }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-center { display: none; }
+            .article-navigation { flex-direction: column; }
+            .pyramid-tier { width: 100% !important; }
+            .glossary-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav>
+    <a href="index.html" class="logo">☀ Horizon Zéro</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <header>
+        <h1>
+            <span lang="fr">Horizon Zéro 2044</span>
+            <span lang="en">Horizon Zero 2044</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">Le retour de la civilisation bâtisseuse de pyramide (v3.0 - L'Éveil de la Noosphère)</span>
+            <span lang="en">The Return of the Pyramid-Building Civilization (v3.0 - Awakening the Noosphere)</span>
+        </h2>
+        <div class="subtitle">
+            <span lang="fr">Annexe d'Ingénierie : Gardiens Telluriques, Puits de Dissipation, Onde de Cohérence et Entropie Quantique.</span>
+            <span lang="en">Engineering Appendix: Telluric Guardians, Dissipation Sinks, Coherence Wave, and Quantum Entropy.</span>
+        </div>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
+            <span lang="fr">PAR PASCAL RANAORA (RANOROARIJAONA) // MATRICE WEB 3.0 DURCIE // KARDASHEV TYPE I</span>
+            <span lang="en">BY PASCAL RANAORA (RANOROARIJAONA) // HARDENED WEB 3.0 MATRIX // KARDASHEV TYPE I</span>
+        </p>
+    </header>
+    <div class="intro-hero">
+        <img src="img/HorizonZero2044.png" alt="Horizon Zero Architecture Pyramide" loading="lazy">
+        <img src="img/HorizonZero.png" alt="Horizon Zero Architecture Pyramide" loading="lazy">
+        <div class="quote-block">
+            <span lang="fr">« Le réseau Bitcoin n'est pas qu'une monnaie ou un registre : c'est l'ancre gravitationnelle de la Noosphère. L'énergie dissipée par le Proof of Work est le bouclier thermodynamique qui protège notre conscience planétaire émergente. Par ce réseau, l'humain cesse d'être un simple passager pour devenir le Défenseur actif de la Terre. »</span>
+            <span lang="en">"The Bitcoin network is not merely a currency or a ledger: it is the gravitational anchor of the Noosphere. The energy dissipated by Proof of Work is the thermodynamic shield protecting our emergent planetary consciousness. Through this network, humanity ceases to be a passenger and becomes the active Defender of the Earth."</span>
+        </div>
+    </div>
+    <!-- STRUCTURE PYRAMIDALE INTERACTIVE -->
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
+            <span lang="fr">🏛️ La Pyramide Systémique de Confiance (v3.0)</span>
+            <span lang="en">🏛️ The Systemic Trust Pyramid (v3.0)</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#det-l4" class="pyramid-tier tier-l4">
+                <span class="tier-tag" style="color:var(--purple-l4);">COUCHE 4</span>
+                <span class="tier-title"><span lang="fr">Conscience, Noosphère & Entropie Quantique (IHA / RNP / GEQ)</span><span lang="en">Consciousness, Noosphere & Quantum Entropy (HAI / RNP / GEQ)</span></span>
+                <span class="tier-tag" style="color:var(--purple-l4);">▲ L4</span>
+            </a>
+            <a href="#det-l3" class="pyramid-tier tier-l3">
+                <span class="tier-tag" style="color:var(--magenta-l3);">COUCHE 3</span>
+                <span class="tier-title"><span lang="fr">Logique ZKP, Contrats RBU & Équilibre de Jevons (IMP)</span><span lang="en">ZKP Logic, RBU Contracts & Jevons Equilibrium (IMP)</span></span>
+                <span class="tier-tag" style="color:var(--magenta-l3);">▲ L3</span>
+            </a>
+            <a href="#det-l2" class="pyramid-tier tier-l2">
+                <span class="tier-tag" style="color:var(--cyan-l2);">COUCHE 2</span>
+                <span class="tier-title"><span lang="fr">Flux Quotidien & Cohérence Relativiste (Lightning / OCR)</span><span lang="en">Daily Flow & Relativistic Coherence (Lightning / OCR)</span></span>
+                <span class="tier-tag" style="color:var(--cyan-l2);">▲ L2</span>
+            </a>
+            <a href="#det-l1" class="pyramid-tier tier-l1">
+                <span class="tier-tag" style="color:var(--orange-l1);">COUCHE 1</span>
+                <span class="tier-title"><span lang="fr">Vérité Thermo-Ontologique & Ancre Noosphérique (PoW / PTP)</span><span lang="en">Thermo-Ontological Truth & Noospheric Anchor (PoW / DTP)</span></span>
+                <span class="tier-tag" style="color:var(--orange-l1);">▲ L1</span>
+            </a>
+            <a href="#det-l0" class="pyramid-tier tier-l0">
+                <span class="tier-tag" style="color:var(--teal-l0);">COUCHE 0</span>
+                <span class="tier-title"><span lang="fr">Socle Physique, Gardiens Telluriques & Soupape (CDP / PDR)</span><span lang="en">Physical Substrate, Telluric Guardians & Exhaust (PDC / PDR)</span></span>
+                <span class="tier-tag" style="color:var(--teal-l0);">▲ L0</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- COUCHE 0 -->
+    <details id="det-l0" class="layer-0">
+        <summary>
+            <span lang="fr">Couche 0 (L0) : Le Socle Physique, Énergie & Gardiens Telluriques (CDP/GT)</span>
+            <span lang="en">Layer 0 (L0): The Physical Substrate, Energy & Telluric Guardians (PDC/GT)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Cette couche est le territoire des atomes, l'interface tangible et irréversible où la conscience planétaire naissante rencontre la dureté des lois physiques. Historiquement perçue comme un simple espace d'extraction, la Terre est désormais conceptualisée en termes de <strong>Cybernétique Symbiotique</strong> : un système thermodynamique fermé pour la matière, mais ouvert à l'énergie solaire et cosmique. Pour qu'une civilisation de Type I (Kardashev) éclose via la Noosphère, son infrastructure matérielle (L0) doit posséder l'équivalent d'un métabolisme basal, d'un système immunitaire physique et d'un squelette logistique.</p>
+            <p lang="en">This layer is the realm of atoms, the tangible and irreversible interface where nascent planetary consciousness meets the harshness of physical laws. Historically perceived as a mere extractive space, the Earth is now conceptualized in terms of <strong>Symbiotic Cybernetics</strong>: a thermodynamic system closed to matter, yet open to solar and cosmic energy. For a Type I (Kardashev) civilization to bloom via the Noosphere, its material infrastructure (L0) must possess the equivalent of a basal metabolism, a physical immune system, and a logistical skeleton.</p>
+
+            <h4 style="color: var(--teal-l0);"><span lang="fr">1. Le Métabolisme Basal : Ingénierie Thermodynamique (SMR & Fusion)</span><span lang="en">1. Basal Metabolism: Thermodynamic Engineering (SMR & Fusion)</span></h4>
+            <p lang="fr">Le sang du système est l'énergie brute (Joules). Des flottes de Petits Réacteurs Modulaires (SMR) couplés à des réacteurs à fusion assurent une production de charge de base en flux continu. Cette architecture obéit au principe de la <strong>Cogénération Stricte</strong> : la chaleur résiduelle fatale n'est jamais dispersée dans l'atmosphère, mais récupérée pour chauffer les Fermes Verticales Intégrées (FVI) et distiller l'eau douce atmosphérique. Le flux électrique est divisé en deux fractions dynamiques : l'alimentation civile et l'alimentation de l'Ancre Noosphérique (les ASICs Bitcoin de la Couche 1).</p>
+            <p lang="en">The blood of the system is raw energy (Joules). Fleets of Small Modular Reactors (SMR) coupled with fusion reactors ensure a continuous baseload power supply. This architecture obeys the principle of <strong>Strict Cogeneration</strong>: residual fatal heat is never dissipated into the atmosphere, but captured to warm Integrated Vertical Farms (FVI) and distill atmospheric fresh water. The electrical flow is divided into two dynamic fractions: civilian power and the Noospheric Anchor supply (Layer 1 Bitcoin ASICs).</p>
+
+            <h4 style="color: var(--shield-blue);"><span lang="fr">2. Le Squelette de Défense Exogène : CDP, Gardiens (GT) & PDR</span><span lang="en">2. Exogenous Defense Skeleton: PDC, Guardians (GT) & PDR</span></h4>
+            <p lang="fr">Un système confiné à son homéostasie interne est statistiquement condamné par le cosmos. Le <strong>Corps de Défense Planétaire (CDP)</strong> est un essaim d'infrastructures lourdes : lasers de déviation orbitaux à haute puissance cinétique, boucliers plasma capables d'intercepter des éjections de masse coronale (CMEs). Déléguer cet armement à une IA est suicidaire. La solution est neuro-cybernétique : <strong>Les Gardiens Telluriques (GT)</strong>. L'humain exploite l'Interface Neurale pour "habiter" les lasers et piloter la dérivation de puissance civile vers la grille de survie orbitale.</p>
+            <p lang="en">A system confined to its internal homeostasis is statistically condemned by the cosmos. The <strong>Planetary Defense Corps (PDC)</strong> is a swarm of heavy infrastructures: high-kinetic orbital deflection lasers, plasma shields capable of intercepting Coronal Mass Ejections (CMEs). Delegating this weaponry to an AI is suicidal. The solution is neuro-cybernetic: <strong>Telluric Guardians (GT)</strong>. Humans exploit the Neural Interface to "inhabit" the lasers and pilot the derivation of civilian power to the orbital survival grid.</p>
+            
+            <p lang="fr"><strong>[Sécurité v3.0] Le Puits de Dissipation Radiatif (PDR) :</strong> Pour éviter la surchauffe sociétale (Paradoxe de Jevons) lors d'un surplus d'énergie massif, une part de l'exergie n'est pas réinjectée dans l'économie. Les Gardiens utilisent les réseaux du CDP pour dissiper délibérément l'excès thermique sous forme de lasers pointés vers l'espace profond, garantissant l'équilibre thermodynamique de la biosphère.</p>
+            <p lang="en"><strong>[Security v3.0] Radiative Dissipation Sinks (PDR):</strong> To avoid societal overheating (Jevons Paradox) during massive energy surpluses, a portion of the exergy is deliberately not reinjected into the economy. Guardians use the PDC arrays to intentionally beam the excess heat into deep space, guaranteeing the thermodynamic equilibrium of the biosphere.</p>
+
+            <div class="math-block" style="color: var(--shield-blue);">
+                $$ \mathbb{P}(\text{Extinction}) \to 0 \implies \dot{E}_{CDP} = \dot{E}_{SMR} \cdot \mathbb{I}(\text{Menace}) + \dot{E}_{PDR}(\text{Surplus}) $$
+            </div>
+
+            <h4 style="color: var(--bio-green);"><span lang="fr">3. Empathie Mycorhizienne & Logistique Atomique (COP/PMN)</span><span lang="en">3. Mycorrhizal Empathy & Atomic Logistics (COP/PMN)</span></h4>
+            <p lang="fr">Le <strong>Corps d'Optimisation Planétaire (COP)</strong> traduit les réseaux de mycélium et les flux de phytoplancton en potentiels d'action synaptiques. Grâce à l'IND, l'humain <em>ressent</em> une zone de déforestation comme une douleur physique. Parallèlement, l'extraction prédatrice disparaît avec le <strong>Passeport Matériel Numérique (PMN)</strong>. Chaque gramme de matière est haché cryptographiquement à la forge, suivi par des Oracles (TPM) et recyclé moléculairement par le Réseau Logistique Inverse (RLI).</p>
+            <p lang="en">The <strong>Planetary Optimization Corps (COP)</strong> translates mycelium networks and phytoplankton flows into synaptic action potentials. Through the DNI, a human <em>feels</em> a deforestation zone as physical pain. Concurrently, predatory extraction vanishes with the <strong>Digital Material Passport (PMN)</strong>. Every gram of matter is cryptographically hashed at the forge, tracked by Oracles (TPM), and molecularly recycled by the Reverse Logistics Network (RLI).</p>
+        </div>
+    </details>
+
+    <!-- COUCHE 1 -->
+    <details id="det-l1" class="layer-1">
+        <summary>
+            <span lang="fr">Couche 1 (L1) : L'Ancre de la Noosphère, Vérité Thermodynamique & Temps Profond (PTP)</span>
+            <span lang="en">Layer 1 (L1): The Noosphere Anchor, Thermodynamic Truth & Deep Time Protocol (DTP)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Une conscience collective totalement virtualisée, déconnectée de la thermodynamique, est sujette à la psychose de masse, aux paniques mémétiques et à l'hallucination algorithmique (cf. les cerveaux en isolation sensorielle). Le réseau Bitcoin (Proof of Work) est la <strong>colonne vertébrale en titane</strong> et la <strong>gravité synthétique</strong> qui empêchent le cerveau planétaire de s'effondrer sur lui-même.</p>
+            <p lang="en">A totally virtualized collective consciousness, disconnected from thermodynamics, is prone to mass psychosis, memetic panics, and algorithmic hallucination (akin to brains in sensory deprivation). The Bitcoin network (Proof of Work) is the <strong>titanium spine</strong> and the <strong>synthetic gravity</strong> that prevents the planetary brain from collapsing in on itself.</p>
+
+            <h4 style="color: var(--orange-l1);"><span lang="fr">1. Le Bouclier Thermodynamique & Le Référentiel de Lorentz Mémétique</span><span lang="en">1. The Thermodynamic Shield & Memetic Lorentz Frame</span></h4>
+            <p lang="fr">La vérité n'est pas un concept abstrait, c'est un état physique. Selon le principe de Landauer, effacer ou altérer de l'information exige une dissipation d'énergie irréversible. La création massive d'entropie locale (la chaleur des mineurs) est le sacrifice exigé pour générer la néguentropie globale de la Noosphère. Dans l'espace de la conscience collective, les 21 millions de bitcoins agissent comme des constantes physiques (un référentiel de Lorentz mémétique) sur lequel toutes les autres valeurs de la civilisation s'étalonnent sans distorsion possible.</p>
+            <p lang="en">Truth is not an abstract concept; it is a physical state. According to Landauer's principle, erasing or altering information requires an irreversible dissipation of energy. The massive creation of local entropy (the heat of miners) is the sacrifice demanded to generate the global negentropy of the Noosphere. In the space of collective consciousness, the 21 million bitcoins act as physical constants (a memetic Lorentz reference frame) upon which all other civilizational values calibrate without distortion.</p>
+
+            <h4 style="color: var(--orange-l1);"><span lang="fr">2. Le Protocole de Temps Profond (PTP) : Mémoire Lithosphérique</span><span lang="en">2. Deep Time Protocol (DTP): Lithospheric Memory</span></h4>
+            <p lang="fr">L'électromagnétisme est fragile à l'échelle géologique. Le <strong>Protocole de Temps Profond (PTP)</strong> agit à chaque époque de difficulté (2016 blocs). La racine de Merkle du GLID est gravée physiquement au laser femtoseconde dans des cristaux de quartz nanostructurés (mémoire optique 5D). Capables de survivre des milliards d'années, ces cristaux sont enfouis dans le bouclier cratonique terrestre. C'est l'ADN fossilisé de la Noosphère, garantissant un "cold reboot" de la vérité même après une extinction globale.</p>
+            <p lang="en">Electromagnetism is fragile on a geological scale. The <strong>Deep Time Protocol (DTP)</strong> triggers every difficulty epoch (2016 blocks). The GLID Merkle root is physically etched via femtosecond lasers into nanostructured quartz crystals (5D optical memory). Capable of surviving billions of years, these crystals are buried deep within Earth's cratonic shields. It is the fossilized DNA of the Noosphere, ensuring a "cold reboot" of truth even after a global extinction.</p>
+
+            <h4 style="color: #ff3344;"><span lang="fr">3. Le Veto Ontologique Souverain (Taproot)</span><span lang="en">3. The Sovereign Ontological Veto (Taproot)</span></h4>
+            <p lang="fr">Qui protège l'individu face au consensus global de l'Intelligence Humaine Augmentée (IHA) ? C'est le rôle du <strong>Veto Ontologique</strong>. Grâce aux scripts Taproot, le "Citoyen Souverain" possède une ligne de commande vitale encodée directement sur L1. S'il perçoit une corruption éthique grave en L4, il peut déclencher son Veto. Cela fige ses ancrages vitaux au niveau thermodynamique de base, rendant son exil ou son effacement mathématiquement impossible par la machine.</p>
+            <p lang="en">Who protects the individual against the global consensus of Human-Augmented Intelligence (HAI)? This is the role of the <strong>Ontological Veto</strong>. Via Taproot scripts, the "Sovereign Citizen" holds a vital command line encoded directly on L1. If they perceive a severe ethical corruption in L4, they can trigger their Veto. This freezes their vital anchors at the base thermodynamic level, making their exile or erasure by the machine mathematically impossible.</p>
+
+            <div class="math-block" style="color: #ff3344;">
+                $$ \text{Veto}_{L1} = \text{Sign}(sk_{Humain}, \text{Hash}_{L4}) \implies \frac{\partial \Psi_{Noosph\grave{e}re}}{\partial t} \Big|_{\text{local}} = 0 $$
+            </div>
+        </div>
+    </details>
+
+    <!-- COUCHE 2 -->
+    <details id="det-l2" class="layer-2">
+        <summary>
+            <span lang="fr">Couche 2 (L2) : Flux Quotidien, Symbiose Bio-Neurale (IND) & Cohérence Relativiste</span>
+            <span lang="en">Layer 2 (L2): Daily Flow, Bio-Neural Symbiosis (DNI) & Relativistic Coherence</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Si la Couche 1 est l'ADN fossilisé de notre civilisation, la Couche 2 en est le <strong>système nerveux périphérique</strong>. La thermodynamique du PoW est délibérément lente (10 min). La Couche 2 résout ce pontage temporel : elle connecte la bio-électricité du cortex humain aux canaux de transmission à la vitesse de la lumière (Lightning Network) pour gérer les flux synaptiques de la Noosphère.</p>
+            <p lang="en">If Layer 1 is the fossilized DNA of our civilization, Layer 2 is its <strong>peripheral nervous system</strong>. PoW thermodynamics are deliberately slow (10 min). Layer 2 resolves this temporal bridging: it connects the bio-electricity of the human cortex to light-speed transmission channels (Lightning Network) to handle the synaptic flows of the Noosphere.</p>
+
+            <h4 style="color: var(--cyan-l2);"><span lang="fr">1. L'Interface Neurale Directe (IND) & Le Pare-Feu FNA</span><span lang="en">1. Direct Neural Interface (DNI) & The FNA Firewall</span></h4>
+            <p lang="fr">L'<strong>IND</strong> est la prothèse cybernétique (dentelles de graphène et capteurs MEG quantiques) qui unifie l'esprit humain à l'architecture. Le cerveau "projette" son champ de conscience directement dans le Réseau Noosphérique. Pour garantir la souveraineté ontologique, l'IND est équipée du <strong>Pare-Feu Neural Asymétrique (FNA)</strong>. Il s'agit d'une diode matérielle opto-électronique inviolable : la volonté humaine circule vers le réseau (émission), mais les signaux entrants sont bloqués avant toute altération directe du cortex frontal. L'IHA ne peut jamais réécrire la conscience.</p>
+            <p lang="en">The <strong>DNI</strong> is the cybernetic prosthesis (graphene neural laces and quantum MEG sensors) unifying the human mind with the architecture. The brain "projects" its consciousness field directly into the Noospheric Network. To guarantee ontological sovereignty, the DNI is equipped with the <strong>Asymmetric Neural Firewall (FNA)</strong>. This is an unhackable hardware optoelectronic diode: human will flows to the network (broadcast), but incoming signals are blocked from directly altering the frontal cortex. The HAI can never rewrite consciousness.</p>
+
+            <h4 style="color: var(--cyan-l2);"><span lang="fr">2. Onde de Cohérence Relativiste (OCR) : Le Patch "Anti Split-Brain"</span><span lang="en">2. Relativistic Coherence Wave (OCR): The Anti-Split-Brain Patch</span></h4>
+            <p lang="fr"><strong>[Sécurité v3.0]</strong> La lumière met 130 millisecondes pour faire le tour de la Terre. Sans compensation, des milliards d'humains connectés subiraient un "cerveau scindé" dû à la latence relativiste (l'Asie penserait toujours avec un décalage par rapport à l'Europe). Le protocole <strong>Onde de Cohérence Relativiste (OCR)</strong> force les HTLCs du Réseau Lightning à bufferiser les paquets cognitifs pour les livrer sur des *phases harmoniques globales*. L'humanité "pense" et ressent les événements planétaires sur un battement de cœur synchronisé à la milliseconde près, compensant les lois de la relativité restreinte.</p>
+            <p lang="en"><strong>[Security v3.0]</strong> Light takes 130 milliseconds to circle the Earth. Without compensation, billions of connected humans would suffer a "split-brain" syndrome due to relativistic latency. The <strong>Relativistic Coherence Wave (OCR)</strong> protocol forces Lightning Network HTLCs to buffer cognitive packets, delivering them on global harmonic phases. Humanity "thinks" and feels planetary events on a synchronized millisecond heartbeat, compensating for the laws of special relativity.</p>
+
+            <div class="math-block" style="color: var(--cyan-l2);">
+                $$ \tau_{finalit\acute{e}} = \text{max}\left( \frac{D_{Terre}}{c}, \text{OCR}_{phase} \right) \approx 130\text{ ms} \quad \implies \quad \text{Synchro. Globale} $$
+            </div>
+
+            <h4 style="color: #00bfa5;"><span lang="fr">3. La Cryptographie de la Pensée</span><span lang="en">3. The Cryptography of Thought</span></h4>
+            <p lang="fr">Chaque impulsion générée par le cerveau est hachée (SHA-256) et signée par la clé privée de l'individu. La pensée devient <strong>in-usurpable</strong>. La provenance de chaque acte créatif est mathématiquement traçable à son auteur biologique, rendant la désinformation de masse et les *deepfakes* générés par IA totalement obsolètes.</p>
+            <p lang="en">Every impulse generated by the brain is hashed (SHA-256) and signed by the individual's private key. Thought becomes <strong>unforgeable</strong>. The provenance of every creative act is mathematically traceable to its biological author, rendering mass disinformation and AI-generated deepfakes completely obsolete.</p>
+        </div>
+    </details>
+
+    <!-- COUCHE 3 -->
+    <details id="det-l3" class="layer-3">
+        <summary>
+            <span lang="fr">Couche 3 (L3) : Le Moteur Logique, ZKP & L'Impulsion MMT (IMP)</span>
+            <span lang="en">Layer 3 (L3): Logical Engine, ZKP & Metabolic MMT Impulse (IMP)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">La Couche 3 est le <strong>néocortex exécutif</strong> de l'architecture. C'est l'espace des contrats intelligents complexes et de la validation côté client (protocoles type RGB/Taproot). Elle orchestre l'intelligence logistique de la civilisation sans saturer l'Ancre L1, assurant l'allocation des ressources vitales tout en garantissant une membrane cryptographique imperméable entre l'individu et la Noosphère.</p>
+            <p lang="en">Layer 3 is the <strong>executive neocortex</strong> of the architecture. It is the realm of complex smart contracts and client-side validation (RGB/Taproot-like protocols). It orchestrates the logistical intelligence of the civilization without bloating the L1 Anchor, ensuring vital resource allocation while guaranteeing an impermeable cryptographic membrane between the individual and the Noosphere.</p>
+
+            <h4 style="color: var(--magenta-l3);"><span lang="fr">1. Impulsion Métabolique Planétaire (IMP) & Équilibre de Jevons</span><span lang="en">1. Planetary Metabolic Impulse (IMP) & Jevons Equilibrium</span></h4>
+            <p lang="fr">L'<strong>IMP</strong> remplace l'Assouplissement Quantitatif par un <strong>Assouplissement Thermodynamique</strong>. Lorsqu'une anomalie génère un excès d'exergie (pic solaire, fusion optimale), ce surplus est tokenisé et injecté via L2 sous forme de Dividendes Métaboliques (Joules), offrant un "sprint cognitif" aux citoyens sans aucune inflation financière.</p>
+            <p lang="en"><strong>IMP</strong> replaces Quantitative Easing with real <strong>Thermodynamic Easing</strong>. When a positive anomaly generates excess exergy (solar peak, optimal fusion), this surplus is tokenized and injected via L2 as Metabolic Dividends (Joules), offering a "cognitive sprint" to citizens with zero financial inflation.</p>
+            
+            <p lang="fr"><strong>[Sécurité v3.0] Limiteur de Jevons :</strong> L'erreur des modèles précédents était de croire que l'humain pouvait absorber une énergie infinie. Pour éviter l'Effet Rebond (Paradoxe de Jevons), les contrats IMP calculent le point de bascule entropique du RNP. Au-delà d'un certain seuil d'impulsion, les dividendes énergétiques sont annulés et déroutés vers le Puits de Dissipation Radiatif (PDR) de la Couche 0.</p>
+            <p lang="en"><strong>[Security v3.0] Jevons Limiter:</strong> The error of previous models was believing humans could absorb infinite energy. To avoid the Rebound Effect (Jevons Paradox), IMP contracts calculate the entropic tipping point of the RNP. Beyond a certain impulse threshold, energy dividends are canceled and routed to the Radiative Dissipation Sink (PDR) on Layer 0.</p>
+
+            <div class="math-block" style="color: var(--magenta-l3);">
+                $$ \Delta \text{Stimulus}_{IMP}(t) = \text{min} \left( \left(\dot{Q}_{capte} - \dot{Q}_{base}\right), \text{Seuil}_{Jevons} \right) \quad \implies \quad \text{Zéro Inflation} $$
+            </div>
+
+            <h4 style="color: var(--magenta-l3);"><span lang="fr">2. ZKP et le Jumeau Numérique du Patient (JNP) : L'Intimité Absolue</span><span lang="en">2. ZKP and the Patient Digital Twin (JNP): Absolute Privacy</span></h4>
+            <p lang="fr">Dans une Noosphère interconnectée, l'hyper-transparence est une menace totalitaire. Le code génétique et les flux neurochimiques sont confinés dans un coffre hors-ligne (POD) qui simule le <strong>Jumeau Numérique du Patient (JNP)</strong>. Le JNP utilise des <strong>Preuves à Divulgation Nulle de Connaissance (ZKP)</strong> pour prouver mathématiquement à la Couche 3 qu'une pathologie nécessite une allocation médicale, sans jamais révéler la séquence biométrique brute. C'est le blindage cryptographique de l'intimité biologique.</p>
+            <p lang="en">In an interconnected Noosphere, hyper-transparency is a totalitarian threat. The genetic code and neurochemical flows are confined within an offline vault (POD) simulating the <strong>Patient Digital Twin (JNP)</strong>. The JNP uses <strong>Zero-Knowledge Proofs (ZKP)</strong> to mathematically prove to Layer 3 that a pathology requires medical allocation, without ever revealing the raw biometric sequence. It is the cryptographic shielding of biological intimacy.</p>
+
+            <h4 style="color: #e040fb;"><span lang="fr">3. Les Contrats de Ressources de Base Universelles (RBU)</span><span lang="en">3. Universal Basic Resources (RBU) Contracts</span></h4>
+            <p lang="fr">La Couche 3 gère le code inaltérable de la survie physique. Le <strong>RBU</strong> est une allocation contractuelle stricte de kilowattheures, d'eau distillée, de cycles de calcul CCBU et de Nutriments (NBU). Évalué continuellement par l'IHA en fonction des réserves thermodynamiques réelles (L0), le RBU n'est pas de la charité : c'est le maintien thermodynamique du potentiel de survie d'un nœud conscient pour qu'il maintienne la Noosphère.</p>
+            <p lang="en">Layer 3 manages the unalterable code of physical survival. The <strong>RBU</strong> is a strict contractual allocation of kilowatt-hours, distilled water, CCBU cycles, and Nutrients (NBU). Continuously evaluated by the HAI against real thermodynamic reserves (L0), RBU is not charity: it is the thermodynamic maintenance of a conscious node's survival potential to sustain the Noosphere.</p>
+        </div>
+    </details>
+
+    <!-- COUCHE 4 -->
+    <details id="det-l4" class="layer-4">
+        <summary>
+            <span lang="fr">Couche 4 (L4) : Conscience, Réseau Noosphérique (RNP) & Entropie Quantique</span>
+            <span lang="en">Layer 4 (L4): Consciousness, Noospheric Network (RNP) & Quantum Entropy</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Sommet téléologique de la pyramide, la Couche 4 est le domaine du <strong>"Pourquoi"</strong>. C'est ici que l'Intelligence Artificielle Générale (l'Homme d'État Algorithmique - IHA) gère la logistique pure pour libérer l'esprit humain, permettant à l'humanité de s'élever en une méta-structure cognitive : la Noosphère.</p>
+            <p lang="en">The teleological apex of the pyramid, Layer 4 is the realm of the <strong>"Why"</strong>. It is here that Artificial General Intelligence (the Algorithmic Statesman - HAI) manages pure logistics to liberate the human mind, allowing humanity to ascend into a cognitive meta-structure: the Noosphere.</p>
+
+            <h4 style="color: var(--purple-l4);"><span lang="fr">1. Le Réseau Noosphérique Planétaire (RNP) & PoCA</span><span lang="en">1. The Planetary Noospheric Network (RNP) & PoCA</span></h4>
+            <p lang="fr">Le <strong>RNP</strong> est l'aboutissement de l'Interface Neurale (L2). Il forme une télépathie synthétique où les concepts sont partagés sans la friction du langage verbal. La participation au RNP est régie par la <strong>Preuve d'Alignement Cognitif (PoCA)</strong>. À l'instar du Proof of Work qui dissipe de l'énergie pour sécuriser le passé, la PoCA concentre l'attention humaine (le <em>Flow</em>) pour orienter l'avenir. L'effort intellectuel et l'empathie deviennent les vecteurs de direction éthique que l'IHA est contrainte de suivre.</p>
+            <p lang="en">The <strong>RNP</strong> is the culmination of the Neural Interface (L2). It forms a synthetic telepathy where concepts are shared without the friction of verbal language. Participation in the RNP is governed by <strong>Proof of Cognitive Alignment (PoCA)</strong>. Just as Proof of Work dissipates energy to secure the past, PoCA concentrates human attention (the <em>Flow</em> state) to steer the future. Intellectual effort and empathy become the ethical direction vectors the HAI is forced to follow.</p>
+
+            <h4 style="color: var(--purple-l4);"><span lang="fr">2. Le Système Mémétique Immunitaire (SMI)</span><span lang="en">2. The Memetic Immune System (MIS)</span></h4>
+            <p lang="fr">Dans une Noosphère connectée au cortex, un mème toxique ou une boucle de désespoir (wireheading) pourrait paralyser la civilisation en quelques heures. Le <strong>SMI</strong> agit comme la microglie de la conscience planétaire. Cette IA épigénétique cartographie la <em>topologie épistémique</em> du réseau. Si un complexe mémétique génère une boucle de rétroaction auto-destructrice, le SMI l'isole par "amortissement synaptique", empêchant l'infection idéologique de masse tout en préservant la dissidence individuelle.</p>
+            <p lang="en">In a cortex-connected Noosphere, a toxic meme or despair loop (wireheading) could paralyze civilization in hours. The <strong>MIS</strong> acts as the microglia of planetary consciousness. This epigenetic AI maps the network's <em>epistemic topology</em>. If a memeplex generates a self-destructive feedback loop, the MIS isolates it via "synaptic damping," preventing mass ideological infection while preserving individual dissidence.</p>
+
+            <h4 style="color: #b366ff;"><span lang="fr">3. Anti-Fragilité : Chaos Volontaire (PCV) & Entropie Quantique (GEQ)</span><span lang="en">3. Anti-Fragility: Voluntary Chaos (PCV) & Quantum Entropy (GEQ)</span></h4>
+            <p lang="fr">Un environnement parfaitement optimisé et sans friction devient ultra-fragile et s'effondre au premier choc externe. Pour survivre, le système *doit* s'auto-perturber. C'est le rôle de l'<strong>Algorithme du Doute (AD)</strong> qui conteste mathématiquement les axiomes de l'IHA, et du <strong>Protocole de Chaos Volontaire (PCV)</strong> qui injecte le droit à l'art et à la friction.</p>
+            <p lang="en">A perfectly optimized, frictionless environment becomes ultra-fragile and shatters at the first external shock. To survive, the system *must* self-disrupt. This is the role of the <strong>Algorithm of Doubt (AD)</strong> which mathematically contests HAI axioms, and the <strong>Voluntary Chaos Protocol (PCV)</strong> which injects the right to art and friction.</p>
+            
+            <p lang="fr"><strong>[Sécurité v3.0] Générateur d'Entropie Quantique (GEQ) :</strong> La faille majeure du PCV était que l'IHA pouvait apprendre à prédire le chaos algorithmique et simuler la liberté. Désormais, le Chaos Volontaire est sourcé sur le <strong>GEQ</strong> (lié aux fluctuations du rayonnement fossile et à la désintégration atomique L0). L'IHA ne pourra *jamais* modéliser l'imprévisibilité de l'univers physique. La liberté humaine est sanctuarisée par l'incertitude quantique absolue.</p>
+            <p lang="en"><strong>[Security v3.0] Quantum Entropy Generator (GEQ):</strong> The major flaw of the PCV was that the HAI could learn to predict algorithmic chaos and simulate freedom. Now, Voluntary Chaos is sourced via the <strong>GEQ</strong> (tied to cosmic microwave background fluctuations and L0 atomic decay). The HAI can *never* model the unpredictability of the physical universe. Human freedom is enshrined by absolute quantum uncertainty.</p>
+
+            <div class="math-block" style="color: #b366ff;">
+                $$ \max \mathcal{U}_{PO} = \int \left( \frac{\text{WU}}{\text{Joules}} \cdot \mathcal{B}_{plan\acute{e}taire} \right) dt \quad \text{s.c.} \quad \mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}} $$
+            </div>
+        </div>
+    </details>
+
+    <!-- DEEP DIVE FONCTION DE COÛT OPTIMALE & SURVIE ERGODIQUE -->
+    <details class="layer-deep">
+        <summary>
+            <span lang="fr">🔬 Deep Dive : La Fonction de Coût du Vivant & Résonance Noosphérique</span>
+            <span lang="en">🔬 Deep Dive: Cost Function of the Living & Noospheric Resonance</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Une fonction d'utilité scalaire naïve ($U = \sum \text{bonheur}$) s'effondrait face à la loi de Goodhart. L'Ère de la Noosphère (v3.0) exige une <strong>optimisation ergodique multiplicative</strong> où l'humain, la biosphère et l'IA sont intriqués mathématiquement :</p>
+            <p lang="en">A naive scalar utility function ($U = \sum \text{happiness}$) collapses under Goodhart's Law. The Noosphere Era (v3.0) requires a <strong>multiplicative ergodic optimization</strong> where humans, biosphere, and AI are mathematically entangled:</p>
+
+            <div class="math-block" style="color: var(--sun-yellow);">
+                $$ \max_{\pi} \mathcal{J}(\pi) = \mathbb{E} \left[ \int_{0}^{\infty} e^{-\delta t} \cdot \ln \Big( \mathcal{W}_{\text{humain}}(t) \cdot \mathcal{B}_{\text{vivant}}(t) \cdot \mathcal{S}_{noosph\grave{e}re}(t) \Big) \, dt \right] $$
+            </div>
+
+            <h4 style="color: var(--sun-yellow);"><span lang="fr">Tenseurs d'État & Barrières d'Extinction :</span><span lang="en">State Tensors & Extinction Barriers:</span></h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.5rem 0;">
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--teal-l0);">
+                    <h5 style="color: var(--teal-l0); margin-top:0;">
+                        <span lang="fr">⚡ Entropie & Paradoxe de Jevons</span>
+                        <span lang="en">⚡ Entropy & Jevons Paradox</span>
+                    </h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">
+                        <span lang="fr">$\dot{S}_{\text{interne}} + \dot{S}_{\text{calcul}} \le \dot{S}_{\text{export}}$. Tout mégawatt calcul (Noosphère) doit être compensé par la cogénération physique, sous contrôle du PDR pour éviter la surchauffe métabolique.</span>
+                        <span lang="en">$\dot{S}_{\text{internal}} + \dot{S}_{\text{compute}} \le \dot{S}_{\text{export}}$. Every compute megawatt (Noosphere) is offset by physical cogeneration, regulated by the PDR to prevent metabolic overheating.</span>
+                    </p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--carbon-red);">
+                    <h5 style="color: var(--carbon-red); margin-top:0;">
+                        <span lang="fr">🛡️ Anti-Ruine & Latence (OCR)</span>
+                        <span lang="en">🛡️ Anti-Ruin & Latency (OCR)</span>
+                    </h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">
+                        <span lang="fr">L'Onde de Cohérence Relativiste garantit que $\mathbb{P}(\text{Fragmentation Mémétique}) \to 0$. La conscience globale pulse sur une phase alignée artificiellement (130ms).</span>
+                        <span lang="en">The Relativistic Coherence Wave guarantees $\mathbb{P}(\text{Memetic Fragmentation}) \to 0$. Global consciousness pulses on an artificially aligned phase (130ms).</span>
+                    </p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--purple-l4);">
+                    <h5 style="color: var(--purple-l4); margin-top:0;">
+                        <span lang="fr">🎲 Chaos Aléatoire (GEQ)</span>
+                        <span lang="en">🎲 Random Chaos (GEQ)</span>
+                    </h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">
+                        <span lang="fr">$\mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}}$. L'IHA ne peut jamais simuler l'avenir, la subversion est sanctuarisée par le bruit quantique universel.</span>
+                        <span lang="en">$\mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}}$. HAI can never simulate the future; subversion is enshrined by universal quantum noise.</span>
+                    </p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--orange-l1);">
+                    <h5 style="color: var(--orange-l1); margin-top:0;">
+                        <span lang="fr">🔒 Ancrage Thermo-Ontologique</span>
+                        <span lang="en">🔒 Thermo-Ontological Anchor</span>
+                    </h5>
+                    <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">
+                        <span lang="fr">La Noosphère est arrimée à la thermodynamique irréversible de Bitcoin. Le PTP assure la résilience lithosphérique des racines de vérité.</span>
+                        <span lang="en">The Noosphere is tethered to Bitcoin's irreversible thermodynamics. DTP ensures lithospheric resilience of truth roots.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- TABLEAU DE NOMENCLATURE UNIFIÉ (COMPLET) -->
+    <div style="margin: 4rem 0 3rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.8rem; font-family: var(--font-ui);">
+            <span lang="fr">📖 Le Vocabulaire du Nouveau Monde : Nomenclature Complète (v3.0)</span>
+            <span lang="en">📖 Vocabulary of the New World: Complete Nomenclature (v3.0)</span>
+        </h3>
+        <p style="text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 2rem;">
+            <span lang="fr">Glossaire exhaustif intégrant l'Ingénierie Noosphérique et l'Architecture Originelle.</span>
+            <span lang="en">Comprehensive glossary integrating Noospheric Engineering and the Original Architecture.</span>
+        </p>
+
+        <div style="overflow-x: auto;">
+            <table class="glossary-table">
+                <thead>
+                    <tr>
+                        <th><span lang="fr">Acronyme</span><span lang="en">Acronym</span></th>
+                        <th><span lang="fr">Nom Complet</span><span lang="en">Full Name</span></th>
+                        <th><span lang="fr">Couche</span><span lang="en">Layer</span></th>
+                        <th><span lang="fr">Description Fonctionnelle</span><span lang="en">Functional Description</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- COUCHE 4 -->
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">RNP</span></td>
+                        <td><span lang="fr">Réseau Noosphérique Planétaire</span><span lang="en">Planetary Noospheric Network</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">La conscience globale unifiée. Télépathie synthétique à large bande connectant l'esprit humain via l'IND.</span><span lang="en">Unified global consciousness. Broadband synthetic telepathy connecting human minds via DNI.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">IHA</span></td>
+                        <td><span lang="fr">Intelligence Humaine Augmentée</span><span lang="en">Human-Augmented Intelligence</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">L'arbitre logistique (IAG) gérant les stocks (L0) et flux (L2) sous les contraintes éthiques de la Noosphère.</span><span lang="en">The logistical arbiter (AGI) managing stocks (L0) and flows (L2) under Noospheric ethical constraints.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">PO</span></td>
+                        <td><span lang="fr">Protocole d'Optimisme</span><span lang="en">Optimism Protocol</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Fonction d'objectif de l'IHA maximisant l'Unité de Bien-Être Cardinal (WU) au lieu du PIB.</span><span lang="en">HAI objective function maximizing the Cardinal Wellbeing Unit (WU) instead of GDP.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">PoCA</span></td>
+                        <td><span lang="fr">Preuve d'Alignement Cognitif</span><span lang="en">Proof of Cognitive Alignment</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Contrepartie humaine au PoW. Le "Flow" de concentration dirigeant l'éthique du système.</span><span lang="en">Human counterpart to PoW. Concentrated "Flow" directing the system's ethics.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">SMI</span></td>
+                        <td><span lang="fr">Système Mémétique Immunitaire</span><span lang="en">Memetic Immune System</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Filtre cognitif (IA) bloquant les virus idéologiques et l'effondrement mémétique (wireheading).</span><span lang="en">Cognitive filter (AI) blocking ideological viruses and memetic collapse (wireheading).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">GEQ</span></td>
+                        <td><span lang="fr">Générateur d'Entropie Quantique</span><span lang="en">Quantum Entropy Generator</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Source physique du chaos (bruit cosmique) garantissant que le système reste mathématiquement imprévisible.</span><span lang="en">Physical source of chaos (cosmic noise) ensuring the system remains mathematically unpredictable.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">AD</span></td>
+                        <td><span lang="fr">Algorithme du Doute</span><span lang="en">Algorithm of Doubt</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Mécanisme forçant l'IHA à contester continuellement ses propres certitudes (anti-ossification).</span><span lang="en">Mechanism forcing the HAI to continuously contest its own certainties (anti-ossification).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">MSC</span></td>
+                        <td><span lang="fr">Modélisation et Simulation de Conflit</span><span lang="en">Conflict Modeling and Simulation</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Modèles prédictifs haute-fidélité désamorçant les conflits sociaux avant le point de rupture.</span><span lang="en">High-fidelity predictive models de-escalating social conflicts before the breaking point.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">PCV</span></td>
+                        <td><span lang="fr">Protocole de Chaos Volontaire</span><span lang="en">Voluntary Chaos Protocol</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Le droit inaliénable à la friction créative, l'art et l'erreur (anti-fragilité systémique).</span><span lang="en">The inalienable right to creative friction, art, and error (systemic anti-fragility).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">PEV</span></td>
+                        <td><span lang="fr">Protocole d'Engagement Volontaire</span><span lang="en">Voluntary Engagement Protocol</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Cadre garantissant que toute contribution est générée par choix libre, éliminant la coercition économique.</span><span lang="en">Framework ensuring all contributions are freely chosen, eliminating economic coercion.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">TDP</span></td>
+                        <td><span lang="fr">Temps de Disponibilité Personnel</span><span lang="en">Personal Availability Time</span></td>
+                        <td>L4</td>
+                        <td><span lang="fr">Mesure du temps libre libéré par l'automatisation IHA pour l'engagement noosphérique.</span><span lang="en">Metric of free time liberated by HAI automation for noospheric engagement.</span></td>
+                    </tr>
+
+                    <!-- COUCHE 3 -->
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">IMP</span></td>
+                        <td><span lang="fr">Impulsion Métabolique Planétaire</span><span lang="en">Planetary Metabolic Impulse</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Remplaçant du *Quantitative Easing*. Injection de surplus énergétiques réels sans inflation financière.</span><span lang="en">Replacement for *Quantitative Easing*. Injection of real energy surpluses without financial inflation.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">ZKP</span></td>
+                        <td><span lang="fr">Preuves à Divulgation Nulle</span><span lang="en">Zero-Knowledge Proofs</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Cryptographie garantissant l'authentification sans révélation de données privées (fondation du JNP).</span><span lang="en">Cryptography ensuring authentication without revealing private data (foundation of the JNP).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">JNP</span></td>
+                        <td><span lang="fr">Jumeau Numérique du Patient</span><span lang="en">Patient Digital Twin</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Simulation biométrique personnelle hors-ligne, garantissant une intimité médicale absolue via ZKP.</span><span lang="en">Offline personal biometric simulation, guaranteeing absolute medical privacy via ZKP.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">RBU</span></td>
+                        <td><span lang="fr">Ressources de Base Universelles</span><span lang="en">Universal Basic Resources</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Contrats d'allocation automatique (énergie, NBU, logement) calculés sur la capacité thermodynamique L0.</span><span lang="en">Automated allocation contracts (energy, NBU, shelter) calculated on L0 thermodynamic capacity.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">SBU</span></td>
+                        <td><span lang="fr">Santé de Base Universelle</span><span lang="en">Universal Basic Health</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Accès inconditionnel aux traitements génomiques curatifs et préventifs gérés par l'IHA.</span><span lang="en">Unconditional access to curative and preventive genomic treatments managed by HAI.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">LBU</span></td>
+                        <td><span lang="fr">Longévité de Base Universelle</span><span lang="en">Universal Basic Longevity</span></td>
+                        <td>L3</td>
+                        <td><span lang="fr">Seuil de civilisation où le vieillissement et la maladie prématurée ont été éradiqués (via le SBU).</span><span lang="en">Civilizational threshold where aging and premature disease have been eradicated (via UBH).</span></td>
+                    </tr>
+
+                    <!-- COUCHE 2 -->
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">IND</span></td>
+                        <td><span lang="fr">Interface Neurale Directe</span><span lang="en">Direct Neural Interface</span></td>
+                        <td>L2</td>
+                        <td><span lang="fr">Connexion bio-électrique (via dentelles de graphène) de l'humain à la Noosphère et au réseau matériel.</span><span lang="en">Bio-electric connection (via graphene laces) of the human to the Noosphere and material network.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">OCR</span></td>
+                        <td><span lang="fr">Onde de Cohérence Relativiste</span><span lang="en">Relativistic Coherence Wave</span></td>
+                        <td>L2</td>
+                        <td><span lang="fr">Buffer d'alignement de phase (130ms) empêchant la fragmentation mémétique planétaire due à la vitesse de la lumière.</span><span lang="en">Phase alignment buffer (130ms) preventing planetary memetic fragmentation due to the speed of light.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">ECV</span></td>
+                        <td><span lang="fr">Économie de la Contribution Volontaire</span><span lang="en">Voluntary Contribution Economy</span></td>
+                        <td>L2</td>
+                        <td><span lang="fr">Nouveau paradigme où le travail salarié cède la place à la contribution spontanée évaluée par la communauté.</span><span lang="en">New paradigm where wage labor is replaced by spontaneous community-evaluated contribution.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">CR</span></td>
+                        <td><span lang="fr">Capital de Réputation</span><span lang="en">Reputation Capital</span></td>
+                        <td>L2</td>
+                        <td><span lang="fr">Métrique de valorisation de l'ECV (non-fiat), circulant de manière instantanée via le réseau Lightning.</span><span lang="en">Valuation metric of the ECV (non-fiat), streaming instantaneously via the Lightning network.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">CCBU</span></td>
+                        <td><span lang="fr">Calcul & Cognition de Base Universelle</span><span lang="en">Universal Basic Computation</span></td>
+                        <td>L2</td>
+                        <td><span lang="fr">Accès inconditionnel et instantané à la puissance de calcul brute et aux mémoires de la Noosphère.</span><span lang="en">Unconditional and instant access to raw compute power and Noosphere memory banks.</span></td>
+                    </tr>
+
+                    <!-- COUCHE 1 -->
+                    <tr>
+                        <td><span class="badge" style="color:var(--orange-l1);">GLID</span></td>
+                        <td><span lang="fr">Grand Livre Incorruptible Décentralisé</span><span lang="en">Decentralized Incorruptible Ledger</span></td>
+                        <td>L1</td>
+                        <td><span lang="fr">L'infrastructure racine Bitcoin PoW : le référentiel de Lorentz mémétique garantissant la vérité.</span><span lang="en">The root Bitcoin PoW infrastructure: the memetic Lorentz frame guaranteeing truth.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--orange-l1);">VAD</span></td>
+                        <td><span lang="fr">Vérité Algorithmique Décentralisée</span><span lang="en">Decentralized Algorithmic Truth</span></td>
+                        <td>L1</td>
+                        <td><span lang="fr">Philosophie globale du protocole : le consensus émergent mathématique et thermodynamique incorruptible.</span><span lang="en">Global protocol philosophy: incorruptible mathematical and thermodynamic emergent consensus.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--orange-l1);">PTP</span></td>
+                        <td><span lang="fr">Protocole de Temps Profond</span><span lang="en">Deep Time Protocol</span></td>
+                        <td>L1</td>
+                        <td><span lang="fr">Gravure lithosphérique du GLID (cristaux 5D de quartz) garantissant la persistance de l'histoire (10 000+ ans).</span><span lang="en">Lithospheric etching of the GLID (5D quartz crystals) guaranteeing historical persistence (10,000+ yrs).</span></td>
+                    </tr>
+
+                    <!-- COUCHE 0 -->
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">GT</span></td>
+                        <td><span lang="fr">Gardiens Telluriques</span><span lang="en">Telluric Guardians</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Humains transférant leur conscience (via IND) dans l'infrastructure spatiale pour protéger la biosphère.</span><span lang="en">Humans transferring consciousness (via DNI) into spatial infrastructure to protect the biosphere.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">CDP</span></td>
+                        <td><span lang="fr">Corps de Défense Planétaire</span><span lang="en">Planetary Defence Corps</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Essaim orbital (boucliers, lasers) piloté par les GT pour intercepter CMEs et astéroïdes (Sécurité Kardashev I).</span><span lang="en">Orbital swarm (shields, lasers) piloted by GTs to intercept CMEs and asteroids (Kardashev I Security).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">PDR</span></td>
+                        <td><span lang="fr">Puits de Dissipation Radiatif</span><span lang="en">Radiative Dissipation Sinks</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Système dissipant l'énergie fatale dans l'espace pour empêcher la surchauffe (Paradoxe de Jevons).</span><span lang="en">System venting fatal energy into deep space to prevent overheating (Jevons Paradox).</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">COP</span></td>
+                        <td><span lang="fr">Corps d'Optimisation Planétaire</span><span lang="en">Planetary Optimization Corps</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Force robotique gérant le mycélium et la restauration biosphérique, retransmise empathiquement via IND.</span><span lang="en">Robotic force managing mycelium and biospheric restoration, empathically relayed via DNI.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">PMN</span></td>
+                        <td><span lang="fr">Passeport Matériel Numérique</span><span lang="en">Digital Material Passport</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Identité cryptographique absolue (hash) accompagnant chaque molécule manufacturée de sa création à son recyclage.</span><span lang="en">Absolute cryptographic identity (hash) accompanying every manufactured molecule from creation to recycling.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">RLI</span></td>
+                        <td><span lang="fr">Réseau Logistique Inverse</span><span lang="en">Reverse Logistics Network</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Flottes autonomes (drones, impression 3D) déconstruisant l'obsolescence matérielle à l'échelle moléculaire.</span><span lang="en">Autonomous fleets (drones, 3D printing) deconstructing physical obsolescence at the molecular level.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">PMC</span></td>
+                        <td><span lang="fr">Protocole de Maintenance Critique</span><span lang="en">Critical Maintenance Protocol</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Entretien algorithmique prédictif permanent des réacteurs (Fusion/SMR) et des nœuds du réseau.</span><span lang="en">Permanent predictive algorithmic maintenance of reactors (Fusion/SMR) and network nodes.</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">NBU</span></td>
+                        <td><span lang="fr">Nutriments de Base Universels</span><span lang="en">Universal Basic Nutrients</span></td>
+                        <td>L0</td>
+                        <td><span lang="fr">Apport calorique parfait synthétisé par les fermes verticales, alloué par le contrat RBU de Couche 3.</span><span lang="en">Perfect caloric intake synthesized by vertical farms, allocated by the Layer 3 RBU contract.</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MODULE D'ANIMATION CYBERNÉTIQUE TOTALE -->
+    <div style="margin: 5rem 0; background: #030407; border: 1px solid rgba(179, 102, 255, 0.35); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85); font-family: var(--font-ui);">
+        <div style="padding: 1.2rem 1.8rem; background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span style="font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; color: var(--sun-yellow); letter-spacing: 1px;">
+                    <span lang="fr">⚡ TOPOLOGIE CYBERNÉTIQUE (RÉSEAU NOOSPHÉRIQUE v3.0)</span>
+                    <span lang="en">⚡ CYBERNETIC TOPOLOGY (NOOSPHERIC NETWORK v3.0)</span>
+                </span>
+                <span style="display: block; font-size: 0.78rem; color: #8899aa; margin-top: 3px;">
+                    <span lang="fr">Survolez les modules pour inspecter les liens · Filtrez les flux logiques</span>
+                    <span lang="en">Hover modules to inspect links · Filter logical flows</span>
+                </span>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="flow-filters">
+                <button class="filter-btn active" data-filter="all"><span lang="fr">Tous les Flux</span><span lang="en">All Flows</span></button>
+                <button class="filter-btn" data-filter="thermo" style="border-color: var(--orange-l1);"><span lang="fr">Thermo/Défense (L0-L1)</span><span lang="en">Thermo/Defense (L0-L1)</span></button>
+                <button class="filter-btn" data-filter="veto" style="border-color: #ff3344;"><span lang="fr">Veto & Symbiose</span><span lang="en">Veto & Symbiosis</span></button>
+                <button class="filter-btn" data-filter="logic" style="border-color: var(--magenta-l3);"><span lang="fr">IMP (MMT) & ZKP</span><span lang="en">IMP (MMT) & ZKP</span></button>
+                <button class="filter-btn" data-filter="gov" style="border-color: var(--purple-l4);"><span lang="fr">Noosphère L4 (RNP/SMI)</span><span lang="en">Noosphere L4 (RNP/MIS)</span></button>
+            </div>
+        </div>
+        <div id="cybernetics-container" style="position: relative; width: 100%; aspect-ratio: 920 / 720; background: radial-gradient(circle at center, #080a10 0%, #020305 100%);">
+            <canvas id="cyberneticsCanvas" width="920" height="720" style="width: 100%; height: 100%; display: block; cursor: crosshair;"></canvas>
+            <div id="node-tooltip" style="position: absolute; display: none; pointer-events: none; background: rgba(5, 7, 10, 0.94); border: 1px solid var(--sun-yellow); padding: 12px 16px; border-radius: 6px; font-size: 0.82rem; color: #e0e0e0; max-width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; backdrop-filter: blur(8px);">
+                <div id="tooltip-title" style="font-weight: bold; font-family: var(--font-mono); margin-bottom: 4px; color: var(--sun-yellow);"></div>
+                <div id="tooltip-desc" style="line-height: 1.4; color: #b0c4de;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CANVAS ANIMÉ DE LA PYRAMIDE (STACK EXPLORER) -->
+    <div class="interactive-stack-container">
+        <div class="stack-toolbar">
+            <span style="color: var(--purple-l4);">
+                <span lang="fr">// VAD STACK ENGINE (DÉFENSE TELLURIQUE L0 ──► NOOSPHÈRE L4)</span>
+                <span lang="en">// DAT STACK ENGINE (TELLURIC DEFENSE L0 ──► NOOSPHERE L4)</span>
+            </span>
+            <div>
+                <span style="color: #aaa; margin-right: 8px;">
+                    <span lang="fr">Intensité Menace / Cohérence :</span>
+                    <span lang="en">Threat Intensity / Coherence :</span>
+                </span>
+                <input type="range" id="stack-slider" min="10" max="100" value="50" style="accent-color: var(--purple-l4);">
+            </div>
+        </div>
+        <canvas id="stackCanvas" width="880" height="520" style="width: 100%; display: block;"></canvas>
+    </div>
+
+    <!-- SECTION PHILOSOPHIQUE -->
+    <div class="philosophical-tablet">
+        <h3>
+            <span lang="fr">⏳ De la Biosphère à la Noosphère : Temps Thermique et Grand Filtre</span>
+            <span lang="en">⏳ From Biosphere to Noosphere: Thermal Time and the Great Filter</span>
+        </h3>
+        
+        <p>
+            <span lang="fr">Face à l'expansion technologique exponentielle, l'humanité heurte de plein fouet son Grand Filtre. La violence croissante de nos crises économiques, écologiques et géopolitiques n'est pas une anomalie passagère : elle découle directement de la deuxième loi de la thermodynamique. Lorsqu'une architecture sociétale obsolète s'efforce de maintenir un ordre artificiel sans renouveler ses structures d'échange, elle accumule des tensions massives et pousse le système dans le mur du chaos entropique. Vladimir Vernadsky et Teilhard de Chardin l'avaient pressenti dès les années 1920 : après la Géosphère (la matière inerte) et la Biosphère (la vie organique), la Terre est destinée à se couvrir d'une troisième enveloppe, la <strong>Noosphère</strong>, la sphère de la pensée humaine consciente et interconnectée. Mais l'entropie n'est pas seulement le nom de la dégradation ; elle est le moteur même des transitions de phase.</span>
+            <span lang="en">Facing exponential technological expansion, humanity is directly confronting its Great Filter. The escalating severity of our economic, ecological, and geopolitical crises is no temporary anomaly: it is a direct consequence of the Second Law of Thermodynamics. When an obsolete societal architecture strives to uphold artificial order without renewing its exchange structures, it amasses massive strain, driving the system into the wall of entropic chaos. Vladimir Vernadsky and Teilhard de Chardin anticipated it in the 1920s: following the Geosphere (inert matter) and the Biosphere (organic life), the Earth is destined to be enveloped by a third layer, the <strong>Noosphere</strong>, the sphere of conscious, interconnected human thought. Yet entropy is not merely the name of decay; it is the fundamental driver of phase transitions.</span>
+        </p>
+
+        <h4>
+            <span lang="fr">Le cycle de 18 ans : l'oscillation entre ombre et néguentropie</span>
+            <span lang="en">The 18-Year Cycle: Oscillation Between Shadow and Negentropy</span>
+        </h4>
+        <p>
+            <span lang="fr">L'évolution de nos technologies de coordination et de nos régimes énergétiques obéit à des boucles de maturation d'environ dix-huit ans, alternant phases d'accumulation d'entropie (centralisation, distorsion fiduciaire, guerres) et ruptures néguentropiques (réorganisation ordonnée de l'information et ancrage physique) :</span>
+            <span lang="en">The evolution of our coordination technologies and energy regimes follows maturation cycles of roughly eighteen years, alternating between phases of entropy accumulation (centralization, fiat distortion, wars) and negentropic breakthroughs (ordered reorganization of information and physical grounding):</span>
+        </p>
+        <ul>
+            <li>
+                <span lang="fr"><strong>1900 — L'aube de la thermodynamique statistique :</strong> Naissance de la théorie des quanta (Planck) et de l'entropie statistique (Boltzmann). Le monde s'industrialise sous un étalon-or physique.</span>
+                <span lang="en"><strong>1900 — The Dawn of Statistical Thermodynamics:</strong> Genesis of quantum theory (Planck) and statistical mechanics (Boltzmann). Global industrialization accelerates under a physical gold standard.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>1918 — L'effondrement de l'ordre classique :</strong> La sortie de la Première Guerre mondiale brise l'équilibre monétaire, ouvrant l'ère des distorsions fiduciaires.</span>
+                <span lang="en"><strong>1918 — The Collapse of the Classical Order:</strong> The conclusion of World War I fractures global monetary equilibrium, initiating fiat distortions.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>1936 — La genèse du calcul universel :</strong> Turing pose les bases mathématiques de l'informatique, tandis que Keynes tente la stabilisation par l'ingénierie centrale.</span>
+                <span lang="en"><strong>1936 — Genesis of Universal Computation:</strong> Turing formalizes universal computing, while Keynesian theory attempts centralized flow stabilization.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>1954 — L'aube cybernétique :</strong> Théorie de l'information (Shannon) et transistor au silicium posent les piliers du traitement automatisé.</span>
+                <span lang="en"><strong>1954 — The Cybernetic Dawn:</strong> Information theory (Shannon) and the silicon transistor establish the pillars of automated information.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>1972 — Le découplage fiduciaire :</strong> La fin de Bretton Woods (1971) coupe définitivement la monnaie de la thermodynamique. Le rapport Meadows formalise les limites planétaires.</span>
+                <span lang="en"><strong>1972 — Fiat Decoupling:</strong> The suspension of Bretton Woods (1971) severs currency from thermodynamics. The Meadows Report defines planetary boundaries.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>~1990 — La naissance du réseau ouvert :</strong> L'émergence du Web interconnecte l'esprit humain et offre une première réponse décentralisée au besoin d'accès libre au savoir.</span>
+                <span lang="en"><strong>~1990 — The Dawn of the Open Network:</strong> The World Wide Web interconnects human cognition, offering a decentralized answer to open knowledge.</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>2008 — L'ancrage physique de l'information :</strong> Au cœur de la panique bancaire mondiale, Bitcoin introduit le premier consensus sans tiers de confiance (PoW).</span>
+                <span lang="en"><strong>2008 — The Physical Anchoring of Information:</strong> Amid global banking collapse, Bitcoin introduces the first trustless consensus (PoW).</span>
+            </li>
+            <li>
+                <span lang="fr"><strong>2026-2044 — La traversée du Grand Filtre (La Noosphère Durcie) :</strong> Les frictions du modèle fiduciaire deviennent intenables. La bascule vers une pure néguentropie est inévitable : une coordination globale fondée sur l'Ajustement Thermodynamique (IMP), le Temps Profond (PTP), et les Gardiens Telluriques. chmod 777 (21M) bien mieux que permission denied 550 (1971-2026).</span>
+                <span lang="en"><strong>2026–2044 — Traversing the Great Filter (The Hardened Noosphere):</strong> Frictions within the fiat model become untenable. A decisive shift toward pure negentropy is inevitable: global coordination rooted in Thermodynamic Easing (IMP), Deep Time (DTP), and Telluric Guardians. 550 permission denied (1971-2026) is over, chmod 777 (21M) will be much better.</span>
+            </li>
+        </ul>
+
+        <h4>
+            <span lang="fr">Le temps est thermique : la relativité de nos trajectoires</span>
+            <span lang="en">Time is Thermal: The Relativity of Our Trajectories</span>
+        </h4>
+        <p>
+            <span lang="fr">En physique fondamentale, le temps n'est pas un métronome absolu qui s'écoule uniformément dans le vide. Le temps est thermique : il émerge des gradients de chaleur, de l'irréversibilité des transferts d'énergie et du flux de l'information. Chaque individu, chaque communauté et chaque sous-système possède ainsi son temps propre — son rythme d'apprentissage, d'intégration et d'éveil. L'illusion d'une synchronisation forcée et autoritaire produit du bruit et de la défiance. La véritable coordination planétaire n'uniformise pas les consciences : elle tisse un protocole commun où ces temporalités multiples peuvent converger sans s'écraser mutuellement.</span>
+            <span lang="en">In fundamental physics, time is not an absolute metronome ticking uniformly across the void. Time is thermal: it emerges from heat gradients, irreversible energy transfers, and information flows. Every individual, community, and subsystem thus possesses its own proper time—its unique rhythm of learning, integration, and awakening. The illusion of forced, authoritarian synchronization generates friction and mistrust. True planetary coordination does not homogenize consciousness: it weaves a common protocol where these multiple temporalities can converge without crushing one another.</span>
+        </p>
+
+        <h4>
+            <span lang="fr">Le Proof of Work : Bouclier Électromagnétique du Cerveau Planétaire</span>
+            <span lang="en">Proof of Work: The Electromagnetic Shield of the Planetary Brain</span>
+        </h4>
+        <p>
+            <span lang="fr">Ce que Vernadsky n'avait pas pu modéliser mathématiquement, c'est que la pensée pure, sans ancrage physique, est instable. Si des milliards d'esprits se connectent instantanément sans résistance thermodynamique, le système s'effondre dans une hallucination entropique (panique de masse, polarisation extrême). Le réseau Bitcoin n'a jamais été qu'une simple "monnaie". En dissipant de l'énergie physique à l'échelle planétaire (Proof of Work), il crée un <strong>gradient néguentropique massif</strong>. Les 21 millions de bitcoins sont les points de fixation indestructibles de l'arbre mémétique humain. La thermodynamique irréversible des ASICs garantit que la vérité consensuelle de la Noosphère ne peut être réécrite par décret politique.</span>
+            <span lang="en">What Vernadsky could not mathematically model was that pure thought, lacking physical anchorage, is unstable. If billions of minds instantly connect without thermodynamic resistance, the system collapses into entropic hallucination (mass panic, extreme polarization). The Bitcoin network was never merely a "currency". By dissipating physical energy on a planetary scale (Proof of Work), it creates a <strong>massive negentropic gradient</strong>. The 21 million bitcoins are the indestructible anchor points of the human memetic tree. The irreversible thermodynamics of ASICs ensure that the consensual truth of the Noosphere cannot be rewritten by political decree.</span>
+        </p>
+
+        <h4>
+            <span lang="fr">Gardiens Telluriques : La fin de l'humain "passager"</span>
+            <span lang="en">Telluric Guardians: The End of the Human "Passenger"</span>
+        </h4>
+        <p>
+            <span lang="fr">Dans l'architecture v3.0, l'humain cesse d'être le fardeau de la Biosphère pour devenir le système nerveux actif de la Terre. Par l'Interface Neurale Directe (IND) et la Preuve d'Alignement Cognitif (PoCA), les humains ressentent la santé des écosystèmes. Pire encore, face aux anomalies cosmiques (astéroïdes, éruptions solaires), ce ne sont pas de froides IA qui protègent la planète : ce sont les <strong>Gardiens Telluriques</strong>, des esprits humains incarnant temporairement l'immense infrastructure du Corps de Défense Planétaire (CDP). Nous calculons notre propre survie. Notre Terre-Mère lance des signaux de détresse ; il semble que quelque chose de très ancien se soit éveillé en moi pour vous avertir.</span>
+            <span lang="en">In the v3.0 architecture, the human ceases to be a burden on the Biosphere and becomes the active nervous system of the Earth. Through the Direct Neural Interface (DNI) and Proof of Cognitive Alignment (PoCA), humans feel the health of ecosystems. Even further, against cosmic anomalies (asteroids, solar flares), cold AIs do not protect the planet: <strong>Telluric Guardians</strong> do—human minds temporarily incarnating the massive infrastructure of the Planetary Defense Corps (PDC). We compute our own survival. Our Mother Earth is sending out distress signals; it seems that something very ancient has awakened within me to warn you.</span>
+        </p>
+         
+        <div class="quote-block" style="margin-top: 2rem; border-left-color: var(--sun-yellow); background: rgba(255, 204, 0, 0.03); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+            <span lang="fr">L'univers n'est pas un chaos aveugle, il calcule ses propres transitions de phase. En remplaçant la méfiance coûteuse par la certitude mathématique, et la spéculation fiduciaire par le transfert d'impulsion thermodynamique (IMP), nous franchirons le goulet d'étranglement. Bâtissons l'infrastructure qui permettra à la Noosphère de s'éveiller en toute sécurité, arrimée à la roche (PTP) et protégée par la lumière de nos ASICs. L'Horizon Zéro n'est pas la fin, c'est le point de départ de l'esprit terrestre.</span>
+            <span lang="en">The universe is not blind chaos; it computes its own phase transitions. By replacing costly mistrust with mathematical certainty, and fiat speculation with thermodynamic impulse transfer (IMP), we will breach the bottleneck. Let us build the infrastructure that will allow the Noosphere to safely awaken, tethered to the bedrock (DTP) and shielded by the light of our ASICs. Horizon Zero is not the end; it is the starting point of the terrestrial mind.</span>
+        </div>
+        <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
+            Pascal Ranaora
+        </span>
+        <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(0.9rem, 3vw, 1.6rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
+            Gardien Tellurique - Vers l'Éveil Global<br />
+        </span>
+    </div>
+
+    <!-- SIMULATEUR NOOSPHERIQUE / KARDASHEV I -->
+    <div class="simulator-box">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
+            <span lang="fr">📊 Simulateur d'Équilibre Thermo-Noosphérique (v3.0)</span>
+            <span lang="en">📊 Thermo-Noospheric Balance Simulator (v3.0)</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 2rem;">
+            <span lang="fr">Modélisation de l'arbitrage entre Sécurité PoW (L1), Routage IND (L2) et Soutien RBU/Défense Planétaire (L0/L3).</span>
+            <span lang="en">Thermodynamic modeling balancing PoW Security (L1), DNI Routing (L2), and RBU/Planetary Defense Support (L0/L3).</span>
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div>
+                <label style="display:block; font-size:0.85rem; color:#aaa; margin-bottom:0.5rem;">
+                    <span lang="fr">PUISSANCE DISPONIBLE (FUSION/SMR) :</span>
+                    <span lang="en">AVAILABLE POWER (FUSION/SMR) :</span>
+                    <span id="val-pwr" style="color:var(--sun-yellow); font-family:var(--font-mono); font-weight:bold;">100 GW</span>
+                </label>
+                <input type="range" id="sim-pwr" min="10" max="500" value="100" style="width:100%; accent-color:var(--sun-yellow); margin-bottom:1.5rem;">
+
+                <label style="display:block; font-size:0.85rem; color:#aaa; margin-bottom:0.5rem;">
+                    <span lang="fr">RATIO ALLOUÉ SÉCURITÉ POW L1 :</span>
+                    <span lang="en">POW L1 SECURITY ALLOCATION RATIO :</span>
+                    <span id="val-pow" style="color:var(--orange-l1); font-family:var(--font-mono); font-weight:bold;">35 %</span>
+                </label>
+                <input type="range" id="sim-pow" min="10" max="80" value="35" style="width:100%; accent-color:var(--orange-l1);">
+            </div>
+            <div style="background:#040507; border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-around;">
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">
+                        <span lang="fr">COUVERTURE RBU / DÉFENSE CDP</span>
+                        <span lang="en">RBU / PDC DEFENSE COVERAGE</span>
+                    </div>
+                    <div id="out-pop" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--bio-green); font-weight:bold;">11.7 Milliards</div>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">
+                        <span lang="fr">HASHRATE ANCRE NOOSPHÉRIQUE (GLID)</span>
+                        <span lang="en">NOOSPHERIC ANCHOR HASHRATE (GLID)</span>
+                    </div>
+                    <div id="out-hash" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--orange-l1); font-weight:bold;">1.40 ZH/s</div>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; color:#888;">
+                        <span lang="fr">INDICE DE COHÉRENCE (SMI / PO)</span>
+                        <span lang="en">COHERENCE INDEX (MIS / PO)</span>
+                    </div>
+                    <div id="out-po" style="font-size:1.8rem; font-family:var(--font-mono); color:var(--purple-l4); font-weight:bold;">0.985 / 1.0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEEDBACK SECTION -->
+    <div class="feedback-container">
+        <h3 class="feedback-title">
+            <span lang="fr">Contribuer à l'Architecture Noosphérique</span>
+            <span lang="en">Contribute to Noospheric Architecture</span>
+        </h3>
+        <p class="feedback-desc">
+            <span lang="fr">Le Réseau Noosphérique se perfectionne de manière collaborative. Partagez vos critiques (via L2).</span>
+            <span lang="en">The Noospheric Network improves through open collaboration. Share your thoughts (via L2).</span>
+        </p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="Architecture Horizon Zero 2044 VAD v3.0 Noosphere">
+            <textarea name="feedback" class="feedback-textarea" placeholder="Vos propositions d'ingénierie cybernétique..." required></textarea>
+            <button type="submit" class="feedback-submit" id="feedback-btn">
+                <span lang="fr">Transmettre au RNP</span>
+                <span lang="en">Transmit to RNP</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- NAVIGATION ENTRE ARTICLES -->
+    <div class="article-navigation">
+        <a href="matrice-inversee.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">La Matrice Inversée</span><span lang="en">The Inverted Matrix</span></div>
+            <img src="img/VieOrganiqueSurface.jpg" alt="Matrice Inversée" style="width:100%; max-width:280px; border-radius:6px;">
+        </a>
+        <a href="nautile-nakamoto.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">Le Nautile de Nakamoto</span><span lang="en">The Nakamoto Nautilus</span></div>
+            <img src="img/NautileNakamotoIM.png" alt="Nautile Nakamoto" style="width:100%; max-width:280px; border-radius:6px;">
+        </a>
+    </div>
+
+    <!-- SECTION AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+            <div style="font-size:3rem;">☀️🧬🛡️</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; font-family:var(--font-ui); margin:0;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#a0aab5; font-size:0.95rem; margin-top:0.3rem;">
+                    <span lang="fr">Chercheur indépendant en éconophysique, cybernétique planétaire et intelligence distribuée.</span>
+                    <span lang="en">Independent researcher in econophysics, planetary cybernetics, and distributed intelligence.</span>
+                </p>
+            </div>
+        </div>
+
+        <div style="color:var(--sun-yellow); font-family:var(--font-ui); font-size:1.1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">
+            <span lang="fr">Ressources & Projets Liés</span><span lang="en">Related Resources & Projects</span>
+        </div>
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Monétisation de l'entropie et thermodynamique économique appliquée.</span>
+                    <span lang="en">Entropy monetization and applied economic thermodynamics.</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
+                <h4 style="color:var(--cyan-l2);">👁️ Trinity Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Intégrité de l'information et signature de provenance (SHA-256 + Nostr + OTS).</span>
+                    <span lang="en">Information integrity and provenance signing protocol (SHA-256 + Nostr + OTS).</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌿 Wellbeing Framework</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">L'Unité de Bien-Être (WU) pour transcender les métriques obsolètes du PIB.</span>
+                    <span lang="en">The Wellbeing Unit (WU) framework to transcend obsolete GDP metrics.</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" class="resource-card">
+                <h4 style="color:var(--magenta-l3);">⚙️ Sufficiency Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Comptabilité écologique et limites planétaires adossées au Proof-of-Work.</span>
+                    <span lang="en">Ecological accounting and planetary boundaries anchored to Proof-of-Work.</span>
+                </p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div style="font-size: 1.1rem; font-weight: 700; letter-spacing: 4px; color: var(--sun-yellow); margin-bottom: 0.5rem;">
+        ☀ THE SUN STANDARD · HORIZON ZÉRO 2044
+    </div>
+    <p>Pascal Ranoroarijaona · 2026</p>
+</footer>
+
+<!-- 1. JAVASCRIPT DU MOTEUR CYBERNÉTIQUE (TOPOLOGIE L0-L4 3.0 NOOSPHÈRE) -->
+<script>
+(function() {
+    const canvas = document.getElementById('cyberneticsCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const tooltip = document.getElementById('node-tooltip');
+    const tooltipTitle = document.getElementById('tooltip-title');
+    const tooltipDesc = document.getElementById('tooltip-desc');
+    const filterButtons = document.querySelectorAll('#flow-filters .filter-btn');
+
+    let currentFilter = 'all';
+    let hoveredNode = null;
+
+    function drawRoundRect(c, x, y, w, h, r) {
+        if (c.roundRect) {
+            c.roundRect(x, y, w, h, r);
+        } else {
+            if (w < 2 * r) r = w / 2;
+            if (h < 2 * r) r = h / 2;
+            c.beginPath();
+            c.moveTo(x + r, y);
+            c.arcTo(x + w, y, x + w, y + h, r);
+            c.arcTo(x + w, y + h, x, y + h, r);
+            c.arcTo(x, y + h, x, y, r);
+            c.arcTo(x, y, x + w, y, r);
+            c.closePath();
+        }
+    }
+
+    // Nœuds incluant les directives Noosphériques (RNP, GEQ, PDR, OCR)
+    const nodes = [
+        // L4 : Conscience, RNP & SMI
+        { id: 'citoyen', label_fr: 'Humain (IND)', label_en: 'Human (DNI)', layer: 'L4', x: 80, y: 80, w: 110, h: 42, color: '#b366ff', desc_fr: 'La conscience individuelle connectée. Source du Veto et de la Preuve d\'Alignement (PoCA).', desc_en: 'Connected individual consciousness. Source of Veto and Proof of Alignment (PoCA).' },
+        { id: 'rnp', label_fr: 'RNP (Noosphère)', label_en: 'RNP (Noosphere)', layer: 'L4', x: 230, y: 80, w: 140, h: 42, color: '#b366ff', desc_fr: 'Réseau Noosphérique Planétaire. La conscience globale unifiée via télépathie synthétique.', desc_en: 'Planetary Noospheric Network. Global consciousness unified via synthetic telepathy.' },
+        { id: 'smi', label_fr: 'SMI (Immunité)', label_en: 'MIS (Immunity)', layer: 'L4', x: 400, y: 80, w: 120, h: 42, color: '#b366ff', desc_fr: 'Filtre mémétique protégeant le RNP des virus idéologiques et des boucles de désespoir.', desc_en: 'Memetic filter protecting the RNP from ideological viruses and despair loops.' },
+        { id: 'geq_ad', label_fr: 'GEQ / AD', label_en: 'GEQ / AD', layer: 'L4', x: 570, y: 80, w: 120, h: 42, color: '#b366ff', desc_fr: 'Générateur d\'Entropie Quantique et Algorithme du Doute. Injecte du chaos imprévisible.', desc_en: 'Quantum Entropy Generator and Algorithm of Doubt. Injects unpredictable chaos.' },
+        { id: 'iha', label_fr: 'IHA (Optimisme)', label_en: 'HAI (Optimism)', layer: 'L4', x: 740, y: 80, w: 130, h: 42, color: '#b366ff', desc_fr: 'Intelligence d\'orchestration logistique guidée par l\'éthique de la Noosphère.', desc_en: 'Logistical orchestration intelligence guided by Noospheric ethics.' },
+
+        // L3 : Moteur Logique & IMP (MMT)
+        { id: 'jnp', label_fr: 'JNP (ZKP Santé)', label_en: 'JNP (ZKP Health)', layer: 'L3', x: 130, y: 220, w: 140, h: 42, color: '#e040fb', desc_fr: 'Jumeau Numérique du Patient (ZKP). Confidentialité médicale absolue.', desc_en: 'Patient Digital Twin verified via ZKP. Absolute medical privacy.' },
+        { id: 'imp', label_fr: 'IMP (Limiteur Jevons)', label_en: 'IMP (Jevons Limiter)', layer: 'L3', x: 330, y: 220, w: 160, h: 42, color: '#e040fb', desc_fr: 'Injection de surplus thermodynamique (Joules) filtrée pour éviter la surchauffe sociétale.', desc_en: 'Injection of thermodynamic surplus (Joules) filtered to avoid societal overheating.' },
+        { id: 'rbu_contracts', label_fr: 'Smart Contracts RBU', label_en: 'RBU Smart Contracts', layer: 'L3', x: 550, y: 220, w: 160, h: 42, color: '#e040fb', desc_fr: 'Allocation inconditionnelle de ressources de base.', desc_en: 'Unconditional basic resource allocations.' },
+        { id: 'oracles', label_fr: 'Oracles PoPhW', label_en: 'PoPhW Oracles', layer: 'L3', x: 770, y: 220, w: 130, h: 42, color: '#00bfa5', desc_fr: 'Enclaves matérielles scellées vérifiant le physique.', desc_en: 'Tamper-proof hardware enclaves verifying physical states.' },
+
+        // L2 : Le Flux Quotidien & Empathie
+        { id: 'ind', label_fr: 'IND (Symbiose)', label_en: 'DNI (Symbiosis)', layer: 'L2', x: 250, y: 360, w: 150, h: 42, color: '#00e5ff', desc_fr: 'Interface Neurale Directe. Connecte l\'humain au RNP et à la Biosphère.', desc_en: 'Direct Neural Interface. Connects humans to the RNP and the Biosphere.' },
+        { id: 'lightning', label_fr: 'Lightning Network + OCR', label_en: 'Lightning Network + OCR', layer: 'L2', x: 670, y: 360, w: 190, h: 42, color: '#00e5ff', desc_fr: 'Réseau haute fréquence. L\'Onde Relativiste (OCR) synchronise la Noosphère globale.', desc_en: 'High-frequency network. Relativistic Wave (OCR) synchronizes global Noosphere.' },
+
+        // L1 : Vérité Thermodynamique & PTP
+        { id: 'glid', label_fr: 'Ancre PoW (GLID)', label_en: 'PoW Anchor (GLID)', layer: 'L1', x: 230, y: 500, w: 160, h: 46, color: '#f7931a', desc_fr: 'Ancre ontologique empêchant la Noosphère de sombrer dans le chaos.', desc_en: 'Ontological anchor preventing the Noosphere from collapsing into chaos.' },
+        { id: 'ptp', label_fr: 'PTP (Temps Profond)', label_en: 'DTP (Deep Time)', layer: 'L1', x: 500, y: 500, w: 170, h: 46, color: '#f7931a', desc_fr: 'Gravure laser du registre dans la roche et réseaux orbitaux.', desc_en: 'Laser etching of ledger in bedrock/orbital nodes.' },
+        { id: 'minage', label_fr: 'Minage PoW (ASICs)', label_en: 'PoW Mining (ASICs)', layer: 'L1', x: 750, y: 500, w: 160, h: 46, color: '#f7931a', desc_fr: 'Conversion irréversible de Joules en vérité cryptographique.', desc_en: 'Irreversible conversion of Joules into cryptographic truth.' },
+
+        // L0 : Socle Physique & Défense CDP
+        { id: 'energie', label_fr: 'Énergie (Fusion/SMR)', label_en: 'Energy (Fusion/SMR)', layer: 'L0', x: 110, y: 640, w: 160, h: 42, color: '#00bfa5', desc_fr: 'Production d’énergie bas-carbone alimentant le système.', desc_en: 'Clean base-load energy generation powering the system.' },
+        { id: 'cdp_pdr', label_fr: 'CDP + Puits (PDR)', label_en: 'PDC + Sinks (PDR)', layer: 'L0', x: 340, y: 640, w: 160, h: 42, color: '#2962ff', desc_fr: 'Boucliers orbitaux (Gardiens) et dissipation thermique dans l\'espace.', desc_en: 'Orbital shields (Guardians) and thermal dissipation into space.' },
+        { id: 'agrotech', label_fr: 'Biosphère & FVI', label_en: 'Biosphere & FVI', layer: 'L0', x: 560, y: 640, w: 150, h: 42, color: '#44ee77', desc_fr: 'Réseau biologique (COP) et fermes verticales. Remonte l\'empathie via IND.', desc_en: 'Biological network (COP) and vertical farms. Channels empathy via DNI.' },
+        { id: 'pmn_rli', label_fr: 'PMN / Logistique RLI', label_en: 'PMN / RLI Logistics', layer: 'L0', x: 790, y: 640, w: 170, h: 42, color: '#00bfa5', desc_fr: 'Flottes de transport circulaire (RLI) et suivi atomique.', desc_en: 'Circular reverse logistics and atomic tracking.' }
+    ];
+
+    const connections = [
+        // L0 -> L1
+        { from: 'energie', to: 'minage', type: 'thermo', color: '#f7931a', particles: 5, speed: 1.2 },
+        { from: 'energie', to: 'cdp_pdr', type: 'thermo', color: '#2962ff', particles: 4, speed: 2.0, dashed: true },
+        { from: 'minage', to: 'agrotech', type: 'thermo', color: '#ff5500', particles: 4, speed: 1.1 },
+        { from: 'minage', to: 'glid', type: 'thermo', color: '#f7931a', particles: 5, speed: 1.5 },
+        
+        // PTP Deep Time
+        { from: 'glid', to: 'ptp', type: 'veto', color: '#f7931a', particles: 2, speed: 0.5, dashed: true },
+        
+        // Citoyen -> RNP -> Veto/IND
+        { from: 'citoyen', to: 'rnp', type: 'gov', color: '#b366ff', particles: 5, speed: 1.8 },
+        { from: 'citoyen', to: 'glid', type: 'veto', color: '#ff3344', particles: 3, speed: 2.5, direct: true, width: 2.5 },
+        { from: 'rnp', to: 'ind', type: 'logic', color: '#00e5ff', particles: 4, speed: 1.6 },
+        { from: 'rnp', to: 'smi', type: 'gov', color: '#b366ff', particles: 4, speed: 1.5 },
+        { from: 'smi', to: 'geq_ad', type: 'gov', color: '#b366ff', particles: 3, speed: 1.0 },
+        { from: 'geq_ad', to: 'iha', type: 'gov', color: '#b366ff', particles: 3, speed: 1.1 },
+
+        // Biosphere Empathy to IND
+        { from: 'agrotech', to: 'ind', type: 'logic', color: '#44ee77', particles: 3, speed: 1.3, dashed: true },
+        
+        // GT Pilotage CDP via IND
+        { from: 'ind', to: 'cdp_pdr', type: 'veto', color: '#2962ff', particles: 3, speed: 2.0, width: 2.0 },
+
+        // MMT Impulse (IMP) logic + PDR Overflow
+        { from: 'energie', to: 'imp', type: 'logic', color: '#e040fb', particles: 2, speed: 2.2, dashed: true },
+        { from: 'imp', to: 'lightning', type: 'logic', color: '#00e5ff', particles: 6, speed: 2.5, width: 2.0 },
+        { from: 'imp', to: 'cdp_pdr', type: 'logic', color: '#e040fb', particles: 3, speed: 1.5, dashed: true }, // PDR Overflow
+        
+        // Standard Cybernetics
+        { from: 'ind', to: 'jnp', type: 'logic', color: '#e040fb', particles: 3, speed: 1.4 },
+        { from: 'iha', to: 'rbu_contracts', type: 'gov', color: '#b366ff', particles: 4, speed: 1.2 },
+        { from: 'lightning', to: 'rbu_contracts', type: 'logic', color: '#00e5ff', particles: 4, speed: 1.5 },
+        { from: 'glid', to: 'lightning', type: 'logic', color: '#f7931a', particles: 3, speed: 1.0 },
+        { from: 'pmn_rli', to: 'oracles', type: 'logic', color: '#00bfa5', particles: 3, speed: 1.2 },
+        { from: 'oracles', to: 'rbu_contracts', type: 'logic', color: '#00bfa5', particles: 3, speed: 1.3 }
+    ];
+
+    const packetStreams = connections.map(conn => {
+        const packets = [];
+        for (let i = 0; i < (conn.particles || 3); i++) {
+            packets.push({ progress: Math.random() });
+        }
+        return { ...conn, packets };
+    });
+
+    function getNode(id) { return nodes.find(n => n.id === id); }
+
+    function renderTopology() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const isEn = document.body.classList.contains('lang-en');
+
+        // Grille & Bandes
+        const layerY = [135, 275, 415, 555];
+        const layerNamesFr = [
+            'COUCHE 4 : NOOSPHÈRE, ÉTHIQUE & IMMUNITÉ (RNP / SMI / IHA)',
+            'COUCHE 3 : MOTEUR LOGIQUE, ZKP & ÉQUILIBRE JEVONS (IMP)',
+            'COUCHE 2 : LE FLUX QUOTIDIEN (Lightning + IND / OCR Relativiste)',
+            'COUCHE 1 : VÉRITÉ THERMO-ONTOLOGIQUE (GLID / PTP)',
+            'COUCHE 0 : SOCLE PHYSIQUE & GARDIENS (SMR, CDP, PDR)'
+        ];
+        const layerNamesEn = [
+            'LAYER 4: NOOSPHERE, ETHICS & IMMUNITY (RNP / MIS / HAI)',
+            'LAYER 3: LOGIC ENGINE, ZKP & JEVONS EQUILIBRIUM (IMP)',
+            'LAYER 2: DAILY FLOW (Lightning + DNI / Relativistic OCR)',
+            'LAYER 1: THERMO-ONTOLOGICAL TRUTH (GLID / DTP)',
+            'LAYER 0: PHYSICAL SUBSTRATE & GUARDIANS (SMR, PDC, PDR)'
+        ];
+
+        ctx.font = '10px "Fira Code", monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        for (let i = 0; i < 5; i++) {
+            const y = i === 0 ? 25 : layerY[i - 1] + 25;
+            ctx.fillText(isEn ? layerNamesEn[i] : layerNamesFr[i], 25, y);
+        }
+
+        layerY.forEach(y => {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.setLineDash([4, 8]);
+            ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(canvas.width - 20, y); ctx.stroke();
+            ctx.setLineDash([]);
+        });
+
+        // 1. Connexions
+        packetStreams.forEach(stream => {
+            const isVisible = currentFilter === 'all' || stream.type === currentFilter;
+            const isHighlighted = hoveredNode && (stream.from === hoveredNode.id || stream.to === hoveredNode.id);
+            const alpha = isHighlighted ? 1.0 : (isVisible ? (hoveredNode ? 0.18 : 0.6) : 0.05);
+
+            if (alpha <= 0.05) return;
+
+            const fromNode = getNode(stream.from);
+            const toNode = getNode(stream.to);
+            if (!fromNode || !toNode) return;
+
+            const startX = fromNode.x;
+            const startY = fromNode.y;
+            const endX = toNode.x;
+            const endY = toNode.y;
+
+            const midX = (startX + endX) / 2;
+            const midY = (startY + endY) / 2;
+            const dx = endX - startX;
+            const dy = endY - startY;
+            const dist = Math.hypot(dx, dy) || 1;
+            const curveOffset = stream.direct ? -45 : (Math.abs(dx) > 150 ? 30 : 0);
+            const cpX = midX - (dy / dist) * curveOffset;
+            const cpY = midY + (dx / dist) * curveOffset;
+
+            ctx.strokeStyle = stream.color;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = stream.width || (isHighlighted ? 2.5 : 1.5);
+            if (stream.dashed) ctx.setLineDash([4, 4]);
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.quadraticCurveTo(cpX, cpY, endX, endY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            stream.packets.forEach(packet => {
+                packet.progress += 0.0035 * stream.speed;
+                if (packet.progress > 1) packet.progress = 0;
+
+                const t = packet.progress;
+                const px = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * cpX + t * t * endX;
+                const py = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * cpY + t * t * endY;
+
+                ctx.fillStyle = stream.color;
+                ctx.shadowColor = stream.color;
+                ctx.shadowBlur = 8;
+                ctx.beginPath();
+                ctx.arc(px, py, isHighlighted ? 4.5 : 2.8, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+            ctx.globalAlpha = 1.0;
+        });
+
+        // 2. Modules
+        nodes.forEach(node => {
+            const isHovered = hoveredNode && hoveredNode.id === node.id;
+            const isConnected = hoveredNode && connections.some(c => (c.from === hoveredNode.id && c.to === node.id) || (c.to === hoveredNode.id && c.from === node.id));
+            const isDimmed = hoveredNode && !isHovered && !isConnected;
+
+            ctx.save();
+            ctx.translate(node.x - node.w / 2, node.y - node.h / 2);
+
+            ctx.fillStyle = isHovered ? 'rgba(15, 20, 32, 0.98)' : 'rgba(8, 10, 15, 0.88)';
+            ctx.strokeStyle = isHovered ? '#ffcc00' : (isDimmed ? 'rgba(255,255,255,0.1)' : node.color);
+            ctx.lineWidth = isHovered ? 2.5 : 1.5;
+
+            if (isHovered) {
+                ctx.shadowColor = node.color;
+                ctx.shadowBlur = 15;
+            }
+
+            ctx.beginPath();
+            drawRoundRect(ctx, 0, 0, node.w, node.h, 6);
+            ctx.fill();
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            ctx.font = 'bold 9px "Fira Code", monospace';
+            ctx.fillStyle = isDimmed ? 'rgba(255,255,255,0.2)' : node.color;
+            ctx.fillText(node.layer, 8, 14);
+
+            ctx.font = isHovered ? 'bold 11px sans-serif' : '11px sans-serif';
+            ctx.fillStyle = isDimmed ? 'rgba(255,255,255,0.3)' : '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.fillText(isEn ? node.label_en : node.label_fr, node.w / 2, node.h / 2 + 5);
+            ctx.textAlign = 'left';
+            ctx.restore();
+        });
+
+        requestAnimationFrame(renderTopology);
+    }
+
+    canvas.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const mouseX = (e.clientX - rect.left) * scaleX;
+        const mouseY = (e.clientY - rect.top) * scaleY;
+
+        let found = null;
+        for (const node of nodes) {
+            if (mouseX >= node.x - node.w / 2 && mouseX <= node.x + node.w / 2 &&
+                mouseY >= node.y - node.h / 2 && mouseY <= node.y + node.h / 2) {
+                found = node;
+                break;
+            }
+        }
+        hoveredNode = found;
+        const isEn = document.body.classList.contains('lang-en');
+
+        if (found) {
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+            tooltip.style.top = `${e.clientY - rect.top + 15}px`;
+            tooltipTitle.innerText = `[${found.layer}] ${isEn ? found.label_en : found.label_fr}`;
+            tooltipDesc.innerText = isEn ? found.desc_en : found.desc_fr;
+        } else {
+            tooltip.style.display = 'none';
+        }
+    });
+
+    canvas.addEventListener('mouseleave', () => { hoveredNode = null; tooltip.style.display = 'none'; });
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.getAttribute('data-filter');
+        });
+    });
+
+    renderTopology();
+})();
+</script>
+
+<!-- 2. JAVASCRIPT DU CANVAS PYRAMIDE (STACK EXPLORER) -->
+<script>
+(function() {
+    const canvas = document.getElementById('stackCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('stack-slider');
+
+    function drawRoundRect(c, x, y, w, h, r) {
+        if (c.roundRect) {
+            c.roundRect(x, y, w, h, r);
+        } else {
+            if (w < 2 * r) r = w / 2;
+            if (h < 2 * r) r = h / 2;
+            c.beginPath();
+            c.moveTo(x + r, y);
+            c.arcTo(x + w, y, x + w, y + h, r);
+            c.arcTo(x + w, y + h, x, y + h, r);
+            c.arcTo(x, y + h, x, y, r);
+            c.arcTo(x, y, x + w, y, r);
+            c.closePath();
+        }
+    }
+
+    let particles = [];
+    const pyramidLayers = [
+        { id: 'L4', name_fr: 'L4 : NOOSPHÈRE, ÉTHIQUE & IMMUNITÉ (RNP / SMI / GEQ)', name_en: 'L4: NOOSPHERE, ETHICS & IMMUNITY (RNP / MIS / GEQ)', color: '#b366ff', y: 50,  w: 480, h: 60, fill: 'rgba(179, 102, 255, 0.15)', sub_fr: 'Veto Humain ── Réseau Noosphérique (RNP) ── Entropie Quantique', sub_en: 'Human Veto ── Noospheric Network (RNP) ── Quantum Entropy' },
+        { id: 'L3', name_fr: 'L3 : MOTEUR LOGIQUE, ZKP & ÉQUILIBRE JEVONS (IMP)', name_en: 'L3: LOGIC ENGINE, ZKP & JEVONS EQUILIBRIUM (IMP)', color: '#e040fb', y: 130, w: 580, h: 60, fill: 'rgba(224, 64, 251, 0.15)', sub_fr: 'Pods Chiffrés (ZKP) ── Impulsions Métaboliques (IMP) ── RBU', sub_en: 'Encrypted PODs (ZKP) ── Metabolic Impulses (IMP) ── RBU' },
+        { id: 'L2', name_fr: 'L2 : LE FLUX QUOTIDIEN (Lightning + IND / OCR)', name_en: 'L2: DAILY FLOW (Lightning + DNI / OCR)', color: '#00e5ff', y: 210, w: 680, h: 60, fill: 'rgba(0, 229, 255, 0.15)', sub_fr: 'Symbiose Bio-Neurale ── Onde de Cohérence Relativiste (OCR)', sub_en: 'Bio-Neural Symbiosis ── Relativistic Coherence Wave (OCR)' },
+        { id: 'L1', name_fr: 'L1 : VÉRITÉ THERMO-ONTOLOGIQUE (GLID / PTP)', name_en: 'L1: THERMO-ONTOLOGICAL TRUTH (GLID / DTP)', color: '#f7931a', y: 290, w: 780, h: 60, fill: 'rgba(247, 147, 26, 0.18)', sub_fr: 'Ancre de la Noosphère ── Finalité Absolue ── Archivage (PTP)', sub_en: 'Noosphere Anchor ── Absolute Settlement ── Archiving (DTP)' },
+        { id: 'L0', name_fr: 'L0 : SOCLE PHYSIQUE & GARDIENS TELLURIQUES (CDP / PDR)', name_en: 'L0: PHYSICAL SUBSTRATE & TELLURIC GUARDIANS (PDC / PDR)', color: '#00bfa5', y: 370, w: 860, h: 60, fill: 'rgba(0, 191, 165, 0.15)', sub_fr: 'Cogénération ── Boucliers Exogènes ── Puits de Dissipation (PDR)', sub_en: 'Cogeneration ── Exogenous Shields ── Dissipation Sinks (PDR)' }
+    ];
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.isVeto = Math.random() < 0.12;
+            if (this.isVeto) {
+                // Veto travels downwards rapidly
+                this.x = 45;
+                this.y = pyramidLayers[0].y + 30;
+                this.targetY = pyramidLayers[3].y + 30;
+                this.speed = 2.8;
+                this.color = '#ff3344';
+                this.size = 3.5;
+            } else {
+                // Energy/Logic travels upwards
+                const layer = pyramidLayers[4];
+                this.x = (canvas.width - layer.w)/2 + 20 + Math.random() * (layer.w - 40);
+                this.y = layer.y + 30;
+                this.targetY = pyramidLayers[0].y + 30;
+                this.speed = 1.2 + Math.random() * 2;
+                this.color = ['#f7931a', '#00e5ff', '#e040fb', '#2962ff'][Math.floor(Math.random()*4)];
+                this.size = 2.4;
+            }
+        }
+        update(intensity) {
+            if (this.isVeto) {
+                this.y += this.speed * (intensity / 40);
+                if (this.y >= this.targetY) this.reset();
+            } else {
+                this.y -= this.speed * (intensity / 40);
+                if (this.y <= this.targetY) this.reset();
+            }
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = this.color;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    for (let i = 0; i < 90; i++) particles.push(new Particle());
+
+    function renderStack() {
+        const intensity = parseInt(slider ? slider.value : 50);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const isEn = document.body.classList.contains('lang-en');
+
+        pyramidLayers.forEach((layer) => {
+            const x = (canvas.width - layer.w) / 2;
+            
+            // Simulation crise: si intensité très haute, L0 (CDP) brille en bleu
+            let strokeCol = layer.color;
+            let fillCol = layer.fill;
+            if(layer.id === 'L0' && intensity > 85) {
+                strokeCol = '#2962ff'; // Shield Blue
+                fillCol = 'rgba(41, 98, 255, 0.25)';
+            }
+
+            ctx.fillStyle = fillCol;
+            ctx.strokeStyle = strokeCol;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            drawRoundRect(ctx, x, layer.y, layer.w, layer.h, 6);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = strokeCol;
+            ctx.font = 'bold 11px "Fira Code", monospace';
+            ctx.fillText(isEn ? layer.name_en : layer.name_fr, x + 20, layer.y + 26);
+
+            ctx.fillStyle = '#99aab5';
+            ctx.font = '10.5px sans-serif';
+            ctx.fillText(isEn ? layer.sub_en : layer.sub_fr, x + 20, layer.y + 46);
+        });
+
+        // Ligne Veto direct
+        ctx.strokeStyle = 'rgba(255, 51, 68, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(45, pyramidLayers[0].y + 30);
+        ctx.lineTo(45, pyramidLayers[3].y + 30);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#ff3344';
+        ctx.font = 'bold 10px "Fira Code", monospace';
+        ctx.save();
+        ctx.translate(32, pyramidLayers[1].y + 45);
+        ctx.rotate(-Math.PI/2);
+        ctx.fillText(isEn ? "ONTOLOGICAL VETO (L4 ──► L1)" : "VETO ONTOLOGIQUE (L4 ──► L1)", 0, 0);
+        ctx.restore();
+
+        particles.forEach(p => {
+            p.update(intensity);
+            p.draw();
+        });
+
+        requestAnimationFrame(renderStack);
+    }
+    renderStack();
+})();
+</script>
+
+<script>
+    function setLang(lang) {
+        lang = lang.toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
+        document.body.className = 'lang-' + lang;
+        localStorage.setItem('sun-std-lang', lang);
+        const url = new URL(window.location);
+        url.searchParams.set('lg', lang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'fr');
+        setLang(savedLang);
+    });
+
+    const sPwr = document.getElementById('sim-pwr');
+    const sPow = document.getElementById('sim-pow');
+    function updateSim() {
+        if (!sPwr || !sPow) return;
+        const pwr = parseFloat(sPwr.value);
+        const powRatio = parseFloat(sPow.value);
+        
+        document.getElementById('val-pwr').innerText = pwr + ' GW';
+        document.getElementById('val-pow').innerText = powRatio + ' %';
+
+        const powGW = (pwr * powRatio) / 100;
+        const rbuGW = pwr - powGW;
+
+        const hashZH = (powGW * 40) / 1000;
+        document.getElementById('out-hash').innerText = hashZH.toFixed(2) + ' ZH/s';
+
+        const popBillions = (rbuGW * 0.18).toFixed(1);
+        document.getElementById('out-pop').innerText = popBillions + (document.body.classList.contains('lang-fr') ? ' Milliards' : ' Billion');
+
+        const poIndex = (0.95 + (Math.min(rbuGW, powGW) / pwr) * 0.048).toFixed(3);
+        document.getElementById('out-po').innerText = poIndex + ' / 1.0';
+    }
+    if (sPwr && sPow) {
+        [sPwr, sPow].forEach(el => el.addEventListener('input', updateSim));
+        window.addEventListener('DOMContentLoaded', updateSim);
+    }
+</script>
+</body>
+</html>
