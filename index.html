@@ -10242,6 +10242,9 @@ function downloadChatHistory() {
     URL.revokeObjectURL(url);
 }
 
+// 1. Initialiser la variable globale pour la mémoire de session (en dehors de la fonction)
+let chatHistory = [];
+
 // --- LOGIQUE D'ENVOI ET DE RÉCEPTION (API) ---
 async function sendSolarMessage() {
     const isFrench = document.body.classList.contains('lang-fr');
@@ -10277,17 +10280,25 @@ async function sendSolarMessage() {
         const res = await fetch(workerUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text, lang: isFrench ? 'fr' : 'en' })
+            body: JSON.stringify({ 
+                message: text, 
+                lang: isFrench ? 'fr' : 'en',
+                history: chatHistory // Envoi de l'historique complet au Worker
+            })
         });
 
         const data = await res.json();
-        document.getElementById('loading-resp').remove();
+        
+        if (document.getElementById('loading-resp')) {
+            document.getElementById('loading-resp').remove();
+        }
 
         // Créer l'élément de réponse
         const botDiv = document.createElement('div');
         botDiv.className = 'chat-msg bot-msg';
         
-        const rawReply = data.reply || (isFrench ? "Pas de réponse reçue." : "No response received.");
+        // Gestion des erreurs renvoyées par le Worker (Rate limit, etc.)
+        const rawReply = data.reply || (data.error ? `[Erreur] ${data.error}` : (isFrench ? "Pas de réponse reçue." : "No response received."));
         
         // CONVERSION DU MARKDOWN EN HTML via Marked.js
         if (typeof marked !== 'undefined') {
@@ -10304,8 +10315,21 @@ async function sendSolarMessage() {
             MathJax.typesetPromise([botDiv]);
         }
 
+        // MISE À JOUR DE LA MÉMOIRE (Seulement si la réponse est un succès)
+        if (res.ok && data.reply) {
+            chatHistory.push({ role: "user", content: text });
+            chatHistory.push({ role: "assistant", content: data.reply });
+            
+            // Sécurité : On garde uniquement les 20 derniers messages (10 échanges) pour ne pas saturer l'API
+            if (chatHistory.length > 20) {
+                chatHistory = chatHistory.slice(chatHistory.length - 20);
+            }
+        }
+
     } catch (e) {
-        document.getElementById('loading-resp').remove();
+        if (document.getElementById('loading-resp')) {
+            document.getElementById('loading-resp').remove();
+        }
         const errDiv = document.createElement('div');
         errDiv.className = 'chat-msg bot-msg';
         errDiv.style.borderColor = '#ff4444';
