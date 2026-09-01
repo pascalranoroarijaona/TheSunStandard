@@ -10321,8 +10321,8 @@ async function sendSolarMessage() {
             chatHistory.push({ role: "assistant", content: data.reply });
             
             // Sécurité : On garde uniquement les 20 derniers messages (10 échanges) pour ne pas saturer l'API
-            if (chatHistory.length > 20) {
-                chatHistory = chatHistory.slice(chatHistory.length - 20);
+            if (chatHistory.length > 30) {
+                chatHistory = chatHistory.slice(chatHistory.length - 30);
             }
         }
 
