@@ -789,7 +789,846 @@
     </div>
 </section>
 
-    <hr class="divider">
+<!-- NOUVELLE SECTION : EXECUTIVE SUMMARY (RÉSUMÉ ET PLAN) -->
+<section id="executive-summary" style="padding: 3rem 2rem; background: rgba(5, 5, 8, 0.6); border-top: 1px solid var(--border-glow); border-bottom: 1px solid var(--border-glow); position: relative; z-index: 20;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="color: var(--sun-yellow); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                <span lang="en">Executive Summary & Blueprint</span>
+                <span lang="fr">Note de Synthèse & Plan de Lecture</span>
+            </h2>
+            <p style="color: #d1d5db; font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                <span lang="en"><strong>The Sun Standard</strong> is a biophysical monetary framework. It proposes that sound money cannot be decreed by political fiat, but must be anchored in the objective laws of thermodynamics. This document bridges physics, economics, and philosophy to demonstrate how the Nakamoto Consensus monetizes entropy.</span>
+                <span lang="fr"><strong>L'Étalon Solaire</strong> est un cadre monétaire biophysique. Il postule qu'une monnaie saine ne peut être décrétée politiquement (fiat), mais doit s'ancrer dans les lois objectives de la thermodynamique. Ce document relie la physique, l'économie et la philosophie pour démontrer comment le Consensus de Nakamoto monétise l'entropie.</span>
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+            <a href="#the-basics" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(68, 153, 255, 0.2); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: #4499ff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>1.</span> <span lang="en">Money Basics</span><span lang="fr">Les Fondamentaux Monétaires</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">A primer on the 3 functions of money, the fiat illusion, and how Bitcoin redefines monetary issuance.</span>
+                    <span lang="fr">Un rappel sur les 3 fonctions de la monnaie, l'illusion fiat et la révolution de l'émission Bitcoin.</span>
+                </p>
+            </a>
+
+            <a href="#philo" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 204, 0, 0.2); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: var(--sun-yellow); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>2.</span> <span lang="en">Philosophical Essay</span><span lang="fr">L'Essai Philosophique</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">Explore the ontological implications of absolute scarcity, mimetic desire, and digital finitude.</span>
+                    <span lang="fr">Explorez les implications ontologiques de la rareté absolue, du désir mimétique et de la finitude numérique.</span>
+                </p>
+            </a>
+            
+            <a href="#theo" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(68, 238, 119, 0.2); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: #44ee77; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>3.</span> <span lang="en">Biophysical Value</span><span lang="fr">La Valeur Biophysique</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">Deconstructing Marx and classical economics to introduce Emergy (Solar Work) as the true anchor of capital.</span>
+                    <span lang="fr">Déconstruire Marx et l'économie classique pour introduire l'Émergie comme véritable ancrage du capital.</span>
+                </p>
+            </a>
+
+            <a href="#live-thermodynamics" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 102, 0, 0.2); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: var(--sun-orange); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>4.</span> <span lang="en">Live Network Data</span><span lang="fr">Données en Direct</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">Real-time thermodynamic metrics (nChainWork, seJ/sat) proving the irreversible cost of network security.</span>
+                    <span lang="fr">Métriques thermodynamiques en temps réel prouvant le coût irréversible de la sécurité du réseau.</span>
+                </p>
+            </a>
+
+             <a href="#monetary-debate" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(200, 100, 255, 0.2); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: #c864ff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>5.</span> <span lang="en">The Great Debate</span><span lang="fr">Le Grand Débat</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">A rigorous comparison matrix pitting Modern Monetary Theory (MMT) against the Sun Standard paradigm.</span>
+                    <span lang="fr">Une matrice comparative rigoureuse opposant la Théorie Monétaire Moderne (MMT) au paradigme de l'Étalon Solaire.</span>
+                </p>
+            </a>
+
+            <a href="#methodology" style="text-decoration: none; display: block; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(150, 150, 150, 0.4); border-radius: 8px; transition: transform 0.2s, background 0.2s;">
+                <h4 style="color: #e5e7eb; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                    <span>6.</span> <span lang="en">Scientific Methodology</span><span lang="fr">Méthodologie Scientifique</span>
+                </h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                    <span lang="en">The mathematical equations and academic timeline bridging sunlight to Satoshi.</span>
+                    <span lang="fr">Les équations mathématiques et la chronologie académique reliant la lumière du soleil au Satoshi.</span>
+                </p>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- NOUVELLE SECTION : LES BASES (ACCESSIBLE À TOUS) -->
+<hr class="divider">
+<section id="the-basics" style="padding-top: 2rem;">
+    <p class="section-label">
+        <span lang="en">Back to Basics</span>
+        <span lang="fr">Retour aux Fondamentaux</span>
+    </p>
+    <h2 class="section-title">
+        <span lang="en">Understanding Money & Bitcoin<br><span style="font-size: 0.6em; color: #888;">(An accessible introduction before the technical analysis)</span></span>
+        <span lang="fr">Comprendre la Monnaie et Bitcoin<br><span style="font-size: 0.6em; color: #888;">(Une introduction accessible avant l’analyse technique)</span></span>
+    </h2>
+
+    <div class="section-body" style="max-width: 900px; margin: 0 auto 2rem auto; text-align: justify; color: #d1d5db; line-height: 1.8;">
+        <p style="margin-bottom: 1rem;">
+            <span lang="en">Money is a technology that allows the transfer of value across space, time, and scale. Value is the utility humans derive from goods and services. It is highly subjective and varies across time and space.</span>
+            <span lang="fr">La monnaie est une technologie permettant de transférer de la valeur à travers l'espace, le temps et l'échelle. La valeur est l'utilité que les humains retirent des biens et des services. Elle est hautement subjective et varie selon le temps et l'espace.</span>
+        </p>
+        <p style="margin-bottom: 1.5rem; padding: 1rem 1.5rem; border-left: 3px solid var(--sun-orange); background: rgba(255, 102, 0, 0.05); border-radius: 0 8px 8px 0;">
+            <span lang="en">In physical terms, holding money means holding a <strong>drawing right</strong> on our environment. Every time you spend, you issue a command line to society: extract resources, burn energy, and put humans/machines/biosphere to work for you.</span>
+            <span lang="fr">Concrètement, posséder de la monnaie équivaut à détenir un <strong>droit de tirage</strong> sur notre environnement. Chaque fois que vous dépensez, vous donnez un ordre à la société/exécutez une ligne de commande dans le code source de la réalité : extraire des ressources, brûler de l'énergie et faire travailler la biosphère, des humains ou des machines pour vous.</span>
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+
+    <!-- Les 3 fonctions de la monnaie -->
+    <div style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+        <h3 style="color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center;">
+            <span lang="en">What is Money? The 3 Superpowers</span>
+            <span lang="fr">Qu'est-ce que la Monnaie ? Les 3 Superpouvoirs ou Fonctions</span>
+        </h3>
+        <p style="text-align: center; color: #a1a1aa; font-size: 0.95rem; margin-bottom: 2rem; font-style: italic;">
+            <span lang="en">Perhaps unknowingly, economists defined these functions as follows:</span>
+            <span lang="fr">À leur insu, les économistes ont défini ces fonctions comme suit :</span>
+        </p>
+        <div class="formula-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">1. Store of Value (Time)</span><span lang="fr">1. Réserve de Valeur (Temps)</span></strong><br>
+                <span lang="en">Think of it as a <strong>Battery for Time</strong>. If you work for 10 hours today, good money stores that energy so you can spend those 10 hours next year without them leaking away.</span>
+                <span lang="fr">Imaginez une <strong>Pile pour le Temps</strong>. Si vous travaillez 10 heures aujourd'hui, une bonne monnaie stocke cette énergie pour que vous puissiez dépenser ces 10 heures l'année prochaine sans qu'elles ne se vident.</span>
+            </div>
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">2. Medium of Exchange (Space)</span><span lang="fr">2. Intermédiaire d'Échange (Espace)</span></strong><br>
+                <span lang="en">Think of it as a <strong>Bridge</strong>. You bake bread, but you want shoes. Instead of finding a shoemaker who wants bread, you both use money to cross the bridge.</span>
+                <span lang="fr">Imaginez un <strong>Pont</strong>. Vous faites du pain, mais vous voulez des chaussures. Au lieu de chercher un cordonnier qui veut du pain, vous utilisez tous les deux l'argent pour traverser le pont.</span>
+            </div>
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">3. Unit of Account (Scale)</span><span lang="fr">3. Unité de Compte (Échelle)</span></strong><br>
+                <span lang="en">Think of it as a <strong>Ruler</strong>. It measures the cost of everything. If the ruler shrinks or stretches (inflation), you can't measure anything properly anymore.</span>
+                <span lang="fr">Imaginez une <strong>Règle pour mesurer</strong>. Elle donne le prix de tout. Si la règle s'étire ou rétrécit (l'inflation), vous ne pouvez plus rien mesurer correctement.</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-body" style="max-width: 900px; margin: 0 auto 2rem auto; text-align: justify; color: #d1d5db; line-height: 1.8;">
+        <p style="margin-bottom: 1.5rem;">
+            <span lang="en">Throughout history, no monetary system has managed to simultaneously fulfill the three functions of money completely. This is where the idea of backing money and the necessity to distinguish between money and currency comes from. This compromise can be described as a <strong>monetary trilemma</strong>: you can optimize two functions, but not all three:</span>
+            <span lang="fr">À travers l'histoire, aucun système monétaire n'est parvenu à remplir simultanément les trois fonctions de la monnaie. C'est de là que proviennent l'idée de garantir la monnaie et la nécessité de distinguer la monnaie et les devises. Ce compromis peut être décrit comme un <strong>trilemme monétaire</strong> : on peut optimiser deux fonctions, mais pas les trois :</span>
+        </p>
+        <ul style="margin-left: 2.5rem; margin-bottom: 2rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.7;">
+            <li style="margin-bottom: 0.8rem;">
+                <span lang="en"><strong>Gold</strong> has historically served as a durable store of value and a widely recognized reference, but it is costly to transport, verify, divide and settle directly over long distances.</span>
+<span lang="fr"><strong>L’or</strong> a historiquement servi de réserve de valeur durable et de référence largement reconnue, mais il est coûteux à transporter, vérifier, diviser et régler directement sur de longues distances.</span>
+            </li>
+            <li style="margin-bottom: 0.8rem;">
+                <span lang="en"><strong>Fiat currency</strong> is highly effective across space and scale, but its long-term purchasing power depends on monetary governance and is generally designed to decline gradually under positive inflation targets.</span>
+<span lang="fr"><strong>La monnaie fiat</strong> est très efficace dans l’espace et à grande échelle, mais la préservation de son pouvoir d’achat dépend de sa gouvernance monétaire et celui-ci est généralement destiné à diminuer progressivement lorsque l’objectif d’inflation est positif.</span>
+            </li>
+            <li style="margin-bottom: 0.8rem;">
+                <span lang="en"><strong>Local currencies</strong> are not complete money. They optimize local space, but sacrifice scale and time.</span>
+                <span lang="fr"><strong>Les monnaies locales</strong> ne sont pas des monnaies complètes. Elles optimisent l’espace local, mais sacrifient l’échelle et le temps.</span>
+            </li>
+        </ul>   
+    </div>
+    
+    
+    <!-- Le grand problème monétaire remis en question par Bitcoin -->
+    <div style="background: rgba(255, 102, 0, 0.04); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(255, 102, 0, 0.25);">
+
+        <h3 style="color: var(--sun-orange); margin-bottom: 0.8rem; text-align: center;">
+            <span lang="en">The Fundamental Question Bitcoin Challenges</span>
+            <span lang="fr">La question fondamentale remise en cause par Bitcoin</span>
+        </h3>
+
+        <p style="text-align: center; color: #f4f4f5; font-size: 1.05rem; margin-bottom: 2rem; font-weight: 600;">
+            <span lang="en">
+                Who is allowed to create new units of money, according to which rules,
+                and who receives them first?
+            </span>
+            <span lang="fr">
+                Qui peut créer de nouvelles unités monétaires, selon quelles règles,
+                et qui les reçoit en premier ?
+            </span>
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            <span lang="en">
+                Imagine that money is the <strong>ruler</strong> used to measure every price
+                and the <strong>scoreboard</strong> used to record everyone’s economic efforts.
+                If some participants can create new points or change the ruler, this changes
+                the meaning of all the points that already exist.
+            </span>
+            <span lang="fr">
+                Imaginez que la monnaie soit à la fois la <strong>règle</strong> qui mesure
+                tous les prix et le <strong>tableau des scores</strong> qui enregistre les
+                efforts économiques de chacun. Si certains participants peuvent créer de
+                nouveaux points ou modifier la règle, cela change la signification de tous
+                les points qui existaient déjà.
+            </span>
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            <span lang="en">
+                In a modern fiat system, the number of monetary units is not fixed in advance.
+                Money is <strong>elastic</strong>: its quantity can expand or contract according
+                to bank lending, central-bank operations, government policies, interest rates,
+                financial regulation and demand for credit.
+            </span>
+            <span lang="fr">
+                Dans un système monétaire fiat moderne, le nombre d’unités monétaires n’est
+                pas fixé à l’avance. La monnaie est <strong>élastique</strong> : sa quantité
+                peut augmenter ou diminuer selon le crédit bancaire, les opérations de la
+                banque centrale, les politiques publiques, les taux d’intérêt, la réglementation
+                financière et la demande de crédit.
+            </span>
+        </p>
+
+        <p style="margin-bottom: 2rem; padding: 1rem 1.5rem; border-left: 3px solid var(--sun-yellow); background: rgba(255, 204, 0, 0.05); border-radius: 0 8px 8px 0;">
+            <span lang="en">
+                <strong>Important:</strong> money creation is not the same as wealth creation.
+                Creating more claims on goods and services does not automatically create more
+                houses, food, energy, machines or human time.
+            </span>
+            <span lang="fr">
+                <strong>Important :</strong> créer de la monnaie ne signifie pas créer de la
+                richesse. Créer davantage de droits de tirage sur les biens et les services
+                ne crée pas automatiquement davantage de logements, de nourriture, d’énergie,
+                de machines ou de temps humain.
+            </span>
+        </p>
+
+        <h4 style="color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center;">
+            <span lang="en">The 6 Main Mechanisms of Money Creation</span>
+            <span lang="fr">Les 6 principaux mécanismes de création monétaire</span>
+        </h4>
+
+        <p style="text-align: center; color: #a1a1aa; font-size: 0.92rem; margin-bottom: 2rem; font-style: italic;">
+            <span lang="en">
+                Some mechanisms create commercial-bank money; others create central-bank money.
+            </span>
+            <span lang="fr">
+                Certains mécanismes créent de la monnaie bancaire ; d’autres créent de la
+                monnaie de banque centrale.
+            </span>
+        </p>
+
+        <div class="formula-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+
+            <!-- 1. Commercial bank lending -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">1. Commercial-Bank Lending</span>
+                    <span lang="fr">1. Le crédit des banques commerciales</span>
+                </strong><br>
+
+                <span lang="en">
+                    When a bank grants a mortgage or a business loan, it generally credits
+                    the borrower’s account with a new deposit. A new debt and new deposit
+                    appear at the same time.
+                    <br><br>
+                    <em>Loan granted → new bank deposit.</em>
+                </span>
+
+                <span lang="fr">
+                    Lorsqu’une banque accorde un crédit immobilier ou un prêt à une entreprise,
+                    elle inscrit généralement un nouveau dépôt sur le compte de l’emprunteur.
+                    Une nouvelle dette et un nouveau dépôt apparaissent simultanément.
+                    <br><br>
+                    <em>Crédit accordé → nouveau dépôt bancaire.</em>
+                </span>
+            </div>
+
+            <!-- 2. Commercial banks purchasing assets -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">2. Asset Purchases by Commercial Banks</span>
+                    <span lang="fr">2. L’achat d’actifs par les banques commerciales</span>
+                </strong><br>
+
+                <span lang="en">
+                    A bank can also create a deposit when it purchases a bond, property,
+                    security or another asset from a non-bank and credits the seller’s account.
+                    <br><br>
+                    <em>Asset purchased → new bank deposit.</em>
+                </span>
+
+                <span lang="fr">
+                    Une banque peut également créer un dépôt lorsqu’elle achète une obligation,
+                    un bien immobilier, un titre ou un autre actif à un acteur non bancaire,
+                    puis crédite le compte du vendeur.
+                    <br><br>
+                    <em>Actif acheté → nouveau dépôt bancaire.</em>
+                </span>
+            </div>
+
+            <!-- 3. Central bank refinancing -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">3. Central-Bank Loans to Banks</span>
+                    <span lang="fr">3. Les prêts de la banque centrale aux banques</span>
+                </strong><br>
+
+                <span lang="en">
+                    The central bank can lend to commercial banks against eligible collateral.
+                    It creates new central-bank reserves by crediting their reserve accounts.
+                    <br><br>
+                    <em>Refinancing operation → new reserves.</em>
+                </span>
+
+                <span lang="fr">
+                    La banque centrale peut prêter aux banques commerciales contre des garanties
+                    éligibles. Elle crée de nouvelles réserves en créditant leurs comptes auprès
+                    de la banque centrale.
+                    <br><br>
+                    <em>Opération de refinancement → nouvelles réserves.</em>
+                </span>
+            </div>
+
+            <!-- 4. Central bank asset purchases -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">4. Central-Bank Asset Purchases</span>
+                    <span lang="fr">4. L’achat d’actifs par la banque centrale</span>
+                </strong><br>
+
+                <span lang="en">
+                    Through open-market operations or quantitative easing, the central bank
+                    purchases bonds or other assets and pays by creating new reserves. If the
+                    seller is a non-bank, the operation can also create a new bank deposit.
+                    <br><br>
+                    <em>Central-bank purchase → new reserves and, in some cases, new deposits.</em>
+                </span>
+
+                <span lang="fr">
+                    Par ses opérations de marché ou l’assouplissement quantitatif, la banque
+                    centrale achète des obligations ou d’autres actifs et paie en créant de
+                    nouvelles réserves. Si le vendeur est un acteur non bancaire, l’opération
+                    peut également créer un nouveau dépôt bancaire.
+                    <br><br>
+                    <em>Achat par la banque centrale → nouvelles réserves et, dans certains cas,
+                    nouveaux dépôts.</em>
+                </span>
+            </div>
+
+            <!-- 5. Government spending / fiscal-monetary channel -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">5. The Fiscal–Monetary Channel</span>
+                    <span lang="fr">5. Le canal budgétaire et monétaire</span>
+                </strong><br>
+
+                <span lang="en">
+                    When government expenditure exceeds the money withdrawn through taxes,
+                    the deficit is financed by issuing debt. Government payments increase
+                    private bank deposits, while the final monetary effect depends on who
+                    purchases the debt and on the central bank’s operations.
+                    <br><br>
+                    <em>Deficit spending + monetary accommodation → potential net monetary expansion.</em>
+                </span>
+
+                <span lang="fr">
+                    Lorsque les dépenses publiques dépassent les sommes retirées par les impôts,
+                    le déficit est financé par l’émission de dette. Les paiements publics
+                    augmentent les dépôts bancaires privés, mais l’effet monétaire final dépend
+                    de l’acheteur de la dette et des opérations de la banque centrale.
+                    <br><br>
+                    <em>Déficit public + accompagnement monétaire → expansion monétaire nette potentielle.</em>
+                </span>
+            </div>
+
+            <!-- 6. Issuance of notes and coins -->
+            <div class="formula-card" style="text-align: left;">
+                <strong style="color: #4499ff; font-size: 1rem;">
+                    <span lang="en">6. The Issuance of Notes and Coins</span>
+                    <span lang="fr">6. L’émission de billets et de pièces</span>
+                </strong><br>
+
+                <span lang="en">
+                    Central banks issue banknotes, while coins are generally issued by governments
+                    or national monetary authorities. When cash is put into circulation, physical
+                    central-bank money replaces reserves or other monetary claims. Net issuance
+                    increases the quantity of physical currency held by the public, although it
+                    does not necessarily increase the broader money supply.
+                    <br><br>
+                    <em>Cash issued → more physical currency in circulation.</em>
+                </span>
+
+                <span lang="fr">
+                    Les banques centrales émettent les billets, tandis que les pièces sont
+                    généralement émises par les États ou les autorités monétaires nationales.
+                    Lorsque les espèces sont mises en circulation, elles remplacent des réserves
+                    ou d’autres créances monétaires. Leur émission nette augmente la quantité de
+                    monnaie physique détenue par le public, sans nécessairement accroître la masse
+                    monétaire au sens large.
+                    <br><br>
+                    <em>Espèces émises → davantage de monnaie physique en circulation.</em>
+                </span>
+            </div>
+        </div>
+
+        <!-- Money can also be destroyed -->
+        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: rgba(68, 153, 255, 0.06); border: 1px solid rgba(68, 153, 255, 0.2); border-radius: 8px;">
+            <strong style="color: #4499ff;">
+                <span lang="en">Money can also be destroyed</span>
+                <span lang="fr">La monnaie peut également être détruite</span>
+            </strong><br>
+
+            <span lang="en">
+                When the principal of a bank loan is repaid, the corresponding deposit money
+                is extinguished. Similarly, central-bank reserves can disappear when loans
+                to banks are repaid or when the central bank sells assets.
+            </span>
+
+            <span lang="fr">
+                Lorsque le principal d’un crédit bancaire est remboursé, la monnaie bancaire
+                correspondante est détruite. De même, des réserves de banque centrale peuvent
+                disparaître lorsque les banques remboursent leurs emprunts ou lorsque la banque
+                centrale revend des actifs.
+            </span>
+        </div>
+        <p style="margin: 0; color: var(--sun-yellow); font-size: 1.1rem;
+          font-weight: 800; font-style: italic;">
+    <span lang="en">
+        If price stability is the objective, why is 2% inflation considered stable,
+        while 0% is considered dangerous? And why does the supermarket bill so often
+        seem to rise much faster than 2% per year? 🤔
+    </span>
+
+    <span lang="fr">
+        Si la stabilité des prix est l’objectif, pourquoi une inflation de 2 %
+        est-elle considérée comme stable, tandis que 0 % est considéré comme dangereux ? 
+        Et pourquoi le montant payé à la caisse du supermarché semble-t-il si souvent
+        augmenter bien plus vite que 2 % par an ? 🤔
+    </span>
+</p>
+
+<p style="margin: 1rem 0 0; color: #d4d4d8; font-size: 0.95rem;
+          line-height: 1.6; text-align: center;">
+    <span lang="en">
+        Between 2015 and 2024, food and non-alcoholic beverage prices increased
+        by <strong>42.8%</strong> in the European Union—the largest increase among
+        the main categories of the consumer price index.<sup><a href="#source-inflation">1</a></sup>
+    </span>
+
+    <span lang="fr">
+        Entre 2015 et 2024, les prix des produits alimentaires et des boissons
+        non alcoolisées ont augmenté de <strong>42,8 %</strong> dans l’Union européenne,
+        soit la plus forte hausse parmi les grandes catégories de l’indice des prix
+        à la consommation.<sup><a href="#source-inflation">1</a></sup>
+    </span>
+</p>
+
+<p style="margin: 0.8rem 0 0; color: #a1a1aa; font-size: 0.8rem;
+          line-height: 1.5; text-align: center;">
+    <span lang="en">
+        <strong>Note:</strong> 42.8% is a cumulative increase over nine years,
+        not an annual rate. The 2% target applies to the overall average price level
+        over the medium term—not to every product, household or year. The HICP is
+        designed to measure price stability and is not a household-specific
+        cost-of-living index.
+    </span>
+
+    <span lang="fr">
+        <strong>Note :</strong> 42,8 % représente une hausse cumulée sur neuf ans,
+        et non un taux annuel. La cible de 2 % concerne l’évolution moyenne de
+        l’ensemble des prix à moyen terme, et non chaque produit, chaque ménage
+        ou chaque année. L’IPCH mesure la stabilité générale des prix et ne constitue
+        pas un indice personnalisé du coût de la vie.
+    </span>
+</p>
+
+<div id="source-inflation"
+     style="margin-top: 1rem; color: #71717a; font-size: 0.75rem;
+            line-height: 1.5; text-align: center;">
+    <span lang="en">
+        <strong>Sources:</strong>
+        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/4176.pdf"
+           target="_blank" rel="noopener noreferrer">
+            Eurostat — Consumer prices: inflation
+        </a>;
+        <a href="https://ec.europa.eu/eurostat/web/hicp/information-data"
+           target="_blank" rel="noopener noreferrer">
+            Eurostat — Harmonised Index of Consumer Prices methodology
+        </a>.
+    </span>
+
+    <span lang="fr">
+        <strong>Sources :</strong>
+        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/4176.pdf"
+           target="_blank" rel="noopener noreferrer">
+            Eurostat — Prix à la consommation et inflation
+        </a> ;
+        <a href="https://ec.europa.eu/eurostat/web/hicp/information-data"
+           target="_blank" rel="noopener noreferrer">
+            Eurostat — Méthodologie de l’indice des prix à la consommation harmonisé
+        </a>.
+    </span>
+</div>
+        <!-- What Bitcoin changes -->
+        <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(247, 147, 26, 0.08); border: 1px solid rgba(247, 147, 26, 0.35); border-radius: 10px;">
+            <h4 style="color: #f7931a; text-align: center; margin-bottom: 1rem;">
+                <span lang="en">What Does Bitcoin Change?</span>
+                <span lang="fr">Que change Bitcoin ?</span>
+            </h4>
+
+            <p style="margin-bottom: 1rem;">
+                <span lang="en">
+                    Bitcoin does not merely propose a new payment method. It proposes a
+                    different rule for issuing monetary units: a public, predictable and
+                    verifiable issuance schedule enforced by the network rather than decided
+                    by a bank, government or central committee.
+                </span>
+
+                <span lang="fr">
+                    Bitcoin ne propose pas seulement un nouveau moyen de paiement. Il propose
+                    une autre règle d’émission des unités monétaires : un calendrier public,
+                    prévisible et vérifiable, appliqué par le réseau plutôt que décidé par une
+                    banque, un gouvernement ou un comité central.
+                </span>
+            </p>
+
+            <ul style="margin-left: 2rem; color: #d1d5db; line-height: 1.7;">
+                <li>
+                    <span lang="en">
+                        <strong>Predetermined supply:</strong> issuance follows rules written
+                        into the protocol.
+                    </span>
+                    <span lang="fr">
+                        <strong>Offre prédéterminée :</strong> l’émission suit des règles
+                        inscrites dans le protocole.
+                    </span>
+                </li>
+
+                <li>
+                    <span lang="en">
+                        <strong>Maximum quantity:</strong> no more than 21 million bitcoin
+                        can be issued under the current consensus rules.
+                    </span>
+                    <span lang="fr">
+                        <strong>Quantité maximale :</strong> pas plus de 21 millions de bitcoins
+                        ne peuvent être émis selon les règles de consensus actuelles.
+                    </span>
+                </li>
+
+                <li>
+                    <span lang="en">
+                        <strong>Predictable rhythm:</strong> the issuance rate is periodically
+                        reduced through the halving mechanism.
+                    </span>
+                    <span lang="fr">
+                        <strong>Rythme prévisible :</strong> le taux d’émission est périodiquement
+                        réduit par le mécanisme du halving.
+                    </span>
+                </li>
+
+                <li>
+                    <span lang="en">
+                        <strong>Public verification:</strong> anyone can verify the supply and
+                        reject units that violate the rules.
+                    </span>
+                    <span lang="fr">
+                        <strong>Vérification publique :</strong> chacun peut vérifier l’offre
+                        monétaire et rejeter les unités qui ne respectent pas les règles.
+                    </span>
+                </li>
+
+                <li>
+                    <span lang="en">
+                        <strong>No discretionary issuer:</strong> no institution can independently
+                        decide to create additional bitcoin.
+                    </span>
+                    <span lang="fr">
+                        <strong>Absence d’émetteur discrétionnaire :</strong> aucune institution
+                        ne peut décider seule de créer des bitcoins supplémentaires.
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin: 2rem 0 0 0; color: var(--sun-yellow); font-weight: 700; text-align: center; font-size: 1.05rem;">
+            <span lang="en">
+                Bitcoin therefore challenges not only the quantity of money, but the governance
+                of money: who controls the ruler, who can modify it, and under which rules?
+            </span>
+            <span lang="fr">
+                Bitcoin remet donc en question non seulement la quantité de monnaie, mais sa
+                gouvernance : qui contrôle la règle, qui peut la modifier et selon quelles règles ?
+            </span>
+        </p>
+        <!-- ========================================== -->
+      <!-- SECTION PRÉREQUIS : VIDÉOS INTRODUCTIVES   -->
+      <!-- ========================================== -->
+      <div 
+      class="proof-box" 
+      style="
+        border: 1px solid rgba(68, 153, 255, 0.3); 
+        background: rgba(68, 153, 255, 0.03); 
+        padding: 2.5rem; 
+        border-radius: 12px; 
+        margin-bottom: 3.5rem;
+        box-shadow: inset 0 0 20px rgba(68, 153, 255, 0.05);
+      "
+    >
+      <div class="proof-title" lang="en" style="color: #4499ff; font-style: normal; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">
+        🔰 Prerequisite: Bitcoin Blockchain Basics
+      </div>
+      <div class="proof-title" lang="fr" style="color: #4499ff; font-style: normal; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">
+        🔰 Prérequis : Les Bases de la Blockchain Bitcoin
+      </div>
+      
+      <p lang="en" style="margin-bottom: 2.5rem; color: #d4d4d4; font-size: 1.05rem; line-height: 1.6;">
+        To fully appreciate the theoretical depth of this document, a minimum understanding of how a blockchain operates is required. For our French-speaking audience, we highly recommend watching these two excellent introductory videos before proceeding.
+      </p>
+      <p lang="fr" style="margin-bottom: 2.5rem; color: #d4d4d4; font-size: 1.05rem; line-height: 1.6;">
+        Pour apprécier pleinement la profondeur théorique de ce document, une connaissance minimale du fonctionnement d'une blockchain est nécessaire. Si vous découvrez totalement cet univers, nous vous recommandons vivement de visionner ces deux excellentes vidéos introductives avant de poursuivre votre lecture.
+      </p>
+
+      <!-- Conteneur Flex pour les vidéos (Côte à côte sur PC, empilées sur mobile) -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+        
+        <!-- Vidéo 1 -->
+        <div style="flex: 1 1 300px; max-width: 500px;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
+            <iframe 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+              src="https://www.youtube.com/embed/U4S-RGNyTJA" 
+              title="Le Bitcoin et la Blockchain" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Vidéo 2 -->
+        <div style="flex: 1 1 300px; max-width: 500px;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
+            <iframe 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+              src="https://www.youtube.com/embed/Tmp4C9rnL98" 
+              title="La cryptographie derrière Bitcoin" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    <!-- NOUVEAU BLOC : DÉFINITION AMMOUS & VENDABILITÉ -->
+    <div style="margin: 3rem auto; max-width: 900px;">
+        <h3 style="color: var(--sun-orange); margin-bottom: 1.5rem; text-align: center;">
+            <span lang="en">Defining Bitcoin: Scarcity & Saleability</span>
+            <span lang="fr">Définir Bitcoin : Rareté & Vendabilité</span>
+        </h3>
+        
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/0JAEWVl45ps?rel=0&modestbranding=1" title="Definition Bitcoin - Saifedean Ammous" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="section-body" style="margin: 0 auto; text-align: justify;">
+            <p style="margin-bottom: 1rem;">
+                <span lang="en">Economist Saifedean Ammous considers Bitcoin the most advanced form of money ever invented due to its fundamental properties:</span>
+                <span lang="fr">L'économiste Saifedean Ammous considère Bitcoin comme la forme de monnaie la plus avancée jamais inventée en raison de propriétés essentielles :</span>
+            </p>
+            <ul style="margin-left: 2.5rem; margin-bottom: 1.5rem; color: #d1d5db; line-height: 1.7;">
+                <li style="margin-bottom: 0.8rem;">
+                    <span lang="en"><strong>Absolute Scarcity:</strong> Bitcoin is inflation-resistant with a fixed supply of 21 million. While fiat currencies have a "leak" (♾️/21M), Bitcoin's new supply asymptotically approaches zero.</span>
+                    <span lang="fr"><strong>La rareté absolue :</strong> Bitcoin est résistant à l'inflation avec une offre limitée à 21 millions. Alors que les monnaies fiduciaires ont une "fuite" (♾️/21M), l'émission de Bitcoin tend vers zéro.</span>
+                </li>
+                <li style="margin-bottom: 0.8rem;">
+                    <span lang="en"><strong>No Central Authority:</strong> The network operates without needing to <strong style="color:#0be7ff">trust</strong> a central entity. No administrators can control, modify, or censor its use.</span>
+                    <span lang="fr"><strong>L'absence d'autorité centrale :</strong> Le réseau fonctionne sans avoir besoin de faire <strong style="color:#0be7ff">confiance</strong> à une entité. Il n'y a pas d'administrateurs qui peuvent contrôler, modifier ou censurer son utilisation.</span>
+                </li>
+            </ul>
+            <p>
+                <span lang="en">Ammous defines <strong>"saleability"</strong> as the capacity of a good to be easily sold on the market without losing significant value. Bitcoin uniquely combines the saleability of gold across time (resistance to inflation) with the saleability of fiat across space (fast, borderless final settlement).</span>
+                <span lang="fr">Ammous définit la <strong>"vendabilité"</strong> comme la capacité d'un bien à être vendu facilement sur le marché sans perte de valeur significative. Bitcoin combine la "vendabilité" de l'or dans le temps (résistance à l'inflation) avec la "vendabilité" de la monnaie fiduciaire dans l'espace (règlement final rapide et sans frontières).</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- NOUVEAU BLOC UNIFIÉ : JOHN NASH & IDEAL MONEY -->
+    <div style="margin: 4rem auto 1rem auto; max-width: 900px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1);">
+        <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem; text-align: center;">
+            <span lang="en">John Nash & Asymptotically Ideal Money</span>
+            <span lang="fr">John Nash & La Monnaie Asymptotiquement Idéale</span>
+        </h3>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <img src="https://res.cloudinary.com/daabdiwnt/image/upload/v1760138811/ArticleBTC/asymptoticmoney_tlqg7r.webp" alt="Asymptotic Ideal Money" style="max-width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        </div>
+        
+        <div class="section-body" style="margin: 0 auto; text-align: justify; margin-bottom: 2rem;">
+            <p style="margin-bottom: 1.5rem;">
+                <span lang="en">It is striking to note how closely Bitcoin approaches the vision of Nobel laureate John F. Nash Jr. In works like his 2002 paper in the <em>Southern Economic Journal</em>, Nash developed the theoretical framework for "Ideal Money" — a globally stable currency free from the Triffin dilemma and domestic political inflation.</span>
+                <span lang="fr">Il est frappant de noter à quel point Bitcoin se rapproche de la vision du lauréat du prix Nobel John F. Nash Jr. Dans des travaux comme son article de 2002 dans le <em>Southern Economic Journal</em>, Nash a développé le cadre théorique de la « Monnaie Idéale » — une monnaie mondialement stable, exempte du dilemme de Triffin et de l'inflation politique intérieure.</span>
+            </p>
+            <p style="margin-bottom: 1.5rem;">
+                <span lang="en">He argued that money should function like a physical unit of measure — immutable, objective, independent of political will, and intrinsically free of "inflationary decadence." The supply should asymptotically (gradually) approach a constant value.</span>
+                <span lang="fr">Il soutenait que la monnaie devait fonctionner comme une unité de mesure physique — immuable, objective, indépendante de la volonté politique, et intrinsèquement libre de « décadence inflationniste ». L'offre devait approcher asymptotiquement (progressivement) une valeur constante.</span>
+            </p>
+            <div class="quote-block" style="margin: 2rem 0;">
+                <p class="quote-text">
+                    <span lang="en">"Just as scientific communities rely on immutable definitions of the metre, kilogram, and second, the global economy needs an immutable measure of value to optimise long-term cooperative games across borders and generations."</span>
+                    <span lang="fr">"Tout comme les communautés scientifiques s'appuient sur des définitions immuables du mètre, du kilogramme et de la seconde, l'économie mondiale a besoin d'une mesure immuable de la valeur pour optimiser les jeux coopératifs à long terme à travers les frontières et les générations."</span>
+                </p>
+                <p class="quote-author">
+                    <span lang="en">— Inspired by John Nash, Ideal Money (2002)</span>
+                    <span lang="fr">— Inspiré de John Nash, Monnaie Idéale (2002)</span>
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem;">
+            <!-- Vidéo 1 : Explication Ideal Money -->
+            <div style="flex: 1; min-width: 300px; position: relative; padding-bottom: 31.5%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/GIIq-xShYTI?si=MrknOZLvT0Ipwr7_&rel=0&modestbranding=1" title="John Nash Ideal Money" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Vidéo 2 : Oxford Bitcoin Honesty -->
+            <div style="flex: 1; min-width: 300px; position: relative; padding-bottom: 31.5%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/g09cvKiMTMw?rel=0&modestbranding=1" title="John Nash Bitcoin Honesty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <p style="color: #a1a1aa; font-size: 0.95rem; text-align: center; font-style: italic;">
+            <span lang="en">In early 2015, John Nash explained at the Oxford Union Society how Bitcoin coins cannot be counterfeited, unlike gold, making it perhaps the most "honest" money ever utilized by humanity.</span>
+            <span lang="fr">Début 2015, John Nash expliquait à l'Oxford Union Society comment les « pièces » de Bitcoin ne peuvent pas être contrefaites, contrairement à l’or, en faisant potentiellement la monnaie la plus « honnête » jamais inventée.</span>
+        </p>
+    </div>
+
+    <!-- Mineurs et Noeuds -->
+    <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem; text-align: center; margin-top: 4rem;">
+        <span lang="en">How is Bitcoin made? Workers & Inspectors</span>
+        <span lang="fr">Comment est fabriqué Bitcoin ? Les Ouvriers et les Inspecteurs</span>
+    </h3>
+    <p class="section-body" style="text-align: center;">
+        <span lang="en">The Bitcoin network is a giant digital cooperative made of two groups:</span>
+        <span lang="fr">Le réseau Bitcoin est une immense coopérative numérique composée de deux groupes :</span>
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+        <!-- Miners -->
+        <div style="flex: 1; min-width: 300px; background: rgba(255, 170, 0, 0.05); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--sun-orange);">
+            <h4 style="color: var(--sun-orange); margin-bottom: 1rem;"><span lang="en">⛏️ The Miners (The Workers)</span><span lang="fr">⛏️ Les Mineurs (Les Ouvriers)</span></h4>
+            <p style="color: #d1d5db; line-height: 1.6; font-size: 0.95rem;">
+                <span lang="en">Miners are giant computers that act as security guards. They spend real physical energy (electricity) to solve very difficult math puzzles. This is what is called the Proof-of-Work mechanism in the Protocol. When they solve one, they lock a "block" of new transactions into the chain forever. Because rewriting confirmed history requires reproducing the accumulated Proof-of-Work and overtaking the competing chain, such an attack becomes increasingly difficult, costly and economically uncertain as confirmations accumulate. For their hard work, the protocol pays them in new Bitcoins. <em>This is the ONLY way new Bitcoins are created.</em></span>
+                <span lang="fr">Les mineurs sont de puissants ordinateurs. Ils dépensent de l'énergie physique (de l'électricité) pour résoudre un puzzle mathématique complexe. On appelle cette dépense :  la Preuve de Travail. Quand ils réussissent, ils verrouillent un "bloc" de transactions pour toujours. Pour réécrire un historique confirmé, un attaquant devrait reproduire la preuve de travail accumulée et dépasser la chaîne concurrente. Une telle attaque devient donc de plus en plus difficile, coûteuse et économiquement incertaine à mesure que les confirmations s’accumulent. Lorsqu’il produit un bloc valide, le mineur peut recevoir une récompense composée de nouveaux bitcoins — la subvention de bloc — et des frais versés par les utilisateurs. <em>La subvention de bloc est le seul mécanisme prévu par le protocole par lequel de nouvelles unités de bitcoin entrent en circulation.</em></span>
+            </p>
+        </div>
+        <!-- Nodes -->
+        <div style="flex: 1; min-width: 300px; background: rgba(68, 238, 119, 0.05); padding: 2rem; border-radius: 12px; border-left: 4px solid #44ee77;">
+            <h4 style="color: #44ee77; margin-bottom: 1rem;"><span lang="en">👁️ The Nodes (The Inspectors)</span><span lang="fr">👁️ Les Nœuds (Les Inspecteurs)</span></h4>
+            <p style="color: #d1d5db; line-height: 1.6; font-size: 0.95rem;">
+                <span lang="en">Nodes are regular computers (like your old laptop) run by everyday people. They don't use much electricity. Their job is to hold the rulebook and check the Miners' work. If a Miner tries to cheat or create too many Bitcoins, the Nodes instantly reject their block. The Miners have the physical power, but the Nodes (the people) have the absolute authority. Together, they enforce the ultimate rule: <strong>there will never be more than 21 million Bitcoins.</strong></span>
+                <span lang="fr">Les nœuds sont des ordinateurs normaux (comme votre vieux PC) gérés par n'importe qui. Ils ne consomment presque pas d'électricité. Leur rôle est de vérifier le travail des Mineurs. Si un Mineur essaie de tricher ou de créer trop de Bitcoins, les Nœuds rejettent son travail. Les Mineurs ont la force brute, mais les Nœuds (le peuple) détiennent l'autorité absolue. Ensemble, ils garantissent la règle d'or : <strong>il n'y aura jamais plus de 21 millions de Bitcoins.</strong></span>
+            </p>
+        </div>
+    </div>
+    
+    <!-- NOUVEAU BLOC : MIT EXPO & FLAMME DE LA LIBERTÉ -->
+    <div style="margin: 4rem auto 1rem auto; text-align: center; max-width: 800px;">
+        <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem;">
+            <span lang="en">The Flame of Liberty</span>
+            <span lang="fr">La Flamme de la Liberté</span>
+        </h3>
+        <p class="section-body" style="text-align: center; margin-bottom: 2rem;">
+            <span lang="en">The M.I.T, the world's leading technological university (where a certain John Nash taught), is also one of the first to dedicate an annual expo to Bitcoin.</span>
+            <span lang="fr">Le M.I.T, la meilleure université technologique au monde (où un certain John Nash a enseigné) est aussi une des premières qui dédie une expo chaque année au Bitcoin.</span>
+        </p>
+        <img src="https://res.cloudinary.com/daabdiwnt/image/upload/v1760390444/ArticleBTC/BTCMITExpo_ldw96a.webp" alt="M.I.T Bitcoin Expo" style="max-width: 300px; width: 100%; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.4);">
+        
+        <div class="quote-block" style="text-align: left; background: rgba(68, 153, 255, 0.05); border-left: 3px solid #4499ff;">
+            <p class="quote-text" style="font-size: 1rem;">
+                <strong lang="en" style="color:#4499ff">❓ Reflection:</strong> 
+                <strong lang="fr" style="color:#4499ff">❓ Réflexion:</strong> 
+                <span lang="en">By using the flame of the Statue of Liberty's torch 🗽 as a symbol, the M.I.T seems to issue an invitation for the free world to reunite. So that the flame of liberty — too often taken for granted — may never be extinguished.</span>
+                <span lang="fr">En utilisant la flamme de la torche de la statue de la Liberté 🗽 comme symbole, le M.I.T semble lancer une invitation au monde libre à se retrouver. Pour que la flamme de la liberté <em>— trop souvent prise pour acquise —</em> ne s’éteigne jamais.</span>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- NEW SECTION: THE EPIPHANY / THE CANNOT UNSEE MOMENT -->
+<hr class="divider">
+<section id="epiphany" style="padding-top: 5rem; padding-bottom: 5rem;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <p class="section-label" style="color: #ff3333; text-shadow: 0 0 10px rgba(255, 51, 51, 0.4);">
+            <span lang="en">The Great Illusion</span>
+            <span lang="fr">La Grande Illusion</span>
+        </p>
+        <h2 class="section-title" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+            <span lang="en">You cannot print a barrel of oil.<br>Why use infinite money to measure a finite world?</span>
+            <span lang="fr">Vous ne pouvez pas imprimer un baril de pétrole.<br>Pourquoi mesurer un monde fini avec une monnaie infinie ?</span>
+        </h2>
+    </div>
+
+    <!-- THE UNSEE EQUATION -->
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 3rem 0 4rem 0; font-family: var(--font-ui); font-weight: 800; line-height: 1;">
+        <div style="color: #ff4444; text-shadow: 0 0 30px rgba(255, 68, 68, 0.6); padding-bottom: 0.5rem; font-size: clamp(4rem, 8vw, 6rem);">∞</div>
+        <div style="width: 140px; height: 4px; background: #e5e7eb; border-radius: 2px; box-shadow: 0 0 15px rgba(255,255,255,0.3);"></div>
+        <div style="color: #44ee77; text-shadow: 0 0 30px rgba(68, 238, 119, 0.6); padding-top: 0.8rem; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px;">21M</div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 4rem;">
+        <p class="section-body" style="margin: 0 auto; font-size: 1.15rem; color: #e5e7eb;">
+            <span lang="en">Once you see the flaw in the foundation of our civilization, you can never unsee it. We are trying to coordinate a world of finite physical resources using monetary ledgers whose units can expand without a predetermined maximum.</span>
+            <span lang="fr">Une fois que vous voyez la faille dans les fondations de notre civilisation, vous ne pouvez plus l'oublier. Nous tentons de coordonner un monde de ressources physiques limitées à l’aide de registres monétaires dont le nombre d’unités peut augmenter sans plafond prédéterminé.</span>
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+        
+        <!-- THE FIAT PARADIGM (Red/Dark) -->
+        <div style="background: linear-gradient(145deg, rgba(30, 5, 5, 0.7), rgba(10, 2, 2, 0.9)); border: 1px solid rgba(255, 50, 50, 0.3); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(255, 0, 0, 0.1);">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📉</div>
+            <h4 style="font-family: var(--font-ui); font-size: 1.2rem; color: #ff4444; margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;">
+                <span lang="en">The Fiat System: A Critical Hypothesis</span>
+                <span lang="fr">L'Anomalie Fiduciaire</span>
+            </h4>
+            <p style="color: #a1a1aa; line-height: 1.8; font-size: 0.95rem;">
+                <span lang="en">Money is debt. To prevent the debt from collapsing, the system demands infinite exponential GDP growth. To achieve this growth, we must relentlessly extract physical resources, liquidating the Earth's natural capital (forests, oceans, minerals) to sustain a mathematical illusion. <strong>Inflation is not just economic; it is the thermodynamic liquidation of the biosphere.</strong></span>
+                <span lang="fr">La monnaie est une dette. Pour ne pas s'effondrer, le système exige une croissance exponentielle infinie du PIB. Pour générer cette croissance, nous devons extraire sans relâche, liquidant le capital naturel de la Terre (forêts, océans, sols) pour maintenir une illusion mathématique. <strong>L'inflation n'est pas qu'économique ; c'est la liquidation thermodynamique de la biosphère.</strong></span>
+            </p>
+        </div>
+
+        <!-- THE THERMODYNAMIC PARADIGM (Green/Gold) -->
+        <div style="background: linear-gradient(145deg, rgba(5, 30, 15, 0.7), rgba(2, 10, 5, 0.9)); border: 1px solid rgba(68, 238, 119, 0.3); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(68, 238, 119, 0.05); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #44ee77, transparent);"></div>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌿</div>
+            <h4 style="font-family: var(--font-ui); font-size: 1.2rem; color: #44ee77; margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;">
+                <span lang="en">The Green Pill</span>
+                <span lang="fr">La Pilule Verte</span>
+            </h4>
+            <p style="color: #a1a1aa; line-height: 1.8; font-size: 0.95rem;">
+                <span lang="en">Value is subjective, but the ruler we use to measure it must be objective. By adopting a currency bound by strict thermodynamic effort (Proof-of-Work), the monetary measuring stick can no longer be distorted. We halt the infinite extraction loop by realigning human economics with the absolute limits of planetary biology.</span>
+                <span lang="fr">La valeur des choses est subjective, mais la règle qui sert à la mesurer doit être absolue. En adoptant une monnaie bornée par un effort thermodynamique strict (Preuve de Travail), l'outil de mesure ne peut plus être étiré à l'infini. Nous stoppons la boucle d'extraction infinie en réalignant les prix de l'économie humaine sur les limites de la biologie planétaire.</span>
+            </p>
+        </div>
+
+    </div>
+
+    <p style="margin: 2rem auto 3rem auto; max-width: 900px; color: var(--sun-yellow); font-weight: 800; text-align: center; font-size: 1.15rem; letter-spacing: 1px; background: rgba(255, 204, 0, 0.05); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 204, 0, 0.2); box-shadow: 0 0 20px rgba(255, 204, 0, 0.1);">
+        <span lang="en">Thermodynamic work remains the absolute property of the entity that provided it: this is the genesis of sovereignty over one's own energy.</span>
+        <span lang="fr">Le travail thermodynamique reste la propriété absolue de l'entité qui l'a fourni : c'est la genèse de la souveraineté sur sa propre énergie.</span>
+    </p>
+</section>
+
+<hr class="divider">
 <section id="philo" style="padding-top: 2rem;">
     <p class="section-label">
         <span lang="en">Philosophical Essay</span>
@@ -5541,698 +6380,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </section>
 
-<!-- NOUVELLE SECTION : LES BASES (ACCESSIBLE À TOUS) -->
-<hr class="divider">
-<section id="the-basics" style="padding-top: 2rem;">
-    <p class="section-label">
-        <span lang="en">Back to Basics</span>
-        <span lang="fr">Retour aux Fondamentaux</span>
-    </p>
-    <h2 class="section-title">
-        <span lang="en">Understanding Money & Bitcoin<br><span style="font-size: 0.6em; color: #888;">(An accessible introduction before the technical analysis)</span></span>
-        <span lang="fr">Comprendre la Monnaie et Bitcoin<br><span style="font-size: 0.6em; color: #888;">(Une introduction accessible avant l’analyse technique)</span></span>
-    </h2>
-
-    <div class="section-body" style="max-width: 900px; margin: 0 auto 2rem auto; text-align: justify; color: #d1d5db; line-height: 1.8;">
-        <p style="margin-bottom: 1rem;">
-            <span lang="en">Money is a technology that allows the transfer of value across space, time, and scale. Value is the utility humans derive from goods and services. It is highly subjective and varies across time and space.</span>
-            <span lang="fr">La monnaie est une technologie permettant de transférer de la valeur à travers l'espace, le temps et l'échelle. La valeur est l'utilité que les humains retirent des biens et des services. Elle est hautement subjective et varie selon le temps et l'espace.</span>
-        </p>
-        <p style="margin-bottom: 1.5rem; padding: 1rem 1.5rem; border-left: 3px solid var(--sun-orange); background: rgba(255, 102, 0, 0.05); border-radius: 0 8px 8px 0;">
-            <span lang="en">In physical terms, holding money means holding a <strong>drawing right</strong> on our environment. Every time you spend, you issue a command line to society: extract resources, burn energy, and put humans/machines/biosphere to work for you.</span>
-            <span lang="fr">Concrètement, posséder de la monnaie équivaut à détenir un <strong>droit de tirage</strong> sur notre environnement. Chaque fois que vous dépensez, vous donnez un ordre à la société/exécutez une ligne de commande dans le code source de la réalité : extraire des ressources, brûler de l'énergie et faire travailler la biosphère, des humains ou des machines pour vous.</span>
-        </p>
-        <p style="margin-bottom: 1.5rem;">
-
-    <!-- Les 3 fonctions de la monnaie -->
-    <div style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.1);">
-        <h3 style="color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center;">
-            <span lang="en">What is Money? The 3 Superpowers</span>
-            <span lang="fr">Qu'est-ce que la Monnaie ? Les 3 Superpouvoirs ou Fonctions</span>
-        </h3>
-        <p style="text-align: center; color: #a1a1aa; font-size: 0.95rem; margin-bottom: 2rem; font-style: italic;">
-            <span lang="en">Perhaps unknowingly, economists defined these functions as follows:</span>
-            <span lang="fr">À leur insu, les économistes ont défini ces fonctions comme suit :</span>
-        </p>
-        <div class="formula-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">1. Store of Value (Time)</span><span lang="fr">1. Réserve de Valeur (Temps)</span></strong><br>
-                <span lang="en">Think of it as a <strong>Battery for Time</strong>. If you work for 10 hours today, good money stores that energy so you can spend those 10 hours next year without them leaking away.</span>
-                <span lang="fr">Imaginez une <strong>Pile pour le Temps</strong>. Si vous travaillez 10 heures aujourd'hui, une bonne monnaie stocke cette énergie pour que vous puissiez dépenser ces 10 heures l'année prochaine sans qu'elles ne se vident.</span>
-            </div>
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">2. Medium of Exchange (Space)</span><span lang="fr">2. Intermédiaire d'Échange (Espace)</span></strong><br>
-                <span lang="en">Think of it as a <strong>Bridge</strong>. You bake bread, but you want shoes. Instead of finding a shoemaker who wants bread, you both use money to cross the bridge.</span>
-                <span lang="fr">Imaginez un <strong>Pont</strong>. Vous faites du pain, mais vous voulez des chaussures. Au lieu de chercher un cordonnier qui veut du pain, vous utilisez tous les deux l'argent pour traverser le pont.</span>
-            </div>
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;"><span lang="en">3. Unit of Account (Scale)</span><span lang="fr">3. Unité de Compte (Échelle)</span></strong><br>
-                <span lang="en">Think of it as a <strong>Ruler</strong>. It measures the cost of everything. If the ruler shrinks or stretches (inflation), you can't measure anything properly anymore.</span>
-                <span lang="fr">Imaginez une <strong>Règle pour mesurer</strong>. Elle donne le prix de tout. Si la règle s'étire ou rétrécit (l'inflation), vous ne pouvez plus rien mesurer correctement.</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="section-body" style="max-width: 900px; margin: 0 auto 2rem auto; text-align: justify; color: #d1d5db; line-height: 1.8;">
-        <p style="margin-bottom: 1.5rem;">
-            <span lang="en">Throughout history, no monetary system has managed to simultaneously fulfill the three functions of money completely. This is where the idea of backing money and the necessity to distinguish between money and currency comes from. This compromise can be described as a <strong>monetary trilemma</strong>: you can optimize two functions, but not all three:</span>
-            <span lang="fr">À travers l'histoire, aucun système monétaire n'est parvenu à remplir simultanément les trois fonctions de la monnaie. C'est de là que proviennent l'idée de garantir la monnaie et la nécessité de distinguer la monnaie et les devises. Ce compromis peut être décrit comme un <strong>trilemme monétaire</strong> : on peut optimiser deux fonctions, mais pas les trois :</span>
-        </p>
-        <ul style="margin-left: 2.5rem; margin-bottom: 2rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.7;">
-            <li style="margin-bottom: 0.8rem;">
-                <span lang="en"><strong>Gold</strong> has historically served as a durable store of value and a widely recognized reference, but it is costly to transport, verify, divide and settle directly over long distances.</span>
-<span lang="fr"><strong>L’or</strong> a historiquement servi de réserve de valeur durable et de référence largement reconnue, mais il est coûteux à transporter, vérifier, diviser et régler directement sur de longues distances.</span>
-            </li>
-            <li style="margin-bottom: 0.8rem;">
-                <span lang="en"><strong>Fiat currency</strong> is highly effective across space and scale, but its long-term purchasing power depends on monetary governance and is generally designed to decline gradually under positive inflation targets.</span>
-<span lang="fr"><strong>La monnaie fiat</strong> est très efficace dans l’espace et à grande échelle, mais la préservation de son pouvoir d’achat dépend de sa gouvernance monétaire et celui-ci est généralement destiné à diminuer progressivement lorsque l’objectif d’inflation est positif.</span>
-            </li>
-            <li style="margin-bottom: 0.8rem;">
-                <span lang="en"><strong>Local currencies</strong> are not complete money. They optimize local space, but sacrifice scale and time.</span>
-                <span lang="fr"><strong>Les monnaies locales</strong> ne sont pas des monnaies complètes. Elles optimisent l’espace local, mais sacrifient l’échelle et le temps.</span>
-            </li>
-        </ul>   
-    </div>
-    
-    
-    <!-- Le grand problème monétaire remis en question par Bitcoin -->
-    <div style="background: rgba(255, 102, 0, 0.04); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(255, 102, 0, 0.25);">
-
-        <h3 style="color: var(--sun-orange); margin-bottom: 0.8rem; text-align: center;">
-            <span lang="en">The Fundamental Question Bitcoin Challenges</span>
-            <span lang="fr">La question fondamentale remise en cause par Bitcoin</span>
-        </h3>
-
-        <p style="text-align: center; color: #f4f4f5; font-size: 1.05rem; margin-bottom: 2rem; font-weight: 600;">
-            <span lang="en">
-                Who is allowed to create new units of money, according to which rules,
-                and who receives them first?
-            </span>
-            <span lang="fr">
-                Qui peut créer de nouvelles unités monétaires, selon quelles règles,
-                et qui les reçoit en premier ?
-            </span>
-        </p>
-
-        <p style="margin-bottom: 1.5rem;">
-            <span lang="en">
-                Imagine that money is the <strong>ruler</strong> used to measure every price
-                and the <strong>scoreboard</strong> used to record everyone’s economic efforts.
-                If some participants can create new points or change the ruler, this changes
-                the meaning of all the points that already exist.
-            </span>
-            <span lang="fr">
-                Imaginez que la monnaie soit à la fois la <strong>règle</strong> qui mesure
-                tous les prix et le <strong>tableau des scores</strong> qui enregistre les
-                efforts économiques de chacun. Si certains participants peuvent créer de
-                nouveaux points ou modifier la règle, cela change la signification de tous
-                les points qui existaient déjà.
-            </span>
-        </p>
-
-        <p style="margin-bottom: 1.5rem;">
-            <span lang="en">
-                In a modern fiat system, the number of monetary units is not fixed in advance.
-                Money is <strong>elastic</strong>: its quantity can expand or contract according
-                to bank lending, central-bank operations, government policies, interest rates,
-                financial regulation and demand for credit.
-            </span>
-            <span lang="fr">
-                Dans un système monétaire fiat moderne, le nombre d’unités monétaires n’est
-                pas fixé à l’avance. La monnaie est <strong>élastique</strong> : sa quantité
-                peut augmenter ou diminuer selon le crédit bancaire, les opérations de la
-                banque centrale, les politiques publiques, les taux d’intérêt, la réglementation
-                financière et la demande de crédit.
-            </span>
-        </p>
-
-        <p style="margin-bottom: 2rem; padding: 1rem 1.5rem; border-left: 3px solid var(--sun-yellow); background: rgba(255, 204, 0, 0.05); border-radius: 0 8px 8px 0;">
-            <span lang="en">
-                <strong>Important:</strong> money creation is not the same as wealth creation.
-                Creating more claims on goods and services does not automatically create more
-                houses, food, energy, machines or human time.
-            </span>
-            <span lang="fr">
-                <strong>Important :</strong> créer de la monnaie ne signifie pas créer de la
-                richesse. Créer davantage de droits de tirage sur les biens et les services
-                ne crée pas automatiquement davantage de logements, de nourriture, d’énergie,
-                de machines ou de temps humain.
-            </span>
-        </p>
-
-        <h4 style="color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center;">
-            <span lang="en">The 6 Main Mechanisms of Money Creation</span>
-            <span lang="fr">Les 6 principaux mécanismes de création monétaire</span>
-        </h4>
-
-        <p style="text-align: center; color: #a1a1aa; font-size: 0.92rem; margin-bottom: 2rem; font-style: italic;">
-            <span lang="en">
-                Some mechanisms create commercial-bank money; others create central-bank money.
-            </span>
-            <span lang="fr">
-                Certains mécanismes créent de la monnaie bancaire ; d’autres créent de la
-                monnaie de banque centrale.
-            </span>
-        </p>
-
-        <div class="formula-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-
-            <!-- 1. Commercial bank lending -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">1. Commercial-Bank Lending</span>
-                    <span lang="fr">1. Le crédit des banques commerciales</span>
-                </strong><br>
-
-                <span lang="en">
-                    When a bank grants a mortgage or a business loan, it generally credits
-                    the borrower’s account with a new deposit. A new debt and new deposit
-                    appear at the same time.
-                    <br><br>
-                    <em>Loan granted → new bank deposit.</em>
-                </span>
-
-                <span lang="fr">
-                    Lorsqu’une banque accorde un crédit immobilier ou un prêt à une entreprise,
-                    elle inscrit généralement un nouveau dépôt sur le compte de l’emprunteur.
-                    Une nouvelle dette et un nouveau dépôt apparaissent simultanément.
-                    <br><br>
-                    <em>Crédit accordé → nouveau dépôt bancaire.</em>
-                </span>
-            </div>
-
-            <!-- 2. Commercial banks purchasing assets -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">2. Asset Purchases by Commercial Banks</span>
-                    <span lang="fr">2. L’achat d’actifs par les banques commerciales</span>
-                </strong><br>
-
-                <span lang="en">
-                    A bank can also create a deposit when it purchases a bond, property,
-                    security or another asset from a non-bank and credits the seller’s account.
-                    <br><br>
-                    <em>Asset purchased → new bank deposit.</em>
-                </span>
-
-                <span lang="fr">
-                    Une banque peut également créer un dépôt lorsqu’elle achète une obligation,
-                    un bien immobilier, un titre ou un autre actif à un acteur non bancaire,
-                    puis crédite le compte du vendeur.
-                    <br><br>
-                    <em>Actif acheté → nouveau dépôt bancaire.</em>
-                </span>
-            </div>
-
-            <!-- 3. Central bank refinancing -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">3. Central-Bank Loans to Banks</span>
-                    <span lang="fr">3. Les prêts de la banque centrale aux banques</span>
-                </strong><br>
-
-                <span lang="en">
-                    The central bank can lend to commercial banks against eligible collateral.
-                    It creates new central-bank reserves by crediting their reserve accounts.
-                    <br><br>
-                    <em>Refinancing operation → new reserves.</em>
-                </span>
-
-                <span lang="fr">
-                    La banque centrale peut prêter aux banques commerciales contre des garanties
-                    éligibles. Elle crée de nouvelles réserves en créditant leurs comptes auprès
-                    de la banque centrale.
-                    <br><br>
-                    <em>Opération de refinancement → nouvelles réserves.</em>
-                </span>
-            </div>
-
-            <!-- 4. Central bank asset purchases -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">4. Central-Bank Asset Purchases</span>
-                    <span lang="fr">4. L’achat d’actifs par la banque centrale</span>
-                </strong><br>
-
-                <span lang="en">
-                    Through open-market operations or quantitative easing, the central bank
-                    purchases bonds or other assets and pays by creating new reserves. If the
-                    seller is a non-bank, the operation can also create a new bank deposit.
-                    <br><br>
-                    <em>Central-bank purchase → new reserves and, in some cases, new deposits.</em>
-                </span>
-
-                <span lang="fr">
-                    Par ses opérations de marché ou l’assouplissement quantitatif, la banque
-                    centrale achète des obligations ou d’autres actifs et paie en créant de
-                    nouvelles réserves. Si le vendeur est un acteur non bancaire, l’opération
-                    peut également créer un nouveau dépôt bancaire.
-                    <br><br>
-                    <em>Achat par la banque centrale → nouvelles réserves et, dans certains cas,
-                    nouveaux dépôts.</em>
-                </span>
-            </div>
-
-            <!-- 5. Government spending / fiscal-monetary channel -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">5. The Fiscal–Monetary Channel</span>
-                    <span lang="fr">5. Le canal budgétaire et monétaire</span>
-                </strong><br>
-
-                <span lang="en">
-                    When government expenditure exceeds the money withdrawn through taxes,
-                    the deficit is financed by issuing debt. Government payments increase
-                    private bank deposits, while the final monetary effect depends on who
-                    purchases the debt and on the central bank’s operations.
-                    <br><br>
-                    <em>Deficit spending + monetary accommodation → potential net monetary expansion.</em>
-                </span>
-
-                <span lang="fr">
-                    Lorsque les dépenses publiques dépassent les sommes retirées par les impôts,
-                    le déficit est financé par l’émission de dette. Les paiements publics
-                    augmentent les dépôts bancaires privés, mais l’effet monétaire final dépend
-                    de l’acheteur de la dette et des opérations de la banque centrale.
-                    <br><br>
-                    <em>Déficit public + accompagnement monétaire → expansion monétaire nette potentielle.</em>
-                </span>
-            </div>
-
-            <!-- 6. Issuance of notes and coins -->
-            <div class="formula-card" style="text-align: left;">
-                <strong style="color: #4499ff; font-size: 1rem;">
-                    <span lang="en">6. The Issuance of Notes and Coins</span>
-                    <span lang="fr">6. L’émission de billets et de pièces</span>
-                </strong><br>
-
-                <span lang="en">
-                    Central banks issue banknotes, while coins are generally issued by governments
-                    or national monetary authorities. When cash is put into circulation, physical
-                    central-bank money replaces reserves or other monetary claims. Net issuance
-                    increases the quantity of physical currency held by the public, although it
-                    does not necessarily increase the broader money supply.
-                    <br><br>
-                    <em>Cash issued → more physical currency in circulation.</em>
-                </span>
-
-                <span lang="fr">
-                    Les banques centrales émettent les billets, tandis que les pièces sont
-                    généralement émises par les États ou les autorités monétaires nationales.
-                    Lorsque les espèces sont mises en circulation, elles remplacent des réserves
-                    ou d’autres créances monétaires. Leur émission nette augmente la quantité de
-                    monnaie physique détenue par le public, sans nécessairement accroître la masse
-                    monétaire au sens large.
-                    <br><br>
-                    <em>Espèces émises → davantage de monnaie physique en circulation.</em>
-                </span>
-            </div>
-        </div>
-
-        <!-- Money can also be destroyed -->
-        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: rgba(68, 153, 255, 0.06); border: 1px solid rgba(68, 153, 255, 0.2); border-radius: 8px;">
-            <strong style="color: #4499ff;">
-                <span lang="en">Money can also be destroyed</span>
-                <span lang="fr">La monnaie peut également être détruite</span>
-            </strong><br>
-
-            <span lang="en">
-                When the principal of a bank loan is repaid, the corresponding deposit money
-                is extinguished. Similarly, central-bank reserves can disappear when loans
-                to banks are repaid or when the central bank sells assets.
-            </span>
-
-            <span lang="fr">
-                Lorsque le principal d’un crédit bancaire est remboursé, la monnaie bancaire
-                correspondante est détruite. De même, des réserves de banque centrale peuvent
-                disparaître lorsque les banques remboursent leurs emprunts ou lorsque la banque
-                centrale revend des actifs.
-            </span>
-        </div>
-        <p style="margin: 0; color: var(--sun-yellow); font-size: 1.1rem;
-          font-weight: 800; font-style: italic;">
-    <span lang="en">
-        If price stability is the objective, why is 2% inflation considered stable,
-        while 0% is considered dangerous? And why does the supermarket bill so often
-        seem to rise much faster than 2% per year? 🤔
-    </span>
-
-    <span lang="fr">
-        Si la stabilité des prix est l’objectif, pourquoi une inflation de 2 %
-        est-elle considérée comme stable, tandis que 0 % est considéré comme dangereux ? 
-        Et pourquoi le montant payé à la caisse du supermarché semble-t-il si souvent
-        augmenter bien plus vite que 2 % par an ? 🤔
-    </span>
-</p>
-
-<p style="margin: 1rem 0 0; color: #d4d4d8; font-size: 0.95rem;
-          line-height: 1.6; text-align: center;">
-    <span lang="en">
-        Between 2015 and 2024, food and non-alcoholic beverage prices increased
-        by <strong>42.8%</strong> in the European Union—the largest increase among
-        the main categories of the consumer price index.<sup><a href="#source-inflation">1</a></sup>
-    </span>
-
-    <span lang="fr">
-        Entre 2015 et 2024, les prix des produits alimentaires et des boissons
-        non alcoolisées ont augmenté de <strong>42,8 %</strong> dans l’Union européenne,
-        soit la plus forte hausse parmi les grandes catégories de l’indice des prix
-        à la consommation.<sup><a href="#source-inflation">1</a></sup>
-    </span>
-</p>
-
-<p style="margin: 0.8rem 0 0; color: #a1a1aa; font-size: 0.8rem;
-          line-height: 1.5; text-align: center;">
-    <span lang="en">
-        <strong>Note:</strong> 42.8% is a cumulative increase over nine years,
-        not an annual rate. The 2% target applies to the overall average price level
-        over the medium term—not to every product, household or year. The HICP is
-        designed to measure price stability and is not a household-specific
-        cost-of-living index.
-    </span>
-
-    <span lang="fr">
-        <strong>Note :</strong> 42,8 % représente une hausse cumulée sur neuf ans,
-        et non un taux annuel. La cible de 2 % concerne l’évolution moyenne de
-        l’ensemble des prix à moyen terme, et non chaque produit, chaque ménage
-        ou chaque année. L’IPCH mesure la stabilité générale des prix et ne constitue
-        pas un indice personnalisé du coût de la vie.
-    </span>
-</p>
-
-<div id="source-inflation"
-     style="margin-top: 1rem; color: #71717a; font-size: 0.75rem;
-            line-height: 1.5; text-align: center;">
-    <span lang="en">
-        <strong>Sources:</strong>
-        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/4176.pdf"
-           target="_blank" rel="noopener noreferrer">
-            Eurostat — Consumer prices: inflation
-        </a>;
-        <a href="https://ec.europa.eu/eurostat/web/hicp/information-data"
-           target="_blank" rel="noopener noreferrer">
-            Eurostat — Harmonised Index of Consumer Prices methodology
-        </a>.
-    </span>
-
-    <span lang="fr">
-        <strong>Sources :</strong>
-        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/4176.pdf"
-           target="_blank" rel="noopener noreferrer">
-            Eurostat — Prix à la consommation et inflation
-        </a> ;
-        <a href="https://ec.europa.eu/eurostat/web/hicp/information-data"
-           target="_blank" rel="noopener noreferrer">
-            Eurostat — Méthodologie de l’indice des prix à la consommation harmonisé
-        </a>.
-    </span>
-</div>
-        <!-- What Bitcoin changes -->
-        <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(247, 147, 26, 0.08); border: 1px solid rgba(247, 147, 26, 0.35); border-radius: 10px;">
-            <h4 style="color: #f7931a; text-align: center; margin-bottom: 1rem;">
-                <span lang="en">What Does Bitcoin Change?</span>
-                <span lang="fr">Que change Bitcoin ?</span>
-            </h4>
-
-            <p style="margin-bottom: 1rem;">
-                <span lang="en">
-                    Bitcoin does not merely propose a new payment method. It proposes a
-                    different rule for issuing monetary units: a public, predictable and
-                    verifiable issuance schedule enforced by the network rather than decided
-                    by a bank, government or central committee.
-                </span>
-
-                <span lang="fr">
-                    Bitcoin ne propose pas seulement un nouveau moyen de paiement. Il propose
-                    une autre règle d’émission des unités monétaires : un calendrier public,
-                    prévisible et vérifiable, appliqué par le réseau plutôt que décidé par une
-                    banque, un gouvernement ou un comité central.
-                </span>
-            </p>
-
-            <ul style="margin-left: 2rem; color: #d1d5db; line-height: 1.7;">
-                <li>
-                    <span lang="en">
-                        <strong>Predetermined supply:</strong> issuance follows rules written
-                        into the protocol.
-                    </span>
-                    <span lang="fr">
-                        <strong>Offre prédéterminée :</strong> l’émission suit des règles
-                        inscrites dans le protocole.
-                    </span>
-                </li>
-
-                <li>
-                    <span lang="en">
-                        <strong>Maximum quantity:</strong> no more than 21 million bitcoin
-                        can be issued under the current consensus rules.
-                    </span>
-                    <span lang="fr">
-                        <strong>Quantité maximale :</strong> pas plus de 21 millions de bitcoins
-                        ne peuvent être émis selon les règles de consensus actuelles.
-                    </span>
-                </li>
-
-                <li>
-                    <span lang="en">
-                        <strong>Predictable rhythm:</strong> the issuance rate is periodically
-                        reduced through the halving mechanism.
-                    </span>
-                    <span lang="fr">
-                        <strong>Rythme prévisible :</strong> le taux d’émission est périodiquement
-                        réduit par le mécanisme du halving.
-                    </span>
-                </li>
-
-                <li>
-                    <span lang="en">
-                        <strong>Public verification:</strong> anyone can verify the supply and
-                        reject units that violate the rules.
-                    </span>
-                    <span lang="fr">
-                        <strong>Vérification publique :</strong> chacun peut vérifier l’offre
-                        monétaire et rejeter les unités qui ne respectent pas les règles.
-                    </span>
-                </li>
-
-                <li>
-                    <span lang="en">
-                        <strong>No discretionary issuer:</strong> no institution can independently
-                        decide to create additional bitcoin.
-                    </span>
-                    <span lang="fr">
-                        <strong>Absence d’émetteur discrétionnaire :</strong> aucune institution
-                        ne peut décider seule de créer des bitcoins supplémentaires.
-                    </span>
-                </li>
-            </ul>
-        </div>
-
-        <p style="margin: 2rem 0 0 0; color: var(--sun-yellow); font-weight: 700; text-align: center; font-size: 1.05rem;">
-            <span lang="en">
-                Bitcoin therefore challenges not only the quantity of money, but the governance
-                of money: who controls the ruler, who can modify it, and under which rules?
-            </span>
-            <span lang="fr">
-                Bitcoin remet donc en question non seulement la quantité de monnaie, mais sa
-                gouvernance : qui contrôle la règle, qui peut la modifier et selon quelles règles ?
-            </span>
-        </p>
-        <!-- ========================================== -->
-      <!-- SECTION PRÉREQUIS : VIDÉOS INTRODUCTIVES   -->
-      <!-- ========================================== -->
-      <div 
-      class="proof-box" 
-      style="
-        border: 1px solid rgba(68, 153, 255, 0.3); 
-        background: rgba(68, 153, 255, 0.03); 
-        padding: 2.5rem; 
-        border-radius: 12px; 
-        margin-bottom: 3.5rem;
-        box-shadow: inset 0 0 20px rgba(68, 153, 255, 0.05);
-      "
-    >
-      <div class="proof-title" lang="en" style="color: #4499ff; font-style: normal; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">
-        🔰 Prerequisite: Bitcoin Blockchain Basics
-      </div>
-      <div class="proof-title" lang="fr" style="color: #4499ff; font-style: normal; font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">
-        🔰 Prérequis : Les Bases de la Blockchain Bitcoin
-      </div>
-      
-      <p lang="en" style="margin-bottom: 2.5rem; color: #d4d4d4; font-size: 1.05rem; line-height: 1.6;">
-        To fully appreciate the theoretical depth of this document, a minimum understanding of how a blockchain operates is required. For our French-speaking audience, we highly recommend watching these two excellent introductory videos before proceeding.
-      </p>
-      <p lang="fr" style="margin-bottom: 2.5rem; color: #d4d4d4; font-size: 1.05rem; line-height: 1.6;">
-        Pour apprécier pleinement la profondeur théorique de ce document, une connaissance minimale du fonctionnement d'une blockchain est nécessaire. Si vous découvrez totalement cet univers, nous vous recommandons vivement de visionner ces deux excellentes vidéos introductives avant de poursuivre votre lecture.
-      </p>
-
-      <!-- Conteneur Flex pour les vidéos (Côte à côte sur PC, empilées sur mobile) -->
-      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
-        
-        <!-- Vidéo 1 -->
-        <div style="flex: 1 1 300px; max-width: 500px;">
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
-            <iframe 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-              src="https://www.youtube.com/embed/U4S-RGNyTJA" 
-              title="Le Bitcoin et la Blockchain" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-
-        <!-- Vidéo 2 -->
-        <div style="flex: 1 1 300px; max-width: 500px;">
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
-            <iframe 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-              src="https://www.youtube.com/embed/Tmp4C9rnL98" 
-              title="La cryptographie derrière Bitcoin" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </div>
-    <!-- NOUVEAU BLOC : DÉFINITION AMMOUS & VENDABILITÉ -->
-    <div style="margin: 3rem auto; max-width: 900px;">
-        <h3 style="color: var(--sun-orange); margin-bottom: 1.5rem; text-align: center;">
-            <span lang="en">Defining Bitcoin: Scarcity & Saleability</span>
-            <span lang="fr">Définir Bitcoin : Rareté & Vendabilité</span>
-        </h3>
-        
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.1);">
-            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/0JAEWVl45ps?rel=0&modestbranding=1" title="Definition Bitcoin - Saifedean Ammous" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <div class="section-body" style="margin: 0 auto; text-align: justify;">
-            <p style="margin-bottom: 1rem;">
-                <span lang="en">Economist Saifedean Ammous considers Bitcoin the most advanced form of money ever invented due to its fundamental properties:</span>
-                <span lang="fr">L'économiste Saifedean Ammous considère Bitcoin comme la forme de monnaie la plus avancée jamais inventée en raison de propriétés essentielles :</span>
-            </p>
-            <ul style="margin-left: 2.5rem; margin-bottom: 1.5rem; color: #d1d5db; line-height: 1.7;">
-                <li style="margin-bottom: 0.8rem;">
-                    <span lang="en"><strong>Absolute Scarcity:</strong> Bitcoin is inflation-resistant with a fixed supply of 21 million. While fiat currencies have a "leak" (♾️/21M), Bitcoin's new supply asymptotically approaches zero.</span>
-                    <span lang="fr"><strong>La rareté absolue :</strong> Bitcoin est résistant à l'inflation avec une offre limitée à 21 millions. Alors que les monnaies fiduciaires ont une "fuite" (♾️/21M), l'émission de Bitcoin tend vers zéro.</span>
-                </li>
-                <li style="margin-bottom: 0.8rem;">
-                    <span lang="en"><strong>No Central Authority:</strong> The network operates without needing to <strong style="color:#0be7ff">trust</strong> a central entity. No administrators can control, modify, or censor its use.</span>
-                    <span lang="fr"><strong>L'absence d'autorité centrale :</strong> Le réseau fonctionne sans avoir besoin de faire <strong style="color:#0be7ff">confiance</strong> à une entité. Il n'y a pas d'administrateurs qui peuvent contrôler, modifier ou censurer son utilisation.</span>
-                </li>
-            </ul>
-            <p>
-                <span lang="en">Ammous defines <strong>"saleability"</strong> as the capacity of a good to be easily sold on the market without losing significant value. Bitcoin uniquely combines the saleability of gold across time (resistance to inflation) with the saleability of fiat across space (fast, borderless final settlement).</span>
-                <span lang="fr">Ammous définit la <strong>"vendabilité"</strong> comme la capacité d'un bien à être vendu facilement sur le marché sans perte de valeur significative. Bitcoin combine la "vendabilité" de l'or dans le temps (résistance à l'inflation) avec la "vendabilité" de la monnaie fiduciaire dans l'espace (règlement final rapide et sans frontières).</span>
-            </p>
-        </div>
-    </div>
-
-    <!-- NOUVEAU BLOC UNIFIÉ : JOHN NASH & IDEAL MONEY -->
-    <div style="margin: 4rem auto 1rem auto; max-width: 900px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1);">
-        <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem; text-align: center;">
-            <span lang="en">John Nash & Asymptotically Ideal Money</span>
-            <span lang="fr">John Nash & La Monnaie Asymptotiquement Idéale</span>
-        </h3>
-        
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <img src="https://res.cloudinary.com/daabdiwnt/image/upload/v1760138811/ArticleBTC/asymptoticmoney_tlqg7r.webp" alt="Asymptotic Ideal Money" style="max-width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        </div>
-        
-        <div class="section-body" style="margin: 0 auto; text-align: justify; margin-bottom: 2rem;">
-            <p style="margin-bottom: 1.5rem;">
-                <span lang="en">It is striking to note how closely Bitcoin approaches the vision of Nobel laureate John F. Nash Jr. In works like his 2002 paper in the <em>Southern Economic Journal</em>, Nash developed the theoretical framework for "Ideal Money" — a globally stable currency free from the Triffin dilemma and domestic political inflation.</span>
-                <span lang="fr">Il est frappant de noter à quel point Bitcoin se rapproche de la vision du lauréat du prix Nobel John F. Nash Jr. Dans des travaux comme son article de 2002 dans le <em>Southern Economic Journal</em>, Nash a développé le cadre théorique de la « Monnaie Idéale » — une monnaie mondialement stable, exempte du dilemme de Triffin et de l'inflation politique intérieure.</span>
-            </p>
-            <p style="margin-bottom: 1.5rem;">
-                <span lang="en">He argued that money should function like a physical unit of measure — immutable, objective, independent of political will, and intrinsically free of "inflationary decadence." The supply should asymptotically (gradually) approach a constant value.</span>
-                <span lang="fr">Il soutenait que la monnaie devait fonctionner comme une unité de mesure physique — immuable, objective, indépendante de la volonté politique, et intrinsèquement libre de « décadence inflationniste ». L'offre devait approcher asymptotiquement (progressivement) une valeur constante.</span>
-            </p>
-            <div class="quote-block" style="margin: 2rem 0;">
-                <p class="quote-text">
-                    <span lang="en">"Just as scientific communities rely on immutable definitions of the metre, kilogram, and second, the global economy needs an immutable measure of value to optimise long-term cooperative games across borders and generations."</span>
-                    <span lang="fr">"Tout comme les communautés scientifiques s'appuient sur des définitions immuables du mètre, du kilogramme et de la seconde, l'économie mondiale a besoin d'une mesure immuable de la valeur pour optimiser les jeux coopératifs à long terme à travers les frontières et les générations."</span>
-                </p>
-                <p class="quote-author">
-                    <span lang="en">— Inspired by John Nash, Ideal Money (2002)</span>
-                    <span lang="fr">— Inspiré de John Nash, Monnaie Idéale (2002)</span>
-                </p>
-            </div>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem;">
-            <!-- Vidéo 1 : Explication Ideal Money -->
-            <div style="flex: 1; min-width: 300px; position: relative; padding-bottom: 31.5%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/GIIq-xShYTI?si=MrknOZLvT0Ipwr7_&rel=0&modestbranding=1" title="John Nash Ideal Money" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!-- Vidéo 2 : Oxford Bitcoin Honesty -->
-            <div style="flex: 1; min-width: 300px; position: relative; padding-bottom: 31.5%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/g09cvKiMTMw?rel=0&modestbranding=1" title="John Nash Bitcoin Honesty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <p style="color: #a1a1aa; font-size: 0.95rem; text-align: center; font-style: italic;">
-            <span lang="en">In early 2015, John Nash explained at the Oxford Union Society how Bitcoin coins cannot be counterfeited, unlike gold, making it perhaps the most "honest" money ever utilized by humanity.</span>
-            <span lang="fr">Début 2015, John Nash expliquait à l'Oxford Union Society comment les « pièces » de Bitcoin ne peuvent pas être contrefaites, contrairement à l’or, en faisant potentiellement la monnaie la plus « honnête » jamais inventée.</span>
-        </p>
-    </div>
-
-    <!-- Mineurs et Noeuds -->
-    <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem; text-align: center; margin-top: 4rem;">
-        <span lang="en">How is Bitcoin made? Workers & Inspectors</span>
-        <span lang="fr">Comment est fabriqué Bitcoin ? Les Ouvriers et les Inspecteurs</span>
-    </h3>
-    <p class="section-body" style="text-align: center;">
-        <span lang="en">The Bitcoin network is a giant digital cooperative made of two groups:</span>
-        <span lang="fr">Le réseau Bitcoin est une immense coopérative numérique composée de deux groupes :</span>
-    </p>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-        <!-- Miners -->
-        <div style="flex: 1; min-width: 300px; background: rgba(255, 170, 0, 0.05); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--sun-orange);">
-            <h4 style="color: var(--sun-orange); margin-bottom: 1rem;"><span lang="en">⛏️ The Miners (The Workers)</span><span lang="fr">⛏️ Les Mineurs (Les Ouvriers)</span></h4>
-            <p style="color: #d1d5db; line-height: 1.6; font-size: 0.95rem;">
-                <span lang="en">Miners are giant computers that act as security guards. They spend real physical energy (electricity) to solve very difficult math puzzles. This is what is called the Proof-of-Work mechanism in the Protocol. When they solve one, they lock a "block" of new transactions into the chain forever. Because rewriting confirmed history requires reproducing the accumulated Proof-of-Work and overtaking the competing chain, such an attack becomes increasingly difficult, costly and economically uncertain as confirmations accumulate. For their hard work, the protocol pays them in new Bitcoins. <em>This is the ONLY way new Bitcoins are created.</em></span>
-                <span lang="fr">Les mineurs sont de puissants ordinateurs. Ils dépensent de l'énergie physique (de l'électricité) pour résoudre un puzzle mathématique complexe. On appelle cette dépense :  la Preuve de Travail. Quand ils réussissent, ils verrouillent un "bloc" de transactions pour toujours. Pour réécrire un historique confirmé, un attaquant devrait reproduire la preuve de travail accumulée et dépasser la chaîne concurrente. Une telle attaque devient donc de plus en plus difficile, coûteuse et économiquement incertaine à mesure que les confirmations s’accumulent. Lorsqu’il produit un bloc valide, le mineur peut recevoir une récompense composée de nouveaux bitcoins — la subvention de bloc — et des frais versés par les utilisateurs. <em>La subvention de bloc est le seul mécanisme prévu par le protocole par lequel de nouvelles unités de bitcoin entrent en circulation.</em></span>
-            </p>
-        </div>
-        <!-- Nodes -->
-        <div style="flex: 1; min-width: 300px; background: rgba(68, 238, 119, 0.05); padding: 2rem; border-radius: 12px; border-left: 4px solid #44ee77;">
-            <h4 style="color: #44ee77; margin-bottom: 1rem;"><span lang="en">👁️ The Nodes (The Inspectors)</span><span lang="fr">👁️ Les Nœuds (Les Inspecteurs)</span></h4>
-            <p style="color: #d1d5db; line-height: 1.6; font-size: 0.95rem;">
-                <span lang="en">Nodes are regular computers (like your old laptop) run by everyday people. They don't use much electricity. Their job is to hold the rulebook and check the Miners' work. If a Miner tries to cheat or create too many Bitcoins, the Nodes instantly reject their block. The Miners have the physical power, but the Nodes (the people) have the absolute authority. Together, they enforce the ultimate rule: <strong>there will never be more than 21 million Bitcoins.</strong></span>
-                <span lang="fr">Les nœuds sont des ordinateurs normaux (comme votre vieux PC) gérés par n'importe qui. Ils ne consomment presque pas d'électricité. Leur rôle est de vérifier le travail des Mineurs. Si un Mineur essaie de tricher ou de créer trop de Bitcoins, les Nœuds rejettent son travail. Les Mineurs ont la force brute, mais les Nœuds (le peuple) détiennent l'autorité absolue. Ensemble, ils garantissent la règle d'or : <strong>il n'y aura jamais plus de 21 millions de Bitcoins.</strong></span>
-            </p>
-        </div>
-    </div>
-    
-    <!-- NOUVEAU BLOC : MIT EXPO & FLAMME DE LA LIBERTÉ -->
-    <div style="margin: 4rem auto 1rem auto; text-align: center; max-width: 800px;">
-        <h3 style="color: var(--sun-yellow); margin-bottom: 1.5rem;">
-            <span lang="en">The Flame of Liberty</span>
-            <span lang="fr">La Flamme de la Liberté</span>
-        </h3>
-        <p class="section-body" style="text-align: center; margin-bottom: 2rem;">
-            <span lang="en">The M.I.T, the world's leading technological university (where a certain John Nash taught), is also one of the first to dedicate an annual expo to Bitcoin.</span>
-            <span lang="fr">Le M.I.T, la meilleure université technologique au monde (où un certain John Nash a enseigné) est aussi une des premières qui dédie une expo chaque année au Bitcoin.</span>
-        </p>
-        <img src="https://res.cloudinary.com/daabdiwnt/image/upload/v1760390444/ArticleBTC/BTCMITExpo_ldw96a.webp" alt="M.I.T Bitcoin Expo" style="max-width: 300px; width: 100%; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.4);">
-        
-        <div class="quote-block" style="text-align: left; background: rgba(68, 153, 255, 0.05); border-left: 3px solid #4499ff;">
-            <p class="quote-text" style="font-size: 1rem;">
-                <strong lang="en" style="color:#4499ff">❓ Reflection:</strong> 
-                <strong lang="fr" style="color:#4499ff">❓ Réflexion:</strong> 
-                <span lang="en">By using the flame of the Statue of Liberty's torch 🗽 as a symbol, the M.I.T seems to issue an invitation for the free world to reunite. So that the flame of liberty — too often taken for granted — may never be extinguished.</span>
-                <span lang="fr">En utilisant la flamme de la torche de la statue de la Liberté 🗽 comme symbole, le M.I.T semble lancer une invitation au monde libre à se retrouver. Pour que la flamme de la liberté <em>— trop souvent prise pour acquise —</em> ne s’éteigne jamais.</span>
-            </p>
-        </div>
-    </div>
-
-</section>
 
 <section id="theo" style="padding-top: 2rem;">
     <p class="section-label">
@@ -6896,71 +7043,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </p>
         </div>
     </div>
-</section>
-
-<!-- NEW SECTION: THE EPIPHANY / THE CANNOT UNSEE MOMENT -->
-<hr class="divider">
-<section id="epiphany" style="padding-top: 5rem; padding-bottom: 5rem;">
-    <div style="text-align: center; margin-bottom: 2rem;">
-        <p class="section-label" style="color: #ff3333; text-shadow: 0 0 10px rgba(255, 51, 51, 0.4);">
-            <span lang="en">The Great Illusion</span>
-            <span lang="fr">La Grande Illusion</span>
-        </p>
-        <h2 class="section-title" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
-            <span lang="en">You cannot print a barrel of oil.<br>Why use infinite money to measure a finite world?</span>
-            <span lang="fr">Vous ne pouvez pas imprimer un baril de pétrole.<br>Pourquoi mesurer un monde fini avec une monnaie infinie ?</span>
-        </h2>
-    </div>
-
-    <!-- THE UNSEE EQUATION -->
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 3rem 0 4rem 0; font-family: var(--font-ui); font-weight: 800; line-height: 1;">
-        <div style="color: #ff4444; text-shadow: 0 0 30px rgba(255, 68, 68, 0.6); padding-bottom: 0.5rem; font-size: clamp(4rem, 8vw, 6rem);">∞</div>
-        <div style="width: 140px; height: 4px; background: #e5e7eb; border-radius: 2px; box-shadow: 0 0 15px rgba(255,255,255,0.3);"></div>
-        <div style="color: #44ee77; text-shadow: 0 0 30px rgba(68, 238, 119, 0.6); padding-top: 0.8rem; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px;">21M</div>
-    </div>
-
-    <div style="text-align: center; margin-bottom: 4rem;">
-        <p class="section-body" style="margin: 0 auto; font-size: 1.15rem; color: #e5e7eb;">
-            <span lang="en">Once you see the flaw in the foundation of our civilization, you can never unsee it. We are trying to coordinate a world of finite physical resources using monetary ledgers whose units can expand without a predetermined maximum.</span>
-            <span lang="fr">Une fois que vous voyez la faille dans les fondations de notre civilisation, vous ne pouvez plus l'oublier. Nous tentons de coordonner un monde de ressources physiques limitées à l’aide de registres monétaires dont le nombre d’unités peut augmenter sans plafond prédéterminé.</span>
-        </p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-        
-        <!-- THE FIAT PARADIGM (Red/Dark) -->
-        <div style="background: linear-gradient(145deg, rgba(30, 5, 5, 0.7), rgba(10, 2, 2, 0.9)); border: 1px solid rgba(255, 50, 50, 0.3); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(255, 0, 0, 0.1);">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📉</div>
-            <h4 style="font-family: var(--font-ui); font-size: 1.2rem; color: #ff4444; margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;">
-                <span lang="en">The Fiat System: A Critical Hypothesis</span>
-                <span lang="fr">L'Anomalie Fiduciaire</span>
-            </h4>
-            <p style="color: #a1a1aa; line-height: 1.8; font-size: 0.95rem;">
-                <span lang="en">Money is debt. To prevent the debt from collapsing, the system demands infinite exponential GDP growth. To achieve this growth, we must relentlessly extract physical resources, liquidating the Earth's natural capital (forests, oceans, minerals) to sustain a mathematical illusion. <strong>Inflation is not just economic; it is the thermodynamic liquidation of the biosphere.</strong></span>
-                <span lang="fr">La monnaie est une dette. Pour ne pas s'effondrer, le système exige une croissance exponentielle infinie du PIB. Pour générer cette croissance, nous devons extraire sans relâche, liquidant le capital naturel de la Terre (forêts, océans, sols) pour maintenir une illusion mathématique. <strong>L'inflation n'est pas qu'économique ; c'est la liquidation thermodynamique de la biosphère.</strong></span>
-            </p>
-        </div>
-
-        <!-- THE THERMODYNAMIC PARADIGM (Green/Gold) -->
-        <div style="background: linear-gradient(145deg, rgba(5, 30, 15, 0.7), rgba(2, 10, 5, 0.9)); border: 1px solid rgba(68, 238, 119, 0.3); border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(68, 238, 119, 0.05); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #44ee77, transparent);"></div>
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌿</div>
-            <h4 style="font-family: var(--font-ui); font-size: 1.2rem; color: #44ee77; margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;">
-                <span lang="en">The Green Pill</span>
-                <span lang="fr">La Pilule Verte</span>
-            </h4>
-            <p style="color: #a1a1aa; line-height: 1.8; font-size: 0.95rem;">
-                <span lang="en">Value is subjective, but the ruler we use to measure it must be objective. By adopting a currency bound by strict thermodynamic effort (Proof-of-Work), the monetary measuring stick can no longer be distorted. We halt the infinite extraction loop by realigning human economics with the absolute limits of planetary biology.</span>
-                <span lang="fr">La valeur des choses est subjective, mais la règle qui sert à la mesurer doit être absolue. En adoptant une monnaie bornée par un effort thermodynamique strict (Preuve de Travail), l'outil de mesure ne peut plus être étiré à l'infini. Nous stoppons la boucle d'extraction infinie en réalignant les prix de l'économie humaine sur les limites de la biologie planétaire.</span>
-            </p>
-        </div>
-
-    </div>
-
-    <p style="margin: 2rem auto 3rem auto; max-width: 900px; color: var(--sun-yellow); font-weight: 800; text-align: center; font-size: 1.15rem; letter-spacing: 1px; background: rgba(255, 204, 0, 0.05); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 204, 0, 0.2); box-shadow: 0 0 20px rgba(255, 204, 0, 0.1);">
-        <span lang="en">Thermodynamic work remains the absolute property of the entity that provided it: this is the genesis of sovereignty over one's own energy.</span>
-        <span lang="fr">Le travail thermodynamique reste la propriété absolue de l'entité qui l'a fourni : c'est la genèse de la souveraineté sur sa propre énergie.</span>
-    </p>
 </section>
 
 <!-- NEW SECTION: LIVE THERMODYNAMIC VALUE -->
