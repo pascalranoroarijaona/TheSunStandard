@@ -170,18 +170,6 @@
                 justify-content: center;
             }
 
-            .gemini-btn {
-                background: #1a73e8;
-                color: white;
-            }
-            .gemini-btn:hover { background: #1557b0; }
-
-            .chatgpt-btn {
-                background: #10a37f;
-                color: white;
-            }
-            .chatgpt-btn:hover { background: #0b8061; }
-
             /* Handle Language logic for textareas */
             body.lang-en #ai-prompt-input-fr { display: none; }
             body.lang-fr #ai-prompt-input { display: none; }
@@ -4497,10 +4485,78 @@ if __name__ == "__main__":
                 Les conséquences sociales de cette fuite vers la matière sont dévastatrices. En transformant le monde physique en une gigantesque éponge à liquidités, nous excluons des générations entières de l'accès à la propriété. Des tours résidentielles entières restent vides dans les grandes métropoles, agissant comme de simples coffres-forts de béton pour des fonds d'investissement, tandis que les travailleurs ne peuvent plus se loger. Une monnaie brisée nous pousse à extraire, bétonner et accumuler de manière pathologique, transformant notre planète en un immense entrepôt de stockage de valeur par défaut.
             </p>
             
+            <!-- L'ÉLOGE DE LA DÉFLATION & ILLUSION DU NUMÉRAIRE -->
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">L'Éloge de la Déflation : Abondance, Automatisation et Écologie</strong><br />
                 Le débat macroéconomique contemporain diabolise la déflation, la traitant comme une anomalie terrifiante à combattre par l'impression frénétique de liquidités. Pourtant, l'École autrichienne d'économie nous rappelle que la baisse continue des prix est le fruit naturel, sain et désirable du progrès technologique. Comme le défendait ardemment l'économiste Murray Rothbard, toute augmentation de la productivité devrait mécaniquement se traduire par une augmentation du pouvoir d'achat de la monnaie, permettant à la population de bénéficier d'une abondance croissante sans effort supplémentaire. Dans un système monétaire fixe comme l'étalon Nakamoto, le prix des choses diminue à mesure que l'ingénierie s'optimise, transformant l'innovation technologique en un dividende universel et silencieux.
             </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                <!-- <strong style="color: #F7931A; font-size: 1.1em;">L'Illusion du Numéraire et la Relativité du Pouvoir d'Achat</strong><br /> -->
+                C'est ici que se dissipe l'une des plus grandes illusions cognitives de l'économie moderne : la perception du « prix ». Lorsque l'on observe la courbe de valorisation de Bitcoin, l'intuition première dicte que l'actif « monte » ou gonfle de manière spéculative. C'est une erreur de perspective fondamentale causée par notre attachement psychologique au numéraire fiduciaire. Nous utilisons un mètre ruban élastique (le fiat) pour mesurer un objet mathématiquement solide (Bitcoin). La hausse nominale de Bitcoin n'est en réalité que le reflet mathématique exact de la dilution de la monnaie d'État face aux gains de productivité humaine. 
+            </p>
+
+            <!-- SECTION EXTENSIBLE : MATHÉMATIQUES DU POUVOIR D'ACHAT -->
+            <details style="background: rgba(10, 10, 12, 0.8); border: 1px solid rgba(247, 147, 26, 0.3); border-radius: 8px; overflow: hidden; cursor: pointer; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(247, 147, 26, 0.05);">
+                <summary style="padding: 1rem 1.5rem; color: #ffcc00; font-weight: bold; font-size: 1.05rem; outline: none; user-select: none; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid transparent; transition: all 0.3s ease;">
+                    <span>📐 Démonstration Mathématique : La Divergence du Pouvoir d'Achat</span>
+                    <span style="font-size: 0.8em; opacity: 0.7;">(Cliquer pour développer) ▼</span>
+                </summary>
+                
+                <div style="padding: 1.5rem; border-top: 1px solid rgba(247, 147, 26, 0.1); cursor: auto;">
+                    <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 1.5rem;">
+                        Le pouvoir d'achat $PP(t)$ d'une monnaie est le ratio entre l'abondance réelle des biens produits par l'humanité $Q(t)$ et la quantité d'unités monétaires en circulation $M(t)$. La production humaine croît selon un taux de productivité technologique $\gamma$.
+                        $$PP(t) = \frac{Q_0 e^{\gamma t}}{M(t)}$$
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="background: rgba(255, 68, 68, 0.05); padding: 1.2rem; border-left: 3px solid #ff4444; border-radius: 4px;">
+                            <strong style="color: #ff4444; font-size: 1.05rem;">La Monnaie Élastique (Fiat)</strong>
+                            <p style="color: #9ca3af; font-size: 0.9em; margin-top: 0.5rem; line-height: 1.5;">
+                                La masse monétaire croît à un taux d'inflation $\pi$ supérieur à la croissance réelle. Le pouvoir d'achat s'effondre thermodynamiquement :
+                                $$PP_{fiat}(t) = \frac{Q_0 e^{\gamma t}}{M_0 e^{\pi t}} \propto e^{(\gamma - \pi) t}$$
+                            </p>
+                        </div>
+                        <div style="background: rgba(247, 147, 26, 0.05); padding: 1.2rem; border-left: 3px solid #F7931A; border-radius: 4px;">
+                            <strong style="color: #F7931A; font-size: 1.05rem;">L'Étalon Fixe (Bitcoin)</strong>
+                            <p style="color: #9ca3af; font-size: 0.9em; margin-top: 0.5rem; line-height: 1.5;">
+                                La masse $\bar{M}$ est constante (21M). Le pouvoir d'achat capte <em>l'intégralité</em> de la croissance et de l'innovation humaine :
+                                $$PP_{btc}(t) = \frac{Q_0 e^{\gamma t}}{\bar{M}} \propto e^{\gamma t}$$
+                            </p>
+                        </div>
+                    </div>
+
+                    <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 2rem;">
+                        <strong>Le Taux de Change :</strong> Le « prix » observé $E(t)$ n'est que le ratio entre ces deux vecteurs ($E(t) = PP_{btc} / PP_{fiat} = e^{\pi t}$). Bitcoin ne « monte » pas ; c'est le numéraire fiat qui s'effondre.
+                    </p>
+
+                    <!-- SIMULATION INTERACTIVE -->
+                    <div style="background: rgba(0, 0, 0, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <h5 style="color: #fff; margin-bottom: 1rem; text-align: center;">Simulation Dynamique sur 20 ans</h5>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="color: #9ca3af; font-size: 0.85rem; display: flex; justify-content: space-between;">
+                                    <span>Dilution Fiat (Inflation $\pi$)</span>
+                                    <span id="val-inflation" style="color: #ff4444; font-weight: bold;">7.0%</span>
+                                </label>
+                                <input type="range" id="slider-inflation" min="2" max="20" value="7" step="0.5" style="width: 100%; accent-color: #ff4444; margin-top: 0.5rem;">
+                            </div>
+                            <div>
+                                <label style="color: #9ca3af; font-size: 0.85rem; display: flex; justify-content: space-between;">
+                                    <span>Gains Tech (Productivité $\gamma$)</span>
+                                    <span id="val-prod" style="color: #F7931A; font-weight: bold;">3.0%</span>
+                                </label>
+                                <input type="range" id="slider-prod" min="0" max="15" value="3" step="0.5" style="width: 100%; accent-color: #F7931A; margin-top: 0.5rem;">
+                            </div>
+                        </div>
+
+                        <div style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="purchasingPowerCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </details>
 
             <p style="margin-bottom: 1.5rem;">
                 Cette mécanique déflationniste redéfinit totalement notre rapport au travail. S'il est vrai que dans une économie en déflation saine les salaires nominaux finissent par baisser, les prix réels des biens chutent encore plus vite, augmentant mécaniquement le pouvoir d'achat final. Mais nous devons aller plus loin : à l'aube d'une automatisation intégrale pilotée par l'Intelligence Artificielle, le labeur humain deviendra de plus en plus optionnel. Aurons-nous seulement encore besoin du concept même de "salaire" lorsque les algorithmes et la robotique feront tendre le coût marginal de l'énergie, de la nourriture et du calcul vers zéro ? La déflation n'est pas une crise ; c'est le mécanisme mathématique par lequel l'abondance générée par les machines est redistribuée pacifiquement à l'ensemble de l'humanité, libérant l'individu de la servitude du salariat.
@@ -4509,7 +4565,124 @@ if __name__ == "__main__":
             <p style="margin-bottom: 1.5rem;">
                 Surtout, cette déflation technologique porte en elle la seule véritable solution à notre tragédie environnementale. L'inflation est ontologiquement extractiviste : elle force la consommation frénétique, l'endettement et l'obsolescence programmée pour maintenir la vélocité d'une monnaie qui fond. À l'inverse, un monde en déflation récompense la patience. Pourquoi consommer des ressources pour acheter un objet médiocre aujourd'hui s'il coûtera moins cher et sera de meilleure qualité demain ? En allongeant notre horizon temporel, la déflation incite naturellement à la réparation, à la sobriété et à la conception d'artefacts durables. Économiquement, elle ralentit le tapis roulant ; thermodynamiquement, elle réduit la dissipation d'entropie, offrant enfin à la biosphère le répit nécessaire pour se régénérer.
             </p>
-            
+
+            <!-- INCLUSION DU SCRIPT CHART.JS (Assure-toi que cette librairie n'est chargée qu'une seule fois dans ta page) -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const canvas = document.getElementById('purchasingPowerCanvas');
+                if (!canvas) return;
+
+                const ctx = canvas.getContext('2d');
+                let chartInstance = null;
+
+                const years = 20;
+                const labels = Array.from({length: years + 1}, (_, i) => `Année ${i}`);
+
+                function drawChart(pi, gamma) {
+                    const btcData = [];
+                    const fiatData = [];
+                    
+                    for (let t = 0; t <= years; t++) {
+                        fiatData.push(100 / Math.pow(1 + pi, t));
+                        btcData.push(100 * Math.pow(1 + gamma, t));
+                    }
+
+                    if (chartInstance) {
+                        chartInstance.data.datasets[0].data = btcData;
+                        chartInstance.data.datasets[1].data = fiatData;
+                        chartInstance.update();
+                    } else {
+                        chartInstance = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        label: "Étalon Fixe (Capte l'innovation)",
+                                        borderColor: "#F7931A",
+                                        backgroundColor: "rgba(247, 147, 26, 0.15)",
+                                        borderWidth: 3,
+                                        fill: true,
+                                        data: btcData,
+                                        tension: 0.3,
+                                        pointRadius: 0
+                                    },
+                                    {
+                                        label: "Monnaie Fiat (Dilution par inflation)",
+                                        borderColor: "#ff4444",
+                                        backgroundColor: "rgba(255, 68, 68, 0.1)",
+                                        borderWidth: 3,
+                                        fill: true,
+                                        data: fiatData,
+                                        tension: 0.3,
+                                        pointRadius: 0
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                interaction: { mode: 'index', intersect: false },
+                                plugins: {
+                                    legend: { labels: { color: '#d1d5db', font: { family: "'Space Grotesk', sans-serif" } } },
+                                    tooltip: { backgroundColor: 'rgba(0,0,0,0.8)' }
+                                },
+                                scales: {
+                                    y: {
+                                        title: { display: true, text: "Pouvoir d'Achat (Base 100)", color: '#9ca3af' },
+                                        grid: { color: 'rgba(255,255,255,0.05)' },
+                                        ticks: { color: '#9ca3af' }
+                                    },
+                                    x: {
+                                        grid: { color: 'rgba(255,255,255,0.05)' },
+                                        ticks: { color: '#9ca3af', maxTicksLimit: 10 }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                // Initialisation
+                const sliderInf = document.getElementById('slider-inflation');
+                const sliderProd = document.getElementById('slider-prod');
+                const valInf = document.getElementById('val-inflation');
+                const valProd = document.getElementById('val-prod');
+
+                function update() {
+                    const pi = parseFloat(sliderInf.value) / 100;
+                    const gamma = parseFloat(sliderProd.value) / 100;
+                    valInf.textContent = sliderInf.value + "%";
+                    valProd.textContent = sliderProd.value + "%";
+                    drawChart(pi, gamma);
+                }
+
+                sliderInf.addEventListener('input', update);
+                sliderProd.addEventListener('input', update);
+
+                // Permettre à l'animation de bien se dessiner quand le `<details>` est ouvert
+                const detailsBlock = sliderInf.closest('details');
+                if (detailsBlock) {
+                    detailsBlock.addEventListener('toggle', (e) => {
+                        if (detailsBlock.open) {
+                            setTimeout(update, 50); // Petit délai pour laisser le canvas prendre ses dimensions
+                        }
+                    });
+                }
+
+                update();
+            });
+            </script>
+
+            <!-- Ajout CSS spécifique pour cet encart -->
+            <style>
+                details[open] > summary {
+                    border-bottom: 1px solid rgba(247, 147, 26, 0.2) !important;
+                    background: rgba(247, 147, 26, 0.05);
+                }
+            </style>
+
             <p style="margin-bottom: 1.5rem;">
                 <strong style="color: #F7931A; font-size: 1.1em;">
                     Le rapport à notre propre finitude : <em>It from Bit</em>
@@ -7645,7 +7818,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "We are stardust organizing its own complexity."
             </p>
             <p lang="fr" style="text-align: center; color: #ffcc00; font-style: italic; font-size: 1.1rem; margin-top: 1.5rem; letter-spacing: 1px;">
-                « Nous sommes de la poussière d'étoiles organisant sa propre complexité.»
+                « Nous sommes de la poussière d'étoiles organisant sa propre complexité. »
             </p>
         </div>
         <!-- ========================================== -->
@@ -8188,6 +8361,23 @@ document.addEventListener("DOMContentLoaded", () => {
             <p class="timeline-text">
                 <span lang="en">Comprehensive 5-layer systemic architecture bridging thermodynamic irreversibility (Bitcoin PoW / GLID), high-frequency lightning streaming, ZKP medical pods, and an AGI Statesman slaved to Cardinal Wellbeing (WU) and the Optimism Protocol.</span>
                 <span lang="fr">Architecture systémique totale en 5 couches unissant l'irréversibilité thermodynamique (Bitcoin PoW / GLID), la fluidité Lightning, la confidentialité médicale ZKP et une IAG d'État asservie au Bien-Être Cardinal (WU) et au Protocole d'Optimisme.</span>
+            </p>
+        </div>
+        <div class="timeline-item">
+            <p class="timeline-date">Scientific Publication - September 2nd, 2026 — Information Geometry & Non-Equilibrium Thermodynamics</p>
+            <h4 class="timeline-title">
+                <a href="https://doi.org/10.5281/zenodo.22135013" target="_blank">
+                    <span lang="en">The Nakamoto Thermal Time Theorem: Information Geometry and Gauge Autopoiesis</span>
+                    <span lang="fr">Le Théorème du Temps Thermique de Nakamoto : Géométrie de l'Information et Autopoïèse de Jauge</span>
+                </a>
+            </h4>
+            <div>
+                <!-- Remplace le src par le chemin réel vers l'image de ton graphique (ex: le bol de Friston ou le tableau thermodynamique) -->
+                <img src="blog/img/ThermalTimeHypothesisStudy.png" alt="Free Energy Landscape and Thermal Time" style="width: 50%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(179, 102, 255, 0.3);">
+            </div>
+            <p class="timeline-text">
+                <span lang="en">A thermodynamic formalization of the Nakamoto protocol via Rovelli-Connes thermal time and GKSL master equation, proving algebraic KMS condition breaking, non-equilibrium entropy production, and an autopoietic isomorphism for complex living systems.</span>
+                <span lang="fr">Une formalisation thermodynamique du protocole Nakamoto via le temps thermique de Rovelli-Connes et l'équation maîtresse GKSL, démontrant la brisure de la condition KMS, la production d'entropie hors-équilibre et un isomorphisme autopoïétique pour les systèmes vivants complexes.</span>
             </p>
         </div>
     </div>
@@ -9044,7 +9234,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act I — Cosmological Genesis & Universal Geometry</span>
             <span lang="fr">Acte I — Genèse Cosmologique & Géométrie Universelle</span>
@@ -9084,7 +9274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act II — Alchemical Initiation & Individuation</span>
             <span lang="fr">Acte II — Initiation Alchimique & Individuation</span>
@@ -9117,7 +9307,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act III — The Source & The Great Awakening</span>
             <span lang="fr">Acte III — La Source & Le Grand Réveil</span>
@@ -9161,7 +9351,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act IV — The Matrix of Life & Ancestral Memory</span>
             <span lang="fr">Acte IV — La Toile du Vivant & La Mémoire Ancestrale</span>
@@ -9191,7 +9381,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act V — Sovereignty, Ethics & The Return to Truth</span>
             <span lang="fr">Acte V — Souveraineté, Éthique & Retour au Réel</span>
@@ -9236,7 +9426,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act VI — Emancipation & Flight</span>
             <span lang="fr">Acte VI — Émancipation & Envol</span>
@@ -9269,7 +9459,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </details>
 
-    <details class="act-card" open>
+    <details class="act-card" >
         <summary class="act-header">
             <span lang="en">Act VII — The Solar Civilization & Radiant Dawn</span>
             <span lang="fr">Acte VII — La Civilisation Solaire & L'Aube Radieuse</span>
@@ -9832,12 +10022,6 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 <!-- Charger TikZJax de manière asynchrone à la fin du body -->
 <script async src="https://tikzjax.com/v1/tikzjax.js"></script>
-<!-- ========================================== -->
-<!-- CHATBOT WIDGET EN DIRECT (GEMINI FLASH)     -->
-<!-- ========================================== -->
-<!-- ========================================== -->
-<!-- CHATBOT WIDGET EN DIRECT (GEMINI FLASH)    -->
-<!-- ========================================== -->
 <div id="solar-chat-widget">
     <!-- Bouton Flottant -->
     <div id="chat-bubble" onclick="toggleSolarChat()">
@@ -9848,8 +10032,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id="chat-window">
         <div class="chat-header">
             <div>
-                <span lang="en">☀ Solar AI Assistant</span>
-                <span lang="fr">☀ Assistant IA Solaire</span>
+                <span lang="en">☀ Solar AI Assistant ☀</span>
+                <span lang="fr">☀ Solaris, votre humble serviteur IA ☀</span>
             </div>
             <div style="display: flex; gap: 10px; align-items: center;">
                 <button onclick="downloadChatHistory()" title="Download Conversation" style="font-size: 1.1rem;">📥</button>
@@ -9861,8 +10045,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <div id="chat-messages">
             <div class="chat-msg bot-msg">
-                <span lang="en">Hello! Ask me anything about the Sun Standard, Thermal Time, or Nash's Ideal Money.</span>
-                <span lang="fr">Bonjour ! Posez-moi vos questions sur l'Étalon Solaire, le Temps Thermique ou la Monnaie de Nash.</span>
+                <span lang="en">Hello I am Solaris! Don't understand something? Ask me anything about the Sun Standard, Thermal Time, or Nash's Ideal Money.</span>
+                <span lang="fr">Bonjour je suis Solaris! Vous ne comprenez pas un concept? Posez-moi vos questions sur l'Étalon Solaire, le Temps Thermique ou la Monnaie de Nash.</span>
             </div>
         </div>
 
@@ -10075,6 +10259,9 @@ function downloadChatHistory() {
     URL.revokeObjectURL(url);
 }
 
+// 1. Initialiser la variable globale pour la mémoire de session (en dehors de la fonction)
+let chatHistory = [];
+
 // --- LOGIQUE D'ENVOI ET DE RÉCEPTION (API) ---
 async function sendSolarMessage() {
     const isFrench = document.body.classList.contains('lang-fr');
@@ -10110,17 +10297,25 @@ async function sendSolarMessage() {
         const res = await fetch(workerUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text, lang: isFrench ? 'fr' : 'en' })
+            body: JSON.stringify({ 
+                message: text, 
+                lang: isFrench ? 'fr' : 'en',
+                history: chatHistory // Envoi de l'historique complet au Worker
+            })
         });
 
         const data = await res.json();
-        document.getElementById('loading-resp').remove();
+        
+        if (document.getElementById('loading-resp')) {
+            document.getElementById('loading-resp').remove();
+        }
 
         // Créer l'élément de réponse
         const botDiv = document.createElement('div');
         botDiv.className = 'chat-msg bot-msg';
         
-        const rawReply = data.reply || (isFrench ? "Pas de réponse reçue." : "No response received.");
+        // Gestion des erreurs renvoyées par le Worker (Rate limit, etc.)
+        const rawReply = data.reply || (data.error ? `[Erreur] ${data.error}` : (isFrench ? "Pas de réponse reçue." : "No response received."));
         
         // CONVERSION DU MARKDOWN EN HTML via Marked.js
         if (typeof marked !== 'undefined') {
@@ -10137,8 +10332,21 @@ async function sendSolarMessage() {
             MathJax.typesetPromise([botDiv]);
         }
 
+        // MISE À JOUR DE LA MÉMOIRE (Seulement si la réponse est un succès)
+        if (res.ok && data.reply) {
+            chatHistory.push({ role: "user", content: text });
+            chatHistory.push({ role: "assistant", content: data.reply });
+            
+            // Sécurité : On garde uniquement les 20 derniers messages (10 échanges) pour ne pas saturer l'API
+            if (chatHistory.length > 30) {
+                chatHistory = chatHistory.slice(chatHistory.length - 30);
+            }
+        }
+
     } catch (e) {
-        document.getElementById('loading-resp').remove();
+        if (document.getElementById('loading-resp')) {
+            document.getElementById('loading-resp').remove();
+        }
         const errDiv = document.createElement('div');
         errDiv.className = 'chat-msg bot-msg';
         errDiv.style.borderColor = '#ff4444';
