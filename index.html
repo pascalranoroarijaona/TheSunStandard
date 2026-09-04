@@ -30,6 +30,7 @@
             }
         };
     </script>
+    
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
             /* --- IA ASSISTANT WIDGET CSS --- */
@@ -233,7 +234,13 @@
             overflow-x: hidden;
             line-height: 1.7;
         }
-
+        /* C'est cette div qui subit le zoom de 75% */
+        #site-wrapper {
+            transform: scale(0.75);
+            transform-origin: top left;
+            width: 133.333%; /* Compense le scale (100 / 0.75) pour éviter un vide à droite */
+            min-height: 133.333vh;
+        }
         /* ── i18n Language Toggle Logic ── */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
@@ -736,11 +743,35 @@
             margin: 0;
             line-height: 1.4;
         }
+        #backToTopBtn {
+            display: none; /* Masqué par défaut */
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* Positionnement à gauche */
+            z-index: 9999;
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, var(--sun-orange, #ff6600), var(--sun-yellow, #ffcc00));
+            color: #000;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        #backToTopBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 25px rgba(255, 170, 0, 0.6);
+        }
     </style>
 </head>
 
 <body class="lang-en">
-
+<!-- 1. TOUT VOTRE SITE EST ENVELOPPÉ ICI -->
+    <div id="site-wrapper">
 <header class="site-header"><nav aria-label="Navigation principale">
     <div class="logo">
         <span lang="en">☀ The Sun Standard</span>
@@ -9705,7 +9736,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 </footer>
-
+</div>
 <script>
     function setLang(lang) {
         // Enforce lowercase validation
@@ -10165,7 +10196,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span lang="fr">☀ Solaris, votre humble serviteur IA ☀</span>
             </div>
             <div style="display: flex; gap: 10px; align-items: center;">
-                <button onclick="downloadChatHistory()" title="Download Conversation" style="font-size: 1.1rem;">📥</button>
+                <button onclick="downloadChatHistory()" title="Download/Telecharger Conversation" style="font-size: 1.1rem;">📥</button>
                 <!-- NOUVEAU BOUTON : Agrandir / Réduire -->
                 <button id="chat-maximize-btn" onclick="toggleChatSize()" title="Maximize" style="font-size: 1.2rem;">⛶</button>
                 <button onclick="toggleSolarChat()" title="Close">×</button>
@@ -10189,12 +10220,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <style>
 /* Style de la boîte de chat en direct */
+/* --- CSS DU WIDGET CHAT --- */
 #solar-chat-widget {
     position: fixed;
     bottom: 30px;
     right: 30px;
     z-index: 9999;
     font-family: var(--font-ui, sans-serif);
+    
+    /* Optionnel : Réduit un peu le chat pour être cohérent avec le site dézoomé */
+    transform: scale(0.75); 
+    transform-origin: bottom right;
 }
 
 #chat-bubble {
@@ -10485,7 +10521,30 @@ async function sendSolarMessage() {
 
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+// --- LOGIQUE POUR AGRANDIR / RÉDUIRE LE CHAT ---
+function toggleChatSize() {
+    const win = document.getElementById('chat-window');
+    const btn = document.getElementById('chat-maximize-btn');
+    
+    // Si la fenêtre est déjà agrandie, on la réduit
+    if (win.classList.contains('maximized')) {
+        win.classList.remove('maximized');
+        win.style.width = 'min(400px, 60vw)';
+        win.style.height = 'min(580px, 90vh)';
+        btn.innerHTML = '⛶';
+        btn.title = 'Maximize';
+    } 
+    // Sinon, on l'agrandit
+    else {
+        win.classList.add('maximized');
+        win.style.width = '90vw';
+        win.style.height = '85vh';
+        btn.innerHTML = '🗗'; // Icône réduire
+        btn.title = 'Minimize';
+    }
+}
 </script>
+
 <!-- On inclut Marked.js à la toute fin pour la gestion du Markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
@@ -10499,6 +10558,27 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }, 800); // 3000 = 3 secondes
 });
+// Gérer l'affichage du bouton lors du scroll
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById("backToTopBtn");
+    // Apparaît après 300px de défilement
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+});
+
+// Remonter en haut de la page en douceur
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
+<button id="backToTopBtn" onclick="scrollToTop()" title="Retour en haut">
+    ▲
+</button>
 </body>
 </html>
