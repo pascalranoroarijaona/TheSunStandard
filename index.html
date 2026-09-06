@@ -813,8 +813,8 @@
     <!-- Citation Initiale -->
     <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(255, 204, 0, 0.05); border-left: 3px solid var(--sun-yellow); border-radius: 0 8px 8px 0; font-style: italic;">
         <p style="margin-bottom: 0.5rem; color: #d1d5db;">
-            <span lang="en">"We cannot stop the infinite physical extraction of the Earth using an accounting system that allows the infinite printing of debt. Money is nothing more than a drawing right on our environment; therefore, it must obey the same physical limits. Energy—and biophysical anchoring—is the only limit that our greed will never be able to corrupt. Thermodynamic Proof-of-Work is a necessary condition for life. A plant provides its work, a human provides its work, a machine provides its work. Life is an energy expenditure to create a temporary ordered structure."</span>
-            <span lang="fr">« On ne peut pas stopper l'extraction physique infinie de la Terre avec un système comptable qui autorise l'impression infinie de la dette. La monnaie n'est rien d'autre qu'un droit de tirage sur notre environnement ; par conséquent, elle doit obéir aux mêmes limites physiques. L'énergie — et l'ancrage biophysique — est la seule limite que notre cupidité ne pourra jamais corrompre. La preuve de travail thermodynamique est une condition nécessaire à la vie. Une plante fournit son travail, un humain fournit son travail, une machine fournit son travail. La vie est une dépense énergétique pour créer une structure ordonnée temporaire. »</span>
+            <span lang="en">" It is illusory to try to halt the endless physical extraction of resources from the Earth with an accounting system that allows for the infinite printing of debt. Since money is nothing more than a right to draw on our environment, it must necessarily submit to the same physical limits. Energy—and its biophysical foundation—remains the only frontier that human greed can never corrupt. On a cosmic scale, proof of thermodynamic work is the sine qua non of existence: plants, humans, and machines must all fulfill their purpose. Life itself is, in essence, a glorious expenditure of energy, the continuous effort to establish a temporary order in the face of chaos. "</span>
+            <span lang="fr">« Il est illusoire de vouloir stopper l'extraction physique infinie de la Terre avec un système comptable qui autorise l'impression infinie de la dette. La monnaie n'étant rien d'autre qu'un droit de tirage sur notre environnement, elle doit impérativement se soumettre aux mêmes limites physiques. L'énergie — et son ancrage biophysique — demeure l'unique frontière que la cupidité humaine ne pourra jamais corrompre. À l'échelle de l'univers, la preuve de travail thermodynamique est la condition sine qua non de l'existence : la plante, l'humain et la machine doivent tous accomplir leur œuvre. La vie elle-même n'est au fond qu'une glorieuse dépense énergétique, l'effort continu pour ériger un ordre temporaire face au chaos. »</span>
         </p>
         <p style="text-align: right; color: var(--sun-orange); font-size: 0.9rem; margin-top: 0.5rem;">— Pascal R.</p>
     </div>
@@ -2033,7 +2033,7 @@
 
                         <div class="math-box" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
                             $$T_{actual} = \sum_{i=1}^{W} t_i \quad \text{et} \quad T_{expected} = W \times T_{target}$$
-                            $$D_{new} = D_{old} \times \max\left(0,25, \, \min\left(4,0, \, \frac{T_{expected}}{T_{actual}}\right)\right)$$
+                            $$D_{\mathrm{new}} = D_{\mathrm{old}} \times \max\left(0.25,\,\min\left(4,\,\frac{T_{\mathrm{actual}}}{T_{\mathrm{expected}}}\right)\right)$$
                         </div>
 
                         <h2>3. Simulation de Monte Carlo et Variance</h2>
@@ -2082,7 +2082,7 @@
                         
                         <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 204, 0, 0.05); border-left: 4px solid #ffcc00; border-radius: 0 8px 8px 0;">
                             <p style="margin: 0; font-style: italic; color: #ffcc00;">
-                            <strong>Conclusion :</strong> $W=2016$ représente bien l'optimum mathématique entre la vulnérabilité au bruit (fenêtres courtes victimes de la chance des mineurs) et la paralysie temporelle inacceptable du réseau lors d'un choc (fenêtres géantes).
+                            <strong>Conclusion :</strong> $W=2016$ apparaît proche l'optimum mathématique entre la vulnérabilité au bruit (fenêtres courtes victimes de la chance des mineurs) et la paralysie temporelle inacceptable du réseau lors d'un choc (fenêtres géantes).
                             </p>
                         </div>
                         </div>  
@@ -2094,7 +2094,12 @@
                         4. Métrique de Fisher-Rao & Émergence du Temps Thermique
                     </h4>
                     <p style="margin-bottom: 1rem; text-align: justify; line-height: 1.6;">
-                        Pour passer d'une simple métaphore à une <strong>preuve thermodynamique formelle</strong>, nous abandonnons la géométrie euclidienne au profit de la géométrie de l'information (Métrique de Fisher-Rao). Nous définissons l'état macroscopique du réseau par son <em>quadruplet canonique irréversible</em> : 
+                        Pour transformer cette intuition en hypothèse quantitative, nous proposons
+une représentation du réseau dans un espace d'information. Cette
+construction ne constitue pas encore une preuve que Bitcoin possède un
+temps thermique au sens strict de Connes et Rovelli. Elle définit une
+métrique descriptive permettant de mesurer les changements relatifs de
+plusieurs variables macroscopiques du réseau. Nous définissons l'état macroscopique du réseau par son <em>quadruplet canonique irréversible</em> : 
                         $\vec{x}(t) = [H(t), D(t), R(t), W(t)]^T$, représentant respectivement le flux dissipatif, la température inverse, l'exergie monétisée et le travail accumulé (Chainwork).
                     </p>
 
@@ -2116,7 +2121,11 @@
                     </div>
 
                     <p style="margin-bottom: 1.5rem; text-align: justify; line-height: 1.6;">
-                        Conformément à l'hypothèse de <strong>Rovelli-Connes</strong>, le temps propre de Bitcoin $\tau(t)$ émerge de cette dissipation. L'algorithme d'ajustement de la difficulté (DAA) agit alors comme un opérateur de renormalisation $\kappa(t)$ qui contracte les perturbations exogènes pour stabiliser l'écoulement de ce temps thermique.
+                        Par analogie avec l'hypothèse du temps thermique de Connes et Rovelli,
+nous appelons $\tau(t)$ « temps informationnel du réseau ». Cette quantité
+mesure la distance entre deux représentations statistiques successives ;
+elle ne doit pas être confondue, à ce stade, avec un temps propre physique
+ou avec le flot modulaire d'une algèbre d'observables. L'algorithme d'ajustement de la difficulté (DAA) agit alors comme un opérateur de renormalisation $\kappa(t)$ qui contracte les perturbations exogènes pour stabiliser l'écoulement de ce temps thermique.
                     </p>
 
                     <!-- CONTAINER DU PLOT INTERACTIF JAVASCRIPT -->
@@ -2163,7 +2172,7 @@
                     <div style="margin-bottom: 2rem;">
                         <!-- Encart principal (Conclusion) -->
                         <p style="margin-bottom: 1.5rem; padding: 1.2rem; background: rgba(200, 100, 255, 0.05); border-left: 4px solid #c864ff; border-radius: 0 8px 8px 0; line-height: 1.6; font-size: 1.05rem;">
-                            <strong style="color: #c864ff; font-size: 1.15rem; display: block; margin-bottom: 0.5rem;">Le Théorème du Temps Thermique de Nakamoto :</strong> 
+                            <strong style="color: #c864ff; font-size: 1.15rem; display: block; margin-bottom: 0.5rem;">La Conjecture du Temps Informationnel de Nakamoto :</strong> 
                             Bitcoin ne subit pas le temps calendaire $t_{\text{UTC}}$ ; il engendre sa propre métrique temporelle $\tau$ par cristallisation de l'énergie. Il satisfait l'équation de Gorini-Kossakowski-Sudarshan-Lindblad (GKSL), démontrant que le réseau constitue le premier système cybernétique artificiel à maintenir un état KMS (Kubo-Martin-Schwinger) métastable face à l'entropie universelle.
                         </p>
 
@@ -8573,7 +8582,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h4 class="timeline-title">
                 <a href="https://doi.org/10.5281/zenodo.22135013" target="_blank">
                     <span lang="en">The Nakamoto Thermal Time Theorem: Information Geometry and Gauge Autopoiesis</span>
-                    <span lang="fr">Le Théorème du Temps Thermique de Nakamoto : Géométrie de l'Information et Autopoïèse de Jauge</span>
+                    <span lang="fr">La Conjecture du Temps Informationnel de Nakamoto : Géométrie de l'Information et Autopoïèse de Jauge</span>
                 </a>
             </h4>
             <div>
