@@ -222,7 +222,378 @@
             border-radius: 12px; padding: 2.5rem; margin: 4rem 0; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             font-family: var(--font-ui);
         }
+        /* ===========================================================
+        HORIZON ZERO 2044 — SCIENCE-FICTION MODELLING v4
+        Epistemic status, constitutional rights, threat modelling,
+        Network Polities, scenarios and falsifiability
+        ============================================================ */
+        .modelling-section {
+            margin: 5rem 0;
+            padding: 2.2rem;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.025), rgba(0,0,0,0.4)),
+                radial-gradient(circle at top right, rgba(0,229,255,0.055), transparent 45%);
+            border: 1px solid rgba(0,229,255,0.18);
+            border-radius: 16px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+        }
 
+        .modelling-section h3 {
+            margin-bottom: 0.75rem;
+            color: var(--cyan-l2);
+            font-family: var(--font-ui);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            line-height: 1.3;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .modelling-lead {
+            max-width: 850px;
+            margin: 0 auto 2rem;
+            color: #aeb8c2;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .modelling-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1rem;
+        }
+
+        .model-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.3rem;
+            background: rgba(4, 5, 7, 0.85);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            transition: transform 0.25s ease, border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,229,255,0.45);
+            box-shadow: 0 12px 30px rgba(0,229,255,0.08);
+        }
+
+        .model-card h4 {
+            margin-bottom: 0.55rem;
+            color: #fff;
+            font-family: var(--font-ui);
+            line-height: 1.35;
+        }
+
+        .model-card p,
+        .model-card li {
+            color: #aab1b8;
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        .model-card ul {
+            margin: 0.8rem 0 0 1.2rem;
+        }
+
+        /* Statut épistémique */
+
+        .epistemic-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .epistemic-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.3rem 0.7rem;
+            border: 1px solid currentColor;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .status-a { color: #44ee77; background: rgba(68,238,119,0.08); }
+        .status-b { color: #00ccff; background: rgba(0,204,255,0.08); }
+        .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
+        .status-d { color: #ff7b00; background: rgba(255,123,0,0.08); }
+        .status-x { color: #e040fb; background: rgba(224,64,251,0.08); }
+
+        .model-metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .metadata-item {
+            padding: 0.7rem;
+            background: rgba(255,255,255,0.025);
+            border-left: 2px solid var(--cyan-l2);
+            border-radius: 4px;
+        }
+
+        .metadata-label {
+            display: block;
+            color: #71808d;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metadata-value {
+            color: #dce8ee;
+            font-family: var(--font-ui);
+            font-size: 0.84rem;
+        }
+
+        /* Matrices et tableaux */
+
+        .matrix-wrapper {
+            margin-top: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 10px;
+        }
+
+        .future-matrix {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            background: rgba(0,0,0,0.25);
+            font-family: var(--font-ui);
+            font-size: 0.84rem;
+        }
+
+        .future-matrix th,
+        .future-matrix td {
+            padding: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .future-matrix th {
+            color: var(--sun-yellow);
+            background: rgba(255,204,0,0.04);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .future-matrix td {
+            color: #b8c1c8;
+        }
+
+        .overlap-high {
+            color: #44ee77;
+            font-weight: 700;
+        }
+
+        .overlap-medium {
+            color: #ffcc00;
+            font-weight: 700;
+        }
+
+        .overlap-tension {
+            color: #ff7043;
+            font-weight: 700;
+        }
+
+        /* Constitution */
+
+        .right-card {
+            border-top: 2px solid var(--purple-l4);
+        }
+
+        .right-card::before {
+            content: "§";
+            position: absolute;
+            top: -18px;
+            right: 10px;
+            color: rgba(179,102,255,0.12);
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            line-height: 1;
+        }
+
+        .constitution-lock {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            color: #d4c7ff;
+            background: rgba(179,102,255,0.08);
+            border: 1px dashed rgba(179,102,255,0.5);
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* Simulateur civilisationnel */
+
+        .scenario-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .scenario-control {
+            padding: 1rem;
+            background: rgba(0,0,0,0.32);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+        }
+
+        .scenario-control label {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.65rem;
+            color: #dce4e8;
+            font-family: var(--font-ui);
+            font-size: 0.82rem;
+        }
+
+        .scenario-control output {
+            color: var(--cyan-l2);
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .scenario-control input[type="range"] {
+            width: 100%;
+            accent-color: var(--cyan-l2);
+            cursor: pointer;
+        }
+
+        .scenario-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+            gap: 0.85rem;
+        }
+
+        .scenario-metric {
+            padding: 1rem;
+            background: #050608;
+            border: 1px solid rgba(0,229,255,0.16);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .scenario-value {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--cyan-l2);
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .scenario-label {
+            color: #86939d;
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .scenario-diagnosis {
+            margin-top: 1.3rem;
+            padding: 1.2rem;
+            background: rgba(255,204,0,0.04);
+            border-left: 3px solid var(--sun-yellow);
+            color: #c7c7c7;
+        }
+
+        .scenario-diagnosis strong {
+            color: var(--sun-yellow);
+        }
+
+        /* Barres de mesure */
+
+        .metric-bar {
+            height: 7px;
+            margin-top: 0.6rem;
+            overflow: hidden;
+            background: #13171a;
+            border-radius: 999px;
+        }
+
+        .metric-fill {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ff5500, #ffcc00, #44ee77);
+            border-radius: inherit;
+            transition: width 0.45s ease;
+        }
+
+        /* Mode critique */
+
+        .critical-box {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(255,85,0,0.045);
+            border: 1px solid rgba(255,85,0,0.26);
+            border-radius: 10px;
+        }
+
+        .critical-box summary {
+            color: #ff9066;
+            cursor: pointer;
+            font-family: var(--font-ui);
+            font-weight: 700;
+        }
+
+        .critical-box p {
+            margin-top: 0.8rem;
+            color: #a9a9a9;
+        }
+
+        /* Accessibilité */
+
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .modelling-section {
+                padding: 1.2rem;
+                margin: 3rem 0;
+            }
+
+            .model-metadata {
+                grid-template-columns: 1fr;
+            }
+        }
         /* Feedback / Formspree */
         .feedback-container {
             margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
@@ -323,6 +694,113 @@
             <span lang="en">"The Bitcoin network is not merely a currency or a ledger: it is the gravitational anchor of the Noosphere. The energy dissipated by Proof of Work is the thermodynamic shield protecting our emergent planetary consciousness. Through this network, humanity ceases to be a passenger and becomes the active Defender of the Earth."</span>
         </div>
     </div>
+    <section class="modelling-section" id="epistemic-protocol">
+    <h3>
+        <span lang="fr">🔬 Protocole de Clarté Épistémique</span>
+        <span lang="en">🔬 Epistemic Clarity Protocol</span>
+    </h3>
+
+    <p class="modelling-lead">
+        <span lang="fr">
+            Horizon Zéro distingue désormais la technologie démontrée,
+            l'extrapolation d'ingénierie, l'hypothèse de science-fiction
+            et la métaphore philosophique.
+        </span>
+        <span lang="en">
+            Horizon Zero now distinguishes demonstrated technology,
+            engineering extrapolation, science-fiction hypotheses,
+            and philosophical metaphors.
+        </span>
+    </p>
+
+    <div class="epistemic-legend" aria-label="Niveaux de maturité scientifique">
+        <span class="epistemic-badge status-a">
+            A · <span lang="fr">Démontré</span><span lang="en">Demonstrated</span>
+        </span>
+
+        <span class="epistemic-badge status-b">
+            B · <span lang="fr">Prototype</span><span lang="en">Prototype</span>
+        </span>
+
+        <span class="epistemic-badge status-c">
+            C · <span lang="fr">Extrapolation</span><span lang="en">Extrapolation</span>
+        </span>
+
+        <span class="epistemic-badge status-d">
+            D · <span lang="fr">Hypothèse SF</span><span lang="en">SF Hypothesis</span>
+        </span>
+
+        <span class="epistemic-badge status-x">
+            X · <span lang="fr">Métaphore</span><span lang="en">Metaphor</span>
+        </span>
+    </div>
+
+    <div class="modelling-grid">
+        <article class="model-card">
+            <span class="epistemic-badge status-a">A · PoW / ZKP / Microgrids</span>
+            <h4>
+                <span lang="fr">Socle démontré</span>
+                <span lang="en">Demonstrated foundation</span>
+            </h4>
+            <p lang="fr">
+                Cryptographie asymétrique, preuve de travail, réseaux électriques
+                locaux, calcul distribué et preuves à divulgation nulle de connaissance.
+            </p>
+            <p lang="en">
+                Asymmetric cryptography, proof of work, local power grids,
+                distributed computing, and zero-knowledge proofs.
+            </p>
+        </article>
+
+        <article class="model-card">
+            <span class="epistemic-badge status-c">C · 2030–2044</span>
+            <h4>
+                <span lang="fr">Extrapolation d'ingénierie</span>
+                <span lang="en">Engineering extrapolation</span>
+            </h4>
+            <p lang="fr">
+                Fédération de microgrids, jumeaux numériques médicaux souverains,
+                comptabilité thermodynamique et infrastructures autonomes réparables.
+            </p>
+            <p lang="en">
+                Federated microgrids, sovereign medical digital twins,
+                thermodynamic accounting, and repairable autonomous infrastructure.
+            </p>
+        </article>
+
+        <article class="model-card">
+            <span class="epistemic-badge status-d">D · Noosphère</span>
+            <h4>
+                <span lang="fr">Hypothèse civilisationnelle</span>
+                <span lang="en">Civilizational hypothesis</span>
+            </h4>
+            <p lang="fr">
+                Coordination planétaire multi-échelle, Gardiens Telluriques,
+                intelligence hybride constitutionnelle et onde de cohérence globale.
+            </p>
+            <p lang="en">
+                Multi-scale planetary coordination, Telluric Guardians,
+                constitutional hybrid intelligence, and global coherence waves.
+            </p>
+        </article>
+
+        <article class="model-card">
+            <span class="epistemic-badge status-x">X · Ontologie</span>
+            <h4>
+                <span lang="fr">Métaphore productive</span>
+                <span lang="en">Productive metaphor</span>
+            </h4>
+            <p lang="fr">
+                La « pensée planétaire » n'est pas présentée comme un fait biologique,
+                mais comme une métaphore de coordination institutionnelle.
+            </p>
+            <p lang="en">
+                “Planetary thought” is not presented as a biological fact,
+                but as a metaphor for institutional coordination.
+            </p>
+        </article>
+    </div>
+</section>
     <!-- STRUCTURE PYRAMIDALE INTERACTIVE -->
     <div class="pyramid-wrapper">
         <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
@@ -438,10 +916,120 @@
             <div class="math-block" style="color: var(--cyan-l2);">
                 $$ \tau_{finalit\acute{e}} = \text{max}\left( \frac{D_{Terre}}{c}, \text{OCR}_{phase} \right) \approx 130\text{ ms} \quad \implies \quad \text{Synchro. Globale} $$
             </div>
+            <div class="model-metadata" aria-label="Métadonnées du modèle">
+            <div class="metadata-item">
+                <span class="metadata-label">
+                    <span lang="fr">Statut</span>
+                    <span lang="en">Status</span>
+                </span>
+                <span class="metadata-value">
+                    <span class="epistemic-badge status-c">
+                        C · <span lang="fr">Extrapolation</span>
+                        <span lang="en">Extrapolation</span>
+                    </span>
+                </span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">
+                    <span lang="fr">Variable mesurée</span>
+                    <span lang="en">Measured variable</span>
+                </span>
+                <span class="metadata-value">
+                    <span lang="fr">Latence de finalité, en millisecondes</span>
+                    <span lang="en">Finality latency, in milliseconds</span>
+                </span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">
+                    <span lang="fr">Hypothèse</span>
+                    <span lang="en">Assumption</span>
+                </span>
+                <span class="metadata-value">
+                    <span lang="fr">Routage optique et consensus régional hiérarchique</span>
+                    <span lang="en">Optical routing and hierarchical regional consensus</span>
+                </span>
+            </div>
+
+            <div class="metadata-item">
+                <span class="metadata-label">
+                    <span lang="fr">Condition d'invalidation</span>
+                    <span lang="en">Falsification condition</span>
+                </span>
+                <span class="metadata-value">
+                    <span lang="fr">Instabilité persistante au-delà de 500 ms</span>
+                    <span lang="en">Persistent instability above 500 ms</span>
+                </span>
+            </div>
+        </div>
+
+        <details class="critical-box">
+            <summary>
+                <span lang="fr">⚠ Limites et interprétation</span>
+                <span lang="en">⚠ Limits and interpretation</span>
+            </summary>
+
+            <p lang="fr">
+                Les 130 ms représentent un objectif d'ingénierie pour la propagation
+                d'un état global minimal, non une simultanéité absolue. Les protections
+                critiques restent locales et ne dépendent jamais d'un consensus planétaire.
+            </p>
+
+            <p lang="en">
+                The 130 ms figure is an engineering target for propagating a minimal
+                global state, not absolute simultaneity. Critical protections remain
+                local and never depend on planetary consensus.
+            </p>
+        </details>
 
             <h4 style="color: #00bfa5;"><span lang="fr">3. La Cryptographie de la Pensée</span><span lang="en">3. The Cryptography of Thought</span></h4>
-            <p lang="fr">Chaque impulsion générée par le cerveau est hachée (SHA-256) et signée par la clé privée de l'individu. La pensée devient <strong>in-usurpable</strong>. La provenance de chaque acte créatif est mathématiquement traçable à son auteur biologique, rendant la désinformation de masse et les *deepfakes* générés par IA totalement obsolètes.</p>
-            <p lang="en">Every impulse generated by the brain is hashed (SHA-256) and signed by the individual's private key. Thought becomes <strong>unforgeable</strong>. The provenance of every creative act is mathematically traceable to its biological author, rendering mass disinformation and AI-generated deepfakes completely obsolete.</p>
+            <p lang="fr">
+    Les œuvres ou messages que l'individu choisit explicitement de publier peuvent
+    recevoir une <strong>preuve de provenance</strong> : le dispositif local produit
+    une empreinte cryptographique, la signe dans une enclave personnelle, puis
+    divulgue uniquement l'attestation nécessaire. Le protocole ne prouve pas qu'une
+    idée est vraie, originale ou exclusivement biologique ; il prouve qu'un artefact
+    précis a été approuvé par une identité ou un dispositif donné à un instant donné.
+    Les deepfakes ne disparaissent donc pas : ils deviennent plus facilement
+    signalables, contestables et accompagnés d'un niveau de confiance.
+</p>
+
+<p lang="en">
+    Works or messages that an individual explicitly chooses to publish may receive
+    a <strong>provenance proof</strong>: the local device generates a cryptographic
+    fingerprint, signs it inside a personal enclave, and reveals only the necessary
+    attestation. The protocol does not prove that an idea is true, original, or
+    exclusively biological; it proves that a specific artifact was approved by a
+    given identity or device at a given time. Deepfakes therefore do not disappear:
+    they become easier to flag, contest, and associate with a confidence level.
+</p>
+
+<div class="model-metadata">
+    <div class="metadata-item">
+        <span class="metadata-label">Privacy</span>
+        <span class="metadata-value">
+            <span lang="fr">Divulgation volontaire uniquement</span>
+            <span lang="en">Voluntary disclosure only</span>
+        </span>
+    </div>
+
+    <div class="metadata-item">
+        <span class="metadata-label">Proof</span>
+        <span class="metadata-value">
+            <span lang="fr">Provenance, non vérité sémantique</span>
+            <span lang="en">Provenance, not semantic truth</span>
+        </span>
+    </div>
+
+    <div class="metadata-item">
+        <span class="metadata-label">Failure mode</span>
+        <span class="metadata-value">
+            <span lang="fr">Clé volée, terminal compromis, coercition</span>
+            <span lang="en">Stolen key, compromised device, coercion</span>
+        </span>
+    </div>
+</div>
         </div>
     </details>
 
@@ -518,8 +1106,53 @@
             <p lang="en">A naive scalar utility function ($U = \sum \text{happiness}$) collapses under Goodhart's Law. The Noosphere Era (v3.0) requires a <strong>multiplicative ergodic optimization</strong> where humans, biosphere, and AI are mathematically entangled:</p>
 
             <div class="math-block" style="color: var(--sun-yellow);">
-                $$ \max_{\pi} \mathcal{J}(\pi) = \mathbb{E} \left[ \int_{0}^{\infty} e^{-\delta t} \cdot \ln \Big( \mathcal{W}_{\text{humain}}(t) \cdot \mathcal{B}_{\text{vivant}}(t) \cdot \mathcal{S}_{noosph\grave{e}re}(t) \Big) \, dt \right] $$
-            </div>
+    $$
+    \max_{\pi}
+    \left[
+        W_{\mathrm{humain}}(\pi),
+        B_{\mathrm{vivant}}(\pi),
+        R_{\mathrm{r\acute{e}silience}}(\pi),
+        L_{\mathrm{libert\acute{e}}}(\pi),
+        D_{\mathrm{diversit\acute{e}}}(\pi)
+    \right]
+    $$
+
+    $$
+    \text{sous contraintes :}
+    \quad
+    E_{\mathrm{consomm\acute{e}e}}
+    \leq
+    E_{\mathrm{disponible}},
+    \qquad
+    M_{\mathrm{extraite}}
+    \leq
+    M_{\mathrm{r\acute{e}g\acute{e}n\acute{e}rable}}
+    $$
+
+    $$
+    \mathbb{P}(\mathrm{ruine}) < \varepsilon,
+    \qquad
+    L_{\mathrm{libert\acute{e}}} \geq L_{\min},
+    \qquad
+    X_{\mathrm{sortie}} = 1
+    $$
+</div>
+
+<p lang="fr">
+    L'IHA ne produit pas un optimum civilisationnel unique. Elle expose un
+    <strong>front de Pareto</strong> contenant plusieurs politiques incompatibles
+    mais non dominées. Le choix final appartient à une procédure constitutionnelle
+    pluraliste. La variable \(X_{\mathrm{sortie}}\) impose qu'une option de sortie
+    techniquement et juridiquement viable demeure disponible.
+</p>
+
+<p lang="en">
+    The HAI does not produce one unique civilizational optimum. It exposes a
+    <strong>Pareto frontier</strong> containing several incompatible but
+    non-dominated policies. Final selection belongs to a pluralistic
+    constitutional process. The \(X_{\mathrm{exit}}\) variable requires a
+    technically and legally viable exit option to remain available.
+</p>
 
             <h4 style="color: var(--sun-yellow);"><span lang="fr">Tenseurs d'État & Barrières d'Extinction :</span><span lang="en">State Tensors & Extinction Barriers:</span></h4>
             
@@ -567,7 +1200,166 @@
             </div>
         </div>
     </details>
+    <section class="modelling-section" id="threat-model">
+    <h3>
+        <span lang="fr">🛡 Modèle de Menace Civilisationnel</span>
+        <span lang="en">🛡 Civilizational Threat Model</span>
+    </h3>
 
+    <p class="modelling-lead">
+        <span lang="fr">
+            La chaîne n'est jamais plus vraie que ses capteurs, ses institutions
+            et les humains capables de les contraindre ou de les corrompre.
+        </span>
+        <span lang="en">
+            The chain is never more truthful than its sensors, institutions,
+            and the humans capable of coercing or corrupting them.
+        </span>
+    </p>
+
+    <div class="matrix-wrapper">
+        <table class="future-matrix">
+            <thead>
+                <tr>
+                    <th>
+                        <span lang="fr">Actif critique</span>
+                        <span lang="en">Critical asset</span>
+                    </th>
+                    <th>
+                        <span lang="fr">Attaque</span>
+                        <span lang="en">Attack</span>
+                    </th>
+                    <th>
+                        <span lang="fr">Détection</span>
+                        <span lang="en">Detection</span>
+                    </th>
+                    <th>
+                        <span lang="fr">Réponse</span>
+                        <span lang="en">Response</span>
+                    </th>
+                    <th>
+                        <span lang="fr">Mode dégradé</span>
+                        <span lang="en">Degraded mode</span>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <span lang="fr">Capteurs telluriques</span>
+                        <span lang="en">Telluric sensors</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Falsification, déplacement ou calibration truquée</span>
+                        <span lang="en">Falsification, relocation, or calibration fraud</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Redondance multi-opérateur et mesures contradictoires</span>
+                        <span lang="en">Multi-operator redundancy and conflicting measurements</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Quarantaine de la source et audit physique</span>
+                        <span lang="en">Source quarantine and physical audit</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Intervalle d'incertitude élargi</span>
+                        <span lang="en">Wider uncertainty interval</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span lang="fr">Identité souveraine</span>
+                        <span lang="en">Sovereign identity</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Vol de clé, coercition ou exclusion administrative</span>
+                        <span lang="en">Key theft, coercion, or administrative exclusion</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Signatures anormales et témoins sociaux distribués</span>
+                        <span lang="en">Abnormal signatures and distributed social witnesses</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Rotation des clés et récupération multipartite</span>
+                        <span lang="en">Key rotation and multiparty recovery</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Identité locale temporaire hors chaîne</span>
+                        <span lang="en">Temporary local off-chain identity</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>IHA / HAI</td>
+                    <td>
+                        <span lang="fr">Capture politique ou homogénéisation des modèles</span>
+                        <span lang="en">Political capture or model homogenization</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Modèles concurrents et publication des désaccords</span>
+                        <span lang="en">Competing models and published disagreements</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Gel constitutionnel et jury humain tiré au sort</span>
+                        <span lang="en">Constitutional freeze and randomly selected human jury</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Décision locale sans recommandation IA</span>
+                        <span lang="en">Local decision without AI recommendation</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span lang="fr">Microgrids</span>
+                        <span lang="en">Microgrids</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Sabotage, tempête solaire ou rupture logistique</span>
+                        <span lang="en">Sabotage, solar storm, or logistical breakdown</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Télémétrie locale indépendante</span>
+                        <span lang="en">Independent local telemetry</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Îlotage automatique et rationnement constitutionnel</span>
+                        <span lang="en">Automatic islanding and constitutional rationing</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Énergie vitale minimale garantie</span>
+                        <span lang="en">Guaranteed minimum vital energy</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span lang="fr">Recensement noosphérique</span>
+                        <span lang="en">Noospheric census</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Sybil, doubles comptes et inflation territoriale</span>
+                        <span lang="en">Sybil attack, duplicate accounts, and territorial inflation</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Attestations croisées préservant la vie privée</span>
+                        <span lang="en">Privacy-preserving cross-attestations</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Révision probabiliste plutôt qu'effacement arbitraire</span>
+                        <span lang="en">Probabilistic revision rather than arbitrary deletion</span>
+                    </td>
+                    <td>
+                        <span lang="fr">Publication avec marge d'erreur</span>
+                        <span lang="en">Publication with error margin</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
     <!-- TABLEAU DE NOMENCLATURE UNIFIÉ (COMPLET) -->
     <div style="margin: 4rem 0 3rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.8rem; font-family: var(--font-ui);">
@@ -943,7 +1735,164 @@
             Gardien Tellurique - Vers l'Éveil Global<br />
         </span>
     </div>
+    <section class="modelling-section" id="scenario-lab">
+    <h3>
+        <span lang="fr">🧭 Laboratoire de Bifurcation 2044</span>
+        <span lang="en">🧭 2044 Bifurcation Laboratory</span>
+    </h3>
 
+    <p class="modelling-lead">
+        <span lang="fr">
+            Modifiez les contraintes. Le moteur ne prédit pas l'avenir :
+            il révèle les compromis et les risques structurels du scénario.
+        </span>
+        <span lang="en">
+            Modify the constraints. The engine does not predict the future:
+            it reveals the scenario's structural trade-offs and risks.
+        </span>
+    </p>
+
+    <div class="scenario-controls">
+        <div class="scenario-control">
+            <label for="sim-energy">
+                <span lang="fr">Abondance énergétique</span>
+                <span lang="en">Energy abundance</span>
+                <output id="sim-energy-out">60</output>
+            </label>
+            <input id="sim-energy" type="range" min="0" max="100" value="60">
+        </div>
+
+        <div class="scenario-control">
+            <label for="sim-trust">
+                <span lang="fr">Confiance sociale</span>
+                <span lang="en">Social trust</span>
+                <output id="sim-trust-out">55</output>
+            </label>
+            <input id="sim-trust" type="range" min="0" max="100" value="55">
+        </div>
+
+        <div class="scenario-control">
+            <label for="sim-decentralization">
+                <span lang="fr">Décentralisation</span>
+                <span lang="en">Decentralization</span>
+                <output id="sim-decentralization-out">65</output>
+            </label>
+            <input id="sim-decentralization" type="range" min="0" max="100" value="65">
+        </div>
+
+        <div class="scenario-control">
+            <label for="sim-ecology">
+                <span lang="fr">Priorité au vivant</span>
+                <span lang="en">Biosphere priority</span>
+                <output id="sim-ecology-out">70</output>
+            </label>
+            <input id="sim-ecology" type="range" min="0" max="100" value="70">
+        </div>
+
+        <div class="scenario-control">
+            <label for="sim-rights">
+                <span lang="fr">Protection des droits</span>
+                <span lang="en">Rights protection</span>
+                <output id="sim-rights-out">75</output>
+            </label>
+            <input id="sim-rights" type="range" min="0" max="100" value="75">
+        </div>
+
+        <div class="scenario-control">
+            <label for="sim-hostility">
+                <span lang="fr">Pression hostile</span>
+                <span lang="en">Hostile pressure</span>
+                <output id="sim-hostility-out">40</output>
+            </label>
+            <input id="sim-hostility" type="range" min="0" max="100" value="40">
+        </div>
+    </div>
+
+    <div class="scenario-results" aria-live="polite">
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-resilience">0</strong>
+            <span class="scenario-label">
+                <span lang="fr">Résilience</span>
+                <span lang="en">Resilience</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-resilience"></div>
+            </div>
+        </div>
+
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-liberty">0</strong>
+            <span class="scenario-label">
+                <span lang="fr">Liberté</span>
+                <span lang="en">Liberty</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-liberty"></div>
+            </div>
+        </div>
+
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-biosphere">0</strong>
+            <span class="scenario-label">
+                <span lang="fr">Biosphère</span>
+                <span lang="en">Biosphere</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-biosphere"></div>
+            </div>
+        </div>
+
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-cohesion">0</strong>
+            <span class="scenario-label">
+                <span lang="fr">Cohésion</span>
+                <span lang="en">Cohesion</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-cohesion"></div>
+            </div>
+        </div>
+
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-ruin">0%</strong>
+            <span class="scenario-label">
+                <span lang="fr">Risque de ruine</span>
+                <span lang="en">Ruin risk</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-ruin"></div>
+            </div>
+        </div>
+
+        <div class="scenario-metric">
+            <strong class="scenario-value" id="result-power">0</strong>
+            <span class="scenario-label">
+                <span lang="fr">Concentration</span>
+                <span lang="en">Concentration</span>
+            </span>
+            <div class="metric-bar">
+                <div class="metric-fill" id="bar-power"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-diagnosis" id="scenario-diagnosis">
+        <strong>SCENARIO:</strong>
+        <span id="scenario-name">—</span>
+        <p id="scenario-text"></p>
+    </div>
+
+    <p style="margin-top:1rem; color:#6f7a82; font-size:0.76rem; text-align:center;">
+        <span lang="fr">
+            Modèle heuristique v0.1 — les coefficients sont narratifs,
+            publics et destinés à être contestés.
+        </span>
+        <span lang="en">
+            Heuristic model v0.1 — coefficients are narrative,
+            public, and intended to be challenged.
+        </span>
+    </p>
+</section>
     <!-- SIMULATEUR NOOSPHERIQUE / KARDASHEV I -->
     <div class="simulator-box">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
@@ -1553,6 +2502,233 @@
         [sPwr, sPow].forEach(el => el.addEventListener('input', updateSim));
         window.addEventListener('DOMContentLoaded', updateSim);
     }
+</script>
+<script>
+/* ============================================================
+   HORIZON ZERO — BIFURCATION LAB v0.1
+   Heuristic and transparent, not predictive.
+   ============================================================ */
+(function () {
+    "use strict";
+
+    const ids = [
+        "energy",
+        "trust",
+        "decentralization",
+        "ecology",
+        "rights",
+        "hostility"
+    ];
+
+    const controls = {};
+
+    function clamp(value, min = 0, max = 100) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function readValue(id) {
+        return Number(controls[id].input.value);
+    }
+
+    function setMetric(id, value, suffix = "") {
+        const rounded = Math.round(clamp(value));
+        const output = document.getElementById("result-" + id);
+        const bar = document.getElementById("bar-" + id);
+
+        if (output) output.textContent = rounded + suffix;
+        if (bar) bar.style.width = rounded + "%";
+    }
+
+    function getScenario(metrics, values) {
+        const isEn = document.body.classList.contains("lang-en");
+
+        if (metrics.ruin >= 68) {
+            return {
+                name: isEn
+                    ? "CYBER-THERMAL FRACTURE"
+                    : "FRACTURE CYBER-THERMIQUE",
+                text: isEn
+                    ? "Hostile pressure exceeds the system's material and social capacity. Local islanding, constitutional rationing, and reduced computational load become mandatory."
+                    : "La pression hostile dépasse les capacités matérielles et sociales du système. L'îlotage local, le rationnement constitutionnel et la réduction de la charge informatique deviennent obligatoires."
+            };
+        }
+
+        if (metrics.power >= 68 && metrics.liberty < 48) {
+            return {
+                name: isEn
+                    ? "IMPERIAL NOOSPHERE"
+                    : "NOOSPHÈRE IMPÉRIALE",
+                text: isEn
+                    ? "Coordination remains efficient, but power is concentrated. The HAI risks becoming an administrative sovereign rather than a constitutional assistant."
+                    : "La coordination reste efficace, mais le pouvoir se concentre. L'IHA risque de devenir un souverain administratif plutôt qu'un assistant constitutionnel."
+            };
+        }
+
+        if (
+            metrics.resilience >= 65 &&
+            metrics.liberty >= 65 &&
+            metrics.biosphere >= 65
+        ) {
+            return {
+                name: isEn
+                    ? "OPEN NOOSPHERIC FEDERATION"
+                    : "FÉDÉRATION NOOSPHÉRIQUE OUVERTE",
+                text: isEn
+                    ? "High rights protection, distributed infrastructure, and ecological accounting support a federation of interoperable network polities."
+                    : "La protection élevée des droits, les infrastructures distribuées et la comptabilité écologique permettent une fédération de polités-réseaux interopérables."
+            };
+        }
+
+        if (
+            values.decentralization >= 72 &&
+            values.trust < 48
+        ) {
+            return {
+                name: isEn
+                    ? "AUTONOMOUS ARCHIPELAGOS"
+                    : "ARCHIPELS AUTONOMES",
+                text: isEn
+                    ? "Local systems remain resilient but global coordination weakens. Interoperability treaties become more important than universal consensus."
+                    : "Les systèmes locaux restent résilients, mais la coordination globale s'affaiblit. Les traités d'interopérabilité deviennent plus importants qu'un consensus universel."
+            };
+        }
+
+        if (
+            metrics.biosphere >= 68 &&
+            values.energy < 45
+        ) {
+            return {
+                name: isEn
+                    ? "NEGOTIATED POST-GROWTH"
+                    : "POST-CROISSANCE NÉGOCIÉE",
+                text: isEn
+                    ? "Ecological limits are respected through reduced throughput, repair, rationing, and slower infrastructure expansion."
+                    : "Les limites écologiques sont respectées par la réduction des flux, la réparation, le rationnement et un déploiement plus lent des infrastructures."
+            };
+        }
+
+        return {
+            name: isEn
+                ? "UNSTABLE TRANSITION"
+                : "TRANSITION INSTABLE",
+            text: isEn
+                ? "No attractor dominates. The system remains exposed to political capture, technological shocks, and constitutional renegotiation."
+                : "Aucun attracteur ne domine. Le système reste exposé à la capture politique, aux chocs technologiques et à la renégociation constitutionnelle."
+        };
+    }
+
+    function updateSimulation() {
+        const v = {
+            energy: readValue("energy"),
+            trust: readValue("trust"),
+            decentralization: readValue("decentralization"),
+            ecology: readValue("ecology"),
+            rights: readValue("rights"),
+            hostility: readValue("hostility")
+        };
+
+        ids.forEach(function (id) {
+            controls[id].output.textContent = controls[id].input.value;
+        });
+
+        /*
+         * Transparent heuristic coefficients:
+         *
+         * Resilience rewards energy, trust and decentralization,
+         * but is reduced by hostile pressure.
+         *
+         * Liberty rewards rights and decentralization,
+         * while emergency pressure tends to centralize authority.
+         *
+         * Ruin rises when hostility exceeds available resilience.
+         */
+
+        const resilience = clamp(
+            0.28 * v.energy +
+            0.24 * v.trust +
+            0.26 * v.decentralization +
+            0.22 * v.ecology -
+            0.30 * v.hostility +
+            18
+        );
+
+        const liberty = clamp(
+            0.58 * v.rights +
+            0.30 * v.decentralization +
+            0.12 * v.trust -
+            0.24 * v.hostility +
+            10
+        );
+
+        const biosphere = clamp(
+            0.68 * v.ecology +
+            0.16 * v.trust +
+            0.12 * v.decentralization -
+            0.15 * v.energy +
+            20
+        );
+
+        const cohesion = clamp(
+            0.52 * v.trust +
+            0.18 * v.rights +
+            0.18 * v.energy +
+            0.12 * (100 - Math.abs(v.decentralization - 60)) -
+            0.18 * v.hostility
+        );
+
+        const power = clamp(
+            72 -
+            0.48 * v.decentralization -
+            0.28 * v.rights +
+            0.30 * v.hostility +
+            0.12 * v.energy
+        );
+
+        const ruin = clamp(
+            50 +
+            0.48 * v.hostility -
+            0.23 * resilience -
+            0.16 * cohesion -
+            0.13 * biosphere
+        );
+
+        const metrics = {
+            resilience,
+            liberty,
+            biosphere,
+            cohesion,
+            power,
+            ruin
+        };
+
+        setMetric("resilience", resilience);
+        setMetric("liberty", liberty);
+        setMetric("biosphere", biosphere);
+        setMetric("cohesion", cohesion);
+        setMetric("power", power);
+        setMetric("ruin", ruin, "%");
+
+        const scenario = getScenario(metrics, v);
+        document.getElementById("scenario-name").textContent = scenario.name;
+        document.getElementById("scenario-text").textContent = scenario.text;
+    }
+
+    ids.forEach(function (id) {
+        const input = document.getElementById("sim-" + id);
+        const output = document.getElementById("sim-" + id + "-out");
+
+        if (input && output) {
+            controls[id] = { input, output };
+            input.addEventListener("input", updateSimulation);
+        }
+    });
+
+    if (Object.keys(controls).length === ids.length) {
+        updateSimulation();
+
+        window.addEventListener("horizon-language-change", updateSimulation);
+    }
+})();
 </script>
 </body>
 </html>
