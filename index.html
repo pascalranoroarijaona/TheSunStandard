@@ -766,6 +766,178 @@
             transform: scale(1.1);
             box-shadow: 0 5px 25px rgba(255, 170, 0, 0.6);
         }
+        /* ===================================================== */
+        /* SECTIONS MULTIFONCTIONNELLES ET THESE CENTRALE         */
+        /* ===================================================== */
+
+        .content-section {
+            max-width: 1100px;
+            margin: 5rem auto;
+            padding: 2rem;
+        }
+
+        .multifunction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .function-card {
+            padding: 1.5rem;
+            min-height: 210px;
+            background: rgba(10, 10, 15, 0.82);
+            border: 1px solid rgba(255, 170, 0, 0.25);
+            border-radius: 12px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-6px);
+            border-color: #ffb000;
+        }
+
+        .function-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .function-card h3 {
+            color: #ffb000;
+            margin-bottom: 0.8rem;
+        }
+
+        .function-card p {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .interpretation-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid #4499ff;
+            background: rgba(68, 153, 255, 0.08);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .interpretation-box h3 {
+            color: #4499ff;
+        }
+
+        .interpretation-box p {
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+
+        /* Thèse centrale */
+
+        .thesis-section {
+            text-align: center;
+        }
+
+        .central-quote {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 1.5rem 2rem;
+            color: #ffcc55;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: bold;
+            line-height: 1.3;
+            border-top: 1px solid rgba(255, 204, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 204, 0, 0.4);
+        }
+
+        .thesis-section > p {
+            max-width: 850px;
+            margin: 1.2rem auto;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        .scarcity-chain {
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .chain-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.3rem;
+            background: rgba(15, 15, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+        }
+
+        .chain-step strong {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .chain-step small {
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            color: #111;
+            background: #ffb000;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .highlight-step {
+            border-color: #ffb000;
+            box-shadow: 0 0 25px rgba(255, 176, 0, 0.15);
+        }
+
+        .chain-arrow {
+            margin: 0.5rem 0;
+            color: #ffb000;
+            font-size: 1.8rem;
+        }
+
+        .thesis-conclusion {
+            max-width: 850px;
+            margin: 2rem auto 0;
+            padding: 1.5rem;
+            background: rgba(255, 170, 0, 0.06);
+            border-radius: 10px;
+        }
+
+        .thesis-conclusion p {
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+
+        .small-note {
+            color: #9ca3af !important;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Version mobile */
+
+        @media (max-width: 800px) {
+            .multifunction-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 1rem;
+                margin: 3rem auto;
+            }
+
+            .central-quote {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -7234,7 +7406,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </td>
                     <td style="padding: 1.2rem 1rem;">
                         <span lang="en">State Authority & Elastic Credit-Based Supply</span>
-<span lang="fr">Autorité étatique et offre monétaire élastique fondée sur le crédit</span>
+                        <span lang="fr">Autorité étatique et offre monétaire élastique fondée sur le crédit</span>
                     </td>
                     <td style="padding: 1.2rem 1rem; text-align: center; font-size: 1.2rem;">❌</td>
                     <td style="padding: 1.2rem 1rem; text-align: center;">
@@ -7389,6 +7561,528 @@ document.addEventListener("DOMContentLoaded", () => {
             <span lang="fr"><strong>Test décisif.</strong> Si Bitcoin migrait demain vers la Preuve d'Enjeu, sa rareté à 21 millions serait inchangée. Comme la rareté fait l'essentiel du travail argumentatif de ce document, cette expérience de pensée indique quelle part de notre thèse est réellement thermodynamique, et quelle part n'est qu'ornement thermodynamique sur un argument classique de rareté. Notre estimation : la physique sécurise le registre ; l'arithmétique sécurise la monnaie. Les deux sont nécessaires. Seule la seconde est monétaire.</span>
         </p>
     </div>
+</section>
+
+
+<!-- ===================================================== -->
+<!-- BITCOIN COMME INFRASTRUCTURE MULTIFONCTIONNELLE       -->
+<!-- ===================================================== -->
+
+<hr class="divider">
+
+<section id="expanded-functions" class="content-section">
+
+    <h2>
+        <span lang="en">Bitcoin as a Multifunctional Infrastructure</span>
+        <span lang="fr">Bitcoin comme infrastructure multifonctionnelle</span>
+    </h2>
+
+    <p lang="en">
+        Bitcoin is not limited to the three classical functions of money.
+        It can also be interpreted as a monetary, mnemonic, energetic,
+        political, humanitarian and informational infrastructure.
+    </p>
+
+    <p lang="fr">
+        Bitcoin ne se limite pas aux trois fonctions classiques de la monnaie.
+        Il peut également être interprété comme une infrastructure monétaire,
+        mémorielle, énergétique, politique, humanitaire et informationnelle.
+    </p>
+
+    <div class="multifunction-grid">
+
+        <!-- Fonction monétaire -->
+        <article class="function-card">
+            <div class="function-icon">₿</div>
+
+            <h3>
+                <span lang="en">Monetary Function</span>
+                <span lang="fr">Fonction monétaire</span>
+            </h3>
+
+            <p lang="en">
+                Bitcoin can be used as a medium of exchange, a savings
+                instrument and a settlement network operating without a
+                central clearing institution.
+            </p>
+
+            <p lang="fr">
+                Bitcoin peut être utilisé comme moyen d’échange, instrument
+                d’épargne et réseau de règlement fonctionnant sans chambre
+                de compensation centrale.
+            </p>
+
+            <div class="function-example">
+                <strong>
+                    <span lang="en">Examples</span>
+                    <span lang="fr">Exemples</span>
+                </strong>
+
+                <p lang="en">
+                    Cross-border remittances, savings in countries affected
+                    by monetary instability and merchant payments through
+                    the Lightning Network.
+                </p>
+
+                <p lang="fr">
+                    Transferts internationaux, épargne dans les pays touchés
+                    par l’instabilité monétaire et paiements marchands via
+                    le Lightning Network.
+                </p>
+
+                <a href="https://www.fidelitydigitalassets.com/sites/g/files/djuvja3256/files/acquiadam/FDA_TheLightningNetwork_ExpandingBitcoinUseCases_1187503.1.0_V5.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span lang="en">Lightning Network use cases</span>
+                    <span lang="fr">Cas d’usage du Lightning Network</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Fonction mémorielle -->
+        <article class="function-card">
+            <div class="function-icon">🧠</div>
+
+            <h3>
+                <span lang="en">Mnemonic Function</span>
+                <span lang="fr">Fonction mémorielle</span>
+            </h3>
+
+            <p lang="en">
+                Bitcoin preserves a public, chronological and independently
+                verifiable history of transactions and cryptographic events.
+            </p>
+
+            <p lang="fr">
+                Bitcoin conserve une histoire publique, chronologique et
+                vérifiable indépendamment des transactions et des événements
+                cryptographiques.
+            </p>
+
+            <div class="function-example">
+                <strong>OpenTimestamps</strong>
+
+                <p lang="en">
+                    OpenTimestamps allows users to create a cryptographic
+                    timestamp proving that a digital file or document existed
+                    before a certain point in time.
+                </p>
+
+                <p lang="fr">
+                    OpenTimestamps permet de créer une preuve cryptographique
+                    établissant qu’un fichier ou document numérique existait
+                    avant un moment donné.
+                </p>
+
+                <a href="https://opentimestamps.org/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span lang="en">Discover OpenTimestamps</span>
+                    <span lang="fr">Découvrir OpenTimestamps</span>
+                </a>
+
+                <p class="small-note">
+                    <span lang="en">
+                        This does not prove authorship, ownership or the truth
+                        of the document. It proves the prior existence of its
+                        cryptographic fingerprint.
+                    </span>
+
+                    <span lang="fr">
+                        Cela ne prouve ni l’auteur, ni la propriété, ni la
+                        véracité du document. Cela prouve l’existence antérieure
+                        de son empreinte cryptographique.
+                    </span>
+                </p>
+            </div>
+        </article>
+
+        <!-- Fonction énergétique -->
+        <article class="function-card">
+            <div class="function-icon">⚡</div>
+
+            <h3>
+                <span lang="en">Energetic Monetisation</span>
+                <span lang="fr">Monétisation énergétique</span>
+            </h3>
+
+            <p lang="fr">
+                Lorsque la réglementation l’autorise et qu’aucun usage flexible
+                de valeur supérieure n’est disponible, le minage de Bitcoin peut
+                transformer une énergie échouée, excédentaire ou autrement perdue
+                en valeur monétaire. Dans ce cadre, Bitcoin peut être interprété
+                comme un mécanisme de monétisation économique d’une partie de
+                l’entropie énergétique.
+            </p>
+
+            <p lang="en">
+                When regulation permits it and no higher-value flexible use is
+                available, Bitcoin mining can transform stranded, surplus or
+                otherwise wasted energy into monetary value. In this context,
+                Bitcoin may be interpreted as a mechanism for assigning economic
+                value to energy that would otherwise remain stranded, curtailed
+                or wasted.
+            </p>
+
+            <div class="function-example">
+                <strong>
+                    <span lang="en">Potential applications</span>
+                    <span lang="fr">Applications potentielles</span>
+                </strong>
+
+                <ul>
+                    <li lang="en">
+                        Using surplus renewable electricity.
+                    </li>
+
+                    <li lang="fr">
+                        Utilisation des surplus d’électricité renouvelable.
+                    </li>
+
+                    <li lang="en">
+                        Capturing methane from landfills or stranded gas.
+                    </li>
+
+                    <li lang="fr">
+                        Valorisation du méthane de décharges ou du gaz échoué.
+                    </li>
+
+                    <li lang="en">
+                        Improving the economics of remote energy infrastructure.
+                    </li>
+
+                    <li lang="fr">
+                        Amélioration de la rentabilité d’infrastructures
+                        énergétiques isolées.
+                    </li>
+                </ul>
+
+                <a href="https://news.cornell.edu/stories/2023/11/bitcoin-could-support-renewable-energy-development"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span lang="en">Renewable energy research</span>
+                    <span lang="fr">Recherche sur les énergies renouvelables</span>
+                </a>
+
+                <p class="small-note">
+                    <span lang="fr">
+                        Cette fonction est conditionnelle : elle ne justifie le
+                        minage que lorsque l’énergie est réellement échouée ou
+                        excédentaire et qu’aucun usage alternatif plus efficace,
+                        utile ou écologique n’est disponible.
+                    </span>
+
+                    <span lang="en">
+                        This function is conditional: mining is justified only
+                        when energy is genuinely stranded or surplus and no more
+                        efficient, useful or ecological alternative is available.
+                    </span>
+                </p>
+            </div>
+        </article>
+
+        <!-- Fonction politique -->
+        <article class="function-card">
+            <div class="function-icon">🏛️</div>
+
+            <h3>
+                <span lang="en">Political Function</span>
+                <span lang="fr">Fonction politique</span>
+            </h3>
+
+            <p lang="en">
+                Bitcoin can reduce dependence on a single monetary authority
+                by offering an alternative settlement system governed by
+                publicly verifiable rules.
+            </p>
+
+            <p lang="fr">
+                Bitcoin peut réduire la dépendance à une autorité monétaire
+                unique en proposant un système de règlement alternatif régi
+                par des règles publiquement vérifiables.
+            </p>
+
+            <div class="function-example">
+                <strong>
+                    <span lang="en">Potential applications</span>
+                    <span lang="fr">Applications potentielles</span>
+                </strong>
+
+                <p lang="en">
+                    Monetary diversification, protection against arbitrary
+                    payment restrictions and preservation of economic autonomy.
+                </p>
+
+                <p lang="fr">
+                    Diversification monétaire, protection contre certaines
+                    restrictions arbitraires de paiement et préservation de
+                    l’autonomie économique.
+                </p>
+
+                <a href="https://www.linkedin.com/pulse/21-cas-dusage-du-bitcoin-que-vous-ignorez-%C3%A0-moins-de-y-ranaora-zfvxe/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span lang="en">Related use cases</span>
+                    <span lang="fr">Cas d’usage associés</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Fonction humanitaire -->
+        <article class="function-card">
+            <div class="function-icon">🌍</div>
+
+            <h3>
+                <span lang="en">Humanitarian Function</span>
+                <span lang="fr">Fonction humanitaire</span>
+            </h3>
+
+            <p lang="en">
+                Bitcoin can facilitate the transfer and reception of value
+                when access to banks, payment processors or national
+                currencies is limited.
+            </p>
+
+            <p lang="fr">
+                Bitcoin peut faciliter le transfert et la réception de valeur
+                lorsque l’accès aux banques, aux prestataires de paiement ou
+                aux monnaies nationales est limité.
+            </p>
+
+            <div class="function-example">
+                <strong>
+                    <span lang="en">Documented and observed use cases</span>
+                    <span lang="fr">Cas d’usage documentés et observés</span>
+                </strong>
+
+                <ul>
+                    <li lang="en">
+                        Cross-border remittances.
+                    </li>
+
+                    <li lang="fr">
+                        Transferts de fonds transfrontaliers.
+                    </li>
+
+                    <li lang="en">
+                        Humanitarian donations.
+                    </li>
+
+                    <li lang="fr">
+                        Dons humanitaires.
+                    </li>
+
+                    <li lang="en">
+                        Portable savings for displaced populations.
+                    </li>
+
+                    <li lang="fr">
+                        Épargne portable pour les populations déplacées.
+                    </li>
+                </ul>
+
+                <a href="https://www.cnbc.com/2022/03/23/ukrainian-flees-to-poland-with-2000-in-bitcoin-on-usb-drive.html"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span lang="en">Example involving refugees</span>
+                    <span lang="fr">Exemple concernant des réfugiés</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Fonction informationnelle -->
+        <article class="function-card">
+            <div class="function-icon">🔐</div>
+
+            <h3>
+                <span lang="en">Informational Function</span>
+                <span lang="fr">Fonction informationnelle</span>
+            </h3>
+
+            <p lang="en">
+                Bitcoin provides public verification of transaction order,
+                block history and changes to the ledger recorded by the network.
+            </p>
+
+            <p lang="fr">
+                Bitcoin permet de vérifier publiquement l’ordre des transactions,
+                l’historique des blocs et les modifications du registre
+                enregistrées par le réseau.
+            </p>
+
+            <div class="function-example">
+                <strong>
+                    <span lang="en">Applications</span>
+                    <span lang="fr">Applications</span>
+                </strong>
+
+                <p lang="en">
+                    Proof of existence, audit trails, document certification,
+                    public commitments and independently verifiable records.
+                </p>
+
+                <p lang="fr">
+                    Preuves d’existence, pistes d’audit, certification de
+                    documents, engagements publics et archives vérifiables
+                    indépendamment.
+                </p>
+
+                <p>
+                    <strong>OpenTimestamps</strong>
+                    —
+
+                    <a href="https://opentimestamps.org/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span lang="en">timestamping proof system</span>
+                        <span lang="fr">système de preuve temporelle</span>
+                    </a>
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Exemples complémentaires -->
+    <div class="use-cases-panel">
+
+        <h3>
+            <span lang="en">Examples of Broader Use Cases</span>
+            <span lang="fr">Exemples de cas d’usage élargis</span>
+        </h3>
+
+        <p lang="en">
+            The following examples illustrate possible or documented links
+            between Bitcoin and wider economic, humanitarian, energetic and
+            institutional applications.
+        </p>
+
+        <p lang="fr">
+            Les exemples suivants illustrent des liens possibles ou documentés
+            entre Bitcoin et des applications économiques, humanitaires,
+            énergétiques et institutionnelles plus larges.
+        </p>
+
+        <ul class="use-cases-list">
+
+            <li>
+                <strong>
+                    <span lang="en">Remittances</span>
+                    <span lang="fr">Transferts internationaux</span>
+                </strong>
+                —
+
+                <span lang="en">
+                    Sending value across borders without depending entirely
+                    on traditional banking rails.
+                </span>
+
+                <span lang="fr">
+                    Envoyer de la valeur à travers les frontières sans dépendre
+                    entièrement des circuits bancaires traditionnels.
+                </span>
+            </li>
+
+            <li>
+                <strong>
+                    <span lang="en">Financial inclusion</span>
+                    <span lang="fr">Inclusion financière</span>
+                </strong>
+                —
+
+                <span lang="en">
+                    Access to a digital bearer asset for individuals excluded
+                    from conventional banking systems.
+                </span>
+
+                <span lang="fr">
+                    Accès à un actif numérique au porteur pour des personnes
+                    exclues des systèmes bancaires conventionnels.
+                </span>
+            </li>
+
+            <li>
+                <strong>
+                    <span lang="en">Renewable energy infrastructure</span>
+                    <span lang="fr">Infrastructures d’énergie renouvelable</span>
+                </strong>
+                —
+
+                <span lang="en">
+                    Mining may provide a flexible load for surplus or remote
+                    electricity, subject to economic and environmental conditions.
+                </span>
+
+                <span lang="fr">
+                    Le minage peut fournir une charge flexible pour des surplus
+                    électriques ou des installations isolées, sous réserve des
+                    conditions économiques et environnementales.
+                </span>
+            </li>
+
+            <li>
+                <strong>
+                    <span lang="en">Digital certification</span>
+                    <span lang="fr">Certification numérique</span>
+                </strong>
+                —
+
+                <span lang="en">
+                    Anchoring the fingerprint of a document in a public
+                    blockchain through OpenTimestamps.
+                </span>
+
+                <span lang="fr">
+                    Ancrage de l’empreinte d’un document dans une blockchain
+                    publique grâce à OpenTimestamps.
+                </span>
+            </li>
+
+            <li>
+                <strong>
+                    <span lang="en">Portable wealth</span>
+                    <span lang="fr">Patrimoine portable</span>
+                </strong>
+                —
+
+                <span lang="en">
+                    The possibility of memorising or transporting access to
+                    funds through cryptographic keys.
+                </span>
+
+                <span lang="fr">
+                    Possibilité de mémoriser ou de transporter l’accès à des
+                    fonds au moyen de clés cryptographiques.
+                </span>
+            </li>
+
+        </ul>
+
+        <p class="source-note">
+
+            <span lang="en">
+                Several of these examples are discussed in the article
+                “21 Bitcoin Use Cases You Probably Aren’t Aware Of”.
+            </span>
+
+            <span lang="fr">
+                Plusieurs de ces exemples sont discutés dans l’article
+                « 21 cas d’usage du Bitcoin que vous ignorez probablement ».
+            </span>
+
+            <br>
+
+            <a href="https://www.linkedin.com/pulse/21-cas-dusage-du-bitcoin-que-vous-ignorez-%C3%A0-moins-de-y-ranaora-zfvxe/"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span lang="en">Read the LinkedIn article</span>
+                <span lang="fr">Lire l’article LinkedIn</span>
+            </a>
+
+        </p>
+
+    </div>
+
 </section>
 
 <!-- SECTION THESIS RE-FOCUSED ON THE EMPIRICAL PROOF -->
