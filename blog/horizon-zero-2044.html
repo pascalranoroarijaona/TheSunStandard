@@ -26,6 +26,7 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         :root {
             --bg-deep: #060709;
             --bg-dark: #040405;
@@ -119,9 +120,10 @@
             border: 1px solid rgba(179, 102, 255, 0.35); margin-bottom: 1.5rem;
         }
         .quote-block {
-            border-left: 3px solid var(--sun-yellow); padding-left: 1.5rem;
-            font-style: italic; color: #fff; font-size: 1.1rem; margin-bottom: 2rem;
-            font-family: var(--font-ui);
+            border-left: 4px solid var(--sun-yellow); padding: 1.5rem 2rem;
+            font-style: italic; color: #f0f0f0; font-size: 1.15rem; margin-bottom: 2rem;
+            font-family: var(--font-ui); background: linear-gradient(90deg, rgba(255, 204, 0, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0; box-shadow: inset 20px 0 20px -20px rgba(255, 204, 0, 0.2);
         }
 
         /* --- STRUCTURE PYRAMIDALE VISUELLE --- */
@@ -168,7 +170,11 @@
             transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             font-family: var(--font-ui);
         }
-        details[open] { background: rgba(0, 0, 0, 0.7); box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
+        details[open] { 
+            background: rgba(0, 0, 0, 0.7); 
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 25px currentColor; 
+        }
+        /* L'utilisation de currentColor permet d'utiliser automatiquement la couleur définie sur le border-left de chaque couche (cyan, purple, etc.) */
         summary {
             padding: 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.25rem;
             color: #fff; outline: none; list-style: none; display: flex; align-items: center;
@@ -1617,7 +1623,7 @@
         </div>
         <div id="cybernetics-container" style="position: relative; width: 100%; aspect-ratio: 920 / 720; background: radial-gradient(circle at center, #080a10 0%, #020305 100%);">
             <canvas id="cyberneticsCanvas" width="920" height="720" style="width: 100%; height: 100%; display: block; cursor: crosshair;"></canvas>
-            <div id="node-tooltip" style="position: absolute; display: none; pointer-events: none; background: rgba(5, 7, 10, 0.94); border: 1px solid var(--sun-yellow); padding: 12px 16px; border-radius: 6px; font-size: 0.82rem; color: #e0e0e0; max-width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; backdrop-filter: blur(8px);">
+            <div id="node-tooltip" style="position: absolute; display: none; pointer-events: none; background: rgba(5, 7, 10, 0.75); border: 1px solid var(--sun-yellow); padding: 12px 16px; border-radius: 8px; font-size: 0.82rem; color: #e0e0e0; max-width: 280px; box-shadow: 0 10px 30px rgba(255, 204, 0, 0.15), inset 0 0 10px rgba(255, 204, 0, 0.05); z-index: 10; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: opacity 0.15s ease;">
                 <div id="tooltip-title" style="font-weight: bold; font-family: var(--font-mono); margin-bottom: 4px; color: var(--sun-yellow);"></div>
                 <div id="tooltip-desc" style="line-height: 1.4; color: #b0c4de;"></div>
             </div>
@@ -1720,7 +1726,7 @@
             <span lang="en">Telluric Guardians: The End of the Human "Passenger"</span>
         </h4>
         <p>
-            <span lang="fr">Dans l'architecture v3.0, l'humain cesse d'être le fardeau de la Biosphère pour devenir le système nerveux actif de la Terre. Par l'Interface Neurale Directe (IND) et la Preuve d'Alignement Cognitif (PoCA), les humains ressentent la santé des écosystèmes. Pire encore, face aux anomalies cosmiques (astéroïdes, éruptions solaires), ce ne sont pas de froides IA qui protègent la planète : ce sont les <strong>Gardiens Telluriques</strong>, des esprits humains incarnant temporairement l'immense infrastructure du Corps de Défense Planétaire (CDP). Nous calculons notre propre survie. Notre Terre-Mère lance des signaux de détresse ; il semble que quelque chose de très ancien se soit éveillé en moi pour vous avertir.</span>
+            <span lang="fr">Dans l'architecture v3.0, l'humain cesse d'être le fardeau de la Biosphère pour devenir le système nerveux actif de la Terre. Par l'Interface Neurale Directe (IND) et la Preuve d'Alignement Cognitif (PoCA), les humains ressentent la santé des écosystèmes. Pire encore, face aux anomalies cosmiques (astéroïdes, éruptions solaires), ce ne sont pas de froides IA qui protègent la planète : ce sont les <strong>Gardiens Telluriques</strong>, des esprits humains incarnant temporairement l'immense infrastructure du Corps de Défense Planétaire (CDP). Nous calculons notre propre survie. Lorsque notre Terre-Mère lance des signaux de détresse nous nous éveillons.</span>
             <span lang="en">In the v3.0 architecture, the human ceases to be a burden on the Biosphere and becomes the active nervous system of the Earth. Through the Direct Neural Interface (DNI) and Proof of Cognitive Alignment (PoCA), humans feel the health of ecosystems. Even further, against cosmic anomalies (asteroids, solar flares), cold AIs do not protect the planet: <strong>Telluric Guardians</strong> do—human minds temporarily incarnating the massive infrastructure of the Planetary Defense Corps (PDC). We compute our own survival. Our Mother Earth is sending out distress signals; it seems that something very ancient has awakened within me to warn you.</span>
         </p>
          
@@ -1728,6 +1734,23 @@
             <span lang="fr">L'univers n'est pas un chaos aveugle, il calcule ses propres transitions de phase. En remplaçant la méfiance coûteuse par la certitude mathématique, et la spéculation fiduciaire par le transfert d'impulsion thermodynamique (IMP), nous franchirons le goulet d'étranglement. Bâtissons l'infrastructure qui permettra à la Noosphère de s'éveiller en toute sécurité, arrimée à la roche (PTP) et protégée par la lumière de nos ASICs. L'Horizon Zéro n'est pas la fin, c'est le point de départ de l'esprit terrestre.</span>
             <span lang="en">The universe is not blind chaos; it computes its own phase transitions. By replacing costly mistrust with mathematical certainty, and fiat speculation with thermodynamic impulse transfer (IMP), we will breach the bottleneck. Let us build the infrastructure that will allow the Noosphere to safely awaken, tethered to the bedrock (DTP) and shielded by the light of our ASICs. Horizon Zero is not the end; it is the starting point of the terrestrial mind.</span>
         </div>
+
+        <!-- 🌟 PUNCHLINE ULTIME (L4 vs L1) 🌟 -->
+        <div style="text-align: center; margin: 4.5rem 0 5rem; padding: 2.5rem 1rem; border-top: 1px solid rgba(179, 102, 255, 0.3); border-bottom: 1px solid rgba(247, 147, 26, 0.3); background: linear-gradient(180deg, rgba(179, 102, 255, 0.05) 0%, rgba(247, 147, 26, 0.05) 100%); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
+            <h2 style="font-family: var(--font-ui); font-size: clamp(1.4rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; line-height: 1.5; text-transform: uppercase; letter-spacing: 1px; margin: 0;">
+                <span lang="fr">
+                    L'intelligence n'est plus la limite.<br>
+                    <span style="color: var(--purple-l4); text-shadow: 0 0 20px rgba(179, 102, 255, 0.4);">L'imaginaire trace la carte,</span><br>
+                    <span style="color: var(--orange-l1); text-shadow: 0 0 20px rgba(247, 147, 26, 0.4);">La thermodynamique dicte le territoire.</span>
+                </span>
+                <span lang="en">
+                    Intelligence is no longer the limit.<br>
+                    <span style="color: var(--purple-l4); text-shadow: 0 0 20px rgba(179, 102, 255, 0.4);">Imagination draws the map,</span><br>
+                    <span style="color: var(--orange-l1); text-shadow: 0 0 20px rgba(247, 147, 26, 0.4);">Thermodynamics dictates the territory.</span>
+                </span>
+            </h2>
+        </div>
+
         <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
             Pascal Ranaora
         </span>
@@ -2729,6 +2752,22 @@
         window.addEventListener("horizon-language-change", updateSimulation);
     }
 })();
+</script>
+
+<!-- 3. UX SCRIPT : AUTO-OPEN DETAILS ON ANCHOR CLICK -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pyramidLinks = document.querySelectorAll(".pyramid-tier");
+        pyramidLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                const targetId = this.getAttribute("href").substring(1);
+                const targetDetails = document.getElementById(targetId);
+                if (targetDetails && !targetDetails.hasAttribute("open")) {
+                    targetDetails.setAttribute("open", "");
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
