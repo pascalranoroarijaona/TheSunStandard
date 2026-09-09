@@ -22,7 +22,7 @@
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                inlineMath: [['$', '$'], ['\\(', '\\)'],['\\[', '\\]']],
                 displayMath: [['$$', '$$']]
             },
             svg: {
@@ -2759,67 +2759,390 @@ if __name__ == "__main__":
                 C'est ici que se dissipe l'une des plus grandes illusions cognitives de l'économie moderne : la perception du « prix ». Lorsque l'on observe la courbe de valorisation de Bitcoin, l'intuition première dicte que l'actif « monte » ou gonfle de manière spéculative. C'est une erreur de perspective fondamentale causée par notre attachement psychologique au numéraire fiduciaire. Nous utilisons un mètre ruban élastique (le fiat) pour mesurer un objet mathématiquement solide (Bitcoin). La hausse nominale de Bitcoin n'est en réalité qu'un reflet mathématique de la dilution de la monnaie d'État face aux gains de productivité humaine. 
             </p>
 
-            <!-- SECTION EXTENSIBLE : MATHÉMATIQUES DU POUVOIR D'ACHAT -->
-            <details style="background: rgba(10, 10, 12, 0.8); border: 1px solid rgba(247, 147, 26, 0.3); border-radius: 8px; overflow: hidden; cursor: pointer; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(247, 147, 26, 0.05);">
-                <summary style="padding: 1rem 1.5rem; color: #ffcc00; font-weight: bold; font-size: 1.05rem; outline: none; user-select: none; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid transparent; transition: all 0.3s ease;">
-                    <span>📐 Illustration Mathématique : La Divergence du Pouvoir d'Achat</span>
-                    <span style="font-size: 0.8em; opacity: 0.7;">(Cliquer pour développer) ▼</span>
+            <!-- SECTION : POUVOIR D'ACHAT ET CONCURRENCE MONÉTAIRE -->
+            <details class="monetary-section">
+                <summary>
+                    <span>📐 Pouvoir d'achat, lois de Thiers et concurrence monétaire</span>
+                    <span class="summary-hint">Cliquer pour développer ▼</span>
                 </summary>
-                
-                <div style="padding: 1.5rem; border-top: 1px solid rgba(247, 147, 26, 0.1); cursor: auto;">
-                    <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 1.5rem;">
-                        Le pouvoir d'achat $PP(t)$ d'une monnaie est le ratio entre l'abondance réelle des biens produits par l'humanité $Q(t)$ et la quantité d'unités monétaires en circulation $M(t)$. La production humaine croît selon un taux de productivité technologique $\gamma$.
-                        $$PP(t) = \frac{Q_0 e^{\gamma t}}{M(t)}$$
+
+                <div class="monetary-content">
+                    <p>
+                        Le pouvoir d'achat dépend de la production réelle, de la masse monétaire,
+                        de la vitesse de circulation et de la demande de détention.
                     </p>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-                        <div style="background: rgba(255, 68, 68, 0.05); padding: 1.2rem; border-left: 3px solid #ff4444; border-radius: 4px;">
-                            <strong style="color: #ff4444; font-size: 1.05rem;">La Monnaie Élastique (Fiat)</strong>
-                            <p style="color: #9ca3af; font-size: 0.9em; margin-top: 0.5rem; line-height: 1.5;">
-                                La masse monétaire croît à un taux d'inflation $\pi$ supérieur à la croissance réelle. Le pouvoir d'achat s'effondre thermodynamiquement :
-                                $$PP_{fiat}(t) = \frac{Q_0 e^{\gamma t}}{M_0 e^{\pi t}} \propto e^{(\gamma - \pi) t}$$
+                    <div class="formula">
+                        \( PP(t) \approx \frac{Q(t)}{M(t)V(t)} \)
+                    </div>
+
+                    <div class="monetary-grid">
+                        <div class="money-card fiat-card">
+                            <strong>Monnaie fiat</strong>
+                            <p>
+                                Une émission monétaire croissant plus vite que la production
+                                réelle peut réduire le pouvoir d'achat, toutes choses égales
+                                par ailleurs.
                             </p>
+                            <div class="formula">
+                                \( PP_{\mathrm{fiat}}(t)
+                                \propto e^{(\gamma-\pi)t} \)
+                            </div>
                         </div>
-                        <div style="background: rgba(247, 147, 26, 0.05); padding: 1.2rem; border-left: 3px solid #F7931A; border-radius: 4px;">
-                            <strong style="color: #F7931A; font-size: 1.05rem;">L'Étalon Fixe (Bitcoin)</strong>
-                            <p style="color: #9ca3af; font-size: 0.9em; margin-top: 0.5rem; line-height: 1.5;">
-                                La masse $\bar{M}$ est constante (21M). Le pouvoir d'achat capte <em>l'intégralité</em> de la croissance et de l'innovation humaine :
-                                $$PP_{btc}(t) = \frac{Q_0 e^{\gamma t}}{\bar{M}} \propto e^{\gamma t}$$
+
+                        <div class="money-card bitcoin-card">
+                            <strong>Bitcoin</strong>
+                            <p>
+                                Bitcoin possède une règle d'émission bornée et prévisible,
+                                mais son pouvoir d'achat reste soumis à la demande, à la
+                                volatilité et à l'adoption.
                             </p>
+                            <div class="formula">
+                                \( M_{\mathrm{BTC}}(t) \ne \mathrm{constante} \),
+                                mais \( M_{\mathrm{BTC}}(t) \to M_{\infty} \)
+                            </div>
+                        </div>
+
+                        <div class="money-card competition-card">
+                            <strong>Concurrence monétaire</strong>
+                            <p>
+                                Lorsque les monnaies sont librement choisies, les agents
+                                arbitrent entre stabilité, liquidité, sécurité, acceptation
+                                et coûts de transaction.
+                            </p>
+                            <div class="formula">
+                                \( j^\ast =
+                                \arg\max_j \mathcal{S}_j(T) \)
+                            </div>
                         </div>
                     </div>
 
-                    <p style="color: #d1d5db; line-height: 1.6; text-align: justify; margin-bottom: 2rem;">
-                        <strong>Le Taux de Change :</strong> Le « prix » observé $E(t)$ n'est que le ratio entre ces deux vecteurs ($E(t) = PP_{btc} / PP_{fiat} = e^{\pi t}$). Bitcoin ne « monte » pas ; c'est le numéraire fiat qui s'effondre.
-                    </p>
+                    <div class="thiers-box">
+                        <h4>🏆 Loi de Thiers et critère de sélection monétaire</h4>
 
-                    <!-- SIMULATION INTERACTIVE -->
-                    <div style="background: rgba(0, 0, 0, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h5 style="color: #fff; margin-bottom: 1rem; text-align: center;">Simulation Dynamique sur 20 ans</h5>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <p>
+                            Dans un environnement de concurrence monétaire, les agents peuvent
+                            comparer plusieurs monnaies selon leur stabilité, leur crédibilité,
+                            leur liquidité, leur acceptation et leurs coûts d'utilisation.
+                        </p>
+
+                        <div class="formula">
+                            \[
+                            \mathcal{S}_j(T)
+                            =
+                            \theta_1[-\mathcal{V}_j(T)]
+                            + \theta_2 C_j
+                            + \theta_3 L_j
+                            + \theta_4 A_j
+                            - \theta_5 K_j
+                            \]
+                        </div>
+
+                        <ul class="selection-list">
+                            <li>
+                                <strong>\(\mathcal{V}_j(T)\)</strong> :
+                                volatilité du pouvoir d'achat sur l'horizon \(T\) ;
+                            </li>
+                            <li>
+                                <strong>\(C_j\)</strong> :
+                                crédibilité et prévisibilité de l'émission ;
+                            </li>
+                            <li>
+                                <strong>\(L_j\)</strong> :
+                                liquidité et facilité d'échange ;
+                            </li>
+                            <li>
+                                <strong>\(A_j\)</strong> :
+                                niveau d'acceptation par les utilisateurs ;
+                            </li>
+                            <li>
+                                <strong>\(K_j\)</strong> :
+                                coûts d'utilisation, de conservation et de transaction.
+                            </li>
+                        </ul>
+
+                        <p>
+                            La monnaie dominante à long terme peut alors être représentée par :
+                        </p>
+
+                        <div class="formula">
+                            \[
+                            j^\ast
+                            =
+                            \arg\max_{j\in\mathcal{J}}
+                            \mathcal{S}_j(T)
+                            \]
+                        </div>
+
+                        <p class="small-note">
+                            Cette équation ne constitue pas une loi empirique générale.
+                            Elle formalise une hypothèse d'arbitrage entre les différentes
+                            qualités monétaires.
+                        </p>
+
+                        <h4>₿ Application à Bitcoin</h4>
+
+                        <p>
+                            Bitcoin peut être comparé aux autres monnaies à partir de plusieurs
+                            dimensions :
+                        </p>
+
+                        <div class="formula">
+                            \[
+                            \mathcal{Q}_{BTC}
+                            =
+                            \alpha S_{BTC}
+                            + \beta C_{BTC}
+                            + \gamma L_{BTC}
+                            + \delta R_{BTC}
+                            - \eta K_{BTC}
+                            \]
+                        </div>
+
+                        <ul class="selection-list">
+                            <li>
+                                <strong>\(S_{BTC}\)</strong> :
+                                stabilité du pouvoir d'achat ;
+                            </li>
+                            <li>
+                                <strong>\(C_{BTC}\)</strong> :
+                                crédibilité de la règle d'émission ;
+                            </li>
+                            <li>
+                                <strong>\(L_{BTC}\)</strong> :
+                                liquidité des marchés ;
+                            </li>
+                            <li>
+                                <strong>\(R_{BTC}\)</strong> :
+                                vérifiabilité du registre et résistance à la falsification ;
+                            </li>
+                            <li>
+                                <strong>\(K_{BTC}\)</strong> :
+                                coûts de transaction, de conservation et d'accès.
+                            </li>
+                        </ul>
+
+                        <p>
+                            Bitcoin peut donc être sélectionné d'abord comme réserve de valeur,
+                            sans devenir immédiatement l'unité de compte ou le moyen de paiement
+                            dominant.
+                        </p>
+
+                        <div class="functional-box">
+                            <strong>💡 Sélection fonctionnelle des monnaies</strong>
+
+                            <p>
+                                Une monnaie ne doit pas nécessairement dominer simultanément les
+                                fonctions de réserve de valeur, d'unité de compte et de moyen de
+                                paiement. Plusieurs monnaies peuvent coexister lorsqu'elles
+                                possèdent des avantages comparatifs différents.
+                            </p>
+                        </div>
+
+                        <p class="small-note">
+                            La loi de Thiers décrit ici une sélection possible dans un régime de
+                            concurrence et de libre choix. La loi de Gresham concerne plutôt les
+                            situations où plusieurs monnaies sont imposées à une parité fixe.
+                        </p>
+                    </div>
+
+                    <div class="simulation-box">
+                        <h4>Simulation dynamique sur 20 ans</h4>
+
+                        <div class="controls-grid">
                             <div>
-                                <label style="color: #9ca3af; font-size: 0.85rem; display: flex; justify-content: space-between;">
-                                    <span>Dilution Fiat (Inflation $\pi$)</span>
-                                    <span id="val-inflation" style="color: #ff4444; font-weight: bold;">7.0%</span>
+                                <label>
+                                    <span>Inflation fiat</span>
+                                    <strong id="val-inflation">7.0%</strong>
                                 </label>
-                                <input type="range" id="slider-inflation" min="2" max="20" value="7" step="0.5" style="width: 100%; accent-color: #ff4444; margin-top: 0.5rem;">
+                                <input type="range" id="slider-inflation"
+                                    min="0" max="20" value="7" step="0.5">
                             </div>
+
                             <div>
-                                <label style="color: #9ca3af; font-size: 0.85rem; display: flex; justify-content: space-between;">
-                                    <span>Gains Tech (Productivité $\gamma$)</span>
-                                    <span id="val-prod" style="color: #F7931A; font-weight: bold;">3.0%</span>
+                                <label>
+                                    <span>Productivité réelle</span>
+                                    <strong id="val-prod">3.0%</strong>
                                 </label>
-                                <input type="range" id="slider-prod" min="0" max="15" value="3" step="0.5" style="width: 100%; accent-color: #F7931A; margin-top: 0.5rem;">
+                                <input type="range" id="slider-prod"
+                                    min="0" max="15" value="3" step="0.5">
+                            </div>
+
+                            <div>
+                                <label>
+                                    <span>Volatilité Bitcoin</span>
+                                    <strong id="val-volatility">10%</strong>
+                                </label>
+                                <input type="range" id="slider-volatility"
+                                    min="0" max="30" value="10" step="1">
                             </div>
                         </div>
 
-                        <div style="position: relative; height: 300px; width: 100%;">
+                        <div class="chart-container">
                             <canvas id="purchasingPowerCanvas"></canvas>
                         </div>
+
+                        <p id="simulation-note" class="simulation-note"></p>
                     </div>
                 </div>
             </details>
+
+            <style>
+            .thiers-box {
+                margin-top: 1.5rem;
+                padding: 1.4rem;
+                border-left: 3px solid #60a5fa;
+                border-radius: 6px;
+                background: rgba(96, 165, 250, 0.07);
+            }
+
+            .selection-list {
+                color: #d1d5db;
+                line-height: 1.7;
+                padding-left: 1.4rem;
+            }
+
+            .selection-list strong {
+                color: #93c5fd;
+            }
+
+            .formula {
+                margin: 1rem 0;
+                padding: 0.8rem;
+                text-align: center;
+                color: #fbbf24;
+                background: rgba(0, 0, 0, 0.25);
+                border-radius: 5px;
+                overflow-x: auto;
+            }
+
+            .functional-box {
+                margin: 1.2rem 0;
+                padding: 1rem;
+                border: 1px solid rgba(247, 147, 26, 0.35);
+                border-radius: 6px;
+                background: rgba(247, 147, 26, 0.08);
+            }
+
+            .small-note {
+                color: #9ca3af;
+                font-size: 0.88rem;
+                font-style: italic;
+            }
+            .monetary-section {
+                background: rgba(10, 10, 12, 0.92);
+                border: 1px solid rgba(247, 147, 26, 0.35);
+                border-radius: 8px;
+                overflow: hidden;
+                margin-bottom: 2rem;
+                color: #d1d5db;
+            }
+
+            .monetary-section summary {
+                padding: 1rem 1.5rem;
+                color: #ffcc00;
+                font-weight: bold;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .summary-hint {
+                font-size: .8em;
+                opacity: .7;
+            }
+
+            .monetary-content {
+                padding: 1.5rem;
+                line-height: 1.6;
+            }
+
+            .formula {
+                margin: .8rem 0;
+                text-align: center;
+                color: #fbbf24;
+                font-size: 1.05rem;
+            }
+
+            .monetary-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .money-card,
+            .gresham-box,
+            .simulation-box {
+                padding: 1.2rem;
+                border-radius: 6px;
+                background: rgba(255,255,255,.035);
+            }
+
+            .money-card strong {
+                font-size: 1.05rem;
+            }
+
+            .fiat-card {
+                border-left: 3px solid #ff4444;
+            }
+
+            .bitcoin-card {
+                border-left: 3px solid #f7931a;
+            }
+
+            .competition-card {
+                border-left: 3px solid #60a5fa;
+            }
+
+            .gresham-box {
+                border: 1px solid rgba(255,204,0,.25);
+                margin: 1.5rem 0;
+            }
+
+            .gresham-box h4,
+            .simulation-box h4 {
+                color: #ffcc00;
+                margin-top: 0;
+            }
+
+            .controls-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+                gap: 1.2rem;
+                margin: 1.2rem 0;
+            }
+
+            .controls-grid label {
+                display: flex;
+                justify-content: space-between;
+                color: #9ca3af;
+                font-size: .9rem;
+            }
+
+            .controls-grid strong {
+                color: #f7931a;
+            }
+
+            .controls-grid input {
+                width: 100%;
+                accent-color: #f7931a;
+                margin-top: .5rem;
+            }
+
+            .chart-container {
+                position: relative;
+                height: 320px;
+                width: 100%;
+            }
+
+            .simulation-note {
+                color: #9ca3af;
+                font-size: .85rem;
+                margin-bottom: 0;
+            }
+            </style>
 
             <p style="margin-bottom: 1.5rem;">
                 Cette mécanique déflationniste redéfinit totalement notre rapport au travail. S'il est vrai que dans une économie en déflation saine les salaires nominaux finissent par baisser, les prix réels des biens chutent encore plus vite, augmentant mécaniquement le pouvoir d'achat final. Mais nous devons aller plus loin : à l'aube d'une automatisation intégrale pilotée par l'Intelligence Artificielle, le labeur humain deviendra de plus en plus optionnel. Aurons-nous seulement encore besoin du concept même de "salaire" lorsque les algorithmes et la robotique feront tendre le coût marginal de l'énergie, de la nourriture et du calcul vers zéro ? La déflation n'est pas une crise ; c'est le mécanisme mathématique par lequel l'abondance générée par les machines est redistribuée pacifiquement à l'ensemble de l'humanité, libérant l'individu de la servitude du salariat.
@@ -2829,112 +3152,225 @@ if __name__ == "__main__":
                 Surtout, cette déflation technologique porte en elle la seule véritable solution à notre tragédie environnementale. L'inflation est ontologiquement extractiviste : elle force la consommation frénétique, l'endettement et l'obsolescence programmée pour maintenir la vélocité d'une monnaie qui fond. À l'inverse, un monde en déflation récompense la patience. Pourquoi consommer des ressources pour acheter un objet médiocre aujourd'hui s'il coûtera moins cher et sera de meilleure qualité demain ? En allongeant notre horizon temporel, la déflation incite naturellement à la réparation, à la sobriété et à la conception d'artefacts durables. Économiquement, elle ralentit le tapis roulant ; thermodynamiquement, elle réduit la dissipation d'entropie, offrant enfin à la biosphère le répit nécessaire pour se régénérer.
             </p>
 
-            <!-- INCLUSION DU SCRIPT CHART.JS (Assure-toi que cette librairie n'est chargée qu'une seule fois dans ta page) -->
+            <!-- Charger Chart.js une seule fois sur la page -->
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
             <script>
             document.addEventListener("DOMContentLoaded", () => {
-                const canvas = document.getElementById('purchasingPowerCanvas');
-                if (!canvas) return;
+                const canvas = document.getElementById("purchasingPowerCanvas");
+                if (!canvas || typeof Chart === "undefined") return;
 
-                const ctx = canvas.getContext('2d');
+                const ctx = canvas.getContext("2d");
+                const years = 20;
+                const labels = Array.from(
+                    { length: years + 1 },
+                    (_, i) => `Année ${i}`
+                );
+
+                const sliderInf = document.getElementById("slider-inflation");
+                const sliderProd = document.getElementById("slider-prod");
+                const sliderVol = document.getElementById("slider-volatility");
+
+                const valInf = document.getElementById("val-inflation");
+                const valProd = document.getElementById("val-prod");
+                const valVol = document.getElementById("val-volatility");
+                const note = document.getElementById("simulation-note");
+
                 let chartInstance = null;
 
-                const years = 20;
-                const labels = Array.from({length: years + 1}, (_, i) => `Année ${i}`);
+                function generateData(inflation, productivity, volatility) {
+                    const fiat = [];
+                    const bitcoin = [];
+                    const monetaryQuality = [];
 
-                function drawChart(pi, gamma) {
-                    const btcData = [];
-                    const fiatData = [];
-                    
                     for (let t = 0; t <= years; t++) {
-                        fiatData.push(100 / Math.pow(1 + pi, t));
-                        btcData.push(100 * Math.pow(1 + gamma, t));
+                        /*
+                        * Modèle pédagogique :
+                        * pouvoir d'achat fiat = production réelle / inflation monétaire.
+                        */
+                        const fiatValue =
+                            100 * Math.pow(1 + productivity, t)
+                            / Math.pow(1 + inflation, t);
+
+                        /*
+                        * Bitcoin : émission asymptotiquement bornée,
+                        * avec une composante de volatilité simplifiée.
+                        * Ce n'est pas une prévision de prix.
+                        */
+                        const deterministicBtc =
+                            100 * Math.pow(1 + productivity, t);
+
+                        const volatilityFactor =
+                            1 + (volatility / 100) *
+                            Math.sin(t * 1.7);
+
+                        const btcValue =
+                            deterministicBtc * volatilityFactor;
+
+                        /*
+                        * Indice abstrait de qualité monétaire :
+                        * plus l'inflation est faible et la volatilité modérée,
+                        * plus l'indice est élevé.
+                        */
+                        const quality =
+                            100
+                            - inflation * 3
+                            - volatility * 0.8
+                            + productivity * 2;
+
+                        fiat.push(Math.max(fiatValue, 1));
+                        bitcoin.push(Math.max(btcValue, 1));
+                        monetaryQuality.push(Math.max(quality, 1));
                     }
 
+                    return { fiat, bitcoin, monetaryQuality };
+                }
+
+                function drawChart() {
+                    const inflation = parseFloat(sliderInf.value) / 100;
+                    const productivity = parseFloat(sliderProd.value) / 100;
+                    const volatility = parseFloat(sliderVol.value);
+
+                    valInf.textContent = `${sliderInf.value}%`;
+                    valProd.textContent = `${sliderProd.value}%`;
+                    valVol.textContent = `${sliderVol.value}%`;
+
+                    const data = generateData(
+                        inflation,
+                        productivity,
+                        volatility
+                    );
+
+                    const datasets = [
+                        {
+                            label: "Bitcoin : étalon à émission bornée",
+                            data: data.bitcoin,
+                            borderColor: "#F7931A",
+                            backgroundColor: "rgba(247,147,26,.12)",
+                            borderWidth: 3,
+                            fill: true,
+                            tension: .3,
+                            pointRadius: 0,
+                            yAxisID: "y"
+                        },
+                        {
+                            label: "Fiat : pouvoir d'achat modélisé",
+                            data: data.fiat,
+                            borderColor: "#ff4444",
+                            backgroundColor: "rgba(255,68,68,.10)",
+                            borderWidth: 3,
+                            fill: true,
+                            tension: .3,
+                            pointRadius: 0,
+                            yAxisID: "y"
+                        },
+                        {
+                            label: "Indice abstrait de qualité monétaire",
+                            data: data.monetaryQuality,
+                            borderColor: "#60a5fa",
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            fill: false,
+                            tension: .3,
+                            pointRadius: 0,
+                            yAxisID: "quality"
+                        }
+                    ];
+
                     if (chartInstance) {
-                        chartInstance.data.datasets[0].data = btcData;
-                        chartInstance.data.datasets[1].data = fiatData;
+                        chartInstance.data.datasets = datasets;
                         chartInstance.update();
                     } else {
                         chartInstance = new Chart(ctx, {
-                            type: 'line',
+                            type: "line",
                             data: {
-                                labels: labels,
-                                datasets: [
-                                    {
-                                        label: "Étalon Fixe (Capte l'innovation)",
-                                        borderColor: "#F7931A",
-                                        backgroundColor: "rgba(247, 147, 26, 0.15)",
-                                        borderWidth: 3,
-                                        fill: true,
-                                        data: btcData,
-                                        tension: 0.3,
-                                        pointRadius: 0
-                                    },
-                                    {
-                                        label: "Monnaie Fiat (Dilution par inflation)",
-                                        borderColor: "#ff4444",
-                                        backgroundColor: "rgba(255, 68, 68, 0.1)",
-                                        borderWidth: 3,
-                                        fill: true,
-                                        data: fiatData,
-                                        tension: 0.3,
-                                        pointRadius: 0
-                                    }
-                                ]
+                                labels,
+                                datasets
                             },
                             options: {
                                 responsive: true,
                                 maintainAspectRatio: false,
-                                interaction: { mode: 'index', intersect: false },
+                                interaction: {
+                                    mode: "index",
+                                    intersect: false
+                                },
                                 plugins: {
-                                    legend: { labels: { color: '#d1d5db', font: { family: "'Space Grotesk', sans-serif" } } },
-                                    tooltip: { backgroundColor: 'rgba(0,0,0,0.8)' }
+                                    legend: {
+                                        labels: {
+                                            color: "#d1d5db"
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: "rgba(0,0,0,.85)"
+                                    }
                                 },
                                 scales: {
                                     y: {
-                                        title: { display: true, text: "Pouvoir d'Achat (Base 100)", color: '#9ca3af' },
-                                        grid: { color: 'rgba(255,255,255,0.05)' },
-                                        ticks: { color: '#9ca3af' }
+                                        title: {
+                                            display: true,
+                                            text: "Pouvoir d'achat — base 100",
+                                            color: "#9ca3af"
+                                        },
+                                        grid: {
+                                            color: "rgba(255,255,255,.05)"
+                                        },
+                                        ticks: {
+                                            color: "#9ca3af"
+                                        }
+                                    },
+                                    quality: {
+                                        position: "right",
+                                        min: 0,
+                                        max: 120,
+                                        title: {
+                                            display: true,
+                                            text: "Qualité monétaire — indice",
+                                            color: "#60a5fa"
+                                        },
+                                        grid: {
+                                            drawOnChartArea: false
+                                        },
+                                        ticks: {
+                                            color: "#60a5fa"
+                                        }
                                     },
                                     x: {
-                                        grid: { color: 'rgba(255,255,255,0.05)' },
-                                        ticks: { color: '#9ca3af', maxTicksLimit: 10 }
+                                        grid: {
+                                            color: "rgba(255,255,255,.05)"
+                                        },
+                                        ticks: {
+                                            color: "#9ca3af",
+                                            maxTicksLimit: 10
+                                        }
                                     }
                                 }
                             }
                         });
                     }
+
+                    note.textContent =
+                        "Simulation illustrative : elle ne constitue ni une prévision " +
+                        "du prix du Bitcoin ni une mesure empirique complète du pouvoir d'achat.";
                 }
 
-                // Initialisation
-                const sliderInf = document.getElementById('slider-inflation');
-                const sliderProd = document.getElementById('slider-prod');
-                const valInf = document.getElementById('val-inflation');
-                const valProd = document.getElementById('val-prod');
+                [sliderInf, sliderProd, sliderVol].forEach(slider => {
+                    slider.addEventListener("input", drawChart);
+                });
 
-                function update() {
-                    const pi = parseFloat(sliderInf.value) / 100;
-                    const gamma = parseFloat(sliderProd.value) / 100;
-                    valInf.textContent = sliderInf.value + "%";
-                    valProd.textContent = sliderProd.value + "%";
-                    drawChart(pi, gamma);
-                }
+                const detailsBlock = canvas.closest("details");
 
-                sliderInf.addEventListener('input', update);
-                sliderProd.addEventListener('input', update);
-
-                // Permettre à l'animation de bien se dessiner quand le `<details>` est ouvert
-                const detailsBlock = sliderInf.closest('details');
                 if (detailsBlock) {
-                    detailsBlock.addEventListener('toggle', (e) => {
+                    detailsBlock.addEventListener("toggle", () => {
                         if (detailsBlock.open) {
-                            setTimeout(update, 50); // Petit délai pour laisser le canvas prendre ses dimensions
+                            setTimeout(() => {
+                                chartInstance?.resize();
+                                drawChart();
+                            }, 100);
                         }
                     });
                 }
 
-                update();
+                drawChart();
             });
             </script>
 
