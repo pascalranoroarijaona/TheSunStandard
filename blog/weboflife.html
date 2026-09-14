@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Toile de la Vie | The Open Source Code of Reality</title>
+    <meta name="description" content="Earth modeled as an open-energy, finite-matter thermodynamic structure. Every biological, geological, and human system is represented as a thermodynamic monad." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        :root {
+            --bg-deep: #02050a;
+            --bg-dark: #04060a;
+            --text-main: #e0e0e0;
+            --text-muted: #8899aa;
+            --sun-yellow: #ffaa00;
+            --earth-blue: #0088ff;
+            --bio-green: #00ff66;
+            --fauna-red: #ff3366;
+            --fungi-purple: #c084fc;
+            --human-cyan: #00e1ff;
+            --cogeneration: #ff5500;
+            --border-glow: rgba(0, 225, 255, 0.2);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(0, 225, 255, 0.05) 0%, transparent 60%);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(2,5,10,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
+        }
+        nav .logo { font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--human-cyan); text-decoration: none; }
+        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back:hover { color: #fff; }
+
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.3rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(0, 225, 255, 0.4));
+        }
+
+        article {
+            max-width: 1000px; margin: 7rem auto 6rem; padding: 0 2rem;
+            font-size: 1.15rem; color: #d4d4d4;
+        }
+
+        header {
+            text-align: center; margin-bottom: 3.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 225, 255, 0.25); font-family: var(--font-ui);
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.5rem; letter-spacing: -1px; text-transform: uppercase;
+        }
+        h2.header-subtitle {
+            font-size: 1.35rem; font-weight: 600; color: var(--sun-yellow); margin-bottom: 0.8rem; font-family: var(--font-ui);
+        }
+        .subtitle {
+            font-size: 1.15rem; color: var(--human-cyan); font-style: italic; max-width: 820px; margin: 0 auto;
+        }
+
+        /* Iframe Container & Full Width Wrapper */
+        .simulation-wrapper {
+            width: 90vw;
+            margin-left: calc(50% - 45vw);
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .simulation-container {
+            width: 100%;
+            height: 75vh;
+            min-height: 650px;
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 225, 255, 0.1);
+            background: #000;
+        }
+        
+        .simulation-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .simulation-link {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 1px solid var(--sun-yellow);
+            border-radius: 6px;
+            background: rgba(255, 170, 0, 0.05);
+            font-family: var(--font-mono);
+            color: var(--sun-yellow);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .simulation-link:hover {
+            background: rgba(255, 170, 0, 0.15);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .quote-block {
+            border-left: 4px solid var(--human-cyan); padding: 1.5rem 2rem;
+            font-style: italic; color: #f0f0f0; font-size: 1.15rem; margin-bottom: 2rem;
+            font-family: var(--font-ui); background: linear-gradient(90deg, rgba(0, 225, 255, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0; box-shadow: inset 20px 0 20px -20px rgba(0, 225, 255, 0.2);
+        }
+
+        /* Tiroirs Couches (Details / Summary) */
+        details {
+            margin-bottom: 2rem; background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 10px 10px 0; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-family: var(--font-ui);
+            border-left: 4px solid var(--human-cyan);
+        }
+        details[open] { 
+            background: rgba(0, 0, 0, 0.7); 
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 25px currentColor; 
+        }
+        summary {
+            padding: 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.25rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; color: inherit; font-size: 0.9rem; transition: transform 0.2s ease; }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content { padding: 2.5rem; color: #b0c4de; font-family: var(--font-main); }
+        .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem; }
+        .drawer-content p { margin-bottom: 1.5rem; text-align: justify; line-height: 1.9; }
+        .drawer-content ul { padding-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; }
+        .drawer-content li { margin-bottom: 0.8rem; }
+
+        .layer-sun { border-left-color: var(--sun-yellow); }
+        .layer-sun summary { color: var(--sun-yellow); }
+        .layer-bio { border-left-color: var(--bio-green); }
+        .layer-bio summary { color: var(--bio-green); }
+        .layer-math { border-left-color: var(--fauna-red); }
+        .layer-math summary { color: var(--fauna-red); }
+        .layer-cog { border-left-color: var(--cogeneration); }
+        .layer-cog summary { color: var(--cogeneration); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.65); padding: 2rem; border-radius: 8px;
+            margin: 2rem 0; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1.1rem; font-family: var(--font-ui); overflow-x: auto;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+        
+        .math-legend {
+            font-size: 0.9rem; color: #8899aa; margin-top: 1rem; font-style: italic;
+        }
+
+        .modelling-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .model-card {
+            padding: 2rem;
+            background: rgba(4, 5, 7, 0.85);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+            font-family: var(--font-ui);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .model-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--human-cyan);
+            box-shadow: 0 12px 30px rgba(0, 225, 255, 0.15);
+        }
+        .model-card h4 {
+            color: var(--human-cyan);
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+        .model-card p {
+            color: #aab1b8;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;}
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav>
+    <a href="index.html" class="logo">☀ The Sun Standard</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <header>
+        <h1>
+            <span lang="fr">La Toile de la Vie</span>
+            <span lang="en">Web Of Life</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">Le Code Source Ouvert de la Réalité</span>
+            <span lang="en">The Open Source Code of Reality</span>
+        </h2>
+        <div class="subtitle">
+            <span lang="fr">Où la thermodynamique rencontre la conscience planétaire. Des blockchains fractales pour sécuriser la Biosphère et la Noosphère.</span>
+            <span lang="en">Where thermodynamics meets planetary consciousness. Fractal blockchains to secure the Biosphere and the Noosphere.</span>
+        </div>
+        <p style="margin-top: 1rem; color: #8899aa; font-size: 0.95rem; font-family: var(--font-mono); letter-spacing: 0.5px;">
+            <span lang="fr">PAR PASCAL RANOROARIJAONA // INGÉNIERIE THERMODYNAMIQUE & INTELLIGENCE SYMBIOTIQUE</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA // THERMODYNAMIC ENGINEERING & SYMBIOTIC INTELLIGENCE</span>
+        </p>
+    </header>
+
+    <div class="quote-block">
+        <span lang="fr">"Le Proof of Work (Nakamoto) sécurise la Noosphère. Le Proof of Ecological Work (PoEW) sécurise la Biosphère. Le certificat d'exergie utile issu du minage doit être couplé à la cogénération pour garantir la symbiose absolue entre l'Esprit et le Corps de la Terre."</span>
+        <span lang="en">"Proof of Nakamoto work is to secure the Noosphere. Proof of Ecological Work (PoEW) is to secure the Biosphere. The useful exergy certificate coming from Proof of Work mining has to be used with cogeneration to ensure Symbiosis between the Mind and the Body of the Earth."</span>
+    </div>
+
+    <h3 style="color: var(--human-cyan); font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 1rem; margin-top: 3rem;">
+        <span lang="fr">🌍 Simulation Planétaire en Temps Réel</span>
+        <span lang="en">🌍 Real-Time Planetary Simulation</span>
+    </h3>
+    <p style="text-align: center; font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2.5rem; font-family: var(--font-ui);">
+        <span lang="fr">Le système Terre est une collection de structures thermodynamiques POD. Cliquez et glissez pour explorer le graphe. Sélectionnez un nœud pour ouvrir l'inspecteur. Utilisez la molette pour zoomer au travers des strates écologiques.</span>
+        <span lang="en">The Earth system is a collection of POD thermodynamic structures. Click and drag to explore the graph. Select a node to open the inspector. Use your scroll wheel to zoom through the ecological layers.</span>
+    </p>
+    
+    <div class="simulation-wrapper">
+        <div class="simulation-container">
+            <iframe src="https://pascalranoroarijaona.github.io/WebOfLife" title="Web Of Life Simulation"></iframe>
+        </div>
+        <a href="https://pascalranoroarijaona.github.io/WebOfLife" target="_blank" rel="noopener noreferrer" class="simulation-link">
+            <span lang="fr">🔗 Ouvrir l'application de plein écran (PWA)</span>
+            <span lang="en">🔗 Open Fullscreen Application (PWA)</span>
+        </a>
+    </div>
+
+    <!-- SECTION 1: README REVIEW & ARCHITECTURE -->
+    <details class="layer-sun" open>
+        <summary>
+            <span lang="fr">I. L'Anatomie du Mega-POD Terrestre</span>
+            <span lang="en">I. Anatomy of the Mega-POD</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">
+                Le projet <strong>La Toile de la Vie</strong> (Web of Life) refuse de modéliser la nature comme un simple décor de fond passif. La Terre est architecturée comme une structure thermodynamique stricte à énergie ouverte et matière finie : un <strong>Mega-POD</strong>[cite: 1, 2]. Le socle absolu du projet est le principe d'unification : chaque cycle biogéochimique (Carbon, Water, Nitrogen), chaque système géologique et chaque organisme vivant (humain inclus) est modélisé sous la classe racine abstraite <code>ThermodynamicStructure</code>[cite: 2]. 
+            </p>
+            <p lang="en">
+                The <strong>Web of Life</strong> project refuses to model nature as mere passive background scenery. The Earth is architected as a strict open-energy, finite-matter thermodynamic structure: a <strong>Mega-POD</strong>[cite: 1, 2]. The absolute foundation of the project is the unifying principle: every biogeochemical cycle (Carbon, Water, Nitrogen), geological system, and living organism (human included) is modeled under the abstract root class <code>ThermodynamicStructure</code>[cite: 2].
+            </p>
+            
+            <p lang="fr">
+                Ce qui différencie une fougère d'une ferme de minage n'est pas sa nature fondamentale, mais son implémentation de trois opérations algorithmiques critiques : <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, et <code>maintainFarFromEquilibrium(t)</code>[cite: 2]. À l'intérieur du Mega-POD terrestre, chaque organisme dispose de méthodes programmatiques strictes pour interagir avec son environnement, puiser de l'énergie et rejeter sa chaleur résiduelle[cite: 1, 2]. L'architecture logicielle s'appuie également sur la grille spatiale hexagonale <strong>Uber H3</strong> pour indexer géographiquement la Terre en <code>GeoBiomePOD</code> et exécuter un routage tensoriel complexe des flux de matière et d'énergie ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$)[cite: 2].
+            </p>
+            <p lang="en">
+                What differentiates a fern from a mining farm is not its fundamental nature, but its implementation of three critical algorithmic operations: <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, and <code>maintainFarFromEquilibrium(t)</code>[cite: 2]. Inside the terrestrial Mega-POD, each organism has strict programmatic methods to interact with its environment, draw energy, and reject its waste heat[cite: 1, 2]. The software architecture also relies on the <strong>Uber H3</strong> hexagonal spatial grid to geographically index the Earth into <code>GeoBiomePOD</code>s and execute complex tensor routing of matter and energy fluxes ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$)[cite: 2].
+            </p>
+
+            <div class="modelling-grid">
+                <div class="model-card">
+                    <h4 style="color: var(--sun-yellow);"><span lang="fr">Première Loi (Conservation de Masse)</span><span lang="en">First Law (Mass Conservation)</span></h4>
+                    <p lang="fr">$\Delta \text{Stock}_i = \sum \text{Entrants} - \sum \text{Sortants}$[cite: 2]. La matière ne peut être créée ou détruite dans le Mega-POD. Les audits IA statiques et les middlewares de validation bloquent impitoyablement toute interaction de l'environnement qui violerait l'équilibre stœchiométrique atomique ou les réserves géologiques finies[cite: 2].</p>
+                    <p lang="en">$\Delta \text{Stock}_i = \sum \text{Inbound} - \sum \text{Outbound}$[cite: 2]. Matter cannot be created or destroyed within the Mega-POD. Static AI audits and validation middlewares ruthlessly block any environmental interaction that would violate atomic stoichiometric equilibrium or finite geological reserves[cite: 2].</p>
+                </div>
+                <div class="model-card">
+                    <h4 style="color: var(--sun-yellow);"><span lang="fr">Seconde Loi (Destruction d'Exergie)</span><span lang="en">Second Law (Exergy Destruction)</span></h4>
+                    <p lang="fr">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$[cite: 2]. Toute action, qu'il s'agisse de l'extraction minière humaine (<code>SatoshiHumanMonad</code>) ou de la photosynthèse végétale, dissipe irrémédiablement de la chaleur fatale selon le théorème de Gouy-Stodola[cite: 1, 2]. La nature force la "punition" de l'irréversibilité systémique.</p>
+                    <p lang="en">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$[cite: 2]. Every action, whether human mining extraction (<code>SatoshiHumanMonad</code>) or vegetal photosynthesis, irremediably dissipates fatal heat according to the Gouy-Stodola theorem[cite: 1, 2]. Nature mathematically enforces the "punishment" of systemic irreversibility.</p>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- SECTION 2: DISCRETIZATION OF STATE & INTERNAL CONSENSUS -->
+    <details class="layer-math">
+        <summary>
+            <span lang="fr">II. Discrétisation du Temps et Consensus Biochimique Interne</span>
+            <span lang="en">II. Discretization of Time and Internal Biochemical Consensus</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">
+                Pour qu'un système complexe vivant puisse être modélisé non pas comme un continuum flou, mais comme une suite d'états validés, la Toile de la Vie introduit le concept de <strong>discrétisation de l'état interne</strong>. Chaque organisme vivant est représenté par une structure de données (POD) qui n'évolue que par "pas" (ticks)[cite: 1, 2].
+            </p>
+            <p lang="en">
+                For a complex living system to be modeled not as a blurry continuum, but as a sequence of validated states, the Web of Life introduces the concept of <strong>internal state discretization</strong>. Every living organism is represented by a data structure (POD) that only evolves in "steps" (ticks)[cite: 1, 2].
+            </p>
+
+            <h4 style="color: var(--fauna-red);"><span lang="fr">L'Équation de Transition d'État ($T$ vs $T-1$)</span><span lang="en">The State Transition Equation ($T$ vs $T-1$)</span></h4>
+            <p lang="fr">
+                L'état d'un organisme à l'instant $T$ dépend mathématiquement de son état à l'instant $T-1$. Un loup ne peut chasser s'il n'a pas digéré l'énergie métabolique accumulée au bloc précédent. Cette transition n'est pas automatique : elle requiert le calcul d'un <strong>schéma de consensus biochimique et physique interne</strong>. Les transactions ici ne sont <em>pas financières</em> ; elles encodent la libération d'ATP, les échanges d'oxygène, et la réparation cellulaire.
+            </p>
+            <p lang="en">
+                The state of an organism at time $T$ depends mathematically on its state at time $T-1$. A wolf cannot hunt if it has not digested the metabolic energy accumulated in the previous block. This transition is not automatic: it requires the computation of an <strong>internal biochemical and physical consensus schema</strong>. Transactions here are <em>not financial</em>; they encode ATP release, oxygen exchanges, and cellular repair.
+            </p>
+
+            <div class="math-block" style="color: var(--fauna-red); border-color: rgba(255, 51, 102, 0.3); background: rgba(20, 5, 10, 0.8);">
+                $$ \mathbf{S}_{\text{POD}}(T) = f\Big(\mathbf{S}_{\text{POD}}(T-1), \, \sum \text{Tx}_{\text{biochimiques}}, \, \Delta \text{Exergie}\Big) $$
+                <div class="math-legend">
+                    <span lang="fr">Où $\text{Tx}_{\text{biochimiques}}$ représente le registre des opérations métaboliques validées par la monade.</span>
+                    <span lang="en">Where $\text{Tx}_{\text{biochemical}}$ represents the ledger of metabolic operations validated by the monad.</span>
+                </div>
+            </div>
+
+            <p lang="fr">
+                Chaque bloc miné par la monade biologique représente une discrétisation formelle de cet état interne. Sans la validation du consensus physique (suffisamment d'énergie entrante pour contrer l'entropie interne), le passage à l'instant $T$ échoue. L'organisme s'effondre.
+            </p>
+            <p lang="en">
+                Every block mined by the biological monad represents a formal discretization of this internal state. Without the validation of the physical consensus (sufficient incoming energy to counter internal entropy), the transition to time $T$ fails. The organism collapses.
+            </p>
+        </div>
+    </details>
+
+    <!-- SECTION 3: FRACTAL BLOCKCHAINS -->
+    <details class="layer-bio">
+        <summary>
+            <span lang="fr">III. Blockchains Fractales et L'Attaque des 51% (Extinction)</span>
+            <span lang="en">III. Fractal Blockchains and The 51% Attack (Extinction)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">
+                C'est ici que l'architecture devient radicale : <strong>l'intrication des blockchains</strong>[cite: 2]. Le Grand Livre n'est pas qu'une macro-structure humaine. <em>Chaque oiseau, chaque baleine, chaque forêt</em> est un nœud autonome opérant sa propre blockchain à Preuve de Travail Écologique (PoEW)[cite: 2].
+            </p>
+            <p lang="en">
+                This is where the architecture becomes radical: <strong>the entanglement of blockchains</strong>[cite: 2]. The Ledger is not just a human macro-structure. <em>Every bird, every whale, every forest</em> is an autonomous node operating its own Ecological Proof of Work (PoEW) blockchain[cite: 2].
+            </p>
+
+            <h4 style="color: var(--bio-green);"><span lang="fr">Le Monopole de l'Exergie : L'Attaque Écologique des 51%</span><span lang="en">The Exergy Monopoly: The Ecological 51% Attack</span></h4>
+            <p lang="fr">
+                La "difficulté" de minage d'un organisme correspond à la quantité d'effort thermodynamique qu'il doit fournir pour trouver des ressources. Lorsqu'un acteur lourd, comme l'industrie humaine, interagit avec l'environnement et accapare massivement l'exergie du système Terre, il diffuse une transaction qui altère le Mega-POD global.
+            </p>
+            <p lang="en">
+                The mining "difficulty" of an organism corresponds to the amount of thermodynamic effort it must expend to find resources. When a heavy actor, like human industry, interacts with the environment and massively monopolizes the exergy of the Earth system, it broadcasts a transaction that alters the global Mega-POD.
+            </p>
+            <p lang="fr">
+                Cette action <strong>augmente brutalement la difficulté de minage</strong> pour les nœuds biologiques dépendants. Si le réseau humain siphonne plus de 51% de l'exergie ou de la matière nécessaire au biome local (déforestation, assèchement), la structure thermodynamique animale ou végétale subit une <strong>attaque des 51%</strong> pure. 
+                Pour la chaîne de l'individu, l'impossibilité de valider le bloc suivant entraîne la mort. Si cette attaque des 51% a lieu pour la chaîne consolidée de l'espèce entière, le résultat est un "Chain Halt" systémique : <strong>l'extinction définitive de l'espèce</strong>.
+            </p>
+            <p lang="en">
+                This action <strong>brutally spikes the mining difficulty</strong> for dependent biological nodes. If the human network siphons more than 51% of the exergy or matter necessary for the local biome (deforestation, drainage), the animal or vegetal thermodynamic structure suffers a pure <strong>51% attack</strong>. 
+                For the individual's chain, the inability to validate the next block results in death. If this 51% attack occurs on the consolidated chain of the entire species, the result is a systemic "Chain Halt": <strong>the definitive extinction of the species</strong>.
+            </p>
+
+            <div class="math-block" style="color: var(--bio-green); border-color: rgba(0, 255, 102, 0.3); background: rgba(5, 15, 5, 0.8);">
+                $$ \text{Bloc}_{\text{Humain}} [\text{Monopole Exergétique}] \xrightarrow{\text{Difficulté} \to \infty} \text{Blockchain}_{\text{Espèce}} [\text{Attaque 51\%} = \text{Extinction}] $$
+            </div>
+        </div>
+    </details>
+
+    <!-- SECTION 4: COGENERATION & SYMBIOSIS -->
+    <details class="layer-cog">
+        <summary>
+            <span lang="fr">IV. Symbiose : Cogénération, Exergie Utile et Modèles MARL</span>
+            <span lang="en">IV. Symbiosis: Cogeneration, Useful Exergy and MARL Models</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">
+                La preuve de travail cryptographique sert à sécuriser la <strong>Noosphère</strong> (le réseau de l'information humaine). La preuve de travail écologique sert à sécuriser la <strong>Biosphère</strong> (la matrice matérielle de la Terre). <strong>Comment réconcilier informatiquement et physiquement les deux registres pour éviter l'extinction ?</strong>
+            </p>
+            <p lang="en">
+                Cryptographic proof of work serves to secure the <strong>Noosphere</strong> (the human information network). Ecological proof of work serves to secure the <strong>Biosphere</strong> (the material matrix of the Earth). <strong>How do we computationally and physically reconcile both ledgers to prevent extinction?</strong>
+            </p>
+
+            <h4 style="color: var(--cogeneration);"><span lang="fr">L'Injection Thermodynamique Souterraine (Cogénération)</span><span lang="en">The Subterranean Thermodynamic Injection (Cogeneration)</span></h4>
+            <p lang="fr">
+                Dans le code interactif de la simulation Web Of Life, la méthode de calcul humain ne se contente plus de dissiper de l'énergie électrique en pure perte cosmique[cite: 1]. La majeure partie du travail computationnel dégradé se transforme en chaleur fatale exploitable. Le certificat d'exergie utile issu du minage doit être obligatoirement couplé à la cogénération pour garantir la <strong>symbiose absolue entre l'Esprit et le Corps de la Terre</strong>.
+            </p>
+            <p lang="en">
+                In the interactive Web Of Life simulation code, the human computation method no longer just dissipates electrical energy as a pure cosmic loss[cite: 1]. The bulk of the degraded computational work transforms into exploitable waste heat. The useful exergy certificate coming from mining must be mandatorily coupled with cogeneration to ensure <strong>absolute symbiosis between the Mind and the Body of the Earth</strong>.
+            </p>
+
+            <div class="quote-block" style="border-left-color: var(--cogeneration); background: rgba(255, 85, 0, 0.05); box-shadow: inset 20px 0 20px -20px rgba(255, 85, 0, 0.2);">
+                <span lang="fr">L'échappement computationnel de la Noosphère réchauffe directement le sol de la Biosphère. Le système racine cryptographique nourrit le Mega-POD. L'extraction asymétrique (l'attaque des 51%) cède la place à une boucle d'ingénierie fermée et régénératrice.</span>
+                <span lang="en">The computational exhaust of the Noosphere directly warms the soil of the Biosphere. The cryptographic root system feeds the Mega-POD. Asymmetric extraction (the 51% attack) gives way to a closed, regenerative engineering loop.</span>
+            </div>
+
+            <p lang="fr">
+                Une méthode de routage (<code>routeCogenerationHeat</code>) achemine virtuellement cette chaleur vers des nœuds <code>GeoBiomePOD</code> (illustrant des serres, la désalinisation de l'eau, ou la stimulation de réseaux mycorhiziens)[cite: 1, 2]. Cet apport thermique massif agit comme une subvention biophysique qui <strong>abaisse activement la difficulté de survie</strong> des espèces biologiques locales. Ce flux vital symbiotique est visualisé par les paquets de données <strong style="color: var(--cogeneration);">oranges incandescents</strong> pulsant sur la toile géométrique du canvas[cite: 1].
+            </p>
+            <p lang="en">
+                A routing method (<code>routeCogenerationHeat</code>) virtually channels this heat to <code>GeoBiomePOD</code> nodes (illustrating greenhouses, water desalination, or the stimulation of mycorrhizal networks)[cite: 1, 2]. This massive thermal input acts as a biophysical subsidy that <strong>actively lowers the survival difficulty</strong> of local biological species. This symbiotic vital flow is visualized by the <strong style="color: var(--cogeneration);">glowing orange</strong> data packets pulsing across the geometric canvas web[cite: 1].
+            </p>
+
+            <h4 style="color: var(--cogeneration);"><span lang="fr">Objectif Symbiotique de l'IA (Fonction MARL)</span><span lang="en">AI Symbiotic Objective (MARL Function)</span></h4>
+            <p lang="fr">
+                L'évolution ultime du projet est le pontage avec les environnements d'apprentissage par renforcement multi-agents (MARL)[cite: 2]. Les IA régulent l'allocation globale des ressources $\mathbf{u}(t)$[cite: 2]. L'objectif des agents n'est plus de maximiser la simple croissance économique (qui provoque inévitablement l'extinction des chaînes biologiques), mais d'optimiser une véritable <strong>Fonction d'Objectif Symbiotique</strong> :
+            </p>
+            <p lang="en">
+                The ultimate evolution of the project is bridging with Multi-Agent Reinforcement Learning (MARL) environments[cite: 2]. AIs regulate global resource allocation $\mathbf{u}(t)$[cite: 2]. The agents' goal is no longer to maximize simple economic growth (which inevitably causes the extinction of biological chains), but to optimize a true <strong>Symbiotic Objective Function</strong>:
+            </p>
+
+            <ul>
+                <li><span lang="fr">$\mathcal{W}_{\text{human}}$ : Le bien-être humain global, incluant la santé de l'énergie distribuée et l'accès à l'eau[cite: 2].</span><span lang="en">$\mathcal{W}_{\text{human}}$: Global human wellbeing, including distributed energy health and access to water[cite: 2].</span></li>
+                <li><span lang="fr">$\mathcal{B}_{\text{biodiversity}}$ : La diversité biosphérique, quantifiée par l'absence totale d'extinctions systémiques et de Chain Halts[cite: 2].</span><span lang="en">$\mathcal{B}_{\text{biodiversity}}$: Biospheric diversity, quantified by the absolute absence of systemic extinctions and Chain Halts[cite: 2].</span></li>
+                <li><span lang="fr">$\mathcal{E}_{\text{explorability}}$ : L'explorabilité spatiale et technologique[cite: 2].</span><span lang="en">$\mathcal{E}_{\text{explorability}}$: Spatial and technological explorability[cite: 2].</span></li>
+            </ul>
+
+            <div class="math-block" style="color: var(--cogeneration); border-color: rgba(255, 85, 0, 0.3); background: rgba(20, 10, 0, 0.8);">
+                $$ \max_{\mathbf{u}(t)} \int_{0}^{\infty} e^{-\gamma t} \left( \mathcal{W}_{\text{human}}(t) \times \mathcal{B}_{\text{biodiversity}}(t) \times \mathcal{E}_{\text{explorability}}(t) \right) dt $$
+            </div>
+            
+            <p lang="fr" style="text-align: center; color: #aab1b8; font-size: 0.95rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
+                <em>Toute itération d'agent générant une destruction d'exergie excessive ($\dot{I} > 0$) causant un début d'attaque des 51% écologique est lourdement pénalisée par l'environnement[cite: 2]. L'IA est mathématiquement alignée sur la thermodynamique terrestre.</em>
+            </p>
+            <p lang="en" style="text-align: center; color: #aab1b8; font-size: 0.95rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
+                <em>Any agent iteration generating excessive exergy destruction ($\dot{I} > 0$) causing an incipient ecological 51% attack is heavily penalized by the environment[cite: 2]. The AI is mathematically aligned with Earth's thermodynamics.</em>
+            </p>
+
+        </div>
+    </details>
+
+    <div style="text-align: center; margin: 5rem 0 2rem; padding: 3rem 2rem; border-top: 1px solid rgba(0, 225, 255, 0.4); border-bottom: 1px solid rgba(255, 85, 0, 0.4); background: linear-gradient(180deg, rgba(0, 225, 255, 0.08) 0%, rgba(255, 85, 0, 0.08) 100%); border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+        <h2 style="font-family: var(--font-ui); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: #fff; line-height: 1.6; text-transform: uppercase; letter-spacing: 2px; margin: 0;">
+            <span lang="fr">
+                <span style="color: var(--human-cyan); text-shadow: 0 0 25px rgba(0, 225, 255, 0.5);">L'imaginaire trace la carte de la Noosphère,</span><br>
+                <span style="color: var(--cogeneration); text-shadow: 0 0 25px rgba(255, 85, 0, 0.5);">La thermodynamique sécurise la Biosphère.</span>
+            </span>
+            <span lang="en">
+                <span style="color: var(--human-cyan); text-shadow: 0 0 25px rgba(0, 225, 255, 0.5);">Imagination draws the map of the Noosphere,</span><br>
+                <span style="color: var(--cogeneration); text-shadow: 0 0 25px rgba(255, 85, 0, 0.5);">Thermodynamics secures the Biosphere.</span>
+            </span>
+        </h2>
+    </div>
+
+</article>
+
+<footer>
+    <div style="font-size: 1.15rem; font-weight: 800; letter-spacing: 5px; color: var(--human-cyan); margin-bottom: 0.8rem;">
+        ☀ THE SUN STANDARD · LA TOILE DE LA VIE
+    </div>
+    <p>Pascal Ranoroarijaona · 2026</p>
+</footer>
+
+<script>
+    // Lang switch logic
+    function setLang(lang) {
+        lang = lang.toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
+        document.body.className = 'lang-' + lang;
+        localStorage.setItem('sun-std-lang', lang);
+        const url = new URL(window.location);
+        url.searchParams.set('lg', lang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'fr');
+        setLang(savedLang);
+    });
+
+    // Auto-open details on click (UX)
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a[href^='#det-']");
+        links.forEach(link => {
+            link.addEventListener("click", function(e) {
+                const targetId = this.getAttribute("href").substring(1);
+                const targetDetails = document.getElementById(targetId);
+                if (targetDetails && !targetDetails.hasAttribute("open")) {
+                    targetDetails.setAttribute("open", "");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
