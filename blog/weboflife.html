@@ -239,8 +239,38 @@
             line-height: 1.7;
             margin-bottom: 0;
         }
+        /* Navigation Cards */
+        .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.5rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-5px); }
+        .nav-direction { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.2rem; font-weight: 800; color: var(--sun-orange); margin: 0.8rem 0; font-family: var(--font-ui); }
 
-        footer { font-family: var(--font-ui); text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;}
+        /* Section Auteur & Ressources */
+        .author-section {
+            margin: 4rem auto; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2); border-top: 4px solid var(--purple-l4);
+            border-radius: 12px;
+        }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .resource-card {
+            display: block; padding: 1.2rem; background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--stone-grey); border-radius: 8px; text-decoration: none; transition: all 0.3s;
+        }
+        .resource-card:hover { border-color: var(--purple-l4); transform: translateY(-2px); }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .nav-center { display: none; }
+            .article-navigation { flex-direction: column; }
+            .pyramid-tier { width: 100% !important; }
+            .glossary-table { display: block; overflow-x: auto; }
+        }
     </style>
 </head>
 <body class="lang-fr">
@@ -311,29 +341,29 @@
         </summary>
         <div class="drawer-content">
             <p lang="fr">
-                Le projet <strong>La Toile de la Vie</strong> (Web of Life) refuse de modéliser la nature comme un simple décor de fond passif. La Terre est architecturée comme une structure thermodynamique stricte à énergie ouverte et matière finie : un <strong>Mega-POD</strong>[cite: 1, 2]. Le socle absolu du projet est le principe d'unification : chaque cycle biogéochimique (Carbon, Water, Nitrogen), chaque système géologique et chaque organisme vivant (humain inclus) est modélisé sous la classe racine abstraite <code>ThermodynamicStructure</code>[cite: 2]. 
+                Le projet <strong>La Toile de la Vie</strong> (Web of Life) refuse de modéliser la nature comme un simple décor de fond passif. La Terre est architecturée comme une structure thermodynamique stricte à énergie ouverte et matière finie : un <strong>Mega-POD</strong>. Le socle absolu du projet est le principe d'unification : chaque cycle biogéochimique (Carbon, Water, Nitrogen), chaque système géologique et chaque organisme vivant (humain inclus) est modélisé sous la classe racine abstraite <code>ThermodynamicStructure</code>. 
             </p>
             <p lang="en">
-                The <strong>Web of Life</strong> project refuses to model nature as mere passive background scenery. The Earth is architected as a strict open-energy, finite-matter thermodynamic structure: a <strong>Mega-POD</strong>[cite: 1, 2]. The absolute foundation of the project is the unifying principle: every biogeochemical cycle (Carbon, Water, Nitrogen), geological system, and living organism (human included) is modeled under the abstract root class <code>ThermodynamicStructure</code>[cite: 2].
+                The <strong>Web of Life</strong> project refuses to model nature as mere passive background scenery. The Earth is architected as a strict open-energy, finite-matter thermodynamic structure: a <strong>Mega-POD</strong>. The absolute foundation of the project is the unifying principle: every biogeochemical cycle (Carbon, Water, Nitrogen), geological system, and living organism (human included) is modeled under the abstract root class <code>ThermodynamicStructure</code>.
             </p>
             
             <p lang="fr">
-                Ce qui différencie une fougère d'une ferme de minage n'est pas sa nature fondamentale, mais son implémentation de trois opérations algorithmiques critiques : <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, et <code>maintainFarFromEquilibrium(t)</code>[cite: 2]. À l'intérieur du Mega-POD terrestre, chaque organisme dispose de méthodes programmatiques strictes pour interagir avec son environnement, puiser de l'énergie et rejeter sa chaleur résiduelle[cite: 1, 2]. L'architecture logicielle s'appuie également sur la grille spatiale hexagonale <strong>Uber H3</strong> pour indexer géographiquement la Terre en <code>GeoBiomePOD</code> et exécuter un routage tensoriel complexe des flux de matière et d'énergie ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$)[cite: 2].
+                Ce qui différencie une fougère d'une ferme de minage n'est pas sa nature fondamentale, mais son implémentation de trois opérations algorithmiques critiques : <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, et <code>maintainFarFromEquilibrium(t)</code>. À l'intérieur du Mega-POD terrestre, chaque organisme dispose de méthodes programmatiques strictes pour interagir avec son environnement, puiser de l'énergie et rejeter sa chaleur résiduelle. L'architecture logicielle s'appuie également sur la grille spatiale hexagonale <strong>Uber H3</strong> pour indexer géographiquement la Terre en <code>GeoBiomePOD</code> et exécuter un routage tensoriel complexe des flux de matière et d'énergie ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$).
             </p>
             <p lang="en">
-                What differentiates a fern from a mining farm is not its fundamental nature, but its implementation of three critical algorithmic operations: <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, and <code>maintainFarFromEquilibrium(t)</code>[cite: 2]. Inside the terrestrial Mega-POD, each organism has strict programmatic methods to interact with its environment, draw energy, and reject its waste heat[cite: 1, 2]. The software architecture also relies on the <strong>Uber H3</strong> hexagonal spatial grid to geographically index the Earth into <code>GeoBiomePOD</code>s and execute complex tensor routing of matter and energy fluxes ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$)[cite: 2].
+                What differentiates a fern from a mining farm is not its fundamental nature, but its implementation of three critical algorithmic operations: <code>importFreeEnergy(t)</code>, <code>exportEntropy(t)</code>, and <code>maintainFarFromEquilibrium(t)</code>. Inside the terrestrial Mega-POD, each organism has strict programmatic methods to interact with its environment, draw energy, and reject its waste heat. The software architecture also relies on the <strong>Uber H3</strong> hexagonal spatial grid to geographically index the Earth into <code>GeoBiomePOD</code>s and execute complex tensor routing of matter and energy fluxes ($\mathbf{J}_{\text{spatial}} = \mathbf{D} \cdot \nabla \mathbf{C}$).
             </p>
 
             <div class="modelling-grid">
                 <div class="model-card">
                     <h4 style="color: var(--sun-yellow);"><span lang="fr">Première Loi (Conservation de Masse)</span><span lang="en">First Law (Mass Conservation)</span></h4>
-                    <p lang="fr">$\Delta \text{Stock}_i = \sum \text{Entrants} - \sum \text{Sortants}$[cite: 2]. La matière ne peut être créée ou détruite dans le Mega-POD. Les audits IA statiques et les middlewares de validation bloquent impitoyablement toute interaction de l'environnement qui violerait l'équilibre stœchiométrique atomique ou les réserves géologiques finies[cite: 2].</p>
-                    <p lang="en">$\Delta \text{Stock}_i = \sum \text{Inbound} - \sum \text{Outbound}$[cite: 2]. Matter cannot be created or destroyed within the Mega-POD. Static AI audits and validation middlewares ruthlessly block any environmental interaction that would violate atomic stoichiometric equilibrium or finite geological reserves[cite: 2].</p>
+                    <p lang="fr">$\Delta \text{Stock}_i = \sum \text{Entrants} - \sum \text{Sortants}$. La matière ne peut être créée ou détruite dans le Mega-POD. Les audits IA statiques et les middlewares de validation bloquent impitoyablement toute interaction de l'environnement qui violerait l'équilibre stœchiométrique atomique ou les réserves géologiques finies.</p>
+                    <p lang="en">$\Delta \text{Stock}_i = \sum \text{Inbound} - \sum \text{Outbound}$. Matter cannot be created or destroyed within the Mega-POD. Static AI audits and validation middlewares ruthlessly block any environmental interaction that would violate atomic stoichiometric equilibrium or finite geological reserves.</p>
                 </div>
                 <div class="model-card">
                     <h4 style="color: var(--sun-yellow);"><span lang="fr">Seconde Loi (Destruction d'Exergie)</span><span lang="en">Second Law (Exergy Destruction)</span></h4>
-                    <p lang="fr">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$[cite: 2]. Toute action, qu'il s'agisse de l'extraction minière humaine (<code>SatoshiHumanMonad</code>) ou de la photosynthèse végétale, dissipe irrémédiablement de la chaleur fatale selon le théorème de Gouy-Stodola[cite: 1, 2]. La nature force la "punition" de l'irréversibilité systémique.</p>
-                    <p lang="en">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$[cite: 2]. Every action, whether human mining extraction (<code>SatoshiHumanMonad</code>) or vegetal photosynthesis, irremediably dissipates fatal heat according to the Gouy-Stodola theorem[cite: 1, 2]. Nature mathematically enforces the "punishment" of systemic irreversibility.</p>
+                    <p lang="fr">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Toute action, qu'il s'agisse de l'extraction minière humaine (<code>SatoshiHumanMonad</code>) ou de la photosynthèse végétale, dissipe irrémédiablement de la chaleur fatale selon le théorème de Gouy-Stodola. La nature force la "punition" de l'irréversibilité systémique.</p>
+                    <p lang="en">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Every action, whether human mining extraction (<code>SatoshiHumanMonad</code>) or vegetal photosynthesis, irremediably dissipates fatal heat according to the Gouy-Stodola theorem. Nature mathematically enforces the "punishment" of systemic irreversibility.</p>
                 </div>
             </div>
         </div>
@@ -347,10 +377,10 @@
         </summary>
         <div class="drawer-content">
             <p lang="fr">
-                Pour qu'un système complexe vivant puisse être modélisé non pas comme un continuum flou, mais comme une suite d'états validés, la Toile de la Vie introduit le concept de <strong>discrétisation de l'état interne</strong>. Chaque organisme vivant est représenté par une structure de données (POD) qui n'évolue que par "pas" (ticks)[cite: 1, 2].
+                Pour qu'un système complexe vivant puisse être modélisé non pas comme un continuum flou, mais comme une suite d'états validés, la Toile de la Vie introduit le concept de <strong>discrétisation de l'état interne</strong>. Chaque organisme vivant est représenté par une structure de données (POD) qui n'évolue que par "pas" (ticks).
             </p>
             <p lang="en">
-                For a complex living system to be modeled not as a blurry continuum, but as a sequence of validated states, the Web of Life introduces the concept of <strong>internal state discretization</strong>. Every living organism is represented by a data structure (POD) that only evolves in "steps" (ticks)[cite: 1, 2].
+                For a complex living system to be modeled not as a blurry continuum, but as a sequence of validated states, the Web of Life introduces the concept of <strong>internal state discretization</strong>. Every living organism is represented by a data structure (POD) that only evolves in "steps" (ticks).
             </p>
 
             <h4 style="color: var(--fauna-red);"><span lang="fr">L'Équation de Transition d'État ($T$ vs $T-1$)</span><span lang="en">The State Transition Equation ($T$ vs $T-1$)</span></h4>
@@ -386,10 +416,10 @@
         </summary>
         <div class="drawer-content">
             <p lang="fr">
-                C'est ici que l'architecture devient radicale : <strong>l'intrication des blockchains</strong>[cite: 2]. Le Grand Livre n'est pas qu'une macro-structure humaine. <em>Chaque oiseau, chaque baleine, chaque forêt</em> est un nœud autonome opérant sa propre blockchain à Preuve de Travail Écologique (PoEW)[cite: 2].
+                C'est ici que l'architecture devient radicale : <strong>l'intrication des blockchains</strong>. Le Grand Livre n'est pas qu'une macro-structure humaine. <em>Chaque oiseau, chaque baleine, chaque forêt</em> est un nœud autonome opérant sa propre blockchain à Preuve de Travail Écologique (PoEW).
             </p>
             <p lang="en">
-                This is where the architecture becomes radical: <strong>the entanglement of blockchains</strong>[cite: 2]. The Ledger is not just a human macro-structure. <em>Every bird, every whale, every forest</em> is an autonomous node operating its own Ecological Proof of Work (PoEW) blockchain[cite: 2].
+                This is where the architecture becomes radical: <strong>the entanglement of blockchains</strong>. The Ledger is not just a human macro-structure. <em>Every bird, every whale, every forest</em> is an autonomous node operating its own Ecological Proof of Work (PoEW) blockchain.
             </p>
 
             <h4 style="color: var(--bio-green);"><span lang="fr">Le Monopole de l'Exergie : L'Attaque Écologique des 51%</span><span lang="en">The Exergy Monopoly: The Ecological 51% Attack</span></h4>
@@ -430,10 +460,10 @@
 
             <h4 style="color: var(--cogeneration);"><span lang="fr">L'Injection Thermodynamique Souterraine (Cogénération)</span><span lang="en">The Subterranean Thermodynamic Injection (Cogeneration)</span></h4>
             <p lang="fr">
-                Dans le code interactif de la simulation Web Of Life, la méthode de calcul humain ne se contente plus de dissiper de l'énergie électrique en pure perte cosmique[cite: 1]. La majeure partie du travail computationnel dégradé se transforme en chaleur fatale exploitable. Le certificat d'exergie utile issu du minage doit être obligatoirement couplé à la cogénération pour garantir la <strong>symbiose absolue entre l'Esprit et le Corps de la Terre</strong>.
+                Dans le code interactif de la simulation Web Of Life, la méthode de calcul humain ne se contente plus de dissiper de l'énergie électrique en pure perte cosmique. La majeure partie du travail computationnel dégradé se transforme en chaleur fatale exploitable. Le certificat d'exergie utile issu du minage doit être obligatoirement couplé à la cogénération pour garantir la <strong>symbiose absolue entre l'Esprit et le Corps de la Terre</strong>.
             </p>
             <p lang="en">
-                In the interactive Web Of Life simulation code, the human computation method no longer just dissipates electrical energy as a pure cosmic loss[cite: 1]. The bulk of the degraded computational work transforms into exploitable waste heat. The useful exergy certificate coming from mining must be mandatorily coupled with cogeneration to ensure <strong>absolute symbiosis between the Mind and the Body of the Earth</strong>.
+                In the interactive Web Of Life simulation code, the human computation method no longer just dissipates electrical energy as a pure cosmic loss. The bulk of the degraded computational work transforms into exploitable waste heat. The useful exergy certificate coming from mining must be mandatorily coupled with cogeneration to ensure <strong>absolute symbiosis between the Mind and the Body of the Earth</strong>.
             </p>
 
             <div class="quote-block" style="border-left-color: var(--cogeneration); background: rgba(255, 85, 0, 0.05); box-shadow: inset 20px 0 20px -20px rgba(255, 85, 0, 0.2);">
@@ -442,24 +472,24 @@
             </div>
 
             <p lang="fr">
-                Une méthode de routage (<code>routeCogenerationHeat</code>) achemine virtuellement cette chaleur vers des nœuds <code>GeoBiomePOD</code> (illustrant des serres, la désalinisation de l'eau, ou la stimulation de réseaux mycorhiziens)[cite: 1, 2]. Cet apport thermique massif agit comme une subvention biophysique qui <strong>abaisse activement la difficulté de survie</strong> des espèces biologiques locales. Ce flux vital symbiotique est visualisé par les paquets de données <strong style="color: var(--cogeneration);">oranges incandescents</strong> pulsant sur la toile géométrique du canvas[cite: 1].
+                Une méthode de routage (<code>routeCogenerationHeat</code>) achemine virtuellement cette chaleur vers des nœuds <code>GeoBiomePOD</code> (illustrant des serres, la désalinisation de l'eau, ou la stimulation de réseaux mycorhiziens). Cet apport thermique massif agit comme une subvention biophysique qui <strong>abaisse activement la difficulté de survie</strong> des espèces biologiques locales. Ce flux vital symbiotique est visualisé par les paquets de données <strong style="color: var(--cogeneration);">oranges incandescents</strong> pulsant sur la toile géométrique du canvas.
             </p>
             <p lang="en">
-                A routing method (<code>routeCogenerationHeat</code>) virtually channels this heat to <code>GeoBiomePOD</code> nodes (illustrating greenhouses, water desalination, or the stimulation of mycorrhizal networks)[cite: 1, 2]. This massive thermal input acts as a biophysical subsidy that <strong>actively lowers the survival difficulty</strong> of local biological species. This symbiotic vital flow is visualized by the <strong style="color: var(--cogeneration);">glowing orange</strong> data packets pulsing across the geometric canvas web[cite: 1].
+                A routing method (<code>routeCogenerationHeat</code>) virtually channels this heat to <code>GeoBiomePOD</code> nodes (illustrating greenhouses, water desalination, or the stimulation of mycorrhizal networks). This massive thermal input acts as a biophysical subsidy that <strong>actively lowers the survival difficulty</strong> of local biological species. This symbiotic vital flow is visualized by the <strong style="color: var(--cogeneration);">glowing orange</strong> data packets pulsing across the geometric canvas web.
             </p>
 
             <h4 style="color: var(--cogeneration);"><span lang="fr">Objectif Symbiotique de l'IA (Fonction MARL)</span><span lang="en">AI Symbiotic Objective (MARL Function)</span></h4>
             <p lang="fr">
-                L'évolution ultime du projet est le pontage avec les environnements d'apprentissage par renforcement multi-agents (MARL)[cite: 2]. Les IA régulent l'allocation globale des ressources $\mathbf{u}(t)$[cite: 2]. L'objectif des agents n'est plus de maximiser la simple croissance économique (qui provoque inévitablement l'extinction des chaînes biologiques), mais d'optimiser une véritable <strong>Fonction d'Objectif Symbiotique</strong> :
+                L'évolution ultime du projet est le pontage avec les environnements d'apprentissage par renforcement multi-agents (MARL). Les IA régulent l'allocation globale des ressources $\mathbf{u}(t)$. L'objectif des agents n'est plus de maximiser la simple croissance économique (qui provoque inévitablement l'extinction des chaînes biologiques), mais d'optimiser une véritable <strong>Fonction d'Objectif Symbiotique</strong> :
             </p>
             <p lang="en">
-                The ultimate evolution of the project is bridging with Multi-Agent Reinforcement Learning (MARL) environments[cite: 2]. AIs regulate global resource allocation $\mathbf{u}(t)$[cite: 2]. The agents' goal is no longer to maximize simple economic growth (which inevitably causes the extinction of biological chains), but to optimize a true <strong>Symbiotic Objective Function</strong>:
+                The ultimate evolution of the project is bridging with Multi-Agent Reinforcement Learning (MARL) environments. AIs regulate global resource allocation $\mathbf{u}(t)$. The agents' goal is no longer to maximize simple economic growth (which inevitably causes the extinction of biological chains), but to optimize a true <strong>Symbiotic Objective Function</strong>:
             </p>
 
             <ul>
-                <li><span lang="fr">$\mathcal{W}_{\text{human}}$ : Le bien-être humain global, incluant la santé de l'énergie distribuée et l'accès à l'eau[cite: 2].</span><span lang="en">$\mathcal{W}_{\text{human}}$: Global human wellbeing, including distributed energy health and access to water[cite: 2].</span></li>
-                <li><span lang="fr">$\mathcal{B}_{\text{biodiversity}}$ : La diversité biosphérique, quantifiée par l'absence totale d'extinctions systémiques et de Chain Halts[cite: 2].</span><span lang="en">$\mathcal{B}_{\text{biodiversity}}$: Biospheric diversity, quantified by the absolute absence of systemic extinctions and Chain Halts[cite: 2].</span></li>
-                <li><span lang="fr">$\mathcal{E}_{\text{explorability}}$ : L'explorabilité spatiale et technologique[cite: 2].</span><span lang="en">$\mathcal{E}_{\text{explorability}}$: Spatial and technological explorability[cite: 2].</span></li>
+                <li><span lang="fr">$\mathcal{W}_{\text{human}}$ : Le bien-être humain global, incluant la santé de l'énergie distribuée et l'accès à l'eau.</span><span lang="en">$\mathcal{W}_{\text{human}}$: Global human wellbeing, including distributed energy health and access to water.</span></li>
+                <li><span lang="fr">$\mathcal{B}_{\text{biodiversity}}$ : La diversité biosphérique, quantifiée par l'absence totale d'extinctions systémiques et de Chain Halts.</span><span lang="en">$\mathcal{B}_{\text{biodiversity}}$: Biospheric diversity, quantified by the absolute absence of systemic extinctions and Chain Halts.</span></li>
+                <li><span lang="fr">$\mathcal{E}_{\text{explorability}}$ : L'explorabilité spatiale et technologique.</span><span lang="en">$\mathcal{E}_{\text{explorability}}$: Spatial and technological explorability.</span></li>
             </ul>
 
             <div class="math-block" style="color: var(--cogeneration); border-color: rgba(255, 85, 0, 0.3); background: rgba(20, 10, 0, 0.8);">
@@ -467,10 +497,10 @@
             </div>
             
             <p lang="fr" style="text-align: center; color: #aab1b8; font-size: 0.95rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
-                <em>Toute itération d'agent générant une destruction d'exergie excessive ($\dot{I} > 0$) causant un début d'attaque des 51% écologique est lourdement pénalisée par l'environnement[cite: 2]. L'IA est mathématiquement alignée sur la thermodynamique terrestre.</em>
+                <em>Toute itération d'agent générant une destruction d'exergie excessive ($\dot{I} > 0$) causant un début d'attaque des 51% écologique est lourdement pénalisée par l'environnement. L'IA est mathématiquement alignée sur la thermodynamique terrestre.</em>
             </p>
             <p lang="en" style="text-align: center; color: #aab1b8; font-size: 0.95rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
-                <em>Any agent iteration generating excessive exergy destruction ($\dot{I} > 0$) causing an incipient ecological 51% attack is heavily penalized by the environment[cite: 2]. The AI is mathematically aligned with Earth's thermodynamics.</em>
+                <em>Any agent iteration generating excessive exergy destruction ($\dot{I} > 0$) causing an incipient ecological 51% attack is heavily penalized by the environment. The AI is mathematically aligned with Earth's thermodynamics.</em>
             </p>
 
         </div>
@@ -488,7 +518,62 @@
             </span>
         </h2>
     </div>
+<!-- NAVIGATION ENTRE ARTICLES -->
+    <div class="article-navigation">
+        <a href="horizon-zero-2044.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">La Matrice Inversée</span><span lang="en">The Inverted Matrix</span></div>
+            <img src="img/HorizonZero.jpg" alt="Matrice Inversée" style="width:100%; max-width:280px; border-radius:6px;">
+        </a>
+    </div>
 
+    <!-- SECTION AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+            <div style="font-size:3rem;">☀️🧬🛡️</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; font-family:var(--font-ui); margin:0;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#a0aab5; font-size:0.95rem; margin-top:0.3rem;">
+                    <span lang="fr">Chercheur indépendant en éconophysique, cybernétique planétaire et intelligence distribuée.</span>
+                    <span lang="en">Independent researcher in econophysics, planetary cybernetics, and distributed intelligence.</span>
+                </p>
+            </div>
+        </div>
+
+        <div style="color:var(--sun-yellow); font-family:var(--font-ui); font-size:1.1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">
+            <span lang="fr">Ressources & Projets Liés</span><span lang="en">Related Resources & Projects</span>
+        </div>
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Monétisation de l'entropie et thermodynamique économique appliquée.</span>
+                    <span lang="en">Entropy monetization and applied economic thermodynamics.</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
+                <h4 style="color:var(--cyan-l2);">👁️ Trinity Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Intégrité de l'information et signature de provenance (SHA-256 + Nostr + OTS).</span>
+                    <span lang="en">Information integrity and provenance signing protocol (SHA-256 + Nostr + OTS).</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌿 Wellbeing Framework</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">L'Unité de Bien-Être (WU) pour transcender les métriques obsolètes du PIB.</span>
+                    <span lang="en">The Wellbeing Unit (WU) framework to transcend obsolete GDP metrics.</span>
+                </p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" class="resource-card">
+                <h4 style="color:var(--magenta-l3);">⚙️ Sufficiency Protocol</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Comptabilité écologique et limites planétaires adossées au Proof-of-Work.</span>
+                    <span lang="en">Ecological accounting and planetary boundaries anchored to Proof-of-Work.</span>
+                </p>
+            </a>
+        </div>
+    </div>
 </article>
 
 <footer>

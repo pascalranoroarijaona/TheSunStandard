@@ -1,0 +1,447 @@
+[33m4704662[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: commit: New Version
+[33m693b0b4[m HEAD@{1}: reset: moving to HEAD~100
+[33m344d76f[m HEAD@{2}: commit: New Version
+[33mf827408[m HEAD@{3}: commit: Few minor fixes
+[33me2728a7[m HEAD@{4}: commit: Few minor fixes
+[33m569695a[m HEAD@{5}: commit: Few minor fixes
+[33mac93260[m HEAD@{6}: commit: Few minor fixes
+[33mc03fdbd[m HEAD@{7}: pull: Fast-forward
+[33m0ab0b3a[m HEAD@{8}: commit: Few minor fixes
+[33m212d735[m HEAD@{9}: commit: Theory of Value
+[33m8336f86[m HEAD@{10}: commit: Chat Bot AI Integration
+[33mb6e32fd[m HEAD@{11}: commit: Few Minor Update
+[33m9785763[m HEAD@{12}: commit: Hardening Security
+[33m9e4515c[m HEAD@{13}: commit: HorizonZero2044 Update
+[33m03afee4[m HEAD@{14}: commit: HorizonZero2044 Update
+[33m9e9d8f5[m HEAD@{15}: commit: HorizonZero2044 Update
+[33me451276[m HEAD@{16}: commit: HorizonZero2044 Update
+[33m7ca924b[m HEAD@{17}: commit: Few Minor Update
+[33m5abcfbe[m HEAD@{18}: commit: Hardening Security
+[33mf4bf120[m HEAD@{19}: commit: HorizonZero2044 Update
+[33mb6e5698[m HEAD@{20}: commit: HorizonZero2044 Update
+[33m2c7b5f6[m HEAD@{21}: commit: HorizonZero2044 Update
+[33m21f7976[m HEAD@{22}: commit: Hardening Security
+[33m0761b34[m HEAD@{23}: commit: Few Minor Update
+[33mc9366bf[m HEAD@{24}: commit: Chat Bot AI Integration
+[33m76ccf3b[m HEAD@{25}: commit: Theory of Value
+[33mfd7dc7e[m HEAD@{26}: commit: Theory of Value
+[33mab9a6a5[m HEAD@{27}: commit: Theory of Value
+[33md5c83a2[m HEAD@{28}: commit: Extension Essay
+[33m0c86d34[m HEAD@{29}: commit: Extension Essay
+[33m2ad7d67[m HEAD@{30}: commit: Extension Essay
+[33md25c2e8[m HEAD@{31}: commit: Extension Essay
+[33md5a53b8[m HEAD@{32}: commit: Extension Essay
+[33m0d5899e[m HEAD@{33}: commit: Extension Essay
+[33m952309a[m HEAD@{34}: commit: Extension Essay
+[33m41ceab1[m HEAD@{35}: commit: Extension Essay
+[33ma3d01dc[m HEAD@{36}: commit: Extension Essay
+[33m7e5b9d6[m HEAD@{37}: commit: Extension Essay
+[33me8a86fa[m HEAD@{38}: commit: Extension Essay
+[33m2f536de[m HEAD@{39}: commit: New Blog article
+[33mbd033f0[m HEAD@{40}: commit: New Blog article
+[33me31f533[m HEAD@{41}: commit: New Blog article
+[33m92330d6[m HEAD@{42}: commit: New Blog article
+[33m02cbfe5[m HEAD@{43}: commit: Extension Essay
+[33m644a37b[m HEAD@{44}: commit: Extension Essay
+[33m34e46b3[m HEAD@{45}: commit: Index Page
+[33m5e4ac7a[m HEAD@{46}: commit: Index Page
+[33mea971e9[m HEAD@{47}: commit: New Blog article
+[33mcc871ad[m HEAD@{48}: commit: New Blog article
+[33m96a3105[m HEAD@{49}: commit: Extension Essay
+[33m3577500[m HEAD@{50}: commit: Extension Essay
+[33m471c8d1[m HEAD@{51}: commit: New Blog article
+[33md033eef[m HEAD@{52}: commit: New Blog article
+[33md00eddf[m HEAD@{53}: commit: Extension Essay
+[33m158449e[m HEAD@{54}: commit: Extension Essay
+[33m904e8a7[m HEAD@{55}: commit: Extension Essay
+[33mbec7be4[m HEAD@{56}: commit: Extension Essay
+[33m945f160[m HEAD@{57}: commit: Adding DAA image
+[33md324543[m HEAD@{58}: commit: Adding DAA image
+[33m1d44638[m HEAD@{59}: commit: Extension Essay
+[33m3b93248[m HEAD@{60}: commit: Extension Essay
+[33ma5ca572[m HEAD@{61}: commit: New Blog article
+[33m62ded55[m HEAD@{62}: commit: New Blog article
+[33m7b4f7f0[m HEAD@{63}: commit: New Blog article
+[33me828c44[m HEAD@{64}: commit: New Blog article
+[33mf67d268[m HEAD@{65}: commit: New Blog article
+[33m298736a[m HEAD@{66}: commit: New Blog article
+[33mfa88dee[m HEAD@{67}: commit: New Blog article
+[33m09d8a56[m HEAD@{68}: commit: New Blog article
+[33mb157f78[m HEAD@{69}: commit: New Blog article
+[33m350240f[m HEAD@{70}: commit: New Blog article
+[33m8f945aa[m HEAD@{71}: commit: New Blog article
+[33m81abf25[m HEAD@{72}: commit: New Blog article
+[33md8414de[m HEAD@{73}: commit: New Blog article
+[33m86c56de[m HEAD@{74}: commit: Few Enhancements Index File
+[33m8b868bd[m HEAD@{75}: commit: Few Enhancements Index File
+[33mb04b4d9[m HEAD@{76}: commit: Few Enhancements Index File
+[33m38a750c[m HEAD@{77}: commit: Few Enhancements Index File
+[33m09ac724[m HEAD@{78}: commit: Few Enhancements Index File
+[33m37a0a65[m HEAD@{79}: commit: Few Enhancements Index File
+[33me18241d[m HEAD@{80}: commit: Few Enhancements Index File
+[33md59b2a0[m HEAD@{81}: commit: New PDF Version BitBioLife
+[33m4a01ac1[m HEAD@{82}: commit: New PDF Version BitBioLife
+[33m97d87eb[m HEAD@{83}: commit: Little Fixes - better conclusion
+[33m73fb192[m HEAD@{84}: commit: Little Fixes - better conclusion
+[33mb6f0df2[m HEAD@{85}: commit: Little Fixes - better conclusion
+[33mc81723e[m HEAD@{86}: commit: Little Fixes - better conclusion
+[33m1890d2d[m HEAD@{87}: commit: Little Fixes - better conclusion
+[33mfbc9a3e[m HEAD@{88}: commit: Little Fixes - better conclusion
+[33m7ea3869[m HEAD@{89}: commit: Little Fixes - better conclusion
+[33m6c8f46b[m HEAD@{90}: commit: Little Fixes - better conclusion
+[33m13dc540[m HEAD@{91}: commit: Little Fixes - better conclusion
+[33m0f23ca4[m HEAD@{92}: commit: Little Fixes - better conclusion
+[33ma634e99[m HEAD@{93}: commit: Little Fixes - better conclusion
+[33m878c629[m HEAD@{94}: commit: Little Fixes - better conclusion
+[33m6832674[m HEAD@{95}: commit: Little Fixes - better conclusion
+[33mff3fc9e[m HEAD@{96}: commit: Little Fixes - better conclusion
+[33m0a2d97a[m HEAD@{97}: commit: Little Fixes - better conclusion
+[33m43d6a21[m HEAD@{98}: commit: Little Fixes - better conclusion
+[33m6911e08[m HEAD@{99}: commit: Little Fixes - better conclusion
+[33m970d6fe[m HEAD@{100}: commit: Little Fixes - better conclusion
+[33m363fcec[m HEAD@{101}: commit: Little Fixes - better conclusion
+[33m693b0b4[m HEAD@{102}: commit: Little Fixes - better conclusion
+[33maa2a9c6[m HEAD@{103}: commit: Little Fixes - better conclusion
+[33mb6e3e42[m HEAD@{104}: commit: Little Fixes - better conclusion
+[33mbf3fe80[m HEAD@{105}: commit: Little Fixes - better conclusion
+[33mbbc1dd5[m HEAD@{106}: commit: Little Fixes - better conclusion
+[33m6db738f[m HEAD@{107}: pull: Fast-forward
+[33maa0fae3[m HEAD@{108}: pull: Fast-forward
+[33mcd4eaba[m HEAD@{109}: commit: Little Fixes - better conclusion
+[33m4e04041[m HEAD@{110}: commit: Extending ICI research
+[33m8702bf5[m HEAD@{111}: commit: Extending ICI research
+[33mf197847[m HEAD@{112}: commit: Little Fixes - better conclusion
+[33mb266ae7[m HEAD@{113}: pull: Fast-forward
+[33m0cb4c55[m HEAD@{114}: reset: moving to HEAD
+[33m0cb4c55[m HEAD@{115}: commit: Little Fixes - better conclusion
+[33m9580608[m HEAD@{116}: commit: Little Fixes
+[33m49a663a[m HEAD@{117}: commit: John Nash ICI Reflexion Extend
+[33m33b4da2[m HEAD@{118}: commit: John Nash ICI Reflexion Extend
+[33mcab4e33[m HEAD@{119}: commit: John Nash ICI Reflexion Extend
+[33md361b4f[m HEAD@{120}: commit: John Nash ICI Reflexion Extend
+[33m5a3a28c[m HEAD@{121}: commit: John Nash ICI Reflexion Extend
+[33m1ea5798[m HEAD@{122}: commit: John Nash ICI Reflexion Extend
+[33m7198a14[m HEAD@{123}: commit: John Nash ICI Reflexion Extend
+[33mb02896a[m HEAD@{124}: commit: John Nash ICI Reflexion Extend
+[33mabc3200[m HEAD@{125}: commit: John Nash ICI Reflexion Extend
+[33mea0b8c5[m HEAD@{126}: commit: John Nash ICI Reflexion Extend
+[33m7d6bd9f[m HEAD@{127}: commit: John Nash ICI Reflexion Extend
+[33ma8aead7[m HEAD@{128}: commit: Pacemaker extension
+[33m31879d8[m HEAD@{129}: commit: Pacemaker extension
+[33mb4d82e6[m HEAD@{130}: commit: Pacemaker extension
+[33m2050d1e[m HEAD@{131}: commit: Pacemaker extension
+[33m83a14ae[m HEAD@{132}: commit: Hypermaterialism extension
+[33md766a0c[m HEAD@{133}: commit: Einstein & Monad
+[33m22ac8b4[m HEAD@{134}: commit: Fix of Welcome Page
+[33mc82e0a0[m HEAD@{135}: commit: Fix of Welcome Page
+[33m2796e03[m HEAD@{136}: commit: Fix of Welcome Page
+[33me1ec632[m HEAD@{137}: commit: Dette vs Temperature
+[33m642f7fb[m HEAD@{138}: commit: Fix of Welcome Page
+[33m317d527[m HEAD@{139}: commit: Fix of Welcome Page
+[33ma1ea8c9[m HEAD@{140}: commit: Fix of Welcome Page
+[33m2ce3cc2[m HEAD@{141}: commit: Fix of Welcome Page
+[33mc2a83e4[m HEAD@{142}: commit: New Index Page version
+[33m786fb13[m HEAD@{143}: reset: moving to 786fb13
+[33m498f5d0[m HEAD@{144}: commit: Fix of Welcome Page
+[33m9066af3[m HEAD@{145}: commit: Fix of Welcome Page
+[33m5c82d21[m HEAD@{146}: commit: Fix of Welcome Page
+[33m66bc0fb[m HEAD@{147}: commit: Fix of Welcome Page
+[33mb667db6[m HEAD@{148}: commit: Fix of Welcome Page
+[33m16f36cd[m HEAD@{149}: commit: New Index Enhancements
+[33mefbf60d[m HEAD@{150}: commit: New Index Enhancements
+[33md25c757[m HEAD@{151}: commit: New Index Enhancements
+[33m28bd815[m HEAD@{152}: commit: New Index Enhancements
+[33mdfe1762[m HEAD@{153}: commit: New Index Enhancements
+[33m504bdd2[m HEAD@{154}: commit: New Index Enhancements
+[33m531647e[m HEAD@{155}: commit: New Index Enhancements
+[33m76fecbd[m HEAD@{156}: commit: New Index Enhancements
+[33mc8a6b52[m HEAD@{157}: commit: New Index Enhancements
+[33m81f25cc[m HEAD@{158}: commit: New Index Enhancements
+[33mb50b45e[m HEAD@{159}: commit: New Index Enhancements
+[33ma2d885c[m HEAD@{160}: commit: New Index Enhancements
+[33m4d7417b[m HEAD@{161}: commit: New Index Enhancements
+[33me017b0a[m HEAD@{162}: commit: New Index Enhancements
+[33mefdb8ea[m HEAD@{163}: commit: New Index Enhancements
+[33m020e47f[m HEAD@{164}: commit: New Index Page Version
+[33me98d43d[m HEAD@{165}: commit: New Index Page Version
+[33m817d9c4[m HEAD@{166}: commit: New Index Page Version
+[33m7d52187[m HEAD@{167}: commit: New Index Page Version
+[33me52fdd1[m HEAD@{168}: commit: New Index Page Version
+[33m5f2f847[m HEAD@{169}: commit: chore: force deploy to clear stuck action
+[33m82616b5[m HEAD@{170}: commit: New Index Page Version
+[33mece6c3d[m HEAD@{171}: commit: New Index Page Version
+[33m78aef81[m HEAD@{172}: commit: New Index Page Version
+[33mad604c6[m HEAD@{173}: commit: New Index Page Version
+[33m791cff6[m HEAD@{174}: commit: New Index Page Version
+[33m7a99d47[m HEAD@{175}: commit: New Index Page Version
+[33m8f4a4c4[m HEAD@{176}: commit: New Index Page Version
+[33m97f4dca[m HEAD@{177}: commit: New Index Page Version
+[33mea4a65b[m HEAD@{178}: commit: New Index Page Version
+[33mf0953f6[m HEAD@{179}: commit: New Index Page Version
+[33mdb6c1a6[m HEAD@{180}: commit: New Index Page Version
+[33mfc5eaf9[m HEAD@{181}: commit: New Index Page Version
+[33mba0bd4a[m HEAD@{182}: commit: New Index Page Version
+[33m280c1e5[m HEAD@{183}: commit: New Index Page Version
+[33m99ec8fb[m HEAD@{184}: commit: New Index Page Version
+[33m6029dc6[m HEAD@{185}: commit: New Index Page Version
+[33mf1a90dd[m HEAD@{186}: commit: New Index Page Version
+[33m6d4e435[m HEAD@{187}: commit: New Index Page Version
+[33mfd18caa[m HEAD@{188}: commit: New Index Page Version
+[33m19f1f7e[m HEAD@{189}: commit: New Index Page Version
+[33m546b661[m HEAD@{190}: commit: New Index Page Version
+[33m9c94290[m HEAD@{191}: commit: New Index Page Version
+[33mbc547c8[m HEAD@{192}: commit: New Index Page Version
+[33m07a9944[m HEAD@{193}: commit: New Index Page Version
+[33m84f8146[m HEAD@{194}: commit: New Index Page Version
+[33me73ad71[m HEAD@{195}: commit: New Index Page Version
+[33m4476719[m HEAD@{196}: commit: New Index Page Version
+[33m56aba6a[m HEAD@{197}: commit: New Index Page Version
+[33m97a2ab0[m HEAD@{198}: commit: New Index Page Version
+[33m1b2cd88[m HEAD@{199}: commit: New Index Page Version
+[33mead1769[m HEAD@{200}: commit: New Index Page Version
+[33m80cd569[m HEAD@{201}: commit: New Index Page Version
+[33m4a78bbc[m HEAD@{202}: commit: New Index Page Version
+[33m2ed29fc[m HEAD@{203}: commit: New Index Page Version
+[33mf3565e9[m HEAD@{204}: commit: New Index Page Version
+[33m9002739[m HEAD@{205}: commit: New Index Page Version
+[33ma21fcfa[m HEAD@{206}: commit: New Index Page Version
+[33m97d4954[m HEAD@{207}: commit: New Index Page Version
+[33m9092ea3[m HEAD@{208}: commit: New Index Page Version
+[33m35fecac[m HEAD@{209}: commit: New Index Page Version
+[33ma8b0ab4[m HEAD@{210}: commit: New Index Page Version
+[33m3a7f5bb[m HEAD@{211}: commit: New Index Page Version
+[33m5e457ed[m HEAD@{212}: commit: New Index Page Version
+[33m5e03219[m HEAD@{213}: commit: New Index Page Version
+[33mc4e8489[m HEAD@{214}: commit: New Index Page Version
+[33m0e104d6[m HEAD@{215}: commit: New Index Page Version
+[33me6ebc8f[m HEAD@{216}: commit: New Index Page Version
+[33mce40696[m HEAD@{217}: commit: New Index Page Version
+[33m42d1a76[m HEAD@{218}: commit: New Index Page Version
+[33md7634f0[m HEAD@{219}: commit: New Index Page Version
+[33m9124f6a[m HEAD@{220}: commit: New Index Page Version
+[33mdd47442[m HEAD@{221}: commit: New Index Page Version
+[33maee66c8[m HEAD@{222}: commit: New Index Page Version
+[33mff7a62a[m HEAD@{223}: commit: New Index Page Version
+[33m50a645d[m HEAD@{224}: commit: New Index Page Version
+[33m1fd027c[m HEAD@{225}: commit: New Index Page Version
+[33m30e94fa[m HEAD@{226}: commit: New Index Page Version
+[33mae7cf2c[m HEAD@{227}: commit: New Index Page Version
+[33m2559da7[m HEAD@{228}: commit: New Index Page Version
+[33m5234be3[m HEAD@{229}: commit: New Index Page Version
+[33m00a9f94[m HEAD@{230}: commit: New Index Page Version
+[33md3ddc00[m HEAD@{231}: commit: New Index Page Version
+[33me6b61e2[m HEAD@{232}: commit: New Index Page Version
+[33m658bccd[m HEAD@{233}: commit: New Index Page Version
+[33mec45557[m HEAD@{234}: commit: New Index Page Version
+[33m9db1e14[m HEAD@{235}: commit: New Index Page Version
+[33m7900b96[m HEAD@{236}: commit: New Index Page Version
+[33md909438[m HEAD@{237}: commit: New Index Page Version
+[33m4b0cbef[m HEAD@{238}: commit: New Index Page Version
+[33m0ef81af[m HEAD@{239}: commit: New Index Page Version
+[33m2655eb1[m HEAD@{240}: commit: New Index Page Version
+[33ma34bd59[m HEAD@{241}: commit: New Index Page Version
+[33m1e22888[m HEAD@{242}: commit: New Index Page Version
+[33mf47b0d3[m HEAD@{243}: commit: New Index Page Version
+[33m6ec3c07[m HEAD@{244}: commit: New Index Page Version
+[33ma5c8f61[m HEAD@{245}: commit: New Index Page Version
+[33m786fb13[m HEAD@{246}: commit: New Index Page Version
+[33m7e4348e[m HEAD@{247}: commit: Adding Docx Version French for my philosophical essay
+[33m35b4579[m HEAD@{248}: commit: New Index Page Version
+[33mb24dce3[m HEAD@{249}: commit: New Index Page Version
+[33m89ee070[m HEAD@{250}: commit: New Index Page Version
+[33m99061cc[m HEAD@{251}: commit: Adding Docx Version French for my philosophical essay
+[33m5595129[m HEAD@{252}: commit: New Index Page Version
+[33m2b6b80c[m HEAD@{253}: commit: New Index Page Version
+[33m6504fe0[m HEAD@{254}: commit: New Index Page Version
+[33m943bff4[m HEAD@{255}: commit: Adding Docx Version French for my philosophical essay
+[33mf0ab788[m HEAD@{256}: commit: Adding Docx Version French for my philosophical essay
+[33mc9e4903[m HEAD@{257}: commit: New Index Page Version
+[33mce5dfc3[m HEAD@{258}: commit: New Index Page Version
+[33m6414f12[m HEAD@{259}: commit: Adding Docx Version French for my philosophical essay
+[33m0283b39[m HEAD@{260}: commit: New Index Page Version
+[33m46eb31b[m HEAD@{261}: commit: New Homo Biodiversitas PDF Version
+[33md550ae4[m HEAD@{262}: commit: New Homo Biodiversitas PDF Version
+[33mc6a6e78[m HEAD@{263}: commit: New Index Page Version
+[33me1db49d[m HEAD@{264}: commit: New Index Page Version
+[33mef2a2c2[m HEAD@{265}: commit: New Index Page Version
+[33m29eb3fe[m HEAD@{266}: commit: New Index Page Version
+[33m9d52ff6[m HEAD@{267}: commit: New Index Page Version
+[33mb69340f[m HEAD@{268}: commit: New Index Page Version
+[33mc330dbe[m HEAD@{269}: commit: New Index Page Version
+[33m6957ae2[m HEAD@{270}: commit: New Index Page Version
+[33m4e1504c[m HEAD@{271}: commit: New Index Page Version
+[33m03cc202[m HEAD@{272}: commit: New Index Page Version
+[33m690f5ad[m HEAD@{273}: commit: New Homo Biodiversitas PDF Version
+[33mf7ba974[m HEAD@{274}: commit: New Homo Biodiversitas PDF Version
+[33m0ebfd9c[m HEAD@{275}: commit: New Homo Biodiversitas PDF Version
+[33m8951c25[m HEAD@{276}: commit: New Index Page Version
+[33m57a657f[m HEAD@{277}: commit: New Index Page Version
+[33m969719a[m HEAD@{278}: commit: New Index Page Version
+[33mb602114[m HEAD@{279}: commit: New Homo Biodiversitas PDF Version
+[33m5974e14[m HEAD@{280}: commit: New Homo Biodiversitas PDF Version
+[33m685b583[m HEAD@{281}: commit: New Homo Biodiversitas PDF Version
+[33m2d9c557[m HEAD@{282}: commit: New Index Page Version
+[33m3d4586c[m HEAD@{283}: commit: New Index Page Version - Fix Script and Counters
+[33m43f9e61[m HEAD@{284}: commit: New Index Page Version
+[33mf90d20c[m HEAD@{285}: commit: New Index Page Version
+[33m2298ba4[m HEAD@{286}: commit: New Index Page Version - Fix Script and Counters
+[33m214940b[m HEAD@{287}: commit: New Index Page Version - Fix Script and Counters
+[33meed157f[m HEAD@{288}: commit: New Index Page Version
+[33m6ec34ce[m HEAD@{289}: commit: New Homo Biodiversitas PDF Version
+[33mac87330[m HEAD@{290}: commit: New Homo Biodiversitas PDF Version
+[33m89447a4[m HEAD@{291}: commit: New Homo Biodiversitas PDF Version
+[33m9b5b969[m HEAD@{292}: commit: New Index Page Version
+[33m6e3050c[m HEAD@{293}: commit: New Index Page Version
+[33mec30af3[m HEAD@{294}: commit: New Index Page Version
+[33m74a141c[m HEAD@{295}: commit: New Index Page Version
+[33md0b8468[m HEAD@{296}: commit: New Homo Biodiversitas PDF Version
+[33m4ec4bbb[m HEAD@{297}: commit: New Homo Biodiversitas PDF Version
+[33mf835e4a[m HEAD@{298}: commit: Index Presentation and New Homo Biodiversitas PDF version available
+[33ma4b36ed[m HEAD@{299}: commit: Index Presentation and New Homo Biodiversitas PDF version available
+[33m1599104[m HEAD@{300}: commit: Index Presentation and New Homo Biodiversitas PDF version available
+[33mabb84c8[m HEAD@{301}: pull: Fast-forward
+[33meda4567[m HEAD@{302}: pull: Fast-forward
+[33m882075a[m HEAD@{303}: commit: Mise a jour Biographie
+[33m6847b9d[m HEAD@{304}: commit: Mise a jour Bio
+[33md147027[m HEAD@{305}: commit: Mise a jour Bio
+[33mbbf3e2e[m HEAD@{306}: commit: Mise a jour Matrice Inverse avec Presentation Bien-Etre
+[33mb7801b3[m HEAD@{307}: commit: Mise a jour Bio
+[33me2eceb2[m HEAD@{308}: commit: Mise a jour Bio
+[33mac297eb[m HEAD@{309}: commit: Mise a jour Biographie
+[33mef12b87[m HEAD@{310}: commit: Mise a jour Biographie
+[33mbad7780[m HEAD@{311}: commit: Mise a jour Biographie
+[33m51f64e7[m HEAD@{312}: commit: Mise a jour Biographie
+[33mfef74da[m HEAD@{313}: commit: Mise a jour Bio
+[33mdd5d382[m HEAD@{314}: commit: Mise a jour Bio
+[33m615012d[m HEAD@{315}: commit: Mise a jour Matrice Inverse avec Presentation Bien-Etre
+[33ma99c0e2[m HEAD@{316}: pull: Fast-forward
+[33me59603b[m HEAD@{317}: commit: Fix up some formulas Logic
+[33m67c5437[m HEAD@{318}: commit: Fix up some formulas Logic
+[33m0275732[m HEAD@{319}: commit: Ajout d'un deep dive sur l'idee du Zeolithe
+[33m4eb2e20[m HEAD@{320}: commit: Ajout d'un deep dive sur l'idee du Zeolithe
+[33m272c640[m HEAD@{321}: commit: Meilleure Mise en Page
+[33m3e4d3c1[m HEAD@{322}: commit: Meilleure Mise en Page
+[33m0e11bd7[m HEAD@{323}: pull: Fast-forward
+[33mdb2b46c[m HEAD@{324}: pull: Fast-forward
+[33m84fe95d[m HEAD@{325}: commit: Ajout d'un deep dive sur l'idee du Zeolithe
+[33m1da2e14[m HEAD@{326}: commit: Ajout d'un deep dive sur l'idee du Zeolithe et passage au crible de la science pour la rendre meilleur
+[33mf46fa41[m HEAD@{327}: commit: Ajout d'un deep dive sur l'idee du Zeolithe et passage au crible de la science pour la rendre meilleur
+[33mc6ad0d7[m HEAD@{328}: commit: Ajout d'un deep dive sur l'idee du Zeolithe
+[33mf34664b[m HEAD@{329}: commit: Projects
+[33med87623[m HEAD@{330}: commit: Fix Telemetry Global - Inversed Matrix model
+[33md6d2f90[m HEAD@{331}: commit: Fix Telemetry Global - Inversed Matrix model
+[33m1159443[m HEAD@{332}: pull: Fast-forward
+[33m5a19750[m HEAD@{333}: commit: Projects
+[33m2e41b51[m HEAD@{334}: commit: Projects
+[33m6224be1[m HEAD@{335}: commit: Conclusion Enhancement
+[33m3e52fa3[m HEAD@{336}: commit: Conclusion Enhancement
+[33m212e715[m HEAD@{337}: commit: Adding signature to Matrix Inversed Article
+[33m32d756f[m HEAD@{338}: commit: Adding signature to Matrix Inversed Article
+[33m46ea14f[m HEAD@{339}: commit: Adding signature to Matrix Inversed Article
+[33m3cfffe2[m HEAD@{340}: commit: Adding signature to Matrix Inversed Article
+[33m1adffbf[m HEAD@{341}: commit: Adding signature to Matrix Inversed Article
+[33m24c5a16[m HEAD@{342}: commit: optimisation mise en page
+[33m940a3d1[m HEAD@{343}: commit: optimisation mise en page
+[33me8c8483[m HEAD@{344}: commit: Adding signature to Matrix Inversed Article
+[33mb052c1c[m HEAD@{345}: commit: Adding signature to Matrix Inversed Article
+[33m6ecfe05[m HEAD@{346}: commit: Meilleur mise en page
+[33m0338682[m HEAD@{347}: commit: Meilleur mise en page
+[33me7a567b[m HEAD@{348}: commit: Meilleur mise en page
+[33mdda061a[m HEAD@{349}: commit: Meilleur mise en page
+[33m63e7e97[m HEAD@{350}: commit: Meilleur mise en page
+[33m28671cb[m HEAD@{351}: pull: Fast-forward
+[33m87cbc12[m HEAD@{352}: commit: Meilleur mise en page
+[33m456308d[m HEAD@{353}: commit: Meilleur mise en page
+[33m67a9119[m HEAD@{354}: commit: Adding signature to Matrix Inversed Article
+[33m7f140af[m HEAD@{355}: commit: Adding signature to Matrix Inversed Article
+[33meb35770[m HEAD@{356}: commit: optimisation mise en page
+[33mcfeeec5[m HEAD@{357}: commit: optimisation mise en page
+[33m956895e[m HEAD@{358}: commit: Adding signature to Matrix Inversed Article
+[33m8410a00[m HEAD@{359}: commit: Adding signature to Matrix Inversed Article
+[33m4a9a75b[m HEAD@{360}: commit: Adding signature to Matrix Inversed Article
+[33mec11f4a[m HEAD@{361}: commit: Adding signature to Matrix Inversed Article
+[33m4bc13c2[m HEAD@{362}: commit: Extension module 3, 4 + une simulation basique + catalogue basique
+[33m9074f5b[m HEAD@{363}: commit: Extension module 3, 4 + une simulation basique + catalogue basique
+[33m9fe96d3[m HEAD@{364}: pull: Fast-forward
+[33m43d625a[m HEAD@{365}: reset: moving to HEAD
+[33m43d625a[m HEAD@{366}: commit: Adding signature to Matrix Inversed Article
+[33m6d58278[m HEAD@{367}: commit: Adding signature to Matrix Inversed Article
+[33m128745a[m HEAD@{368}: commit: Ajout du Module 6 de Controle pour La Matrice Inverse
+[33m9860467[m HEAD@{369}: commit: Test
+[33mba5935b[m HEAD@{370}: commit: New Article Publication
+[33m6bd90a7[m HEAD@{371}: commit: Test
+[33ma256e44[m HEAD@{372}: commit: optimization rendering
+[33mfcd8f18[m HEAD@{373}: commit: optimization rendering
+[33m64b8a85[m HEAD@{374}: commit: Few wording adjustments
+[33mb838db8[m HEAD@{375}: commit: Few wording adjustments
+[33maad024c[m HEAD@{376}: commit: optimization rendering
+[33m93683cd[m HEAD@{377}: commit: optimization rendering
+[33m1d4d668[m HEAD@{378}: commit: optimization rendering
+[33mfb7ef48[m HEAD@{379}: commit: optimization rendering
+[33md5effc1[m HEAD@{380}: commit: optimization rendering
+[33m5be09aa[m HEAD@{381}: commit: optimization rendering
+[33mcf58775[m HEAD@{382}: commit: optimization rendering
+[33m95bdf57[m HEAD@{383}: commit: optimization rendering
+[33mf018862[m HEAD@{384}: pull: Fast-forward
+[33m970855c[m HEAD@{385}: pull: Fast-forward
+[33mb7c8dc0[m HEAD@{386}: commit: Conclusion Nautilus Updated
+[33m06f0b29[m HEAD@{387}: commit: Effective Temperature Nautilus Updated
+[33m94b3627[m HEAD@{388}: commit: Effective Temperature Nautilus Updated
+[33m561527e[m HEAD@{389}: commit: Conclusion Nautilus Updated
+[33m7414c46[m HEAD@{390}: commit: Effective Temperature Blockchain
+[33m729b8c9[m HEAD@{391}: commit: Effective Temperature Blockchain
+[33m90c6a89[m HEAD@{392}: commit: Effective Temperature Blockchain
+[33m9a1546a[m HEAD@{393}: commit: Effective Temperature Blockchain
+[33m3b96060[m HEAD@{394}: commit: Effective Temperature Blockchain
+[33me3f55fa[m HEAD@{395}: commit: Effective Temperature Blockchain
+[33m53c4a19[m HEAD@{396}: commit: Effective Temperature Blockchain
+[33m47438fd[m HEAD@{397}: commit: Conclusion Nautilus Updated
+[33m51c5499[m HEAD@{398}: commit: Effective Temperature Nautilus Updated
+[33maae65fc[m HEAD@{399}: commit: Effective Temperature Nautilus Updated
+[33m09c9f54[m HEAD@{400}: commit: Conclusion Nautilus Updated
+[33mf8907f0[m HEAD@{401}: commit: Index Sun Standard update
+[33m5a63b57[m HEAD@{402}: commit: Conclusion Nautilus Updated
+[33mae7d987[m HEAD@{403}: commit: Conclusion Nautilus Updated
+[33mfbc5a6b[m HEAD@{404}: pull: Fast-forward
+[33ma612d62[m HEAD@{405}: commit: Adding Graphs
+[33m58fb648[m HEAD@{406}: commit: Adding Graphs
+[33m446e81e[m HEAD@{407}: pull: Merge made by the 'ort' strategy.
+[33m16c61eb[m HEAD@{408}: commit: Adding Graphs
+[33me7c1d4b[m HEAD@{409}: commit: Adding Graphs
+[33m6d8ac27[m HEAD@{410}: commit: Adding Graphs
+[33m0489999[m HEAD@{411}: commit: Adding Graphs
+[33m86c19de[m HEAD@{412}: pull: Fast-forward
+[33mffed8fb[m HEAD@{413}: commit: Wordings improvement
+[33md4c678a[m HEAD@{414}: commit: Wordings improvement
+[33m5559eb2[m HEAD@{415}: commit: Graphs Update
+[33mdde4ae3[m HEAD@{416}: commit: Graphs Update
+[33m72b493f[m HEAD@{417}: commit: Wordings improvement
+[33m5376c72[m HEAD@{418}: commit: Wordings improvement
+[33m293b25e[m HEAD@{419}: commit: Update Section 3 Temp
+[33m4386759[m HEAD@{420}: commit: Update Section 3 and 4 expert levels
+[33ma483734[m HEAD@{421}: commit: Update Section 3 Temp
+[33m05d940d[m HEAD@{422}: commit: Update Section 4 levle 3
+[33mf5711da[m HEAD@{423}: pull: Fast-forward
+[33m11af1b5[m HEAD@{424}: commit: Update Section 3 and 4
+[33mfaaea6f[m HEAD@{425}: pull: Fast-forward
+[33ma0ce379[m HEAD@{426}: commit: Preliminary Section
+[33m2743b6a[m HEAD@{427}: pull: Fast-forward
+[33m24b178b[m HEAD@{428}: commit: Update Transformity Notation
+[33m7ba5e67[m HEAD@{429}: pull: Fast-forward
+[33m22f8a33[m HEAD@{430}: commit: Update Nakamoto and Quantum Physics
+[33m02ed625[m HEAD@{431}: commit: Update Nakamoto and Emergy
+[33mce5771b[m HEAD@{432}: pull: Fast-forward
+[33m5a4e5b2[m HEAD@{433}: commit: Update Nakamoto and Quantum Physics
+[33me8818bd[m HEAD@{434}: commit: Update Nakamoto and Quantum Physics
+[33mc7ac0f1[m HEAD@{435}: pull: Merge made by the 'ort' strategy.
+[33m2bcb18d[m HEAD@{436}: commit: Update Nakamoto and Quantum Physics
+[33mb479b98[m HEAD@{437}: commit: new diagrams et fix buttons
+[33m62254ef[m HEAD@{438}: commit: new diagrams et fix buttons
+[33m8aa53c7[m HEAD@{439}: commit: new diagrams et fix buttons
+[33me2273cc[m HEAD@{440}: commit: new diagrams et fix buttons
+[33m25c9fb1[m HEAD@{441}: commit: new diagrams et fix buttons
+[33m96f8725[m HEAD@{442}: pull: Fast-forward
+[33m0a891a2[m HEAD@{443}: commit: New Video
+[33maa8c037[m HEAD@{444}: commit: New Video
+[33m007b78d[m HEAD@{445}: commit: New Video
+[33mbf50d8b[m HEAD@{446}: clone: from https://github.com/pascalranaora/TheSunStandard
