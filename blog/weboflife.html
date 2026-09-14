@@ -97,6 +97,37 @@
             font-size: 1.15rem; color: var(--human-cyan); font-style: italic; max-width: 820px; margin: 0 auto;
         }
 
+        /* Encart de Vulgarisation */
+        .vulgarisation-box {
+            background: rgba(0, 225, 255, 0.04);
+            border: 1px solid rgba(0, 225, 255, 0.25);
+            border-left: 4px solid var(--human-cyan);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            font-family: var(--font-ui);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .vulgarisation-box h3 {
+            color: var(--human-cyan);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vulgarisation-box p {
+            color: #d8e2ec;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .vulgarisation-box p:last-child {
+            margin-bottom: 0;
+        }
+
         /* Iframe Container & Full Width Wrapper */
         .simulation-wrapper {
             width: 90vw;
@@ -268,8 +299,6 @@
         @media (max-width: 768px) {
             .nav-center { display: none; }
             .article-navigation { flex-direction: column; }
-            .pyramid-tier { width: 100% !important; }
-            .glossary-table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
@@ -308,6 +337,27 @@
             <span lang="en">BY PASCAL RANOROARIJAONA // THERMODYNAMIC ENGINEERING & SYMBIOTIC INTELLIGENCE</span>
         </p>
     </header>
+
+    <!-- ENCART DE VULGARISATION -->
+    <div class="vulgarisation-box">
+        <h3>
+            <span>💡</span>
+            <span lang="fr">En Résumé : Qu'est-ce que la Toile de la Vie ?</span>
+            <span lang="en">Executive Summary: What is the Web of Life?</span>
+        </h3>
+        <p lang="fr">
+            Un organisme vivant n'est pas seulement un être biologique : c'est une <strong>structure dissipative</strong> ouverte qui consomme de l'énergie pour maintenir son ordre interne et rejeter son désordre (entropie). Dans ce projet, chaque être vivant est modélisé comme un <strong>POD</strong> (une fiche d'identité et d'état physique) couplé à sa propre <strong>blockchain à Preuve de Travail (PoW) autonome</strong>.
+        </p>
+        <p lang="en">
+            A living organism is not just a biological entity: it is an open <strong>dissipative structure</strong> that consumes energy to maintain its internal order while rejecting disorder (entropy). In this project, every living creature is modeled as a <strong>POD</strong> (a data structure tracking physical states) coupled with its own <strong>autonomous Proof-of-Work (PoW) blockchain</strong>.
+        </p>
+        <p lang="fr">
+            Respirer, chasser ou se nourrir équivaut à "miner" sa propre existence à travers des transactions biochimiques. Si l'environnement se dégrade ou qu'un acteur extérieur (comme l'industrie humaine) monopolise l'énergie, la difficulté de survie explose. Si l'organisme ou l'espèce ne peut plus valider son bloc temporel, sa chaîne s'arrête net : c'est la mort ou l'extinction collective (<em>Chain Halt</em>).
+        </p>
+        <p lang="en">
+            Breathing, hunting, or feeding is equivalent to "mining" one's own existence through biochemical transactions. If the environment degrades or an external actor (such as human industry) monopolizes energy, survival difficulty skyrockets. If the organism or species can no longer validate its temporal block, its chain halts: this is individual death or collective extinction (<em>Chain Halt</em>).
+        </p>
+    </div>
 
     <div class="quote-block">
         <span lang="fr">"Le Proof of Work (Nakamoto) sécurise la Noosphère. Le Proof of Ecological Work (PoEW) sécurise la Biosphère. Le certificat d'exergie utile issu du minage doit être couplé à la cogénération pour garantir la symbiose absolue entre l'Esprit et le Corps de la Terre."</span>
@@ -518,7 +568,8 @@
             </span>
         </h2>
     </div>
-<!-- NAVIGATION ENTRE ARTICLES -->
+
+    <!-- NAVIGATION ENTRE ARTICLES -->
     <div class="article-navigation">
         <a href="horizon-zero-2044.html" class="nav-card">
             <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
