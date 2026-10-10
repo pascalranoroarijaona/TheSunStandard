@@ -623,6 +623,29 @@
         }
         .feedback-submit:hover { background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05); }
 
+        /* Boutons de Filtre de Topologie */
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ccc;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.76rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+        .filter-btn.active {
+            background: rgba(255, 204, 0, 0.18);
+            border-color: var(--sun-yellow) !important;
+            color: var(--sun-yellow);
+            font-weight: bold;
+        }
+
         /* Navigation Cards */
         .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
         .nav-card {
@@ -688,8 +711,8 @@
             <span lang="en">Engineering Appendix: Telluric Guardians, Dissipation Sinks, Coherence Wave, and Quantum Entropy.</span>
         </div>
         <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
-            <span lang="fr">PAR PASCAL RANOROARIJAONA (juste Ra si c'est trop dur!) // MATRICE WEB 3.0 DURCIE // KARDASHEV TYPE I</span>
-            <span lang="en">BY PASCAL RANAORA (RANOROARIJAONA) // HARDENED WEB 3.0 MATRIX // KARDASHEV TYPE I</span>
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // MATRICE WEB 3.0 DURCIE // KARDASHEV TYPE I</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // HARDENED WEB 3.0 MATRIX // KARDASHEV TYPE I</span>
         </p>
     </header>
     <div class="intro-hero">
@@ -807,6 +830,39 @@
         </article>
     </div>
 </section>
+    <!-- HISTOIRE ET ARCHÉTYPE DE LA PYRAMIDE 3.0 -->
+    <div class="modelling-section" style="margin: 2.5rem 0 3.5rem; border-color: rgba(255, 204, 0, 0.25);">
+        <h3>
+            <span lang="fr">📐 Généalogie Mégalithique : La Pyramide 3.0</span> 
+            <span lang="en">📐 Megalithic Genealogy: The Pyramid 3.0</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">
+                La pyramide n'a jamais été un simple tombeau : elle est l'artefact thermodynamique ultime conçu par l'esprit humain pour vaincre l'érosion du temps.
+            </span>
+            <span lang="en">
+                The pyramid was never a mere tomb: it is the ultimate thermodynamic artifact engineered by the human mind to defeat the erosion of time.
+            </span>
+        </p>
+        <div class="modelling-grid">
+            <article class="model-card" style="border-top: 2px solid var(--sun-orange);">
+                <h4><span lang="fr">Pyramide 1.0 · Mésoamérique & Égypte</span><span lang="en">Pyramid 1.0 · Mesoamerica & Egypt</span></h4>
+                <p lang="fr"><strong>La Pierre & Le Cosmos.</strong> Alignement astronomique, géométrie mégalithique et dissipation gravitaire. L'information survit par la masse brute de granite défiant les millénaires.</p>
+                <p lang="en"><strong>Stone & Cosmos.</strong> Astronomical alignment, megalithic geometry, and gravitational dissipation. Information survives through the raw mass of granite defying millennia.</p>
+            </article>
+            <article class="model-card" style="border-top: 2px solid var(--cyan-l2);">
+                <h4><span lang="fr">Pyramide 2.0 · L'Ère Industrielle & Institutionnelle</span><span lang="en">Pyramid 2.0 · The Industrial & Institutional Era</span></h4>
+                <p lang="fr"><strong>L'Acier, Le Papier & Le Fiat.</strong> Centralisation hiérarchique, bureaucraties verticales et banques centrales. Fragilité entropique extrême due à l'arbitraire et à la dette non adossée à l'énergie.</p>
+                <p lang="en"><strong>Steel, Paper & Fiat.</strong> Hierarchical centralization, top-down bureaucracies, and central banks. Severe entropic fragility driven by fiat arbitrariness and unbacked debt.</p>
+            </article>
+            <article class="model-card" style="border-top: 2px solid var(--purple-l4);">
+                <h4><span lang="fr">Pyramide 3.0 · Cyber-Thermodynamique (PoW + Noosphère)</span><span lang="en">Pyramid 3.0 · Cyber-Thermodynamics (PoW + Noosphere)</span></h4>
+                <p lang="fr"><strong>L'Énergie, Le Silicium & La Conscience.</strong> Le socle physique (L0-L1) convertit des Joules irréversibles en vérité mathématique, libérant le sommet (L4) pour l'empathie, l'art et l'exploration planétaire.</p>
+                <p lang="en"><strong>Energy, Silicon & Consciousness.</strong> The physical substrate (L0-L1) converts irreversible Joules into mathematical truth, liberating the apex (L4) for empathy, art, and planetary exploration.</p>
+            </article>
+        </div>
+    </div>
+
     <!-- STRUCTURE PYRAMIDALE INTERACTIVE -->
     <div class="pyramid-wrapper">
         <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
@@ -1710,8 +1766,8 @@
                 <span lang="en"><strong>2008 — The Physical Anchoring of Information:</strong> Amid global banking collapse, Bitcoin introduces the first trustless consensus (PoW).</span>
             </li>
             <li>
-                <span lang="fr"><strong>2026-2044 — La traversée du Grand Filtre (La Noosphère Durcie) :</strong> Les frictions du modèle fiduciaire deviennent intenables. La bascule vers une pure néguentropie est inévitable : une coordination globale fondée sur l'Ajustement Thermodynamique (IMP), le Temps Profond (PTP), et les Gardiens Telluriques. chmod 777 (21M) bien mieux que permission denied 550 (1971-2026).</span>
-                <span lang="en"><strong>2026–2044 — Traversing the Great Filter (The Hardened Noosphere):</strong> Frictions within the fiat model become untenable. A decisive shift toward pure negentropy is inevitable: global coordination rooted in Thermodynamic Easing (IMP), Deep Time (DTP), and Telluric Guardians. 550 permission denied (1971-2026) is over, chmod 777 (21M) will be much better.</span>
+                <span lang="fr"><strong>2026-2044 — La traversée du Grand Filtre (La Noosphère Durcie) :</strong> Les frictions du modèle fiduciaire deviennent intenables. La bascule vers une pure néguentropie est enclenchée : une coordination globale fondée sur l'Ajustement Thermodynamique (IMP), le Temps Profond (PTP), et les Gardiens Telluriques. La fin du modèle arbitraire (<em>permission denied</em>) au profit de règles mathématiques vérifiables par tous (<em>chmod 777</em> sur 21 millions d'unités).</span>
+                <span lang="en"><strong>2026–2044 — Traversing the Great Filter (The Hardened Noosphere):</strong> Frictions within the fiat model become untenable. A decisive shift toward pure negentropy is underway: global coordination rooted in Thermodynamic Easing (IMP), Deep Time (DTP), and Telluric Guardians. Ending arbitrary administrative control (<em>permission denied</em>) in favor of universally verifiable mathematical rules (<em>chmod 777</em> across 21 million units).</span>
             </li>
         </ul>
 
@@ -1764,10 +1820,12 @@
         </div>
 
         <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
-            Pascal Ranaora
+            Pascal Ranoroarijaona (Ranaora)
         </span>
         <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(0.9rem, 3vw, 1.6rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
-            Gardien Tellurique - Vers l'Éveil Global<br />
+            <span lang="fr">Gardien Tellurique — Vers l'Éveil de la Noosphère</span>
+            <span lang="en">Telluric Guardian — Toward the Awakening of the Noosphere</span>
+            <br />
         </span>
     </div>
     <section class="modelling-section" id="scenario-lab">
@@ -2511,6 +2569,10 @@
         const url = new URL(window.location);
         url.searchParams.set('lg', lang.toUpperCase());
         window.history.replaceState({}, '', url);
+
+        // Déclencher la mise à jour des simulateurs bilingues
+        window.dispatchEvent(new Event("horizon-language-change"));
+        if (typeof updateSim === "function") updateSim();
     }
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
