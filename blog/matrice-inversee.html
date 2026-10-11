@@ -274,6 +274,89 @@
             font-family: var(--font-ui);
         }
 
+        /* --- Architecture en Coupe : Flux Alimentaire & Symbiose --- */
+        .cross-section-container {
+            margin: 4.5rem 0;
+            padding: 2rem;
+            background: #040707;
+            border: 1px solid rgba(68, 238, 119, 0.3);
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 0 35px rgba(68, 238, 119, 0.04);
+            font-family: var(--font-ui);
+        }
+        .cross-section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .cross-section-title {
+            color: var(--bio-green);
+            font-size: 1.45rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .cross-section-desc {
+            color: #a0aab5;
+            font-size: 0.95rem;
+            max-width: 780px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .cross-section-svg {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #060b11 0%, #0c1618 35%, #0d1214 65%, #050709 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            display: block;
+        }
+        .flow-line {
+            stroke-dasharray: 6, 6;
+            animation: flowMove 1.5s linear infinite;
+        }
+        .flow-line-reverse {
+            stroke-dasharray: 6, 6;
+            animation: flowMoveRev 2s linear infinite;
+        }
+        @keyframes flowMove {
+            from { stroke-dashoffset: 24; }
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes flowMoveRev {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: 24; }
+        }
+        .cross-legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .cross-legend-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            border-left: 3px solid var(--stone-grey);
+        }
+        .cross-legend-card h5 {
+            margin: 0 0 0.4rem 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cross-legend-card p {
+            margin: 0;
+            font-size: 0.82rem;
+            color: #8899aa;
+            line-height: 1.45;
+        }
+
         .dashboard-box {
             background: rgba(0, 0, 0, 0.8); 
             border: 1px solid var(--sun-yellow); 
@@ -1041,6 +1124,254 @@
             
         </div>
     </details>
+
+    <!-- SECTION EN COUPE : LE FLUX AGRO-MÉTABOLIQUE -->
+    <section class="cross-section-container">
+        <div class="cross-section-header">
+            <h3 class="cross-section-title">
+                <span>🌱</span>
+                <span lang="fr">Architecture en Coupe : Le Flux Vivrier en Cycle Fermé</span>
+                <span lang="en">Cross-Section Architecture: Closed-Loop Food Flux</span>
+            </h3>
+            <p class="cross-section-desc">
+                <span lang="fr">
+                    Comment le minage informatique souterrain alimente directement l'abondance biologique de surface. Chaque calorie électrique dissipée dans la roche est transmutée en eau douce distillée, en sol enrichi (Terra Preta) et en récoltes maraîchères locales.
+                </span>
+                <span lang="en">
+                    How subterranean computing powers surface biological abundance. Every electrical calorie dissipated in bedrock is transmuted into pure distilled water, enriched soil (Terra Preta), and local harvest.
+                </span>
+            </p>
+        </div>
+
+        <!-- SVG HAUTE DÉFINITION : COUPE ÉLÉVATION & PROFONDEUR -->
+        <svg class="cross-section-svg" viewBox="0 0 920 620" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#050a12"/>
+                    <stop offset="100%" stop-color="#0f1f1a"/>
+                </linearGradient>
+                <linearGradient id="soilGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2a2318"/>
+                    <stop offset="25%" stop-color="#1e1811"/>
+                    <stop offset="100%" stop-color="#121316"/>
+                </linearGradient>
+                <linearGradient id="rockGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#14171a"/>
+                    <stop offset="100%" stop-color="#080a0c"/>
+                </linearGradient>
+                <linearGradient id="heatFlowGrad" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#ff5500"/>
+                    <stop offset="100%" stop-color="#ffaa00"/>
+                </linearGradient>
+                <linearGradient id="waterFlowGrad" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#0066ff"/>
+                    <stop offset="100%" stop-color="#00e5ff"/>
+                </linearGradient>
+            </defs>
+
+            <!-- 1. FOND STRATIGRAPHIQUE (COUCHES GÉOLOGIQUES) -->
+            <!-- Ciel & Atmosphère (+5m à +15m) -->
+            <rect x="0" y="0" width="920" height="150" fill="url(#skyGrad)"/>
+            
+            <!-- Ligne de Sol (Surface 0m) -->
+            <line x1="0" y1="150" x2="920" y2="150" stroke="#44ee77" stroke-width="2" stroke-opacity="0.4"/>
+
+            <!-- Pédosphère / Sol Vivant & Biochar (0m à -6m) -->
+            <rect x="0" y="150" width="920" height="90" fill="url(#soilGrad)"/>
+            
+            <!-- Lithosphère / Socle Rocheux Brut (-6m à -45m) -->
+            <rect x="0" y="240" width="920" height="380" fill="url(#rockGrad)"/>
+
+            <!-- Hachures et Textures de Roche Géologique -->
+            <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+                <path d="M 50 280 L 150 260 M 300 320 L 420 300 M 650 270 L 780 290 M 100 480 L 220 460 M 700 520 L 850 490"/>
+                <path d="M 80 380 L 190 400 M 260 450 L 380 430 M 520 400 L 630 380 M 750 390 L 880 410"/>
+            </g>
+
+            <!-- Échelle Altimétrique à Gauche -->
+            <g font-family="'Fira Code', monospace" font-size="10" fill="#667788" text-anchor="end">
+                <text x="50" y="70">+10 m</text>
+                <text x="50" y="145">0 m (Surface)</text>
+                <text x="50" y="235">-6 m</text>
+                <text x="50" y="380">-20 m</text>
+                <text x="50" y="550">-35 m (Sion)</text>
+                <line x1="55" y1="65" x2="65" y2="65" stroke="#334455" stroke-width="1"/>
+                <line x1="55" y1="150" x2="65" y2="150" stroke="#44ee77" stroke-width="1"/>
+                <line x1="55" y1="240" x2="65" y2="240" stroke="#334455" stroke-width="1"/>
+                <line x1="55" y1="380" x2="65" y2="380" stroke="#334455" stroke-width="1"/>
+                <line x1="55" y1="550" x2="65" y2="550" stroke="#ff5500" stroke-width="1"/>
+            </g>
+
+            <!-- 2. INSTALLATIONS DE SURFACE (+0m à +10m) -->
+            <!-- Serre Bioclimatique Gauche (Maraîchage Biologique) -->
+            <path d="M 100 150 L 140 80 L 320 80 L 360 150 Z" fill="rgba(68, 238, 119, 0.05)" stroke="var(--bio-green)" stroke-width="1.5"/>
+            <line x1="140" y1="80" x2="140" y2="150" stroke="rgba(68,238,119,0.3)" stroke-width="1"/>
+            <line x1="230" y1="80" x2="230" y2="150" stroke="rgba(68,238,119,0.3)" stroke-width="1"/>
+            <line x1="320" y1="80" x2="320" y2="150" stroke="rgba(68,238,119,0.3)" stroke-width="1"/>
+            
+            <!-- Végétation & Cultures Intérieures Serre -->
+            <text x="130" y="140" font-size="20">🍅</text>
+            <text x="180" y="140" font-size="20">🥬</text>
+            <text x="230" y="140" font-size="20">🥕</text>
+            <text x="280" y="140" font-size="20">🥦</text>
+            <text x="325" y="140" font-size="20">🍓</text>
+            <text x="230" y="70" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#44ee77" text-anchor="middle">SERRE MARAÎCHÈRE BIOCLIMATIQUE</text>
+
+            <!-- Dôme Aquaponie & Algoculture Centre-Droit -->
+            <path d="M 400 150 Q 510 60 620 150 Z" fill="rgba(0, 204, 255, 0.05)" stroke="var(--water-blue)" stroke-width="1.5"/>
+            <!-- Bassin Aquaponique sous le dôme -->
+            <rect x="430" y="152" width="160" height="24" rx="4" fill="rgba(0, 102, 255, 0.25)" stroke="#00ccff" stroke-width="1"/>
+            <text x="460" y="169" font-size="14">🐟</text>
+            <text x="510" y="169" font-size="14">🌿</text>
+            <text x="550" y="169" font-size="14">🐟</text>
+            <text x="510" y="55" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#00ccff" text-anchor="middle">DÔME AQUAPONIE & TILAPIAS</text>
+
+            <!-- Pyrolyseur Solaire de Surface (Niveau 4) Droite -->
+            <path d="M 700 150 L 730 110 L 830 110 L 860 150 Z" fill="rgba(211, 84, 0, 0.1)" stroke="var(--carbon-red)" stroke-width="1.5"/>
+            <circle cx="780" cy="95" r="16" fill="none" stroke="#ffcc00" stroke-width="2"/>
+            <text x="780" y="99" font-size="14" text-anchor="middle">☀️</text>
+            <text x="780" y="140" font-size="18" text-anchor="middle">⬢</text>
+            <text x="780" y="55" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="var(--carbon-red)" text-anchor="middle">PYROLYSE FLASH (BIOCHAR)</text>
+
+            <!-- Drone de Surveillance Hydrique (NDVI) en Vol -->
+            <g transform="translate(640, 45)">
+                <ellipse cx="0" cy="0" rx="14" ry="4" fill="#ffcc00"/>
+                <line x1="-12" y1="0" x2="12" y2="0" stroke="#fff" stroke-width="2"/>
+                <line x1="-10" y1="-5" x2="-10" y2="0" stroke="#fff" stroke-width="1"/>
+                <line x1="10" y1="-5" x2="10" y2="0" stroke="#fff" stroke-width="1"/>
+                <path d="M 0 4 L -25 70 M 0 4 L 25 70" stroke="rgba(255, 204, 0, 0.25)" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="0" y="-8" font-family="'Fira Code', monospace" font-size="8" fill="#ffcc00" text-anchor="middle">DRONE LoRa</text>
+            </g>
+
+            <!-- 3. ZONE RHIZOSPHÈRE & SOUS-SOL (-0m à -6m) -->
+            <!-- Serpentin de Chauffage Racinaire (22-25°C) sous la serre -->
+            <path d="M 120 185 Q 140 175 160 185 T 200 185 T 240 185 T 280 185 T 320 185 T 350 185" fill="none" stroke="#ff5500" stroke-width="3" stroke-linecap="round"/>
+            <text x="235" y="210" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#ffa07a" text-anchor="middle">CHAUFFAGE RACINAIRE (22-25°C) + MYCORHIZES</text>
+            
+            <!-- Matrice Poreuse Terra Preta (Biochar enfoui) -->
+            <g fill="#44ee77" opacity="0.6">
+                <circle cx="140" cy="165" r="2"/><circle cx="190" cy="170" r="2"/><circle cx="250" cy="162" r="2"/><circle cx="310" cy="168" r="2"/>
+            </g>
+
+            <!-- Échangeur de Chaleur Abaisseur (Surface Sub-Level) -->
+            <rect x="200" y="225" width="70" height="30" rx="4" fill="#1f2429" stroke="#ffaa00" stroke-width="1.5"/>
+            <text x="235" y="244" font-family="'Fira Code', monospace" font-size="9" fill="#ffcc00" text-anchor="middle">ÉCHANGEUR</text>
+
+            <!-- Réservoir d'Eau Distillée Primaire Condensée (Niveau 3) -->
+            <rect x="460" y="215" width="100" height="40" rx="6" fill="#051525" stroke="#00ccff" stroke-width="1.5"/>
+            <text x="510" y="235" font-family="'Fira Code', monospace" font-size="9" fill="#00ccff" text-anchor="middle">RÉSERVOIR EAU</text>
+            <text x="510" y="248" font-family="'Fira Code', monospace" font-size="8" fill="#88bbdd" text-anchor="middle">EC = 0 μS/cm</text>
+
+            <!-- 4. INFRASTRUCTURE PROFONDE (-15m à -45m) -->
+            <!-- Puits Convectif d'Échappement Chaud (Cheminée Ascendante) -->
+            <rect x="210" y="255" width="50" height="260" fill="rgba(255, 85, 0, 0.08)" stroke="#ff5500" stroke-dasharray="4,4" stroke-width="1"/>
+            
+            <!-- Puits d'Admission d'Air Froid Nocturne (Intake Shaft) -->
+            <rect x="630" y="150" width="45" height="365" fill="rgba(0, 204, 255, 0.05)" stroke="#00ccff" stroke-dasharray="4,4" stroke-width="1"/>
+            <text x="652" y="320" font-family="'Fira Code', monospace" font-size="9" fill="#00ccff" text-anchor="middle" transform="rotate(90,652,320)">ADMISSION AIR FRAIS NOCTURNE</text>
+
+            <!-- Roue Dessiccante MOF-303 (Niveau 3 - Puits Atmosphérique) -->
+            <g transform="translate(652, 450)">
+                <ellipse cx="0" cy="0" rx="35" ry="18" fill="rgba(0,204,255,0.15)" stroke="#00ccff" stroke-width="2"/>
+                <line x1="-35" y1="0" x2="35" y2="0" stroke="#00ccff" stroke-width="1"/>
+                <text x="0" y="4" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">ROUE MOF-303</text>
+            </g>
+
+            <!-- Tunnel de Séchage Biomasse Souterrain (Niveau 4) -->
+            <rect x="680" y="270" width="160" height="40" rx="4" fill="rgba(211, 84, 0, 0.15)" stroke="var(--carbon-red)" stroke-width="1"/>
+            <text x="760" y="288" font-family="'Fira Code', monospace" font-size="9" fill="#ffa07a" text-anchor="middle">SÉCHOIR BIOMASSE (65°C)</text>
+            <text x="760" y="302" font-family="'Inter', sans-serif" font-size="8" fill="#888" text-anchor="middle">Résidus ──► Pyrolyseur</text>
+            <!-- Tapis Roulant Remontée Biomasse Séchée -->
+            <line x1="770" y1="270" x2="775" y2="150" stroke="var(--carbon-red)" stroke-width="2" stroke-dasharray="3,3"/>
+
+            <!-- Grande Caverne de Calcul : SION (Datacenter Immergé -35m) -->
+            <rect x="150" y="515" width="560" height="85" rx="10" fill="#030507" stroke="var(--magma-orange)" stroke-width="2"/>
+            <text x="430" y="535" font-family="'Fira Code', monospace" font-size="12" font-weight="bold" fill="var(--sun-yellow)" text-anchor="middle">
+                ⚡ SION : MATRICE INFORMATIQUE IMMERGÉE (10 - 50 MW)
+            </text>
+
+            <!-- Racks ASICs Immergés dans le fluide diélectrique -->
+            <g transform="translate(180, 545)">
+                <rect x="0" y="0" width="60" height="40" rx="3" fill="#1a1208" stroke="#ff5500" stroke-width="1.5"/>
+                <text x="30" y="24" font-size="16" text-anchor="middle">🖥️</text>
+                <text x="30" y="36" font-family="'Fira Code', monospace" font-size="7" fill="#ffaa00" text-anchor="middle">DLC 70°C</text>
+            </g>
+            <g transform="translate(260, 545)">
+                <rect x="0" y="0" width="60" height="40" rx="3" fill="#1a1208" stroke="#ff5500" stroke-width="1.5"/>
+                <text x="30" y="24" font-size="16" text-anchor="middle">🖥️</text>
+                <text x="30" y="36" font-family="'Fira Code', monospace" font-size="7" fill="#ffaa00" text-anchor="middle">DLC 70°C</text>
+            </g>
+            <g transform="translate(340, 545)">
+                <rect x="0" y="0" width="60" height="40" rx="3" fill="#1a1208" stroke="#ff5500" stroke-width="1.5"/>
+                <text x="30" y="24" font-size="16" text-anchor="middle">🖥️</text>
+                <text x="30" y="36" font-family="'Fira Code', monospace" font-size="7" fill="#ffaa00" text-anchor="middle">DLC 70°C</text>
+            </g>
+            <g transform="translate(420, 545)">
+                <rect x="0" y="0" width="60" height="40" rx="3" fill="#1a1208" stroke="#ff5500" stroke-width="1.5"/>
+                <text x="30" y="24" font-size="16" text-anchor="middle">🖥️</text>
+                <text x="30" y="36" font-family="'Fira Code', monospace" font-size="7" fill="#ffaa00" text-anchor="middle">DLC 70°C</text>
+            </g>
+
+            <!-- Échangeurs Lamellaires & Pompes Géothermiques -->
+            <g transform="translate(520, 545)">
+                <rect x="0" y="0" width="160" height="40" rx="4" fill="#0d1b2a" stroke="#00ccff" stroke-width="1.5"/>
+                <text x="80" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#00ccff" text-anchor="middle">CONDENSEUR GÉOTHERMIQUE</text>
+                <text x="80" y="32" font-family="'Fira Code', monospace" font-size="8" fill="#44ee77" text-anchor="middle">ΔH_vap = 2257 kJ/kg</text>
+            </g>
+
+            <!-- 5. LIGNES DE FLUX DYNAMIQUES ANIMÉES -->
+            <!-- Flux Thermique Ascendant (Rouge / Orange) : Des Serveurs à l'Échangeur Racinaire -->
+            <path d="M 235 515 L 235 255" fill="none" stroke="url(#heatFlowGrad)" stroke-width="3" class="flow-line"/>
+            
+            <!-- Dérivation Thermique vers Séchoir Biomasse -->
+            <path d="M 235 480 Q 235 430 450 350 T 680 290" fill="none" stroke="#ff5500" stroke-width="2" stroke-dasharray="4,4" class="flow-line"/>
+
+            <!-- Flux d'Eau Condensée Pure (Cyan) : Du Condenseur au Réservoir puis aux Racines -->
+            <path d="M 580 545 L 580 430 Q 580 340 510 255" fill="none" stroke="url(#waterFlowGrad)" stroke-width="3" class="flow-line"/>
+            <path d="M 460 230 L 350 185" fill="none" stroke="#00ccff" stroke-width="2" class="flow-line"/>
+
+            <!-- Flux de Recyclage Biomasse (Vert / Or) : Résidus Maraîchers -> Séchoir Souterrain -->
+            <path d="M 330 150 Q 550 170 700 270" fill="none" stroke="#44ee77" stroke-width="2" class="flow-line-reverse"/>
+
+            <!-- Légende Fléchée Intégrée -->
+            <g font-family="'Inter', sans-serif" font-size="9" font-weight="bold">
+                <text x="160" y="380" fill="#ff5500">▲ CHALEUR 70°C (CONVECTION)</text>
+                <text x="590" y="390" fill="#00ccff">▲ EAU PURE CONDENSÉE</text>
+                <text x="490" y="195" fill="#44ee77">▼ RÉSIDUS VÉGÉTAUX</text>
+            </g>
+        </svg>
+
+        <!-- CARTES LÉGENDES EXPLICATIVES DU FLUX -->
+        <div class="cross-legend-grid">
+            <div class="cross-legend-card" style="border-left-color: var(--magma-orange);">
+                <h5 style="color: var(--magma-orange);">♨️ 1. Exergie & Chauffage Racinaire</h5>
+                <p>
+                    L'eau glycolée à $70^\circ\text{C}$ des serveurs est détendue dans un échangeur pour tempérer le sol des serres ($22\text{–}25^\circ\text{C}$). Chauffer les racines plutôt que l'air triple l'assimilation sans déperdition vers le ciel.
+                </p>
+            </div>
+
+            <div class="cross-legend-card" style="border-left-color: var(--water-blue);">
+                <h5 style="color: var(--water-blue);">💧 2. Irrigation Vierge ($EC = 0$)</h5>
+                <p>
+                    L'eau précipitée par le Puits Atmosphérique ($4\,500\text{ L/j/MW}$) est dépourvue de sel et calcaire. Elle hydrate la serre par micro-goutteurs et alimente les bassins d'aquaponie à évaporation compensée.
+                </p>
+            </div>
+
+            <div class="cross-legend-card" style="border-left-color: var(--carbon-red);">
+                <h5 style="color: var(--carbon-red);">🔥 3. Pré-séchage & Pyrolyse</h5>
+                <p>
+                    Les tiges, fanes et déchets de taille sont séchés sous terre à $65^\circ\text{C}$ avant de subir une pyrolyse flash solaire en surface[cite: 1]. Le Biochar résultant est réincorporé au sol pour retenir l'eau[cite: 1].
+                </p>
+            </div>
+
+            <div class="cross-legend-card" style="border-left-color: var(--bio-green);">
+                <h5 style="color: var(--bio-green);">🥗 4. Souveraineté Vivrière</h5>
+                <p>
+                    Pour $5\text{ MW}$ installés, la surface produit plus de $180\text{ tonnes}$ de légumes bio et $20\text{ tonnes}$ de poisson par an. Le calcul mathématique garantit l'autonomie alimentaire totale du territoire[cite: 1].
+                </p>
+            </div>
+        </div>
+    </section>
 
     <details class="level-3">
         <summary style="border-left-color: var(--water-blue); color: var(--water-blue);">
