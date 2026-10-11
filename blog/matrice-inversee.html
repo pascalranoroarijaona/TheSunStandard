@@ -313,64 +313,140 @@
         }
         .nav-card:hover img { border-color: rgba(255, 204, 0, 0.4); }
 
-        /* --- Style du Bloc Simulateur --- */
+        /* --- Style du Bloc Simulateur Avancé --- */
         .simulator-box {
-            background: #0b0e11;
-            border: 1px solid rgba(255, 204, 0, 0.25);
+            background: #080b0e;
+            border: 1px solid rgba(255, 204, 0, 0.3);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2.2rem;
             margin: 4rem 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7), inset 0 0 25px rgba(255, 204, 0, 0.03);
             font-family: var(--font-ui);
         }
         .sim-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 1.5rem;
+            gap: 2.5rem;
+            margin-top: 1.8rem;
+        }
+        .sim-group-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--sun-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .sim-control {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.3rem;
+            position: relative;
         }
         .sim-control label {
-            display: block;
-            font-size: 0.85rem;
-            color: #aaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: #b0c4de;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.45rem;
         }
         .sim-control input[type="range"] {
             width: 100%;
             accent-color: var(--sun-yellow);
-            background: #222;
+            background: #1a2026;
             height: 6px;
             border-radius: 3px;
             outline: none;
+            cursor: pointer;
         }
         .sim-value {
-            float: right;
             color: var(--sun-yellow);
             font-family: var(--font-mono);
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.95rem;
         }
-        .sim-outputs {
-            background: #050709;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
+        /* --- Tooltips Riches --- */
+        .sim-info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--sun-yellow);
+            font-size: 0.65rem;
+            cursor: help;
+            margin-left: 6px;
+            position: relative;
+            vertical-align: middle;
+        }
+        .sim-info-icon:hover .sim-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sim-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            width: 250px;
+            background: #0d1217;
+            border: 1px solid var(--sun-yellow);
+            color: #d4d4d4;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: var(--font-main);
+            line-height: 1.4;
+            text-transform: none;
+            letter-spacing: normal;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+            z-index: 50;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        .sim-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--sun-yellow) transparent transparent transparent;
+        }
+        .sim-outputs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: #040608;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
             padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-top: 2rem;
         }
         .sim-metric {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.8rem;
-            margin-bottom: 0.8rem;
+            padding: 0.9rem;
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 6px;
+            border-left: 3px solid var(--stone-grey);
         }
-        .sim-metric:last-child { border: none; padding: 0; margin: 0; }
-        .sim-metric-label { font-size: 0.85rem; color: #888; }
-        .sim-metric-value { font-size: 1.6rem; font-family: var(--font-mono); color: #fff; font-weight: bold; }
+        .sim-metric-label { font-size: 0.78rem; color: #8899aa; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .sim-metric-value { font-size: 1.45rem; font-family: var(--font-mono); color: #fff; font-weight: bold; }
+        @media (max-width: 768px) {
+            .sim-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
         /* ========================================== */
         /* SECTION FEEDBACK (FORMSPREE & POPUP)       */
         /* ========================================== */
@@ -694,7 +770,7 @@
     <div class="ai-download-box" style="margin: -1.5rem auto 3rem; padding: 1.5rem; background: rgba(200, 100, 255, 0.04); border: 1px solid rgba(200, 100, 255, 0.25); border-left: 4px solid #c864ff; border-radius: 4px; font-family: var(--font-ui); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
         <div lang="fr">
             <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
-                🧠 <strong>Poussez la recherche open-source plus loin !</strong> Téléchargez le code source HTML de cet article pour le soumettre à votre IA favorite (ChatGPT, Claude, Gemini...) et continuez à explorer cette vision d'architecture symbiotique.
+                🧠 <strong>Poussez la recherche open-source plus loin !</strong> Téléchargez le code source HTML de cet article pour le soumettre à votre IA favorite (Mistral, Gemini, Claude...) et continuez à explorer cette vision d'architecture symbiotique.
             </p>
         </div>
         <div lang="en">
@@ -1787,63 +1863,174 @@
         </div>
         <div class="simulator-box">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
-            <span lang="fr">📊 Simulateur d'Équilibre Biophysique</span>
-            <span lang="en">📊 Biophysical Balance Simulator</span>
+            <span lang="fr">📊 Simulateur d'Équilibre Biophysique & Éconophysique (v2.0)</span>
+            <span lang="en">📊 Biophysical & Econophysics Equilibrium Simulator (v2.0)</span>
         </h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 1.5rem; line-height: 1.4;">
-            <span lang="fr">⚠️ ATTENTION : Ce modèle est une abstraction macroéconomique simplifiée destinée exclusivement à illustrer la cinétique des fluides et le recouvrement du CAPEX des <strong>Niveaux 3 et 4</strong> pour une infrastructure isolée sous roche saine. Une base de travail de départ à étendre.</span>
-            <span lang="en">⚠️ WARNING: This model is a simplified macroeconomic abstraction intended exclusively to illustrate fluid kinetics and CAPEX recovery of <strong>Levels 3 and 4</strong> for an isolated infrastructure under bedrock.</span>
+        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 2rem; line-height: 1.5; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <span lang="fr">Modélisation thermo-économique couplée : calcule l'amortissement du CAPEX d'enfouissement face aux flux régénératifs (PUE passif, extraction psychrométrique MOF, séquestration biochar et micro-climat maraîcher).</span>
+            <span lang="en">Coupled thermo-economic modeling: balances subterranean excavation CAPEX against regenerative yields (passive PUE, MOF psychrometric extraction, biochar sequestration, and greenhouse thermal valorization).</span>
         </p>
 
         <div class="sim-grid">
+            <!-- Colonne 1 : Génie Civil & Énergie -->
             <div>
+                <div class="sim-group-title">
+                    <span>⛏️</span>
+                    <span lang="fr">Paramètres Géotechniques & Électriques</span>
+                    <span lang="en">Geotechnical & Electrical Inputs</span>
+                </div>
+
                 <div class="sim-control">
                     <label for="param-power">
-                        <span lang="fr">Puissance du Calcul (P)</span><span lang="en">Compute Power (P)</span>
+                        <span>
+                            <span lang="fr">Puissance de Calcul ($P$)</span><span lang="en">Compute Power ($P$)</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Puissance électrique continue absorbée par les ASICs/GPU immergés au fond de la cavité.</span>
+                            </span>
+                        </span>
                         <span class="sim-value" id="val-power">5 MW</span>
                     </label>
                     <input type="range" id="param-power" min="1" max="50" value="5">
                 </div>
+
                 <div class="sim-control">
                     <label for="param-depth">
-                        <span lang="fr">Profondeur d'Enfouissement (H)</span><span lang="en">Burial Depth (H)</span>
-                        <span class="sim-value" id="val-depth">30 m</span>
+                        <span>
+                            <span lang="fr">Profondeur d'Enfouissement ($H$)</span><span lang="en">Burial Depth ($H$)</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Pilote le tirage convectif de cheminée et garantit le silence acoustique complet (0 dB en surface).</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-depth">35 m</span>
                     </label>
-                    <input type="range" id="param-depth" min="10" max="100" value="30">
+                    <input type="range" id="param-depth" min="10" max="100" value="35">
                 </div>
+
                 <div class="sim-control">
                     <label for="param-cost">
-                        <span lang="fr">Coût d'Excavation Rocheuse</span><span lang="en">Rock Excavation Cost</span>
-                        <span class="sim-value" id="val-cost">350 $/m³</span>
+                        <span>
+                            <span lang="fr">Coût d'Excavation du Socle</span><span lang="en">Bedrock Excavation Cost</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Coût par m³ de roche forée en souterrain profond (abattage, évacuation, soutènement primaire).</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-cost">320 $/m³</span>
                     </label>
-                    <input type="range" id="param-cost" min="100" max="1000" value="350" step="50">
+                    <input type="range" id="param-cost" min="120" max="800" value="320" step="20">
                 </div>
+
                 <div class="sim-control">
-                    <label for="param-carbon">
-                        <span lang="fr">Prix du Carbone Séquestré</span><span lang="en">Sequestered Carbon Price</span>
-                        <span class="sim-value" id="val-carbon">80 $/t</span>
+                    <label for="param-elec">
+                        <span>
+                            <span lang="fr">Coût du kWh Électrique</span><span lang="en">Electricity Cost</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Coût de l'énergie fatale locale alimentant la matrice (LCOE hydro ou solaire dédié).</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-elec">0.06 $/kWh</span>
                     </label>
-                    <input type="range" id="param-carbon" min="20" max="200" value="80" step="10">
+                    <input type="range" id="param-elec" min="0.02" max="0.18" value="0.06" step="0.01">
                 </div>
             </div>
 
-            <div class="sim-outputs">
-                <div class="sim-metric">
-                    <div class="sim-metric-label"><span lang="fr">CAPEX Excavation Initial</span><span lang="en">Initial Excavation CAPEX</span></div>
-                    <div class="sim-metric-value" id="out-capex">0 $</div>
+            <!-- Colonne 2 : Thermodynamique & Biosphère -->
+            <div>
+                <div class="sim-group-title">
+                    <span>🌱</span>
+                    <span lang="fr">Paramètres Biophysiques & Climat</span>
+                    <span lang="en">Biophysical & Climate Inputs</span>
                 </div>
-                <div class="sim-metric">
-                    <div class="sim-metric-label"><span lang="fr">Économies Électriques Annuelles (PUE)</span><span lang="en">Annual Electricity Savings (PUE)</span></div>
-                    <div class="sim-metric-value" id="out-opex" style="color: var(--bio-green);">0 $</div>
+
+                <div class="sim-control">
+                    <label for="param-exergy">
+                        <span>
+                            <span lang="fr">Rendement Exergétique ($\eta_{th}$)</span><span lang="en">Exergetic Recovery ($\eta_{th}$)</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Pourcentage de la chaleur sensible des puces récupéré dans le fluide diélectrique à 65-75°C.</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-exergy">85 %</span>
+                    </label>
+                    <input type="range" id="param-exergy" min="60" max="98" value="85" step="1">
                 </div>
-                <div class="sim-metric">
-                    <div class="sim-metric-label"><span lang="fr">Production d'Eau Pure Estimée</span><span lang="en">Estimated Pure Water Production</span></div>
-                    <div class="sim-metric-value" id="out-water" style="color: var(--water-blue);">0 L/jour</div>
+
+                <div class="sim-control">
+                    <label for="param-humidity">
+                        <span>
+                            <span lang="fr">Humidité Relative de l'Air ($\varphi$)</span><span lang="en">Relative Humidity ($\varphi$)</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Humidité du biome de surface. Influe sur la cinétique d'adsorption des roues MOF (Niveau 3).</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-humidity">35 %</span>
+                    </label>
+                    <input type="range" id="param-humidity" min="15" max="85" value="35" step="5">
                 </div>
-                <div class="sim-metric">
-                    <div class="sim-metric-label"><span lang="fr">Horizon de Rétribution Net (ROI)</span><span lang="en">Net Return Horizon (ROI)</span></div>
-                    <div class="sim-metric-value" id="out-roi" style="color: var(--sun-yellow);">0 Ans</div>
+
+                <div class="sim-control">
+                    <label for="param-carbon">
+                        <span>
+                            <span lang="fr">Prix du Crédit Carbone</span><span lang="en">Carbon Removal Price</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Valorisation sur le marché de la séquestration millénaire du carbone par pyrolyse Biochar.</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-carbon">90 $/t</span>
+                    </label>
+                    <input type="range" id="param-carbon" min="30" max="250" value="90" step="5">
                 </div>
+
+                <div class="sim-control">
+                    <label for="param-water-val">
+                        <span>
+                            <span lang="fr">Valeur de l'Eau Distillée</span><span lang="en">Pure Water Value</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Prix local d'approvisionnement en eau pure sans minéraux dans les zones arides/stressées.</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-water-val">3.0 $/m³</span>
+                    </label>
+                    <input type="range" id="param-water-val" min="0.5" max="8.0" value="3.0" step="0.5">
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 Métriques d'Impact Intégrées -->
+        <div class="sim-outputs-grid">
+            <div class="sim-metric" style="border-left-color: var(--sun-orange);">
+                <div class="sim-metric-label"><span lang="fr">CAPEX Total Enfouissement</span><span lang="en">Total Subterranean CAPEX</span></div>
+                <div class="sim-metric-value" id="out-capex">0 $</div>
+                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Volume cavernier + puits jumeaux</span><span lang="en">Cavern volume + dual shafts</span></span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--bio-green);">
+                <div class="sim-metric-label"><span lang="fr">Économie PUE Annuelle</span><span lang="en">Annual PUE Savings</span></div>
+                <div class="sim-metric-value" id="out-opex" style="color: var(--bio-green);">0 $</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-pue-val"><span lang="fr">PUE Souterrain : 1.025</span><span lang="en">Subterranean PUE: 1.025</span></span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--water-blue);">
+                <div class="sim-metric-label"><span lang="fr">Production d'Eau Pure</span><span lang="en">Pure Water Yield</span></div>
+                <div class="sim-metric-value" id="out-water" style="color: var(--water-blue);">0 L/jour</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-water-annual">0 m³/an</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: #ff5500;">
+                <div class="sim-metric-label"><span lang="fr">Serres Biologiques Chauffées</span><span lang="en">Heated Organic Greenhouses</span></div>
+                <div class="sim-metric-value" id="out-greenhouse" style="color: var(--magma-orange);">0 m²</div>
+                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Chauffage racinaire 22-25°C</span><span lang="en">22-25°C root-zone heating</span></span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--carbon-red);">
+                <div class="sim-metric-label"><span lang="fr">Biochar Séquestré Durable</span><span lang="en">Biochar Carbon Stored</span></div>
+                <div class="sim-metric-value" id="out-carbon" style="color: var(--carbon-red);">0 t/an</div>
+                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Séquestration géologique > 2000 ans</span><span lang="en">Geological storage > 2000 yrs</span></span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--gold-gov);">
+                <div class="sim-metric-label"><span lang="fr">Retour sur Investissement (ROI)</span><span lang="en">Net Payback Horizon (ROI)</span></div>
+                <div class="sim-metric-value" id="out-roi" style="color: var(--sun-yellow);">0 Ans</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-rev-annual">Flux total : 0 $/an</span>
             </div>
         </div>
 
@@ -3158,54 +3345,97 @@
     });
 </script>
 <script>
-    // --- 2. SCRIPT INTERACTIF DU MODULE DE SIMULATION ÉCONOPHYSIQUE ---
+    // --- 2. SCRIPT DU SIMULATEUR BIOPHYSIQUE AVANCÉ (V2.0) ---
     const sPower = document.getElementById('param-power');
     const sDepth = document.getElementById('param-depth');
     const sCost = document.getElementById('param-cost');
+    const sElec = document.getElementById('param-elec');
+    const sExergy = document.getElementById('param-exergy');
+    const sHumidity = document.getElementById('param-humidity');
     const sCarbon = document.getElementById('param-carbon');
+    const sWaterVal = document.getElementById('param-water-val');
 
     const chartCanvas = document.getElementById('simulationChart');
     const chartCtx = chartCanvas.getContext('2d');
 
     function runSimulation() {
-        const P = parseFloat(sPower.value); // MW
-        const H = parseFloat(sDepth.value); // meters
-        const costPerM3 = parseFloat(sCost.value); // $/m³
-        const carbonPrice = parseFloat(sCarbon.value); // $/t
+        if (!sPower || !sDepth || !chartCanvas) return;
 
-        // Mise à jour des labels textuels
+        const P = parseFloat(sPower.value); // MW électrique
+        const H = parseFloat(sDepth.value); // mètres
+        const costPerM3 = parseFloat(sCost.value); // $/m³
+        const elecPrice = parseFloat(sElec.value); // $/kWh
+        const exergyRate = parseFloat(sExergy.value) / 100; // ratio [0.60 - 0.98]
+        const humidity = parseFloat(sHumidity.value) / 100; // ratio [0.15 - 0.85]
+        const carbonPrice = parseFloat(sCarbon.value); // $/tonne
+        const waterPriceM3 = parseFloat(sWaterVal.value); // $/m³
+
+        const isFr = document.body.classList.contains('lang-fr');
+
+        // Mise à jour des affichages textuels des curseurs
         document.getElementById('val-power').innerText = P + " MW";
         document.getElementById('val-depth').innerText = H + " m";
         document.getElementById('val-cost').innerText = costPerM3 + " $/m³";
+        document.getElementById('val-elec').innerText = elecPrice.toFixed(2) + " $/kWh";
+        document.getElementById('val-exergy').innerText = Math.round(exergyRate * 100) + " %";
+        document.getElementById('val-humidity').innerText = Math.round(humidity * 100) + " %";
         document.getElementById('val-carbon').innerText = carbonPrice + " $/t";
+        document.getElementById('val-water-val').innerText = waterPriceM3.toFixed(1) + " $/m³";
 
-        // Calculs Biophysiques & Financiers
-        const baseVolume = P * 150; // 150m³ requis par MW de serveurs immergés
-        const complexityFactor = 1 + Math.pow(H / 60, 2); // Croissance non-linéaire avec la profondeur
-        const CAPEX = Math.round(baseVolume * complexityFactor * costPerM3);
+        // 1. Modélisation Géotechnique & CAPEX
+        // 120 m³ de roche excavée par MW en cuve d'immersion haute densité
+        const cavernVolume = P * 120;
+        // Non-linéarité géotechnique : foration de puits jumeaux (Dual-Shaft) s'amplifiant avec la profondeur
+        const complexityFactor = 1 + Math.pow(H / 55, 1.85);
+        const shaftCapex = H * 2500; // Coût linéaire de fonçage et tubage des puits de ventilation
+        const CAPEX = Math.round((cavernVolume * complexityFactor * costPerM3) + shaftCapex);
 
-        // Gains d'OPEX (PUE de surface 1.35 vs Souterrain). 
-        // L'effet cheminée (tirage naturel) s'améliore avec la profondeur H.
-        const pueSouterrain = Math.max(1.01, 1.05 - (H * 0.0005)); // Plus c'est profond, plus le PUE s'approche de 1.01
+        // 2. Modélisation de l'Efficacité Énergétique (PUE)
+        // PUE surface typique climatisé = 1.35.
+        // PUE souterrain : le tirage thermique et l'eau glycolée géothermique font tendre vers 1.015
+        const pueSouterrain = Math.max(1.015, 1.055 - (H * 0.00035));
         const powerSavedKW = P * (1.35 - pueSouterrain) * 1000;
-        const annualOpexSavings = Math.round(powerSavedKW * 24 * 365 * 0.08); // Hypothèse: 0.08$/kWh
+        const annualOpexSavings = Math.round(powerSavedKW * 24 * 365 * elecPrice);
 
-        // Externalités environnementales monétisées (Soumis au 1er Principe de la Thermodynamique)
-        // La production d'eau est strictement bornée par P (la chaleur disponible), PAS par la profondeur H.
-        const waterProducedLitersDay = Math.round(P * 4500); 
-        const carbonSequesteredTonsYear = Math.round(P * 300); // Niveau 4
-        const dynamicValueGen = (waterProducedLitersDay * 365 * 0.002) + (carbonSequesteredTonsYear * carbonPrice);
+        // 3. Modélisation Thermodynamique du Puits Atmosphérique (Niveau 3)
+        // Puissance thermique utile = P * exergyRate
+        const thermalPowerMW = P * exergyRate;
+        // Dépendance psychrométrique : l'efficacité d'extraction MOF chute en air hyper-aride (<25%)
+        const psychroCoeff = 0.55 + (0.45 * Math.min(1.0, humidity / 0.50));
+        const waterLitersDay = Math.round(thermalPowerMW * 4500 * psychroCoeff);
+        const waterAnnualM3 = Math.round((waterLitersDay * 365) / 1000);
+        const waterRevenueAnnual = waterAnnualM3 * waterPriceM3;
 
-        const totalAnnualBenefit = annualOpexSavings + dynamicValueGen;
-        const ROI = totalAnnualBenefit > 0 ? (CAPEX / totalAnnualBenefit).toFixed(1) : "∞";
+        // 4. Modélisation Maraîchère & Valorisation Racinaire (Niveau 2)
+        // 1 MW de chaleur basse température à 65°C chauffe 2 200 m² de serres hors-gel (22-25°C)
+        const greenhouseM2 = Math.round(thermalPowerMW * 2200);
+        // Valeur nette générée par an (production maraîchère / autonomie locale estimée à 12 $/m²/an)
+        const greenhouseRevenue = Math.round(greenhouseM2 * 12);
 
-        // Affichage des métriques
+        // 5. Modélisation Pyrolyse & Biochar (Niveau 4)
+        // Le pré-séchage à l'air chaud permet de convertir 260 tonnes de biomasse en carbone stable par MW_th/an
+        const biocharTonsYear = Math.round(thermalPowerMW * 260);
+        const carbonRevenue = biocharTonsYear * carbonPrice;
+
+        // 6. Bilan Éconophysique Global
+        const totalAnnualRevenue = annualOpexSavings + waterRevenueAnnual + carbonRevenue + greenhouseRevenue;
+        const ROI = totalAnnualRevenue > 0 ? (CAPEX / totalAnnualRevenue).toFixed(1) : "∞";
+
+        // Affichage des métriques calculées
         document.getElementById('out-capex').innerText = CAPEX.toLocaleString() + " $";
-        document.getElementById('out-opex').innerText = Math.round(totalAnnualBenefit).toLocaleString() + " $/an";
-        document.getElementById('out-water').innerText = Math.round(waterProducedLitersDay).toLocaleString() + " L/jour";
-        document.getElementById('out-roi').innerText = ROI + (document.body.classList.contains('lang-fr') ? " Ans" : " Years");
+        document.getElementById('out-opex').innerText = annualOpexSavings.toLocaleString() + " $/an";
+        document.getElementById('out-pue-val').innerText = (isFr ? "PUE Souterrain : " : "Subterranean PUE: ") + pueSouterrain.toFixed(3);
 
-        drawSimulationChart(CAPEX, totalAnnualBenefit);
+        document.getElementById('out-water').innerText = waterLitersDay.toLocaleString() + (isFr ? " L/j" : " L/d");
+        document.getElementById('out-water-annual').innerText = waterAnnualM3.toLocaleString() + " m³/an";
+
+        document.getElementById('out-greenhouse').innerText = greenhouseM2.toLocaleString() + " m²";
+        document.getElementById('out-carbon').innerText = biocharTonsYear.toLocaleString() + (isFr ? " t/an" : " t/y");
+
+        document.getElementById('out-roi').innerText = ROI + (isFr ? " Ans" : " Years");
+        document.getElementById('out-rev-annual').innerText = (isFr ? "Flux total : " : "Total flow: ") + Math.round(totalAnnualRevenue).toLocaleString() + " $/an";
+
+        drawSimulationChart(CAPEX, totalAnnualRevenue);
     }
 
     function drawSimulationChart(capex, annualBenefit) {
