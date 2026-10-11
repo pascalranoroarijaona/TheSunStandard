@@ -2449,9 +2449,9 @@
             <span lang="fr">🌍 Télémétrie Globale : Potentiel de la Matrice</span>
             <span lang="en">🌍 Global Telemetry: Matrix Potential</span>
         </h3>
-        <p style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 2rem;">
-            <span lang="fr">Données Bitcoin en temps réel converties selon l'Étalon Solaire (Hypothèse d'efficience : 25 J/TH).</span>
-            <span lang="en">Real-time Bitcoin data converted under the Sun Standard (Efficiency Assumption: 25 J/TH).</span>
+        <p style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 2rem; line-height: 1.5;">
+            <span lang="fr">Données Bitcoin en temps réel converties selon l'Étalon Solaire.<br><em style="color: #a0aab5;">Hypothèses : Efficience moyenne de 25 J/TH et <strong>10% du réseau mondial</strong> converti aux architectures de récupération thermique (Immersion/DLC).</em></span>
+            <span lang="en">Real-time Bitcoin data converted under the Sun Standard.<br><em style="color: #a0aab5;">Assumptions: Average efficiency of 25 J/TH and <strong>10% of the global network</strong> converted to thermal recovery architectures (Immersion/DLC).</em></span>
         </p>
         
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center; margin-bottom: 2rem;">
@@ -3725,16 +3725,20 @@
         const hashrateEH = (currentHashrateData / 1e18).toFixed(2);
         document.getElementById('live-hashrate').innerText = hashrateEH + ' EH/s';
 
-        // Puissance en Watts = (H/s converti en TH/s) * 25 Joules/TH
-        const powerWatts = (currentHashrateData / 1e12) * 25; 
+        // Puissance Totale Estimée du Réseau en Watts = (H/s converti en TH/s) * 25 Joules/TH
+        const totalPowerWatts = (currentHashrateData / 1e12) * 25; 
         
-        // Affichage en Gigawatts (GW)
-        const powerGW = (powerWatts / 1e9).toFixed(2);
+        // HYPOTHÈSE RÉALISTE : Seuls 10 % du réseau sont équipés de refroidissement DLC/Immersion permettant une captation exergétique.
+        const RECOVERY_FACTOR = 0.10;
+        const recoverablePowerWatts = totalPowerWatts * RECOVERY_FACTOR;
+        
+        // Affichage de la chaleur RÉCUPÉRABLE en Gigawatts (GW)
+        const powerGW = (recoverablePowerWatts / 1e9).toFixed(2);
         document.getElementById('live-power').innerText = powerGW + ' GW';
 
-        // Production d'eau : 4500 Litres par Mégawatt (MW)
-        const powerMW = powerWatts / 1e6; // Conversion des Watts en Mégawatts
-        const waterLiters = Math.round(powerMW * 4500); // L'eau totale en Litres
+        // Production d'eau calculée sur la puissance récupérable : 4500 Litres par Mégawatt (MW)
+        const recoverablePowerMW = recoverablePowerWatts / 1e6; // Conversion des Watts en Mégawatts
+        const waterLiters = Math.round(recoverablePowerMW * 4500); // L'eau totale en Litres
         
         // Formatage lisible (ex: 103,500,000)
         const formattedWater = waterLiters.toLocaleString();
