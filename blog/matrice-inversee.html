@@ -110,12 +110,45 @@
             font-size: 1.15rem; color: #d4d4d4;
         }
 
-        header {
+        /* --- Hero Header avec Bio-Pluie Végétale (Matrice Inversée) --- */
+        header.matrix-hero {
+            position: relative;
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            margin-bottom: 3.5rem;
+            padding: 4.5rem 2rem 3.5rem;
+            border: 1px solid rgba(68, 238, 119, 0.25);
+            border-bottom: 2px solid var(--bio-green);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(4, 7, 5, 0.85);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(68, 238, 119, 0.05);
             font-family: var(--font-ui);
+        }
+
+        #bioMatrixCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.65;
+        }
+
+        .matrix-hero-content {
+            position: relative;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        .matrix-hero-content h1 {
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.95), 0 0 15px rgba(68, 238, 119, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .matrix-hero-content .subtitle {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
         }
 
         h1 {
@@ -523,19 +556,22 @@
 </nav>
 
 <article>
-    <header>
-        <h1>
-            <span lang="fr">La Matrice Inversée</span>
-            <span lang="en">The Inverted Matrix</span>
-        </h1>
-        <div class="subtitle">
-            <span lang="fr">Minage Souterrain, Thermodynamique & Régénération de la Biosphère - Ce que le minage informatique  pour l'intelligence et la vérité mathématique (Bitcoin) pourrait devenir un jour.</span>
-            <span lang="en">Subterranean Mining, The Next Tier of Digital Truth (Bitcoin) and Intelligence Information Mining with Thermodynamics & Biosphere Regeneration</span>
+    <header class="matrix-hero">
+        <canvas id="bioMatrixCanvas"></canvas>
+        <div class="matrix-hero-content">
+            <h1>
+                <span lang="fr">La Matrice Inversée</span>
+                <span lang="en">The Inverted Matrix</span>
+            </h1>
+            <div class="subtitle">
+                <span lang="fr">Minage Souterrain, Thermodynamique & Régénération de la Biosphère - Ce que le minage informatique pour l'intelligence et la vérité mathématique (Bitcoin) pourrait devenir un jour.</span>
+                <span lang="en">Subterranean Mining, The Next Tier of Digital Truth (Bitcoin) and Intelligence Information Mining with Thermodynamics & Biosphere Regeneration</span>
+            </div>
+            <p style="margin-top: 1.2rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
+                <span lang="fr">2026-10-11 (last edit - October 11th, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-10-11 (last edit - October 11th, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
+            </p>
         </div>
-        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
-            <span lang="fr">2026-06-15 (last edit - July 6th, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
-            <span lang="en">2026-06-15 (last edit - July 6th, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
-        </p>
     </header>
     <div class="ai-download-box" style="margin: -1.5rem auto 3rem; padding: 1.5rem; background: rgba(200, 100, 255, 0.04); border: 1px solid rgba(200, 100, 255, 0.25); border-left: 4px solid #c864ff; border-radius: 4px; font-family: var(--font-ui); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
         <div lang="fr">
@@ -2841,6 +2877,126 @@
 
     [sPower, sDepth, sCost, sCarbon].forEach(el => el.addEventListener('input', runSimulation));
     window.addEventListener('DOMContentLoaded', runSimulation);
+</script>
+<!-- SCRIPT : BIO-PLUIE DE LA MATRICE INVERSÉE (NETTE & CADENCÉE) -->
+<script>
+(function() {
+    const canvas = document.getElementById('bioMatrixCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const header = canvas.parentElement;
+
+    // Palette végétale et florale
+    const bioGlyphs = [
+        '🌿', '🍃', '🌱', '🌸', '🌼', '🍀', '🌾', '🌻',
+        '❀', '✿', '❁', '✾', '✽', '❃', '❦', '᪥', '𑁍', '𖥸'
+    ];
+
+    // Nuances de vert vivant, or solaire et éclat floral
+    const colors = ['#44ee77', '#2ecc71', '#a8ffb2', '#70e000', '#ffcc00', '#ffb7b2'];
+
+    let colWidth = 34;   // Espacement horizontal large pour que chaque fleur respire
+    let rowHeight = 28;  // Hauteur de ligne nette
+    let columns = 0;
+    let drops = [];      // Numéro de ligne entière actuelle
+    let counters = [];   // Compteur de frames par colonne
+    let intervals = [];  // Délai de chute propre à chaque colonne (vitesse lente)
+    let animId = null;
+    let isVisible = true;
+
+    function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = header.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+
+        const isMobile = rect.width < 600;
+        colWidth = isMobile ? 26 : 34;
+        rowHeight = isMobile ? 22 : 28;
+        columns = Math.floor(rect.width / colWidth);
+
+        drops = [];
+        counters = [];
+        intervals = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * -25); // Départs échelonnés au-dessus
+            counters[i] = 0;
+            // Vitesse lente : la goutte saute d'une ligne toutes les 14 à 28 frames (~250ms à 450ms)
+            intervals[i] = Math.floor(14 + Math.random() * 15);
+        }
+
+        // Fond initial noir opaque
+        ctx.fillStyle = '#040705';
+        ctx.fillRect(0, 0, rect.width, rect.height);
+    }
+
+    function draw() {
+        const rect = header.getBoundingClientRect();
+
+        // Voile semi-transparent Matrix : efface doucement les symboles précédents sans créer de bouillie
+        ctx.fillStyle = 'rgba(4, 7, 5, 0.07)';
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        ctx.font = `${rowHeight * 0.8}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        for (let i = 0; i < columns; i++) {
+            counters[i]++;
+
+            // On ne dessine QUE lorsque le temps imparti pour sauter à la ligne suivante est atteint
+            if (counters[i] >= intervals[i]) {
+                counters[i] = 0;
+
+                const row = drops[i];
+                const x = i * colWidth + colWidth / 2;
+                const y = row * rowHeight + rowHeight / 2;
+
+                // Impression unique, parfaitement centrée et nette dans sa case
+                if (row >= 0 && y <= rect.height + rowHeight) {
+                    const char = bioGlyphs[Math.floor(Math.random() * bioGlyphs.length)];
+                    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                    ctx.fillText(char, x, y);
+                }
+
+                // Réinitialisation aléatoire une fois en bas
+                if (row * rowHeight > rect.height && Math.random() > 0.94) {
+                    drops[i] = Math.floor(Math.random() * -12);
+                    intervals[i] = Math.floor(14 + Math.random() * 15);
+                } else {
+                    drops[i]++; // Avance strictement d'une seule ligne
+                }
+            }
+        }
+
+        if (isVisible) {
+            animId = requestAnimationFrame(draw);
+        }
+    }
+
+    window.addEventListener('resize', resize);
+
+    // Pause hors champ (économie GPU / batterie)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            if (isVisible && !animId) {
+                animId = requestAnimationFrame(draw);
+            } else if (!isVisible && animId) {
+                cancelAnimationFrame(animId);
+                animId = null;
+            }
+        });
+    }, { threshold: 0.05 });
+
+    observer.observe(header);
+
+    resize();
+    animId = requestAnimationFrame(draw);
+})();
 </script>
 </body>
 </html>
