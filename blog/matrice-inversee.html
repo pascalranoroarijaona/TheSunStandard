@@ -1784,8 +1784,7 @@
             </script>
             
         </div>
-    </details>
-    <details style="margin-bottom: 2rem; background: rgba(0, 204, 255, 0.02); border-left: 4px solid var(--water-blue); border-radius: 0 8px 8px 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-family: var(--font-ui);">
+    
         <summary style="padding: 1.5rem; cursor: pointer; font-weight: 600; font-size: 1.2rem; color: #fff; background: rgba(0, 204, 255, 0.08); border-bottom: 1px solid rgba(0, 204, 255, 0.2); display: flex; align-items: center; gap: 15px;">
             <span style="color: var(--water-blue);">🔬</span>
             <span lang="fr">Deep Dive : Science du Zéolithe & Architecture Modulaire</span>
@@ -2265,7 +2264,202 @@
             </div>
             
         </div>
-        <div class="simulator-box">
+    </details>
+    
+    <details class="level-7">
+        <summary style="border-left-color: #c864ff; color: #c864ff;">
+            <span lang="fr">Niveau 7 : L'Ouroboros Matériel (Recyclage Hydrométallurgique & IA)</span>
+            <span lang="en">Level 7: The Material Ouroboros (Hydrometallurgical Recycling & AI)</span>
+        </summary>
+        <div class="drawer-content">
+            
+            <!-- SYMBOLE OUROBOROS DYNAMIQUE JAVASCRIPT -->
+            <div style="text-align: center; margin: 1rem 0 2rem; position: relative;">
+                <canvas id="ouroborosCanvas" width="300" height="300" style="width: 200px; height: 200px; filter: drop-shadow(0 0 20px rgba(200, 100, 255, 0.5)); display: inline-block;"></canvas>
+            </div>
+            <script>
+            (function() {
+                const canvas = document.getElementById('ouroborosCanvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const width = canvas.width;
+                const height = canvas.height;
+                const cx = width / 2;
+                const cy = height / 2;
+                const radius = 95;
+
+                let angleOffset = 0;
+                const particleCount = 50;
+                const particles = [];
+
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        a: (i / particleCount) * Math.PI * 2,
+                        speed: 0.012 + Math.random() * 0.008,
+                        rOffset: (Math.random() - 0.5) * 10,
+                        size: 1.5 + Math.random() * 2,
+                        alpha: 0.2 + Math.random() * 0.8
+                    });
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, width, height);
+                    angleOffset += 0.015; // Vitesse de rotation globale du serpent
+
+                    // 1. Anneau gradient circulaire résonant (Corps du serpent)
+                    ctx.save();
+                    const grad = ctx.createConicGradient(angleOffset, cx, cy);
+                    grad.addColorStop(0, '#c864ff');    // Tête néon magenta
+                    grad.addColorStop(0.3, '#00ccff');  // Corps cyan
+                    grad.addColorStop(0.7, '#44ee77');  // Corps vert végétal
+                    grad.addColorStop(0.92, 'rgba(200, 100, 255, 0.15)'); // Queue en dissolution
+                    grad.addColorStop(1, '#c864ff');
+
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 7;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+
+                    // 2. Particules en flux circulaire (Flux de matière recyclée)
+                    particles.forEach(p => {
+                        p.a += p.speed;
+                        if (p.a > Math.PI * 2) p.a -= Math.PI * 2;
+                        const x = cx + (radius + p.rOffset) * Math.cos(p.a + angleOffset);
+                        const y = cy + (radius + p.rOffset) * Math.sin(p.a + angleOffset);
+
+                        ctx.beginPath();
+                        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(200, 100, 255, ${p.alpha})`;
+                        ctx.shadowColor = '#c864ff';
+                        ctx.shadowBlur = 6;
+                        ctx.fill();
+                    });
+                    ctx.restore();
+
+                    // 3. Tête néon du serpent se mordant la queue
+                    const headAngle = angleOffset;
+                    const headX = cx + radius * Math.cos(headAngle);
+                    const headY = cy + radius * Math.sin(headAngle);
+
+                    ctx.save();
+                    ctx.translate(headX, headY);
+                    ctx.rotate(headAngle + Math.PI / 2);
+
+                    // Géométrie de la tête (Dragon/Serpent Cyber-organique)
+                    ctx.beginPath();
+                    ctx.moveTo(0, -14); // Museau
+                    ctx.lineTo(9, 8);   // Côté droit
+                    ctx.lineTo(0, 3);   // Mâchoire intérieure
+                    ctx.lineTo(-9, 8);  // Côté gauche
+                    ctx.closePath();
+                    ctx.fillStyle = '#c864ff';
+                    ctx.shadowColor = '#c864ff';
+                    ctx.shadowBlur = 15;
+                    ctx.fill();
+
+                    // Yeux dorés lumineux
+                    ctx.beginPath();
+                    ctx.arc(-3.5, -2, 1.8, 0, Math.PI * 2);
+                    ctx.arc(3.5, -2, 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffcc00';
+                    ctx.shadowColor = '#ffcc00';
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+
+                    ctx.restore();
+
+                    requestAnimationFrame(draw);
+                }
+
+                draw();
+            })();
+            </script>
+
+            <div class="well-introduction" style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(200, 100, 255, 0.15); padding-bottom: 2rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>
+                        Si la Matrice Inversée boucle les cycles de l'eau, du carbone et de l'énergie, elle se doit de résoudre l'entropie physique de ses propres composants. Les puces ASICs et GPUs ont une durée de vie optimale de 3 à 5 ans. Dans l'ancien paradigme linéaire, l'obsolescence programmée générait des montagnes de déchets électroniques (e-waste) toxiques.
+                    </p>
+                    <p>
+                        Ici, le concept de "déchet" n'existe plus. Un serveur en fin de vie est considéré comme un gisement minier de très haute pureté (une mine urbaine). L'infrastructure intègre une boucle de décommissionnement totale où l'extraction de la richesse matérielle se fait sans recours à la pyrométallurgie destructrice et dépendante des énergies fossiles.
+                    </p>
+                    <p>
+                        C'est l'<strong>Ouroboros</strong> : symbole alchimique et antique du serpent qui se mord la queue, incarnant le cycle éternel, l'auto-subsistance et la régénération infinie. Appliqué à la technologie, la machine se digère et se recompose elle-même sans fin.
+                    </p>
+                </div>
+                <div lang="en">
+                    <p>
+                        If the Inverted Matrix closes the cycles of water, carbon, and energy, it must also solve the physical entropy of its own components. ASICs and GPUs have an optimal lifespan of 3 to 5 years. In the old linear paradigm, planned obsolescence generated mountains of toxic e-waste.
+                    </p>
+                    <p>
+                        Here, the concept of "waste" no longer exists. An end-of-life server is treated as an ultra-high-purity mining deposit (an urban mine). The infrastructure integrates a total decommissioning loop where material wealth is extracted without resorting to destructive, fossil-fuel-dependent pyrometallurgy.
+                    </p>
+                    <p>
+                        This is the <strong>Ouroboros</strong>: the ancient alchemical symbol of the serpent eating its tail, embodying the eternal cycle, self-sustenance, and infinite regeneration. Applied to technology, the machine digests and recomposes itself endlessly.
+                    </p>
+                </div>
+                
+                <ul style="list-style-type: none; padding-left: 0; margin: 2rem 0;">
+                    <li style="margin-bottom: 20px; border-left: 3px solid #c864ff; padding-left: 20px;">
+                        <span lang="fr"><strong style="color: #c864ff;">A. Les Bains de Lixiviation Douce :</strong> Les puces obsolètes sont démantelées par des bras robotisés et plongées dans des cuves de biolixiviation ou de solvants écologiques. Chauffés passivement par la chaleur fatale des ASICs de nouvelle génération (toujours en activité), ces bains séparent l'or, l'argent, le cuivre et le silicium. Le rendement actuel de récupération de cette chimie douce atteint déjà les 95 %.</span>
+                        <span lang="en"><strong style="color: #c864ff;">A. Gentle Leaching Baths:</strong> Obsolete chips are dismantled by robotic arms and plunged into bio-leaching or eco-friendly solvent vats. Passively heated by the waste heat of new-generation ASICs (still in operation), these baths separate gold, silver, copper, and silicon. The current recovery yield of this gentle chemistry already reaches 95%.</span>
+                    </li>
+                    
+                    <li style="margin-bottom: 20px; border-left: 3px solid var(--water-blue); padding-left: 20px;">
+                        <span lang="fr"><strong style="color: var(--water-blue);">B. La Quête IA du "99+%" :</strong> Pour vaincre les 5 % de pertes restantes (l'entropie résiduelle), l'intelligence locale (Edge AI) alloue une fraction continue de sa puissance de calcul à la simulation moléculaire. L'IA modélise de nouvelles enzymes, des bactéries mutantes ou de nouveaux solvants organiques pour attaquer les résines époxy les plus tenaces. L'objectif est l'horizon "99+%" : une boucle de recyclage quasi parfaite, où l'IA trouve elle-même la clé pour recycler son propre corps matériel.</span>
+                        <span lang="en"><strong style="color: var(--water-blue);">B. The AI Quest for "99+%":</strong> To conquer the remaining 5% loss (residual entropy), the local intelligence (Edge AI) allocates a continuous fraction of its compute power to molecular simulation. The AI models new enzymes, mutant bacteria, or new organic solvents to break down the most stubborn epoxy resins. The goal is the "99+%" horizon: a near-perfect recycling loop, where the AI itself finds the key to recycling its own material body.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                <div style="background: rgba(200, 100, 255, 0.03); padding: 1.5rem; border-top: 3px solid #c864ff; border-radius: 6px;">
+                    <h4 style="color: #c864ff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span>♻️</span>
+                        <span lang="fr">Mine Circulaire</span>
+                        <span lang="en">Circular Mine</span>
+                    </h4>
+                    <p lang="fr" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">Le besoin d'extraire de nouveaux métaux rares de la terre diminue drastiquement. Le stock minéral circule en boucle fermée à l'intérieur de l'infrastructure.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">The need to extract new rare metals from the earth drastically decreases. The mineral stock circulates in a closed loop within the infrastructure.</p>
+                </div>
+                <div style="background: rgba(200, 100, 255, 0.03); padding: 1.5rem; border-top: 3px solid #c864ff; border-radius: 6px;">
+                    <h4 style="color: #c864ff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span>🧬</span>
+                        <span lang="fr">Design Génératif</span>
+                        <span lang="en">Generative Design</span>
+                    </h4>
+                    <p lang="fr" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">L'IA suggère des améliorations matérielles aux fabricants d'ASICs pour que la prochaine génération de puces soit imprimée d'une façon qui facilite encore plus son futur recyclage.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">AI suggests hardware improvements to ASIC manufacturers so the next generation of chips is printed in a way that makes future recycling even easier.</p>
+                </div>
+                <div style="background: rgba(200, 100, 255, 0.03); padding: 1.5rem; border-top: 3px solid #c864ff; border-radius: 6px;">
+                    <h4 style="color: #c864ff; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                        <span>💧</span>
+                        <span lang="fr">Chimie Zéro-Fossile</span>
+                        <span lang="en">Zero-Fossil Chemistry</span>
+                    </h4>
+                    <p lang="fr" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">La dissolution des métaux se fait en milieu liquide (hydrométallurgie), sans hauts-fourneaux au charbon ni émissions toxiques libérées dans l'atmosphère.</p>
+                    <p lang="en" style="font-size: 0.9em; color: #d7bde2; text-align: justify;">Metal dissolution occurs in liquid media (hydrometallurgy), without coal-fired blast furnaces or toxic emissions released into the atmosphere.</p>
+                </div>
+            </div>
+
+            <div class="math-block" style="color: #c864ff; text-align: left; padding: 2rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">Le Théorème de l'Ouroboros (Conservation des Masses Rares)</span>
+                    <span lang="en">The Ouroboros Theorem (Conservation of Rare Masses)</span>
+                </div>
+                $$ \lim_{t \to \infty} \left( \frac{M_{\text{recyclé}}}{M_{\text{initial}}} \right) \xrightarrow{\text{IA Edge}} 99.9\% $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
+                    <span lang="fr">La boucle de recherche de l'Intelligence Artificielle crée une asymptote vers le recyclage absolu. Plus l'IA calcule, plus les méthodes de séparation des alliages se raffinent, transformant l'entropie matérielle en un cycle thermodynamique parfait.</span>
+                    <span lang="en">The Artificial Intelligence research loop creates an asymptote toward absolute recycling. The more the AI computes, the more the alloy separation methods are refined, transforming material entropy into a perfect thermodynamic cycle.</span>
+                </p>
+            </div>
+            
+        </div>
+    </details>
+
+    <div class="simulator-box">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
             <span lang="fr">📊 Simulateur d'Équilibre Biophysique & Éconophysique (v2.0)</span>
             <span lang="en">📊 Biophysical & Econophysics Equilibrium Simulator (v2.0)</span>
@@ -2442,7 +2636,6 @@
             <canvas id="simulationChart" width="800" height="300" style="width:100%; display:block;"></canvas>
         </div>
     </div>
-    </details>
 
     <div class="dashboard-box">
         <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase;">
