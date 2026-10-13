@@ -2367,14 +2367,14 @@
 
                     ctx.save();
                     ctx.translate(headX, headY);
-                    ctx.rotate(headAngle + Math.PI / 2);
+                    ctx.rotate(headAngle - Math.PI);
 
                     // Géométrie de la tête (Dragon/Serpent Cyber-organique)
                     ctx.beginPath();
                     ctx.moveTo(0, -14); // Museau
-                    ctx.lineTo(9, 8);   // Côté droit
-                    ctx.lineTo(0, 3);   // Mâchoire intérieure
-                    ctx.lineTo(-9, 8);  // Côté gauche
+                    ctx.lineTo(13, 8);   // Côté droit
+                    ctx.lineTo(0, 5);   // Mâchoire intérieure
+                    ctx.lineTo(-13, 8);  // Côté gauche
                     ctx.closePath();
                     ctx.fillStyle = '#c864ff';
                     ctx.shadowColor = '#c864ff';
@@ -2383,8 +2383,8 @@
 
                     // Yeux dorés lumineux
                     ctx.beginPath();
-                    ctx.arc(-3.5, -2, 1.8, 0, Math.PI * 2);
-                    ctx.arc(3.5, -2, 1.8, 0, Math.PI * 2);
+                    ctx.arc(-3.5, -1, 2.2, 0, Math.PI * 2);
+                    ctx.arc(3.5, -1, 2.2, 0, Math.PI * 2);
                     ctx.fillStyle = '#ffcc00';
                     ctx.shadowColor = '#ffcc00';
                     ctx.shadowBlur = 8;
