@@ -861,12 +861,34 @@
                 🧠 <strong>Take this open-source research further!</strong> Download the raw HTML source of this article, plug it into your favorite AI (ChatGPT, Claude, Gemini...), and keep exploring this symbiotic architectural design.
             </p>
         </div>
-        <div style="text-align: center;">
-            <a href="https://github.com/pascalranoroarijaona/TheSunStandard/blob/main/blog/matrice-inversee.html" target="_blank" class="feedback-submit" style="text-decoration: none; display: inline-block; padding: 8px 24px; font-size: 0.85rem; border-color: #c864ff; color: #c864ff; background: rgba(200, 100, 255, 0.05);">
-                <span lang="fr">⬇️ Récupérer l'HTML sur GitHub</span>
-                <span lang="en">⬇️ Get HTML on GitHub</span>
-            </a>
+        <div style="text-align: center;"> 
+        <button onclick="telechargerPageActuelle()" class="feedback-submit" style="text-decoration: none; display: inline-block; padding: 8px 24px; font-size: 0.85rem; border-color: #c864ff; color: #c864ff; background: rgba(200, 100, 255, 0.05); cursor: pointer; border-style: solid; border-width: 1px; border-radius: 30px;"> 
+            <span lang="fr">⬇️ Télécharger l'HTML de cette page</span> 
+            <span lang="en">⬇️ Download HTML of this page</span> 
+        </button> 
         </div>
+        <script>
+            function telechargerPageActuelle() {
+            // 1. Récupère l'intégralité du code HTML de la page actuelle
+            const codeHTML = "<!doctype html>\n" + document.documentElement.outerHTML;
+            
+            // 2. Crée un fichier virtuel (Blob) contenant ce code
+            const blob = new Blob([codeHTML], { type: "text/html;charset=utf-8" });
+            
+            // 3. Crée un lien temporaire pour forcer le téléchargement
+            const blobUrl = window.URL.createObjectURL(blob);
+            const lienTemporaire = document.createElement("a");
+            lienTemporaire.href = blobUrl;
+            lienTemporaire.download = "matrice-inversee.html"; // Nom du fichier téléchargé
+            
+            // 4. Déclenche le clic et nettoie la mémoire
+            document.body.appendChild(lienTemporaire);
+            lienTemporaire.click();
+            document.body.removeChild(lienTemporaire);
+            window.URL.revokeObjectURL(blobUrl);
+            }
+        </script>
+
     </div>
     <div class="intro-hero">
         <img src="img/VieOrganiqueSurface.jpg" alt="Matrix Inversed Research Service" loading="lazy">
@@ -915,7 +937,7 @@
             </h3>
             <p class="cross-section-desc">
                 <span lang="fr">
-                    Comment le minage informatique souterrain alimente directement l'abondance biologique de surface. Chaque calorie électrique dissipée dans la roche est transmutée en eau douce distillée, en sol enrichi (Terra Preta) et en récoltes maraîchères locales.
+                    Comment le minage informatique souterrain alimente directement l'abondance biologique de surface. La symbiose recherchée ne consiste pas à convertir intégralement l'énergie du calcul en bénéfices biologiques : elle consiste à valoriser, lorsque cela est possible, une fraction de la chaleur et des flux associés, tout en imposant des seuils de réduction ou d'arrêt lorsque l'eau, les sols, la biodiversité ou les communautés locales sont sous pression.
                 </span>
                 <span lang="en">
                     How subterranean computing powers surface biological abundance. Every electrical calorie dissipated in bedrock is transmuted into pure distilled water, enriched soil (Terra Preta), and local harvest.
@@ -974,12 +996,12 @@
                 <text x="50" y="145">0 m (Surface)</text>
                 <text x="50" y="235">-6 m</text>
                 <text x="50" y="380">-20 m</text>
-                <text x="50" y="550">-35 m (Sion)</text>
+                <text x="80" y="550">-35 m (Sion)</text>
                 <line x1="55" y1="65" x2="65" y2="65" stroke="#334455" stroke-width="1"/>
                 <line x1="55" y1="150" x2="65" y2="150" stroke="#44ee77" stroke-width="1"/>
                 <line x1="55" y1="240" x2="65" y2="240" stroke="#334455" stroke-width="1"/>
                 <line x1="55" y1="380" x2="65" y2="380" stroke="#334455" stroke-width="1"/>
-                <line x1="55" y1="550" x2="65" y2="550" stroke="#ff5500" stroke-width="1"/>
+                <line x1="55" y1="555" x2="65" y2="555" stroke="#ff5500" stroke-width="1"/>
             </g>
 
             <!-- 2. INSTALLATIONS DE SURFACE (+0m à +10m) -->
@@ -1133,7 +1155,7 @@
             <div class="cross-legend-card" style="border-left-color: var(--water-blue);">
                 <h5 style="color: var(--water-blue);">💧 2. Irrigation Vierge ($EC = 0$)</h5>
                 <p>
-                    L'eau précipitée par le Puits Atmosphérique ($4\,500\text{ L/j/MW}$) est dépourvue de sel et calcaire. Elle hydrate la serre par micro-goutteurs et alimente les bassins d'aquaponie à évaporation compensée.
+                    Dans un scénario humide et correctement dimensionné, le Puits Atmosphérique peut produire jusqu'à $4\,500\text{ L/j/MW}$ d'eau condensée ; ce chiffre doit être recalculé selon l'humidité relative, la température, le débit d'air et le rendement réel du système. L'eau produite doit ensuite être reminéralisée et contrôlée avant son usage agricole ou aquaponique.
                 </p>
             </div>
 
@@ -1147,7 +1169,7 @@
             <div class="cross-legend-card" style="border-left-color: var(--bio-green);">
                 <h5 style="color: var(--bio-green);">🥗 4. Souveraineté Vivrière</h5>
                 <p>
-                    Pour $5\text{ MW}$ installés, la surface produit plus de $180\text{ tonnes}$ de légumes bio et $20\text{ tonnes}$ de poisson par an. Le calcul mathématique garantit l'autonomie alimentaire totale du territoire.
+                    Pour un scénario de $5\text{ MW}$ installés, la production agricole doit être estimée à partir d'un modèle explicite intégrant surface, climat, espèces, intrants, rendement thermique, alimentation des poissons et pertes. Les valeurs de $180\text{ tonnes}$ de légumes et de $20\text{ tonnes}$ de poisson constituent au mieux des objectifs à valider par pilote, et non une garantie d'autonomie alimentaire totale.
                 </p>
             </div>
         </div>
@@ -1228,7 +1250,7 @@
                 </div>
                 $$ A(r) = A_0 \left(\frac{r_0}{r}\right)^n e^{-\alpha(r - r_0)} \quad \text{avec} \quad \alpha = \frac{\pi \cdot f \cdot \eta}{c_s} $$
                 <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify;">
-                    <span lang="fr">Sous terre, le son ne suit plus la loi de masse des parois aériennes. L'amplitude vibratoire $A(r)$ perçue en surface chute de manière drastique grâce à deux facteurs combinés : la divergence géométrique des ondes P et S (le terme $(r_0/r)^n$), et surtout l'amortissement hystérétique de la roche (le facteur $e^{-\alpha r}$). Le coefficient d'absorption $\alpha$ dépend de la fréquence $f$ des serveurs, du coefficient de perte du matériau $\eta$ (ex: latérite vs granite) et de la vitesse de l'onde $c_s$. Un enfouissement calculé garantit un silence de surface absolu (0 dB d'émergence).</span>
+                    <span lang="fr">Sous terre, le son ne suit plus la loi de masse des parois aériennes. L'amplitude vibratoire $A(r)$ perçue en surface chute de manière drastique grâce à deux facteurs combinés : la divergence géométrique des ondes P et S (le terme $(r_0/r)^n$), et surtout l'amortissement hystérétique de la roche (le facteur $e^{-\alpha r}$). Le coefficient d'absorption $\alpha$ dépend de la fréquence $f$ des serveurs, du coefficient de perte du matériau $\eta$ (ex: latérite vs granite) et de la vitesse de l'onde $c_s$. Un enfouissement correctement dimensionné peut réduire la transmission sonore et vibratoire vers la surface ; le niveau résiduel doit être mesuré en conditions réelles, notamment au niveau des puits, ventilateurs, pompes et équipements de secours.</span>
                     <span lang="en">Underground, sound no longer follows the mass law of airborne walls. The vibratory amplitude $A(r)$ perceived at the surface drops drastically due to two combined factors: the geometric divergence of P and S waves (the $(r_0/r)^n$ term), and crucially, the hysteretic damping of the rock (the $e^{-\alpha r}$ factor). The absorption coefficient $\alpha$ depends on the servers' frequency $f$, the material's loss factor $\eta$ (e.g., laterite vs granite), and the wave speed $c_s$. A calculated burial guarantees absolute surface silence (0 dB emergence).</span>
                 </p>
             </div>
@@ -2035,7 +2057,7 @@
                         Toute ingénierie biophysique, aussi avancée soit-elle, est condamnée à l'effondrement si l'infrastructure macroéconomique qui orchestre ses flux est structurellement corrompue. L'histoire des civilisations humaines démontre un cycle de destruction récurrent directement induit par l'<strong>Effet Cantillon</strong> : l'enrichissement asymétrique d'une caste centrale par le privilège de l'émission monétaire arbitraire. Dans un système monétaire "fiat" (par décret), l'argent créé à partir de rien viole le premier principe de la thermodynamique. Ceux qui sont proches de la planche à billets (banques centrales, institutions financières) accaparent la valeur avant que l'inflation ne frappe la périphérie (les agriculteurs, les ingénieurs, les écosystèmes naturels). 
                     </p>
                     <p>
-                        La Matrice Inversée postule que l'on ne peut pas guérir la biosphère avec une monnaie malade. Dans un monde où un réseau décentralisé rend mathématiquement et physiquement impossible l'extraction de la richesse d'autrui par la force brute ou la violence légitime de l'inflation, l'Humanité va devoir réapprendre à se refaire confiance. L'architecture neutralise l'asymétrie de Cantillon par un couplage direct entre le registre de consensus mondial (Bitcoin) et la restauration du vivant. La gouvernance n'est plus confiée à la discrétion politique, mais à l'impartialité des mathématiques et de la thermodynamique :
+                        La Matrice Inversée postule que l'on ne peut pas guérir la biosphère avec une monnaie malade. Dans un monde où un réseau décentralisé rend mathématiquement et physiquement impossible l'extraction de la richesse d'autrui par la force brute ou la violence légitime de l'inflation, l'Humanité va devoir réapprendre à se refaire confiance. L'architecture neutralise l'asymétrie de Cantillon par un couplage direct entre le registre de consensus mondial (Bitcoin) et la restauration du vivant. La gouvernance s'appuie sur des mesures physiques et des règles auditables, mais elle reste une décision collective : les communautés définissent les seuils, les priorités, les droits d'accès et les mécanismes de contestation qui orientent l'usage des ressources :
                     </p>
                 </div>
                 <div lang="en">
@@ -2865,7 +2887,7 @@
             <span lang="en">📋 Deployment Catalog: Anchoring Matrices</span>
         </h3>
         <p style="text-align: center; color: #a0aab5; font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-            <span lang="fr">L'architecture de la Matrice Inversée n'est pas monolithique. Elle s'adapte selon une fonction d'état locale liant l'énergie disponible (Angovo), la psychrométrie du climat et la géologie. Voici les quatres archétypes de déploiement d'ingénierie symbiotique :</span>
+            <span lang="fr">L'architecture de la Matrice Inversée n'est pas monolithique. Elle s'adapte selon une fonction d'état locale liant l'énergie disponible (Angovo), la psychrométrie du climat et la géologie. Voici les quatre archétypes de déploiement d'ingénierie symbiotique, chacun devant être validé par un bilan énergétique, hydrique, écologique et social :</span>
             <span lang="en">The Inverted Matrix architecture is not monolithic. It adapts according to a local state function linking available energy (Angovo), climate psychrometrics, and geology. Here are the three archetypes of symbiotic engineering deployment:</span>
         </p>
 
