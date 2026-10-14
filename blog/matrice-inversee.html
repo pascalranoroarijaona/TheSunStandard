@@ -846,8 +846,8 @@
                 <span lang="en">Subterranean Mining, The Next Tier of Digital Truth (Bitcoin) and Intelligence Information Mining with Thermodynamics & Biosphere Regeneration</span>
             </div>
             <p style="margin-top: 1.2rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
-                <span lang="fr">2026-10-11 (last edit - October 11th, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
-                <span lang="en">2026-10-11 (last edit - October 11th, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
+                <span lang="fr">2026-10-11 (last edit - October 14th, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-10-11 (last edit - October 14th, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
             </p>
         </div>
     </header>
@@ -5562,7 +5562,7 @@
         btn.addEventListener('click', () => setTimeout(runSimulation, 60));
     });
 </script>
-<!-- SCRIPT : BIO-PLUIE DE LA MATRICE INVERSÉE (NETTE & CADENCÉE) -->
+<!-- SCRIPT : BIO-ASCENSION DE LA MATRICE INVERSÉE (MONTÉE CADENCÉE) -->
 <script>
 (function() {
     const canvas = document.getElementById('bioMatrixCanvas');
@@ -5579,12 +5579,13 @@
     // Nuances de vert vivant, or solaire et éclat floral
     const colors = ['#44ee77', '#2ecc71', '#a8ffb2', '#70e000', '#ffcc00', '#ffb7b2'];
 
-    let colWidth = 34;   // Espacement horizontal large pour que chaque fleur respire
-    let rowHeight = 28;  // Hauteur de ligne nette
+    let colWidth = 34;   // Espacement horizontal
+    let rowHeight = 28;  // Hauteur de ligne
     let columns = 0;
-    let drops = [];      // Numéro de ligne entière actuelle
+    let totalRows = 0;
+    let drops = [];      // Numéro de ligne actuelle
     let counters = [];   // Compteur de frames par colonne
-    let intervals = [];  // Délai de chute propre à chaque colonne (vitesse lente)
+    let intervals = [];  // Délai de montée propre à chaque colonne
     let animId = null;
     let isVisible = true;
 
@@ -5600,19 +5601,20 @@
         colWidth = isMobile ? 26 : 34;
         rowHeight = isMobile ? 22 : 28;
         columns = Math.floor(rect.width / colWidth);
+        totalRows = Math.ceil(rect.height / rowHeight);
 
         drops = [];
         counters = [];
         intervals = [];
 
         for (let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * -25); // Départs échelonnés au-dessus
+            // Départs échelonnés SOUS le cadre inférieur
+            drops[i] = totalRows + Math.floor(Math.random() * 25);
             counters[i] = 0;
-            // Vitesse lente : la goutte saute d'une ligne toutes les 14 à 28 frames (~250ms à 450ms)
             intervals[i] = Math.floor(14 + Math.random() * 15);
         }
 
-        // Fond initial noir opaque
+        // Fond initial sombre
         ctx.fillStyle = '#040705';
         ctx.fillRect(0, 0, rect.width, rect.height);
     }
@@ -5620,7 +5622,7 @@
     function draw() {
         const rect = header.getBoundingClientRect();
 
-        // Voile semi-transparent Matrix : efface doucement les symboles précédents sans créer de bouillie
+        // Voile d'estompage pour laisser une traîne vers le bas
         ctx.fillStyle = 'rgba(4, 7, 5, 0.07)';
         ctx.fillRect(0, 0, rect.width, rect.height);
 
@@ -5631,7 +5633,6 @@
         for (let i = 0; i < columns; i++) {
             counters[i]++;
 
-            // On ne dessine QUE lorsque le temps imparti pour sauter à la ligne suivante est atteint
             if (counters[i] >= intervals[i]) {
                 counters[i] = 0;
 
@@ -5639,19 +5640,19 @@
                 const x = i * colWidth + colWidth / 2;
                 const y = row * rowHeight + rowHeight / 2;
 
-                // Impression unique, parfaitement centrée et nette dans sa case
-                if (row >= 0 && y <= rect.height + rowHeight) {
+                // Affichage tant que le symbole est dans la zone visible
+                if (row >= 0 && row <= totalRows) {
                     const char = bioGlyphs[Math.floor(Math.random() * bioGlyphs.length)];
                     ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
                     ctx.fillText(char, x, y);
                 }
 
-                // Réinitialisation aléatoire une fois en bas
-                if (row * rowHeight > rect.height && Math.random() > 0.94) {
-                    drops[i] = Math.floor(Math.random() * -12);
+                // Réinitialisation sous le cadre une fois le ciel (haut) dépassé
+                if (row < 0 && Math.random() > 0.94) {
+                    drops[i] = totalRows + Math.floor(Math.random() * 12);
                     intervals[i] = Math.floor(14 + Math.random() * 15);
                 } else {
-                    drops[i]++; // Avance strictement d'une seule ligne
+                    drops[i]--; // Monte strictement d'une ligne vers le ciel
                 }
             }
         }
@@ -5663,7 +5664,7 @@
 
     window.addEventListener('resize', resize);
 
-    // Pause hors champ (économie GPU / batterie)
+    // Pause hors champ (GPU / batterie)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             isVisible = entry.isIntersecting;
