@@ -4374,23 +4374,152 @@
     </details>
    
 
-<div class="simulator-box">
+    <div class="simulator-box" id="simulateur-v3">
+        <style>
+            .sim-presets-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.6rem;
+                justify-content: center;
+                margin-bottom: 1.8rem;
+                padding-bottom: 1.2rem;
+                border-bottom: 1px solid rgba(255, 204, 0, 0.15);
+            }
+            .sim-preset-btn {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 204, 0, 0.3);
+                color: #d4d4d4;
+                padding: 0.45rem 0.9rem;
+                border-radius: 20px;
+                font-size: 0.78rem;
+                font-family: var(--font-mono);
+                cursor: pointer;
+                transition: all 0.25s ease;
+            }
+            .sim-preset-btn:hover, .sim-preset-btn.active {
+                background: rgba(255, 204, 0, 0.18);
+                border-color: var(--sun-yellow);
+                color: #fff;
+                box-shadow: 0 0 12px rgba(255, 204, 0, 0.25);
+            }
+            .sim-toggles-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                background: rgba(255, 255, 255, 0.02);
+                padding: 1rem 1.2rem;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            .sim-select {
+                width: 100%;
+                background: #0d1217;
+                color: var(--sun-yellow);
+                border: 1px solid rgba(255, 204, 0, 0.35);
+                padding: 0.5rem 0.75rem;
+                border-radius: 6px;
+                font-family: var(--font-mono);
+                font-size: 0.82rem;
+                outline: none;
+                cursor: pointer;
+                margin-top: 0.35rem;
+            }
+            .sim-breakdown-bar-wrap {
+                margin-top: 1.8rem;
+                background: #040608;
+                padding: 1rem 1.2rem;
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.06);
+            }
+            .sim-stack-bar {
+                display: flex;
+                height: 14px;
+                width: 100%;
+                border-radius: 7px;
+                overflow: hidden;
+                background: #161b22;
+                margin: 0.6rem 0;
+            }
+            .sim-stack-seg {
+                height: 100%;
+                transition: width 0.3s ease;
+            }
+            .sim-stack-legend {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 0.5rem;
+                font-size: 0.75rem;
+                font-family: var(--font-mono);
+                color: #9ca3af;
+            }
+            @media (max-width: 768px) {
+                .sim-toggles-row { grid-template-columns: 1fr; gap: 1rem; }
+            }
+        </style>
+
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
-            <span lang="fr">📊 Simulateur d'Équilibre Biophysique & Éconophysique (v2.0)</span>
-            <span lang="en">📊 Biophysical & Econophysics Equilibrium Simulator (v2.0)</span>
+            <span lang="fr">📊 Simulateur d'Équilibre Biophysique &amp; Éconophysique (v3.0 — Modèle Complet Niveaux 1–8)</span>
+            <span lang="en">📊 Biophysical &amp; Econophysics Equilibrium Simulator (v3.0 — Full Levels 1–8 Model)</span>
         </h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 2rem; line-height: 1.5; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <span lang="fr">Modélisation thermo-économique couplée : calcule l'amortissement du CAPEX d'enfouissement face aux flux régénératifs (PUE passif, extraction psychrométrique MOF, séquestration biochar et micro-climat maraîcher).</span>
-            <span lang="en">Coupled thermo-economic modeling: balances subterranean excavation CAPEX against regenerative yields (passive PUE, MOF psychrometric extraction, biochar sequestration, and greenhouse thermal valorization).</span>
+        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 1.5rem; line-height: 1.5; max-width: 850px; margin-left: auto; margin-right: auto;">
+            <span lang="fr">Modélisation thermo-économique couplée : intègre la réhabilitation Brownfield (Niv. 1), le chauffage racinaire saisonnier (Niv. 2), la psychrométrie MOF-303 (Niv. 3), le Biochar (Niv. 4), le recyclage Ouroboros (Niv. 7) et la stabilisation VRE / Méthane (Niv. 8).</span>
+            <span lang="en">Coupled thermo-economic modeling: integrates Brownfield rehabilitation (Lvl 1), seasonal root heating (Lvl 2), MOF-303 psychrometrics (Lvl 3), Biochar (Lvl 4), Ouroboros recycling (Lvl 7), and VRE / Methane mitigation (Lvl 8).</span>
         </p>
 
+        <!-- BARRE DE PRÉRÉGLAGES RAPIDES (ARCHÉTYPES) -->
+        <div class="sim-presets-bar">
+            <button type="button" class="sim-preset-btn active" onclick="applySimPreset('pilot', this)">
+                <span lang="fr">⛰️ 1. Site Pilote Brownfield (1 MW)</span>
+                <span lang="en">⛰️ 1. Brownfield Pilot Site (1 MW)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySimPreset('arid', this)">
+                <span lang="fr">☀️ 2. Dôme Solaire Aride VRE (5 MW)</span>
+                <span lang="en">☀️ 2. Arid Solar VRE Dome (5 MW)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySimPreset('methane', this)">
+                <span lang="fr">🔥 3. Puits Méthane Isolé CH₄ (2 MW)</span>
+                <span lang="en">🔥 3. Stranded Methane CH₄ Well (2 MW)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySimPreset('deepmine', this)">
+                <span lang="fr">🏭 4. Mine Profonde Hydro/SMR (50 MW)</span>
+                <span lang="en">🏭 4. Deep Mine Hydro/SMR (50 MW)</span>
+            </button>
+        </div>
+
+        <!-- SÉLECTEURS DE TOPOLOGIE (NIVEAU 1) & SOURCE ÉNERGÉTIQUE (NIVEAU 8) -->
+        <div class="sim-toggles-row">
+            <div>
+                <label style="font-size: 0.78rem; color: #b0c4de; text-transform: uppercase; letter-spacing: 0.8px; display: block;">
+                    <span lang="fr">⛏️ Topologie Géotechnique (Niveau 1) :</span>
+                    <span lang="en">⛏️ Geotechnical Topology (Level 1):</span>
+                </label>
+                <select id="param-site-mode" class="sim-select">
+                    <option value="brownfield">Brownfield — Mine / Tunnel réhabilité (-80% excavation)</option>
+                    <option value="greenfield">Greenfield — Forage vierge Tabula Rasa (100% excavation)</option>
+                </select>
+            </div>
+            <div>
+                <label style="font-size: 0.78rem; color: #b0c4de; text-transform: uppercase; letter-spacing: 0.8px; display: block;">
+                    <span lang="fr">⚡ Régime Énergétique &amp; Climat (Niveau 8) :</span>
+                    <span lang="en">⚡ Energy &amp; Climate Regime (Level 8):</span>
+                </label>
+                <select id="param-energy-mode" class="sim-select">
+                    <option value="vre">Synergie VRE Solaire/Éolien + Réponse Stratum CLR [18, 19]</option>
+                    <option value="methane">Captage Méthane Isolé CH₄ (-63% PRG + Crédits) [21, 23]</option>
+                    <option value="baseload">Talon Décarboné Continu (Hydro / Géothermie / SMR)</option>
+                </select>
+            </div>
+        </div>
+
         <div class="sim-grid">
-            <!-- Colonne 1 : Génie Civil & Énergie -->
+            <!-- Colonne 1 : Génie Civil, Matériel & Énergie -->
             <div>
                 <div class="sim-group-title">
                     <span>⛏️</span>
-                    <span lang="fr">Paramètres Géotechniques & Électriques</span>
-                    <span lang="en">Geotechnical & Electrical Inputs</span>
+                    <span lang="fr">Paramètres Géotechniques, ASIC &amp; Énergie</span>
+                    <span lang="en">Geotechnical, ASIC &amp; Energy Inputs</span>
                 </div>
 
                 <div class="sim-control">
@@ -4398,10 +4527,10 @@
                         <span>
                             <span lang="fr">Puissance de Calcul ($P$)</span><span lang="en">Compute Power ($P$)</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Puissance électrique continue absorbée par les ASICs/GPU immergés au fond de la cavité.</span>
+                                <span class="sim-tooltip">Puissance électrique nominale absorbée par les serveurs immergés (1 à 50 MW).</span>
                             </span>
                         </span>
-                        <span class="sim-value" id="val-power">5 MW</span>
+                        <span class="sim-value" id="val-power">1 MW</span>
                     </label>
                     <input type="range" id="param-power" min="1" max="50" value="1">
                 </div>
@@ -4411,7 +4540,7 @@
                         <span>
                             <span lang="fr">Profondeur d'Enfouissement ($H$)</span><span lang="en">Burial Depth ($H$)</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Pilote le tirage convectif de cheminée et garantit le silence acoustique complet (<35 dB(A) à 50 m, silencieux sur puits).</span>
+                                <span class="sim-tooltip">Pilote le tirage thermique (Δp ≈ 60 Pa à 50m), l'atténuation acoustique (<35 dB) et la longueur des puits.</span>
                             </span>
                         </span>
                         <span class="sim-value" id="val-depth">35 m</span>
@@ -4422,9 +4551,9 @@
                 <div class="sim-control">
                     <label for="param-cost">
                         <span>
-                            <span lang="fr">Coût d'Excavation du Socle</span><span lang="en">Bedrock Excavation Cost</span>
+                            <span lang="fr">Coût Unitaire Roche / Réhab.</span><span lang="en">Rock / Rehab Unit Cost</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Coût par m³ de roche forée en souterrain profond (abattage, évacuation, soutènement primaire).</span>
+                                <span class="sim-tooltip">Coût de référence par m³. En mode Brownfield, seul l'aménagement de mise aux normes (20%) est facturé.</span>
                             </span>
                         </span>
                         <span class="sim-value" id="val-cost">320 $/m³</span>
@@ -4437,34 +4566,47 @@
                         <span>
                             <span lang="fr">Coût du kWh Électrique</span><span lang="en">Electricity Cost</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Coût de l'énergie fatale locale alimentant la matrice (LCOE hydro ou solaire dédié).</span>
+                                <span class="sim-tooltip">LCOE de l'énergie locale (0.02 à 0.18 $/kWh). Le mode VRE/Stratum bonifie ce tarif par effacement des pointes.</span>
                             </span>
                         </span>
-                        <span class="sim-value" id="val-elec">0.06 $/kWh</span>
+                        <span class="sim-value" id="val-elec">0.05 $/kWh</span>
                     </label>
                     <input type="range" id="param-elec" min="0.02" max="0.18" value="0.05" step="0.01">
                 </div>
+
+                <div class="sim-control">
+                    <label for="param-jth">
+                        <span>
+                            <span lang="fr">Efficience Matérielle ASIC</span><span lang="en">ASIC Hardware Efficiency</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Consommation en Joules par Terahash (ex: 15-25 J/TH pour les puces DLC récentes). Paramètre clé du Tornado Chart.</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-jth">25 J/TH</span>
+                    </label>
+                    <input type="range" id="param-jth" min="15" max="45" value="25" step="1">
+                </div>
             </div>
 
-            <!-- Colonne 2 : Thermodynamique & Biosphère -->
+            <!-- Colonne 2 : Thermodynamique, Biosphère & Ouroboros -->
             <div>
                 <div class="sim-group-title">
                     <span>🌱</span>
-                    <span lang="fr">Paramètres Biophysiques & Climat</span>
-                    <span lang="en">Biophysical & Climate Inputs</span>
+                    <span lang="fr">Paramètres Biophysiques &amp; Ouroboros</span>
+                    <span lang="en">Biophysical &amp; Ouroboros Inputs</span>
                 </div>
 
                 <div class="sim-control">
                     <label for="param-exergy">
                         <span>
-                            <span lang="fr">Rendement Exergétique ($\eta_{th}$)</span><span lang="en">Exergetic Recovery ($\eta_{th}$)</span>
+                            <span lang="fr">Rendement Capture ($\eta_{\text{capture}}$)</span><span lang="en">Thermal Capture ($\eta_{\text{capture}}$)</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Pourcentage de la chaleur sensible des puces récupéré dans le fluide diélectrique à 65-75°C.</span>
+                                <span class="sim-tooltip">Fraction de l'effet Joule transférée au fluide caloporteur à 65-75°C (nominal : 90-92.5%).</span>
                             </span>
                         </span>
-                        <span class="sim-value" id="val-exergy">85 %</span>
+                        <span class="sim-value" id="val-exergy">92 %</span>
                     </label>
-                    <input type="range" id="param-exergy" min="60" max="98" value="85" step="1">
+                    <input type="range" id="param-exergy" min="65" max="96" value="92" step="1">
                 </div>
 
                 <div class="sim-control">
@@ -4472,7 +4614,7 @@
                         <span>
                             <span lang="fr">Humidité Relative de l'Air ($\varphi$)</span><span lang="en">Relative Humidity ($\varphi$)</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Humidité du biome de surface. Influe sur la cinétique d'adsorption des roues MOF (Niveau 3).</span>
+                                <span class="sim-tooltip">Pilote la production d'eau du Puits Atmosphérique MOF-303 (1 500–2 500 L/j/MW à 30-40% HR ; jusqu'à 4 500 L/j en air humide).</span>
                             </span>
                         </span>
                         <span class="sim-value" id="val-humidity">35 %</span>
@@ -4483,9 +4625,9 @@
                 <div class="sim-control">
                     <label for="param-carbon">
                         <span>
-                            <span lang="fr">Prix du Crédit Carbone</span><span lang="en">Carbon Removal Price</span>
+                            <span lang="fr">Prix Crédit Carbone (Biochar/CH₄)</span><span lang="en">Carbon Credit Price (Biochar/CH₄)</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Valorisation sur le marché de la séquestration millénaire du carbone par pyrolyse Biochar.</span>
+                                <span class="sim-tooltip">Valorisation de la tonne de CO₂e séquestrée (Biochar >2000 ans) ou évitée par destruction de méthane isolé.</span>
                             </span>
                         </span>
                         <span class="sim-value" id="val-carbon">90 $/t</span>
@@ -4496,59 +4638,110 @@
                 <div class="sim-control">
                     <label for="param-water-val">
                         <span>
-                            <span lang="fr">Valeur de l'Eau Distillée</span><span lang="en">Pure Water Value</span>
+                            <span lang="fr">Valeur de l'Eau Reminéralisée</span><span lang="en">Remineralized Water Value</span>
                             <span class="sim-info-icon">i
-                                <span class="sim-tooltip">Prix local d'approvisionnement en eau pure sans minéraux dans les zones arides/stressées.</span>
+                                <span class="sim-tooltip">Valeur économique et sociale locale de l'eau pure reminéralisée (0.5 à 8.0 $/m³ selon stress hydrique).</span>
                             </span>
                         </span>
                         <span class="sim-value" id="val-water-val">3.0 $/m³</span>
                     </label>
                     <input type="range" id="param-water-val" min="0.5" max="8.0" value="3.0" step="0.5">
                 </div>
+
+                <div class="sim-control">
+                    <label for="param-ouroboros">
+                        <span>
+                            <span lang="fr">Recyclage Ouroboros (Niveau 7)</span><span lang="en">Ouroboros Recycling (Level 7)</span>
+                            <span class="sim-info-icon">i
+                                <span class="sim-tooltip">Taux de récupération hydrométallurgique (Au, Cu, Ag, Si) réduisant le coût de renouvellement matériel des ASICs.</span>
+                            </span>
+                        </span>
+                        <span class="sim-value" id="val-ouroboros">95 %</span>
+                    </label>
+                    <input type="range" id="param-ouroboros" min="70" max="99" value="95" step="1">
+                </div>
             </div>
         </div>
 
-        <!-- 6 Métriques d'Impact Intégrées -->
-        <div class="sim-outputs-grid">
+        <!-- BARRE DE DÉCOMPOSITION DES FLUX ANNUELS -->
+        <div class="sim-breakdown-bar-wrap">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #d4d4d4;">
+                <span><span lang="fr">Répartition de la Valeur Annuelle Générée</span><span lang="en">Annual Value Stream Breakdown</span></span>
+                <span id="out-share-symbiose" style="color: var(--bio-green); font-weight: bold;">Symbiose : 0 %</span>
+            </div>
+            <div class="sim-stack-bar">
+                <div id="seg-mining" class="sim-stack-seg" style="width: 55%; background: #ffcc00;" title="Minage Net & Flexibilité VRE"></div>
+                <div id="seg-pue" class="sim-stack-seg" style="width: 15%; background: #44ee77;" title="Économie PUE Souterrain"></div>
+                <div id="seg-agro" class="sim-stack-seg" style="width: 18%; background: #00ccff;" title="Eau MOF + Maraîchage & Aquaponie"></div>
+                <div id="seg-carbon" class="sim-stack-seg" style="width: 12%; background: #ff5500;" title="Biochar + Atténuation Méthane CH4"></div>
+            </div>
+            <div class="sim-stack-legend">
+                <span>🟨 <span lang="fr">Calcul Net &amp; VRE :</span><span lang="en">Net Compute &amp; VRE:</span> <strong id="leg-mining" style="color:#fff;">0 $</strong></span>
+                <span>🟩 <span lang="fr">Gain PUE :</span><span lang="en">PUE Gain:</span> <strong id="leg-pue" style="color:#fff;">0 $</strong></span>
+                <span>🟦 <span lang="fr">Eau + Serres :</span><span lang="en">Water + Crops:</span> <strong id="leg-agro" style="color:#fff;">0 $</strong></span>
+                <span>🟧 <span lang="fr">Biochar + CH₄ :</span><span lang="en">Biochar + CH₄:</span> <strong id="leg-carbon" style="color:#fff;">0 $</strong></span>
+            </div>
+        </div>
+
+        <!-- 9 MÉTRIQUES D'IMPACT INTÉGRÉES (GRILLE 3x3) -->
+        <div class="sim-outputs-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
             <div class="sim-metric" style="border-left-color: var(--sun-orange);">
-                <div class="sim-metric-label"><span lang="fr">CAPEX Total Enfouissement</span><span lang="en">Total Subterranean CAPEX</span></div>
+                <div class="sim-metric-label"><span lang="fr">1. CAPEX Initial Net</span><span lang="en">1. Net Initial CAPEX</span></div>
                 <div class="sim-metric-value" id="out-capex">0 $</div>
-                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Volume cavernier + puits jumeaux</span><span lang="en">Cavern volume + dual shafts</span></span>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-capex-sub"><span lang="fr">Mode Brownfield (-80% excav.)</span><span lang="en">Brownfield Mode (-80% excav.)</span></span>
             </div>
 
             <div class="sim-metric" style="border-left-color: var(--bio-green);">
-                <div class="sim-metric-label"><span lang="fr">Économie PUE Annuelle</span><span lang="en">Annual PUE Savings</span></div>
+                <div class="sim-metric-label"><span lang="fr">2. Économie PUE &amp; Tirage</span><span lang="en">2. PUE Savings &amp; Draft</span></div>
                 <div class="sim-metric-value" id="out-opex" style="color: var(--bio-green);">0 $</div>
-                <span style="font-size: 0.72rem; color: #778899;" id="out-pue-val"><span lang="fr">PUE Souterrain : 1.025</span><span lang="en">Subterranean PUE: 1.025</span></span>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-pue-val">PUE : 1.045 | Δp : 42 Pa</span>
             </div>
 
             <div class="sim-metric" style="border-left-color: var(--water-blue);">
-                <div class="sim-metric-label"><span lang="fr">Production d'Eau Pure</span><span lang="en">Pure Water Yield</span></div>
-                <div class="sim-metric-value" id="out-water" style="color: var(--water-blue);">0 L/jour</div>
-                <span style="font-size: 0.72rem; color: #778899;" id="out-water-annual">0 m³/an</span>
+                <div class="sim-metric-label"><span lang="fr">3. Eau Pure Condensée (MOF)</span><span lang="en">3. Pure Water Yield (MOF)</span></div>
+                <div class="sim-metric-value" id="out-water" style="color: var(--water-blue);">0 L/j</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-water-annual">0 m³/an | Substrat MOF-303</span>
             </div>
 
             <div class="sim-metric" style="border-left-color: #ff5500;">
-                <div class="sim-metric-label"><span lang="fr">Serres Biologiques Chauffées</span><span lang="en">Heated Organic Greenhouses</span></div>
+                <div class="sim-metric-label"><span lang="fr">4. Serres &amp; Récoltes Vivrières</span><span lang="en">4. Greenhouses &amp; Food Harvest</span></div>
                 <div class="sim-metric-value" id="out-greenhouse" style="color: var(--magma-orange);">0 m²</div>
-                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Chauffage racinaire 22-25°C</span><span lang="en">22-25°C root-zone heating</span></span>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-food-tons">~0 t/an légumes + aquaponie</span>
             </div>
 
             <div class="sim-metric" style="border-left-color: var(--carbon-red);">
-                <div class="sim-metric-label"><span lang="fr">Biochar Séquestré Durable</span><span lang="en">Biochar Carbon Stored</span></div>
+                <div class="sim-metric-label"><span lang="fr">5. Carbone Séquestré &amp; CH₄</span><span lang="en">5. Carbon Stored &amp; CH₄</span></div>
                 <div class="sim-metric-value" id="out-carbon" style="color: var(--carbon-red);">0 t/an</div>
-                <span style="font-size: 0.72rem; color: #778899;"><span lang="fr">Séquestration géologique > 2000 ans</span><span lang="en">Geological storage > 2000 yrs</span></span>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-carbon-sub">Biochar Terra Preta (&gt;2000 ans)</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: #2ecc71;">
+                <div class="sim-metric-label"><span lang="fr">6. Synergie VRE / Réseau (Niv. 8)</span><span lang="en">6. VRE / Grid Synergy (Lvl 8)</span></div>
+                <div class="sim-metric-value" id="out-vre-bonus" style="color: #2ecc71;">+0 $/an</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-vre-sub">Batterie Virtuelle Stratum CLR</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: #c864ff;">
+                <div class="sim-metric-label"><span lang="fr">7. Circularité Ouroboros (Niv. 7)</span><span lang="en">7. Ouroboros Circularity (Lvl 7)</span></div>
+                <div class="sim-metric-value" id="out-ouroboros-sav" style="color: #c864ff;">+0 $/an</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-ouroboros-sub">Métaux critiques récupérés : 95%</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: #58a6ff;">
+                <div class="sim-metric-label"><span lang="fr">8. Indice de Bien-Être (WU)</span><span lang="en">8. Wellbeing Index (WU)</span></div>
+                <div class="sim-metric-value" id="out-wu" style="color: #58a6ff;">0 Personnes</div>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-wu-sub">Autonomie Eau + Vivrier local</span>
             </div>
 
             <div class="sim-metric" style="border-left-color: var(--gold-gov);">
-                <div class="sim-metric-label"><span lang="fr">Retour sur Investissement (ROI)</span><span lang="en">Net Payback Horizon (ROI)</span></div>
+                <div class="sim-metric-label"><span lang="fr">9. Retour sur Investissement (ROI)</span><span lang="en">9. Net Payback Horizon (ROI)</span></div>
                 <div class="sim-metric-value" id="out-roi" style="color: var(--sun-yellow);">0 Ans</div>
-                <span style="font-size: 0.72rem; color: #778899;" id="out-rev-annual">Flux total : 0 $/an</span>
+                <span style="font-size: 0.72rem; color: #778899;" id="out-rev-annual">Flux net : 0 $/an</span>
             </div>
         </div>
 
-        <div style="margin-top: 2rem; background: #050709; border-radius: 8px; padding: 1rem; border: 1px solid rgba(255,255,255,0.05);">
-            <canvas id="simulationChart" width="800" height="300" style="width:100%; display:block;"></canvas>
+        <div style="margin-top: 2rem; background: #050709; border-radius: 8px; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.06);">
+            <canvas id="simulationChart" width="900" height="320" style="width:100%; height:auto; display:block;"></canvas>
         </div>
     </div>
 
