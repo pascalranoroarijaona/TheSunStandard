@@ -4756,6 +4756,108 @@
             <canvas id="simulationChart" width="900" height="320" style="width:100%; height:auto; display:block;"></canvas>
         </div>
 
+        <!-- ENCADRÉ MÉTHODOLOGIQUE : TOUTES LES FORMULES DU SIMULATEUR V3.2 & WELLBEING FRAMEWORK -->
+        <details style="margin-top: 1.8rem; margin-bottom: 0; background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.25); border-left: 4px solid #58a6ff; border-radius: 8px; box-shadow: none;">
+            <summary style="padding: 1rem 1.4rem; font-size: 0.95rem; color: #58a6ff; background: rgba(88, 166, 255, 0.06); border-bottom: 1px solid rgba(88, 166, 255, 0.15); font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">
+                <span>🧮</span>
+                <span lang="fr">Documentation Mathématique du Simulateur (v3.2) &amp; Formule de l'Indice de Bien-Être (WU / kWh)</span>
+                <span lang="en">Simulator Mathematical Documentation (v3.2) &amp; Wellbeing Index Formula (WU / kWh)</span>
+            </summary>
+            <div style="padding: 1.5rem 1.8rem; color: #c9d1d9; font-size: 0.9rem; font-family: var(--font-main); line-height: 1.7; text-align: justify;">
+
+                <!-- 1. IDENTITÉ DU BIEN-ÊTRE (WU) -->
+                <div style="background: rgba(88, 166, 255, 0.06); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem;">
+                    <h4 style="color: #58a6ff; margin-top: 0; margin-bottom: 0.6rem; font-family: var(--font-ui); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.8px;">
+                        <span lang="fr">1. L'Identité Scientifique du Bien-Être ($W$ et $\text{mWU/kWh}$) — <em>Wellbeing Framework</em></span>
+                        <span lang="en">1. The Scientific Wellbeing Identity ($W$ and $\text{mWU/kWh}$) — <em>Wellbeing Framework</em></span>
+                    </h4>
+                    <p lang="fr" style="margin-bottom: 0.8rem;">
+                        Pour dépasser l'aveuglement thermodynamique du PIB, le simulateur implémente l'équation cardinale du référentiel open-source <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color: var(--sun-yellow);">Wellbeing Framework</a>, qui décompose l'impact anthropique selon $F = P_{\text{pop}} \times \left(\frac{W}{P_{\text{pop}}}\right) \times \left(\frac{E}{W}\right) \times \left(\frac{F}{E}\right)$. La création annuelle d'<strong>Unités de Bien-être ($W$, en $\text{WU/an}$)</strong> additionne trois vecteurs biophysiques pondérés :
+                    </p>
+                    <p lang="en" style="margin-bottom: 0.8rem;">
+                        To transcend the thermodynamic blindness of GDP, the simulator implements the cardinal equation from the open-source <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color: var(--sun-yellow);">Wellbeing Framework</a> repository, decomposing anthropogenic impact via $F = P_{\text{pop}} \times \left(\frac{W}{P_{\text{pop}}}\right) \times \left(\frac{E}{W}\right) \times \left(\frac{F}{E}\right)$. Annual <strong>Wellbeing Units ($W$, in $\text{WU/yr}$)</strong> sum three weighted biophysical vectors:
+                    </p>
+                    <div class="math-block" style="margin: 0.8rem 0; padding: 1rem; background: rgba(0,0,0,0.5); border-color: rgba(88,166,255,0.2); color: #fff; font-size: 0.98rem;">
+                        $$ W = \underbrace{\sum_{i} \alpha_i q_i}_{\text{Flux Vitaux } (W_{\text{vital}})} + \underbrace{\sum_{j} \beta_j e_j}_{\text{Services Écosystémiques } (W_{\text{éco}})} + \underbrace{\sum_{k} \gamma_k s_k}_{\text{Stocks Planétaires PWRS } (W_{\text{stocks}})} $$
+                    </div>
+                    <ul style="padding-left: 1.3rem; margin-bottom: 0.8rem; font-size: 0.86rem; color: #b0c4de;">
+                        <li style="margin-bottom: 0.35rem;">
+                            <span lang="fr"><strong>Flux métaboliques vitaux ($W_{\text{vital}}$) :</strong> $0,18 \cdot V_{\text{eau}}(\text{m}^3/\text{an}) + 6,5 \cdot M_{\text{légumes}}(\text{t/an}) + 22,0 \cdot M_{\text{poisson}}(\text{t/an})$, reflétant la densité nutritionnelle et hydrique délivrée localement.</span>
+                            <span lang="en"><strong>Vital metabolic flows ($W_{\text{vital}}$):</strong> $0.18 \cdot V_{\text{water}}(\text{m}^3/\text{yr}) + 6.5 \cdot M_{\text{produce}}(\text{t/yr}) + 22.0 \cdot M_{\text{fish}}(\text{t/yr})$, reflecting locally delivered hydration and nutritional density.</span>
+                        </li>
+                        <li style="margin-bottom: 0.35rem;">
+                            <span lang="fr"><strong>Services écosystémiques et silence ($W_{\text{éco}}$) :</strong> $0,04 \cdot S_{\text{serres}}(\text{m}^2) \cdot \left(1 + \frac{H}{150}\right) \cdot \psi_{\text{topologie}}$, où $\psi_{\text{topologie}} = 1,25$ en réhabilitation <em>Brownfield</em> (zéro artificialisation nette et suppression du bruit $&gt; 85\text{ dB}$).</span>
+                            <span lang="en"><strong>Ecosystem &amp; acoustic sanctuary services ($W_{\text{éco}}$):</strong> $0.04 \cdot S_{\text{greenhouse}}(\text{m}^2) \cdot \left(1 + \frac{H}{150}\right) \cdot \psi_{\text{topology}}$, where $\psi_{\text{topology}} = 1.25$ in <em>Brownfield</em> mode (zero net land artificialization and suppression of $&gt; 85\text{ dB}$ noise).</span>
+                        </li>
+                        <li style="margin-bottom: 0.35rem;">
+                            <span lang="fr"><strong>Régénération des stocks planétaires PWRS ($W_{\text{stocks}}$) :</strong> $0,85 \cdot M_{\text{CO}_2\text{e,tot}}(\text{t/an}) + 95 \cdot \eta_{\text{Ouroboros}} \cdot P(\text{MW})$, comptabilisant la séquestration millénaire du Biochar, l'évitement du méthane ($\text{CH}_4$) et la préservation du stock minéral par l'Ouroboros.</span>
+                            <span lang="en"><strong>Planetary Resource Stocks regeneration ($W_{\text{stocks}}$):</strong> $0.85 \cdot M_{\text{CO}_2\text{e,tot}}(\text{t/yr}) + 95 \cdot \eta_{\text{Ouroboros}} \cdot P(\text{MW})$, accounting for millennial Biochar storage, $\text{CH}_4$ mitigation, and Ouroboros mineral stock preservation.</span>
+                        </li>
+                    </ul>
+                    <div class="math-block" style="margin: 0.6rem 0 0; padding: 0.8rem; background: rgba(0,0,0,0.4); color: #44ee77; font-size: 0.95rem;">
+                        $$ \text{KPI Cardinal} = \frac{W}{E_{\text{tot}}} = \frac{W \times 10^3}{P(\text{MW}) \cdot 10^3 \cdot \text{PUE}_{\text{souterrain}} \cdot 8\,760\text{ h}} \quad [\text{en mWU / kWh}] \qquad \text{et} \qquad N_{\text{hab. soutenus}} \approx \frac{W}{3,2} $$
+                    </div>
+                </div>
+
+                <!-- 2 À 6 : GRILLE DES AUTRES ÉQUATIONS DU SIMULATEUR -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.2rem;">
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 1rem 1.2rem; border-radius: 6px; border-left: 3px solid var(--sun-orange);">
+                        <strong style="color: var(--sun-orange); font-family: var(--font-ui); display: block; margin-bottom: 0.3rem;">
+                            <span lang="fr">2. CAPEX Géotechnique &amp; Finesse Silicium (Niv. 1)</span>
+                            <span lang="en">2. Geotechnical CAPEX &amp; Silicon Density (Lvl 1)</span>
+                        </strong>
+                        <span lang="fr" style="font-size: 0.83rem; color: #9ca3af;">
+                            $\text{CAPEX}_{\text{excav}} = 180 \cdot P \cdot \left[1 + \left(\frac{H}{55}\right)^{1,85}\right] \cdot C_{\text{roche}} \cdot \phi_{\text{site}}$, avec $\phi_{\text{site}} = 0,20$ en <em>Brownfield</em> ($1,0$ en <em>Greenfield</em>). Le CAPEX matériel ASIC est indexé sur la gravure : $280\,000\text{ \$/MW} \times \left(\frac{25}{\text{J/TH}}\right)$.
+                        </span>
+                        <span lang="en" style="font-size: 0.83rem; color: #9ca3af;">
+                            $\text{CAPEX}_{\text{excav}} = 180 \cdot P \cdot \left[1 + \left(\frac{H}{55}\right)^{1.85}\right] \cdot C_{\text{rock}} \cdot \phi_{\text{site}}$, with $\phi_{\text{site}} = 0.20$ for <em>Brownfield</em> ($1.0$ for <em>Greenfield</em>). Hardware CAPEX scales with chip density: $\$280,000/\text{MW} \times \left(\frac{25}{\text{J/TH}}\right)$.
+                        </span>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 1rem 1.2rem; border-radius: 6px; border-left: 3px solid var(--bio-green);">
+                        <strong style="color: var(--bio-green); font-family: var(--font-ui); display: block; margin-bottom: 0.3rem;">
+                            <span lang="fr">3. PUE Souterrain, Tirage $\Delta p$ &amp; Auxiliaires (Niv. 2)</span>
+                            <span lang="en">3. Subterranean PUE, Draft $\Delta p$ &amp; Auxiliaries (Lvl 2)</span>
+                        </strong>
+                        <span lang="fr" style="font-size: 0.83rem; color: #9ca3af;">
+                            $\Delta p_{\text{cheminée}} \approx 1,24 \cdot H \cdot \eta_{\text{capture}}\text{ (Pa)}$. Le PUE intègre les ventilateurs axiaux vainquant les pertes de charge MOF/filtres : $\text{PUE}_{\text{souterrain}} = \text{clamp}\!\left(1,045 + 0,00018 H - 0,008\eta_{\text{capture}},\, 1,030,\, 1,100\right)$, comparé à $\text{PUE}_{\text{surface}} = 1,35$.
+                        </span>
+                        <span lang="en" style="font-size: 0.83rem; color: #9ca3af;">
+                            $\Delta p_{\text{stack}} \approx 1.24 \cdot H \cdot \eta_{\text{capture}}\text{ (Pa)}$. Subterranean PUE includes axial fans overcoming MOF/filter pressure drops: $\text{PUE}_{\text{sub}} = \text{clamp}\!\left(1.045 + 0.00018 H - 0.008\eta_{\text{capture}},\, 1.030,\, 1.100\right)$, benchmarked against $\text{PUE}_{\text{surface}} = 1.35$.
+                        </span>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 1rem 1.2rem; border-radius: 6px; border-left: 3px solid var(--water-blue);">
+                        <strong style="color: var(--water-blue); font-family: var(--font-ui); display: block; margin-bottom: 0.3rem;">
+                            <span lang="fr">4. Eau Psychrométrique MOF-303 &amp; Serres RAS (Niv. 2 &amp; 3)</span>
+                            <span lang="en">4. MOF-303 Psychrometric Water &amp; RAS Greenhouses (Lvl 2 &amp; 3)</span>
+                        </strong>
+                        <span lang="fr" style="font-size: 0.83rem; color: #9ca3af;">
+                            $V_{\text{eau}}(\text{L/j}) = P \cdot \eta_{\text{capture}} \cdot 4\,500 \cdot \min\!\left[1,\, \left(0,32 + 0,68\left(\frac{\varphi}{0,85}\right)^{0,82}\right)\left(0,92 + \frac{H}{600}\right)\right]$. Surface de serres chauffées : $S_{\text{serres}} = 4\,500\text{ m}^2 \cdot P_{\text{th}}$, produisant maraîchage et aquaculture recirculée ($4\text{ t/an/MW}$ de tilapia).
+                        </span>
+                        <span lang="en" style="font-size: 0.83rem; color: #9ca3af;">
+                            $V_{\text{water}}(\text{L/d}) = P \cdot \eta_{\text{capture}} \cdot 4,500 \cdot \min\!\left[1,\, \left(0.32 + 0.68\left(\frac{\varphi}{0.85}\right)^{0.82}\right)\left(0.92 + \frac{H}{600}\right)\right]$. Heated greenhouse area: $S_{\text{greenhouse}} = 4,500\text{ m}^2 \cdot P_{\text{th}}$, yielding produce and RAS tilapia ($4\text{ t/yr/MW}$).
+                        </span>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 1rem 1.2rem; border-radius: 6px; border-left: 3px solid #c864ff;">
+                        <strong style="color: #c864ff; font-family: var(--font-ui); display: block; margin-bottom: 0.3rem;">
+                            <span lang="fr">5. Pyrolyse Biochar, Ouroboros &amp; VRE / $\text{CH}_4$ (Niv. 4, 7 &amp; 8)</span>
+                            <span lang="en">5. Biochar Pyrolysis, Ouroboros &amp; VRE / $\text{CH}_4$ (Lvl 4, 7 &amp; 8)</span>
+                        </strong>
+                        <span lang="fr" style="font-size: 0.83rem; color: #9ca3af;">
+                            Biochar : $M_{\text{biochar}} = 220 \cdot P_{\text{th}} \cdot [1 + 0,12(1-\varphi)]\text{ t/an}$. Lixiviation Ouroboros (amortie sur 4 ans) : $\text{Gain}_{\text{Ouro}} = \frac{\text{CAPEX}_{\text{ASIC}}}{4} \cdot 0,48\eta_{\text{Ouro}}(0,85 + 0,15\eta_{\text{capture}}) + 0,25 \cdot M_{\text{CO}_2\text{,minier}} \cdot \pi_{\text{C}}$. En mode VRE/Stratum, l'absorption des creux tarifaires réduit le coût électrique effectif de $22\%$.
+                        </span>
+                        <span lang="en" style="font-size: 0.83rem; color: #9ca3af;">
+                            Biochar: $M_{\text{biochar}} = 220 \cdot P_{\text{th}} \cdot [1 + 0.12(1-\varphi)]\text{ t/yr}$. Ouroboros leaching (4-yr cycle): $\text{Saving}_{\text{Ouro}} = \frac{\text{CAPEX}_{\text{ASIC}}}{4} \cdot 0.48\eta_{\text{Ouro}}(0.85 + 0.15\eta_{\text{capture}}) + 0.25 \cdot M_{\text{CO}_2\text{,mining}} \cdot \pi_{\text{C}}$. In VRE/Stratum mode, absorbing zero/negative price hours lowers effective LCOE by $22\%$.
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
         <script>
             // --- SCRIPT DU SIMULATEUR BIOPHYSIQUE & ÉCONOPHYSIQUE COMPLET (V3.2 - CORRIGÉ & ROBUSTE) ---
             (function() {
