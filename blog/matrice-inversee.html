@@ -2625,22 +2625,26 @@
                 </ul>
             </div>
 
-            <!-- ANIMATION STYLE TIKZ / JAVASCRIPT : STABILISATION VRE, ROI & MÉTHANE -->
+            <!-- ANIMATION STYLE TIKZ / JAVASCRIPT : LA BOUCLE DE RÉTROACTION RENOUVELABLE-INDICE -->
             <div style="margin: 2rem 0; padding: 1.5rem; background: #06090e; border: 1px solid rgba(46, 204, 113, 0.35); border-radius: 12px; box-shadow: inset 0 0 30px rgba(0,0,0,0.8);">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.8rem;">
-                    <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #2ecc71; font-weight: bold;">
-                        <span lang="fr">// DIAGRAMME DYNAMIQUE TIKZ-JS : SYMBIOSE VRE, RÉPONSE STRATUM (&lt; 10 ms) &amp; BOUCLE MOF</span>
-                        <span lang="en">// DYNAMIC TIKZ-JS DIAGRAM: VRE SYMBIOSIS, STRATUM RESPONSE (&lt; 10 ms) &amp; MOF LOOP</span>
+                    <span style="font-family: var(--font-mono, monospace); font-size: 0.85rem; color: #2ecc71; font-weight: bold;">
+                        <span lang="fr">// DIAGRAMME DYNAMIQUE : BOUCLE DE RÉTROACTION RENOUVELABLE-INDICE</span>
+                        <span lang="en">// DYNAMIC DIAGRAM: RENEWABLE-INDEX FEEDBACK LOOP</span>
                     </span>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 0.78rem; color: #aaa; font-family: var(--font-ui); text-transform: uppercase;">
-                            <span lang="fr">Irradiation Solaire / Vent (VRE) :</span>
-                            <span lang="en">Solar / Wind Irradiance (VRE):</span>
+                        <span style="font-size: 0.78rem; color: #aaa; font-family: var(--font-ui, sans-serif); text-transform: uppercase;">
+                            <span lang="fr">Vitesse des Flux :</span>
+                            <span lang="en">Flow Speed:</span>
                         </span>
-                        <input type="range" id="vre-tiktok-slider" min="10" max="100" value="75" style="width: 130px; accent-color: #2ecc71; cursor: pointer;">
+                        <input type="range" id="flow-speed-slider" min="1" max="10" value="4" style="width: 130px; accent-color: #2ecc71; cursor: pointer;">
                     </div>
                 </div>
-                <canvas id="tikzTransitionCanvas" width="900" height="420" style="width: 100%; height: auto; display: block; border-radius: 8px;"></canvas>
+                
+                <!-- Zone de rendu imitant le papier académique (Fond blanc) -->
+                <div style="background: #ffffff; border-radius: 6px; padding: 1rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <canvas id="tikzFeedbackCanvas" width="950" height="580" style="width: 100%; height: auto; display: block; border-radius: 4px;"></canvas>
+                </div>
             </div>
 
             <div class="math-block" style="color: #2ecc71; text-align: left; padding: 1.8rem; border-color: rgba(46, 204, 113, 0.25);">
@@ -2659,338 +2663,237 @@
     </details>
 
     <script>
-    // --- ANIMATION TIKZ-JS : TRANSITION ÉCOLOGIQUE, COURBE CANARD VRE & SALLE MOF ---
+    // --- ANIMATION TIKZ-JS : LA BOUCLE DE RÉTROACTION RENOUVELABLE-INDICE ---
     (function() {
-        const canvas = document.getElementById('tikzTransitionCanvas');
-        const slider = document.getElementById('vre-tiktok-slider');
+        const canvas = document.getElementById('tikzFeedbackCanvas');
+        const slider = document.getElementById('flow-speed-slider');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let tick = 0;
         let isVis = true;
         let animFrame = null;
 
-        function drawTikzTransition() {
+        // Fonction pour dessiner les pointes de flèches
+        function drawArrowhead(ctx, x, y, angle, color="black", size=9) {
+            ctx.save();
+            ctx.fillStyle = color;
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-size, size/1.6);
+            ctx.lineTo(-size, -size/1.6);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // Fonctions d'interpolation pour les particules animées sur les chemins
+        function getBlackPath(t) { return {x: 300 + (t%1)*190, y: 115}; }
+        function getRedPath(t)   { return {x: 190, y: 150 + (t%1)*120}; }
+        function getGreenPath1(t){ return {x: 310 + (t%1)*260, y: 305}; }
+        function getGreenPath2(t){ let p = t%1; return {x: 585 + p*65, y: 150 + p*120}; }
+        
+        // Chemin Complexe Bleu (Réinvestissement)
+        function getBluePath(t) {
+            let d = (t % 1.0) * 1159.2; // Longueur totale du chemin
+            if (d < 50) return {x: 850 + d, y: 305};
+            d -= 50;
+            if (d < 31.4) {
+                let a = Math.PI/2 - (d/31.4)*(Math.PI/2);
+                return {x: 900 + 20*Math.cos(a), y: 285 + 20*Math.sin(a)};
+            }
+            d -= 31.4;
+            if (d < 245) return {x: 920, y: 285 - d};
+            d -= 245;
+            if (d < 31.4) {
+                let a = 0 - (d/31.4)*(Math.PI/2);
+                return {x: 900 + 20*Math.cos(a), y: 40 + 20*Math.sin(a)};
+            }
+            d -= 31.4;
+            if (d < 730) return {x: 900 - d, y: 20};
+            d -= 730;
+            if (d < 31.4) {
+                let a = -Math.PI/2 - (d/31.4)*(Math.PI/2);
+                return {x: 170 + 20*Math.cos(a), y: 40 + 20*Math.sin(a)};
+            }
+            d -= 31.4;
+            return {x: 150, y: 40 + d};
+        }
+
+        function drawParticles(pathFunc, color, count) {
+            ctx.fillStyle = color;
+            for(let i=0; i<count; i++) {
+                let pT = (tick + i/count) % 1.0;
+                let pt = pathFunc(pT);
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 4, 0, Math.PI*2);
+                ctx.fill();
+                
+                // Petit effet de lueur pour les particules
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 6;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function drawTikzFeedback() {
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            const logicalW = 900, logicalH = 420;
+            const logicalW = 950, logicalH = 580;
             if (canvas.width !== logicalW * dpr) {
                 canvas.width = logicalW * dpr;
                 canvas.height = logicalH * dpr;
             }
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            const fr = document.body.classList.contains('lang-fr');
-            const vreLevel = slider ? parseInt(slider.value) / 100 : 0.75;
-            tick += 0.04;
+            // Vitesse d'animation liée au slider
+            const speed = slider ? parseInt(slider.value) * 0.0006 : 0.0024;
+            tick += speed;
 
-            // Fond style papier millimétré TikZ sombre
-            ctx.fillStyle = '#06090e';
+            // Arrière-plan (Papier blanc)
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, logicalW, logicalH);
 
-            ctx.strokeStyle = 'rgba(88, 166, 255, 0.05)';
-            ctx.lineWidth = 1;
-            for (let gx = 0; gx < logicalW; gx += 25) {
-                ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, logicalH); ctx.stroke();
-            }
-            for (let gy = 0; gy < logicalH; gy += 25) {
-                ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(logicalW, gy); ctx.stroke();
-            }
-
-            // =================================================================
-            // GAUCHE : SCHÉMA TIKZ DE STABILISATION VRE & ROI (8.1 -> 3.5 ANS)
-            // =================================================================
-            const leftX = 35, leftY = 25, leftW = 395, leftH = 215;
-            ctx.strokeStyle = 'rgba(255, 204, 0, 0.35)';
+            // ==========================================
+            // TRACÉ DES FLÈCHES (CHEMINS TIKZ)
+            // ==========================================
+            
+            // 1. Énergie Primaire (Noir)
+            ctx.strokeStyle = '#000000';
             ctx.lineWidth = 1.5;
-            ctx.strokeRect(leftX, leftY, leftW, leftH);
+            ctx.beginPath(); ctx.moveTo(300, 115); ctx.lineTo(490, 115); ctx.stroke();
+            drawArrowhead(ctx, 490, 115, 0, "#000000");
 
-            ctx.fillStyle = '#ffcc00';
-            ctx.font = 'bold 11.5px "Fira Code", monospace';
-            ctx.textAlign = 'left';
-            ctx.fillText(
-                fr ? '1. ÉCRÊTAGE VRE & BATTERIE VIRTUELLE (CLR)'
-                   : '1. VRE CURTAILMENT & VIRTUAL BATTERY (CLR)',
-                leftX + 12, leftY + 20
-            );
+            // 2. Énergie Isolée (Rouge Pointillé)
+            ctx.strokeStyle = '#e60000';
+            ctx.setLineDash([8, 6]);
+            ctx.beginPath(); ctx.moveTo(190, 150); ctx.lineTo(190, 270); ctx.stroke();
+            ctx.setLineDash([]); // Reset
+            drawArrowhead(ctx, 190, 270, Math.PI/2, "#e60000");
 
-            // Axes de la courbe de charge (24h)
-            const axX = leftX + 40, axY = leftY + 180, axW = 330, axH = 125;
-            ctx.strokeStyle = '#667788';
+            // 3. Monétisation (Vert - Bas)
+            ctx.strokeStyle = '#00aa00';
+            ctx.beginPath(); ctx.moveTo(310, 305); ctx.lineTo(570, 305); ctx.stroke();
+            drawArrowhead(ctx, 570, 305, 0, "#00aa00");
+
+            // 4. Rev. Réseau (Vert - Diagonal)
+            ctx.beginPath(); ctx.moveTo(585, 150); ctx.lineTo(650, 270); ctx.stroke();
+            drawArrowhead(ctx, 650, 270, Math.atan2(120, 65), "#00aa00");
+
+            // 5. Réinvestissement Accéléré (Bleu Courbé)
+            ctx.strokeStyle = '#0000ff';
+            ctx.lineWidth = 2.2;
             ctx.beginPath();
-            ctx.moveTo(axX, axY - axH);
-            ctx.lineTo(axX, axY);
-            ctx.lineTo(axX + axW, axY);
+            ctx.moveTo(850, 305);
+            ctx.lineTo(900, 305);
+            ctx.arcTo(920, 305, 920, 285, 20); // Coin BD
+            ctx.lineTo(920, 40);
+            ctx.arcTo(920, 20, 900, 20, 20);   // Coin HD
+            ctx.lineTo(170, 20);
+            ctx.arcTo(150, 20, 150, 40, 20);   // Coin HG
+            ctx.lineTo(150, 80);
             ctx.stroke();
-
-            // Courbe de demande réseau classique
-            ctx.strokeStyle = '#58a6ff';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            for (let i = 0; i <= 100; i++) {
-                const t = i / 100;
-                const px = axX + t * axW;
-                const demand = 0.45 + 0.18 * Math.sin((t - 0.15) * Math.PI * 2) + 0.15 * Math.exp(-Math.pow((t - 0.8) / 0.1, 2));
-                const py = axY - demand * axH;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.stroke();
-
-            // Courbe de cloche Solaire/Éolien (VRE) + Zone d'absorption CLR hachurée
-            ctx.fillStyle = 'rgba(46, 204, 113, 0.22)';
-            ctx.strokeStyle = '#2ecc71';
-            ctx.lineWidth = 2.5;
-            ctx.beginPath();
-            for (let i = 0; i <= 100; i++) {
-                const t = i / 100;
-                const px = axX + t * axW;
-                const solarPeak = vreLevel * 1.05 * Math.exp(-Math.pow((t - 0.5) / 0.18, 2));
-                const py = axY - Math.min(1.0, 0.2 + solarPeak) * axH;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.stroke();
-
-            // Remplissage du surplus absorbé par la Matrice (entre t=0.32 et t=0.68)
-            ctx.beginPath();
-            for (let i = 28; i <= 72; i++) {
-                const t = i / 100;
-                const px = axX + t * axW;
-                const solarPeak = vreLevel * 1.05 * Math.exp(-Math.pow((t - 0.5) / 0.18, 2));
-                const py = axY - Math.min(1.0, 0.2 + solarPeak) * axH;
-                if (i === 28) ctx.moveTo(px, axY - 0.45 * axH);
-                ctx.lineTo(px, py);
-            }
-            ctx.lineTo(axX + 0.72 * axW, axY - 0.45 * axH);
-            ctx.closePath();
-            ctx.fill();
-
-            ctx.fillStyle = '#2ecc71';
-            ctx.font = 'bold 10px "Fira Code", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText(
-                fr ? 'Surplus VRE monétisé (Stratum)' : 'Monetized VRE Surplus (Stratum)',
-                axX + axW * 0.5, axY - axH * 0.78
-            );
-
-            // Boîte comparatif ROI (Hakimi et al. [18] & Lal et You PNAS [19])
-            const roiY = 255;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-            ctx.strokeRect(leftX, roiY, leftW, 140);
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 11px sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText(
-                fr ? 'IMPACT FINANCIER & CLIMATIQUE (LITTÉRATURE PUBLIÉE) :'
-                   : 'PEER-REVIEWED FINANCIAL & CLIMATE IMPACT:',
-                leftX + 12, roiY + 22
-            );
-
-            // Barre ROI Solaire seul (8.1 ans)
-            ctx.fillStyle = '#8b949e';
-            ctx.font = '11px sans-serif';
-            ctx.fillText(fr ? 'Solaire seul (Cannibalisé) :' : 'Standalone Solar (Cannibalized):', leftX + 12, roiY + 48);
-            ctx.fillStyle = 'rgba(255, 85, 0, 0.75)';
-            ctx.fillRect(leftX + 185, roiY + 36, 160, 15);
-            ctx.fillStyle = '#ff8844';
-            ctx.font = 'bold 11px "Fira Code", monospace';
-            ctx.fillText('8.1 ' + (fr ? 'ans' : 'yrs'), leftX + 350, roiY + 48);
-
-            // Barre ROI Solaire + Minage Symbiotique (3.5 ans)
-            ctx.fillStyle = '#e6edf3';
-            ctx.font = '11px sans-serif';
-            ctx.fillText(fr ? 'Co-localisé Matrice [18] :' : 'Co-located Matrix [18]:', leftX + 12, roiY + 72);
-            ctx.fillStyle = '#2ecc71';
-            ctx.fillRect(leftX + 185, roiY + 60, 70, 15);
-            ctx.fillStyle = '#44ee77';
-            ctx.font = 'bold 11px "Fira Code", monospace';
-            ctx.fillText('3.5 ' + (fr ? 'ans (-57%)' : 'yrs (-57%)'), leftX + 262, roiY + 72);
-
-            // Badges PNAS & Méthane
-            ctx.fillStyle = '#00ccff';
-            ctx.font = '10.5px "Fira Code", monospace';
-            ctx.fillText(
-                fr ? '• Expansion capacité (PNAS [19]) : +25,5% Solaire | +73,2% Éolien'
-                   : '• Capacity expansion (PNAS [19]): +25.5% Solar | +73.2% Wind',
-                leftX + 12, roiY + 100
-            );
-            ctx.fillStyle = '#ffcc00';
-            ctx.fillText(
-                fr ? '• Captage CH₄ isolé [21,23] : -63% PRG (jusqu\'à -0,15°C global)'
-                   : '• Stranded CH₄ mitigation [21,23]: -63% GWP (up to -0.15°C)',
-                leftX + 12, roiY + 122
-            );
-
-            // =================================================================
-            // DROITE : SCHÉMA TECHNIQUE TIKZ DE LA GALERIE MOF (IMAGE EN PJ)
-            // =================================================================
-            const rx = 455, ry = 25, rw = 415, rh = 370;
-            ctx.strokeStyle = 'rgba(0, 204, 255, 0.35)';
+            drawArrowhead(ctx, 150, 80, Math.PI/2, "#0000ff", 11);
             ctx.lineWidth = 1.5;
-            ctx.strokeRect(rx, ry, rw, rh);
 
-            // Voûte rocheuse souterraine en coupe TikZ
-            ctx.strokeStyle = 'rgba(136, 153, 170, 0.35)';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(rx + 10, ry + 85);
-            ctx.quadraticCurveTo(rx + rw / 2, ry + 15, rx + rw - 10, ry + 85);
-            ctx.stroke();
+            // Particules animées
+            drawParticles(getBlackPath, "#000000", 3);
+            drawParticles(getRedPath, "#e60000", 2);
+            drawParticles(getGreenPath1, "#00aa00", 4);
+            drawParticles(getGreenPath2, "#00aa00", 2);
+            drawParticles(getBluePath, "#0000ff", 14);
 
-            ctx.fillStyle = '#00ccff';
-            ctx.font = 'bold 11.5px "Fira Code", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText(
-                fr ? '2. GALERIE SOUTERRAINE : RÉGÉNÉRATION MOF-303 & STOCK D\'EAU'
-                   : '2. SUBTERRANEAN CAVERN: MOF-303 REGENERATION & WATER TANK',
-                rx + rw / 2, ry + 20
-            );
-
-            // 5 Cassettes Rotatives MOF-303 en série (inspiré de l'image jointe)
-            const mofX = rx + 35, mofY = ry + 135;
-            for (let k = 0; k < 5; k++) {
-                const cx = mofX + k * 24;
-                // Corps cylindrique cassette
-                ctx.fillStyle = '#16202a';
-                ctx.strokeStyle = k % 2 === 0 ? '#ff6600' : '#00ccff';
-                ctx.lineWidth = 1.8;
-                ctx.fillRect(cx, mofY, 18, 95);
-                ctx.strokeRect(cx, mofY, 18, 95);
-
-                // Lueur interne de régénération thermique (72% active)
-                const glowAlpha = 0.35 + 0.25 * Math.sin(tick * 2 + k);
-                ctx.fillStyle = `rgba(255, 102, 0, ${glowAlpha})`;
-                ctx.fillRect(cx + 3, mofY + 20, 12, 55);
+            // ==========================================
+            // DESSIN DES BOÎTES (NŒUDS)
+            // ==========================================
+            function drawBox(x, y, w, h, fill) {
+                ctx.fillStyle = fill;
+                ctx.fillRect(x, y, w, h);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 1.2;
+                ctx.strokeRect(x, y, w, h);
             }
 
-            // Label sous la batterie MOF
-            ctx.fillStyle = '#ff9900';
-            ctx.font = 'bold 10px "Fira Code", monospace';
-            ctx.textAlign = 'left';
-            ctx.fillText(
-                fr ? 'BATTERIE MOF-303 (65–70°C)' : 'MOF-303 ARRAY (65–70°C)',
-                mofX, mofY + 115
-            );
-            ctx.fillStyle = '#9ca3af';
-            ctx.font = '9.5px "Fira Code", monospace';
-            ctx.fillText(
-                fr ? 'Régénération active : 72%' : 'Active regeneration: 72%',
-                mofX, mofY + 130
-            );
+            // Boîte 1 : Source Renouvelable
+            drawBox(80, 80, 220, 70, '#e9f5e9');
+            ctx.fillStyle = '#000'; ctx.textAlign = 'center';
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Source Renouvelable", 190, 102);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Éolien/Solaire)", 190, 120);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Offre Intermittente", 190, 138);
 
-            // Conduits supérieurs de vapeur désorbée (Tubes transparents avec particules)
-            const pipeStartX = mofX + 60, pipeY = ry + 95, condX = rx + 205, condY = ry + 175;
-            ctx.strokeStyle = 'rgba(0, 204, 255, 0.55)';
-            ctx.lineWidth = 8;
-            ctx.beginPath();
-            ctx.moveTo(pipeStartX, mofY);
-            ctx.lineTo(pipeStartX, pipeY);
-            ctx.lineTo(condX + 25, pipeY);
-            ctx.lineTo(condX + 25, condY);
-            ctx.stroke();
+            // Boîte 2 : Réseau Public
+            drawBox(490, 80, 190, 70, '#ffffff');
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Réseau Public", 585, 110);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Demande Inflexible", 585, 130);
 
-            // Particules de vapeur animées dans le conduit
-            for (let p = 0; p < 8; p++) {
-                const prog = ((tick * 0.35 + p / 8) % 1);
-                let px, py;
-                if (prog < 0.2) {
-                    px = pipeStartX;
-                    py = mofY - (prog / 0.2) * (mofY - pipeY);
-                } else if (prog < 0.7) {
-                    px = pipeStartX + ((prog - 0.2) / 0.5) * (condX + 25 - pipeStartX);
-                    py = pipeY;
-                } else {
-                    px = condX + 25;
-                    py = pipeY + ((prog - 0.7) / 0.3) * (condY - pipeY);
-                }
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath(); ctx.arc(px, py, 2.5, 0, Math.PI * 2); ctx.fill();
-            }
+            // Boîte 3 : Calcul ICI
+            drawBox(70, 270, 240, 70, '#fff0e6');
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Calcul ICI", 190, 298);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Charge Flexible/Catalytique", 190, 318);
 
-            // Condenseur Géothermique (15°C)
-            ctx.fillStyle = '#0d2233';
-            ctx.strokeStyle = '#00ccff';
-            ctx.lineWidth = 2;
-            ctx.fillRect(condX, condY, 55, 60);
-            ctx.strokeRect(condX, condY, 55, 60);
-            ctx.fillStyle = '#00ccff';
-            ctx.font = 'bold 9px "Fira Code", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText('HEX 15°C', condX + 27, condY + 34);
+            // Boîte 4 : Marchés des Capitaux
+            drawBox(570, 270, 280, 70, '#e6e6ff');
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Marchés des Capitaux", 710, 298);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Investissement en Infrastructure", 710, 318);
 
-            // Grand Cylindre Transparent : STOCK D'EAU DISTILLÉE (1 843 L)
-            const tankX = rx + 290, tankY = ry + 115, tankW = 95, tankH = 145;
-            // Eau liquide interne avec vaguelette animée
-            const waterLevelH = 105 + Math.sin(tick) * 2;
-            const waterGrad = ctx.createLinearGradient(tankX, tankY + tankH - waterLevelH, tankX, tankY + tankH);
-            waterGrad.addColorStop(0, 'rgba(0, 229, 255, 0.65)');
-            waterGrad.addColorStop(1, 'rgba(0, 102, 255, 0.85)');
-            ctx.fillStyle = waterGrad;
-            ctx.fillRect(tankX + 3, tankY + tankH - waterLevelH, tankW - 6, waterLevelH - 3);
+            // ==========================================
+            // TEXTES ET LÉGENDES
+            // ==========================================
+            ctx.fillStyle = "#000"; ctx.textAlign = "center";
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("Énergie Primaire", 395, 108);
 
-            // Paroi de verre du réservoir
-            ctx.strokeStyle = '#88eeff';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(tankX, tankY, tankW, tankH);
+            ctx.fillStyle = "#e60000"; ctx.textAlign = "left";
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Énergie Isolée", 205, 205);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Atténuation des Coupures)", 205, 225);
 
-            // Étiquette du réservoir (comme sur l'image générée)
-            ctx.fillStyle = 'rgba(5, 15, 25, 0.85)';
-            ctx.fillRect(tankX + 8, tankY + 48, tankW - 16, 52);
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 8.5px "Fira Code", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText(fr ? 'STOCK EAU PURE' : 'PURE WATER STOCK', tankX + tankW / 2, tankY + 64);
-            ctx.fillStyle = '#44ee77';
-            ctx.font = 'bold 11px "Fira Code", monospace';
-            const dynLiters = Math.round(1843 + vreLevel * 450);
-            ctx.fillText(dynLiters + ' L / j', tankX + tankW / 2, tankY + 82);
-            ctx.fillStyle = '#00ccff';
-            ctx.font = '8px "Fira Code", monospace';
-            ctx.fillText('EC = 0 µS/cm', tankX + tankW / 2, tankY + 95);
+            ctx.fillStyle = "#00aa00"; ctx.textAlign = "center";
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Monétisation de l'Indice", 440, 335);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Rendement Non Subventionné)", 440, 355);
 
-            // Liaison Condenseur -> Réservoir -> Vanne de Reminéralisation & Serres
-            ctx.strokeStyle = '#00ccff';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.moveTo(condX + 55, condY + 40);
-            ctx.lineTo(tankX, condY + 40);
-            ctx.stroke();
+            ctx.textAlign = "right";
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("Rev. Réseau", 580, 215);
 
-            // Sortie basse vers Reminéralisation Ca2+/Mg2+ et Serres
-            ctx.strokeStyle = '#44ee77';
-            ctx.lineWidth = 3.5;
-            ctx.beginPath();
-            ctx.moveTo(tankX + tankW / 2, tankY + tankH);
-            ctx.lineTo(tankX + tankW / 2, ry + 310);
-            ctx.lineTo(rx + rw - 20, ry + 310);
-            ctx.stroke();
+            ctx.fillStyle = "#0000ff"; ctx.textAlign = "center";
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Réinvestissement Accéléré du CapEx (ROI ↑)", 550, 15);
 
-            ctx.fillStyle = '#44ee77';
-            ctx.font = 'bold 9.5px "Fira Code", monospace';
-            ctx.textAlign = 'right';
-            ctx.fillText(
-                fr ? '→ REMINÉRALISATION (Ca²⁺/Mg²⁺) & SERRES'
-                   : '→ REMINERALIZATION (Ca²⁺/Mg²⁺) & GREENHOUSES',
-                rx + rw - 15, ry + 330
-            );
+            // Bloc "Preuves Macroéconomiques" (Bas Gauche)
+            ctx.fillStyle = "#000"; ctx.textAlign = "left";
+            ctx.font = 'bold 13px "Times New Roman", serif'; ctx.fillText("Preuves Macroéconomiques :", 30, 400);
+            ctx.font = '13px "Times New Roman", serif'; ctx.fillText("[18] : ROI Solaire 8ans → 3,5ans", 30, 420);
+            ctx.fillText("[16] : Régulation Fréquence Réseau", 30, 440);
 
+            // Caption (Légende de la Figure 6)
+            ctx.textAlign = "center";
+            ctx.font = '16px "Times New Roman", serif';
+            let capY = 480;
+            ctx.fillText("FIGURE – La boucle de rétroaction Renouvelable-Indice. La flèche", 475, capY); capY+=20;
+            ctx.fillText("bleue démontre comment la monétisation de l'énergie isolée (stranded", 475, capY); capY+=20;
+            ctx.fillText("energy) à travers l'ICI décentralisé crée un cycle de réinvestissement à", 475, capY); capY+=20;
+            ctx.fillText("haute vélocité, contournant les goulots d'étranglement traditionnels", 475, capY); capY+=20;
+            ctx.fillText("subventionnés par l'État dans le financement des infrastructures", 475, capY); capY+=20;
+            ctx.fillText("vertes.", 475, capY);
+
+            // Boucle d'animation
             if (isVis) {
-                animFrame = requestAnimationFrame(drawTikzTransition);
+                animFrame = requestAnimationFrame(drawTikzFeedback);
             }
         }
 
+        // Optimisation : stopper l'animation si non visible
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 isVis = e.isIntersecting;
-                if (isVis && !animFrame) animFrame = requestAnimationFrame(drawTikzTransition);
+                if (isVis && !animFrame) animFrame = requestAnimationFrame(drawTikzFeedback);
                 else if (!isVis && animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
             });
         }, { threshold: 0.05 });
 
         obs.observe(canvas);
-        window.addEventListener('resize', drawTikzTransition);
-        if (slider) slider.addEventListener('input', drawTikzTransition);
-        setTimeout(drawTikzTransition, 100);
+        window.addEventListener('resize', drawTikzFeedback);
+        setTimeout(drawTikzFeedback, 100);
     })();
     </script>
 
