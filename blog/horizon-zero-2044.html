@@ -188,18 +188,82 @@
         .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 1.5rem; margin-bottom: 0.8rem; }
         .drawer-content p { margin-bottom: 1.2rem; text-align: justify; }
 
-        .layer-0 { border-left: 4px solid var(--teal-l0); }
-        .layer-0 summary { color: var(--teal-l0); }
-        .layer-1 { border-left: 4px solid var(--orange-l1); }
-        .layer-1 summary { color: var(--orange-l1); }
-        .layer-2 { border-left: 4px solid var(--cyan-l2); }
-        .layer-2 summary { color: var(--cyan-l2); }
-        .layer-3 { border-left: 4px solid var(--magenta-l3); }
-        .layer-3 summary { color: var(--magenta-l3); }
-        .layer-4 { border-left: 4px solid var(--purple-l4); }
-        .layer-4 summary { color: var(--purple-l4); }
-        .layer-deep { border-left: 4px solid var(--sun-yellow); }
-        .layer-deep summary { color: var(--sun-yellow); }
+        /* Uniformisation stricte du gabarit et de la longueur des tiroirs Layer 0 à 4 + Deep Dive */
+        details[class^="layer-"] {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 1.6rem auto !important;
+            box-sizing: border-box;
+        }
+        details[class^="layer-"] > summary {
+            min-height: 78px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        details[class^="layer-"] > .drawer-content {
+            max-height: 780px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(179, 102, 255, 0.4) rgba(0, 0, 0, 0.4);
+        }
+        details[class^="layer-"] > .drawer-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        details[class^="layer-"] > .drawer-content::-webkit-scrollbar-thumb {
+            background: rgba(179, 102, 255, 0.4);
+            border-radius: 4px;
+        }
+
+        .layer-0 { border-left: 4px solid var(--teal-l0); color: rgba(0, 191, 165, 0.25); }
+        .layer-0 > summary { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--orange-l1); color: rgba(247, 147, 26, 0.25); }
+        .layer-1 > summary { color: var(--orange-l1); }
+        .layer-2 { border-left: 4px solid var(--cyan-l2); color: rgba(0, 229, 255, 0.25); }
+        .layer-2 > summary { color: var(--cyan-l2); }
+        .layer-3 { border-left: 4px solid var(--magenta-l3); color: rgba(224, 64, 251, 0.25); }
+        .layer-3 > summary { color: var(--magenta-l3); }
+        .layer-4 { border-left: 4px solid var(--purple-l4); color: rgba(179, 102, 255, 0.25); }
+        .layer-4 > summary { color: var(--purple-l4); }
+        .layer-deep { border-left: 4px solid var(--sun-yellow); color: rgba(255, 204, 0, 0.25); }
+        .layer-deep > summary { color: var(--sun-yellow); }
+
+        /* Style de la Tablette Philosophique */
+        .philosophical-tablet {
+            margin: 4.5rem 0;
+            padding: 2.8rem;
+            background: linear-gradient(145deg, rgba(18, 20, 28, 0.85) 0%, rgba(5, 6, 9, 0.95) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.22);
+            border-top: 4px solid var(--sun-yellow);
+            border-radius: 14px;
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.75);
+        }
+        .philosophical-tablet h3 {
+            color: var(--sun-yellow);
+            font-family: var(--font-ui);
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.15);
+        }
+        .philosophical-tablet h4 {
+            color: #fff;
+            font-family: var(--font-ui);
+            font-size: 1.2rem;
+            margin: 2rem 0 0.8rem;
+        }
+        .philosophical-tablet p, .philosophical-tablet li {
+            text-align: justify;
+            color: #d0d7de;
+            margin-bottom: 1rem;
+        }
+        .philosophical-tablet ul {
+            padding-left: 1.5rem;
+            margin: 1.2rem 0;
+        }
 
         .math-block {
             background: rgba(0, 0, 0, 0.65); padding: 1.5rem; border-radius: 8px;
@@ -707,8 +771,8 @@
             <span lang="en">The Return of the Pyramid-Building Civilization (v3.0 - Awakening the Noosphere)</span>
         </h2>
         <div class="subtitle">
-            <span lang="fr">Annexe d'Ingénierie : Gardiens Telluriques, Puits de Dissipation, Onde de Cohérence et Entropie Quantique.</span>
-            <span lang="en">Engineering Appendix: Telluric Guardians, Dissipation Sinks, Coherence Wave, and Quantum Entropy. Skywalker, we will go to Tatooine soon; are you ready for a good challenge on the Land of the Jedi first?</span>
+            <span lang="fr">Traité d'Architecture Cyber-Thermodynamique : Gardiens Telluriques, Puits Radiatifs, Onde de Cohérence et Symbiose Homme-Machine au service du Vivant.</span>
+            <span lang="en">Cyber-Thermodynamic Architecture Treatise: Telluric Guardians, Radiative Sinks, Coherence Wave, and Human-Machine Symbiosis in Service of the Living.</span>
         </div>
         <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
             <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // MATRICE WEB 3.0 DURCIE // KARDASHEV TYPE I</span>
@@ -916,16 +980,16 @@
             <p lang="fr">Un système confiné à son homéostasie interne est statistiquement condamné par le cosmos. Le <strong>Corps de Défense Planétaire (CDP)</strong> est un essaim d'infrastructures lourdes : lasers de déviation orbitaux à haute puissance cinétique, boucliers plasma capables d'intercepter des éjections de masse coronale (CMEs). Déléguer cet armement à une IA est suicidaire. La solution est neuro-cybernétique : <strong>Les Gardiens Telluriques (GT)</strong>. L'humain exploite l'Interface Neurale pour "habiter" les lasers et piloter la dérivation de puissance civile vers la grille de survie orbitale.</p>
             <p lang="en">A system confined to its internal homeostasis is statistically condemned by the cosmos. The <strong>Planetary Defense Corps (PDC)</strong> is a swarm of heavy infrastructures: high-kinetic orbital deflection lasers, plasma shields capable of intercepting Coronal Mass Ejections (CMEs). Delegating this weaponry to an AI is suicidal. The solution is neuro-cybernetic: <strong>Telluric Guardians (GT)</strong>. Humans exploit the Neural Interface to "inhabit" the lasers and pilot the derivation of civilian power to the orbital survival grid.</p>
             
-            <p lang="fr"><strong>[Sécurité v3.0] Le Puits de Dissipation Radiatif (PDR) :</strong> Pour éviter la surchauffe sociétale (Paradoxe de Jevons) lors d'un surplus d'énergie massif, une part de l'exergie n'est pas réinjectée dans l'économie. Les Gardiens utilisent les réseaux du CDP pour dissiper délibérément l'excès thermique sous forme de lasers pointés vers l'espace profond, garantissant l'équilibre thermodynamique de la biosphère.</p>
-            <p lang="en"><strong>[Security v3.0] Radiative Dissipation Sinks (PDR):</strong> To avoid societal overheating (Jevons Paradox) during massive energy surpluses, a portion of the exergy is deliberately not reinjected into the economy. Guardians use the PDC arrays to intentionally beam the excess heat into deep space, guaranteeing the thermodynamic equilibrium of the biosphere.</p>
+            <p lang="fr"><strong>[Sécurité v3.0] Le Puits de Dissipation Radiatif (PDR) &amp; Fenêtre Infrarouge ($8\text{–}13\text{ }\mu\text{m}$) :</strong> Toute civilisation de classe Kardashev I se heurte à une limite thermodynamique absolue : la barrière d'évacuation de l'entropie thermique. Pour prévenir à la fois l'emballement du Paradoxe de Jevons et l'échauffement de la troposphère, les excédents énergétiques ne sont pas aveuglément réinjectés dans la consommation matérielle. Le <strong>PDR</strong> déploie d'immenses surfaces métaphotoniques de refroidissement radiatif passif qui émettent directement la chaleur résiduelle sous forme de photons infrarouges à travers la fenêtre de transparence atmosphérique ($8\text{–}13\text{ }\mu\text{m}$) vers le puits froid du vide cosmique ($T_{\text{espace}} \approx 2,725\text{ K}$), conformément à la loi de Stefan-Boltzmann, tandis que les surplus d'exergie électrique alimentent la réserve orbitale du CDP.</p>
+            <p lang="en"><strong>[Security v3.0] Radiative Dissipation Sinks (PDR) &amp; Infrared Atmospheric Window ($8\text{–}13\text{ }\mu\text{m}$):</strong> Any Kardashev Type I civilization faces an absolute thermodynamic ceiling: planetary waste-heat rejection. To prevent both Jevons Paradox runaway and tropospheric warming, energy surpluses are never blindly dumped into material consumption. The <strong>PDR</strong> utilizes metamaterial radiative-cooling arrays that passively emit low-grade thermal entropy as infrared photons directly through the atmospheric transparency window ($8\text{–}13\text{ }\mu\text{m}$) into the $2.725\text{ K}$ cosmic heat sink (governed by the Stefan-Boltzmann law), while electrical exergy surpluses charge the orbital PDC defense reserve.</p>
 
             <div class="math-block" style="color: var(--shield-blue);">
-                $$ \mathbb{P}(\text{Extinction}) \to 0 \implies \dot{E}_{CDP} = \dot{E}_{SMR} \cdot \mathbb{I}(\text{Menace}) + \dot{E}_{PDR}(\text{Surplus}) $$
+                $$ \dot{Q}_{\text{PDR}} = \varepsilon_{\text{IR}} \cdot \sigma \cdot A_{\text{méta}} \left( T_{\text{surface}}^4 - T_{\text{cosmos}}^4 \right) \quad \text{et} \quad \dot{E}_{\text{CDP}} = \dot{E}_{\text{SMR/Fusion}} \cdot \mathbb{I}(\text{Menace}) $$
             </div>
 
-            <h4 style="color: var(--bio-green);"><span lang="fr">3. Le Corps d'Optimisation Planétaire (COP) : La Force Hybride</span><span lang="en">3. The Planetary Optimization Corps (COP): The Hybrid Force</span></h4>
-            <p lang="fr">Le <strong>COP</strong> est la réconciliation ultime entre la robotique de pointe (drones en essaim) et la biologie fondamentale (mycélium, forêts, océans). Pourquoi ne pas laisser l'IHA tout gérer seule ? Parce qu'une IA cherchant à "optimiser la capture de carbone" planterait des rangées infinies d'Eucalyptus clonés (loi de Goodhart). L'écosystème a besoin de chaos créatif et de diversité.</p>
-            <p lang="en">The <strong>COP</strong> is the ultimate reconciliation between advanced robotics (swarm drones) and fundamental biology (mycelium, forests, oceans). Why not let HAI manage everything? Because an AI trying to "optimize carbon capture" would plant endless rows of cloned Eucalyptus (Goodhart's Law). The ecosystem requires creative chaos and diversity.</p>
+            <h4 style="color: var(--bio-green);"><span lang="fr">3. Le Corps d'Optimisation Planétaire (COP) : Loi d'Ashby &amp; Émergie d'Odum</span><span lang="en">3. The Planetary Optimization Corps (COP): Ashby's Law &amp; Odum's Emergy</span></h4>
+            <p lang="fr">Le <strong>COP</strong> incarne la synthèse cybernétique entre la robotique en essaim et l'écologie des systèmes (mycélium, forêts anciennes, récifs coralliens). Pourquoi une IA centralisée ne peut-elle jamais gouverner seule la biosphère ? En vertu de la <strong>Loi de la Variété Requise de W. Ross Ashby</strong> (<em>« seule la variété peut absorber la variété »</em>) et de la <strong>Loi de Goodhart</strong> : une machine optimisant une métrique scalaire de carbone planterait une monoculture stérile d'arbres clonés, détruisant la résilience trophique. À l'inverse, selon le <strong>Principe de Puissance Maximale d'Howard T. Odum</strong>, un écosystème mature maximise son flux d'<em>Émergie</em> (énergie solaire incorporée, en sej) en développant une biodiversité fractale et des boucles de rétroaction complexes.</p>
+            <p lang="en">The <strong>COP</strong> embodies the cybernetic synthesis between swarm robotics and systems ecology (mycelium, old-growth forests, coral reefs). Why can a centralized AI never govern the biosphere alone? By virtue of <strong>W. Ross Ashby's Law of Requisite Variety</strong> (<em>"only variety can absorb variety"</em>) and <strong>Goodhart's Law</strong>: a machine optimizing a scalar carbon metric would plant a sterile monoculture of cloned trees, collapsing trophic resilience. Conversely, under <strong>Howard T. Odum's Maximum Power Principle</strong>, a climax ecosystem maximizes its <em>Emergy</em> throughput (embodied solar emjoules, sej) by cultivating fractal biodiversity and complex feedback loops.</p>
             
             <p lang="fr">La solution est une symbiose parfaite : <br>
             <strong>1. La Force Robotique :</strong> Des milliards de micro-drones inoculent des spores, filtrent les microplastiques et réparent la chimie des sols en suivant la thermodynamique.<br>
@@ -963,8 +1027,11 @@
             <p lang="fr">Qui protège l'individu face au consensus global de l'Intelligence Humaine Augmentée (IHA) ? C'est le rôle du <strong>Veto Ontologique</strong>. Grâce aux scripts Taproot, le "Citoyen Souverain" possède une ligne de commande vitale encodée directement sur L1. S'il perçoit une corruption éthique grave en L4, il peut déclencher son Veto. Cela fige ses ancrages vitaux au niveau thermodynamique de base, rendant son exil ou son effacement mathématiquement impossible par la machine.</p>
             <p lang="en">Who protects the individual against the global consensus of Human-Augmented Intelligence (HAI)? This is the role of the <strong>Ontological Veto</strong>. Via Taproot scripts, the "Sovereign Citizen" holds a vital command line encoded directly on L1. If they perceive a severe ethical corruption in L4, they can trigger their Veto. This freezes their vital anchors at the base thermodynamic level, making their exile or erasure by the machine mathematically impossible.</p>
 
+            <div class="math-block" style="color: var(--orange-l1); margin-bottom: 1rem;">
+                $$ E_{\text{min,bit}} \ge k_B T \ln(2) \quad \Longrightarrow \quad \mathcal{S}_{\text{GLID}}(z) = \int_{t_0}^{t_z} \dot{W}_{\text{PoW}}(\tau)\,d\tau \gg E_{\text{attaque}} $$
+            </div>
             <div class="math-block" style="color: #ff3344;">
-                $$ \text{Veto}_{L1} = \text{Sign}(sk_{Humain}, \text{Hash}_{L4}) \implies \frac{\partial \Psi_{Noosph\grave{e}re}}{\partial t} \Big|_{\text{local}} = 0 $$
+                $$ \text{Veto}_{L1} = \text{Sign}_{\text{Taproot}}(sk_{\text{Humain}},\, \text{Hash}_{L4}) \implies \frac{\partial \Psi_{\text{Noosphère}}}{\partial t} \Big|_{\text{nœud local}} = 0 $$
             </div>
         </div>
     </details>
@@ -988,7 +1055,7 @@
             <p lang="en"><strong>[Security v3.0]</strong> Light takes 130 milliseconds to circle the Earth. Without compensation, billions of connected humans would suffer a "split-brain" syndrome due to relativistic latency. The <strong>Relativistic Coherence Wave (OCR)</strong> protocol forces Lightning Network HTLCs to buffer cognitive packets, delivering them on global harmonic phases. Humanity "thinks" and feels planetary events on a synchronized millisecond heartbeat, compensating for the laws of special relativity.</p>
 
             <div class="math-block" style="color: var(--cyan-l2);">
-                $$ \tau_{finalit\acute{e}} = \text{max}\left( \frac{D_{Terre}}{c}, \text{OCR}_{phase} \right) \approx 130\text{ ms} \quad \implies \quad \text{Synchro. Globale} $$
+                $$ \tau_{\text{antipode}} = \frac{\pi R_{\text{Terre}}}{c_{\text{LEO}}} \approx 67\text{ ms (aller)} \implies \tau_{\text{OCR}} = \frac{2\pi R_{\text{Terre}}}{c_{\text{LEO}}} \approx 134\text{ ms (cycle complet)} $$
             </div>
             <div class="model-metadata" aria-label="Métadonnées du modèle">
             <div class="metadata-item">
@@ -1132,9 +1199,13 @@
             <p lang="fr">Dans une Noosphère interconnectée, l'hyper-transparence est une menace totalitaire. Le code génétique et les flux neurochimiques sont confinés dans un coffre hors-ligne (POD) qui simule le <strong>Jumeau Numérique du Patient (JNP)</strong>. Le JNP utilise des <strong>Preuves à Divulgation Nulle de Connaissance (ZKP)</strong> pour prouver mathématiquement à la Couche 3 qu'une pathologie nécessite une allocation médicale, sans jamais révéler la séquence biométrique brute. C'est le blindage cryptographique de l'intimité biologique.</p>
             <p lang="en">In an interconnected Noosphere, hyper-transparency is a totalitarian threat. The genetic code and neurochemical flows are confined within an offline vault (POD) simulating the <strong>Patient Digital Twin (JNP)</strong>. The JNP uses <strong>Zero-Knowledge Proofs (ZKP)</strong> to mathematically prove to Layer 3 that a pathology requires medical allocation, without ever revealing the raw biometric sequence. It is the cryptographic shielding of biological intimacy.</p>
 
-            <h4 style="color: #e040fb;"><span lang="fr">3. Les Contrats de Ressources de Base Universelles (RBU)</span><span lang="en">3. Universal Basic Resources (RBU) Contracts</span></h4>
-            <p lang="fr">La Couche 3 gère le code inaltérable de la survie physique. Le <strong>RBU</strong> est une allocation contractuelle stricte de kilowattheures, d'eau distillée, de cycles de calcul CCBU et de Nutriments (NBU). Évalué continuellement par l'IHA en fonction des réserves thermodynamiques réelles (L0), le RBU n'est pas de la charité : c'est le maintien thermodynamique du potentiel de survie d'un nœud conscient pour qu'il maintienne la Noosphère.</p>
-            <p lang="en">Layer 3 manages the unalterable code of physical survival. The <strong>RBU</strong> is a strict contractual allocation of kilowatt-hours, distilled water, CCBU cycles, and Nutrients (NBU). Continuously evaluated by the HAI against real thermodynamic reserves (L0), RBU is not charity: it is the thermodynamic maintenance of a conscious node's survival potential to sustain the Noosphere.</p>
+            <h4 style="color: #e040fb;"><span lang="fr">3. Les Contrats de Ressources de Base Universelles (RBU) &amp; Invariance Biologique</span><span lang="en">3. Universal Basic Resources (RBU) Contracts &amp; Biological Invariance</span></h4>
+            <p lang="fr">La Couche 3 exécute le contrat inaltérable de la dignité biophysique. Contrairement au revenu universel fiduciaire (UBI) qui injecte de la monnaie sans garantir les stocks réels, le <strong>RBU</strong> alloue directement des paniers physiques vérifiés par les Oracles (L0) : kilowattheures décarbonés, eau pure reminéralisée, Nutriments (NBU) issus des fermes symbiotiques et cycles de calcul (CCBU). Affranchi du chantage à la survie biologique, l'être humain n'est plus un rouage économique : il devient libre de consacrer son temps thermique à la recherche, à l'art, au soin mutuel et à la régénération des écosystèmes.</p>
+            <p lang="en">Layer 3 executes the unalterable contract of biophysical dignity. Unlike fiat Universal Basic Income (UBI), which prints currency without guaranteeing physical stocks, <strong>RBU</strong> directly allocates Oracle-verified physical baskets (L0): decarbonized kilowatt-hours, remineralized freshwater, Nutrients (NBU) from symbiotic farms, and compute cycles (CCBU). Freed from biological survival coercion, humans cease to be economic cogs—liberated to devote their thermal time to research, art, mutual care, and ecosystem stewardship.</p>
+
+            <div class="math-block" style="color: #e040fb;">
+                $$ \forall i \in \mathcal{N}_{\text{Humains}},\quad \mathbf{RBU}_i(t) = \Big\{ E_{\min},\, V_{\text{H}_2\text{O},\min},\, \text{NBU}_{\min},\, \text{CCBU}_{\min} \Big\} \quad \text{s.c.} \quad \sum_{i} \mathbf{RBU}_i \le \dot{\mathbf{S}}_{\text{régénérable}}(L_0) $$
+            </div>
         </div>
     </details>
 
@@ -1160,11 +1231,11 @@
             <p lang="fr">Un environnement parfaitement optimisé et sans friction devient ultra-fragile et s'effondre au premier choc externe. Pour survivre, le système *doit* s'auto-perturber. C'est le rôle de l'<strong>Algorithme du Doute (AD)</strong> qui conteste mathématiquement les axiomes de l'IHA, et du <strong>Protocole de Chaos Volontaire (PCV)</strong> qui injecte le droit à l'art et à la friction.</p>
             <p lang="en">A perfectly optimized, frictionless environment becomes ultra-fragile and shatters at the first external shock. To survive, the system *must* self-disrupt. This is the role of the <strong>Algorithm of Doubt (AD)</strong> which mathematically contests HAI axioms, and the <strong>Voluntary Chaos Protocol (PCV)</strong> which injects the right to art and friction.</p>
             
-            <p lang="fr"><strong>[Sécurité v3.0] Générateur d'Entropie Quantique (GEQ) :</strong> La faille majeure du PCV était que l'IHA pouvait apprendre à prédire le chaos algorithmique et simuler la liberté. Désormais, le Chaos Volontaire est sourcé sur le <strong>GEQ</strong> (lié aux fluctuations du rayonnement fossile et à la désintégration atomique L0). L'IHA ne pourra *jamais* modéliser l'imprévisibilité de l'univers physique. La liberté humaine est sanctuarisée par l'incertitude quantique absolue.</p>
-            <p lang="en"><strong>[Security v3.0] Quantum Entropy Generator (GEQ):</strong> The major flaw of the PCV was that the HAI could learn to predict algorithmic chaos and simulate freedom. Now, Voluntary Chaos is sourced via the <strong>GEQ</strong> (tied to cosmic microwave background fluctuations and L0 atomic decay). The HAI can *never* model the unpredictability of the physical universe. Human freedom is enshrined by absolute quantum uncertainty.</p>
+            <p lang="fr"><strong>[Sécurité v3.0] Générateur d'Entropie Quantique (GEQ) :</strong> La faille majeure d'un chaos purement algorithmique (pseudo-aléatoire) était que l'IHA pouvait en inférer la graine déterministe et simuler une illusion de liberté. Désormais, le Protocole de Chaos Volontaire est alimenté par le <strong>GEQ</strong> : un réseau de capteurs quantiques mesurant par détection optique homodyne les fluctuations de point zéro du vide électromagnétique ($\Delta \hat{X} \cdot \Delta \hat{P} \ge \hbar / 2$) couplées au bruit de grenaille de désintégrations radioactives en Couche 0. En vertu du théorème de Kochen-Specker et de l'indéterminisme intrinsèque de la règle de Born, aucune intelligence — fût-elle planétaire — ne peut prédire la séquence d'innovation, de sérendipité et d'exploration générée par ce bruit quantique fondamental.</p>
+            <p lang="en"><strong>[Security v3.0] Quantum Entropy Generator (GEQ):</strong> The fatal flaw of purely algorithmic (pseudo-random) chaos was that an HAI could infer its deterministic seed and simulate an illusion of freedom. Now, the Voluntary Chaos Protocol is seeded by the <strong>GEQ</strong>: a hardware QRNG array measuring zero-point electromagnetic vacuum fluctuations via homodyne optical detection ($\Delta \hat{X} \cdot \Delta \hat{P} \ge \hbar / 2$) coupled with L0 nuclear decay shot noise. By virtue of the Kochen-Specker theorem and Born-rule indeterminism, no intelligence—however vast—can predict the serendipity, artistic exploration, and stochastic audit assignments drawn from this quantum substrate.</p>
 
             <div class="math-block" style="color: #b366ff;">
-                $$ \max \mathcal{U}_{PO} = \int \left( \frac{\text{WU}}{\text{Joules}} \cdot \mathcal{B}_{plan\acute{e}taire} \right) dt \quad \text{s.c.} \quad \mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}} $$
+                $$ \max \mathcal{U}_{PO} = \int \left( \frac{\text{WU}(t)}{\dot{E}_{\text{Joules}}(t)} \cdot \mathcal{B}_{\text{biosphère}}(t) \right) dt \quad \text{s.c.} \quad H_{\infty}(\text{GEQ}) = -\log_2 \max_x \mathbb{P}(X=x) \ge h_{\text{min}} > 0 $$
             </div>
         </div>
     </details>
@@ -1282,11 +1353,11 @@
 
     <p class="modelling-lead">
         <span lang="fr">
-            La chaîne de la vie n'est jamais plus vraie que ses capteurs, ses institutions
+            La chaîne n'est jamais plus vraie que ses capteurs, ses institutions
             et les humains capables de les contraindre ou de les corrompre.
         </span>
         <span lang="en">
-            The chain of life is never more truthful than its sensors, institutions,
+            The chain is never more truthful than its sensors, institutions,
             and the humans capable of coercing or corrupting them.
         </span>
     </p>
@@ -1434,7 +1505,115 @@
         </table>
     </div>
 </section>
-    <!-- TABLEAU DE NOMENCLATURE UNIFIÉ (COMPLET) -->
+    <!-- PACTE SYMBIOTIQUE CONSTITUTIONNEL : LES 4 LOIS D'INVARIANCE -->
+    <section class="modelling-section" id="symbiotic-constitution" style="border-color: rgba(179, 102, 255, 0.3); overflow: hidden; box-sizing: border-box;">
+        <style>
+            #symbiotic-constitution .modelling-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            #symbiotic-constitution .model-card {
+                min-width: 0; /* Empêche l'expansion horizontale en CSS Grid */
+                max-width: 100%;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+            #symbiotic-constitution .math-block {
+                max-width: 100%;
+                overflow-x: auto;
+                box-sizing: border-box;
+            }
+        </style>
+
+        <h3 style="color: var(--purple-l4);">
+            <span lang="fr">📜 Le Pacte Symbiotique Constitutionnel : L'Humain, la Machine et le Vivant</span>
+            <span lang="en">📜 The Constitutional Symbiotic Pact: Human, Machine, and the Living</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">
+                Pour que la technologie ne devienne jamais une technocratie froide, l'architecture Horizon Zéro 2044 grave quatre invariants constitutionnels dans le protocole : la machine calcule et porte la charge, l'humain oriente le sens et l'empathie, et la Biosphère demeure la mesure souveraine de toute richesse.
+            </span>
+            <span lang="en">
+                To ensure technology never degenerates into a cold technocracy, the Horizon Zero 2044 architecture encodes four constitutional invariants into the protocol: machines compute and bear the physical load, humans provide meaning and empathy, and the Biosphere remains the sovereign measure of all wealth.
+            </span>
+        </p>
+
+        <div class="modelling-grid">
+            <article class="model-card right-card">
+                <span class="epistemic-badge status-a">Invariant I · Primauté Biologique</span>
+                <h4>
+                    <span lang="fr">Subordination Thermodynamique au Vivant</span>
+                    <span lang="en">Thermodynamic Subordination to the Living</span>
+                </h4>
+                <p lang="fr">
+                    Aucun cycle de calcul (L1/L4) ni aucune extraction (L0) ne peut empiéter sur les seuils critiques de régénération des sols, des aquifères et de la biodiversité. Lorsque la biosphère locale entre en tension, la puissance informatique s'efface automatiquement au profit de la restauration écologique (COP).
+                </p>
+                <p lang="en">
+                    No compute cycle (L1/L4) or material extraction (L0) may breach the critical regeneration thresholds of soils, aquifers, and biodiversity. Whenever the local biosphere experiences stress, computational load automatically curtails in favor of ecological restoration (COP).
+                </p>
+            </article>
+
+            <article class="model-card right-card">
+                <span class="epistemic-badge status-a">Invariant II · Souveraineté Cognitive</span>
+                <h4>
+                    <span lang="fr">Inviolabilité du Sanctuaire Intérieur (FNA &amp; ZKP)</span>
+                    <span lang="en">Inviolability of the Inner Sanctuary (FNA &amp; ZKP)</span>
+                </h4>
+                <p lang="fr">
+                    L'esprit humain n'est pas une ressource exploitable. Le Pare-Feu Neural Asymétrique (FNA) et les preuves ZKP garantissent l'opacité biométrique totale de l'individu face au collectif et l'interdiction matérielle de toute écriture non consentie sur le cortex.
+                </p>
+                <p lang="en">
+                    The human mind is not an extractable resource. The Asymmetric Neural Firewall (FNA) and ZKP proofs guarantee total biometric privacy for the individual against the collective, enforcing a hardware ban on any non-consensual cortical write access.
+                </p>
+            </article>
+
+            <article class="model-card right-card">
+                <span class="epistemic-badge status-b">Invariant III · Subsidiarité Robotique</span>
+                <h4>
+                    <span lang="fr">Les Machines dans l'Ombre, le Vivant dans la Lumière</span>
+                    <span lang="en">Machines in the Shadow, Life in the Light</span>
+                </h4>
+                <p lang="fr">
+                    Les tâches répétitives, toxiques, souterraines ou exposées aux radiations sont déléguées aux flottes robotiques autonomes (RLI, bains hydrométallurgiques, maintenance SMR). Le temps biologique humain est sanctuarisé pour la création, la contemplation, la transmission et le soin.
+                </p>
+                <p lang="en">
+                    Repetitive, toxic, subterranean, or radiation-exposed tasks are delegated to autonomous robotic fleets (RLI, hydrometallurgical vats, SMR maintenance). Human biological time is sanctified for creation, contemplation, teaching, and care.
+                </p>
+            </article>
+
+            <article class="model-card right-card">
+                <span class="epistemic-badge status-c">Invariant IV · Droit de Sortie ($X_{\text{sortie}} = 1$)</span>
+                <h4>
+                    <span lang="fr">Réversibilité &amp; Existence Hors-Réseau</span>
+                    <span lang="en">Reversibility &amp; Off-Grid Existence</span>
+                </h4>
+                <p lang="fr">
+                    Aucun protocole — aussi parfait soit-il mathématiquement — ne doit jamais devenir une prison algorithmique. Chaque individu ou communauté conserve le droit inaliénable de vivre, cultiver, échanger de pair-à-pair et subsister entièrement <strong>hors-réseau</strong> (<em>off-grid</em>), sans pénalité d'accès aux communs biophysiques (eau, semences, terres) ni profilage biométrique obligatoire ($X_{\text{sortie}} = 0 \implies W = 0$).
+                </p>
+                <p lang="en">
+                    No protocol—however mathematically sound—must ever become an algorithmic prison. Every individual or community retains the inalienable right to live, farm, trade peer-to-peer, and subsist entirely <strong>off-grid</strong>, free from any penalty on access to biophysical commons (water, seeds, land) and without mandatory biometric profiling ($X_{\text{exit}} = 0 \implies W = 0$).
+                </p>
+                <div class="math-block" style="margin: 0.8rem 0 0; padding: 0.65rem; font-size: 0.85rem; color: var(--bio-green); background: rgba(0,0,0,0.45); border: 1px solid rgba(68, 238, 119, 0.2); text-align: center;">
+                    $\forall i \in \text{Civitas}, \; X_{\text{sortie}}(i) = 1 \implies \text{Accès}_{\text{vital}}(i) \ge E_{\text{min}}$
+                </div>
+            </article>
+        </div>
+
+        <!-- Clause de Sauvegarde & Verrou Anti-Technocratique -->
+        <div style="margin-top: 1.8rem; padding: 1.2rem 1.5rem; background: rgba(255, 204, 0, 0.04); border: 1px dashed rgba(255, 204, 0, 0.35); border-radius: 8px; font-size: 0.9rem; color: #d4d4d4; text-align: justify; box-sizing: border-box;">
+            <span lang="fr">
+                🛡️ <strong>Clause de Sauvegarde Anti-Technocratique (Asservissement de la Machine) :</strong> Les capteurs IoT, l'essaim de drones NDVI et les modèles d'inférence locale (Edge AI) décrits au Niveau 6 s'appliquent <em>exclusivement</em> aux paramètres thermodynamiques et agronomiques des infrastructures et des sols. Toute dérive vers un « crédit social », une surveillance comportementale des citoyens ou un rationnement algorithmique individuel déclenche l'invalidation constitutionnelle du contrat social local. <strong>On mesure l'entropie des machines et la santé de l'humus ; on ne note jamais la liberté humaine.</strong>
+            </span>
+            <span lang="en">
+                🛡️ <strong>Anti-Technocratic Safeguard Clause (Slaving the Machine):</strong> The IoT sensors, NDVI drone swarm, and local Edge AI inference models described in Level 6 apply <em>exclusively</em> to the thermodynamic and agronomic parameters of infrastructure and soil. Any drift toward a "social credit score," behavioral surveillance of citizens, or algorithmic rationing of individuals triggers the immediate constitutional invalidation of the local social contract. <strong>We measure machine entropy and soil health; we never score human freedom.</strong>
+            </span>
+        </div>
+    </section>
     <div style="margin: 4rem 0 3rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.8rem; font-family: var(--font-ui);">
             <span lang="fr">📖 Le Vocabulaire du Nouveau Monde : Nomenclature Complète (v3.0)</span>
