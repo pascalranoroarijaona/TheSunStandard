@@ -241,16 +241,54 @@
         .drawer-content h4 { font-family: var(--font-ui); }
         .drawer-content p { margin-bottom: 1rem; }
 
+        /* Uniformisation stricte de la largeur et de la longueur des tiroirs Level 1 à 8 + Dossier */
+        details[class^="level-"], #tiroir-dossier-scientifique {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 1.6rem auto !important;
+            border-left-width: 4px;
+            border-left-style: solid;
+            box-sizing: border-box;
+        }
+        details[class^="level-"] > summary, #tiroir-dossier-scientifique > summary {
+            min-height: 78px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        details[class^="level-"] > .drawer-content, #tiroir-dossier-scientifique > #dossier-scientifique {
+            max-height: 820px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 204, 0, 0.35) rgba(0, 0, 0, 0.4);
+        }
+        details[class^="level-"] > .drawer-content::-webkit-scrollbar,
+        #tiroir-dossier-scientifique > #dossier-scientifique::-webkit-scrollbar {
+            width: 8px;
+        }
+        details[class^="level-"] > .drawer-content::-webkit-scrollbar-thumb,
+        #tiroir-dossier-scientifique > #dossier-scientifique::-webkit-scrollbar-thumb {
+            background: rgba(255, 204, 0, 0.35);
+            border-radius: 4px;
+        }
+
         .level-1 { border-color: var(--stone-grey); }
-        .level-1 summary { color: #a0aab5; }
+        .level-1 > summary { color: #a0aab5; }
         .level-2 { border-color: var(--magma-orange); }
-        .level-2 summary { color: var(--magma-orange); }
+        .level-2 > summary { color: var(--magma-orange); }
         .level-3 { border-color: var(--water-blue); }
-        .level-3 summary { color: var(--water-blue); }
+        .level-3 > summary { color: var(--water-blue); }
         .level-4 { border-color: var(--carbon-red); }
-        .level-4 summary { color: var(--carbon-red); }
+        .level-4 > summary { color: var(--carbon-red); }
         .level-5 { border-color: var(--gold-gov); }
-        .level-5 summary { color: var(--gold-gov); }
+        .level-5 > summary { color: var(--gold-gov); }
+        .level-6 { border-color: var(--water-blue); }
+        .level-6 > summary { color: var(--water-blue); }
+        .level-7 { border-color: #c864ff; }
+        .level-7 > summary { color: #c864ff; }
+        .level-8 { border-color: #2ecc71; }
+        .level-8 > summary { color: #2ecc71; }
 
         .level-img {
             width: 100%;
@@ -1181,6 +1219,7 @@
             <span style="font-size: 0.85em; color: var(--bio-green);">- Lemeus</span>
         </div>
     </div>
+    </div>
 
     <!-- Encadré Vérité Thermodynamique -->
     <div class="thermo-truth-box" style="margin: 0 auto 2rem; padding: 2rem; background: rgba(255, 204, 0, 0.03); border: 1px solid rgba(255, 204, 0, 0.25); border-left: 4px solid var(--sun-yellow); border-radius: 8px; font-family: var(--font-ui); box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
@@ -1718,8 +1757,16 @@
                 </div>
             </div>
 
-            <div class="math-block" style="color: var(--magma-orange);">
-                $$J_q = - \kappa \nabla T \quad \Longrightarrow \quad P_{surface} = \iint_{S} \vec{J}_q \cdot d\vec{A}$$
+            <div class="math-block" style="color: var(--magma-orange); text-align: left; padding: 2rem;">
+                <div style="font-family: var(--font-ui); font-size: 0.9rem; color: #fff; margin-bottom: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">Loi de Fourier &amp; Potentiel Exergétique de Basse Température</span>
+                    <span lang="en">Fourier's Law &amp; Low-Grade Exergetic Potential</span>
+                </div>
+                $$ \vec{J}_q = - \kappa \nabla T \quad \text{et} \quad \dot{E}_x = \dot{Q}_{\text{ASIC}} \left( 1 - \frac{T_{\text{ambiant}}}{T_{\text{fluide}}} \right) $$
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem; font-family: var(--font-main); text-align: justify; margin-bottom: 0;">
+                    <span lang="fr">Avec un fluide caloporteur à $T_{\text{fluide}} = 343\text{ K}$ ($70^\circ\text{C}$) et un milieu ambiant à $T_{\text{ambiant}} = 288\text{ K}$ ($15^\circ\text{C}$), le facteur de Carnot plafonne à $\eta_{\text{Carnot}} \approx 16\,\%$. Toute reconversion thermodynamique en électricité (cycle ORC) gaspillerait plus de $88\,\%$ de l'enthalpie. À l'inverse, le couplage thermique direct (chauffage racinaire, désorption MOF et pré-séchage) valorise près de $85\,\%$ de l'enthalpie totale.</span>
+                    <span lang="en">With a coolant temperature of $T_{\text{fluid}} = 343\text{ K}$ ($70^\circ\text{C}$) and an ambient sink at $T_{\text{ambient}} = 288\text{ K}$ ($15^\circ\text{C}$), the Carnot factor caps at $\eta_{\text{Carnot}} \approx 16\%$. Attempting to reconvert this low-grade heat into electricity (via an ORC turbine) would waste over $88\%$ of the enthalpy. Conversely, direct thermal cascading (root heating, MOF desorption, and biomass drying) recovers up to $85\%$ of total enthalpy.</span>
+                </p>
             </div>
 
             <div style="background: rgba(68, 238, 119, 0.05); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--bio-green); margin: 1.5rem 0;">
@@ -2124,14 +2171,11 @@
                 })();
             </script>
             
-        </div>
-    
-        <div style="padding: 1.5rem; font-weight: 600; font-size: 1.2rem; color: #fff; background: rgba(0, 204, 255, 0.08); border-top: 1px solid rgba(0, 204, 255, 0.2); border-bottom: 1px solid rgba(0, 204, 255, 0.2); display: flex; align-items: center; gap: 15px; font-family: var(--font-ui);">
-            <span style="color: var(--water-blue);">🔬</span>
-            <span lang="fr">Deep Dive : Science du Zéolithe &amp; Architecture Modulaire</span>
-            <span lang="en">Deep Dive: Zeolite Science &amp; Modular Architecture</span>
-        </div>
-        <div class="drawer-content" style="padding: 2rem;">
+            <div style="margin: 3rem 0 2rem; padding: 1.2rem 1.5rem; font-weight: 600; font-size: 1.15rem; color: #fff; background: rgba(0, 204, 255, 0.08); border-left: 4px solid var(--water-blue); border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 15px; font-family: var(--font-ui);">
+                <span style="color: var(--water-blue);">🔬</span>
+                <span lang="fr">Deep Dive : Science du Zéolithe &amp; Architecture Modulaire</span>
+                <span lang="en">Deep Dive: Zeolite Science &amp; Modular Architecture</span>
+            </div>
             
             <div class="well-introduction" style="margin-bottom: 2.5rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
                 <div lang="fr">
@@ -2186,7 +2230,7 @@
                 </div>
 
                 <div id="zeo-container" style="width: 100%; height: 450px; position: relative; cursor: grab;">
-                    <div style="position: absolute; top: 10%; left: 10%; color: #00ccff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">ADSSORPTION (Bleu)</div>
+                    <div style="position: absolute; top: 10%; left: 10%; color: #00ccff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">ADSORPTION (Bleu)</div>
                     <div style="position: absolute; bottom: 10%; right: 10%; color: #ff5500; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">DÉSORPTION (Rouge)</div>
                     <div style="position: absolute; top: 10%; right: 10%; color: #fff; font-family: var(--font-mono); font-size: 0.8rem; pointer-events: none;">VAPEUR PURE (Blanc)</div>
                 </div>
@@ -2351,14 +2395,20 @@
             </div>
 
             <div class="math-block" style="color: var(--carbon-red); text-align: left; padding: 1.5rem;">
-                <p style="font-weight: bold; color: #fff; margin-bottom: 0.5rem;">I. Énergie de Séchage Convectif (Phase ASIC) :</p>
-                $$ Q_{sechage} = \dot{M}_{biomasse} \cdot \left[ C_{p,humide} \cdot (T_{sechage} - T_{init}) + X_{eau} \cdot \Delta H_{vap}(T_{sechage}) \right] $$
-                <p style="font-size: 0.8rem; color: #aaa; margin-top: 0.5rem;">
-                    <span lang="fr"><em>Note : La basse calorie des ASICs ($T_{sechage} \approx 65^\circ\text{C}$) n'atteint pas l'ébullition. L'évaporation est pilotée par le déficit de pression de vapeur (VPD) de l'air sec sortant de la matrice MOF.</em></span>
-                    <span lang="en"><em>Note: The low-grade heat of ASICs ($T_{sechage} \approx 65^\circ\text{C}$) does not reach boiling. Evaporation is driven by the Vapor Pressure Deficit (VPD) of the dry air exiting the MOF matrix.</em></span>
+                <p style="font-weight: bold; color: #fff; margin-bottom: 0.5rem;">
+                    <span lang="fr">I. Énergie de Séchage Convectif (Phase ASIC) :</span>
+                    <span lang="en">I. Convective Drying Energy (ASIC Phase):</span>
                 </p>
-                <p style="font-weight: bold; color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">II. Masse de Carbone Séquestrée (Phase Solaire Hybride) :</p>
-                $$ C_{seq} = f_{C} \cdot \int_{0}^{T} \eta_{hybride}(T_{ASIC}, T_{soleil}) \cdot \dot{M}_{biomasse} \, dt $$
+                $$ Q_{\text{séchage}} = \dot{M}_{\text{biomasse}} \cdot \left[ C_{p,\text{humide}} \cdot (T_{\text{séchage}} - T_{\text{init}}) + X_{\text{eau}} \cdot \Delta H_{\text{vap}}(T_{\text{séchage}}) \right] $$
+                <p style="font-size: 0.8rem; color: #aaa; margin-top: 0.5rem;">
+                    <span lang="fr"><em>Note : La chaleur basse température des ASICs ($T_{\text{séchage}} \approx 65^\circ\text{C}$) n'atteint pas l'ébullition. L'évaporation est pilotée par le déficit de pression de vapeur (VPD) de l'air sec sortant de la matrice MOF.</em></span>
+                    <span lang="en"><em>Note: The low-grade heat of ASICs ($T_{\text{drying}} \approx 65^\circ\text{C}$) does not reach boiling. Evaporation is driven by the Vapor Pressure Deficit (VPD) of the dry air exiting the MOF matrix.</em></span>
+                </p>
+                <p style="font-weight: bold; color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">
+                    <span lang="fr">II. Masse de Carbone Séquestrée (Phase Solaire Hybride) :</span>
+                    <span lang="en">II. Sequestered Carbon Mass (Hybrid Solar Phase):</span>
+                </p>
+                $$ C_{\text{seq}} = f_{\text{C}} \cdot \int_{0}^{T} \eta_{\text{hybride}}(T_{\text{ASIC}}, T_{\text{soleil}}) \cdot \dot{M}_{\text{biomasse}} \, dt $$
             </div>
         </div>
     </details>
@@ -2802,7 +2852,7 @@
     <!-- ===================================================================== -->
     <!-- NIVEAU 8 : TRANSITION ÉCOLOGIQUE, RÉSEAUX VRE & FINANCEMENT           -->
     <!-- ===================================================================== -->
-    <details class="level-8" style="border-left-color: #2ecc71;">
+    <details class="level-8" style="margin: 2.5rem auto; border-left-color: #2ecc71;">
         <summary style="border-left-color: #2ecc71; color: #2ecc71;">
             <span lang="fr">Niveau 8 : Financement de la Transition Écologique, Réseaux VRE &amp; Atténuation du Méthane</span>
             <span lang="en">Level 8: Financing the Ecological Transition, VRE Grids &amp; Methane Mitigation</span>
@@ -3046,67 +3096,74 @@
                 ctx.strokeRect(x, y, w, h);
             }
 
+            const fr = document.body.classList.contains('lang-fr');
+
             // Boîte 1 : Source Renouvelable
             drawBox(80, 80, 220, 70, '#e9f5e9');
             ctx.fillStyle = '#000'; ctx.textAlign = 'center';
-            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Source Renouvelable", 190, 102);
-            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Éolien/Solaire)", 190, 120);
-            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Offre Intermittente", 190, 138);
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText(fr ? "Source Renouvelable" : "Renewable Source", 190, 102);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText(fr ? "(Éolien/Solaire)" : "(Wind/Solar VRE)", 190, 120);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText(fr ? "Offre Intermittente" : "Intermittent Supply", 190, 138);
 
             // Boîte 2 : Réseau Public
             drawBox(490, 80, 190, 70, '#ffffff');
             ctx.fillStyle = '#000';
-            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Réseau Public", 585, 110);
-            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Demande Inflexible", 585, 130);
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText(fr ? "Réseau Public" : "Public Grid", 585, 110);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText(fr ? "Demande Inflexible" : "Inflexible Demand", 585, 130);
 
             // Boîte 3 : Calcul ICI
             drawBox(70, 270, 240, 70, '#fff0e6');
             ctx.fillStyle = '#000';
-            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Calcul ICI", 190, 298);
-            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Charge Flexible/Catalytique", 190, 318);
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText(fr ? "Calcul ICI / PoW" : "ICI / PoW Compute", 190, 298);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText(fr ? "Charge Flexible / Catalytique" : "Flexible / Catalytic Load (CLR)", 190, 318);
 
             // Boîte 4 : Marchés des Capitaux
             drawBox(570, 270, 280, 70, '#e6e6ff');
             ctx.fillStyle = '#000';
-            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText("Marchés des Capitaux", 710, 298);
-            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText("Investissement en Infrastructure", 710, 318);
+            ctx.font = 'bold 15px "Times New Roman", serif'; ctx.fillText(fr ? "Marchés des Capitaux" : "Capital Markets", 710, 298);
+            ctx.font = 'italic 14px "Times New Roman", serif'; ctx.fillText(fr ? "Investissement en Infrastructure" : "Green Infrastructure CapEx", 710, 318);
 
             // ==========================================
-            // TEXTES ET LÉGENDES
+            // TEXTES ET LÉGENDES BILINGUES
             // ==========================================
             ctx.fillStyle = "#000"; ctx.textAlign = "center";
-            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("Énergie Primaire", 395, 108);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText(fr ? "Énergie Primaire" : "Primary Energy", 395, 108);
 
             ctx.fillStyle = "#e60000"; ctx.textAlign = "left";
-            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Énergie Isolée", 205, 205);
-            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Atténuation des Coupures)", 205, 225);
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText(fr ? "Énergie Isolée / Surplus" : "Stranded / Surplus Energy", 205, 205);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText(fr ? "(Écrêtage de Cannibalisation)" : "(Curtailment Mitigation)", 205, 225);
 
             ctx.fillStyle = "#00aa00"; ctx.textAlign = "center";
-            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Monétisation de l'Indice", 440, 335);
-            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("(Rendement Non Subventionné)", 440, 355);
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText(fr ? "Monétisation de l'Indice" : "Protocol Monetization", 440, 335);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText(fr ? "(Rendement Non Subventionné)" : "(Unsubsidized Revenue Floor)", 440, 355);
 
             ctx.textAlign = "right";
-            ctx.font = '14px "Times New Roman", serif'; ctx.fillText("Rev. Réseau", 580, 215);
+            ctx.font = '14px "Times New Roman", serif'; ctx.fillText(fr ? "Rev. Réseau" : "Grid Rev.", 580, 215);
 
             ctx.fillStyle = "#0000ff"; ctx.textAlign = "center";
-            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText("Réinvestissement Accéléré du CapEx (ROI ↑)", 550, 15);
+            ctx.font = 'bold 14px "Times New Roman", serif'; ctx.fillText(fr ? "Réinvestissement Accéléré du CapEx (ROI ↑)" : "Accelerated CapEx Reinvestment (ROI ↑)", 550, 15);
 
             // Bloc "Preuves Macroéconomiques" (Bas Gauche)
             ctx.fillStyle = "#000"; ctx.textAlign = "left";
-            ctx.font = 'bold 13px "Times New Roman", serif'; ctx.fillText("Preuves Macroéconomiques :", 30, 400);
-            ctx.font = '13px "Times New Roman", serif'; ctx.fillText("[18] : ROI Solaire 8ans → 3,5ans", 30, 420);
-            ctx.fillText("[16] : Régulation Fréquence Réseau", 30, 440);
+            ctx.font = 'bold 13px "Times New Roman", serif'; ctx.fillText(fr ? "Preuves Macroéconomiques :" : "Peer-Reviewed Evidence:", 30, 400);
+            ctx.font = '13px "Times New Roman", serif'; ctx.fillText(fr ? "[18] : ROI Solaire 8,1 ans → 3,5 ans" : "[18]: Solar ROI 8.1 yrs → 3.5 yrs", 30, 420);
+            ctx.fillText(fr ? "[16, 19] : Fréquence Réseau & Hydrogène Vert" : "[16, 19]: Grid Frequency & Green Hydrogen", 30, 440);
 
-            // Caption (Légende de la Figure 6)
+            // Caption (Légende de la Figure)
             ctx.textAlign = "center";
-            ctx.font = '16px "Times New Roman", serif';
-            let capY = 480;
-            ctx.fillText("FIGURE – La boucle de rétroaction Renouvelable-Indice. La flèche", 475, capY); capY+=20;
-            ctx.fillText("bleue démontre comment la monétisation de l'énergie isolée (stranded", 475, capY); capY+=20;
-            ctx.fillText("energy) à travers l'ICI décentralisé crée un cycle de réinvestissement à", 475, capY); capY+=20;
-            ctx.fillText("haute vélocité, contournant les goulots d'étranglement traditionnels", 475, capY); capY+=20;
-            ctx.fillText("subventionnés par l'État dans le financement des infrastructures", 475, capY); capY+=20;
-            ctx.fillText("vertes.", 475, capY);
+            ctx.font = '15.5px "Times New Roman", serif';
+            let capY = 485;
+            if (fr) {
+                ctx.fillText("FIGURE – La boucle de rétroaction Renouvelable-Indice. La flèche bleue démontre comment", 475, capY); capY+=20;
+                ctx.fillText("la monétisation de l'énergie isolée (stranded energy) crée un cycle de réinvestissement à", 475, capY); capY+=20;
+                ctx.fillText("haute vélocité, traversant la « Vallée de la Mort » du financement des infrastructures", 475, capY); capY+=20;
+                ctx.fillText("décarbonées sans dépendre de subventions étatiques perpétuelles.", 475, capY);
+            } else {
+                ctx.fillText("FIGURE – The Renewable-Index feedback loop. The blue trajectory demonstrates how", 475, capY); capY+=20;
+                ctx.fillText("monetizing stranded/surplus VRE generation creates a high-velocity CapEx reinvestment", 475, capY); capY+=20;
+                ctx.fillText("cycle, crossing the clean-infrastructure 'Valley of Death' without perpetual state", 475, capY); capY+=20;
+                ctx.fillText("subsidies.", 475, capY);
+            }
 
             // Boucle d'animation
             if (isVis) {
@@ -5794,10 +5851,11 @@
         <img src="img/HaveADream.png" alt="Have a Dream" loading="lazy" style="border-color: var(--bio-green); box-shadow: 0 0 30px rgba(68, 238, 119, 0.2);">
     </div>
     <!-- ANIMATION 3D FR -->
-    <div class="wave-collapse-container" role="img" aria-label="Animation 3D interactive illustrant l'effondrement de la fonction d'onde macroscopique dans un trou noir informationnel" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
+    <!-- ANIMATION 3D FR/EN : PUITS DE SÉCURITÉ & TEMPS PROPRE -->
+    <div class="wave-collapse-container" role="img" aria-label="Animation 3D interactive illustrant le puits de sécurité gravitationnel et le temps thermique de Nakamoto" style="width: 100%; height: 550px; border-radius: 12px; border: 1px solid rgba(68, 153, 255, 0.4); background: rgba(2, 5, 15, 0.95); margin: 3rem 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; touch-action: pan-y;">
         <div style="position: absolute; top: 20px; left: 20px; color: #4499ff; font-family: var(--font-ui); font-size: 0.85rem; font-weight: bold; letter-spacing: 2px; z-index: 10; text-shadow: 0 0 15px rgba(68, 153, 255, 0.8);">
-            <span lang="fr">BLOCKCHAIN : EFFONDREMENT MACROSCOPIQUE ET GRAVITÉ DU TEMPS PROPRE INFORMATIONNEL</span>
-            <span lang="en">BLOCKCHAIN : MACROSCOPIC COLLAPSE AND GRAVITY OF THERMODYNAMIC TIME</span>
+            <span lang="fr">PROTOCOLE DE NAKAMOTO : PUITS GRAVITATIONNEL DE SÉCURITÉ &amp; TEMPS THERMIQUE PROPRE</span>
+            <span lang="en">NAKAMOTO PROTOCOL: GRAVITATIONAL SECURITY WELL &amp; PROPER THERMAL TIME</span>
         </div>
     </div>
     <!-- Citation de Philip K. Dick -->
@@ -5894,16 +5952,30 @@
 
             <!-- Point 3 -->
             <h4 lang="en" style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.05rem">
-            3. The Accretion Disk and Emergy (Time)
+            3. The Accretion Disk and Emergy (Memory)
             </h4>
             <h4 lang="fr" style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.05rem">
-            3. Le disque d'accrétion et l'Émergie (Le Temps)
+            3. Le disque d'accrétion et l'Émergie (La Mémoire)
+            </h4>
+            <p lang="en" style="margin-bottom: 1.5rem; color: #b0c4de; line-height: 1.7;">
+            As the galaxy spins, it accumulates and structures matter in its accretion disk. Similarly, Bitcoin acts as an "emergy sink" (in H.T. Odum's concept [5]), accumulating the memory of past physical work as cryptographic security. Each block added to the chain is a geological stratum born from local thermodynamic friction.
+            </p>
+            <p lang="fr" style="margin-bottom: 1.5rem; color: #b0c4de; line-height: 1.7;">
+            À mesure que la galaxie tourne, elle accumule et structure la matière dans son disque d'accrétion. De même, Bitcoin agit comme un « puits d'émergie » (selon le concept de H.T. Odum [5]), accumulant la mémoire du travail physique passé sous forme de sécurité cryptographique. Chaque bloc ajouté à la chaîne est une strate géologique née de la friction thermodynamique locale.
+            </p>
+
+            <!-- Point 4 : Temps Thermique & Gravité Entropique -->
+            <h4 lang="en" style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.05rem">
+            4. Thermal Time and Synthetic Entropic Gravity (Rovelli, Verlinde &amp; Nakamoto)
+            </h4>
+            <h4 lang="fr" style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.05rem">
+            4. Temps Thermique et Gravité Entropique Synthétique (Rovelli, Verlinde &amp; Nakamoto)
             </h4>
             <p lang="en" style="margin-bottom: 2rem; color: #b0c4de; line-height: 1.7;">
-            As the galaxy spins, it accumulates and structures matter in its accretion disk. Similarly, Bitcoin acts as an "emergy sink" (in H.T. Odum's concept), accumulating the memory of past physical work as cryptographic security. Each block added to the chain is a geological stratum or a new star born from local thermodynamic friction. A locally negentropic order emerges from this complex orbital dance.
+            In modern theoretical physics, time is not an external absolute parameter: under the <em>Thermal Time Hypothesis</em> (Rovelli &amp; Connes), time emerges statistically from irreversible entropy production, while gravity itself manifests as an <em>entropic force</em> ($F \Delta x = T \Delta S$, Verlinde) born from information gradients across horizons. Bitcoin operates on this exact physical isomorphism: devoid of any central clock, its proper time emerges strictly from the irreversible dissipation of energy into SHA-256 hashes. As blocks deepen at depth $z$, the exponential drop in reorganization probability $P_{\text{reorg}}(z) \approx (q/p)^z$ creates a synthetic gravitational well where historical truth becomes thermodynamically irreversible.
             </p>
             <p lang="fr" style="margin-bottom: 2rem; color: #b0c4de; line-height: 1.7;">
-            À mesure que la galaxie tourne, elle accumule et structure la matière dans son disque d'accrétion. De même, Bitcoin agit comme un "puits d'émergie" (selon le concept de H.T. Odum), accumulant la mémoire du travail physique passé sous forme de sécurité cryptographique. Chaque bloc ajouté à la chaîne est une strate géologique ou une nouvelle étoile née de la friction thermodynamique locale. L'ordre localement néguentropique émerge de cette danse orbitale complexe.
+            En physique fondamentale contemporaine, le temps n'est pas un paramètre externe absolu : selon l'<em>Hypothèse du Temps Thermique</em> (Rovelli &amp; Connes), le temps émerge statistiquement de la production irréversible d'entropie, tandis que la gravité se manifeste comme une <em>force entropique</em> ($F \Delta x = T \Delta S$, Verlinde) issue des gradients d'information sur les horizons. Le consensus de Nakamoto repose sur cette exacte isomorphie : dépourvu d'horloge centrale, son temps propre émerge exclusivement de la dissipation irréversible de kilowattheures en empreintes SHA-256. À mesure qu'un bloc s'enfonce à la profondeur $z$, la décroissance exponentielle de la probabilité de réorganisation $P_{\text{reorg}}(z) \approx (q/p)^z$ engendre un puits de gravité synthétique où la vérité historique devient thermodynamiquement irréversible.
             </p>
 
             <!-- Conclusion -->
@@ -7488,15 +7560,6 @@
             } finally {
                 window.clearTimeout(timeoutId);
             }
-            
-            // 3. Sauvegarde dans le Cache Local
-            localStorage.setItem(CACHE_KEY, JSON.stringify({
-                timestamp: Date.now(),
-                hashrate: currentHashrateData
-            }));
-
-            // 4. Mise à jour de l'interface
-            updateDashboardUI(currentHashrateData);
 
         } catch (error) {
             console.warn('Télémétrie API inaccessible, tentative de récupération locale...', error);
@@ -7828,99 +7891,7 @@
     animId = requestAnimationFrame(draw);
 })();
 </script>
-<script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Sélectionner les conteneurs (FR et EN)
-            const containers = document.querySelectorAll(".wave-collapse-container");
 
-            containers.forEach(container => {
-                // Un observateur de mutation attend que TikZJax compile le script et génère le <svg>
-                const observer = new MutationObserver((mutations, obs) => {
-                    const svg = container.querySelector("svg");
-                    if (svg) {
-                        obs.disconnect(); // Le SVG est là, on arrête l'observation
-                        animateTikZNautilus(svg);
-                    }
-                });
-
-                // On lance l'observation sur le conteneur
-                observer.observe(container, { childList: true, subtree: true });
-            });
-
-            function animateTikZNautilus(svg) {
-                // Ajustement stylistique du SVG pour s'adapter parfaitement au conteneur
-                svg.style.width = "100%";
-                svg.style.height = "100%";
-                svg.style.overflow = "visible";
-
-                // Récupérer tous les éléments graphiques générés par TikZ
-                const elements = Array.from(svg.querySelectorAll("path, text"));
-                
-                // Cacher tous les éléments au départ pour l'effet d'apparition
-                elements.forEach(el => {
-                    el.style.opacity = '0';
-                });
-
-                // On anime séquentiellement pour simuler le temps thermique et le minage des blocs
-                let delay = 300;
-                
-                elements.forEach((el, index) => {
-                    // Animation de tracé progressif pour les chemins (paths TikZ)
-                    if (el.tagName.toLowerCase() === 'path') {
-                        // Calcul de la longueur de la courbe pour l'effet "dessin"
-                        const length = el.getTotalLength ? el.getTotalLength() : 150;
-                        
-                        el.style.strokeDasharray = length;
-                        el.style.strokeDashoffset = length;
-                        
-                        el.animate([
-                            { opacity: 0, strokeDashoffset: length },
-                            { opacity: 1, strokeDashoffset: 0 }
-                        ], {
-                            duration: 800,
-                            delay: delay,
-                            fill: 'forwards',
-                            easing: 'ease-out'
-                        });
-                    } 
-                    // Apparition simple pour les textes
-                    else {
-                        el.animate([
-                            { opacity: 0, transform: 'translateY(5px) scale(0.9)' },
-                            { opacity: 1, transform: 'translateY(0) scale(1)' }
-                        ], {
-                            duration: 1000,
-                            delay: delay + 200, // Les textes apparaissent légèrement après le tracé
-                            fill: 'forwards',
-                            easing: 'ease-out'
-                        });
-                    }
-                    
-                    // Le délai d'apparition se raccourcit légèrement au fur et à mesure 
-                    // Simule l'accélération d'une spirale logarithmique
-                    delay += Math.max(15, 80 - (index * 1.5)); 
-                });
-                
-                // Effet de pulsation (respiration) infini sur le bloc "Présent"
-                // Le bloc "Présent" est constitué des derniers chemins dessinés (le bloc pointillé orange)
-                setTimeout(() => {
-                    const presentPaths = elements.slice(-4).filter(el => el.tagName.toLowerCase() === 'path');
-                    
-                    presentPaths.forEach(path => {
-                        path.animate([
-                            { opacity: 0.5, filter: 'drop-shadow(0 0 2px rgba(255, 165, 0, 0.3))' },
-                            { opacity: 1, filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.9))' },
-                            { opacity: 0.5, filter: 'drop-shadow(0 0 2px rgba(255, 165, 0, 0.3))' }
-                        ], {
-                            duration: 2500,
-                            iterations: Infinity,
-                            easing: 'ease-in-out'
-                        });
-                    });
-                }, delay + 600);
-            }
-        });
-        </script>
         <script>
     document.addEventListener("DOMContentLoaded", () => {
         if (typeof THREE === "undefined") return;
