@@ -945,43 +945,39 @@
 
     </div>
     <div class="intro-hero">
-    <div style="position: relative; display: inline-block; width: 100%; max-width: 100%; text-align: center; padding-bottom: 50px; overflow: hidden;">
-                
+    <div style="position: relative; display: inline-block; width: 100%; max-width: 100%; text-align: center; padding-bottom: 30px; overflow: hidden;">
+        
         <!-- ===================================================================== -->
-        <!-- ANIMATION LYN ALDEN TRAIN ORBITAL (TRAIN SVG ANIMÉ + RAILS)           -->
+        <!-- ANIMATION TRAIN ORBITAL + INDUCTION HYPNOTIQUE "GET OUT" + WEB AUDIO  -->
         <!-- ===================================================================== -->
-        <div class="lyn-orbit-system-wrapper">
+        <div class="lyn-orbit-system-wrapper" id="hypno-matrix-wrapper">
             
-            <div class="animation-container">
-                <!-- 1. Le Système Rotatif Principal (Le Monde) -->
-                <div class="world-rotator">
-                    <svg viewBox="0 0 400 400" width="100%" height="100%" class="svg-world">
-                        <defs>
-                            <clipPath id="circleClip">
-                                <circle cx="200" cy="200" r="175" />
-                            </clipPath>
-                            <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
-                                <stop offset="85%" stop-color="transparent"/>
-                                <stop offset="100%" stop-color="rgba(46, 204, 113, 0.4)"/>
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- L'image transparente contenue dans le cercle SVG -->
-                        <image href="img/VieOrganiqueSurface.png" x="0" y="0" width="400" height="400" clip-path="url(#circleClip)" preserveAspectRatio="xMidYMid slice" />
-                        
-                        <!-- Bordure lumineuse -->
-                        <circle cx="200" cy="200" r="175" fill="url(#innerGlow)" stroke="#2ecc71" stroke-width="3" />
-                        
-                        <!-- Le Chemin de Fer (Rails en pointillés) tout autour du monde -->
-                        <circle cx="200" cy="200" r="182" fill="none" stroke="#555" stroke-width="4" stroke-dasharray="8 4" opacity="0.6" />
-                        <circle cx="200" cy="200" r="182" fill="none" stroke="#2ecc71" stroke-width="1" stroke-dasharray="8 4" opacity="0.8" />
-                    </svg>
+            <!-- Flash d'induction hypnotique plein cadre -->
+            <div class="hypno-flash-overlay" id="hypno-flash"></div>
+
+            <div class="animation-container" id="hypno-stage" onclick="replayMatrixInversion()" title="Cliquer pour relancer l'hypnose et le son / Click to replay">
+                
+                <!-- Anneaux hypnotiques concentriques (effet "Petite Cuillère / Get Out") -->
+                <div class="hypno-rings">
+                    <span class="h-ring r1"></span>
+                    <span class="h-ring r2"></span>
+                    <span class="h-ring r3"></span>
+                </div>
+
+                <!-- Rails circulaires CSS autour de l'image brute -->
+                <div class="rail-track-outer"></div>
+                <div class="rail-track-inner"></div>
+
+                <!-- 1. L'Image Brute (Sans SVG) qui pivote de -180° à 0° -->
+                <div class="world-rotator" id="world-rotator-el">
+                    <img src="img/VieOrganiqueSurface.png" alt="La Matrice Inversée" class="raw-world-img" onerror="this.src='img/VieOrganiqueSurface.jpg'">
+                    <div class="hypno-spiral-glaze"></div>
                 </div>
 
                 <!-- 2. L'Orbite du Train (De -180° au Sud à 0° au Nord) -->
-                <div class="train-orbit">
+                <div class="train-orbit" id="train-orbit-el">
                     <div class="train-container">
-                        <!-- La fumée de fleurs (éjectée vers l'arrière) -->
+                        <!-- Fumée de fleurs éjectée vers l'arrière -->
                         <div class="floral-smoke">
                             <span style="--i:1; --dx: -40px;  --dy: -30px;">🌸</span>
                             <span style="--i:2; --dx: -60px;  --dy: -15px;">🌺</span>
@@ -992,49 +988,37 @@
                             <span style="--i:7; --dx: -80px;  --dy: -55px;">🌸</span>
                         </div>
                         
-                        <!-- Le Train Cyber-Organique SVG -->
+                        <!-- Le Train Cyber-Organique -->
                         <div class="train-icon">
                             <svg viewBox="0 0 100 100" width="75" height="75" class="svg-train">
                                 <g transform="translate(5, 10)">
-                                    <!-- Toit de la cabine -->
                                     <path d="M 5 25 L 35 25 L 35 30 L 5 30 Z" fill="#2ecc71" />
-                                    <!-- Corps de la cabine -->
                                     <rect x="10" y="30" width="20" height="40" fill="#111" stroke="#2ecc71" stroke-width="2" />
-                                    <!-- Fenêtre -->
                                     <rect x="14" y="35" width="12" height="12" fill="#ffcc00" opacity="0.9" rx="2" />
-                                    <!-- Chaudière (Boiler) -->
                                     <rect x="30" y="45" width="45" height="25" fill="#111" stroke="#2ecc71" stroke-width="2" rx="4" />
-                                    <!-- Lignes décoratives sur la chaudière -->
                                     <line x1="45" y1="45" x2="45" y2="70" stroke="#2ecc71" stroke-width="2" opacity="0.5" />
                                     <line x1="60" y1="45" x2="60" y2="70" stroke="#2ecc71" stroke-width="2" opacity="0.5" />
-                                    <!-- Cheminée -->
                                     <path d="M 55 45 L 55 25 L 50 20 L 65 20 L 60 25 L 60 45 Z" fill="#111" stroke="#2ecc71" stroke-width="2" />
-                                    <!-- Chasse-buffle avant (Cowcatcher) -->
                                     <path d="M 75 70 L 90 70 L 80 55 L 75 55 Z" fill="#ffcc00" />
                                     
-                                    <!-- Roues animées -->
                                     <g class="train-wheel" style="transform-origin: 20px 70px;">
                                         <circle cx="20" cy="70" r="10" fill="#111" stroke="#2ecc71" stroke-width="2" />
                                         <line x1="12" y1="70" x2="28" y2="70" stroke="#2ecc71" stroke-width="1.5" />
                                         <line x1="20" y1="62" x2="20" y2="78" stroke="#2ecc71" stroke-width="1.5" />
                                         <circle cx="20" cy="70" r="3" fill="#ffcc00" />
                                     </g>
-                                    
                                     <g class="train-wheel" style="transform-origin: 45px 70px;">
                                         <circle cx="45" cy="70" r="8" fill="#111" stroke="#2ecc71" stroke-width="2" />
                                         <line x1="39" y1="70" x2="51" y2="70" stroke="#2ecc71" stroke-width="1.5" />
                                         <line x1="45" y1="64" x2="45" y2="76" stroke="#2ecc71" stroke-width="1.5" />
                                         <circle cx="45" cy="70" r="2.5" fill="#ffcc00" />
                                     </g>
-                                    
                                     <g class="train-wheel" style="transform-origin: 65px 70px;">
                                         <circle cx="65" cy="70" r="8" fill="#111" stroke="#2ecc71" stroke-width="2" />
                                         <line x1="59" y1="70" x2="71" y2="70" stroke="#2ecc71" stroke-width="1.5" />
                                         <line x1="65" y1="64" x2="65" y2="76" stroke="#2ecc71" stroke-width="1.5" />
                                         <circle cx="65" cy="70" r="2.5" fill="#ffcc00" />
                                     </g>
-                                    
-                                    <!-- Bielle de connexion (Piston) -->
                                     <line x1="20" y1="70" x2="65" y2="70" stroke="#ffcc00" stroke-width="2.5" />
                                 </g>
                             </svg>
@@ -1043,70 +1027,210 @@
                 </div>
             </div>
 
-            <!-- Citation de Lyn Alden avec gestion des langues -->
-            <div class="lyn-quote-container">
-                <span lang="fr">"Rien n'arrête ce Train. Le chiffre monte, la vie s'élève."</span>
-                <span lang="en">"Nothing stops this Train. Number goes up, life goes up."</span>
+            <!-- Citation avec effet d'émergence hypnotique -->
+            <div class="lyn-quote-container" id="lyn-quote-el">
+                <span lang="fr">"Rien n'arrête ce Train. La machine descend, la vie s'élève."</span>
+                <span lang="en">"Nothing stops this Train. Machines go down, Life goes up."</span>
             </div>
 
-            <!-- Flèche clignotante indicative de l'inclinaison -->
-            <div class="blinking-arrow">
-                <span>⟳</span>
-            </div>
+            <!-- Bouton Flèche Interactif : Relance l'Animation + Son Hypnotique "Petite Cuillère" -->
+            <button type="button" class="blinking-arrow" id="replay-hypno-btn" onclick="replayMatrixInversion()" aria-label="Relancer l'inversion et le son">
+                <span class="arrow-glyph">⟳</span>
+                <span class="arrow-label">
+                    <span lang="fr">🔊 Relancer</span>
+                    <span lang="en">🔊 Replay</span>
+                </span>
+            </button>
         </div>
 
         <style>
-        /* Conteneur global */
         .lyn-orbit-system-wrapper {
             position: relative;
             width: 100%;
             text-align: center;
-            padding: 40px 0 80px 0;
+            padding: 45px 0 90px 0;
             overflow: hidden;
-            background: radial-gradient(circle at center, rgba(46, 204, 113, 0.05) 0%, transparent 70%);
-            border-radius: 12px;
+            background: radial-gradient(circle at center, rgba(46, 204, 113, 0.08) 0%, rgba(5, 5, 5, 0.95) 72%);
+            border-radius: 14px;
         }
 
-        /* Conteneur superposant le monde et l'orbite */
+        /* Flash stroboscopique doux / Induction "Get Out" */
+        .hypno-flash-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.28) 0%, rgba(68, 238, 119, 0.12) 45%, transparent 75%);
+            animation: hypnoStrobe 12s ease-in-out forwards;
+        }
+
+        @keyframes hypnoStrobe {
+            0%, 100% { opacity: 0; }
+            8%, 10% { opacity: 0.55; }
+            24%, 26% { opacity: 0.45; }
+            42%, 44% { opacity: 0.65; }
+            62%, 64% { opacity: 0.5; }
+            82% { opacity: 0.85; }
+            86% { opacity: 0; }
+        }
+
+        /* Scène circulaire principale */
         .animation-container {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 380px;
+            height: 380px;
             margin: 0 auto;
             border-radius: 50%;
-            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.25);
+            cursor: pointer;
+            z-index: 5;
         }
 
-        /* Le monde tourne de -180° à 0° */
+        /* Ondes hypnotiques concentriques ("The Sunken Place" / Cuillère sur la tasse) */
+        .hypno-rings {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .h-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba(68, 238, 119, 0.55);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.25), inset 0 0 15px rgba(68, 238, 119, 0.2);
+            opacity: 0;
+            animation: spoonRipple 2.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
+        }
+        .h-ring.r2 { animation-delay: 0.8s; border-color: rgba(255, 204, 0, 0.45); }
+        .h-ring.r3 { animation-delay: 1.6s; border-color: rgba(0, 204, 255, 0.4); }
+
+        @keyframes spoonRipple {
+            0% { transform: scale(0.92); opacity: 0.9; }
+            100% { transform: scale(1.38); opacity: 0; }
+        }
+
+        /* Rails circulaires CSS autour de l'image brute */
+        .rail-track-outer {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 4px dashed rgba(120, 130, 140, 0.55);
+            box-shadow: 0 0 35px rgba(46, 204, 113, 0.3);
+            pointer-events: none;
+            z-index: 3;
+        }
+        .rail-track-inner {
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 1.5px dashed #2ecc71;
+            opacity: 0.85;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* Conteneur de l'image brute (rognage circulaire parfait sans bord noir résiduel) */
         .world-rotator {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            animation: spinWorld 20s ease-in-out forwards;
+            inset: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #2ecc71;
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(46, 204, 113, 0.4);
+            animation: spinWorldHypno 12s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            z-index: 2;
         }
 
-        @keyframes spinWorld {
-            0% { transform: rotate(-180deg); filter: blur(3px) grayscale(50%); }
-            100% { transform: rotate(0deg); filter: blur(0px) grayscale(0%); }
+        .raw-world-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 50%;
+            /* Scale 1.08 élimine la bordure noire interne du PNG pour coller parfaitement au cercle */
+            transform: scale(1.08);
         }
 
-        /* Le train orbite de -180° (Sud) à 0° (Nord) */
+        /* Reflet hypnotique tournant par-dessus l'image */
+        .hypno-spiral-glaze {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(68, 238, 119, 0.14) 60deg,
+                transparent 120deg,
+                rgba(255, 204, 0, 0.12) 240deg,
+                transparent 360deg
+            );
+            mix-blend-mode: screen;
+            animation: glazeSpin 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glazeSpin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Rotation hypnotique avec pulsations (façon pendule / cuillère Get Out) */
+        @keyframes spinWorldHypno {
+            0% {
+                transform: rotate(-180deg) scale(0.88);
+                filter: blur(5px) grayscale(85%) contrast(140%) hue-rotate(-35deg);
+            }
+            20% {
+                transform: rotate(-135deg) scale(0.96);
+                filter: blur(2px) grayscale(40%) contrast(125%);
+            }
+            24% {
+                transform: rotate(-138deg) scale(0.93);
+                filter: invert(18%) brightness(1.35) contrast(150%);
+            }
+            50% {
+                transform: rotate(-70deg) scale(1.02);
+                filter: blur(1px) grayscale(15%) contrast(115%);
+            }
+            54% {
+                transform: rotate(-73deg) scale(0.98);
+                filter: brightness(1.4) saturate(1.5);
+            }
+            82% {
+                transform: rotate(-8deg) scale(1.04);
+                filter: brightness(1.35) drop-shadow(0 0 25px #44ee77);
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+                filter: blur(0px) grayscale(0%) contrast(105%);
+            }
+        }
+
+        /* L'orbite du train synchronisée sur 12 secondes */
         .train-orbit {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            animation: orbitTrain 20s ease-in-out forwards;
+            inset: 0;
+            animation: orbitTrainHypno 12s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             pointer-events: none;
             z-index: 10;
         }
 
-        @keyframes orbitTrain {
-            0% { transform: rotate(-180deg); }
+        @keyframes orbitTrainHypno {
+            0%   { transform: rotate(-180deg); }
+            20%  { transform: rotate(-135deg); }
+            24%  { transform: rotate(-138deg); }
+            50%  { transform: rotate(-70deg); }
+            54%  { transform: rotate(-73deg); }
+            82%  { transform: rotate(-8deg); }
             100% { transform: rotate(0deg); }
         }
 
-        /* Positionnement du train pour rouler exactement sur les rails */
+        /* Positionnement du train exactement sur le rail extérieur */
         .train-container {
             position: absolute;
-            top: -26px; /* Ajusté pour que les roues touchent les pointillés (r=182) */
+            top: -42px;
             left: 50%;
             width: 75px;
             height: 75px;
@@ -1116,24 +1240,21 @@
             align-items: center;
         }
 
-        /* Conteneur SVG avec effet de lueur globale */
         .train-icon {
-            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 10px rgba(46, 204, 113, 0.5));
+            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.85)) drop-shadow(0 0 12px rgba(46, 204, 113, 0.65));
         }
 
-        /* Animation des roues du train */
         .train-wheel {
-            animation: spinWheel 1.2s linear infinite;
+            animation: spinWheel 0.9s linear infinite;
         }
         @keyframes spinWheel {
             100% { transform: rotate(360deg); }
         }
 
-        /* La fumée émise depuis la cheminée (ajustée sur le dessin SVG) */
         .floral-smoke {
             position: absolute;
             top: 25%;
-            left: 55%; /* Aligné sur la cheminée du SVG */
+            left: 55%;
             transform: translate(-50%, -50%);
             width: 10px;
             height: 10px;
@@ -1144,12 +1265,11 @@
             position: absolute;
             font-size: 1.4rem;
             opacity: 0;
-            animation: puffFlower 2.5s infinite cubic-bezier(0.25, 1, 0.5, 1);
-            animation-delay: calc(var(--i) * 0.35s);
+            animation: puffFlower 2.2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            animation-delay: calc(var(--i) * 0.3s);
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
         }
 
-        /* Les fleurs partent vers l'arrière (--dx négatif) */
         @keyframes puffFlower {
             0% { transform: translate(0, 0) scale(0.2) rotate(0deg); opacity: 1; }
             100% { transform: translate(var(--dx), var(--dy)) scale(1.8) rotate(360deg); opacity: 0; }
@@ -1158,67 +1278,204 @@
         /* Apparition de la citation */
         .lyn-quote-container {
             position: absolute;
-            bottom: 25px;
+            bottom: 22px;
             left: 0;
             width: 100%;
             font-family: "Fira Code", monospace, sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(46, 204, 113, 0.9), 0 0 25px rgba(46, 204, 113, 0.5);
             opacity: 0;
-            animation: quoteFadeIn 20s ease-in-out forwards;
+            animation: quoteFadeInHypno 12s ease-in-out forwards;
+            z-index: 6;
         }
 
-        @keyframes quoteFadeIn {
-            0%, 75% { opacity: 0; transform: translateY(15px); }
-            90%, 100% { opacity: 1; transform: translateY(0); }
+        @keyframes quoteFadeInHypno {
+            0%, 70% { opacity: 0; transform: translateY(12px) scale(0.96); }
+            85%, 100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Flèche statique en bas à droite */
+        /* Bouton Flèche Interactif en bas à droite */
         .blinking-arrow {
             position: absolute;
-            bottom: 20px;
+            bottom: 18px;
             right: 20px;
-            background: rgba(5, 5, 5, 0.75);
-            border: 1px solid var(--sun-yellow, #ffcc00);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            background: rgba(8, 12, 10, 0.88);
+            border: 1.5px solid var(--sun-yellow, #ffcc00);
+            border-radius: 30px;
+            padding: 8px 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            animation: arrowBlink 1.2s infinite ease-in-out;
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
-            z-index: 10;
+            gap: 8px;
+            cursor: pointer;
+            animation: arrowBlink 1.4s infinite ease-in-out;
+            box-shadow: 0 0 18px rgba(255, 204, 0, 0.35);
+            z-index: 20;
+            transition: background 0.25s ease, transform 0.2s ease;
         }
-
-        .blinking-arrow span {
+        .blinking-arrow:hover {
+            background: rgba(255, 204, 0, 0.2);
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.75);
+            transform: scale(1.08);
+        }
+        .blinking-arrow .arrow-glyph {
             color: var(--sun-yellow, #ffcc00);
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: bold;
-            transform: rotate(-45deg);
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+        .blinking-arrow:hover .arrow-glyph {
+            transform: rotate(180deg);
+        }
+        .blinking-arrow .arrow-label {
+            color: #fff;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @keyframes arrowBlink {
-            0%, 100% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.15); }
+            0%, 100% { opacity: 0.65; transform: scale(0.96); }
+            50% { opacity: 1; transform: scale(1.06); }
         }
 
-        /* Adaptabilité mobile */
         @media (max-width: 600px) {
-            .animation-container { width: 300px; height: 300px; }
-            .train-container { transform: scale(0.8); top: -20px; }
-            .lyn-quote-container { font-size: 1rem; padding: 0 15px; bottom: 35px; }
+            .animation-container { width: 290px; height: 290px; }
+            .train-container { transform: scale(0.8); top: -36px; }
+            .lyn-quote-container { font-size: 0.95rem; padding: 0 15px; bottom: 58px; }
         }
         </style>
+
+        <!-- SYNTHÉTISEUR WEB AUDIO : CUILLÈRE HYPNOTIQUE "GET OUT" + BASSE SION -->
+        <script>
+        (function() {
+            let audioCtx = null;
+            let clinkTimeouts = [];
+
+            // Synthétise le tintement cristallin d'une cuillère en argent sur une tasse de porcelaine ("Get Out")
+            function playSpoonClink(ctx, delaySec, intensity = 1.0) {
+                const t = ctx.currentTime + delaySec;
+
+                // Partiels inharmoniques de la porcelaine + métal (fréquences hautes cristallines)
+                const freqs = [2840, 4180, 5920, 7450];
+                freqs.forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+                    osc.frequency.setValueAtTime(f, t);
+
+                    const amp = (0.09 / (idx + 1)) * intensity;
+                    gain.gain.setValueAtTime(0.0001, t);
+                    gain.gain.exponentialRampToValueAtTime(amp, t + 0.006);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.65 - idx * 0.1);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(t);
+                    osc.stop(t + 0.7);
+                });
+
+                // Résonance sub-grave sourde ("The Sunken Place" / Profondeur géologique)
+                const subOsc = ctx.createOscillator();
+                const subGain = ctx.createGain();
+                subOsc.type = 'sine';
+                subOsc.frequency.setValueAtTime(62, t);
+                subOsc.frequency.exponentialRampToValueAtTime(38, t + 0.9);
+
+                subGain.gain.setValueAtTime(0.001, t);
+                subGain.gain.linearRampToValueAtTime(0.14 * intensity, t + 0.04);
+                subGain.gain.exponentialRampToValueAtTime(0.0001, t + 0.95);
+
+                subOsc.connect(subGain);
+                subGain.connect(ctx.destination);
+                subOsc.start(t);
+                subOsc.stop(t + 1.0);
+            }
+
+            // Accord solaire final quand la Matrice se verrouille à 0° (à t = 10s)
+            function playSolarAwakeningChord(ctx, delaySec) {
+                const t = ctx.currentTime + delaySec;
+                const chord = [261.63, 329.63, 392.00, 523.25]; // Accord de Do Majeur lumineux (432Hz/528Hz vibe)
+                chord.forEach((f, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(f, t);
+
+                    gain.gain.setValueAtTime(0.0001, t);
+                    gain.gain.linearRampToValueAtTime(0.05, t + 0.3 + i * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, t + 2.8);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(t);
+                    osc.stop(t + 3.0);
+                });
+            }
+
+            function triggerHypnoticSoundtrack() {
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContext) return;
+                    if (!audioCtx) audioCtx = new AudioContext();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    // Nettoyage d'un éventuel cycle précédent
+                    clinkTimeouts.forEach(id => clearTimeout(id));
+                    clinkTimeouts = [];
+
+                    // Séquence rythmique de la cuillère (double tintement façon "Get Out") sur 10 secondes
+                    const schedule = [
+                        { time: 0.1,  vol: 0.9 },
+                        { time: 0.45, vol: 0.5 },
+                        { time: 2.2,  vol: 0.95 },
+                        { time: 2.55, vol: 0.55 },
+                        { time: 4.5,  vol: 1.0 },
+                        { time: 4.85, vol: 0.6 },
+                        { time: 6.8,  vol: 1.0 },
+                        { time: 7.15, vol: 0.65 },
+                        { time: 9.0,  vol: 1.1 }
+                    ];
+
+                    schedule.forEach(item => {
+                        playSpoonClink(audioCtx, item.time, item.vol);
+                    });
+
+                    // Résolution harmonique à la fin de la rotation
+                    playSolarAwakeningChord(audioCtx, 10.0);
+                } catch (e) {
+                    console.warn("Audio non autorisé avant interaction :", e);
+                }
+            }
+
+            // Fonction globale appelée par le clic sur la flèche en bas à droite (ou sur le globe)
+            window.replayMatrixInversion = function() {
+                const world = document.getElementById('world-rotator-el');
+                const train = document.getElementById('train-orbit-el');
+                const quote = document.getElementById('lyn-quote-el');
+                const flash = document.getElementById('hypno-flash');
+
+                [world, train, quote, flash].forEach(el => {
+                    if (!el) return;
+                    el.style.animation = 'none';
+                    void el.offsetHeight; // Force un reflow DOM immédiat
+                    el.style.animation = '';
+                });
+
+                triggerHypnoticSoundtrack();
+            };
+        })();
+        </script>
+
         <div class="quote-block">
             <span lang="fr">"Unissons-nous, enterrons le FUD, réduisons le bruit au silence et créons de beaux jardins. La vie organique à la surface, les machines sous Terre. Dans une maison bien rangée, on range les outils au sous-sol."</span>
             <span lang="en">"Let us unite, bury the FUD, silence the Noise, regenerate the Biosphere, and create Beautiful Gardens. Organic life on the surface, machines underground."</span>
             <br>
             <span style="font-size: 0.85em; color: var(--bio-green);">- Lemeus</span>
         </div>
-    </div>
     </div>
 
     <!-- Encadré Vérité Thermodynamique -->
