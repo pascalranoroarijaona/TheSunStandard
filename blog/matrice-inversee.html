@@ -4882,9 +4882,54 @@
         </section>
     </details>
    
-    <div style="margin: 3rem auto; padding: 1.5rem; text-align: center; border-top: 1px dashed rgba(255, 204, 0, 0.3); font-family: var(--font-ui); color: #8899aa; font-size: 1.2rem;">
-        <span lang="fr">📌 <strong>Citer nos travaux :</strong> The Inverted Matrix Model of Earth by The Sun Standard Creative Research</span>
-        <span lang="en">📌 <strong>Cite our work:</strong> The Inverted Matrix Model of Earth by The Sun Standard Creative Research</span>
+    <!-- ENCADRÉ DE CITATION ACADÉMIQUE & BIBTEX -->
+    <div style="margin: 3.5rem auto; padding: 1.8rem 2rem; background: rgba(255, 204, 0, 0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-left: 4px solid var(--sun-yellow); border-radius: 10px; font-family: var(--font-ui); box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem;">
+            <h4 style="color: var(--sun-yellow); margin: 0; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 8px;">
+                <span>📌</span>
+                <span lang="fr">Citer ces travaux de recherche</span>
+                <span lang="en">Cite This Research Work</span>
+            </h4>
+            <button type="button" onclick="copyBibtexCitation(this)" style="background: rgba(255, 204, 0, 0.1); border: 1px solid rgba(255, 204, 0, 0.4); color: var(--sun-yellow); padding: 6px 14px; border-radius: 20px; font-family: var(--font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.25s ease;">
+                <span lang="fr">📋 Copier le BibTeX</span>
+                <span lang="en">📋 Copy BibTeX</span>
+            </button>
+        </div>
+
+        <!-- Référence APA / Standard -->
+        <p style="font-family: var(--font-main); font-size: 0.95rem; color: #d4d4d4; margin-bottom: 1rem; line-height: 1.6;">
+            Ranoroarijaona, P. (2026). <em>The Inverted Matrix Model: Flourishing Together on Earth</em>. The Sun Standard Creative Research / GitHub Repository. <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener noreferrer" style="color: var(--sun-yellow); text-decoration: none;">https://www.thesunstandard.net/</a>
+        </p>
+
+        <!-- Bloc BibTeX -->
+        <pre id="bibtex-code-block" style="background: #050709; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 1rem 1.2rem; color: #44ee77; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.5; overflow-x: auto; margin: 0; text-align: left;">@misc{Ranoroarijaona2026,
+  author = {Ranoroarijaona, Pascal},
+  title = {The Inverted Matrix Model: Flourishing Together on Earth},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub Repository},
+  howpublished = {\url{https://www.thesunstandard.net/}}
+}</pre>
+
+        <script>
+            function copyBibtexCitation(btn) {
+                const bibText = document.getElementById('bibtex-code-block').innerText;
+                navigator.clipboard.writeText(bibText).then(() => {
+                    const isFr = document.body.classList.contains('lang-fr');
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = isFr ? '✅ Copié !' : '✅ Copied!';
+                    btn.style.background = 'rgba(68, 238, 119, 0.2)';
+                    btn.style.borderColor = '#44ee77';
+                    btn.style.color = '#44ee77';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.style.background = 'rgba(255, 204, 0, 0.1)';
+                        btn.style.borderColor = 'rgba(255, 204, 0, 0.4)';
+                        btn.style.color = 'var(--sun-yellow)';
+                    }, 2000);
+                });
+            }
+        </script>
     </div>
     <div class="simulator-box" id="simulateur-v3">
         <style>
