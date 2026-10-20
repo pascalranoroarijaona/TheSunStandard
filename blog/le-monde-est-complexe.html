@@ -7,14 +7,14 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-LFDV8LWZSL');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Le monde est complexe | L'Étalon Solaire</title>
-    
+    <title>Le monde est complexe : L'Équation Primordiale | L'Étalon Solaire</title>
+    <meta name="description" content="Exploration mathématique, thermodynamique et cybernétique du plan complexe z = a + ib appliqué à l'émergie d'Odum, au consensus distribué et à l'Homo Biodiversitas.">
+
     <script>
         window.MathJax = {
             tex: {
@@ -33,274 +33,275 @@
             --text-muted: #888888;
             --sun-yellow: #ffcc00;
             --sun-orange: #ff6600;
+            --bio-green: #44ee77;
+            --info-blue: #4499ff;
+            --quantum-purple: #c864ff;
             --bg-dark: #050505;
             --border-glow: rgba(255, 170, 0, 0.2);
-            --note-bg: rgba(255, 204, 0, 0.03); 
+            --note-bg: rgba(255, 204, 0, 0.03);
         }
         body {
-            background-color: var(--bg-dark); color: var(--text-main);
-            font-family: 'Georgia', serif; 
-            line-height: 1.8;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Georgia', serif;
+            line-height: 1.85;
+            overflow-x: hidden;
+        }
+
+        /* ── Barre de progression de lecture ── */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--sun-yellow), var(--sun-orange));
+            z-index: 9999;
         }
 
         /* ── i18n Language Toggle Logic ── */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
-        img:hover {
-            width:300%!important; 
-            height:300%!important; 
-            object-fit:cover!important; 
-            object-position:center!important; 
-        }
-        /* Navigation Minimaliste */
+
+        /* ── Navigation Minimaliste ── */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,5,5,0.9);
-            border-bottom: 1px solid var(--border-glow); font-family: 'Helvetica Neue', sans-serif;
+            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
+            border-bottom: 1px solid var(--border-glow);
+            font-family: 'Helvetica Neue', sans-serif;
+            backdrop-filter: blur(10px);
         }
         nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
         nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
         nav a.back:hover { color: #fff; }
-        a.next { color: var(--sun-orange); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
-        a.next:hover { color: var(--sun-orange); }
 
-        /* Language Toggle Buttons */
         .lang-toggle {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            padding-left: 1.5rem;
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
         }
-
         .lang-toggle button {
-            background: transparent;
-            border: none;
-            font-size: 1.4rem;
-            color: white; /* <-- Ajout principal pour rendre le texte/icône blanc */
-            cursor: pointer;
-            opacity: 0.5; /* J'ai légèrement augmenté l'opacité (de 0.3 à 0.5) pour qu'ils soient plus visibles même inactifs */
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
+            background: transparent; border: none; font-size: 1.4rem; color: white;
+            cursor: pointer; opacity: 0.45; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%) drop-shadow(0 0 8px rgba(255, 200, 0, 0.4)); transform: scale(1.1);
         }
 
-        .lang-toggle button:hover {
-            opacity: 0.9; /* Plus lumineux au survol */
-            transform: scale(1.1);
-        }
-        body.lang-en #btn-en,
-        body.lang-fr #btn-fr {
-            opacity: 1; /* Pleine visibilité pour la langue active */
-            color: white; /* Assure que la langue active reste bien blanche */
-            filter: grayscale(0%);
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
-        }
-        /* --- Article Navigation Cards --- */
-        .article-navigation {
-            display: flex;
-            gap: 2rem;
-            margin-top: 4rem;
-            margin-bottom: 2rem;
-            justify-content: space-between;
-        }
-        .nav-card {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 170, 0, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-card:hover {
-            background: rgba(255, 170, 0, 0.05);
-            border-color: var(--sun-yellow);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 204, 0, 0.1);
-        }
-        .nav-direction {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            font-family: 'Helvetica Neue', sans-serif;
-            transition: color 0.3s ease;
-        }
-        .nav-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--sun-orange);
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
-            transition: color 0.3s ease;
-        }
-        .nav-card:hover .nav-direction {
-            color: #fff;
-        }
-        .nav-card:hover .nav-title {
-            color: var(--sun-yellow);
-        }
-        .nav-card img {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: border-color 0.3s ease;
-        }
-        .nav-card:hover img {
-            border-color: rgba(255, 204, 0, 0.4);
-        }
-
-        /* Responsive pour Mobile */
-        @media (max-width: 768px) {
-            .article-navigation {
-                flex-direction: column;
-            }
-        }
-        /* Conteneur de l'Article */
+        /* ── Conteneur de l'Article ── */
         article {
-            max-width: 760px; margin: 8rem auto 6rem; padding: 0 2rem;
+            max-width: 820px; margin: 8rem auto 6rem; padding: 0 2rem;
             font-size: 1.15rem; color: #d4d4d4;
         }
-        /* ── Hyperlink States ── */
-        a:not(.next) {
-            color: var(--sun-yellow);
-        }
-        .article-header { text-align: center; margin-bottom: 4rem; font-family: 'Helvetica Neue', sans-serif; }
+        a:not(.nav-card):not(.logo):not(.back) { color: var(--sun-yellow); }
+
+        .article-header { text-align: center; margin-bottom: 3.5rem; font-family: 'Helvetica Neue', sans-serif; }
         .article-meta { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--sun-orange); margin-bottom: 1rem; display: block; }
-        .article-title { font-size: 3rem; font-weight: 800; line-height: 1.2; color: #fff; margin-bottom: 1.5rem; }
-        
-        /* Typographie du contenu */
-        article p { margin-bottom: 1.8rem; }
-        article h3 { font-family: 'Helvetica Neue', sans-serif; font-size: 1.6rem; color: #fff; margin: 3rem 0 1.5rem; font-weight: 700; }
-        article h4 { font-family: 'Helvetica Neue', sans-serif; font-size: 1.3rem; color: var(--sun-yellow); margin: 2rem 0 1rem; }
+        .article-title { font-size: 3rem; font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 1rem; }
+        .article-subtitle { font-size: 1.25rem; color: #aaa; font-style: italic; margin-bottom: 1.5rem; }
+
+        /* ── Abstract & Epistemic Box ── */
+        .abstract-box {
+            font-size: 1.05rem; color: #bbb; text-align: justify;
+            margin-bottom: 2.5rem; padding: 1.8rem 2rem;
+            background: rgba(255, 255, 255, 0.02); border-radius: 10px;
+            border: 1px solid rgba(255, 204, 0, 0.15);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
+        }
+
+        /* ── Typographie & Structure ── */
+        article p { margin-bottom: 1.8rem; text-align: justify; }
+        article h2 {
+            font-family: 'Helvetica Neue', sans-serif; font-size: 2rem; color: var(--sun-yellow);
+            margin: 4rem 0 1.5rem; font-weight: 800;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2); padding-bottom: 0.5rem;
+        }
+        article h3 { font-family: 'Helvetica Neue', sans-serif; font-size: 1.45rem; color: #fff; margin: 2.5rem 0 1.2rem; font-weight: 700; }
+        article h4 { font-family: 'Helvetica Neue', sans-serif; font-size: 1.2rem; color: var(--sun-yellow); margin: 1.8rem 0 1rem; }
         article strong { color: var(--sun-yellow); font-weight: bold; }
-        
-        /* Citations et Mathématiques */
+
+        /* ── Images (Correction du bug hover) ── */
+        .hero-img, .article-image {
+            width: 100%; height: auto; border-radius: 10px;
+            border: 1px solid var(--border-glow); margin: 2rem 0 3rem;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: block;
+        }
+        .hero-img:hover, .article-image:hover {
+            transform: scale(1.015);
+            box-shadow: 0 15px 50px rgba(255, 170, 0, 0.15);
+        }
+
+        /* ── Citations & Blocs Mathématiques ── */
         blockquote {
             font-family: 'Helvetica Neue', sans-serif;
             border-left: 3px solid var(--sun-orange); padding: 1.5rem 2rem;
             background: rgba(255,100,0,0.05); border-radius: 0 8px 8px 0; margin: 2.5rem 0;
             font-style: italic; color: #fff; font-size: 1.1rem;
         }
-        .math-block { margin: 2rem 0; text-align: center; font-size: 1.3rem; overflow-x: auto; color: var(--sun-yellow); }
-
-        ul.custom-list { list-style: none; margin-bottom: 2rem; }
-        ul.custom-list li { position: relative; padding-left: 1.5rem; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; font-size: 1.05rem;}
-        ul.custom-list li::before { content: '✦'; position: absolute; left: 0; top: 2px; color: var(--sun-orange); font-size: 1rem; }
-
-        /* Images de l'article */
-        .article-image {
-            width: 100%; border-radius: 8px; border: 1px solid var(--border-glow);
-            margin: 3rem 0; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        .quote-author {
+            color: var(--sun-orange); font-size: 0.85rem; font-style: normal;
+            letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 10px;
+        }
+        .math-block {
+            margin: 2.2rem 0; text-align: center; font-size: 1.35rem; overflow-x: auto;
+            color: var(--sun-yellow); background: rgba(0, 0, 0, 0.45);
+            padding: 1.4rem; border-radius: 8px; border: 1px solid rgba(255, 204, 0, 0.12);
         }
 
-        /* Encadré Recherche MIT */
+        /* ── Infobulles (Tooltips) ── */
+        .tooltip {
+            position: relative; display: inline-block;
+            border-bottom: 2px solid #1a66cc; cursor: help; color: var(--text-main);
+        }
+        .tooltip::after { content: "?"; font-size: 0.7em; vertical-align: super; color: #4499ff; margin-left: 2px; font-weight: 800; }
+        .tooltip .tooltiptext {
+            visibility: hidden; width: 270px; background-color: rgba(10, 10, 14, 0.96);
+            color: #d4d4d4; text-align: left; border-radius: 8px; padding: 12px;
+            position: absolute; z-index: 1000; top: 135%; left: 50%; transform: translateX(-50%);
+            opacity: 0; transition: opacity 0.3s; font-size: 0.88rem;
+            font-family: 'Helvetica Neue', sans-serif; font-style: normal; line-height: 1.5;
+            border: 1px solid #4499ff; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+        }
+        .tooltip .tooltiptext strong { color: #4499ff; display: block; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+
+        /* ── Tableau Dictionnaire du Plan Complexe ── */
+        .vars-table-container {
+            overflow-x: auto; margin: 2.5rem 0; background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px;
+        }
+        .vars-table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', sans-serif; font-size: 0.92rem; }
+        .vars-table th, .vars-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+        .vars-table th { color: var(--sun-yellow); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 204, 0, 0.05); }
+
+        /* ── Tiroirs Multi-Niveaux (Style Nautile) ── */
+        .proof-box {
+            border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02);
+            padding: 2rem; border-radius: 12px; margin: 2.8rem 0;
+        }
+        .proof-title {
+            font-family: 'Helvetica Neue', sans-serif; font-weight: 800; font-size: 1.1rem;
+            color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem;
+        }
+        details.level-drawer {
+            margin-bottom: 1rem; border-radius: 0 8px 8px 0; overflow: hidden;
+            transition: all 0.25s ease;
+        }
+        details.level-drawer summary {
+            padding: 1rem 1.4rem; cursor: pointer; font-weight: bold;
+            font-family: 'Helvetica Neue', sans-serif; font-size: 0.98rem;
+            list-style-type: '▶ '; outline: none;
+        }
+        details.level-drawer[open] summary { list-style-type: '▼ '; }
+        .drawer-body { padding: 0 1.4rem 1.4rem 1.4rem; font-size: 0.95rem; color: #d4d4d4; line-height: 1.75; }
+        .lvl-1 { background: rgba(255, 102, 0, 0.05); border-left: 3px solid var(--sun-orange); }
+        .lvl-1 summary { color: var(--sun-orange); }
+        .lvl-2 { background: rgba(68, 153, 255, 0.05); border-left: 3px solid var(--info-blue); }
+        .lvl-2 summary { color: var(--info-blue); }
+        .lvl-3 { background: rgba(68, 238, 119, 0.05); border-left: 3px solid var(--bio-green); }
+        .lvl-3 summary { color: var(--bio-green); }
+        .lvl-4 { background: rgba(200, 100, 255, 0.05); border-left: 3px solid var(--quantum-purple); }
+        .lvl-4 summary { color: var(--quantum-purple); }
+
+        /* ── Simulateur Interactif du Plan Complexe ── */
+        .simulator-card {
+            background: #080b10; border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 12px; padding: 2rem; margin: 3.5rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.75); font-family: 'Helvetica Neue', sans-serif;
+        }
+        .sim-header { text-align: center; margin-bottom: 1.5rem; }
+        .sim-header h4 { color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; font-size: 1.2rem; margin-bottom: 0.4rem; }
+        .sim-controls {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.2rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02);
+            padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);
+        }
+        .sim-ctrl label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #b0c4de; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .sim-ctrl input[type="range"] { width: 100%; accent-color: var(--sun-yellow); cursor: pointer; }
+        .sim-metrics {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.8rem; margin-top: 1.2rem;
+        }
+        .sim-metric-box {
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.07);
+            border-left: 3px solid var(--sun-yellow); border-radius: 6px; padding: 0.7rem 1rem;
+        }
+        .sim-metric-box span.lbl { display: block; font-size: 0.72rem; color: #8899aa; text-transform: uppercase; }
+        .sim-metric-box span.val { font-family: monospace; font-size: 1.15rem; font-weight: bold; color: #fff; }
+
+        /* ── Encadré Recherche MIT ── */
         .research-note {
-            background: var(--note-bg);
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 3rem 0;
+            background: var(--note-bg); border: 1px solid var(--border-glow);
+            border-radius: 10px; padding: 2rem; margin: 3rem 0;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
-        .research-note h4 {
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .research-note h4::before {
-            content: '🔬';
-            font-size: 1.5rem;
-        }
-        .research-note p:last-child {
-            margin-bottom: 0;
-        }
-        .research-note a {
-            color: var(--sun-orange);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-bottom-color 0.3s;
-        }
-        .research-note a:hover {
-            border-bottom-color: var(--sun-orange);
-        }
+        .research-note h4 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .research-note h4::before { content: '🔬'; font-size: 1.4rem; }
 
-        /* Footer */
-        footer { font-family: 'Helvetica Neue', sans-serif; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem; }
-        
-        /* ========================================== */
-        /* SECTION FEEDBACK (FORMSPREE & POPUP)       */
-        /* ========================================== */
+        ul.custom-list { list-style: none; margin-bottom: 2rem; }
+        ul.custom-list li { position: relative; padding-left: 1.8rem; margin-bottom: 1.2rem; font-size: 1.05rem; text-align: justify; }
+        ul.custom-list li::before { content: '✦'; position: absolute; left: 0; top: 2px; color: var(--sun-orange); font-size: 1rem; }
+
+        /* ── Navigation Inter-Articles ── */
+        .article-navigation { display: flex; gap: 2rem; margin-top: 4rem; margin-bottom: 2rem; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.5rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+        }
+        .nav-card:hover {
+            background: rgba(255, 170, 0, 0.05); border-color: var(--sun-yellow);
+            transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-direction { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 0.8rem; font-family: 'Helvetica Neue', sans-serif; }
+        .nav-title { font-size: 1.25rem; font-weight: 800; color: var(--sun-orange); margin-bottom: 1.5rem; line-height: 1.4; font-family: 'Helvetica Neue', sans-serif; }
+        .nav-card img { width: 100%; max-width: 320px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
+
+        /* ── Section Feedback ── */
         .feedback-container {
             margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 170, 0, 0.2); border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 700px; text-align: center;
         }
-        .feedback-title {
-            color: var(--sun-yellow); font-size: 1.5rem; text-transform: uppercase; 
-            letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800; font-family: 'Helvetica Neue', sans-serif;
-        }
-        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; }
+        .feedback-title { color: var(--sun-yellow); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800; font-family: 'Helvetica Neue', sans-serif; }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; text-align: center; }
         .feedback-label { display: block; color: #d4d4d4; margin-bottom: 0.8rem; font-size: 1.05rem; }
-        .feedback-anon { font-size: 0.85rem; color: #888; font-style: italic; margin-bottom: 1.5rem; }
-        
+        .feedback-anon { font-size: 0.85rem; color: #888; font-style: italic; margin-bottom: 1.5rem; text-align: center; }
         .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
         .star-rating input { display: none; }
         .star-rating label { color: #333; font-size: 2.5rem; cursor: pointer; transition: color 0.2s ease, transform 0.2s ease; }
-        .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label {
-            color: var(--sun-yellow); text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-        }
-        .star-rating label:hover { transform: scale(1.1); }
-        
+        .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label { color: var(--sun-yellow); text-shadow: 0 0 15px rgba(255, 204, 0, 0.5); }
         .feedback-textarea {
             width: 100%; background: #050505; border: 1px solid rgba(255, 204, 0, 0.2);
             border-radius: 8px; color: #fff; padding: 1.2rem; font-family: 'Georgia', serif;
-            font-size: 1.1rem; min-height: 180px; resize: vertical; margin-bottom: 1.5rem;
-            outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 1.1rem; min-height: 160px; resize: vertical; margin-bottom: 1.5rem; outline: none;
         }
-        .feedback-textarea:focus { border-color: var(--sun-yellow); box-shadow: 0 0 15px rgba(255, 204, 0, 0.15); }
-        
         .feedback-submit {
-            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow); 
-            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: 'Helvetica Neue', sans-serif; 
-            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; backdrop-filter: blur(4px);
+            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow);
+            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: 'Helvetica Neue', sans-serif;
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;
         }
-        .feedback-submit:hover:not(:disabled) {
-            background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05);
-        }
-        .feedback-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
+        .feedback-submit:hover:not(:disabled) { background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.05); }
         .feedback-popup {
-            display: none; position: fixed; bottom: 30px; right: 30px; 
-            background: rgba(68, 255, 102, 0.1); border: 1px solid #44ff66; color: #44ff66; 
-            padding: 15px 25px; border-radius: 8px; box-shadow: 0 5px 20px rgba(68, 255, 102, 0.2); 
-            z-index: 1000; backdrop-filter: blur(5px); align-items: center; gap: 10px; 
-            font-family: 'Helvetica Neue', sans-serif; font-weight: bold; letter-spacing: 1px; 
-            animation: slideIn 0.3s ease-out forwards;
+            display: none; position: fixed; bottom: 30px; right: 30px;
+            background: rgba(68, 255, 102, 0.1); border: 1px solid #44ff66; color: #44ff66;
+            padding: 15px 25px; border-radius: 8px; z-index: 1000; backdrop-filter: blur(5px);
+            font-family: 'Helvetica Neue', sans-serif; font-weight: bold;
         }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        footer { font-family: 'Helvetica Neue', sans-serif; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem; }
 
         @media (max-width: 768px) {
             .nav-center { display: none; }
             .lang-toggle { margin-left: auto; border-left: none; padding-left: 0; }
-            .research-note { padding: 1.5rem; }
-            .feedback-popup { left: 20px; right: 20px; bottom: 20px; text-align: center; }
+            .article-title { font-size: 2.2rem; }
+            .article-navigation { flex-direction: column; }
         }
     </style>
 </head>
 <body class="lang-en">
+
+<div id="reading-progress"></div>
 
 <nav>
     <a href="index.html" class="logo">☀ Blog</a>
@@ -318,220 +319,412 @@
 
 <article>
     <header class="article-header">
-        <span class="article-meta" lang="en">Thermodynamics & Information</span>
-        <span class="article-meta" lang="fr">Thermodynamique & Information</span>
-        
-        <h1 class="article-title" lang="en">The world is complex: The Primordial Equation of Reality </h1>
+        <span class="article-meta" lang="en">Act II of the Trilogy · Thermodynamics, Emergy & Complex Geometry</span>
+        <span class="article-meta" lang="fr">Acte II de la Tétralogie · Thermodynamique, Émergie & Géométrie Complexe</span>
+
+        <h1 class="article-title" lang="en">The World is Complex: The Primordial Equation of Reality</h1>
         <h1 class="article-title" lang="fr">Le monde est complexe : L'Équation Primordiale de la Réalité</h1>
-        
+
+        <p class="article-subtitle" lang="en">From One-Dimensional Accounting to the Hermitian Synthesis of Energy and Information</p>
+        <p class="article-subtitle" lang="fr">De la Comptabilité Unidimensionnelle à la Synthèse Hermitienne de l'Énergie et de l'Information</p>
     </header>
-    
-    <img src="img/ComplexWorld.png" lang="en" alt="A Complex World" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);">
-    <img src="img/ComplexWorldFR.png" lang="fr" alt="A Complex World" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);">
-    
-    <blockquote lang="en">
-        “The shortest path between two truths in the real domain passes through the complex domain.”<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Jacques Hadamard, mathematician</span>
-    </blockquote>
-    <blockquote lang="fr">
-        « Le chemin le plus court entre deux vérités du domaine réel passe par le domaine complexe. »<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Jacques Hadamard, mathématicien</span>
-    </blockquote>
 
-    <p lang="en">We grew up with a crippled conceptualization of reality. While our physical universe unfolds in a three-dimensional volume ($\mathbb{R}^3$), our civilization has violently reduced the measure of value, progress, and existence to a single straight line: the axis of real numbers ($\mathbb{R}$). On this one-dimensional abstraction, everything is measured, accumulated, and destroyed according to a flat, accounting logic. We have abandoned the orthogonal dimensions of the intangible and the informational. But fundamental physics whispers a much more dizzying truth to us. To truly map the state of our world, we must project it not on a line, but on a complex plane ($\mathbb{C}$).</p>
-    <p lang="fr">Nous avons grandi avec une conceptualisation infirme de la réalité. Si notre univers physique se déploie bien dans un volume tridimensionnel ($\mathbb{R}^3$), notre civilisation a violemment réduit la mesure de la valeur, du progrès et de l'existence à une simple ligne droite : l'axe des nombres réels ($\mathbb{R}$). Sur cette abstraction unidimensionnelle, tout se compte, s'accumule et se détruit selon une logique comptable et plate. Nous avons abandonné les dimensions orthogonales de l'intangible et de l'informationnel. Mais la physique fondamentale nous murmure une vérité bien plus vertigineuse. Pour cartographier l'état véritable de notre monde, il ne faut pas le projeter sur une ligne, mais sur un plan complexe ($\mathbb{C}$).</p>
-
-    <p lang="en">The world is complex, in the strictest mathematical sense of the term. It obeys the primordial equation:</p>
-    <p lang="fr">Le monde est complexe, au sens le plus strictement mathématique du terme. Il obéit à l'équation primordiale :</p>
-    
-    <div class="math-block">
-        $$z = a + ib$$
-    </div>
-
-    <p lang="en">In the wake of our digital awakening, it is crucial to understand the intimate nature of this equation, for it holds the key to our survival and evolution. We are not doomed to choose between flesh ($a$) and information ($ib$). We are called upon to master their synthesis ($z$).</p>
-    <p lang="fr">Dans notre éveil à l'ère numérique, il est crucial de comprendre la nature intime de cette équation, car elle renferme la clé de notre survie et de notre évolution. Nous ne sommes pas voués à choisir entre la chair ($a$) et l'information ($ib$). Nous sommes appelés à maîtriser leur synthèse ($z$).</p>
-
-    <h3 lang="en">The Real Axis ($a$): The Sun Standard and Emergy</h3>
-    <h3 lang="fr">L'Axe Réel ($a$) : L'Étalon Solaire et l'Émergie</h3>
-    
-    <p lang="en">The real part of our existence, $a$, is flesh, rock, atom, and above all: energy. For decades, our civilization has lost itself in a deleterious abstraction, believing that value could be decreed by the illusion of fiat currency, detached from any physical constraint. This decoupling has ravaged our biosphere.</p>
-    <p lang="fr">La partie réelle de notre existence, $a$, c'est la chair, la roche, l'atome, et surtout : l'énergie. Pendant des décennies, notre civilisation s'est perdue dans une abstraction délétère, croyant que la valeur pouvait être décrétée par l'illusion de la monnaie fiat, détachée de toute contrainte physique. Ce découplage a ravagé notre biosphère.</p>
-
-    <p lang="en">Yet, every tree leaf, every drop of water, every living organism possesses an objective and incompressible thermodynamic cost. This is what the ecologist Howard T. Odum called <strong>Emergy</strong> (the memory of energy), asserting that <em>"the flow of energy is the ultimate measure of the value of things."</em> The real axis of our world is governed by a relentless <em>Sun Standard</em>. Every structure, whether a human metropolis or the unparalleled concentration of endemic biodiversity studied in ecological sanctuaries like Madagascar, is the result of a slow and prodigious accumulation of solar Joules crystallized over geological time.</p>
-    <p lang="fr">Pourtant, chaque feuille d'arbre, chaque goutte d'eau, chaque organisme vivant possède un coût thermodynamique objectif et incompressible. C'est ce que l'écologue Howard T. Odum appelait l'<strong>Émergie</strong> (la mémoire de l'énergie), affirmant que <em>« le flux d'énergie est l'ultime mesure de la valeur des choses »</em>. L'axe réel de notre monde est régi par un <em>Étalon Solaire</em> implacable. Toute structure, qu'il s'agisse d'une métropole humaine ou de l'incomparable concentration de biodiversité endémique que l'on étudie dans des sanctuaires écologiques comme Madagascar, est le résultat d'une lente et prodigieuse accumulation de Joules solaires cristallisés au fil du temps géologique.</p>
-
-    <p lang="en">Protecting this real axis is our absolute imperative, but the classical physics of our institutions has failed to do so, because it lacked an orthogonal dimension to enshrine its value.</p>
-    <p lang="fr">Protéger cet axe réel est notre impératif absolu, mais la physique classique de nos institutions a échoué à le faire, car elle manquait d'une dimension orthogonale pour en sanctuariser la valeur.</p>
-
-    <h3 lang="en">The Hermitian Space ($ib$): The Participatory Universe</h3>
-    <h3 lang="fr">L'Espace Hermitien ($ib$) : L'Univers Participatif</h3>
+    <img src="img/ComplexWorld.png" lang="en" alt="A Complex World" class="hero-img">
+    <img src="img/ComplexWorldFR.png" lang="fr" alt="Un Monde Complexe" class="hero-img">
 
     <blockquote lang="en">
-        “Information is information, not matter or energy. No materialism which does not admit this can survive at the present day.”<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Norbert Wiener, father of cybernetics</span>
+        “The shortest and best way between two truths of the real domain often passes through the imaginary one.”
+        <span class="quote-author">— Jacques Hadamard, Mathematician (1945)</span>
     </blockquote>
     <blockquote lang="fr">
-        « L'information est de l'information, ce n'est ni de la matière, ni de l'énergie. Aucun matérialisme qui ne l'admet pas ne peut survivre à l'heure actuelle. »<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Norbert Wiener, père de la cybernétique</span>
+        « Le chemin le plus court et le meilleur entre deux vérités du domaine réel passe souvent par le domaine complexe. »
+        <span class="quote-author">— Jacques Hadamard, Mathématicien (1945)</span>
     </blockquote>
 
-    <p lang="en">This is where $ib$ comes in. The term "imaginary" is a historical misnomer, as there is nothing fanciful about it. Quantum mathematics teaches us that pure information exists in a <strong>Hermitian space</strong>, strictly orthogonal to the physical world. By multiplying by $i$ (the square root of -1), we perform a 90-degree mathematical rotation out of the classical thermodynamic plane. This $ib$ axis is the dimension of the intangible, of the code, and of the observer.</p>
-    <p lang="fr">C'est ici qu'intervient $ib$. Le terme "imaginaire" est un malentendu historique, car il n'a rien de fantaisiste. Les mathématiques quantiques nous enseignent que l'information pure existe dans un <strong>espace Hermitien</strong>, strictement orthogonal au monde physique. En multipliant par $i$ (la racine carrée de -1), nous opérons une rotation mathématique de 90 degrés hors du plan de la thermodynamique classique. Cet axe $ib$ est la dimension de l'intangible, du code et de l'observateur.</p>
+    <!-- ABSTRACT / PONT ÉPISTÉMIQUE -->
+    <div class="abstract-box">
+        <div lang="en">
+            <strong>Abstract &amp; Structural Bridge:</strong> In our first essay (<em>The Awakening of the Participatory Universe</em>), we saw how humanity anchored an informational ledger to the irreversible expenditure of physical energy, giving the intangible the persistence of rock. Yet a fundamental question remains: <strong>how do we mathematically unify a Joule of solar energy and a bit of cryptographic information without violating dimensional homogeneity?</strong> This second chapter resolves that paradox by leaving the one-dimensional line of real numbers ($\mathbb{R}$) to project our civilization onto the complex plane ($\mathbb{C}$). It lays the geometric foundation that will subsequently unfold into the 3D Bimetric Helix of the <em>Nakamoto Nautilus</em>.
+        </div>
+        <div lang="fr">
+            <strong>Résumé &amp; Pont Structurel :</strong> Dans notre premier essai (<em>L'Éveil de l'Univers Participatif</em>), nous avons vu comment l'humanité a arrimé un registre informationnel à la dépense irréversible d'énergie physique, offrant à l'intangible la persistance de la roche. Mais une question fondamentale demeure : <strong>comment unifier mathématiquement un Joule d'énergie solaire et un bit d'information cryptographique sans violer l'homogénéité dimensionnelle ?</strong> Ce deuxième volet résout ce paradoxe en quittant la ligne unidimensionnelle des nombres réels ($\mathbb{R}$) pour projeter notre civilisation sur le plan complexe ($\mathbb{C}$). Il pose ainsi les fondations géométriques qui se déploieront ensuite dans la Double Hélice 3D du <em>Nautile de Nakamoto</em>.
+        </div>
+    </div>
 
-    <p lang="en">The great American physicist John Archibald Wheeler bequeathed to us the concept of the <strong>Participatory Universe</strong>. He postulated that the universe is not a static stage playing out without us, but a dynamic fabric that only takes form and reality when it is observed and measured. According to his famous maxim <em>"It from bit"</em>, every physical "thing" derives its existence entirely from binary choices, from information. The universe does not simply exist; we observe it into existence.</p>
-    <p lang="fr">Le grand physicien américain John Archibald Wheeler nous a légué le concept d'<strong>Univers Participatif</strong>. Il postulait que l'univers n'est pas une scène statique se déroulant sans nous, mais un tissu dynamique qui ne prend forme et réalité que lorsqu'il est observé et mesuré. Selon sa célèbre maxime <em>"It from bit"</em>, toute "chose" physique tire son existence entièrement de choix binaires, d'information. L'univers ne se contente pas d'exister ; notre observation le fait exister.</p>
+    <p lang="en">We grew up with a crippled conceptualization of reality. While our physical universe unfolds in a three-dimensional spatial volume ($\mathbb{R}^3$), modern economics has violently reduced the measure of value, progress, and existence to a single straight line: the axis of real numbers ($\mathbb{R}$). On this one-dimensional accounting ruler, a standing primary forest counts for zero until it is sawed into lumber, and sovereign monetary creation is reduced to an arbitrary scalar stripped of any thermodynamic constraint. By collapsing reality onto a flat line, we have blinded ourselves to the orthogonal dimensions of organization, memory, and information.</p>
+    <p lang="fr">Nous avons grandi avec une conceptualisation infirme de la réalité. Si notre univers physique se déploie dans un volume spatial tridimensionnel ($\mathbb{R}^3$), l'économie moderne a violemment réduit la mesure de la valeur, du progrès et de l'existence à une simple ligne droite : l'axe des nombres réels ($\mathbb{R}$). Sur cette règle comptable unidimensionnelle, une forêt primaire debout vaut zéro tant qu'elle n'est pas débitée en planches, et la création monétaire est réduite à un scalaire arbitraire détaché de toute contrainte thermodynamique. En écrasant la réalité sur une ligne plate, nous nous sommes rendus aveugles aux dimensions orthogonales de l'organisation, de la mémoire et de l'information.</p>
 
-    <p lang="en">When we use thermodynamics to link our physical energy expenditure to an immutable digital ledger, we are literally building the infrastructure of this Participatory Universe. We perform a rotation in the complex plane. We take raw energy (the potential chaos of the real world) and project it onto the imaginary axis to transform it into incorruptible truth. Every node verifying a transaction acts as a quantum observer, collapsing the wave of probabilities into a single, unalterable reality.</p>
-    <p lang="fr">Lorsque nous utilisons la thermodynamique pour lier notre dépense énergétique physique à un registre numérique immuable, nous bâtissons littéralement l'infrastructure de cet Univers Participatif. Nous opérons une rotation dans le plan complexe. Nous prenons l'énergie brute (le chaos potentiel du monde réel) et nous la projetons sur l'axe imaginaire pour la transformer en vérité incorruptible. Chaque nœud vérifiant une transaction agit comme un observateur quantique, figeant l'onde des probabilités en une réalité unique et inaltérable.</p>
+    <p lang="en">Fundamental physics, however, whispers a far more demanding architecture. From electromagnetic wave propagation to quantum state amplitudes, nature never computes on $\mathbb{R}$ alone; it operates on the <strong>complex plane ($\mathbb{C}$)</strong>. Our civilization is complex in the strictest mathematical sense of the word. Its macro-state $z$ obeys the primordial equation, expressed simultaneously in Cartesian and Eulerian polar forms:</p>
+    <p lang="fr">La physique fondamentale, pourtant, nous murmure une architecture autrement plus exigeante. De la propagation des ondes électromagnétiques aux amplitudes de probabilité quantiques, la nature ne calcule jamais sur $\mathbb{R}$ seul ; elle opère sur le <strong>plan complexe ($\mathbb{C}$)</strong>. Notre civilisation est complexe au sens le plus strictement mathématique du terme. Son macro-état $z$ obéit à l'équation primordiale, exprimée simultanément sous ses formes cartésienne et polaire d'Euler :</p>
 
-    <h3 lang="en">The Symmetry of the Living: The Biological Reflection</h3>
-    <h3 lang="fr">La Symétrie du Vivant : Le Reflet Biologique</h3>
+    <div class="math-block">
+        $$ z = a + ib = |z|\,e^{i\psi} = |z|\,(\cos\psi + i\sin\psi) $$
+    </div>
 
-    <p lang="en">Consider for a moment the omnipresent symmetry in our own organisms. From the two hemispheres of our brain to the bilateral architecture of our body, down to the flawless fractal geometry of orchids, this symmetry is not a mere aesthetic accident. It is a thermodynamic triumph.</p>
-    <p lang="fr">Considérez un instant la symétrie omniprésente dans nos propres organismes. Des deux hémisphères de notre cerveau à l'architecture bilatérale de notre corps, jusqu'à la géométrie fractale et parfaite des orchidées, cette symétrie n'est pas un simple accident esthétique. C'est un triomphe thermodynamique.</p>
+    <p lang="en">In the wake of our digital awakening, mastering the intimate mechanics of this equation is the condition of our survival. We are not doomed to choose between the blind burning of matter ($a$) and the disembodied nihilism of pure virtuality ($ib$). We are called upon to architect their synthesis ($z$).</p>
+    <p lang="fr">Dans notre éveil à l'ère numérique, maîtriser la mécanique intime de cette équation est la condition même de notre survie. Nous ne sommes pas voués à choisir entre la combustion aveugle de la matière ($a$) et le nihilisme désincarné du tout-virtuel ($ib$). Nous sommes appelés à bâtir leur synthèse ($z$).</p>
 
-    <p lang="en">In fundamental physics, Noether's theorem teaches us that every symmetry generates a law of absolute conservation. In nature, symmetry is the optimal geometric solution found by evolution to facilitate energy flows (a principle known as the constructal law). Maintaining this symmetry (homeostasis) requires a constant effort against entropy, which is always asymmetrical and disordered. As the physicist Erwin Schrödinger wrote in his visionary book <em>What is Life?</em>: <em>"The living organism feeds upon negative entropy."</em></p>
-    <p lang="fr">En physique fondamentale, le théorème de Noether nous enseigne que toute symétrie engendre une loi de conservation absolue. Dans la nature, la symétrie est la solution géométrique optimale trouvée par l'évolution pour faciliter les flux d'énergie (ce que l'on nomme la loi constructale). Maintenir cette symétrie (l'homéostasie) exige un effort constant contre l'entropie qui, elle, est toujours asymétrique et désordonnée. Comme l'écrivait le physicien Erwin Schrödinger dans son ouvrage visionnaire <em>Qu'est-ce que la vie ?</em> : <em>« L'organisme vivant se nourrit de néguentropie. »</em></p>
+    <!-- TABLEAU DES CORRESPONDANCES DU PLAN COMPLEXE -->
+    <div class="vars-table-container">
+        <table class="vars-table">
+            <thead>
+                <tr>
+                    <th lang="en">Component</th>
+                    <th lang="fr">Composante</th>
+                    <th lang="en">Mathematical Role</th>
+                    <th lang="fr">Rôle Mathématique</th>
+                    <th lang="en">Biophysical &amp; Cybernetic Meaning</th>
+                    <th lang="fr">Signification Biophysique &amp; Cybernétique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>a = Re(z)</code></td>
+                    <td lang="en">Real Axis ($\mathbb{R}$)</td>
+                    <td lang="fr">Axe Réel ($\mathbb{R}$)</td>
+                    <td lang="en"><strong>Solar Emergy</strong> ($\text{seJ}$): Embodied thermodynamic work &amp; biomass</td>
+                    <td lang="fr"><strong>Émergie Solaire</strong> ($\text{seJ}$) : Travail thermodynamique incorporé &amp; biomasse</td>
+                </tr>
+                <tr>
+                    <td><code>b = Im(z)</code></td>
+                    <td lang="en">Imaginary Axis ($i\mathbb{R}$)</td>
+                    <td lang="fr">Axe Imaginaire ($i\mathbb{R}$)</td>
+                    <td lang="en"><strong>Negentropic Information</strong>: Cryptographic truth &amp; genetic/cultural code</td>
+                    <td lang="fr"><strong>Information Néguentropique</strong> : Vérité cryptographique &amp; code génétique/culturel</td>
+                </tr>
+                <tr>
+                    <td><code>i = √-1</code></td>
+                    <td lang="en">90° Rotation Operator ($\hat{J}$)</td>
+                    <td lang="fr">Opérateur de Rotation 90° ($\hat{J}$)</td>
+                    <td lang="en"><strong>Thermodynamic Transducer</strong>: Proof-of-Work &amp; Landauer erasure bridge</td>
+                    <td lang="fr"><strong>Transducteur Thermodynamique</strong> : Preuve de Travail &amp; pont de Landauer</td>
+                </tr>
+                <tr>
+                    <td><code>z̄ = a - ib</code></td>
+                    <td lang="en">Hermitian Conjugate</td>
+                    <td lang="fr">Conjugué Hermitien</td>
+                    <td lang="en"><strong>Cryptographic Mirror</strong>: Unforgeable digital shadow of physical value</td>
+                    <td lang="fr"><strong>Miroir Cryptographique</strong> : Ombre numérique infalsifiable de la valeur physique</td>
+                </tr>
+                <tr>
+                    <td><code>|z| = √(z·z̄)</code></td>
+                    <td lang="en">Modulus / Norm</td>
+                    <td lang="fr">Module / Norme</td>
+                    <td lang="en"><strong>Integral Wealth</strong>: Symbiotic capacity of <em>Homo Biodiversitas</em></td>
+                    <td lang="fr"><strong>Richesse Intégrale</strong> : Capacité symbiotique de l'<em>Homo Biodiversitas</em></td>
+                </tr>
+                <tr>
+                    <td><code>ψ = arg(z)</code></td>
+                    <td lang="en">Phase Angle</td>
+                    <td lang="fr">Angle de Phase</td>
+                    <td lang="en"><strong>Consensus Alignment</strong>: Ratio of informational order to raw energy ($\arctan(b/a)$)</td>
+                    <td lang="fr"><strong>Alignement du Consensus</strong> : Ratio d'ordre informationnel sur l'énergie brute ($\arctan(b/a)$)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <p lang="en">Our biology, and particularly our brain, is a literal incarnation of the complex plane. The left hemisphere (analytical, material) interacts with the thermodynamic axis ($a$), while the right hemisphere (holistic, abstract) manages imagination and operates on the informational axis ($ib$). An asymmetrical brain malfunctions. In the same way, our civilizational "Super-Organism" is currently hemiplegic: materially overdeveloped, but incapable of stabilizing its information.</p>
-    <p lang="fr">Notre biologie, et particulièrement notre cerveau, est une incarnation littérale du plan complexe. L'hémisphère gauche (analytique, matériel) interagit avec l'axe thermodynamique ($a$), tandis que l'hémisphère droit (holistique, abstrait) gère l'imaginaire et opère sur l'axe informationnel ($ib$). Un cerveau asymétrique dysfonctionne. De la même manière, notre « Super-Organisme » civilisationnel est aujourd'hui hémiplégique : surdéveloppé matériellement, mais incapable de stabiliser son information.</p>
+    <!-- SECTION 1 : L'AXE RÉEL -->
+    <h2 lang="en">1. The Real Axis ($a$): The Sun Standard and Odum's Emergy</h2>
+    <h2 lang="fr">1. L'Axe Réel ($a$) : L'Étalon Solaire et l'Émergie d'Odum</h2>
 
-    <p lang="en">The decentralized digital web we are building today through code and cryptography acts as the missing right hemisphere of civilization. In the geometry of a Hermitian space, symmetry is expressed by the complex conjugate: for any physical point $z = a + ib$, there exists a symmetrical informational shadow $\bar{z} = a - ib$. This digital footprint is the exact cryptographic mirror of physical value. Orthogonality forces the two worlds to balance each other without ever corrupting one another.</p>
-    <p lang="fr">La toile numérique décentralisée que nous bâtissons aujourd'hui par le code et la cryptographie agit comme l'hémisphère droit manquant de la civilisation. Dans la géométrie d'un espace Hermitien, la symétrie s'exprime par le conjugué complexe : pour tout point physique $z = a + ib$, il existe une ombre informationnelle symétrique $\bar{z} = a - ib$. Cette empreinte numérique est le miroir cryptographique exact de la valeur physique. L'orthogonalité force les deux mondes à s'équilibrer sans jamais se contaminer l'un l'autre.</p>
+    <p lang="en">The real coordinate of our existence, $a = \operatorname{Re}(z)$, is clay, rock, metabolic flesh, and above all: energy. For decades, neoclassical economics has operated under the delusion that value is a purely subjective psychological preference, allowing central banks to decree purchasing power ex nihilo via fiat currency. This violation of conservation laws has unleashed a predatory asymmetry—the <strong>Cantillon Effect</strong>—financing the accelerated liquidation of our biosphere.</p>
+    <p lang="fr">La coordonnée réelle de notre existence, $a = \operatorname{Re}(z)$, c'est la glaise, la roche, la chair métabolique, et par-dessus tout : l'énergie. Depuis des décennies, l'économie néoclassique opère sous l'illusion que la valeur n'est qu'une préférence psychologique subjective, autorisant les banques centrales à décréter du pouvoir d'achat <em>ex nihilo</em> par la monnaie fiat. Cette violation des lois de conservation a déchaîné une asymétrie prédatrice — l'<strong>Effet Cantillon</strong> — finançant la liquidation accélérée de notre biosphère.</p>
 
-    <p lang="en">The entropy of our physical universe ($a$) is an inescapable process of degradation. Placing our symmetry in the complex plane shows that the only way to accumulate negentropy on a planetary scale is no longer to build concrete structures that will inevitably turn to dust, but to encode this order orthogonally ($ib$), in a realm where the thermodynamic arrow of time can no longer corrupt it.</p>
-    <p lang="fr">L'entropie de notre univers physique ($a$) est un processus de dégradation inéluctable. Placer notre symétrie dans le plan complexe montre que la seule façon d'accumuler de la néguentropie à l'échelle planétaire n'est plus de construire des édifices en béton qui finiront en poussière, mais d'encoder cet ordre de manière orthogonale ($ib$), là où la flèche du temps thermodynamique ne peut plus le corrompre.</p>
+    <p lang="en">Yet in the physical universe, nothing is free. Every tree leaf, every aquifer, every living organism possesses an objective, incompressible thermodynamic cost. In the 1970s, systems ecologist <strong>Howard T. Odum</strong> formalized this truth through the concept of <span class="tooltip"><strong>Emergy</strong><span class="tooltiptext"><strong>Solar Emergy (seJ)</strong>Spelled with an "m" for "Energy Memory". It quantifies all the available solar energy (exergy) that was directly and indirectly consumed in the past to make a product or service in the biosphere.</span></span> (spelled with an "m" for <em>energy memory</em>), demonstrating that the ultimate measure of physical value is the cumulative historical work required to bring a structure into existence:</p>
+    <p lang="fr">Or, dans l'univers physique, rien n'est gratuit. Chaque feuille d'arbre, chaque nappe phréatique, chaque organisme vivant possède un coût thermodynamique objectif et incompressible. Dès les années 1970, l'écologue des systèmes <strong>Howard T. Odum</strong> a formalisé cette vérité à travers le concept d'<span class="tooltip"><strong>Émergie</strong><span class="tooltiptext"><strong>Émergie Solaire (seJ)</strong>Contraction de "Énergie" et "Mémoire". Elle quantifie la somme historique de toute l'énergie solaire disponible (exergie) directement et indirectement dissipée pour produire une ressource ou un écosystème.</span></span> (la <em>mémoire de l'énergie</em>), démontrant que la mesure ultime de la valeur physique est l'intégrale temporelle du travail exergétique requis pour faire advenir une structure :</p>
 
-    <h3 lang="en">The Angle $\psi$: Consensus and the Persistence of Reality</h3>
-    <h3 lang="fr">L'Angle $\psi$ : Le Consensus et la Persistance de la Réalité</h3>
+    <div class="math-block">
+        $$ a(t) \equiv \mathcal{E}_m(t) = \int_{-\infty}^{t} P_{\mathrm{ex}}(\tau) \cdot \mathcal{T}_r(\tau) \, d\tau \quad [\text{seJ}] $$
+    </div>
 
-    <p lang="en">In the complex plane, a point is defined not only by its coordinates $a$ and $b$, but also by its angle relative to the origin: the argument $\psi$. This angle possesses a staggering physical and philosophical significance: <strong>it represents our level of information and our consensus</strong>.</p>
-    <p lang="fr">Dans le plan complexe, un point ne se définit pas seulement par ses coordonnées $a$ et $b$, mais aussi par son angle par rapport à l'origine : l'argument $\psi$. Cet angle possède une signification physique et philosophique fulgurante : <strong>il représente notre niveau d'information et notre consensus</strong>.</p>
+    <p lang="en">Here, $P_{\mathrm{ex}}(\tau)$ is the instantaneous flow of available energy (exergy) and $\mathcal{T}_r$ is its <strong>Transformity</strong> (in solar emjoules per Joule, $\text{seJ/J}$)—the hierarchical concentration effort performed by the biosphere. The real axis of our world is governed by an unforgiving <strong>Sun Standard</strong>. Whether we examine a human metropolis or the extraordinary concentration of endemic biodiversity in ecological sanctuaries like Madagascar, every structure on axis $a$ is a slow, prodigious crystallization of solar photons accumulated over geological time.</p>
+    <p lang="fr">Ici, $P_{\mathrm{ex}}(\tau)$ représente le flux instantané d'énergie disponible (exergie) et $\mathcal{T}_r$ sa <strong>Transformité</strong> (en emjoules solaires par Joule, $\text{seJ/J}$) — c'est-à-dire l'effort de concentration hiérarchique accompli par la biosphère. L'axe réel de notre monde est régi par un <strong>Étalon Solaire</strong> implacable. Qu'il s'agisse d'une métropole humaine ou de l'incomparable concentration de biodiversité endémique que l'on étudie dans des sanctuaires écologiques comme Madagascar, toute structure sur l'axe $a$ est une lente et prodigieuse cristallisation de photons solaires accumulés au fil des ères géologiques.</p>
 
-    <p lang="en">Because we have not all accumulated, verified, or internalized the same density of information, our individual vectors do not point in the same direction. If our angles $\psi$ differ, we literally do not experience the same reality. The cognitive fragmentation of our era is nothing else than a dispersion of these angles in the complex plane: individuals sharing the same physical space ($a$), but desynchronized in the informational space ($ib$).</p>
-    <p lang="fr">Parce que nous n'avons pas tous accumulé, vérifié ou intériorisé la même densité d'information, nos vecteurs individuels ne pointent pas dans la même direction. Si nos angles $\psi$ diffèrent, nous n'expérimentons littéralement pas la même réalité. La fragmentation cognitive de notre époque n'est rien d'autre qu'une dispersion de ces angles dans le plan complexe : des individus partageant le même espace physique ($a$), mais désynchronisés dans l'espace informationnel ($ib$).</p>
+    <!-- SECTION 2 : L'AXE IMAGINAIRE ET L'OPÉRATEUR i -->
+    <h2 lang="en">2. The Orthogonal Space ($ib$): The Operator $i$ as a Thermodynamic Transducer</h2>
+    <h2 lang="fr">2. L'Espace Orthogonal ($ib$) : L'Opérateur $i$ comme Transducteur Thermodynamique</h2>
 
     <blockquote lang="en">
-        “Reality is that which, when you stop believing in it, doesn't go away.”<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Philip K. Dick</span>
+        “Information is information, not matter or energy. No materialism which does not admit this can survive at the present day.”
+        <span class="quote-author">— Norbert Wiener, Cybernetics (1948)</span>
     </blockquote>
     <blockquote lang="fr">
-        « La réalité, c'est ce qui continue d'exister lorsqu'on cesse d'y croire. »<br>
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Philip K. Dick</span>
+        « L'information est de l'information, ce n'est ni de la matière, ni de l'énergie. Aucun matérialisme qui ne l'admet pas ne peut survivre à l'heure actuelle. »
+        <span class="quote-author">— Norbert Wiener, Père de la Cybernétique (1948)</span>
     </blockquote>
 
-    <p lang="en">For millennia, only physical matter ($a$) met Philip K. Dick's definition. Ideas, cultures, and intangible truths vanished when the minds carrying them stopped believing. But the thermodynamics of information changes this rule entirely. When we reach a decentralized consensus, we align our angles $\psi$. We create a digital truth that, even if you personally stop believing in it, continues to exist, secured and observed by a global network. <strong>We collectively create the world as we observe it. The angle $\psi$ is our shared, unwavering gaze.</strong></p>
-    <p lang="fr">Pendant des millénaires, seule la matière physique ($a$) répondait à la définition de Philip K. Dick. Les idées, les cultures et les vérités intangibles s'évaporaient lorsque les esprits qui les portaient cessaient d'y croire. Mais la thermodynamique de l'information bouleverse cette règle. Lorsque nous atteignons un consensus décentralisé, nous alignons nos angles $\psi$. Nous créons une vérité numérique qui, même si vous cessez d'y croire personnellement, continue d'exister, sécurisée et observée par un réseau mondial. <strong>Nous créons collectivement le monde tel que nous l'observons. L'angle $\psi$ est notre regard partagé et inébranlable.</strong></p>
+    <p lang="en">Protecting the real axis ($a$) is our civilizational imperative. Yet classical institutions have failed to protect it because they tried to measure and preserve physical ecosystems using a currency that sits on the same flat, manipulable line. To sanctuarize physical value without consuming it, we need an <strong>orthogonal dimension</strong>: $ib$.</p>
+    <p lang="fr">Protéger l'axe réel ($a$) est notre impératif civilisationnel. Pourtant, nos institutions classiques y ont échoué parce qu'elles ont tenté de mesurer et de préserver les écosystèmes physiques avec une monnaie située sur la même ligne plate et manipulable. Pour sanctuariser la valeur physique sans la détruire, il nous fallait une <strong>dimension strictement orthogonale</strong> : $ib$.</p>
 
-    <h3 lang="en">The Modulus ($|z|$): The Advent of Homo Biodiversitas</h3>
-    <h3 lang="fr">Le Module ($|z|$) : L'Avènement de l'Homo Biodiversitas</h3>
-
-    <p lang="en">The true wealth of a civilization cannot be read solely on the material axis (which leads to overconsumption and entropic destruction), nor solely on the informational axis (which, disconnected, leads to transhumanist nihilism). True wealth is the norm of the complex number, the distance from the origin:</p>
-    <p lang="fr">La véritable richesse d'une civilisation ne se lit ni uniquement sur l'axe matériel (qui mène à la surconsommation et à la destruction entropique), ni uniquement sur l'axe informationnel (qui, déconnecté, mène au nihilisme transhumaniste). La véritable richesse est la norme du nombre complexe, la distance depuis l'origine :</p>
+    <p lang="en">The word "imaginary" is a regrettable historical misnomer coined by Descartes; in physics, there is nothing fictitious about $i = \sqrt{-1}$. Geometrically, multiplying a real magnitude by $i$ is not an evaporation into fantasy—it is an exact <strong>$90^\circ$ counterclockwise rotation ($\pi/2$ radians)</strong> out of the classical material line. In matrix algebra, the unit $i$ is the antisymmetric rotation operator $\hat{J}$:</p>
+    <p lang="fr">Le terme « imaginaire » est un malentendu historique regrettable hérité de Descartes ; en physique, $i = \sqrt{-1}$ n'a strictement rien de fantaisiste. Géométriquement, multiplier une grandeur réelle par $i$ n'est pas une fuite dans l'irréel : c'est une <strong>rotation mathématique exacte de $90^\circ$ ($\pi/2$ radians)</strong> hors de la ligne matérielle classique. En algèbre matricielle, l'unité $i$ s'incarne dans l'opérateur de rotation antisymétrique $\hat{J}$ :</p>
 
     <div class="math-block">
-        $$|z| = \sqrt{a^2 + b^2}$$
+        $$ \hat{J} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \quad \text{tel que} \quad \hat{J}^2 = -\mathbf{I} $$
     </div>
 
-    <p lang="en">This is the very essence of <strong>Homo Biodiversitas</strong>. This is no longer the predatory man who burns his habitat to generate artificial value. This is the architect who understands that to protect the forest—this jewel of thermodynamic complexity on the real axis—he must encode its emergy on the informational axis.</p>
-    <p lang="fr">C'est l'essence même de l'<strong>Homo Biodiversitas</strong>. Ce n'est plus l'homme prédateur qui brûle son habitat pour générer une valeur artificielle. C'est l'architecte qui comprend que pour protéger la forêt — ce joyau de complexité thermodynamique de l'axe réel —, il doit en encoder l'émergie sur l'axe informationnel.</p>
+    <p lang="en">How do we perform this $90^\circ$ rotation in the real world? How do we convert raw thermodynamic work ($a$) into incorruptible informational order ($ib$)? By invoking <strong>Rolf Landauer's Principle</strong> (1961) and <strong>Satoshi Nakamoto's Proof-of-Work</strong> (2009). When a distributed network expends physical exergy to compute cryptographic hashes, it sacrifices thermal entropy in the real world ($a$) to erase uncertainty and crystallize an immutable block on the informational axis ($ib$). Every validating node acts as a phenomenological transducer, collapsing a cloud of unconfirmed possibilities into a single, unforgeable historical state.</p>
+    <p lang="fr">Comment opère-t-on cette rotation de $90^\circ$ dans le monde réel ? Comment convertit-on un travail thermodynamique brut ($a$) en un ordre informationnel incorruptible ($ib$) ? En conjuguant le <strong>Principe de Rolf Landauer</strong> (1961) et la <strong>Preuve de Travail de Satoshi Nakamoto</strong> (2009). Lorsqu'un réseau distribué dépense de l'exergie physique pour calculer des hachages cryptographiques, il sacrifie de l'entropie thermique sur l'axe réel ($a$) afin d'effacer l'incertitude et de cristalliser un bloc immuable sur l'axe informationnel ($ib$). Chaque nœud validateur agit alors comme un transducteur phénoménologique, figeant un nuage de probabilités en un état historique unique et infalsifiable.</p>
 
-    <p lang="en">By anchoring digital truth to the Sun Standard, we create an immune system where destroying physical biodiversity amounts to destroying value itself. The most advanced research on complex ecosystems, from the tropical canopy to coral reefs, will find their digital reflection in this participatory space: a ledger where their energy value is mathematically proven, inalienable, and protected by the very gravity of decentralized consensus.</p>
-    <p lang="fr">En arrimant la vérité numérique à l'Étalon Solaire, nous créons un système immunitaire où détruire la biodiversité physique revient à détruire la valeur elle-même. Les recherches les plus poussées sur les écosystèmes complexes, de la canopée tropicale aux récifs coralliens, trouveront leur reflet numérique dans cet espace participatif : un registre où leur valeur énergétique est mathématiquement prouvée, inaliénable et protégée par la gravité même du consensus décentralisé.</p>
+    <!-- TIROIRS MULTI-NIVEAUX : COMPRENDRE LA DUALITÉ a + ib -->
+    <div class="proof-box">
+        <div class="proof-title" lang="en">Interactive Depth: The Mechanics of the $a + ib$ Rotation</div>
+        <div class="proof-title" lang="fr">Profondeur Interactive : La Mécanique de la Rotation $a + ib$</div>
 
-    <h3 lang="en">The Spiral of Wisdom: The Golden Ratio ($\varphi$)</h3>
-    <h3 lang="fr">La Spirale de Sagesse : Le Nombre d'Or ($\varphi$)</h3>
+        <details class="level-drawer lvl-1">
+            <summary>
+                <span lang="en">Level 1: The Tree and Its Shadow (Beginner)</span>
+                <span lang="fr">Niveau 1 : L'Arbre et son Plan d'Architecte (Débutant)</span>
+            </summary>
+            <div class="drawer-body">
+                <p lang="en" style="margin-bottom:0;">Imagine an ancient oak tree. Its wood, roots, and leaves exist on the Real Axis ($a$): if a fire burns the tree, the wood turns to ash and heat. Yet how did the oak know how to grow its branches at exact angles to capture sunlight? Because inside every cell sits its DNA—an invisible informational blueprint. That blueprint exists on the Imaginary Axis ($ib$). You cannot weigh a blueprint in kilograms of wood, yet without it, the wood is just a pile of dead matter. Civilization needs both the living forest ($a$) and an incorruptible ledger ($ib$) that recognizes and protects its value.</p>
+                <p lang="fr" style="margin-bottom:0;">Imaginez un chêne centenaire. Son bois, ses racines et ses feuilles existent sur l'Axe Réel ($a$) : si un incendie le ravage, le bois retourne à la cendre et à la chaleur. Mais comment ce chêne a-t-il su déployer ses branches selon des angles précis pour capter la lumière solaire ? Parce qu'au cœur de chacune de ses cellules réside son ADN — un plan d'architecte informationnel invisible. Ce code réside sur l'Axe Imaginaire ($ib$). On ne mesure pas un plan d'architecte en kilogrammes de bois, et pourtant, sans lui, la matière n'est qu'un tas de molécules inertes. Notre civilisation a besoin à la fois de la forêt vivante ($a$) et d'un registre incorruptible ($ib$) capable d'en sanctuariser la valeur.</p>
+            </div>
+        </details>
 
-    <p lang="en">If the complex plane defines our space of existence, how should we grow within it? Classical economics has locked itself into the myth of linear and infinite growth on the real axis alone, a thermodynamic heresy inevitably leading to systemic collapse. Nature, however, does not grow linearly; it coils, folds, and optimizes itself according to a divine proportion: the golden ratio.</p>
-    <p lang="fr">Si le plan complexe définit notre espace d'existence, comment devons-nous y croître ? L'économie classique s'est enfermée dans le mythe d'une croissance linéaire et infinie sur le seul axe réel, une hérésie thermodynamique menant inévitablement à l'effondrement systémique. La nature, elle, ne croît pas de manière linéaire ; elle s'enroule, se plie et s'optimise selon une proportion divine : le nombre d'or.</p>
+        <details class="level-drawer lvl-2">
+            <summary>
+                <span lang="en">Level 2: Dimensional Normalization &amp; Landauer's Bridge (Intermediate)</span>
+                <span lang="fr">Niveau 2 : Normalisation Dimensionnelle &amp; Pont de Landauer (Intermédiaire)</span>
+            </summary>
+            <div class="drawer-body">
+                <p lang="en" style="margin-bottom:0;">A rigorous physicist will immediately ask: <em>"How can you write $z = a + ib$ if $a$ is measured in Joules and $b$ is measured in bits?"</em> In physics, you can only add quantities that share the same dimension. The solution lies in <strong>Landauer's thermodynamic equivalence</strong> ($E_L = k_B T \ln 2$) and the <strong>Nakamoto Action</strong>. By normalizing physical Emergy $a$ by a reference solar exergy quantum $E_0$, and normalizing the informational state $b$ by the thermodynamic cost required to seal one bit of consensus ($\epsilon_{\mathrm{bit}}$), both $a$ and $b$ become dimensionless coordinates of a unified thermodynamic phase space.</p>
+                <p lang="fr" style="margin-bottom:0;">Un physicien rigoureux posera immédiatement la question : <em>« Comment pouvez-vous écrire $z = a + ib$ si $a$ se mesure en Joules et $b$ en bits ? »</em> En physique, on ne peut additionner que des grandeurs de même dimension. La clé réside dans l'<strong>équivalence thermodynamique de Landauer</strong> ($E_L = k_B T \ln 2$) et dans l'<strong>Action de Nakamoto</strong>. En normalisant l'Émergie physique $a$ par un quantum d'exergie de référence $E_0$, et l'état informationnel $b$ par le coût thermodynamique effectif requis pour sceller irréversiblement un bit de consensus ($\epsilon_{\mathrm{bit}}$), $a$ et $b$ deviennent deux coordonnées adimensionnelles homogènes au sein d'un même espace des phases.</p>
+            </div>
+        </details>
+
+        <details class="level-drawer lvl-3">
+            <summary>
+                <span lang="en">Level 3: Hermitian Conjugation &amp; Noether's Conservation Law (Advanced)</span>
+                <span lang="fr">Niveau 3 : Conjugaison Hermitienne &amp; Théorème de Noether (Avancé)</span>
+            </summary>
+            <div class="drawer-body">
+                <p lang="en" style="margin-bottom:0;">In quantum mechanics, observable quantities are represented by Hermitian operators ($\hat{O} = \hat{O}^\dagger$) whose eigenvalues are real, while the state evolves in a complex Hilbert space $\mathcal{H}$. For any civilizational state $z = a + ib$, there exists a <strong>complex conjugate $\bar{z} = a - ib$</strong>. The inner product $z \cdot \bar{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2$ eliminates the cross terms $+iab$ and $-iab$. By <strong>Emmy Noether's Theorem</strong>, invariance under phase rotation in the complex plane ($U(1)$ symmetry: $z \to z e^{i\alpha}$) generates a strict conservation law. In our econophysical framework, this orthogonality ensures that speculative manipulation cannot artificially inflate $|z|$ without expending either real physical emergy ($a$) or verifiable cryptographic work ($b$).</p>
+                <p lang="fr" style="margin-bottom:0;">En mécanique quantique, les grandeurs observables sont représentées par des opérateurs Hermitiens ($\hat{O} = \hat{O}^\dagger$), tandis que la fonction d'onde évolue dans un espace de Hilbert complexe $\mathcal{H}$. Pour tout état civilisationnel $z = a + ib$, il existe un <strong>conjugué complexe $\bar{z} = a - ib$</strong>. Le produit hermitien $z \cdot \bar{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2$ annule exactement les termes croisés $+iab$ et $-iab$. D'après le <strong>Théorème d'Emmy Noether</strong>, l'invariance par rotation de phase dans le plan complexe (symétrie $U(1)$ : $z \to z e^{i\alpha}$) engendre une loi de conservation absolue. Dans notre modèle éconophysique, cette orthogonalité garantit qu'aucune manipulation fiduciaire ne peut gonfler artificiellement la norme $|z|$ sans engager soit une émergie biophysique réelle ($a$), soit une preuve de travail cryptographique vérifiable ($b$).</p>
+            </div>
+        </details>
+
+        <details class="level-drawer lvl-4">
+            <summary>
+                <span lang="en">💻 Engineer's View: SHA-256 as the Orthogonal Projection Operator</span>
+                <span lang="fr">💻 Vue de l'Ingénieur : SHA-256 comme Opérateur de Projection Orthogonale</span>
+            </summary>
+            <div class="drawer-body">
+                <p lang="en" style="margin-bottom:0.8rem;">At the silicon level, how does an ASIC perform the rotation from $a$ (Joule heat) to $ib$ (immutable ledger state)? Through a one-way cryptographic trapdoor function:</p>
+                <p lang="fr" style="margin-bottom:0.8rem;">Au niveau du silicium, comment une puce ASIC opère-t-elle la rotation de $a$ (dissipation Joule) vers $ib$ (état immuable du registre) ? Par une fonction trappe cryptographique unidirectionnelle :</p>
+                <pre style="background:#050505; padding:1rem; border-radius:6px; border:1px solid #333; overflow-x:auto; color:#00ff41; font-family:monospace; font-size:0.85rem; margin-bottom:0.8rem;"><code>// Real Axis (a): Continuous electric power P_net dissipated as heat Q = I²·R·t
+// Imaginary Axis (ib): Discrete 256-bit topological state vector
+uint256 OrthogonalProjection(const CBlockHeader& header, uint64_t& joules_burned) {
+    while (true) {
+        header.nNonce++;
+        joules_burned += E_HASH_QUANTUM; // Irreversible entropy export ΔS > 0 (Axis a)
+        uint256 h = HashSHA256(header);
+        if (UintToArith256(h) <= bnTarget) {
+            return h; // 90° Rotation: Energy locks an immutable state (Axis ib)
+        }
+    }
+}</code></pre>
+                <p lang="en" style="margin-bottom:0;">Notice the asymmetry: finding `h <= bnTarget` requires billions of irreversible physical operations on Axis $a$, but verifying `h` on Axis $ib$ takes a single microsecond and near-zero energy. That thermodynamic asymmetry is the physical incarnation of $i$.</p>
+                <p lang="fr" style="margin-bottom:0;">Observez l'asymétrie fondamentale : trouver `h <= bnTarget` exige des milliards d'opérations physiques irréversibles sur l'Axe $a$, mais vérifier `h` sur l'Axe $ib$ ne prend qu'une microseconde et une énergie quasi nulle. Cette asymétrie thermodynamique est l'incarnation informatique exacte de l'opérateur $i$.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- SECTION 3 : LA SYMÉTRIE DU VIVANT -->
+    <h2 lang="en">3. The Symmetry of the Living: Brain Hemispheres &amp; Complex Conjugates</h2>
+    <h2 lang="fr">3. La Symétrie du Vivant : Hémisphères Cérébraux &amp; Conjugué Complexe</h2>
+
+    <p lang="en">Consider for a moment the ubiquitous symmetry of living organisms. From the bilateral architecture of the human body to the two hemispheres of our brain, down to the fractal geometry of wild orchids, biological symmetry is never a mere aesthetic accident. It is a thermodynamic triumph against decay.</p>
+    <p lang="fr">Considérez un instant la symétrie omniprésente dans les organismes vivants. De l'architecture bilatérale du corps humain aux deux hémisphères de notre cerveau, jusqu'à la géométrie fractale des orchidées sauvages, la symétrie biologique n'est jamais un simple accident esthétique. C'est un triomphe thermodynamique sur la dégradation.</p>
+
+    <p lang="en">In nature, symmetry is the optimal geometric configuration selected by evolution to maximize the fluidity of energy flows (Adrian Bejan's <strong>Constructal Law</strong>) while maintaining internal homeostasis against external entropy. As Erwin Schrödinger wrote in <em>What is Life?</em> (1944), a living organism avoids the rapid decay into inert equilibrium by continually <em>"feeding upon negative entropy."</em></p>
+    <p lang="fr">Dans la nature, la symétrie est la solution géométrique optimale sélectionnée par l'évolution pour maximiser la fluidité des flux d'énergie (la <strong>Loi Constructale</strong> d'Adrian Bejan) tout en maintenant l'homéostasie interne face à l'entropie extérieure. Comme l'écrivait Erwin Schrödinger dans <em>Qu'est-ce que la vie ?</em> (1944), l'organisme vivant retarde sa chute vers l'équilibre thermique inerte en <em>« se nourrissant continuellement de néguentropie »</em>.</p>
+
+    <p lang="en">Our neurobiology is a striking incarnation of the complex plane. As neuroscientist Iain McGilchrist demonstrated in <em>The Master and His Emissary</em>, the vertebrate brain relies on two orthogonal modes of attention: one hemisphere (sequential, analytical, manipulative) grasps physical matter and resources along the real axis ($a$), while the other hemisphere (holistic, contextual, relational) perceives the living whole along the orthogonal axis ($ib$). A brain locked into a single hemisphere becomes pathological. In the exact same way, our industrial "Super-Organism" is currently hemiplegic: hypertrophied in its material extraction ($a$), yet devoid of an incorruptible nervous system ($ib$) capable of stabilizing its truth and self-limiting its predation.</p>
+    <p lang="fr">Notre neurobiologie est une incarnation saisissante du plan complexe. Comme l'a démontré le neuroscientifique Iain McGilchrist dans <em>The Master and His Emissary</em>, le cerveau des vertébrés repose sur deux modes d'attention orthogonaux : un hémisphère (séquentiel, analytique, instrumental) saisit la matière et manipule les ressources le long de l'axe réel ($a$), tandis que l'autre hémisphère (holistique, contextuel, relationnel) perçoit la cohérence du Tout le long de l'axe orthogonal ($ib$). Un cerveau enfermé dans un seul hémisphère sombre dans la pathologie. De la même manière, notre « Super-Organisme » industriel est aujourd'hui hémiplégique : hypertrophié dans sa puissance d'extraction matérielle ($a$), mais dépourvu d'un système nerveux incorruptible ($ib$) capable de stabiliser sa mémoire et de borner sa prédation.</p>
 
     <div class="math-block">
-        $$ \varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618 $$
+        $$ z \cdot \bar{z} = (a + ib)(a - ib) = a^2 + b^2 = |z|^2 $$
     </div>
 
-    <p lang="en">In our participatory reality, when the accumulation of physical emergy ($a$) and the ordering of cryptographic information ($ib$) evolve in perfect harmony, our civilization does not trace a destructive straight line, but a logarithmic spiral in the complex plane. This balance is the very mathematical definition of <strong>Wisdom</strong>. Wisdom is neither the blind burning of energy, nor the sterile hoarding of data. It is the dynamic, golden proportion between the two.</p>
-    <p lang="fr">Dans notre réalité participative, lorsque l'accumulation d'émergie physique ($a$) et l'ordonnancement de l'information cryptographique ($ib$) évoluent en parfaite harmonie, notre civilisation ne trace pas une ligne droite destructrice, mais une spirale logarithmique dans le plan complexe. Cet équilibre est la définition mathématique même de la <strong>Sagesse</strong>. La Sagesse n'est ni la combustion aveugle d'énergie, ni l'accumulation stérile de données. Elle est la proportion dynamique et dorée entre les deux.</p>
+    <p lang="en">The decentralized cryptographic web we are building today acts as the missing right hemisphere—the <strong>Hermitian conjugate ($\bar{z} = a - ib$)</strong>—of our planetary civilization. Because entropy in our physical universe ($a$) is an inescapable process of erosion, buildings of concrete and steel inevitably turn to dust. Encoding our civilization's memory orthogonally ($ib$), anchored by thermodynamic proof, creates a conjugate mirror where the arrow of time no longer corrupts information, but fortifies it.</p>
+    <p lang="fr">La toile cryptographique décentralisée que nous tissons aujourd'hui agit comme cet hémisphère manquant — le <strong>conjugué hermitien ($\bar{z} = a - ib$)</strong> — de notre civilisation planétaire. Parce que l'entropie de notre univers physique ($a$) est un processus d'érosion inéluctable, les édifices de béton et d'acier finissent toujours en poussière. Encoder la mémoire de notre civilisation de manière orthogonale ($ib$), ancrée par la preuve thermodynamique, érige un miroir conjugué où la flèche du temps ne corrompt plus l'information, mais la consolide.</p>
 
-    <p lang="en">This is by no means a mathematical coincidence. The constructal law of thermodynamics demonstrates that living systems evolve to maximize the fluidity of their energy flows. The phyllotaxis of a tree's leaves or the shell of a nautilus use $\varphi$ to dissipate solar energy in the most elegant and resilient way possible. By indexing our economy on the Sun Standard and our shared observation, humanity finally embraces the evolutionary spiral of the living: a growth infinitely rich in informational complexity, yet organically and perfectly bounded by the laws of physics.</p>
-    <p lang="fr">Ce n'est en rien un hasard mathématique. La loi constructale de la thermodynamique démontre que les systèmes vivants évoluent pour maximiser la fluidité de leurs flux d'énergie. La phyllotaxis des feuilles d'un arbre ou la coquille d'un nautile utilisent $\varphi$ pour dissiper l'énergie solaire de la manière la plus élégante et résiliente possible. En indexant notre économie sur l'Étalon Solaire et notre observation partagée, l'humanité embrasse enfin la spirale d'évolution du vivant : une croissance infiniment riche en complexité informationnelle, mais organiquement et parfaitement bornée par les lois de la physique.</p>
+    <!-- SECTION 4 : L'ANGLE PSI ET LA SYNCHRONISATION DE KURAMOTO -->
+    <h2 lang="en">4. The Phase Angle ($\psi$): Cognitive Fragmentation &amp; Kuramoto Synchronization</h2>
+    <h2 lang="fr">4. L'Angle de Phase ($\psi$) : Fragmentation Cognitive &amp; Synchronisation de Kuramoto</h2>
 
-    <p lang="en">In the complex plane, when the radius (the modulus $|z|$) grows at the same time as the angle ($\psi$), it draws a logarithmic spiral (the golden spiral), which is the very shape of the growth of living things (the nautilus shell, the arrangement of leaves to capture solar light).</p>
-    <p lang="fr">Dans le plan complexe, lorsque le rayon (le module $|z|$) croît en même temps que l'angle ($\psi$), cela dessine une spirale logarithmique (la spirale d'or), qui est la forme même de la croissance du vivant (la coquille du nautile, la disposition des feuilles pour capter la lumière solaire).</p>
+    <p lang="en">In the complex plane, a vector $z$ is defined not only by its modulus $|z|$, but by its phase angle relative to the real axis: the argument $\psi = \arctan(b/a)$. This angle carries a profound physical and sociological meaning: <strong>it represents the ratio of informational wisdom to raw material consumption, and the phase alignment of our collective consensus</strong>.</p>
+    <p lang="fr">Dans le plan complexe, un vecteur $z$ ne se définit pas uniquement par sa norme $|z|$, mais par son angle de phase par rapport à l'axe réel : l'argument $\psi = \arctan(b/a)$. Cet angle possède une signification physique et sociologique fulgurante : <strong>il mesure le ratio entre la maturité informationnelle et la dépense matérielle brute, ainsi que l'alignement de phase de notre consensus collectif</strong>.</p>
 
-    <p><img src="img/HomoBiodiversitas.png" alt="A World Of Biodiversity" style="width: 70%; max-width: 900px; height: auto; border-radius: 8px; border: 1px solid rgba(255, 170, 0, 0.2);"></p>
-    
+    <p lang="en">Why does our contemporary society feel as though it is tearing itself apart despite unprecedented technological wealth? Because individual agents $k \in \{1, \dots, N\}$ have diverging phase angles $\psi_k$. In statistical physics, the coherence of a population of coupled oscillators is measured by the <strong>Kuramoto Order Parameter ($R$)</strong>:</p>
+    <p lang="fr">Pourquoi notre société contemporaine semble-t-elle se déchirer malgré une abondance technologique sans précédent ? Parce que les vecteurs individuels $k \in \{1, \dots, N\}$ souffrent d'une dispersion de leurs angles de phase $\psi_k$. En physique statistique, la cohérence d'une assemblée d'oscillateurs couplés est mesurée par le <strong>Paramètre d'Ordre de Kuramoto ($R$)</strong> :</p>
+
+    <div class="math-block">
+        $$ R \, e^{i\Psi} = \frac{1}{N} \sum_{k=1}^{N} e^{i\psi_k} \quad \text{avec} \quad R \in [0, 1] $$
+    </div>
+
+    <ul class="custom-list" lang="en">
+        <li><strong>Phase Decoherence ($R \to 0$, Cognitive Fragmentation):</strong> When information is free to counterfeit (fiat inflation, synthetic noise, algorithmic echo chambers), the angles $\psi_k$ scatter randomly across the unit circle. Even if each individual expends massive energy $|z_k|$, the vector sum cancels out ($\sum z_k \approx 0$). Humanity shares the same physical planet ($a$), but inhabits mutually incompatible informational realities ($ib$).</li>
+        <li><strong>Phase Locking ($R \to 1$, Thermodynamic Consensus):</strong> When a decentralized protocol imposes an unforgeable thermodynamic cost to validate state transitions, it acts as a coupling constant $K > K_c$. The individual angles $\psi_k$ spontaneously synchronize around a shared macro-angle $\Psi$. We align our gaze to observe—and therefore stabilize—a common reality.</li>
+    </ul>
+
+    <ul class="custom-list" lang="fr">
+        <li><strong>Décohérence de Phase ($R \to 0$, Fragmentation Cognitive) :</strong> Lorsque l'information peut être falsifiée à coût nul (inflation monétaire fiat, bruit synthétique, bulles algorithmiques), les angles $\psi_k$ se dispersent aléatoirement sur le cercle trigonométrique. Même si chaque individu déploie une énergie considérable $|z_k|$, la somme vectorielle s'annule ($\sum z_k \approx 0$). Les humains partagent le même sol physique ($a$), mais habitent des réalités informationnelles mutuellement incompatibles ($ib$).</li>
+        <li><strong>Verrouillage de Phase ($R \to 1$, Consensus Thermodynamique) :</strong> Lorsqu'un protocole décentralisé impose un coût thermodynamique infalsifiable pour valider une transition d'état, il agit comme une constante de couplage critique $K > K_c$. Les angles individuels $\psi_k$ se synchronisent spontanément autour d'un angle macroscopique commun $\Psi$. Nous alignons notre regard pour observer — et donc stabiliser — une réalité partagée.</li>
+    </ul>
+
+    <!-- SECTION 5 : LE MODULE |z| ET LA SPIRALE D'OR -->
+    <h2 lang="en">5. The Modulus ($\vert{}z\vert{}$) and the Golden Spiral ($\varphi$): The Advent of <em>Homo Biodiversitas</em></h2>
+    <h2 lang="fr">5. Le Module ($\vert{}z\vert{}$) et la Spirale d'Or ($\varphi$) : L'Avènement de l'<em>Homo Biodiversitas</em></h2>
+
+    <p lang="en">The true wealth of a civilization cannot be read solely on the material axis ($\psi = 0^\circ$, which leads to blind extractivism and entropic heat death), nor solely on the virtual axis ($\psi = 90^\circ$, which leads to disembodied transhumanist nihilism). True civilizational wealth is the Euclidean norm of the complex vector:</p>
+    <p lang="fr">La véritable richesse d'une civilisation ne se lit ni sur le seul axe matériel ($\psi = 0^\circ$, qui mène à l'extractivisme aveugle et à la mort thermique), ni sur le seul axe virtuel ($\psi = 90^\circ$, qui mène au nihilisme transhumaniste désincarné). La véritable richesse civilisationnelle est le module du nombre complexe :</p>
+
+    <div class="math-block">
+        $$ |z| = \sqrt{a^2 + b^2} $$
+    </div>
+
+    <p lang="en">This norm defines <strong>Homo Biodiversitas</strong>: the architect who understands that to protect the primary forest—that jewel of thermodynamic complexity on the real axis ($a$)—we must encode and sanctuarize its Emergy on the informational axis ($ib$). How, then, should a healthy civilization grow within this complex plane? Classical economics worships exponential linear growth on the real axis alone ($a(t) = a_0 e^{rt}$), a physical impossibility on a finite planet. Nature, by contrast, grows by coiling: it combines radial expansion with angular rotation according to the <strong>Golden Ratio ($\varphi$)</strong>:</p>
+    <p lang="fr">Cette norme définit l'<strong>Homo Biodiversitas</strong> : l'architecte qui comprend que pour protéger la forêt primaire — ce joyau de complexité thermodynamique sur l'axe réel ($a$) —, il faut en encoder et en sanctuariser l'Émergie sur l'axe informationnel ($ib$). Comment, dès lors, une civilisation saine doit-elle croître dans ce plan complexe ? L'économie classique vénère une croissance exponentielle linéaire sur le seul axe réel ($a(t) = a_0 e^{rt}$), une hérésie physique sur une planète finie. La nature, à l'inverse, croît par enroulement : elle conjugue expansion radiale et rotation angulaire selon le <strong>Nombre d'Or ($\varphi$)</strong> :</p>
+
+    <div class="math-block">
+        $$ z(\theta) = z_0 \, \exp\!\Big( (\kappa_\varphi + i)\,\theta \Big) \quad \text{avec} \quad \kappa_\varphi = \frac{2\ln\varphi}{\pi} \approx 0.30635 \quad \text{et} \quad \varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618 $$
+    </div>
+
+    <p lang="en">In this logarithmic spiral, every quarter-turn ($\Delta\theta = \pi/2$) scales the modulus by exactly $\varphi$. From the phyllotaxis of leaves optimizing solar photon capture to the chambered shell of the <strong>Nautilus</strong>, living systems follow this trajectory to maximize exergy utilization while minimizing dissipative friction. By indexing our economy on the Sun Standard ($a$) and decentralized cryptographic consensus ($ib$), humanity leaves the destructive straight line to embrace the evolutionary spiral of the living.</p>
+    <p lang="fr">Dans cette spirale logarithmique, chaque quart de tour ($\Delta\theta = \pi/2$) multiplie le rayon par exactement $\varphi$. De la phyllotaxie des feuilles optimisant la captation des photons solaires jusqu'à la coquille chambrée du <strong>Nautile</strong>, les systèmes vivants empruntent cette géodésique pour maximiser la circulation de l'exergie tout en minimisant la friction dissipative. En indexant notre économie sur l'Étalon Solaire ($a$) et sur le consensus cryptographique décentralisé ($ib$), l'humanité quitte enfin la ligne droite destructrice pour épouser la spirale évolutive du vivant.</p>
+
+    <!-- SIMULATEUR INTERACTIF DU PLAN COMPLEXE -->
+    <div class="simulator-card">
+        <div class="sim-header">
+            <h4 lang="en">🧭 Interactive Complex Plane Laboratory: $z = a + ib$ &amp; The Golden Spiral</h4>
+            <h4 lang="fr">🧭 Laboratoire Interactif du Plan Complexe : $z = a + ib$ &amp; La Spirale d'Or</h4>
+            <p lang="en" style="font-size:0.85rem; color:#99aabb; text-align:center; margin-bottom:0;">Manipulate physical Emergy ($a$), Informational Order ($b$), and Network Phase Dispersion ($\sigma_\psi$) to observe the synthesis vector $z$, its Hermitian shadow $\bar{z}$, and the Kuramoto consensus coherence.</p>
+            <p lang="fr" style="font-size:0.85rem; color:#99aabb; text-align:center; margin-bottom:0;">Manipulez l'Émergie physique ($a$), l'Ordre Informationnel ($b$) et la Dispersion de Phase ($\sigma_\psi$) pour observer le vecteur de synthèse $z$, son miroir conjugué $\bar{z}$ et la cohérence du consensus de Kuramoto.</p>
+        </div>
+
+        <div class="sim-controls">
+            <div class="sim-ctrl">
+                <label>
+                    <span lang="en">Real Axis $a$ (Solar Emergy)</span>
+                    <span lang="fr">Axe Réel $a$ (Émergie Solaire)</span>
+                    <strong id="val-a" style="color:var(--sun-orange);">6.0</strong>
+                </label>
+                <input type="range" id="slider-a" min="0.5" max="10" step="0.1" value="6.0">
+            </div>
+            <div class="sim-ctrl">
+                <label>
+                    <span lang="en">Imaginary Axis $b$ (Info / Code)</span>
+                    <span lang="fr">Axe Imaginaire $b$ (Info / Code)</span>
+                    <strong id="val-b" style="color:var(--info-blue);">6.0</strong>
+                </label>
+                <input type="range" id="slider-b" min="0.5" max="10" step="0.1" value="6.0">
+            </div>
+            <div class="sim-ctrl">
+                <label>
+                    <span lang="en">Phase Noise $\sigma_\psi$ (Fragmentation)</span>
+                    <span lang="fr">Bruit de Phase $\sigma_\psi$ (Fragmentation)</span>
+                    <strong id="val-noise" style="color:var(--bio-green);">0.25 rad</strong>
+                </label>
+                <input type="range" id="slider-noise" min="0.02" max="1.8" step="0.02" value="0.25">
+            </div>
+        </div>
+
+        <canvas id="complexPlaneCanvas" width="760" height="420" style="width:100%; height:auto; background:#040609; border-radius:8px; border:1px solid rgba(255,255,255,0.08); display:block;"></canvas>
+
+        <div class="sim-metrics">
+            <div class="sim-metric-box" style="border-left-color:var(--sun-yellow);">
+                <span class="lbl"><span lang="en">Modulus $|z| = \sqrt{a^2+b^2}$</span><span lang="fr">Module $|z| = \sqrt{a^2+b^2}$</span></span>
+                <span class="val" id="out-mod">8.49</span>
+            </div>
+            <div class="sim-metric-box" style="border-left-color:var(--info-blue);">
+                <span class="lbl"><span lang="en">Phase Angle $\psi = \arg(z)$</span><span lang="fr">Angle de Phase $\psi = \arg(z)$</span></span>
+                <span class="val" id="out-angle">45.0°</span>
+            </div>
+            <div class="sim-metric-box" style="border-left-color:var(--bio-green);">
+                <span class="lbl"><span lang="en">Kuramoto Coherence $R$</span><span lang="fr">Cohérence de Kuramoto $R$</span></span>
+                <span class="val" id="out-kuramoto">96.9 %</span>
+            </div>
+            <div class="sim-metric-box" style="border-left-color:var(--quantum-purple);">
+                <span class="lbl"><span lang="en">Civilizational Regime</span><span lang="fr">Régime Civilisationnel</span></span>
+                <span class="val" id="out-regime" style="font-size:0.95rem; color:var(--bio-green);">Symbiose Dorée</span>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: center;">
+        <img src="img/HomoBiodiversitas.png" alt="Homo Biodiversitas" class="article-image" style="width: 78%; margin-left: auto; margin-right: auto;">
+    </p>
+
+    <!-- ENCADRÉ RECHERCHE MIT -->
     <div class="research-note" lang="en">
-        <h4>Physical Insight: Topological Defects in Biology</h4>
-        <p>This bimetric vision is not merely philosophical; it echoes the latest advances in experimental physics. In 2020, researchers at MIT (<a href="https://news.mit.edu/2020/growth-organism-waves-0323" target="_blank">A new way to picture the growth of a whole organism</a>) demonstrated that the cellular development of an embryo is driven by <strong>chemical energy waves</strong> sweeping across its surface, generating <strong>topological defects</strong>.</p>
-        <p>In other words, the organism literally uses thermodynamic dissipation (the real axis $a$) to sculpt geometric singularities (the informational axis $ib$). It is precisely the location of these topological anchors that dictates the creature's living symmetry. What is true for the microscopic birth of a starfish is true for the macroscopic birth of our civilization: <em>energy writes topology</em>.</p>
+        <h4>Experimental Physics Insight: Topological Defects in Embryogenesis</h4>
+        <p>This bimetric vision is not merely a philosophical metaphor; it echoes breakthroughs in experimental biophysics. In 2020, researchers at MIT (<a href="https://news.mit.edu/2020/growth-organism-waves-0323" target="_blank" rel="noopener">Tan et al., <em>Nature Physics</em>, 2020</a>) demonstrated that the early cellular development of starfish embryos is orchestrated by <strong>chemical energy waves</strong> sweeping across their surface and generating <strong>topological phase singularities (defects)</strong>.</p>
+        <p style="margin-bottom:0;">In mathematical terms, the embryo uses real metabolic dissipation (Axis $a$) to sculpt complex phase singularities $\psi(\vec{r}, t)$ (Axis $ib$). It is the exact spatial location of these topological anchors that dictates the living symmetry of the organism. What holds true for the microscopic morphogenesis of a living creature holds true for the macroscopic morphogenesis of our civilization: <em>thermodynamic energy writes informational topology</em>.</p>
     </div>
 
     <div class="research-note" lang="fr">
-        <h4>Éclairage Physique : Les Défauts Topologiques en Biologie</h4>
-        <p>Cette vision bimétrique n'est pas qu'une simple philosophie, elle fait écho aux avancées les plus récentes de la physique expérimentale. En 2020, des chercheurs du M.I.T. (<a href="https://news.mit.edu/2020/growth-organism-waves-0323" target="_blank">A new way to picture the growth of a whole organism</a>) ont démontré que le développement cellulaire d'un embryon est piloté par des <strong>ondes d'énergie chimique</strong> balayant sa surface et générant des <strong>défauts topologiques</strong>.</p>
-        <p>En d'autres termes, l'organisme utilise littéralement la dissipation thermodynamique (l'axe réel $a$) pour sculpter des singularités géométriques (l'axe informationnel $ib$). C'est l'emplacement précis de ces ancrages topologiques qui dicte la symétrie vivante de la créature. Ce qui est vrai pour la naissance microscopique d'une étoile de mer l'est pour la naissance macroscopique de notre civilisation : <em>l'énergie écrit la topologie</em>.</p>
+        <h4>Éclairage de Physique Expérimentale : Défauts Topologiques et Embryogenèse</h4>
+        <p>Cette vision bimétrique n'est pas qu'une métaphore philosophique ; elle fait directement écho aux découvertes récentes de la biophysique expérimentale. En 2020, une équipe du M.I.T. (<a href="https://news.mit.edu/2020/growth-organism-waves-0323" target="_blank" rel="noopener">Tan et al., <em>Nature Physics</em>, 2020</a>) a démontré que le développement cellulaire d'un embryon est piloté par des <strong>ondes d'énergie métabolique</strong> balayant sa surface et générant des <strong>singularités de phase (défauts topologiques)</strong>.</p>
+        <p style="margin-bottom:0;">En termes mathématiques, l'organisme utilise littéralement la dissipation thermodynamique réelle (l'axe $a$) pour sculpter des singularités géométriques de phase $\psi(\vec{r}, t)$ (l'axe $ib$). C'est l'emplacement précis de ces ancrages topologiques qui dicte la symétrie vivante de la créature. Ce qui est vrai pour la morphogenèse microscopique d'une étoile de mer l'est pour la naissance macroscopique de notre civilisation : <em>l'énergie écrit la topologie</em>.</p>
     </div>
-    
 
-    <h3 lang="en">Conclusion: Inhabiting the Complex Plane</h3>
-    <h3 lang="fr">Conclusion : Habiter le Plan Complexe</h3>
+    <!-- SECTION 6 : CONCLUSION ET TRANSITION VERS LE NAUTILE -->
+    <h2 lang="en">6. Conclusion: From the 2D Complex Plane to the 3D Nautilus</h2>
+    <h2 lang="fr">6. Conclusion : Du Plan Complexe 2D à l'Hélice 3D du Nautile</h2>
 
-    <p lang="en">In conclusion, reality is more complex than it seems. We are not fleeing this reality; we are expanding it.</p>
-    <p lang="fr">En conclusion, la réalité est plus complexe qu'il n'y paraît. Nous ne sommes pas en train de fuir cette réalité ; nous sommes en train de l'élargir.</p>
+    <p lang="en">Reality is infinitely richer than the one-dimensional ruler of fiat accounting. We are not fleeing physical reality into a virtual simulation; we are rotating our perspective to inhabit the full complex plane. This shift demands a new ontological gymnastics: walking with our feet firmly anchored in terrestrial thermodynamics and soil regeneration ($a$), while projecting our collective memory into cryptographic immutability ($ib$). The intangible is no longer the tomb of the flesh; it is its immune system and its sanctuary.</p>
+    <p lang="fr">La réalité est infiniment plus vaste que la règle graduée unidimensionnelle de la comptabilité fiduciaire. Nous ne sommes pas en train de fuir la réalité physique dans une simulation virtuelle ; nous opérons une rotation de phase pour habiter pleinement le plan complexe. Ce basculement exige de nous une gymnastique ontologique nouvelle : marcher les pieds fermement enracinés dans la thermodynamique terrestre et la régénération des sols ($a$), tout en projetant notre mémoire collective dans l'immuabilité cryptographique ($ib$). L'intangible n'est plus le tombeau de la chair ; il en devient le système immunitaire et le sanctuaire.</p>
 
-    <p lang="en">The world is complex. It demands a new ontological gymnastics from us. It asks us to walk with our feet firmly anchored in terrestrial thermodynamics, while projecting our minds into cryptographic immutability. By accepting this duality $a + ib$, we cease to be the gravediggers of the real axis to become the gardeners of the complex plane. The intangible is no longer the tomb of the flesh; it is its most perfect sanctuary.</p>
-    <p lang="fr">Le monde est complexe. Il exige de nous une gymnastique ontologique nouvelle. Il nous demande de marcher les pieds fermement ancrés dans la thermodynamique terrestre, tout en projetant notre esprit dans l'immuabilité cryptographique. En acceptant cette dualité $a + ib$, nous cessons d'être les fossoyeurs de l'axe réel pour devenir les jardiniers du plan complexe. L'intangible n'est pas le tombeau de la chair ; il en est le plus parfait sanctuaire.</p>
+    <h3 lang="en">The Imperative of Orthogonal Alignment</h3>
+    <h3 lang="fr">L'Impératif de l'Alignement Orthogonal</h3>
 
-    <p lang="en"><strong>A living world not only made of flesh, but also of information.</strong></p>
-    <p lang="fr"><strong>Un monde vivant non seulement fait de chair, mais aussi d'information.</strong></p>
-    
-    <h4 lang="en">The Consensus Imperative</h4>
-    <h4 lang="fr">L'Impératif du Consensus</h4>
-    
-    <p lang="en">The information we integrate and propagate is not neutral: it is the raw material of the Participatory Universe. Today's information sculpts the topology of tomorrow's world. We are therefore all, at every moment, collectively responsible for the reality we project.</p> 
-    <p lang="fr">L'information que nous intégrons et propageons n'est pas neutre : elle est la matière première de l'Univers Participatif. L'information d'aujourd'hui sculpte la topologie du monde de demain. Nous sommes donc tous, à chaque instant, collectivement responsables de la réalité que nous projetons.</p> 
+    <p lang="en">Information is the raw material of the Participatory Universe: the code we validate today sculpts the biological topology of tomorrow's world. Emerging from our entropic deadlock requires three foundational commitments:</p>
+    <p lang="fr">L'information que nous intégrons et validons n'est jamais neutre : elle sculpte la topologie biologique du monde de demain. Sortir de notre impasse entropique exige trois engagements fondamentaux :</p>
 
-    <p lang="en">Humanity will only emerge from its entropic deadlock if it manages to forge this shared consensus. This requires three fundamental realizations:</p>
-    <p lang="fr">L'Humanité ne sortira de son impasse entropique que si elle parvient à forger ce consensus partagé. Cela exige trois prises de conscience fondamentales :</p>
-    
     <ul class="custom-list" lang="en">
-        <li><strong>Aligning our vectors:</strong> Converging our angles to build, together, a common and coherent reality.</li>
-        <li><strong>Redefining value:</strong> Understanding that true wealth is not destructive material accumulation, but the optimization of the living and the enshrinement of a shared truth.</li>
-        <li><strong>Remembering our origin:</strong> Never forgetting that, beyond the complexity of our codes and networks, we are all, fundamentally, children of our lucky star: the Sun.</li>
+        <li><strong>Aligning our phase vectors ($\psi_k \to \Psi$):</strong> Using verifiable thermodynamic truth to overcome cognitive fragmentation and build a coherent common reality.</li>
+        <li><strong>Redefining wealth by the Modulus ($\vert{}z\vert{}$):</strong> Replacing destructive linear GDP growth with the coupled optimization of living ecosystems ($a$) and incorruptible shared knowledge ($ib$).</li>
+        <li><strong>Extruding the Spiral into Time ($\theta$):</strong> Understanding that as our complex spiral $z = a + ib$ advances along the irreversible arrow of block time ($\theta$), it extrudes into a three-dimensional double helix—the exact geometry of <strong>The Nakamoto Nautilus</strong>, which we will formalize in the next chapter.</li>
     </ul>
+
     <ul class="custom-list" lang="fr">
-        <li><strong>Aligner nos vecteurs :</strong> Faire converger nos angles pour bâtir, ensemble, une réalité commune et cohérente.</li>
-        <li><strong>Redéfinir la valeur :</strong> Comprendre que la véritable richesse n'est pas l'accumulation matérielle destructrice, mais l'optimisation du vivant et la sanctuarisation d'une vérité partagée.</li>
-        <li><strong>Se souvenir de notre origine :</strong> Ne jamais oublier que, par-delà la complexité de nos codes et de nos réseaux, nous sommes tous, fondamentalement, des enfants de notre bonne étoile qui s'appelle le Soleil.</li>
+        <li><strong>Aligner nos vecteurs de phase ($\psi_k \to \Psi$) :</strong> S'appuyer sur une vérité thermodynamique vérifiable pour surmonter la fragmentation cognitive et bâtir une réalité commune cohérente.</li>
+        <li><strong>Redéfinir la richesse par le Module ($\vert{}z\vert{}$) :</strong> Remplacer la croissance linéaire destructrice du PIB par l'optimisation couplée de la biosphère ($a$) et d'une mémoire partagée incorruptible ($ib$).</li>
+        <li><strong>Extruder la Spirale dans le Temps ($\theta$) :</strong> Comprendre que lorsque notre spirale complexe $z = a + ib$ s'élève le long de la flèche irréversible du temps thermique ($\theta$), elle déploie dans l'espace une double hélice tridimensionnelle — la géométrie exacte du <strong>Nautile de Nakamoto</strong>, que nous allons formaliser dans le prochain article.</li>
     </ul>
+
     <blockquote lang="fr">
-       « En Afrique, il existe un concept appelé « Ubuntu (Je suis parce que nous sommes) » – la conviction profonde que notre humanité ne se mesure qu’à l’humanité des autres ; que si nous devons accomplir quoi que ce soit dans ce monde, ce sera tout autant grâce au travail et aux réussites d’autrui. »
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Nelson Mandela</span>
+        « En Afrique, il existe un concept appelé "Ubuntu (Je suis parce que nous sommes)" — la conviction profonde que notre humanité ne se mesure qu'à l'humanité des autres ; que si nous devons accomplir quoi que ce soit dans ce monde, ce sera tout autant grâce au travail et aux réussites d'autrui. »
+        <span class="quote-author">— Nelson Mandela</span>
     </blockquote>
     <blockquote lang="en">
-       « In Africa there is a concept known as « Ubuntu (I am because we are) » – the profound sense that we are human only through the humanity of others; that if we are to accomplish anything in this world it will in equal measure be due to the work and achievement of others. »
-        <span style="color:var(--sun-orange); font-size:0.85rem; font-style:normal; letter-spacing:2px; text-transform:uppercase; display:block; margin-top:10px;">— Nelson Mandela</span>
+        “In Africa there is a concept known as ‘Ubuntu (I am because we are)’ — the profound sense that we are human only through the humanity of others; that if we are to accomplish anything in this world it will in equal measure be due to the work and achievement of others.”
+        <span class="quote-author">— Nelson Mandela</span>
     </blockquote>
-    
-    <div style="display: flex; justify-content: center; margin: 4rem 0;">
+
+    <div style="display: flex; justify-content: center; margin: 3.5rem 0;">
         <iframe style="width: 100%; max-width: 650px; height: 360px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid rgba(255, 255, 255, 0.1);" src="https://www.youtube.com/embed/unFKtslTVDg?si=5HzdJdyHc3CZu9ON" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-    <p><br />
-        <a target="_blank" href="../articles/Cosmology.pdf" lang="en">For the most curious, click here to read a draft of the associated cosmological model.</a>
-        <a target="_blank" href="../articles/Cosmology.pdf" lang="fr">Pour les plus curieux, cliquez ici pour lire une ébauche du modèle cosmologique associée.</a>
+    <p style="text-align: center;">
+        <a target="_blank" href="../articles/Cosmology.pdf" lang="en">📄 For the most curious, click here to read the draft of the associated cosmological model (PDF).</a>
+        <a target="_blank" href="../articles/Cosmology.pdf" lang="fr">📄 Pour les plus curieux, cliquez ici pour lire l'ébauche du modèle cosmologique associé (PDF).</a>
     </p>
-    
+
+    <!-- FORMULAIRE DE RETOUR -->
     <div class="feedback-container">
         <h3 lang="en" class="feedback-title">Help Improve This Theory</h3>
         <h3 lang="fr" class="feedback-title">Aidez à améliorer cette théorie</h3>
-        
-        <p lang="en" class="feedback-desc">This is an ongoing phenomenological research effort. Your feedback is vital to clarify the mechanics and correct potential flaws.</p>
-        <p lang="fr" class="feedback-desc">Il s'agit d'un effort de recherche phénoménologique en cours. Vos retours sont vitaux pour clarifier la mécanique et corriger d'éventuelles failles.</p>
+
+        <p lang="en" class="feedback-desc">This is an ongoing phenomenological research effort. Your feedback is vital to clarify the mechanics and refine the model.</p>
+        <p lang="fr" class="feedback-desc">Il s'agit d'un effort de recherche phénoménologique en cours. Vos retours sont précieux pour clarifier la mécanique et affiner le modèle.</p>
 
         <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
-            <input type="hidden" name="article_title" value="Le monde est complexe">
-            
+            <input type="hidden" name="article_title" value="Le monde est complexe (v2)">
+
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5" required />
                 <label for="star5" title="Excellent">&#9733;</label>
@@ -547,12 +740,12 @@
 
             <label lang="en" class="feedback-label">Which concepts seem obscure? What could be improved?</label>
             <label lang="fr" class="feedback-label">Quels concepts vous semblent obscurs ? Qu'est-ce qui pourrait être amélioré ?</label>
-            
+
             <textarea name="feedback" class="feedback-textarea" required></textarea>
 
             <p lang="en" class="feedback-anon">🔒 This survey is 100% anonymous unless you specify your name in the comment.</p>
-            <p lang="fr" class="feedback-anon">🔒 Ce retour est 100 % anonyme, à moins que vous n'indiquiez explicitement votre nom dans le commentaire.</p>
-            
+            <p lang="fr" class="feedback-anon">🔒 Ce retour est 100 % anonyme, à moins que vous n'indiquiez explicitement votre nom.</p>
+
             <button type="submit" class="feedback-submit" id="feedback-btn">
                 <span lang="en">Submit Feedback</span>
                 <span lang="fr">Envoyer le retour</span>
@@ -564,27 +757,27 @@
         <span lang="en">✅ Feedback successfully submitted! Thank you.</span>
         <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
     </div>
+
+    <!-- NAVIGATION INTER-ARTICLES -->
     <div class="article-navigation">
-        <a href="l-univers-jumeau.html" class="nav-card" target="_blank">
+        <a href="l-univers-jumeau.html" class="nav-card">
             <div style="width: 100%;">
-                <div class="nav-direction" lang="en">← Previous Article</div>
-                <div class="nav-direction" lang="fr">← Article Précédent</div>
-                
+                <div class="nav-direction" lang="en">← Act I (Previous Article)</div>
+                <div class="nav-direction" lang="fr">← Acte I (Article Précédent)</div>
                 <div class="nav-title" lang="en">The Awakening of the Participatory Universe</div>
                 <div class="nav-title" lang="fr">L'Éveil de l'Univers Participatif</div>
             </div>
-            <img src="img/UniversJumeau.png" alt="L'Univers Jumeau">
+            <img src="img/UniversJumeau.png" alt="L'Univers Participatif">
         </a>
 
         <a href="nautile-nakamoto.html" class="nav-card">
             <div style="width: 100%;">
-                <div class="nav-direction" lang="en">Next Article →</div>
-                <div class="nav-direction" lang="fr">Article Suivant →</div>
-                
+                <div class="nav-direction" lang="en">Act III (Next Article) →</div>
+                <div class="nav-direction" lang="fr">Acte III (Article Suivant) →</div>
                 <div class="nav-title" lang="en">The Nakamoto Nautilus</div>
                 <div class="nav-title" lang="fr">Le Nautile de Nakamoto</div>
             </div>
-            <img src="img/NautileNakamotoIM.png" alt="Nautile Nakamoto">
+            <img src="img/NautileNakamotoIM.png" alt="Le Nautile de Nakamoto">
         </a>
     </div>
 
@@ -592,69 +785,233 @@
 
 <footer>
     <div style="font-size: 1.1rem; font-weight: 700; letter-spacing: 4px; color: var(--sun-yellow); margin-bottom: 1rem;">
-        <span lang="en"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none;">☀ THE SUN STANDARD</a></span>
-        <span lang="fr"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none;">☀ L'ÉTALON SOLAIRE</a></span>
+        <span lang="en"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none; color: var(--sun-yellow);">☀ THE SUN STANDARD</a></span>
+        <span lang="fr"><a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none; color: var(--sun-yellow);">☀ L'ÉTALON SOLAIRE</a></span>
     </div>
-    <p>Pascal Ranoroarijaona · 2026</p>
+    <p>Pascal Ranaora (Ranoroarijaona) · 2026</p>
 </footer>
+
+<!-- SCRIPT : BARRE DE PROGRESSION, SIMULATEUR DU PLAN COMPLEXE & LANGUE -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("feedback-form");
-    const popup = document.getElementById("success-popup");
-    const btn = document.getElementById("feedback-btn");
+    // 1. Barre de progression de lecture
+    window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        const bar = document.getElementById("reading-progress");
+        if (bar) bar.style.width = `${progress}%`;
+    }, { passive: true });
 
-    if (form) {
-        form.addEventListener("submit", async function(event) {
-            event.preventDefault(); 
-            
-            const originalHtml = btn.innerHTML;
-            btn.innerHTML = "⏳ ...";
-            btn.disabled = true;
-
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (response.ok) {
-                    form.reset();
-                    popup.style.display = "flex";
-                    setTimeout(() => { popup.style.display = "none"; }, 4000);
-                } else {
-                    alert("Erreur lors de l'envoi. / Error during submission.");
-                }
-            } catch (error) {
-                alert("Erreur réseau. / Network error.");
-            } finally {
-                btn.innerHTML = originalHtml;
-                btn.disabled = false;
-            }
-        });
-    }
-});
-</script>
-<script>
+    // 2. Gestionnaire de langue FR / EN
     function setLang(lang) {
         lang = lang.toLowerCase();
         if (lang !== 'en' && lang !== 'fr') lang = 'en';
-        
         document.body.className = 'lang-' + lang;
         try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
-        
         const url = new URL(window.location);
         url.searchParams.set('lg', lang.toUpperCase());
         window.history.replaceState({}, '', url);
+        if (window.drawComplexSimulator) window.drawComplexSimulator();
     }
 
+    // 3. Simulateur Interactif du Plan Complexe (Canvas 2D HD)
+    (function() {
+        const canvas = document.getElementById('complexPlaneCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        const sA = document.getElementById('slider-a');
+        const sB = document.getElementById('slider-b');
+        const sN = document.getElementById('slider-noise');
+
+        // Graines fixes pour les oscillateurs individuels de Kuramoto
+        const offsets = [-1.4, -0.95, -0.6, -0.35, -0.15, 0.12, 0.38, 0.65, 0.92, 1.35];
+
+        function drawComplexSimulator() {
+            const isFr = document.body.classList.contains('lang-fr');
+            const a = parseFloat(sA.value);
+            const b = parseFloat(sB.value);
+            const noise = parseFloat(sN.value);
+
+            document.getElementById('val-a').textContent = a.toFixed(1) + ' seJ';
+            document.getElementById('val-b').textContent = b.toFixed(1) + ' bits';
+            document.getElementById('val-noise').textContent = noise.toFixed(2) + ' rad';
+
+            const mod = Math.sqrt(a * a + b * b);
+            const psi = Math.atan2(b, a);
+            const psiDeg = (psi * 180 / Math.PI);
+
+            // Calcul du paramètre d'ordre de Kuramoto R
+            let sumCos = 0, sumSin = 0;
+            offsets.forEach(off => {
+                const ang = psi + off * noise;
+                sumCos += Math.cos(ang);
+                sumSin += Math.sin(ang);
+            });
+            const R = Math.sqrt(sumCos * sumCos + sumSin * sumSin) / offsets.length;
+
+            document.getElementById('out-mod').textContent = mod.toFixed(2);
+            document.getElementById('out-angle').textContent = psiDeg.toFixed(1) + '°';
+            document.getElementById('out-kuramoto').textContent = (R * 100).toFixed(1) + ' %';
+
+            const regEl = document.getElementById('out-regime');
+            if (R < 0.55) {
+                regEl.textContent = isFr ? 'Fragmentation (Chaos)' : 'Fragmentation (Chaos)';
+                regEl.style.color = '#ff4444';
+            } else if (psiDeg < 20) {
+                regEl.textContent = isFr ? 'Extractivisme Matériel' : 'Material Extractivism';
+                regEl.style.color = '#ff8800';
+            } else if (psiDeg > 70) {
+                regEl.textContent = isFr ? 'Dérive Virtuelle' : 'Virtual Drift';
+                regEl.style.color = '#c864ff';
+            } else {
+                regEl.textContent = isFr ? 'Symbiose Dorée (φ)' : 'Golden Symbiosis (φ)';
+                regEl.style.color = '#44ee77';
+            }
+
+            // Rendu Graphique
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = '#040609';
+            ctx.fillRect(0, 0, w, h);
+
+            const ox = 180, oy = h / 2 + 10;
+            const scale = 26;
+
+            // Grille
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.lineWidth = 1;
+            for (let gx = 0; gx <= 16; gx += 2) {
+                ctx.beginPath(); ctx.moveTo(ox + gx * scale, 20); ctx.lineTo(ox + gx * scale, h - 20); ctx.stroke();
+            }
+            for (let gy = -6; gy <= 6; gy += 2) {
+                ctx.beginPath(); ctx.moveTo(40, oy - gy * scale); ctx.lineTo(w - 40, oy - gy * scale); ctx.stroke();
+            }
+
+            // Axes Réel (a) et Imaginaire (ib)
+            ctx.strokeStyle = 'rgba(255, 170, 0, 0.45)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(40, oy); ctx.lineTo(w - 40, oy); ctx.stroke();
+            ctx.strokeStyle = 'rgba(68, 153, 255, 0.45)';
+            ctx.beginPath(); ctx.moveTo(ox, 20); ctx.lineTo(ox, h - 20); ctx.stroke();
+
+            ctx.font = 'bold 12px "Helvetica Neue", sans-serif';
+            ctx.fillStyle = '#ff8800';
+            ctx.fillText(isFr ? 'Axe Réel a (Émergie Solaire seJ) →' : 'Real Axis a (Solar Emergy seJ) →', w - 260, oy + 20);
+            ctx.fillStyle = '#4499ff';
+            ctx.fillText(isFr ? '↑ Axe Imaginaire +ib (Vérité Cryptographique)' : '↑ Imaginary Axis +ib (Cryptographic Truth)', ox + 10, 34);
+            ctx.fillStyle = 'rgba(200,100,255,0.7)';
+            ctx.fillText(isFr ? '↓ Conjugué Hermitien -ib (Miroir z̄)' : '↓ Hermitian Conjugate -ib (Mirror z̄)', ox + 10, h - 25);
+
+            // Tracé de la Spirale d'Or Logarithmique de référence
+            ctx.strokeStyle = 'rgba(255, 204, 0, 0.25)';
+            ctx.lineWidth = 1.8;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            const kPhi = (2 * Math.log(1.6180339887)) / Math.PI;
+            for (let th = -2.5; th <= 2.3; th += 0.05) {
+                const r = 2.2 * Math.exp(kPhi * th);
+                const sx = ox + r * Math.cos(th) * scale;
+                const sy = oy - r * Math.sin(th) * scale;
+                if (th === -2.5) ctx.moveTo(sx, sy);
+                else ctx.lineTo(sx, sy);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            const zx = ox + a * scale;
+            const zy = oy - b * scale;
+            const zBarY = oy + b * scale;
+
+            // Projections orthogonales en pointillés
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(zx, oy); ctx.lineTo(zx, zy);
+            ctx.moveTo(ox, zy); ctx.lineTo(zx, zy);
+            ctx.moveTo(zx, oy); ctx.lineTo(zx, zBarY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Essaim des vecteurs individuels (Dispersion de Kuramoto)
+            offsets.forEach(off => {
+                const ang = psi + off * noise;
+                const vx = ox + mod * Math.cos(ang) * scale;
+                const vy = oy - mod * Math.sin(ang) * scale;
+                ctx.strokeStyle = 'rgba(68, 238, 119, 0.22)';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(vx, vy); ctx.stroke();
+                ctx.fillStyle = 'rgba(68, 238, 119, 0.45)';
+                ctx.beginPath(); ctx.arc(vx, vy, 2.5, 0, Math.PI * 2); ctx.fill();
+            });
+
+            // Vecteur Conjugué Hermitien z̄ = a - ib
+            ctx.strokeStyle = 'rgba(200, 100, 255, 0.65)';
+            ctx.lineWidth = 2.2;
+            ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(zx, zBarY); ctx.stroke();
+            ctx.fillStyle = '#c864ff';
+            ctx.beginPath(); ctx.arc(zx, zBarY, 5, 0, Math.PI * 2); ctx.fill();
+            ctx.font = 'bold 12px monospace';
+            ctx.fillText(`z̄ = ${a.toFixed(1)} - ${b.toFixed(1)}i`, zx + 10, zBarY + 5);
+
+            // Vecteur Principal z = a + ib
+            ctx.strokeStyle = '#ffcc00';
+            ctx.lineWidth = 3.2;
+            ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(zx, zy); ctx.stroke();
+            ctx.fillStyle = '#ffcc00';
+            ctx.beginPath(); ctx.arc(zx, zy, 6, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(`z = ${a.toFixed(1)} + ${b.toFixed(1)}i (|z|=${mod.toFixed(2)})`, zx + 10, zy - 8);
+
+            // Arc de l'angle Psi
+            ctx.strokeStyle = '#44ee77';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(ox, oy, 42, -psi, 0);
+            ctx.stroke();
+            ctx.fillStyle = '#44ee77';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.fillText(`ψ = ${psiDeg.toFixed(0)}°`, ox + 48, oy - 12);
+        }
+
+        window.drawComplexSimulator = drawComplexSimulator;
+        [sA, sB, sN].forEach(el => el.addEventListener('input', drawComplexSimulator));
+        window.addEventListener('DOMContentLoaded', drawComplexSimulator);
+    })();
+
+    // 4. Initialisation Langue & Formulaire Formspree
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lg');
         const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'en');
         setLang(savedLang);
+
+        const form = document.getElementById("feedback-form");
+        const popup = document.getElementById("success-popup");
+        const btn = document.getElementById("feedback-btn");
+        if (form) {
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = "⏳ ...";
+                btn.disabled = true;
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        form.reset();
+                        popup.style.display = "flex";
+                        setTimeout(() => { popup.style.display = "none"; }, 4000);
+                    }
+                } finally {
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                }
+            });
+        }
     });
 </script>
 
