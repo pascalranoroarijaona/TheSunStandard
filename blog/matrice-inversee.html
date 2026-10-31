@@ -4968,6 +4968,53 @@
             }
         </script>
     </div>
+
+    <!-- TEASER VIDÉO BILINGUE : LEMURIA TECHNOLOGIES (FR / EN) -->
+    <section class="lemuria-teaser-container" style="margin: 0 auto 3.5rem; padding: 2rem; background: radial-gradient(circle at top center, rgba(247, 147, 26, 0.08) 0%, rgba(4, 7, 7, 0.96) 70%); border: 1px solid rgba(68, 238, 119, 0.35); border-left: 4px solid var(--sun-orange); border-radius: 14px; box-shadow: 0 20px 55px rgba(0,0,0,0.85), inset 0 0 30px rgba(68, 238, 119, 0.04); font-family: var(--font-ui); text-align: center;">
+        <h3 style="color: var(--sun-yellow); font-size: 1.35rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">
+            <span>🎬</span>
+            <span lang="fr">Teaser Officiel — Lemuria Technologies : « Enfouir les Machines, Éveiller les Humains »</span>
+            <span lang="en">Official Teaser — Lemuria Technologies: "Bury the Machines, Awake the Humans"</span>
+        </h3>
+        <p style="color: #a0aab5; font-size: 0.95rem; max-width: 780px; margin: 0 auto 1.5rem; line-height: 1.6;">
+            <span lang="fr">Plongez en 41 secondes au cœur d'une ancienne mine réhabilitée : des chariots de serveurs immergés à $70^\circ\text{C}$ et du sanctuaire de recyclage circulaire <em>Ouroboros</em> jusqu'aux serres bioclimatiques, bassins d'aquaculture et sentinelles du vivant en surface.</span>
+            <span lang="en">Dive in 41 seconds into the heart of a rehabilitated coal mine: from $70^\circ\text{C}$ liquid-immersed server carts and the closed-loop <em>Ouroboros</em> hydrometallurgical vault up to surface biodome greenhouses, aquaculture ponds, and biomimetic sentinels of life.</span>
+        </p>
+
+        <!-- Lecteur Vidéo Français -->
+        <div lang="fr" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
+            <video id="teaser-video-fr" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
+                <source src="img/LemuriaTechFR.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos HTML5.
+            </video>
+        </div>
+
+        <!-- Lecteur Vidéo Anglais -->
+        <div lang="en" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
+            <video id="teaser-video-en" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
+                <source src="img/LemuriaTechEN.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+            </video>
+        </div>
+
+        <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--bio-green); letter-spacing: 1px;">
+            <span lang="fr">🟠 SION (-35m : Calcul & Ouroboros) ──► 🟢 LÉMURIE (0m : Eau MOF, Biochar & Vivant) ──► 🟡 SOLEIL (Étalon WU)</span>
+            <span lang="en">🟠 ZION (-35m: Compute & Ouroboros) ──► 🟢 LEMURIA (0m: MOF Water, Biochar & Life) ──► 🟡 SUN (WU Standard)</span>
+        </div>
+
+        <script>
+            // Met automatiquement en pause la vidéo active si l'utilisateur change la langue (FR <-> EN)
+            document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const vFr = document.getElementById('teaser-video-fr');
+                    const vEn = document.getElementById('teaser-video-en');
+                    if (vFr && !vFr.paused) vFr.pause();
+                    if (vEn && !vEn.paused) vEn.pause();
+                });
+            });
+        </script>
+    </section>
+    
     <div class="simulator-box" id="simulateur-v3">
         <style>
             .sim-presets-bar {
