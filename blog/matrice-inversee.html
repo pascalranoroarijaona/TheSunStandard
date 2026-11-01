@@ -1090,8 +1090,8 @@
                     style="width: 50%; max-width: 420px; height: auto; background: transparent; mix-blend-mode: screen; filter: drop-shadow(0 0 18px rgba(68, 238, 119, 0.25)); margin-top: 1.2rem;">
             </div>
             <p style="margin-top: 1.2rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
-                <span lang="fr">2026-06-15 (last edit - October 31st, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
-                <span lang="en">2026-06-15 (last edit - October 31st, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
+                <span lang="fr">2026-06-15 (last edit - November 1st, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-06-15 (last edit - November 1st, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
             </p>
         </div>
     
@@ -2008,6 +2008,51 @@
             </div>
         </div>
     </div>
+    <!-- TEASER VIDÉO BILINGUE : LEMURIA TECHNOLOGIES (FR / EN) -->
+    <section class="lemuria-teaser-container" style="margin: 0 auto 3.5rem; padding: 2rem; background: radial-gradient(circle at top center, rgba(247, 147, 26, 0.08) 0%, rgba(4, 7, 7, 0.96) 70%); border: 1px solid rgba(68, 238, 119, 0.35); border-left: 4px solid var(--sun-orange); border-radius: 14px; box-shadow: 0 20px 55px rgba(0,0,0,0.85), inset 0 0 30px rgba(68, 238, 119, 0.04); font-family: var(--font-ui); text-align: center;">
+        <h3 style="color: var(--sun-yellow); font-size: 1.35rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">
+            <span>🎬</span>
+            <span lang="fr">Teaser Officiel — Lemuria Technologies : « Enfouir les Machines, Éveiller les Humains »</span>
+            <span lang="en">Official Teaser — Lemuria Technologies: "Bury the Machines, Awake the Humans"</span>
+        </h3>
+        <p style="color: #a0aab5; font-size: 0.95rem; max-width: 780px; margin: 0 auto 1.5rem; line-height: 1.6;">
+            <span lang="fr">Plongez en 41 secondes au cœur d'une ancienne mine réhabilitée : des chariots de serveurs immergés à $70^\circ\text{C}$ et du sanctuaire de recyclage circulaire <em>Ouroboros</em> jusqu'aux serres bioclimatiques, bassins d'aquaculture et sentinelles du vivant en surface.</span>
+            <span lang="en">Dive in 41 seconds into the heart of a rehabilitated coal mine: from $70^\circ\text{C}$ liquid-immersed server carts and the closed-loop <em>Ouroboros</em> hydrometallurgical vault up to surface biodome greenhouses, aquaculture ponds, and biomimetic sentinels of life.</span>
+        </p>
+
+        <!-- Lecteur Vidéo Français -->
+        <div lang="fr" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
+            <video id="teaser-video-fr" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
+                <source src="img/LemuriaTechFR.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos HTML5.
+            </video>
+        </div>
+
+        <!-- Lecteur Vidéo Anglais -->
+        <div lang="en" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
+            <video id="teaser-video-en" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
+                <source src="img/LemuriaTechEN.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+            </video>
+        </div>
+
+        <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--bio-green); letter-spacing: 1px;">
+            <span lang="fr">🟠 SION (-35m : Calcul & Ouroboros) ──► 🟢 LÉMURIE (0m : Eau MOF, Biochar & Vivant) ──► 🟡 SOLEIL (Étalon WU)</span>
+            <span lang="en">🟠 ZION (-35m: Compute & Ouroboros) ──► 🟢 LEMURIA (0m: MOF Water, Biochar & Life) ──► 🟡 SUN (WU Standard)</span>
+        </div>
+
+        <script>
+            // Met automatiquement en pause la vidéo active si l'utilisateur change la langue (FR <-> EN)
+            document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const vFr = document.getElementById('teaser-video-fr');
+                    const vEn = document.getElementById('teaser-video-en');
+                    if (vFr && !vFr.paused) vFr.pause();
+                    if (vEn && !vEn.paused) vEn.pause();
+                });
+            });
+        </script>
+    </section>
     <div class="personas-box">
             <div lang="fr">
               <strong>Gouvernance technique — Six pôles opérationnels indispensables (L'Humain en surface, le Robot sous Terre) :</strong>
@@ -4985,52 +5030,6 @@
             }
         </script>
     </div>
-
-    <!-- TEASER VIDÉO BILINGUE : LEMURIA TECHNOLOGIES (FR / EN) -->
-    <section class="lemuria-teaser-container" style="margin: 0 auto 3.5rem; padding: 2rem; background: radial-gradient(circle at top center, rgba(247, 147, 26, 0.08) 0%, rgba(4, 7, 7, 0.96) 70%); border: 1px solid rgba(68, 238, 119, 0.35); border-left: 4px solid var(--sun-orange); border-radius: 14px; box-shadow: 0 20px 55px rgba(0,0,0,0.85), inset 0 0 30px rgba(68, 238, 119, 0.04); font-family: var(--font-ui); text-align: center;">
-        <h3 style="color: var(--sun-yellow); font-size: 1.35rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">
-            <span>🎬</span>
-            <span lang="fr">Teaser Officiel — Lemuria Technologies : « Enfouir les Machines, Éveiller les Humains »</span>
-            <span lang="en">Official Teaser — Lemuria Technologies: "Bury the Machines, Awake the Humans"</span>
-        </h3>
-        <p style="color: #a0aab5; font-size: 0.95rem; max-width: 780px; margin: 0 auto 1.5rem; line-height: 1.6;">
-            <span lang="fr">Plongez en 41 secondes au cœur d'une ancienne mine réhabilitée : des chariots de serveurs immergés à $70^\circ\text{C}$ et du sanctuaire de recyclage circulaire <em>Ouroboros</em> jusqu'aux serres bioclimatiques, bassins d'aquaculture et sentinelles du vivant en surface.</span>
-            <span lang="en">Dive in 41 seconds into the heart of a rehabilitated coal mine: from $70^\circ\text{C}$ liquid-immersed server carts and the closed-loop <em>Ouroboros</em> hydrometallurgical vault up to surface biodome greenhouses, aquaculture ponds, and biomimetic sentinels of life.</span>
-        </p>
-
-        <!-- Lecteur Vidéo Français -->
-        <div lang="fr" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
-            <video id="teaser-video-fr" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
-                <source src="img/LemuriaTechFR.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture de vidéos HTML5.
-            </video>
-        </div>
-
-        <!-- Lecteur Vidéo Anglais -->
-        <div lang="en" style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 204, 0, 0.3); box-shadow: 0 12px 35px rgba(0,0,0,0.8); background: #000;">
-            <video id="teaser-video-en" controls preload="metadata" playsinline poster="img/logo-lemuriatech.png" style="width: 100%; height: auto; display: block;">
-                <source src="img/LemuriaTechEN.mp4" type="video/mp4">
-                Your browser does not support HTML5 video playback.
-            </video>
-        </div>
-
-        <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--bio-green); letter-spacing: 1px;">
-            <span lang="fr">🟠 SION (-35m : Calcul & Ouroboros) ──► 🟢 LÉMURIE (0m : Eau MOF, Biochar & Vivant) ──► 🟡 SOLEIL (Étalon WU)</span>
-            <span lang="en">🟠 ZION (-35m: Compute & Ouroboros) ──► 🟢 LEMURIA (0m: MOF Water, Biochar & Life) ──► 🟡 SUN (WU Standard)</span>
-        </div>
-
-        <script>
-            // Met automatiquement en pause la vidéo active si l'utilisateur change la langue (FR <-> EN)
-            document.querySelectorAll('.lang-toggle button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const vFr = document.getElementById('teaser-video-fr');
-                    const vEn = document.getElementById('teaser-video-en');
-                    if (vFr && !vFr.paused) vFr.pause();
-                    if (vEn && !vEn.paused) vEn.pause();
-                });
-            });
-        </script>
-    </section>
     
     <div class="simulator-box" id="simulateur-v3">
         <style>
@@ -5902,7 +5901,553 @@
             })();
         </script>
     </div>
-    
+    <!-- ===================================================================== -->
+    <!-- NIVEAU 9 BONUS : MVP 1 MW & SITE PILOTE NSW (ARCHITECTURE V2.0)     -->
+    <!-- ===================================================================== -->
+    <details class="level-9" style="margin: 2.5rem auto; border-left-color: var(--teal-l0);">
+        <summary style="border-left-color: var(--teal-l0); color: var(--teal-l0); background: rgba(255, 204, 0, 0.05);">
+            <span lang="fr">Niveau Bonus : Ingénierie du Site Pilote 1 MW & MVP « Ultra-Lean » (Nouvelle-Galles du Sud, Australie)</span>
+            <span lang="en">Level Bonus: 1 MW Pilot Site Engineering & "Ultra-Lean" MVP (New South Wales, Australia)</span>
+        </summary>
+        <div class="drawer-content">
+
+            <!-- INTRODUCTION DU MVP -->
+            <div class="well-introduction" style="margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 204, 0, 0.2); padding-bottom: 1.5rem; line-height: 1.8; font-size: 0.95rem; text-align: justify;">
+                <div lang="fr">
+                    <p>
+                        Comment passer de la théorie thermodynamique globale à un <strong>Produit Minimum Viable (MVP) de $1\text{ MW}$</strong>, $100\,\%$ autonome, autofinancé et immédiatement déployable sur une ancienne friche minière de charbon ou de métaux en Nouvelle-Galles du Sud (NSW — type <em>Hunter Valley</em> ou <em>Cobar</em>) ?
+                    </p>
+                    <p>
+                        Pour maximiser l'efficience exergétique (<strong>$\text{PUE record} = 1,008$</strong>) et amputer le CAPEX initial de plus de $30\,\%$, l'architecture industrielle v2.0 de <strong>Lemuria Technologies</strong> opère une séparation topologique radicale : <strong>seuls les chariots de serveurs immergés (ASIC-X et GPU Edge AI) sont logés sous terre à $-25\text{ m}$</strong>, tandis que toutes les opérations biologiques, hydriques et hydrométallurgiques sont regroupées en surface ($0\text{ m}$) sur l'ancien carreau de mine, reliées au sous-sol par deux simples conduites hydrauliques isolées en acier inoxydable ($\text{DN100}$).
+                    </p>
+                </div>
+                <div lang="en">
+                    <p>
+                        How do we transition from global thermodynamic theory to a <strong>$1\text{ MW}$ Minimum Viable Product (MVP)</strong> that is $100\%$ off-grid capable, self-funding, and immediately deployable on a rehabilitated coal or metal mine site in New South Wales (NSW — e.g., <em>Hunter Valley</em> or <em>Cobar</em>)?
+                    </p>
+                    <p>
+                        To push exergetic efficiency to its physical ceiling (<strong>record $\text{PUE} = 1.008$</strong>) while slashing initial CAPEX by over $30\%$, the <strong>Lemuria Technologies</strong> v2.0 engineering blueprint enforces strict topological separation: <strong>only the liquid-immersed server carts (ASIC-X and Edge AI GPUs) reside underground at $-25\text{ m}$</strong>, whereas all biological, atmospheric water, and hydrometallurgical operations are consolidated at the surface ($0\text{ m}$) on the existing mine portal pad, connected via just two insulated $\text{DN100}$ stainless-steel hydraulic pipes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1. PLAN EN COUPE SVG V2.0 ULTRA-LEAN -->
+            <div style="margin: 2rem 0; padding: 1.5rem; background: #040707; border: 1px solid rgba(255, 204, 0, 0.3); border-radius: 12px; box-shadow: inset 0 0 30px rgba(0,0,0,0.8);">
+                <h4 style="color: var(--sun-yellow); text-align: center; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; font-size: 1.1rem;">
+                    <span lang="fr">📐 Plan en Coupe du MVP 1 MW (v2.0 Ultra-Lean — NSW Mine Rebirth)</span>
+                    <span lang="en">📐 1 MW MVP Cross-Section Blueprint (v2.0 Ultra-Lean — NSW Mine Rebirth)</span>
+                </h4>
+                <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; margin-bottom: 1.2rem;">
+                    <span lang="fr">Zonage en étoile autour de la tête de puits : Bio-Hub Vertical Compact au vent (Gauche), Skid Exergétique MOF-303 au centre, Hangar Industriel Ouroboros BLaaS & Biochar sous le vent (Droite), et Sanctuaire de Calcul à $-25\text{ m}$.</span>
+                    <span lang="en">Radial portal-pad zoning: Compact Vertical Bio-Hub upwind (Left), MOF-303 Exergetic Skid at center, Ouroboros BLaaS & Biochar Industrial Shed downwind (Right), and Compute Sanctuary at $-25\text{ m}$.</span>
+                </p>
+
+                <svg class="cross-section-svg" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="skyGradV2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#040911"/>
+                            <stop offset="100%" stop-color="#0c1d18"/>
+                        </linearGradient>
+                        <linearGradient id="soilGradV2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#231d14"/>
+                            <stop offset="100%" stop-color="#111316"/>
+                        </linearGradient>
+                        <linearGradient id="rockGradV2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#121519"/>
+                            <stop offset="100%" stop-color="#050709"/>
+                        </linearGradient>
+                        <linearGradient id="hotPipeGrad" x1="0" y1="1" x2="0" y2="0">
+                            <stop offset="0%" stop-color="#f7931a"/>
+                            <stop offset="100%" stop-color="#ffcc00"/>
+                        </linearGradient>
+                        <linearGradient id="coldPipeGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#00ccff"/>
+                            <stop offset="100%" stop-color="#0055aa"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- STRATES GÉOLOGIQUES -->
+                    <rect x="0" y="0" width="960" height="230" fill="url(#skyGradV2)"/>
+                    <line x1="0" y1="230" x2="960" y2="230" stroke="#44ee77" stroke-width="2.5" stroke-opacity="0.6"/>
+                    <rect x="0" y="230" width="960" height="55" fill="url(#soilGradV2)"/>
+                    <rect x="0" y="285" width="960" height="355" fill="url(#rockGradV2)"/>
+
+                    <g stroke="rgba(255,255,255,0.035)" stroke-width="1">
+                        <path d="M 60 330 L 210 315 M 680 320 L 890 340 M 90 420 L 280 405 M 640 410 L 860 395"/>
+                        <path d="M 120 370 L 360 355 M 560 360 L 790 375"/>
+                    </g>
+
+                    <!-- Échelle Altimétrique -->
+                    <g font-family="'Fira Code', monospace" font-size="9.5" fill="#778899" text-anchor="end">
+                        <text x="58" y="65">+10 m</text>
+                        <text x="58" y="225">0 m (Surface)</text>
+                        <text x="58" y="280">-5 m</text>
+                        <text x="58" y="485">-25 m (Sion)</text>
+                        <text x="58" y="595">-35 m (Mine Water)</text>
+                        <line x1="62" y1="230" x2="72" y2="230" stroke="#44ee77" stroke-width="1.5"/>
+                        <line x1="62" y1="485" x2="72" y2="485" stroke="#f7931a" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- Soleil -->
+                    <circle cx="480" cy="36" r="20" fill="#ffcc00" opacity="0.9"/>
+                    <circle cx="480" cy="36" r="32" fill="#ffcc00" opacity="0.18"/>
+                    <text x="480" y="14" font-family="'Fira Code', monospace" font-size="8.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">☀️ ÉTALON SOLAIRE (WU / kWh)</text>
+
+                    <!-- ZONE GAUCHE : BIO-HUB ALIMENTAIRE VERTICAL COMPACT (0 m) -->
+                    <path d="M 75 230 L 95 95 L 365 95 L 385 230 Z" fill="rgba(68, 238, 119, 0.06)" stroke="#44ee77" stroke-width="2"/>
+                    <line x1="95" y1="92" x2="365" y2="92" stroke="#ffcc00" stroke-width="3.5" stroke-dasharray="10,3"/>
+                    <text x="230" y="83" font-family="'Inter', sans-serif" font-size="9.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">☀️ VERRIÈRE AGRIVOLTAÏQUE SEMI-TRANSPARENTE + PLUIE</text>
+                    <text x="230" y="69" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#44ee77" text-anchor="middle">🌱 BIO-HUB COMPACT : HYDROPONIE 6 NIVEAUX & BARRAMUNDI</text>
+
+                    <g stroke="#2ecc71" stroke-width="1.5" fill="rgba(46,204,113,0.18)">
+                        <rect x="108" y="115" width="26" height="105" rx="3"/>
+                        <rect x="148" y="115" width="26" height="105" rx="3"/>
+                        <rect x="188" y="115" width="26" height="105" rx="3"/>
+                    </g>
+                    <text x="121" y="138" font-size="11" text-anchor="middle">🍓</text>
+                    <text x="121" y="168" font-size="11" text-anchor="middle">🌿</text>
+                    <text x="121" y="198" font-size="11" text-anchor="middle">🌸</text>
+                    <text x="161" y="138" font-size="11" text-anchor="middle">🥬</text>
+                    <text x="161" y="168" font-size="11" text-anchor="middle">🌱</text>
+                    <text x="161" y="198" font-size="11" text-anchor="middle">🍓</text>
+                    <text x="201" y="138" font-size="11" text-anchor="middle">🌸</text>
+                    <text x="201" y="168" font-size="11" text-anchor="middle">🥬</text>
+                    <text x="201" y="198" font-size="11" text-anchor="middle">🌿</text>
+                    <text x="161" y="109" font-family="'Fira Code', monospace" font-size="7.5" fill="#a8ffb2" text-anchor="middle">SAFRAN / WASABI (21°C)</text>
+
+                    <!-- Bassin RAS Barramundi Australien -->
+                    <rect x="230" y="168" width="75" height="54" rx="5" fill="rgba(0, 180, 255, 0.22)" stroke="#00ccff" stroke-width="1.5"/>
+                    <text x="267" y="192" font-size="14" text-anchor="middle">🐟 🐟</text>
+                    <text x="267" y="207" font-family="'Fira Code', monospace" font-size="7.5" fill="#00e5ff" text-anchor="middle">BARRAMUNDI 28°C</text>
+                    <text x="267" y="217" font-family="'Fira Code', monospace" font-size="6.8" fill="#88ddff" text-anchor="middle">RAS Aquaponie</text>
+
+                    <!-- Chambre Champignons Médicinaux + Larves BSFL -->
+                    <rect x="314" y="118" width="58" height="104" rx="4" fill="rgba(255, 170, 0, 0.1)" stroke="#ffaa00" stroke-width="1.2"/>
+                    <text x="343" y="142" font-size="13" text-anchor="middle">🍄</text>
+                    <text x="343" y="156" font-family="'Fira Code', monospace" font-size="6.8" fill="#ffcc00" text-anchor="middle">REISHI/HERICIUM</text>
+                    <line x1="318" y1="168" x2="368" y2="168" stroke="rgba(255,170,0,0.4)" stroke-width="1"/>
+                    <text x="343" y="188" font-size="12" text-anchor="middle">🐛</text>
+                    <text x="343" y="202" font-family="'Fira Code', monospace" font-size="6.8" fill="#44ee77" text-anchor="middle">LARVES BSFL</text>
+                    <text x="343" y="213" font-family="'Fira Code', monospace" font-size="6.2" fill="#aaa" text-anchor="middle">(Nourrit Poissons)</text>
+
+                    <!-- Symbiose Gazeuse CO2 <-> O2 -->
+                    <path d="M 314 132 Q 265 115 218 132" fill="none" stroke="#ffcc00" stroke-width="1.2" stroke-dasharray="3,2"/>
+                    <text x="266" y="120" font-family="'Fira Code', monospace" font-size="7" fill="#ffcc00" text-anchor="middle">◄── CO₂ (1000 ppm)</text>
+                    <path d="M 218 152 Q 250 162 267 168" fill="none" stroke="#00e5ff" stroke-width="1.2" stroke-dasharray="3,2"/>
+                    <text x="252" y="156" font-family="'Fira Code', monospace" font-size="7" fill="#00e5ff" text-anchor="middle">O₂ ──►</text>
+
+                    <!-- Sentinelle Drone-Libellule -->
+                    <g transform="translate(52, 125)">
+                        <ellipse cx="0" cy="0" rx="11" ry="3.5" fill="#44ee77"/>
+                        <line x1="-10" y1="-3" x2="10" y2="3" stroke="#fff" stroke-width="1.2"/>
+                        <line x1="-10" y1="3" x2="10" y2="-3" stroke="#fff" stroke-width="1.2"/>
+                        <text x="0" y="-8" font-family="'Fira Code', monospace" font-size="6.8" fill="#44ee77" text-anchor="middle">SENTINELLE</text>
+                    </g>
+
+                    <!-- CENTRE : SKID TÊTE DE PUITS & MINI-MOF-303 -->
+                    <rect x="405" y="122" width="150" height="108" rx="6" fill="#0b131c" stroke="#00ccff" stroke-width="2"/>
+                    <text x="480" y="139" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">⚙️ SKID TÊTE DE PUITS</text>
+
+                    <rect x="415" y="148" width="60" height="34" rx="3" fill="#1f140a" stroke="#f7931a" stroke-width="1.5"/>
+                    <text x="445" y="164" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#f7931a" text-anchor="middle">HEX-101</text>
+                    <text x="445" y="175" font-family="'Fira Code', monospace" font-size="6.8" fill="#ffcc00" text-anchor="middle">72°C ➔ 68°C</text>
+
+                    <g transform="translate(514, 165)">
+                        <circle cx="0" cy="0" r="24" fill="rgba(0, 204, 255, 0.14)" stroke="#00ccff" stroke-width="1.8"/>
+                        <line x1="-24" y1="0" x2="24" y2="0" stroke="#00ccff" stroke-width="1"/>
+                        <line x1="0" y1="-24" x2="0" y2="24" stroke="#00ccff" stroke-width="1"/>
+                        <text x="0" y="-2" font-family="'Fira Code', monospace" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">MOF-303</text>
+                        <text x="0" y="8" font-family="'Fira Code', monospace" font-size="6.5" fill="#00e5ff" text-anchor="middle">Air Libre</text>
+                    </g>
+
+                    <rect x="415" y="190" width="130" height="32" rx="4" fill="#051a2e" stroke="#00e5ff" stroke-width="1.2"/>
+                    <text x="480" y="204" font-family="'Fira Code', monospace" font-size="7.5" fill="#00e5ff" text-anchor="middle">💧 CONDENSEUR 15°C + Ca²⁺/Mg²⁺</text>
+                    <text x="480" y="215" font-family="'Fira Code', monospace" font-size="6.8" fill="#44ee77" text-anchor="middle">2 500 L/j Eau Pure ──► Hydro & BLaaS</text>
+
+                    <rect x="420" y="238" width="120" height="38" rx="6" fill="#1c1108" stroke="#ff6600" stroke-width="1.5"/>
+                    <text x="480" y="255" font-family="'Fira Code', monospace" font-size="7.8" font-weight="bold" fill="#ffaa00" text-anchor="middle">🔥 BALLON TAMPON (40 m³)</text>
+                    <text x="480" y="267" font-family="'Fira Code', monospace" font-size="6.8" fill="#ccc" text-anchor="middle">Stockage Chaleur Nuit (70°C)</text>
+
+                    <!-- ZONE DROITE : HANGAR INDUSTRIEL OUROBOROS & BIOCHAR (0 m) -->
+                    <path d="M 575 230 L 575 102 L 690 82 L 905 102 L 905 230 Z" fill="rgba(200, 100, 255, 0.05)" stroke="#c864ff" stroke-width="2"/>
+                    <path d="M 573 100 L 690 80 L 907 100" fill="none" stroke="#ffcc00" stroke-width="4"/>
+                    <text x="740" y="73" font-family="'Inter', sans-serif" font-size="9.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">☀️ TOITURE SOLAIRE TOPCon (23%) + COLLECTE EAU DE PLUIE</text>
+                    <text x="740" y="59" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#c864ff" text-anchor="middle">♻️ HANGAR INDUSTRIEL : OUROBOROS BLaaS & PYROLYSE BIOCHAR</text>
+
+                    <rect x="588" y="114" width="95" height="52" rx="4" fill="rgba(200, 100, 255, 0.14)" stroke="#c864ff" stroke-width="1.4"/>
+                    <text x="635" y="130" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#e0aaff" text-anchor="middle">1. BIOLIXIVIATION</text>
+                    <text x="635" y="142" font-family="'Fira Code', monospace" font-size="6.8" fill="#fff" text-anchor="middle">Sulfolobus @ 65°C (Cu)</text>
+                    <text x="635" y="153" font-family="'Fira Code', monospace" font-size="6.8" fill="#ffd700" text-anchor="middle">+ Glycine @ 55°C (Au/Ag)</text>
+                    <text x="635" y="162" font-family="'Fira Code', monospace" font-size="6.2" fill="#44ee77" text-anchor="middle">(Zéro Cyanure / Service B2B)</text>
+
+                    <rect x="588" y="172" width="95" height="50" rx="4" fill="rgba(255, 215, 0, 0.08)" stroke="#ffd700" stroke-width="1.2"/>
+                    <text x="635" y="187" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#ffd700" text-anchor="middle">2. RAFFINAGE 99.99%</text>
+                    <text x="635" y="198" font-family="'Fira Code', monospace" font-size="6.8" fill="#fff" text-anchor="middle">Au, Ag, Cu, Sn, In, Ta</text>
+                    <text x="635" y="210" font-family="'Fira Code', monospace" font-size="6.5" fill="#a0aab5" text-anchor="middle">Silice ➔ Béton Mine</text>
+
+                    <line x1="695" y1="92" x2="695" y2="230" stroke="#ff5500" stroke-width="2" stroke-dasharray="4,2"/>
+
+                    <rect x="708" y="114" width="184" height="52" rx="4" fill="rgba(211, 84, 0, 0.16)" stroke="#ff6600" stroke-width="1.4"/>
+                    <text x="800" y="130" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#ff9944" text-anchor="middle">3. SÉCHOIR (65°C) & PYROLYSE (450°C)</text>
+                    <text x="800" y="143" font-family="'Fira Code', monospace" font-size="6.8" fill="#fff" text-anchor="middle">Déchets Verts NSW (Gate Fee) ➔ Biochar</text>
+                    <text x="800" y="155" font-family="'Fira Code', monospace" font-size="6.5" fill="#ffcc00" text-anchor="middle">+ Vinaigre de Bois (Acide Bio) & Syngas</text>
+
+                    <rect x="708" y="172" width="184" height="50" rx="4" fill="rgba(68, 238, 119, 0.08)" stroke="#44ee77" stroke-width="1.2"/>
+                    <text x="800" y="188" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#44ee77" text-anchor="middle">4. TERRA PRETA & CHARBON ACTIF</text>
+                    <text x="800" y="200" font-family="'Fira Code', monospace" font-size="6.8" fill="#d4d4d4" text-anchor="middle">• Capte l'Or dissous dans la cuve Glycine</text>
+                    <text x="800" y="212" font-family="'Fira Code', monospace" font-size="6.8" fill="#44ee77" text-anchor="middle">• Séquestre CO₂ (>2000 ans) + Crédits CORC</text>
+
+                    <!-- CONDUITES HYDRAULIQUES DN100 -->
+                    <path d="M 450 440 L 450 182" fill="none" stroke="url(#hotPipeGrad)" stroke-width="5" class="flow-line"/>
+                    <text x="438" y="365" font-family="'Fira Code', monospace" font-size="8.5" font-weight="bold" fill="#f7931a" text-anchor="end">▲ CONDUITE CHAUDE DN100 (72°C)</text>
+                    <text x="438" y="377" font-family="'Fira Code', monospace" font-size="7.5" fill="#ffcc00" text-anchor="end">Pompe unique 8 kWe (Thermosiphon)</text>
+
+                    <path d="M 510 222 L 510 440" fill="none" stroke="url(#coldPipeGrad)" stroke-width="5" class="flow-line"/>
+                    <text x="522" y="365" font-family="'Fira Code', monospace" font-size="8.5" font-weight="bold" fill="#00ccff" text-anchor="start">▼ RETOUR REFROIDI DN100 (48°C)</text>
+                    <text x="522" y="377" font-family="'Fira Code', monospace" font-size="7.5" fill="#88bbdd" text-anchor="start">Zéro gaine d'air = PUE 1.008 !</text>
+
+                    <path d="M 475 158 L 588 140" fill="none" stroke="#f7931a" stroke-width="2.5" class="flow-line"/>
+                    <path d="M 415 205 L 305 195" fill="none" stroke="#00e5ff" stroke-width="2.5" class="flow-line"/>
+                    <path d="M 635 222 L 635 440" fill="none" stroke="#c864ff" stroke-width="1.8" stroke-dasharray="3,3"/>
+                    <text x="644" y="340" font-family="'Fira Code', monospace" font-size="7.5" fill="#c864ff">▼ Silice PCB ➔ Béton Géopolymère Mine</text>
+
+                    <!-- SOUS-SOL (-25 m) : SANCTUAIRE DE SION -->
+                    <rect x="145" y="440" width="670" height="92" rx="12" fill="#040608" stroke="#f7931a" stroke-width="2.5"/>
+                    <text x="480" y="460" font-family="'Fira Code', monospace" font-size="11.5" font-weight="bold" fill="#f7931a" text-anchor="middle">
+                        🟠 SION (-25 m) : UNIQUEMENT LES CHARIOTS IMMERGÉS ASIC-X & GPU (PUE = 1,008)
+                    </text>
+
+                    <line x1="165" y1="468" x2="795" y2="468" stroke="#778899" stroke-width="2"/>
+                    <rect x="462" y="464" width="36" height="8" rx="2" fill="#00e5ff"/>
+                    <text x="480" y="479" font-family="'Fira Code', monospace" font-size="6.8" fill="#00e5ff" text-anchor="middle">🤖 RAIL PORTIQUE</text>
+
+                    <line x1="160" y1="524" x2="800" y2="524" stroke="#8899aa" stroke-width="2.5" stroke-dasharray="12,4"/>
+
+                    <g transform="translate(170, 482)">
+                        <rect x="0" y="0" width="68" height="36" rx="4" fill="#1c1004" stroke="#f7931a" stroke-width="1.5"/>
+                        <circle cx="14" cy="39" r="3.5" fill="#8899aa"/><circle cx="54" cy="39" r="3.5" fill="#8899aa"/>
+                        <text x="34" y="16" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">POD #1-2</text>
+                        <text x="34" y="28" font-family="'Fira Code', monospace" font-size="6.8" fill="#f7931a" text-anchor="middle">250 kW ASIC</text>
+                    </g>
+                    <g transform="translate(260, 482)">
+                        <rect x="0" y="0" width="68" height="36" rx="4" fill="#1c1004" stroke="#f7931a" stroke-width="1.5"/>
+                        <circle cx="14" cy="39" r="3.5" fill="#8899aa"/><circle cx="54" cy="39" r="3.5" fill="#8899aa"/>
+                        <text x="34" y="16" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">POD #3-4</text>
+                        <text x="34" y="28" font-family="'Fira Code', monospace" font-size="6.8" fill="#f7931a" text-anchor="middle">250 kW ASIC</text>
+                    </g>
+                    <g transform="translate(630, 482)">
+                        <rect x="0" y="0" width="68" height="36" rx="4" fill="#1c1004" stroke="#f7931a" stroke-width="1.5"/>
+                        <circle cx="14" cy="39" r="3.5" fill="#8899aa"/><circle cx="54" cy="39" r="3.5" fill="#8899aa"/>
+                        <text x="34" y="16" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">POD #5-6</text>
+                        <text x="34" y="28" font-family="'Fira Code', monospace" font-size="6.8" fill="#f7931a" text-anchor="middle">250 kW ASIC</text>
+                    </g>
+                    <g transform="translate(720, 482)">
+                        <rect x="0" y="0" width="68" height="36" rx="4" fill="#121824" stroke="#00e5ff" stroke-width="1.5"/>
+                        <circle cx="14" cy="39" r="3.5" fill="#8899aa"/><circle cx="54" cy="39" r="3.5" fill="#8899aa"/>
+                        <text x="34" y="16" font-family="'Fira Code', monospace" font-size="7.5" font-weight="bold" fill="#00e5ff" text-anchor="middle">POD #7-8</text>
+                        <text x="34" y="28" font-family="'Fira Code', monospace" font-size="6.8" fill="#44ee77" text-anchor="middle">250 kW GPU IA</text>
+                    </g>
+
+                    <rect x="435" y="485" width="90" height="32" rx="4" fill="#26180a" stroke="#ffcc00" stroke-width="1.5"/>
+                    <text x="480" y="500" font-family="'Fira Code', monospace" font-size="7.2" font-weight="bold" fill="#fff" text-anchor="middle">MANIFOLD INOX</text>
+                    <text x="480" y="511" font-family="'Fira Code', monospace" font-size="6.5" fill="#ffcc00" text-anchor="middle">Ester Biodégradable</text>
+
+                    <!-- PUITS FROID PASSIF (-35 m) -->
+                    <rect x="250" y="565" width="460" height="50" rx="10" fill="rgba(0, 102, 255, 0.15)" stroke="#0088ff" stroke-width="1.5" stroke-dasharray="6,3"/>
+                    <path d="M 450 532 L 450 580 L 510 580 L 510 532" fill="none" stroke="#00ccff" stroke-width="2.5"/>
+                    <text x="480" y="592" font-family="'Fira Code', monospace" font-size="8.5" font-weight="bold" fill="#00e5ff" text-anchor="middle">
+                        ❄️ LAC SOUTERRAIN D'ENNOYAGE MINIER (15°C) — ÉCHANGEUR FERMÉ EN TITANE GRADE 2
+                    </text>
+                    <text x="480" y="606" font-family="'Fira Code', monospace" font-size="7.2" fill="#88bbdd" text-anchor="middle">
+                        Exutoire Froid Passif pour le Condenseur MOF & Sécurité Thermique 24/7 (Zéro Pompage d'Eau Acide)
+                    </text>
+                </svg>
+            </div>
+
+            <!-- 2. DÉCOUPLAGE MODULAIRE & PUE ULTIME (1.008) -->
+            <h4 style="color: var(--sun-yellow); margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">1. Architecture Modulaire Découplée & Chasse au PUE Ultime ($\text{PUE} \rightarrow 1,008$)</span>
+                <span lang="en">1. Decoupled Modular Architecture & Ultimate PUE ($\text{PUE} \rightarrow 1.008$)</span>
+            </h4>
+            <p lang="fr" style="font-size: 0.94rem; text-align: justify;">
+                En remontant la roue MOF-303 et le séchoir à biomasse en surface, on élimine la perte de charge aéraulique ($\Delta P \approx 250\text{–}450\text{ Pa}$) des puits de ventilation profonds. Le transfert thermique entre $-25\text{ m}$ et $0\text{ m}$ est $100\,\%$ hydraulique (l'eau étant $830\text{ fois}$ plus dense que l'air). Les modules d'aval deviennent <strong>optionnels et activables à la carte</strong> selon le tarif spot électrique du marché australien (NEM/AEMO) :
+            </p>
+            <p lang="en" style="font-size: 0.94rem; text-align: justify;">
+                By relocating the MOF-303 wheel and biomass dryer to the surface, we eliminate the deep-shaft aeraulic pressure drop ($\Delta P \approx 250\text{–}450\text{ Pa}$). Heat transfer between $-25\text{ m}$ and $0\text{ m}$ is $100\%$ hydraulic (water being $830\times$ denser than air). Downstream modules become <strong>optional and dynamically dispatchable</strong> based on Australian NEM wholesale electricity prices:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.2rem; margin: 1.5rem 0;">
+                <div style="background: rgba(247, 147, 26, 0.05); padding: 1.3rem; border-top: 3px solid #f7931a; border-radius: 6px;">
+                    <h5 style="color: #f7931a; margin-top: 0; font-size: 1rem;">
+                        <span lang="fr">🟠 Mode 0 : Cœur Pur Sion ($\text{PUE} = 1,008$)</span>
+                        <span lang="en">🟠 Mode 0: Pure Zion Core ($\text{PUE} = 1.008$)</span>
+                    </h5>
+                    <p lang="fr" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        Zéro ventilateur. Circulation par thermosiphon assisté ($8\text{ kW}_{\text{e}}$ de pompe basse pression) sur l'échangeur en Titane Grade 2 immergé dans l'eau d'ennoyage de la mine à $15\,^\circ\text{C}$. $99,2\,\%$ des électrons vont dans les puces.
+                    </p>
+                    <p lang="en" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        Zero fans. Thermosiphon-assisted loop ($8\text{ kW}_{\text{e}}$ low-head pump) rejecting heat into a Grade-2 Titanium closed loop submerged in $15^\circ\text{C}$ mine water. $99.2\%$ of power goes directly to silicon.
+                    </p>
+                </div>
+
+                <div style="background: rgba(200, 100, 255, 0.05); padding: 1.3rem; border-top: 3px solid #c864ff; border-radius: 6px;">
+                    <h5 style="color: #c864ff; margin-top: 0; font-size: 1rem;">
+                        <span lang="fr">🟣 Mode 1 : Symbiose Liquide ($\text{PUE} = 1,014$)</span>
+                        <span lang="en">🟣 Mode 1: Liquid Symbiosis ($\text{PUE} = 1.014$)</span>
+                    </h5>
+                    <p lang="fr" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        Régime nominal 24h/24 : transfert liquide-liquide ($14\text{ kW}_{\text{e}}$) chauffant les cuves de biolixiviation <em>Ouroboros</em> ($65\,^\circ\text{C}$), les bassins de Barramundis ($28\,^\circ\text{C}$) et la solution nutritive d'hydroponie verticale ($21\,^\circ\text{C}$).
+                    </p>
+                    <p lang="en" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        24/7 nominal mode: liquid-to-liquid heat transfer ($14\text{ kW}_{\text{e}}$) warming <em>Ouroboros</em> bio-leaching vats ($65^\circ\text{C}$), Barramundi RAS tanks ($28^\circ\text{C}$), and vertical hydroponic nutrient loops ($21^\circ\text{C}$).
+                    </p>
+                </div>
+
+                <div style="background: rgba(68, 238, 119, 0.05); padding: 1.3rem; border-top: 3px solid var(--bio-green); border-radius: 6px;">
+                    <h5 style="color: var(--bio-green); margin-top: 0; font-size: 1rem;">
+                        <span lang="fr">🟢 Mode 2 : Zénith Solaire ($\text{ERE} = 0,12$)</span>
+                        <span lang="en">🟢 Mode 2: Solar Zenith ($\text{ERE} = 0.12$)</span>
+                    </h5>
+                    <p lang="fr" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        Activé de 10h à 16h lors des surplus solaires gratuits (prix spot négatifs en NSW) : démarrage des souffleries de désorption de la roue <strong>Mini-MOF-303</strong> et du séchoir à biomasse Biochar ($92\,\%$ d'enthalpie valorisée à coût électrique nul).
+                    </p>
+                    <p lang="en" style="font-size: 0.88rem; color: #d4d4d4; margin: 0; text-align: justify;">
+                        Triggered 10:00–16:00 during free solar curtailment (negative NSW spot prices): powers the <strong>Mini-MOF-303</strong> desorption blowers and Biochar biomass dryer ($92\%$ enthalpy reuse at zero marginal power cost).
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. BIO-HUB COMPACT (900 m² AU SOL) & CYCLES DE NUIT -->
+            <h4 style="color: var(--bio-green); margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">2. Bio-Hub Vertical Compact ($800\text{ m}^2$ au sol) & Valorisation de l'Eau MOF-303 ($\times 1\,000$)</span>
+                <span lang="en">2. Compact Vertical Bio-Hub ($800\text{ m}^2$ Footprint) & MOF-303 Water Multiplier ($\times 1,000$)</span>
+            </h4>
+            <p lang="fr" style="font-size: 0.94rem; text-align: justify;">
+                Plutôt que de chauffer $4\,500\text{ m}^2$ de serres horizontales déperditives pour cultiver de la tomate industrielle, le MVP compacte la production dans un <strong>Dôme Hydroponique & Aéroponique Vertical de $450\text{ m}^2$ sur 6 niveaux</strong> ($2\,700\text{ m}^2$ cultivés) coiffé d'une verrière agrivoltaïque à sélection spectrale (laissant passer le spectre PAR $400\text{–}700\text{ nm}$ tout en convertissant les infrarouges en électricité). En boucle fermée, $90\,\%$ de l'eau transpirée est recondensée : les $1\,500\text{ à }2\,500\text{ L/j}$ d'eau ultra-pure ($EC = 0 \rightarrow 1,2\text{ mS/cm}$) produits par la roue <strong>Mini-MOF-303</strong> (assistée par $920\,000\text{ L/an}$ d'eau de pluie captée sur les $1\,150\text{ m}^2$ de toitures) suffisent à rendre le site <strong>$100\,\%$ indépendant de toute licence de forage</strong>. Au lieu d'être vendue à $3\text{ \$/m}^3$, chaque tonne d'eau MOF est transformée en cultures à haute marge générant plus de <strong>$3\,100\text{ USD de valeur par m}^3$ d'eau</strong> (amortissant le Mini-MOF en moins de 2 mois) :
+            </p>
+            <p lang="en" style="font-size: 0.94rem; text-align: justify;">
+                Instead of heating $4,500\text{ m}^2$ of heat-leaky horizontal greenhouses for low-margin commodity crops, the MVP consolidates production into a <strong>$450\text{ m}^2$ 6-tier Vertical Hydroponic & Aeroponic Dome</strong> ($2,700\text{ m}^2$ growing area) topped with wavelength-selective agrivoltaic glass (transmitting $400\text{–}700\text{ nm}$ PAR light while converting near-infrared heat into electricity). Because closed-loop hydroponics recycles $90\%$ of transpired water, the $1,500\text{–}2,500\text{ L/day}$ of distilled water ($EC = 0 \rightarrow 1.2\text{ mS/cm}$) harvested by the <strong>Mini-MOF-303</strong> wheel (supplemented by $920,000\text{ L/yr}$ of rainwater harvested from the $1,150\text{ m}^2$ solar roofs) makes the site <strong>$100\%$ independent of local water-access licenses</strong>. Rather than selling water at $\$3/\text{m}^3$, every cubic meter of MOF water is converted into high-margin crops yielding over <strong>$\$3,100/\text{m}^3$ in gross revenue</strong> (paying back the Mini-MOF unit in under 2 months):
+            </p>
+
+            <!-- TABLEAU VIVRIER DIVERSIFIÉ (30% CASH-CROPS / 70% SOUVERAINETÉ NUTRITIONNELLE HUMAINE) -->
+            <div style="overflow-x: auto; margin: 1.2rem 0 2rem; border: 1px solid rgba(68, 238, 119, 0.25); border-radius: 8px; background: #0a0f12;">
+                <table style="width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.87rem; text-align: left;">
+                    <caption style="text-align: left; font-weight: 700; padding: 0.8rem 1rem; color: var(--bio-green); background: rgba(68, 238, 119, 0.06); border-bottom: 1px solid rgba(68, 238, 119, 0.2);">
+                        <span lang="fr">Pyramide Vivrière Symbiotique (Équilibre : 30 % Cultures Haute Marge + 70 % Nutrition Humaine Complète)</span>
+                        <span lang="en">Symbiotic Food Pyramid (Balance: 30% High-Margin Cash Crops + 70% Complete Human Nutrition)</span>
+                    </caption>
+                    <thead>
+                        <tr style="background: rgba(68, 238, 119, 0.12); color: #fff;">
+                            <th style="padding: 0.7rem 1rem;"><span lang="fr">Pôle Nutritionnel &amp; Biologique (NSW DPI Compliant)</span><span lang="en">Nutritional &amp; Biological Stream (NSW DPI Compliant)</span></th>
+                            <th style="padding: 0.7rem 1rem;"><span lang="fr">Surface</span><span lang="en">Area</span></th>
+                            <th style="padding: 0.7rem 1rem;"><span lang="fr">Récolte / an</span><span lang="en">Annual Yield</span></th>
+                            <th style="padding: 0.7rem 1rem;"><span lang="fr">Rôle Métabolique &amp; Revenu Brut</span><span lang="en">Metabolic Role &amp; Gross Revenue</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>1. Pôle Autofinancement (Aéroponie $EC=0$) :</strong> Safran, Wasabi &amp; Vanille</span><span lang="en"><strong>1. Cash-Crop Engine ($EC=0$ Aeroponics):</strong> Saffron, Wasabi &amp; Vanilla</span></td>
+                            <td style="padding: 0.65rem 1rem;">120 m² (×6 niv.)</td>
+                            <td style="padding: 0.65rem 1rem;">35 kg Safran + 1,2 t Wasabi</td>
+                            <td style="padding: 0.65rem 1rem; color: var(--sun-yellow); font-weight: bold;">472 000 $ <span style="color:#aaa; font-weight:normal;">(Rembourse le MOF en 2 mois)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>2. Maraîchage Nutritif &amp; Antioxydants (Tours NFT) :</strong> Épinards, Kale, Pak Choi, Tomates anciennes, Fraises, Myrtilles, Spiruline</span><span lang="en"><strong>2. Nutrient-Dense Greens &amp; Berries (NFT Towers):</strong> Spinach, Kale, Bok Choy, Heirloom Tomatoes, Berries, Spirulina</span></td>
+                            <td style="padding: 0.65rem 1rem;">330 m² (×6 niv.)</td>
+                            <td style="padding: 0.65rem 1rem;">85 tonnes</td>
+                            <td style="padding: 0.65rem 1rem; color: var(--bio-green); font-weight: bold;">980 000 $ <span style="color:#aaa; font-weight:normal;">(Vitamines, Minéraux, Alcalinité)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>3. Neuro-Nutrition &amp; Fermentation ($65\,^\circ\text{C}$) :</strong> <em>Lion's Mane</em>, Reishi, Shiitake + Kombucha symbiotique</span><span lang="en"><strong>3. Neuro-Nutrition &amp; Fermentation ($65^\circ\text{C}$):</strong> <em>Lion's Mane</em>, Reishi, Shiitake + Symbiotic Kombucha</span></td>
+                            <td style="padding: 0.65rem 1rem;">200 m² (×6 niv.)</td>
+                            <td style="padding: 0.65rem 1rem;">22 t frais + 15 000 L</td>
+                            <td style="padding: 0.65rem 1rem; color: var(--bio-green); font-weight: bold;">340 000 $ <span style="color:#aaa; font-weight:normal;">(Immunité, Microbiote, $\text{CO}_2$ serre)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>4. Protéines Aquatiques &amp; Oméga-3 ($28\,^\circ\text{C}$) :</strong> <strong>Barramundi Australien</strong> + Écrevisses <em>Redclaw</em> (détritivores)</span><span lang="en"><strong>4. Aquatic Protein &amp; Omega-3 ($28^\circ\text{C}$):</strong> <strong>Australian Barramundi</strong> + <em>Redclaw</em> Crayfish</span></td>
+                            <td style="padding: 0.65rem 1rem;">150 m² (300 m³)</td>
+                            <td style="padding: 0.65rem 1rem;">18 t poisson + 2,5 t écrevisses</td>
+                            <td style="padding: 0.65rem 1rem; color: #00e5ff; font-weight: bold;">385 000 $ <span style="color:#aaa; font-weight:normal;">(Protéines nobles + Nitrates Hydro)</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>5. Ceinture Agroforestière Biochar (Extérieur) :</strong> Avocatiers Hass, Noix de Macadamia, Agrumes + <strong>250 Poules pondeuses (nourries aux larves BSFL)</strong></span><span lang="en"><strong>5. Outdoor Biochar Food-Forest Belt:</strong> Hass Avocados, Macadamia Nuts, Citrus + <strong>250 Pastured Hens (fed on BSFL larvae)</strong></span></td>
+                            <td style="padding: 0.65rem 1rem;">1 800 m² (Plein air)</td>
+                            <td style="padding: 0.65rem 1rem;">12 t fruits/lipides + <strong>75 000 œufs</strong> (4,5 t)</td>
+                            <td style="padding: 0.65rem 1rem; color: #ffcc00; font-weight: bold;">119 000 $ <span style="color:#aaa; font-weight:normal;">(Lipides sains, Choline, Sol vivant)</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: rgba(68, 238, 119, 0.1); color: #fff; font-weight: bold;">
+                            <td style="padding: 0.7rem 1rem;"><span lang="fr">TOTAL VIVRIER DIVERSIFIÉ (Nourrit ~818 humains en autonomie)</span><span lang="en">TOTAL DIVERSIFIED FOOD YIELD (Sustains ~818 humans)</span></td>
+                            <td style="padding: 0.7rem 1rem;">800 m² bâti + 1 800 m² verger</td>
+                            <td style="padding: 0.7rem 1rem; color: var(--bio-green);">144 tonnes/an (Végétal + Protéines)</td>
+                            <td style="padding: 0.7rem 1rem; color: var(--sun-yellow);">2 296 000 $/an Brut (~1,15 M$ Net)</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- VÉRIFICATION THERMODYNAMIQUE : POURQUOI 1 MW SUFFIT LARGEMENT (CASCADE EN SÉRIE) -->
+            <div style="margin: 2rem 0; padding: 1.4rem 1.6rem; background: rgba(255, 102, 0, 0.04); border: 1px solid rgba(255, 102, 0, 0.25); border-left: 4px solid var(--magma-orange); border-radius: 8px;">
+                <h5 style="color: var(--magma-orange); margin-top: 0; margin-bottom: 0.6rem; font-family: var(--font-ui); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">🔥 Vérification Enthalpique : 1 MW<sub>th</sub> Génère-t-il Assez de Chaleur pour Toutes ces Activités ?</span>
+                    <span lang="en">🔥 Enthalpy Verification: Does 1 MW<sub>th</sub> Generate Enough Heat for All Activities?</span>
+                </h5>
+                <p lang="fr" style="font-size: 0.88rem; color: #d4d4d4; margin-bottom: 0.8rem; text-align: justify;">
+                    Grâce au passage en dôme vertical isolé ($450\text{ m}^2$) et au <strong>couplage hydraulique en série</strong> (le même litre d'eau cède ses calories de $72\,^\circ\text{C} \rightarrow 52\,^\circ\text{C}$ dans le hangar industriel, puis de $52\,^\circ\text{C} \rightarrow 25\,^\circ\text{C}$ dans le Bio-Hub), la demande cumulée de <strong>toutes les unités tournant simultanément</strong> ne consomme que <strong>$63,5\,\%$ ($635\text{ kW}_{\text{th}}$)</strong> de la puissance du site pilote :
+                </p>
+                <p lang="en" style="font-size: 0.88rem; color: #d4d4d4; margin-bottom: 0.8rem; text-align: justify;">
+                    Thanks to the insulated vertical dome ($450\text{ m}^2$) and <strong>series hydraulic cascading</strong> (the same water loop steps down from $72^\circ\text{C} \rightarrow 52^\circ\text{C}$ in the industrial shed, then from $52^\circ\text{C} \rightarrow 25^\circ\text{C}$ in the Bio-Hub), the combined load of <strong>all units running simultaneously</strong> consumes only <strong>$63.5\%$ ($635\text{ kW}_{\text{th}}$)</strong> of the pilot's thermal output:
+                </p>
+                <ul style="font-size: 0.85rem; color: #b0c4de; padding-left: 1.3rem; margin-bottom: 0; line-height: 1.65;">
+                    <li><span lang="fr"><strong>Hangar Ouroboros BLaaS ($65\,^\circ\text{C}$) : $35\text{ kW}_{\text{th}}$ seulement ($3,5\,\%$)</strong> — Maintenir en température $10\text{ m}^3$ de bioréacteurs isolés demande très peu d'énergie, d'autant que la bio-oxydation du soufre et du fer ($\text{Fe}^{2+} \rightarrow \text{Fe}^{3+}$) par <em>Sulfolobus</em> est naturellement exothermique.</span><span lang="en"><strong>Ouroboros BLaaS Shed ($65^\circ\text{C}$): Only $35\text{ kW}_{\text{th}}$ ($3.5\%$)</strong> — Maintaining $10\text{ m}^3$ of insulated bioreactors requires minimal heat, especially since biological oxidation ($\text{Fe}^{2+} \rightarrow \text{Fe}^{3+}$) by <em>Sulfolobus</em> is naturally exothermic.</span></li>
+                    <li><span lang="fr"><strong>Désorption Roue Mini-MOF-303 ($2\,000\text{–}2\,500\text{ L/j}$ concentrés sur 10h de soleil) : $230\text{ kW}_{\text{th}}$ ($23,0\,\%$)</strong> — En outre, le condenseur restitue $\sim 120\text{ kW}_{\text{th}}$ de chaleur latente ($\Delta H_{\text{vap}}$) à $35\,^\circ\text{C}$ qui préchauffe gratuitement l'aquaponie !</span><span lang="en"><strong>Mini-MOF-303 Desorption ($2,000\text{–}2,500\text{ L/d}$ over 10 daylight hrs): $230\text{ kW}_{\text{th}}$ ($23.0\%$)</strong> — Moreover, the condenser recovers $\sim 120\text{ kW}_{\text{th}}$ of latent heat ($\Delta H_{\text{vap}}$) at $35^\circ\text{C}$ to pre-warm the fish tanks for free!</span></li>
+                    <li><span lang="fr"><strong>Séchoir Biomasse Biochar &amp; Déshydratation Champignons ($65\,^\circ\text{C}$) : $145\text{ kW}_{\text{th}}$ ($14,5\,\%$)</strong>.</span><span lang="en"><strong>Biochar Biomass Dryer &amp; Mushroom Dehydration ($65^\circ\text{C}$): $145\text{ kW}_{\text{th}}$ ($14.5\%$)</strong>.</span></li>
+                    <li><span lang="fr"><strong>Charge du Ballon Tampon Nocturne ($40\text{ m}^3$ à $70\,^\circ\text{C}$) + Bio-Hub Diurne : $180\text{ kW}_{\text{th}} + 45\text{ kW}_{\text{th}}$ ($22,5\,\%$)</strong> — Accumule $1,8\text{ MWh}_{\text{th}}$ le jour pour maintenir le dôme ($21\,^\circ\text{C}$), les Barramundis ($28\,^\circ\text{C}$), les larves BSFL ($30\,^\circ\text{C}$) et Ouroboros toute la nuit sans faire tourner les ASICs sur batterie.</span><span lang="en"><strong>Night Thermal Buffer Charge ($40\text{ m}^3$ at $70^\circ\text{C}$) + Daytime Bio-Hub: $180\text{ kW}_{\text{th}} + 45\text{ kW}_{\text{th}}$ ($22.5\%$)</strong> — Stores $1.8\text{ MWh}_{\text{th}}$ by day to keep the dome ($21^\circ\text{C}$), Barramundi ($28^\circ\text{C}$), BSFL ($30^\circ\text{C}$), and Ouroboros warm all night while ASICs sleep.</span></li>
+                    <li><span lang="fr"><strong>Excédent Thermique Libre : $+365\text{ kW}_{\text{th}}$ ($36,5\,\%$) !</strong> En été australien, cet excédent alimente un <strong>groupe froid à adsorption (Silica-Gel / Eau dès $62\,^\circ\text{C}$)</strong> qui climatise gratuitement la zone Safran/Wasabi à $18\text{–}20\,^\circ\text{C}$, ou s'évacue passivement dans l'eau de mine à $15\,^\circ\text{C}$.</span><span lang="en"><strong>Surplus Thermal Headroom: $+365\text{ kW}_{\text{th}}$ ($36.5\%$) !</strong> During hot Australian summers, this surplus drives a <strong>Silica-Gel Adsorption Chiller (operating at $62^\circ\text{C}$)</strong> to air-condition the Saffron/Wasabi zone at $18\text{–}20^\circ\text{C}$ for free, or rejects passively into the $15^\circ\text{C}$ mine water.</span></li>
+                </ul>
+            </div>
+
+            <!-- 4. HANGAR OUROBOROS BLaaS EN SURFACE -->
+            <h4 style="color: #c864ff; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">3. Hangar « Ouroboros BLaaS » en Surface : <em>Bio-Leaching-as-a-Service</em> & Zéro Déchet</span>
+                <span lang="en">3. Surface "Ouroboros BLaaS" Shed: <em>Bio-Leaching-as-a-Service</em> & Zero-Waste Upcycling</span>
+            </h4>
+            <p lang="fr" style="font-size: 0.94rem; text-align: justify;">
+                Au lieu de laisser les cuves de recyclage <em>Ouroboros</em> inactives $98\,\%$ du temps en attendant l'obsolescence de nos propres ASICs tous les 4 ans, l'unité est installée en surface dans un hangar industriel sécurisé ($350\text{ m}^2$) et ouverte en <strong>service B2B (BLaaS)</strong> aux datacenters de Sydney, aux parcs solaires du NSW (panneaux PV en fin de vie) et aux mines locales. Propulsée gratuitement par la chaleur des serveurs ($65\,^\circ\text{C}$) et l'eau pure du MOF ($EC = 0$), la ligne sépare $100\,\%$ des matériaux sans pyrométallurgie ni cyanure :
+            </p>
+            <p lang="en" style="font-size: 0.94rem; text-align: justify;">
+                Instead of leaving <em>Ouroboros</em> recycling vats idle $98\%$ of the time awaiting our own 4-year ASIC refresh cycle, the unit is housed on the surface inside a $350\text{ m}^2$ industrial shed and opened as a <strong>B2B service (BLaaS)</strong> to Sydney data centers, NSW solar farms (end-of-life PV panels), and local mines. Powered for free by $65^\circ\text{C}$ server heat and pure MOF water ($EC = 0$), the line separates $100\%$ of materials with zero smelting and zero cyanide:
+            </p>
+            <ul style="list-style-type: none; padding-left: 0; margin: 1.2rem 0; font-size: 0.9rem;">
+                <li style="margin-bottom: 12px; border-left: 3px solid #c864ff; padding-left: 15px;">
+                    <span lang="fr"><strong>Étape 0 & 1 — Démantèlement XRF & Biolixiviation Thermophile ($65\,^\circ\text{C}$) :</strong> Récupération thermique de l'Étain ($\text{Sn}$), de l'Indium ($\text{In}$) et du Tantale ($\text{Ta}$). La poudre broyée est lixiviée en $36\text{–}48\text{ h}$ par des archées thermo-acidophiles (<em>Sulfolobus metallicus</em>) à $65\,^\circ\text{C}$ ($\text{Cu}^0 + 2\,\text{Fe}^{3+} \rightarrow \text{Cu}^{2+} + 2\,\text{Fe}^{2+}$), produisant par électrolyse solaire des cathodes de <strong>Cuivre pur à $99,99\,\%$</strong>.</span>
+                    <span lang="en"><strong>Stage 0 & 1 — XRF Dismantling & Thermophilic Bio-Leaching ($65^\circ\text{C}$):</strong> Thermal recovery of Tin ($\text{Sn}$), Indium ($\text{In}$), and Tantalum ($\text{Ta}$). Crushed PCBs are leached in $36\text{–}48\text{ h}$ by thermo-acidophilic archaea (<em>Sulfolobus metallicus</em>) at $65^\circ\text{C}$ ($\text{Cu}^0 + 2\,\text{Fe}^{3+} \rightarrow \text{Cu}^{2+} + 2\,\text{Fe}^{2+}$), yielding <strong>$99.99\%$ pure Copper</strong> cathodes via solar electrowinning.</span>
+                </li>
+                <li style="margin-bottom: 12px; border-left: 3px solid var(--gold-gov); padding-left: 15px;">
+                    <span lang="fr"><strong>Étape 2 — Lixiviation de l'Or et de l'Argent à la Glycine ($55\,^\circ\text{C}$, Zéro Cyanure) :</strong> Le résidu solide enrichi est traité par un acide aminé comestible et biodégradable, la <strong>Glycine</strong> (procédé australien <em>GlyCat</em>), puis adsorbé sur notre propre <strong>Biochar activé (Niveau 4)</strong> pour extraire l'<strong>Or ($\text{Au}$), l'Argent ($\text{Ag}$) et le Palladium ($\text{Pd}$) à $99,99\,\%$</strong>.</span>
+                    <span lang="en"><strong>Stage 2 — Cyanide-Free Glycine Gold & Silver Leaching ($55^\circ\text{C}$):</strong> The copper-depleted cake is leached using food-grade, biodegradable <strong>Glycine</strong> (Australian <em>GlyCat</em> process), then adsorbed onto our own steam-activated <strong>Biochar (Level 4)</strong> to recover <strong>$99.99\%$ pure Gold ($\text{Au}$), Silver ($\text{Ag}$), and Palladium ($\text{Pd}$)</strong>.</span>
+                </li>
+                <li style="margin-bottom: 12px; border-left: 3px solid var(--water-blue); padding-left: 15px;">
+                    <span lang="fr"><strong>Étape 3 — Valorisation des $70\,\%$ de Résidus Non-Métalliques :</strong> La fraction minérale silico-alumineuse ($450\text{ kg/t}$ de fibre de verre PCB) est transformée sur place en <strong>Béton Géopolymère bas-carbone (<em>Shotcrete</em>)</strong> utilisé pour consolider les parois de la mine ! Les résines époxy ($250\text{ kg/t}$, strictement isolées de la filière agricole) subissent une solvolyse douce en autoclave pour mouler les traverses et bacs techniques.</span>
+                    <span lang="en"><strong>Stage 3 — $100\%$ Upcycling of the $70\%$ Non-Metallic Residue:</strong> Washed fiberglass silica ($450\text{ kg/t}$ of PCB) is mixed with local fly ash into <strong>low-carbon Geopolymer Concrete (<em>Shotcrete</em>)</strong> used directly to reinforce the underground mine walls! Epoxy resins ($250\text{ kg/t}$, strictly isolated from agricultural biochar) undergo closed-loop solvolysis into structural mine sleepers and trays.</span>
+                </li>
+            </ul>
+
+            <!-- 5. LES 5 BOUCLES D'AUTOPOÏÈSE & MINI-TERRAFAB / ROBOTIQUE -->
+            <h4 style="color: var(--water-blue); margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">4. Les 5 Boucles d'Autopoïèse (Zéro Intrant) & Feuille de Route « Mini-TerraFab » NSW</span>
+                <span lang="en">4. The 5 Autopoietic Loops (Zero External Input) & NSW "Mini-TerraFab" Roadmap</span>
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.2rem; margin: 1.2rem 0;">
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                    <strong style="color: var(--bio-green); font-family: var(--font-ui); display: block; margin-bottom: 0.5rem;">
+                        <span lang="fr">🔄 Les 5 Fermetures de Boucle Métabolique :</span>
+                        <span lang="en">🔄 The 5 Metabolic Loop Closures:</span>
+                    </strong>
+                    <ol style="padding-left: 1.2rem; margin: 0; font-size: 0.86rem; color: #c9d1d9; line-height: 1.6;">
+                        <li><span lang="fr"><strong>Boucle Protéinique BSFL :</strong> Les larves <em>Hermetia illucens</em> ($30\,^\circ\text{C}$) convertissent les déchets racinaires et fongiques en protéines vivantes pour nourrir les Barramundis (zéro farine de poisson achetée).</span><span lang="en"><strong>BSFL Protein Loop:</strong> <em>Hermetia illucens</em> larvae ($30^\circ\text{C}$) convert root and fungal trimmings into live protein feed for the Barramundi (zero commercial fishmeal).</span></li>
+                        <li><span lang="fr"><strong>Symbiose Gazeuse $\text{CO}_2 \leftrightarrow \text{O}_2$ :</strong> Le $\text{CO}_2$ expiré par les champignons ($> 2\,500\text{ ppm}$) dope la photosynthèse du dôme hydroponique ; l'$\text{O}_2$ des plantes oxygène les poissons et les bioréacteurs.</span><span lang="en"><strong>$\text{CO}_2 \leftrightarrow \text{O}_2$ Gas Symbiosis:</strong> $\text{CO}_2$ exhaled by medicinal mushrooms ($> 2,500\text{ ppm}$) boosts hydroponic photosynthesis; plant $\text{O}_2$ aerates fish tanks and bio-leaching vats.</span></li>
+                        <li><span lang="fr"><strong>Vinaigre de Bois & Syngas :</strong> La condensation des vapeurs de pyrolyse ($450\,^\circ\text{C}$) fournit un biostimulant/fongicide naturel gratuit et du gaz de secours nocturne.</span><span lang="en"><strong>Wood Vinegar & Syngas:</strong> Condensing flash-pyrolysis vapors ($450^\circ\text{C}$) yields free organic biostimulant/fungicide and backup syngas power.</span></li>
+                        <li><span lang="fr"><strong>Électrolyse Bipolaire sur Site :</strong> Autoproduction d'eau ozonée ($\text{O}_3$) et d'acides/bases d'ajustement de pH à partir des sels miniers.</span><span lang="en"><strong>On-Site Bipolar Electrolysis:</strong> Self-production of ozonated water ($\text{O}_3$) and pH-adjusting acids/bases from mine-water salts.</span></li>
+                        <li><span lang="fr"><strong>Régénération de l'Ester Diélectrique :</strong> Filtration quinquennale de l'huile d'immersion sur nos propres colonnes de Biochar activé ($> 60\text{ kV/mm}$).</span><span lang="en"><strong>Dielectric Ester Regeneration:</strong> 5-year closed-loop purification of immersion fluid through our own activated Biochar columns ($> 60\text{ kV/mm}$).</span></li>
+                    </ol>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                    <strong style="color: var(--sun-yellow); font-family: var(--font-ui); display: block; margin-bottom: 0.5rem;">
+                        <span lang="fr">🤖 Bilan Minéral ASIC-X (1 MW) & Mini-TerraFab Australie :</span>
+                        <span lang="en">🤖 ASIC-X Mineral Balance (1 MW) & Australian Mini-TerraFab:</span>
+                    </strong>
+                    <p style="font-size: 0.85rem; color: #c9d1d9; margin-bottom: 0.6rem; line-height: 1.55;">
+                        <span lang="fr">Un module de $1\text{ MW}$ (200 lames immergées en 8 chariots sur rails de $125\text{ kW}$, manipulés sous terre par un unique portique robotisé et des chariots autonomes) requiert un stock minéral initial unique de : <strong>$850\text{ kg}$ Cuivre</strong>, <strong>$520\text{ kg}$ Aluminium</strong>, <strong>$28\text{ kg}$ Silicium 9N</strong>, <strong>$18,5\text{ kg}$ Étain/Indium</strong> (TIM liquide), <strong>$6,2\text{ kg}$ Tantale</strong>, <strong>$4,5\text{ kg}$ SiC/GaN</strong>, <strong>$4,2\text{ kg}$ Argent</strong> et <strong>$0,85\text{ kg}$ Or</strong> — tous présents dans le sous-sol australien (Cadia, Cobar, Dubbo NSW).</span>
+                        <span lang="en">A $1\text{ MW}$ module (200 immersed blades across eight $125\text{ kW}$ rail carts, tended underground by a single ceiling gantry robot) requires a one-time mineral stock of: <strong>$850\text{ kg}$ Copper</strong>, <strong>$520\text{ kg}$ Aluminum</strong>, <strong>$28\text{ kg}$ 9N Silicon</strong>, <strong>$18.5\text{ kg}$ Tin/Indium</strong> (liquid TIM), <strong>$6.2\text{ kg}$ Tantalum</strong>, <strong>$4.5\text{ kg}$ SiC/GaN</strong>, <strong>$4.2\text{ kg}$ Silver</strong>, and <strong>$0.85\text{ kg}$ Gold</strong>—all mined in Australia (Cadia, Cobar, Dubbo NSW).</span>
+                    </p>
+                    <p style="font-size: 0.85rem; color: #44ee77; margin: 0; line-height: 1.55;">
+                        <span lang="fr">Grâce à l'eau ultra-pure ($EC=0$) du MOF et à la stabilité sismique de la roche, <em>Lemuria Technologies</em> ouvre la voie à une <strong>Mini-TerraFab modulaire en NSW</strong> (encapsulation Indium, étages PSU SiC/GaN et ré-impression des métaux recyclés à $95\,\%+$ par Ouroboros).</span>
+                        <span lang="en">Leveraging $EC=0$ MOF water and bedrock seismic stability, <em>Lemuria Technologies</em> paves the way for a <strong>modular NSW Mini-TerraFab</strong> (Indium TIM packaging, SiC/GaN PSUs, and closed-loop re-manufacturing of $95\%+$ Ouroboros-recycled metals).</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6. SYNTHÈSE CAPEX ULTRA-LEAN & ROI (1,95 M USD) -->
+            <h4 style="color: var(--gold-gov); margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">5. Bilan Financier Clé en Main du Pilote 1 MW « Ultra-Lean » (ROI < 12 Mois)</span>
+                <span lang="en">5. Turnkey Financial Balance of the 1 MW "Ultra-Lean" Pilot (Payback < 12 Months)</span>
+            </h4>
+            <div style="overflow-x: auto; margin: 1rem 0; border: 1px solid rgba(255, 204, 0, 0.3); border-radius: 8px; background: #0a0d12;">
+                <table style="width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.88rem; text-align: left;">
+                    <thead>
+                        <tr style="background: rgba(255, 204, 0, 0.12); color: var(--sun-yellow);">
+                            <th style="padding: 0.75rem 1rem;"><span lang="fr">Pôle du Site Pilote 1 MW (Brownfield NSW)</span><span lang="en">1 MW Pilot Site Pillar (NSW Brownfield)</span></th>
+                            <th style="padding: 0.75rem 1rem;"><span lang="fr">CAPEX Clé en Main (USD / AUD)</span><span lang="en">Turnkey CAPEX (USD / AUD)</span></th>
+                            <th style="padding: 0.75rem 1rem;"><span lang="fr">Cash-Flow Net Annuel Estimé (USD/an)</span><span lang="en">Est. Annual Net Cash-Flow (USD/yr)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>1. Sanctuaire Souterrain Sion (-25 m) :</strong> Galerie $80\text{ m}^3$, 8 Pods sur rails (70% ASIC-X / 30% GPU IA), 1 rail-portique, 2 conduites DN100 & boucle Titane</span><span lang="en"><strong>1. Subterranean Zion Sanctuary (-25 m):</strong> $80\text{ m}^3$ gallery, 8 rail Pods (70% ASIC-X / 30% AI GPUs), 1 gantry robot, 2 DN100 pipes & Titanium loop</span></td>
+                            <td style="padding: 0.65rem 1rem;">490 000 $ <span style="color:#888;">(~745k A$)</span></td>
+                            <td style="padding: 0.65rem 1rem; color: #ffcc00; font-weight: bold;">+380 000 $/an <span style="color:#aaa; font-weight:normal;">(Calcul BTC + Batch IA + FCAS)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>2. Hangar Industriel Surface ($350\text{ m}^2$) :</strong> Ligne Ouroboros BLaaS ($500\text{ t/an}$ e-waste/PV), Skid Mini-MOF-303, Séchoir $65\,^\circ\text{C}$, Pyrolyse $450\,^\circ\text{C}$ & Ballon $40\text{ m}^3$</span><span lang="en"><strong>2. Surface Industrial Shed ($350\text{ m}^2$):</strong> Ouroboros BLaaS line ($500\text{ t/yr}$ e-waste/PV), Mini-MOF-303 Skid, $65^\circ\text{C}$ Dryer, $450^\circ\text{C}$ Pyrolysis & $40\text{ m}^3$ Tank</span></td>
+                            <td style="padding: 0.65rem 1rem;">385 000 $ <span style="color:#888;">(~585k A$)</span></td>
+                            <td style="padding: 0.65rem 1rem; color: #c864ff; font-weight: bold;">+1 450 000 $/an <span style="color:#aaa; font-weight:normal;">(BLaaS Au/Cu/Ag + Gate Fees + CORC)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>3. Bio-Hub Vivrier Surface ($800\text{ m}^2$) :</strong> Dôme Hydroponique 6 niveaux ($450\text{ m}^2$), Bassins Barramundi RAS ($150\text{ m}^2$), Chambres Fongiques & Larves BSFL</span><span lang="en"><strong>3. Surface Food Bio-Hub ($800\text{ m}^2$):</strong> 6-tier Hydroponic Dome ($450\text{ m}^2$), Barramundi RAS ($150\text{ m}^2$), Fungal Chambers & BSFL Loop</span></td>
+                            <td style="padding: 0.65rem 1rem;">195 000 $ <span style="color:#888;">(~296k A$)</span></td>
+                            <td style="padding: 0.65rem 1rem; color: var(--bio-green); font-weight: bold;">+1 150 000 $/an <span style="color:#aaa; font-weight:normal;">(Marge nette 50% sur 2,29 M$ brut)</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 0.65rem 1rem;"><span lang="fr"><strong>4. Autonomie Électrique Solaire :</strong> Toitures TOPCon ($23\,\%$) + Verrière Agrivoltaïque + Solaire Flottant/Maverick ($2,2\text{ MW}_{\text{c}}$) + Batterie LFP veille nocturne</span><span lang="en"><strong>4. Off-Grid Solar Autonomy:</strong> TOPCon Roofs ($23\%$) + Agrivoltaic Glass + Floatovoltaics/Maverick ($2.2\text{ MW}_{\text{p}}$) + Night-Standby LFP Battery</span></td>
+                            <td style="padding: 0.65rem 1rem;">880 000 $ <span style="color:#888;">(~1,34M A$)</span></td>
+                            <td style="padding: 0.65rem 1rem; color: #00e5ff; font-weight: bold;">OPEX Élec = 0 $/an <span style="color:#aaa; font-weight:normal;">(100% Autonome / PPA optionnel)</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: rgba(68, 238, 119, 0.12); color: #fff; font-weight: bold;">
+                            <td style="padding: 0.8rem 1rem;"><span lang="fr">TOTAL MVP 1 MW CLÉ EN MAIN (OU 1,07 M$ HORS CHAMP SOLAIRE EN PPA)</span><span lang="en">TOTAL 1 MW TURNKEY MVP (OR $1.07M EXCLUDING SOLAR VIA PPA)</span></td>
+                            <td style="padding: 0.8rem 1rem; color: var(--sun-yellow);">1 950 000 $ (~2,96 M A$)</td>
+                            <td style="padding: 0.8rem 1rem; color: var(--bio-green);">~2 980 000 $/an (ROI Consolidé : ~8 à 12 Mois)</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- 7. BILAN CARDINAL EN UNITÉS DE BIEN-ÊTRE (WU & INDICE WU WEI) DU SITE PILOTE 1 MW -->
+            <div style="margin-top: 2rem; padding: 1.5rem 1.8rem; background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.35); border-left: 4px solid #58a6ff; border-radius: 8px;">
+                <h4 style="color: #58a6ff; margin-top: 0; margin-bottom: 0.8rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">
+                    <span lang="fr">🌍 6. Bilan Biophysique Post-PIB : Calcul des Unités de Bien-Être ($WU$) du Site Pilote 1 MW</span>
+                    <span lang="en">🌍 6. Post-GDP Biophysical Accounting: Wellbeing Units ($WU$) Generated by the 1 MW Pilot</span>
+                </h4>
+                <p lang="fr" style="font-size: 0.9rem; color: #d4d4d4; margin-bottom: 1rem; text-align: justify;">
+                    En appliquant l'équation cardinale du <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color: var(--sun-yellow);">Wellbeing Framework</a> ($WU = W_{\text{vital}} + W_{\text{éco}} + W_{\text{stocks}}$) aux flux physiques annuels du MVP de $1\text{ MW}$ :
+                </p>
+                <p lang="en" style="font-size: 0.9rem; color: #d4d4d4; margin-bottom: 1rem; text-align: justify;">
+                    Applying the cardinal equation of the <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" style="color: var(--sun-yellow);">Wellbeing Framework</a> ($WU = W_{\text{vital}} + W_{\text{eco}} + W_{\text{stocks}}$) to the annual physical outputs of the $1\text{ MW}$ MVP:
+                </p>
+
+                <div class="math-block" style="margin: 0.8rem 0 1rem; padding: 1rem; background: rgba(0,0,0,0.55); border-color: rgba(88,166,255,0.25); color: #fff; font-size: 0.95rem; text-align: left;">
+                    $$ \begin{aligned}
+                    \mathbf{1.\; W_{\text{vital}}} &= 0,18 \cdot \underbrace{1\,832\text{ m}^3}_{\text{Eau MOF + Pluie}} + 6,5 \cdot \underbrace{119\text{ t}}_{\text{Végétal &amp; Champ.}} + 22,0 \cdot \underbrace{25\text{ t}}_{\text{Barramundi, Redclaw, Œufs}} = \mathbf{1\,653,3\text{ WU/an}} \\
+                    \mathbf{2.\; W_{\text{éco}}} &= 0,04 \cdot \underbrace{4\,500\text{ m}^2_{\text{éq}}}_{\text{Canopée 6 niv. + Verger}} \cdot \left(1 + \frac{25\text{ m}}{150}\right) \cdot \underbrace{1,25}_{\text{Bonus Brownfield}} = \mathbf{262,5\text{ WU/an}} \\
+                    \mathbf{3.\; W_{\text{stocks}}} &= 0,85 \cdot \underbrace{721\text{ t CO}_2\text{e}}_{\text{220t Biochar + 501t Ouroboros/Géopolymère}} + 95 \cdot \underbrace{0,95}_{\eta_{\text{Ouro}}} \cdot 1\text{ MW} = \mathbf{703,2\text{ WU/an}}
+                    \end{aligned} $$
+                    <div style="margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dashed rgba(88,166,255,0.3); text-align: center; color: #44ee77; font-weight: bold; font-size: 1.05rem;">
+                        $$ \mathbf{WU_{\text{Total Pilote 1 MW}} = 2\,619\text{ WU / an}} \quad \Longrightarrow \quad \mathbf{\sim 818\text{ Humains soutenus en autonomie vitale}} \;\left(\frac{WU}{3,2}\right) $$
+                    </div>
+                </div>
+
+                <p style="font-size: 0.88rem; color: #b0c4de; margin: 0; text-align: center; font-family: var(--font-mono);">
+                    <span lang="fr">⚡ <strong>Indice Cardinal Wu Wei ($WU / E_{\text{tot}}$) :</strong> $\mathbf{0,30\text{ mWU/kWh}}$ (en 24/7) &nbsp;|&nbsp; $\mathbf{0,62\text{ mWU/kWh}}$ (en mode 100 % Solaire Autonome diurne) — soit <strong>$+110\,\%$ d'efficience biophysique</strong> par rapport au modèle de base !</span>
+                    <span lang="en">⚡ <strong>Cardinal Wu Wei Index ($WU / E_{\text{tot}}$):</strong> $\mathbf{0.30\text{ mWU/kWh}}$ (24/7 mode) &nbsp;|&nbsp; $\mathbf{0.62\text{ mWU/kWh}}$ (100% Off-Grid Solar diurnal mode) — a <strong>$+110\%$ biophysical efficiency leap</strong> over the baseline design!</span>
+                </p>
+            </div>
+
+        </div>
+    </details>
     <div class="dashboard-box">
         <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase;">
             <span lang="fr">🌍 Télémétrie Globale : Potentiel de la Matrice</span>
