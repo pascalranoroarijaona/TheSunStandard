@@ -1090,8 +1090,8 @@
                     style="width: 50%; max-width: 420px; height: auto; background: transparent; mix-blend-mode: screen; filter: drop-shadow(0 0 18px rgba(68, 238, 119, 0.25)); margin-top: 1.2rem;">
             </div>
             <p style="margin-top: 1.2rem; color: #888; font-size: 0.9rem; font-family: var(--font-mono);">
-                <span lang="fr">2026-06-15 (last edit - November 1st, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
-                <span lang="en">2026-06-15 (last edit - November 1st, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
+                <span lang="fr">2026-06-15 (last edit - November 4th, 2026) // UNE EXPLORATION D'ARCHITECTURE SYMBIOTIQUE SELON L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-06-15 (last edit - November 4th, 2026) // AN EXPLORATION OF SYMBIOTIC ARCHITECTURE UNDER THE SUN STANDARD</span>
             </p>
         </div>
     
@@ -4981,6 +4981,7 @@
         </section>
     </details>
    
+    
     <!-- ENCADRÉ DE CITATION ACADÉMIQUE & BIBTEX -->
     <div style="margin: 3.5rem auto; padding: 1.8rem 2rem; background: rgba(255, 204, 0, 0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-left: 4px solid var(--sun-yellow); border-radius: 10px; font-family: var(--font-ui); box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem;">
@@ -7063,7 +7064,57 @@
                 </p>
             </div>
             <blockquote style="border-left: 4px solid var(--sun-yellow, #ffcc00); padding: 1.25rem 1.75rem; margin: 2rem auto; max-width: 800px; background: rgba(255, 204, 0, 0.05); border-radius: 0 8px 8px 0; color: #e6edf3;">
+            <!-- ===================================================================== -->
+            <!-- SECTION : VISIONNEUSE PDF / PDF EMBED VIEWER                         -->
+            <!-- ===================================================================== -->
+            <details id="tiroir-pdf-viewer" open style="margin: 2.5rem auto; border-left: 4px solid var(--water-blue, #00ccff); background: rgba(13, 17, 23, 0.85); border-radius: 0 12px 12px 0; box-shadow: 0 12px 35px rgba(0,0,0,0.6); overflow: hidden;">
+                <summary style="color: var(--water-blue, #00ccff); font-size: 1.25rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; background: rgba(0, 204, 255, 0.06); padding: 1.2rem 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: flex; align-items: center; gap: 10px;">
+                        <span>📄</span>
+                        <span lang="fr">Lire l'Article Scientifique Complet (Preview PDF)</span>
+                        <span lang="en">Read Full Research Paper (PDF Preview)</span>
+                    </span>
+                    <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #88bbdd; font-weight: normal;">PDF</span>
+                </summary>
 
+                <div style="padding: 1.5rem; background: #080b0e;">
+                    <!-- Barre d'actions rapides (Téléchargement & Nouvel onglet) -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: var(--font-ui);">
+                        <div style="font-size: 0.9rem; color: #a0aab5;">
+                            <span lang="fr">Visualisation directe du manuscrit de recherche original.</span>
+                            <span lang="en">Direct in-browser preview of the original research manuscript.</span>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <!-- Remplacer "Cosmology_v2.pdf" par le chemin relatif ou absolu de votre PDF -->
+                            <a href="../articles/Cosmology_v2.pdf" target="_blank" rel="noopener noreferrer" style="background: rgba(0, 204, 255, 0.1); border: 1px solid var(--water-blue, #00ccff); color: var(--water-blue, #00ccff); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; font-family: var(--font-mono); display: inline-flex; align-items: center; gap: 6px;">
+                                ↗ <span lang="fr">Ouvrir plein écran</span><span lang="en">Open full screen</span>
+                            </a>
+                            <a href="../articles/Cosmology_v2.pdf" download="Cosmology_v2.pdf" style="background: rgba(68, 238, 119, 0.1); border: 1px solid var(--bio-green, #44ee77); color: var(--bio-green, #44ee77); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; font-family: var(--font-mono); display: inline-flex; align-items: center; gap: 6px;">
+                                ⬇ <span lang="fr">Télécharger</span><span lang="en">Download</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Conteneur adaptatif du PDF avec fallback si non supporté -->
+                    <div style="position: relative; width: 100%; height: 820px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 204, 255, 0.2); background: #000;">
+                        <object data="../articles/Cosmology_v2.pdf#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%">
+                            <!-- Fallback pour les navigateurs mobiles ne gérant pas le rendu PDF inline -->
+                            <iframe src="../articles/Cosmology_v2.pdf" width="100%" height="100%" style="border: none;">
+                                <div style="padding: 3rem 1.5rem; text-align: center; color: #d4d4d4; font-family: var(--font-ui);">
+                                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                                        <span lang="fr">Votre navigateur ne prend pas en charge la prévisualisation directe des fichiers PDF.</span>
+                                        <span lang="en">Your browser does not support inline PDF preview.</span>
+                                    </p>
+                                    <a href="../articles/Cosmology_v2.pdf" target="_blank" style="display: inline-block; padding: 10px 24px; background: var(--water-blue, #00ccff); color: #000; font-weight: bold; border-radius: 25px; text-decoration: none;">
+                                        <span lang="fr">Télécharger / Ouvrir le PDF</span>
+                                        <span lang="en">Download / Open PDF</span>
+                                    </a>
+                                </div>
+                            </iframe>
+                        </object>
+                    </div>
+                </div>
+            </details>
             <!-- VERSION FRANÇAISE -->
             <div lang="fr" style="font-size: 1.1rem; line-height: 1.75; margin-bottom: 2.5rem;">
                 <h2 style="font-size: 1.6rem; line-height: 1.3; margin-top: 0; color: var(--sun-yellow, #ffcc00);">
