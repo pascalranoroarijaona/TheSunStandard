@@ -17,6 +17,8 @@
 \usepackage{cite}
 \usepackage{titlesec}
 \usepackage{cuted} % Permet l'environnement strip (équivalent widetext de revtex4)
+\usepackage{tabularx}
+\usepackage{array}
 
 % Configuration de la géométrie (Style Physical Review D / IPI Letters)
 \geometry{
@@ -730,7 +732,9 @@ Pour être transparents, nous classons explicitement comme \emph{non falsifiable
 \end{enumerate}
 
 \begin{center}
-\begin{tabular}{|l|l|l|}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|l|>{\raggedright\arraybackslash}p{2.6cm}|}
 \hline
 \textbf{Énoncé} & \textbf{Dépendance} & \textbf{Statut} \\
 \hline
@@ -742,7 +746,7 @@ $\Lambda_{\text{sim}}(t)$ décroissant & (P2) & contrainte faible \\
 $\kNak \equiv h$ & (P1)--(P3) & non testable \\
 Correspondances géométriques & (P1)--(P3) & heuristique \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 En résumé, le contenu empirique de ce travail se limite aux tests T1 à T3, qui portent sur la Timechain réelle. L'interprétation \og simulationniste \fg{} fournit un cadre de lecture cohérent, mais aucune observation présentée ici ne permet de la préférer à une lecture purement classique.
