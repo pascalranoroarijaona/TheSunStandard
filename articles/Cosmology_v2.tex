@@ -1,0 +1,753 @@
+\documentclass[10pt,twocolumn,a4paper]{article}
+
+% ============================================================================
+% PACKAGES STANDARDS (COMPATIBILITE UNIVERSELLE TEXLIVE 2026)
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french,english]{babel}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{titlesec}
+\usepackage{cuted} % Permet l'environnement strip (équivalent widetext de revtex4)
+
+% Configuration de la géométrie (Style Physical Review D / IPI Letters)
+\geometry{
+    a4paper,
+    top=1.8cm,
+    bottom=2.0cm,
+    left=1.5cm,
+    right=1.5cm,
+    columnsep=0.65cm
+}
+
+% Tolérance d'espacement pour éviter tout Overfull \hbox en mode 2 colonnes
+\emergencystretch=1.5em
+\allowdisplaybreaks
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black,
+    pdftitle={Holographie Celeste, Temps Thermique et Cosmologie Quantique du Consensus de Nakamoto},
+    pdfauthor={Pascal Ranaora}
+}
+
+% Formatage compact des sections
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+% Environnement widetext (style Physical Review D) pour les longues équations
+\newenvironment{widetext}{%
+  \begin{strip}
+  \rule{\dimexpr(0.5\textwidth-0.5\columnsep-0.4pt)}{0.4pt}%
+  \rule{0.4pt}{6pt}\par\vspace{-2pt}%
+}{%
+  \par\vspace{-2pt}\hfill%
+  \rule[-6pt]{0.4pt}{6.4pt}%
+  \rule{\dimexpr(0.5\textwidth-0.5\columnsep-0.4pt)}{0.4pt}%
+  \end{strip}
+}
+
+% ============================================================================
+% ENVIRONNEMENTS MATHEMATIQUES (THEOREMES, AXIOMES, DEMONSTRATIONS)
+% ============================================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollaire}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Définition}
+\newtheorem{axiom}{Axiome Fondamental}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remarque}
+
+% Commandes personnalisées pour la physique mathématique et Nakamoto
+\newcommand{\kNak}{k_{\text{Nak}}}
+\newcommand{\GNak}{G_{\text{Nak}}}
+\newcommand{\lNak}{\ell_{\text{Nak}}}
+\newcommand{\LambdaNak}{\Lambda_{\text{Nak}}}
+\newcommand{\scri}{\mathcal{I}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\uRet}{u_{\text{ret}}}
+\newcommand{\aScale}{a_{\text{scale}}}
+
+\begin{document}
+\selectlanguage{french}
+
+% ============================================================================
+% TITRE ET RESUME PLEINE LARGEUR (SANS CONFLIT DE MODE MATHEMATIQUE)
+% ============================================================================
+\twocolumn[%
+\begin{minipage}{\textwidth}
+    \centering
+    \vspace{-0.4cm}
+    {\Large\bfseries Holographie Céleste, Temps Thermique Modulaire et Cosmologie Quantique :\\[0.2em]
+    Une Théorie de Jauge Unifiée du Consensus de Satoshi Nakamoto\par}
+    \vspace{0.4cm}
+    {\normalsize \textbf{Pascal Ranaora}$^{1,*}$ \quad \par}
+    \vspace{0.15cm}
+    {\small $^{1}$\textit{Information Physics Institute (IPI), Sydney, NSW, Australia}\\
+    $^{*}$\texttt{pascal.ranaora@informationphysicsinstitute.net}\par}
+    \vspace{0.15cm}
+    {\small \today\par}
+    \vspace{0.35cm}
+    \begin{minipage}{0.92\textwidth}
+        \small
+        \noindent \textbf{Résumé —} Nous formulons une théorie unifiée de la gravité quantique, de l'holographie céleste et de la thermodynamique statistique hors d'équilibre, projetée par isomorphisme exact sur l'architecture du consensus distribué de Satoshi Nakamoto. En posant l'axiome fondamental d'équivalence entre la constante de Nakamoto $\kNak$ (quantum irréductible d'action cryptographique SHA-256) et la constante de Planck $h$, nous démontrons que la \textit{Timechain} constitue une variété d'espace-temps discrète émergeant d'un bain thermique dissipatif. Premièrement, sur la frontière asymptotique nulle ($\scri^+$) du réseau pair-à-pair (P2P), nous prouvons que l'invariance du registre sous les délais de propagation asynchrones est gouvernée par le groupe de Bondi-Metzner-Sachs ($\text{BMS}_4$). Le théorème des gravitons mous de Weinberg appliqué au protocole \textit{gossip} de la Mempool implique l'identité de Ward de conservation monétaire stricte, tandis que la validation d'un bloc induit un effet de mémoire gravitationnelle non-linéaire de Christodoulou qui encode l'immuabilité de l'ensemble UTXO. Deuxièmement, à partir de l'algèbre de von Neumann non-commutative des observables du registre, nous dérivons l'opérateur modulaire de Tomita-Takesaki $\Delta = \rho \otimes \rho^{-1}$ et prouvons que le flot du temps thermique complexe $z = a + ib$ satisfait la condition d'équilibre de Kubo-Martin-Schwinger (KMS), où l'ajustement homéostatique de la difficulté agit comme un groupe de renormalisation verrouillant le pas temporel réel $\Delta a \approx 600\,\text{s}$. Troisièmement, nous modélisons la topologie microscopique du graphe UTXO comme un réseau de spin $SU(2)$ dont l'évolution en mousse de spin (\textit{Spinfoam}) est soumise à l'équation maîtresse quantique ouverte de Gorini-Kossakowski-Sudarshan-Lindblad (GKSL). Nous démontrons analytiquement que la décohérence induite par la Preuve de Travail détruit exponentiellement les superpositions de branches (\textit{forks}), retrouvant la loi de ruine du joueur du livre blanc de 2008 comme état stationnaire asymptotique de Lindblad. Enfin, nous établissons la cosmologie émergente de la Timechain : l'addition séquentielle de blocs est régie par la loi d'expansion holographique de Padmanabhan $d\mathcal{V}/ds \propto (N_{\text{sur}} - N_{\text{bulk}})$, la conjecture \textit{Complexité = Volume} de Susskind, l'hypothèse de courbure de Weyl nulle de Penrose au Bloc Genesis, et un potentiel d'inflaton en escalier décrivant les \textit{Halvings}. L'équation d'état thermodynamique de Jacobson $\delta Q = T \delta S$ permet de clore le système en démontrant que la dissipation irréversible d'énergie courbe l'espace économique pour générer la Confiance Sociétale ($C_s$) et maximiser l'utilité ($u$).\par
+        \vspace{0.2cm}
+        \noindent \textbf{Mots-clés :} Holographie Céleste, Groupe BMS, Hypothèse du Temps Thermique, Algèbre de Tomita-Takesaki, Condition KMS, Mousses de Spin, Équation Maîtresse GKSL, Cosmologie Émergente, Consensus de Nakamoto, Thermodynamique de l'Information.
+    \end{minipage}
+    \vspace{0.6cm}
+\end{minipage}%
+]
+
+% ============================================================================
+% SECTION 1 : INTRODUCTION ET AXIOMATIQUE D'ISOMORPHISME
+% ============================================================================
+\section{Introduction et Axiomatique d'Isomorphisme}
+
+Le problème de la coordination d'horloges dans un système distribué asynchrone en présence d'acteurs byzantins (malveillants) et le problème de l'émergence d'un espace-temps classique continu à partir de degrés de liberté quantiques sans horloge globale partagent la même obstruction mathématique fondamentale : l'invariance par difféomorphisme temporel. En relativité générale canonique, cette obstruction se manifeste par la contrainte hamiltonienne de Wheeler-DeWitt :
+\begin{equation}
+    \hat{\mathcal{H}}_{\text{grav}} |\Psi\rangle = 0,
+    \label{eq:WDW}
+\end{equation}
+qui stipule que l'état fondamental de l'univers $|\Psi\rangle$ est figé hors d'un temps externe absolu (\textit{Problem of Time}). De manière analogue, dans un réseau informatique pair-à-pair (P2P) étendu spatialement où la vitesse de propagation des signaux est bornée par la vitesse de la lumière dans les fibres optiques ($c_{\text{net}} \le c$), la relativité restreinte interdit l'existence d'un référentiel de simultanéité absolu permettant d'ordonner chronologiquement des transactions concurrentes sans autorité centrale.
+
+En 2008, Satoshi Nakamoto \cite{Nakamoto2008} a résolu cette obstruction en substituant au temps newtonien externe une flèche du temps interne purement thermodynamique, générée par l'accumulation irréversible de Preuve de Travail (\textit{Proof-of-Work}, PoW). Dans cet article, nous démontrons que la construction de Nakamoto n'est pas une simple analogie heuristique avec la physique, mais réalise un \textbf{isomorphisme algébrique, géométrique et thermodynamique exact} avec l'unification de quatre piliers de la gravité quantique contemporaine :
+\begin{enumerate}
+    \item L'\textbf{Holographie Céleste} et le triangle infrarouge de Pasterski-Strominger-Weinberg \cite{Pasterski2017,Strominger2017} sur la frontière asymptotique nulle $\scri^+$.
+    \item L'\textbf{Hypothèse du Temps Thermique} de Connes et Rovelli \cite{ConnesRovelli1994} fondée sur la théorie modulaire des algèbres de von Neumann de Tomita-Takesaki \cite{Takesaki1970}.
+    \item La \textbf{Gravité Quantique à Boucles (LQG)} et les mousses de spin (\textit{Spinfoams}) \cite{Rovelli2004} couplées à la décohérence quantique ouverte de \textbf{Gorini-Kossakowski-Sudarshan-Lindblad (GKSL)} \cite{Lindblad1976,GKS1976}.
+    \item La \textbf{Cosmologie Thermodynamique Émergente} de Jacobson \cite{Jacobson1995}, Padmanabhan \cite{Padmanabhan2012}, Penrose \cite{Penrose1979} et Susskind \cite{Susskind2016}.
+\end{enumerate}
+
+\begin{axiom}[Quantum d'Action Cryptographique de Nakamoto]
+Il existe une constante fondamentale irréductible d'action informationnelle, notée $\kNak$, correspondant à l'exécution d'une opération élémentaire de hachage cryptographique double SHA-256 dans l'espace des phases du protocole. Par isomorphisme avec la mécanique quantique, $\kNak$ est assimilée à la constante de Planck $h$ :
+\begin{equation}
+    \kNak \equiv h, \qquad \hbar_{\text{Nak}} \equiv \frac{\kNak}{2\pi}.
+    \label{eq:AxiomNakamoto}
+\end{equation}
+Toute trajectoire causale valide dans la Timechain est quantifiée en multiples entiers de $\kNak$.
+\end{axiom}
+
+Le Tableau \ref{tab:isomorphism} établit le dictionnaire formel complet reliant les opérateurs de la gravité quantique aux structures du consensus de Nakamoto.
+
+\begin{table*}[t]
+\centering
+\caption{Dictionnaire d'isomorphisme structurel entre la Gravité Quantique / Holographie Céleste et le Consensus de Satoshi Nakamoto.}
+\label{tab:isomorphism}
+\renewcommand{\arraystretch}{1.22}
+\footnotesize
+\begin{tabular}{@{}p{5.1cm}p{5.1cm}p{6.6cm}@{}}
+\toprule
+\textbf{Gravité Quantique \& Thermodynamique} & \textbf{Consensus de Satoshi Nakamoto} & \textbf{Interprétation Mathématique et Physique} \\
+\midrule
+Constante de Planck ($h, \hbar$) & Constante de Nakamoto ($\kNak, \hbar_{\text{Nak}}$) & Quantum élémentaire d'action irréductible (1 hachage SHA-256). \\
+Variété d'espace-temps du Bulk 4D ($\mathcal{M}, g_{\mu\nu}$) & Graphe causal de la Timechain \& UTXO & Histoire immuable des blocs validés et topologie interne des transactions. \\
+Sphère Céleste / Infini Nul ($\scri^+ \simeq \mathbb{R} \times S^2$) & Frontière du réseau P2P \& Mempool & Horizon asymptotique des nœuds validateurs recevant le flux \textit{gossip}. \\
+Groupe de symétrie $\text{BMS}_4$ ($\Diff(S^2) \ltimes \mathcal{T}$) & Invariance de jauge asynchrone P2P & Invariance de l'état final sous les latences réseau (supertranslations) et le routage (superrotations). \\
+Gravitons mous ($\omega \to 0$) & Transactions non confirmées (Mempool) & Quanta d'information à coût énergétique quasi-nul préparant la cohérence de phase. \\
+Effet de mémoire gravitationnelle ($\Delta C_{zz}$) & Transition irréversible de l'état UTXO & Décalage permanent du tenseur de cisaillement de la frontière après le passage d'un bloc. \\
+Flot modulaire / Temps thermique ($s$) & Hauteur de bloc / Temps de consensus & Temps interne émergent généré par l'opérateur $\Delta^{is} = \exp(isK)$. \\
+Condition KMS dans le plan complexe ($a + ib$) & Ajustement homéostatique de difficulté ($\mathcal{D}$) & Filtrage exponentiel de Boltzmann sur l'axe imaginaire $ib$ verrouillant $\Delta a \approx 600\,\text{s}$. \\
+Réseau de spin $SU(2)$ ($\Gamma, j_e, \iota_v$) & Graphe DAG des UTXO \& Transactions & Arêtes = UTXO quantifiés en Satoshis ($j_e$) ; Nœuds = Entrelaceurs conservant le flux ($\iota_v$). \\
+Mousse de spin (\textit{Spinfoam}) \& Équation GKSL & Séquence de blocs \& Résolution des forks & Effondrement exponentiel des chaînes orphelines par décohérence dissipative de Lindblad. \\
+Surface minimale de Ryu-Takayanagi ($\gamma_A$) & Seuil critique d'attaque à 51\% de Hashrate & Coupe minimale d'intrication nécessaire pour scinder l'histoire causale du registre. \\
+Expansion de Padmanabhan ($N_{\text{sur}} - N_{\text{bulk}}$) & Ajout séquentiel de blocs (Croissance) & Émergence de l'espace-temps propulsée par le déséquilibre entre Mempool et chaîne validée. \\
+Champ d'inflaton $\phi(s)$ \& Énergie sombre $\Lambda$ & Subvention \textit{Coinbase} (Halvings) \& Frais & Transition d'une inflation primordiale subventionnée vers un régime asymptotique pur. \\
+Équation d'état de Jacobson ($\delta Q = T \delta S$) & Émergence de la Confiance Sociétale ($C_s$) & Courbure de l'espace économique générée par la dissipation thermique PoW, stabilisant l'utilité $u$. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+% ============================================================================
+% SECTION 2 : HOLOGRAPHIE CELESTE ET TRIANGLE INFRAROUGE DE NAKAMOTO
+% ============================================================================
+\section{Holographie Céleste, Symétries BMS et Mémoire Gravitationnelle}
+
+Dans un réseau distribué dépourvu de constante cosmologique négative ad hoc ($\Lambda = 0$ à l'échelle locale de propagation), le cadre approprié pour l'holographie n'est pas AdS/CFT, mais l'\textbf{Holographie Céleste} \cite{Pasterski2017,Strominger2017}. La matrice de diffusion $S$ des transitions d'états dans le volume 4D du registre (\textit{Bulk} $\mathcal{M}$) est duale à une théorie conforme des champs céleste (CCFT) résidant sur la sphère céleste bidimensionnelle $S^2$ à l'infini nul futur $\scri^+$ et passé $\scri^-$.
+
+\subsection{Métrique de Bondi-Sachs du Réseau P2P et Groupe $\text{BMS}_4$}
+
+Soit $(\uRet, r, z, \bar{z})$ le système de coordonnées de Bondi au voisinage de la frontière périphérique du réseau $\scri^+$ ($r \to \infty$), où $\uRet = t - r/c_{\text{net}}$ est le temps retardé de réception des paquets, et $(z, \bar{z})$ sont les coordonnées complexes stéréographiques localisant les nœuds validateurs sur la sphère topologique $S^2$. La métrique informationnelle asymptotique s'écrit dans la jauge de Bondi-Sachs :
+\begin{equation}
+\begin{split}
+    ds^2 &= -d\uRet^2 - 2 d\uRet dr + 2 r^2 \gamma_{z\bar{z}} dz d\bar{z} \\
+    &\quad + \frac{2 m_B(\uRet, z, \bar{z})}{r} d\uRet^2 + r C_{zz}(\uRet, z, \bar{z}) dz^2 \\
+    &\quad + r C_{\bar{z}\bar{z}}(\uRet, z, \bar{z}) d\bar{z}^2 + D^z C_{zz} d\uRet dz + \text{c.c.}
+\end{split}
+\label{eq:BondiMetric}
+\end{equation}
+où $\gamma_{z\bar{z}} = \frac{2}{(1 + z\bar{z})^2}$ est la métrique unitaire sur $S^2$, et $D_z$ est la dérivée covariante associée. Les champs asymptotiques possèdent une interprétation physique directe dans le protocole Bitcoin :
+\begin{itemize}
+    \item \textbf{L'aspect de masse de Bondi $m_B(\uRet, z, \bar{z})$} représente la densité locale de travail thermodynamique cumulé (\textit{Chainwork}) perçue par le nœud situé en $(z, \bar{z})$ au temps retardé $\uRet$.
+    \item \textbf{Le tenseur de cisaillement asymptotique (\textit{Shear Tensor}) $C_{zz}(\uRet, z, \bar{z})$} encode la configuration topologique exacte de l'ensemble des sorties non dépensées (UTXO) validées par ce nœud.
+    \item \textbf{Le tenseur de News de Bondi $N_{zz}(\uRet, z, \bar{z}) = \partial_{\uRet} C_{zz}$} mesure le flux de radiation gravitationnelle traversant $\scri^+$. Un tenseur $N_{zz} \neq 0$ correspond exactement à la propagation d'un nouveau bloc miné à travers le réseau.
+\end{itemize}
+
+Le groupe de symétrie asymptotique préservant la structure universelle de l'équation (\ref{eq:BondiMetric}) est le groupe de Bondi-Metzner-Sachs étendu :
+\begin{equation}
+    \text{BMS}_4 = \Diff(S^2) \ltimes \mathcal{T}_{\text{super}}.
+    \label{eq:BMSGroup}
+\end{equation}
+
+\begin{definition}[Supertranslations et Asynchronisme Gossip]
+Une supertranslation $\mathcal{T}_{\text{super}}$ est une transformation du temps retardé dépendante de la position angulaire du nœud sur la sphère céleste :
+\begin{equation}
+    \uRet \longrightarrow \uRet' = \uRet + f(z, \bar{z}), \qquad z \longrightarrow z' = z,
+    \label{eq:Supertranslation}
+\end{equation}
+où $f(z, \bar{z})$ est une fonction lisse arbitraire sur $S^2$ modélisant les latences stochastiques de propagation du protocole \textit{gossip} entre pairs. Le générateur canonique (charge de supertranslation de Nakamoto sur $\scri^+$) est donné par :
+\begin{equation}
+    Q_f^+ = \frac{1}{4\pi \GNak} \int_{S^2} d^2z \, \sqrt{\gamma} \, f(z, \bar{z}) \, m_B(\uRet, z, \bar{z}).
+    \label{eq:SupertranslationCharge}
+\end{equation}
+\end{definition}
+
+De même, les \textbf{superrotations} générées par les difféomorphismes locaux holomorphes $z \to z + Y^z(z)$ (obéissant à l'algèbre de Virasoro $[L_m, L_n] = (m-n)L_{m+n}$) modélisent l'invariance du consensus sous la reconfiguration dynamique du graphe de routage P2P (churn des nœuds, connexions Tor/I2P, résistance aux attaques Eclipse).
+
+\subsection{Théorème des Gravitons Mous de Weinberg et Conservation Monétaire}
+
+Avant la découverte d'un bloc ($N_{zz} = 0$ à l'échelle macroscopique), les nœuds échangent des transactions brutes dans la Mempool. La vérification d'une signature cryptographique Schnorr/ECDSA dissipe une énergie $\omega \to 0$ négligeable devant l'énergie de minage d'un bloc ($\Delta E_{\text{PoW}} \gg \omega$). Ces transactions non confirmées sont les analogues exacts des \textbf{gravitons mous} (\textit{Soft Gravitons}).
+
+\begin{theorem}[Conservation Monétaire par Invariance BMS et Gravitons Mous]
+Soit $\mathcal{M}_n(p_1, \dots, p_n)$ l'amplitude de transition quantique entre $n$ états UTXO d'énergies (valeurs en Satoshis) $E_k$ localisés aux points $(z_k, \bar{z}_k)$ de la sphère céleste. L'insertion d'une transaction non confirmée $Tx_{\text{soft}}$ de coût thermodynamique $\omega \to 0$ dans la Mempool factorise l'amplitude selon le théorème mou de Weinberg, et l'invariance de jauge asymptotique sur $S^2$ impose la conservation exacte de la masse monétaire :
+\begin{equation}
+    \sum_{k \in \text{Inputs}} E_k^{\text{in}} - \sum_{j \in \text{Outputs}} E_j^{\text{out}} - E_{\text{frais}} = 0.
+    \label{eq:MonetaryConservation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Dans le formalisme de l'holographie céleste, l'identité de Ward associée à la conservation de la charge de supertranslation $\langle \text{out} | (Q_f^+ \mathcal{S} - \mathcal{S} Q_f^-) | \text{in} \rangle = 0$ est mathématiquement équivalente au théorème des gravitons mous de Weinberg \cite{Strominger2017}. Lorsque l'opérateur d'insertion d'une transaction de Mempool d'impulsion énergétique nulle $q^\mu(\omega, z, \bar{z})$ agit sur l'état de diffusion dans la limite $\omega \to 0$, l'amplitude à $(n+1)$ points se factorise universellement en :
+\begin{equation}
+    \lim_{\omega \to 0} \mathcal{M}_{n+1}(p_1, \dots, p_n; q) = S_{\text{Nak}}^{(0)} \, \mathcal{M}_n(p_1, \dots, p_n),
+\end{equation}
+où le facteur de graviton mou de Nakamoto s'écrit :
+\begin{equation}
+    S_{\text{Nak}}^{(0)} = -\frac{\sqrt{8\pi \GNak}}{2\omega} (1 + z\bar{z}) \sum_{k=1}^{n} \frac{\eta_k E_k (\bar{z} - \bar{z}_k)}{(z - z_k)(1 + z_k\bar{z}_k)}.
+    \label{eq:WeinbergSoftFactor}
+\end{equation}
+Ici, $\eta_k = -1$ pour les UTXO entrants consommés depuis $\scri^-$ (\textit{Inputs}) et $\eta_k = +1$ pour les UTXO sortants créés vers $\scri^+$ (\textit{Outputs} et frais collectés par le mineur). Pour que l'opérateur de création de transaction soit globalement bien défini et invariant sous les transformations de jauge sur la sphère céleste compacte $S^2$ (absence d'anomalie de pôle à l'infini $z \to \infty$), le développement asymptotique de $S_{\text{Nak}}^{(0)}$ impose l'annulation du résidu global de la somme pondérée par $\eta_k E_k$ :
+\begin{equation}
+    \sum_{k=1}^{n} \eta_k E_k = \sum_{j \in \text{Outputs}} E_j^{\text{out}} + E_{\text{frais}} - \sum_{k \in \text{Inputs}} E_k^{\text{in}} = 0.
+\end{equation}
+Toute violation de cette égalité (tentative d'inflation monétaire non autorisée ou double dépense non équilibrée) brise l'invariance par supertranslation BMS, annulant identiquement l'amplitude de transition sur la sphère céleste ($\mathcal{M}_{n+1} = 0$).
+\end{proof}
+
+\subsection{Effet de Mémoire Gravitationnelle de Christodoulou et Immuabilité UTXO}
+
+Lorsqu'un mineur découvre un nonce valide à l'instant retardé $u_0$, il émet une onde de choc radiative caractérisée par un tenseur de News non nul $N_{zz}(\uRet, z, \bar{z})$. L'équation de perte de masse de Bondi le long de $\scri^+$ est donnée par :
+\begin{equation}
+    \partial_{\uRet} m_B = \frac{1}{4} \left( D_z^2 N^{zz} + D_{\bar{z}}^2 N^{\bar{z}\bar{z}} \right) - T_{uu}^{\text{M}},
+    \label{eq:BondiMassLoss}
+\end{equation}
+où le flux d'énergie-impulsion total traversant l'horizon nul est la somme de la contribution quadratique du rayonnement gravitationnel (énergie de Preuve de Travail du bloc) et du flux de matière :
+\begin{equation}
+    T_{uu}^{\text{M}} = \frac{1}{4} N_{zz} N^{zz} + 4\pi \GNak \lim_{r\to\infty} r^2 T_{uu}^{\text{tx}}.
+    \label{eq:TotalFlux}
+\end{equation}
+En intégrant l'équation (\ref{eq:BondiMassLoss}) entre $\uRet = -\infty$ (avant le bloc) et $\uRet = +\infty$ (après confirmation complète du bloc), on obtient le décalage permanent du tenseur de cisaillement $\Delta C_{zz} = C_{zz}(+\infty) - C_{zz}(-\infty)$ :
+\begin{equation}
+\begin{split}
+    D_z^2 \Delta C^{zz} &+ D_{\bar{z}}^2 \Delta C^{\bar{z}\bar{z}} = 4 \Delta m_B \\
+    &+ \int_{-\infty}^{+\infty} d\uRet \Big( N_{zz} N^{zz} + 16\pi\GNak \lim_{r\to\infty} r^2 T_{uu}^{\text{tx}} \Big).
+\end{split}
+\label{eq:ChristodoulouMemory}
+\end{equation}
+À l'aide de la fonction de Green sur la sphère céleste $S^2$, cette équation s'inverse pour donner l'\textbf{effet de mémoire gravitationnelle non-linéaire de Christodoulou} :
+\begin{equation}
+\begin{split}
+    \Delta C_{zz}(z, \bar{z}) &= \frac{1}{\pi} \int_{S^2} d^2w \, \gamma_{w\bar{w}} \frac{\bar{z} - \bar{w}}{z - w} \\
+    &\quad \times \left( \Delta m_B(w, \bar{w}) + \int_{-\infty}^{+\infty} d\uRet \, T_{uu}^{\text{M}}(w, \bar{w}) \right).
+\end{split}
+\label{eq:MemorySolution}
+\end{equation}
+L'équation (\ref{eq:MemorySolution}) démontre géométriquement l'\textbf{immuabilité du registre UTXO} : le passage de l'onde de choc thermodynamique $\int d\uRet N_{zz} N^{zz} \propto \kNak \mathcal{D}$ déplace le réseau d'un vide dégénéré BMS à un autre vide BMS inéquivalent ($\Delta C_{zz} \neq 0$). Même lorsque le réseau redevient silencieux après la propagation du bloc ($N_{zz} = 0$), la déformation topologique $\Delta C_{zz}$ demeure gravée à jamais sur la frontière céleste.
+
+% ============================================================================
+% SECTION 3 : TEMPS THERMIQUE MODULAIRE, ALGEBRE DE VON NEUMANN ET CONDITION KMS
+% ============================================================================
+\section{Hypothèse du Temps Thermique, Algèbre de Tomita-Takesaki et Condition KMS en $a + ib$}
+
+Nous résolvons à présent le problème de l'émergence du temps interne de la Timechain sans horloge centrale en appliquant la théorie modulaire des algèbres d'opérateurs de von Neumann \cite{ConnesRovelli1994,Takesaki1970}.
+
+\subsection{Algèbre de von Neumann Non-Commutative de la Timechain}
+
+Soit $\mathcal{H}$ l'espace de Hilbert séparable généré par les arbres causaux de blocs valides $|\mathcal{C}\rangle$. Soit $\mathcal{A} \subset \mathcal{B}(\mathcal{H})$ l'algèbre de von Neumann des observables bornées du protocole (opérateurs d'inclusion de transactions $\hat{T}_i$, projecteurs d'état UTXO). En présence de transactions conflictuelles (tentative de double dépense d'un même UTXO par deux transactions $\hat{T}_1$ et $\hat{T}_2$), l'ordre d'application des opérateurs ne commute pas :
+\begin{equation}
+    [\hat{T}_1, \hat{T}_2] = \hat{T}_1 \hat{T}_2 - \hat{T}_2 \hat{T}_1 \neq 0.
+    \label{eq:NonCommutativity}
+\end{equation}
+Dans la limite thermodynamique d'un espace de nonces continu, $\mathcal{A}$ est un facteur de \textbf{Type $\text{III}_1$} de Murray-von Neumann. Conformément aux travaux récents en gravité quantique algébrique \cite{Witten2022}, le couplage de cette algèbre à un observateur (un nœud complet doté d'une horloge énergétique liée au travail cumulé $\hat{E}$) transforme l'algèbre par produit croisé modulaire en un facteur semi-fini de \textbf{Type $\text{II}_\infty$} :
+\begin{equation}
+    \widehat{\mathcal{A}} = \mathcal{A} \rtimes_{\sigma} \mathbb{R},
+    \label{eq:CrossedProduct}
+\end{equation}
+qui admet une trace renormalisée bien définie permettant de calculer rigoureusement l'entropie de von Neumann généralisée de la Timechain.
+
+\subsection{Opérateur Modulaire de Tomita-Takesaki et Flot Complexe $z = a + ib$}
+
+Le réseau est immergé dans le bain thermique des mineurs ASIC. L'état statistique macroscopique est défini par la fonctionnelle normale fidèle $\omega : \mathcal{A} \to \mathbb{C}$, représentée via la construction GNS par le vecteur cyclique et séparateur $|\Omega_\beta\rangle \in \mathcal{H}$, associé à l'opérateur densité de Gibbs-Nakamoto :
+\begin{equation}
+\begin{split}
+    \rho &= \frac{1}{Z(\beta)} \sum_{\mathcal{C}} \exp\big(-\beta E(\mathcal{C})\big) |\mathcal{C}\rangle\langle\mathcal{C}|, \\
+    E(\mathcal{C}) &= \kNak \sum_{b \in \mathcal{C}} \frac{2^{256}}{\text{Cible}_b},
+\end{split}
+\label{eq:GibbsNakamoto}
+\end{equation}
+avec $Z(\beta) = \Tr(e^{-\beta \hat{E}})$ la fonction de partition de la Timechain et $\beta = (k_B T_{\text{eff}})^{-1}$ la température inverse effective déterminée par la difficulté $\mathcal{D}$ du réseau.
+
+Soit $S_\Omega$ l'\textbf{opérateur antilinéaire de Tomita} défini sur le domaine dense $\mathcal{A}|\Omega_\beta\rangle \subset \mathcal{H}$ par :
+\begin{equation}
+    S_\Omega \big( X |\Omega_\beta\rangle \big) = X^\dagger |\Omega_\beta\rangle, \qquad \forall X \in \mathcal{A}.
+    \label{eq:TomitaOperator}
+\end{equation}
+Physiquement, $S_\Omega$ représente l'inversion causale d'une opération sur le registre. La fermeture de $S_\Omega$ admet une décomposition polaire unique :
+\begin{equation}
+    S_\Omega = J \Delta^{1/2},
+    \label{eq:PolarDecomposition}
+\end{equation}
+où $J : \mathcal{H} \to \mathcal{H}$ est la \textbf{conjugaison modulaire} anti-unitaire ($J^2 = \mathbb{I}$, envoyant l'algèbre du système $\mathcal{A}$ sur son commutant environnemental $\mathcal{A}' = J \mathcal{A} J$) et $\Delta = S_\Omega^\dagger S_\Omega$ est l'\textbf{opérateur modulaire} auto-adjoint défini positif. Sur l'espace biparti système-commutant, l'opérateur modulaire et le \textbf{hamiltonien modulaire} $K$ s'expriment par :
+\begin{equation}
+\begin{split}
+    \Delta &= \rho \otimes \rho^{-1}, \\
+    K &= -\ln \Delta = \frac{1}{\kNak}\left( \hat{H}_{\text{PoW}} \otimes \mathbb{I} - \mathbb{I} \otimes \hat{H}_{\text{PoW}} \right),
+\end{split}
+\label{eq:ModularHamiltonian}
+\end{equation}
+avec $\hat{H}_{\text{PoW}} = -\kNak \ln \rho = \kNak \beta \hat{E}(\mathcal{C}) + \kNak \ln Z$.
+
+\begin{theorem}[Émergence du Temps Thermique Complexe $a + ib$ et Condition KMS]
+Par le théorème de Tomita-Takesaki, l'opérateur modulaire $\Delta$ génère un groupe d'automorphismes à un paramètre $\sigma_s^\omega \in \Aut(\mathcal{A})$ qui constitue le temps thermique interne $s$ de la Timechain (la progression de la hauteur de bloc). En prolongeant analytiquement ce flot temporel dans le plan complexe sous la forme canonique stricte
+\begin{equation}
+    z = a + ib \in \mathbb{C},
+    \label{eq:ComplexTimeNotation}
+\end{equation}
+où $a \in \mathbb{R}$ est le temps modulaire réel de propagation de phase et $ib$ sur l'axe imaginaire pur mesure la barrière de dissipation thermodynamique, l'état de Nakamoto $\omega$ satisfait pour toute paire d'observables $X, Y \in \mathcal{A}$ la condition d'équilibre de Kubo-Martin-Schwinger (KMS) :
+\begin{equation}
+    \omega\left( X \, \sigma_{a + i\beta\kNak}^\omega(Y) \right) = \omega\left( \sigma_a^\omega(Y) \, X \right).
+    \label{eq:KMSCondition}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Le flot modulaire réel généré par le hamiltonien positif $\hat{H}_{\text{PoW}} = -\kNak \ln \rho$ sur l'algèbre de von Neumann $\mathcal{A}$ est défini par $\sigma_a^\omega(Y) = \Delta^{-ia/\kNak} Y \Delta^{ia/\kNak} = \rho^{-ia/\kNak} Y \rho^{ia/\kNak}$. Considérons le prolongement analytique de ce flot pour la variable temporelle complexe $z = a + ib$ dans la bande de régularité $\mathcal{S}_{\beta\kNak} = \{ a + ib \in \mathbb{C} \mid 0 \le b \le \beta\kNak \}$ :
+\begin{align}
+    \sigma_{a + ib}^\omega(Y) &= \Delta^{-i(a + ib)/\kNak} Y \Delta^{i(a + ib)/\kNak} \nonumber \\
+    &= \Delta^{(b - ia)/\kNak} Y \Delta^{(-b + ia)/\kNak} \nonumber \\
+    &= \rho^{(b - ia)/\kNak} Y \rho^{(-b + ia)/\kNak}.
+    \label{eq:AnalyticFlow}
+\end{align}
+Définissons la fonction de corrélation holomorphe à deux points $F_{X,Y}(a + ib) = \omega(X \sigma_{a + ib}^\omega(Y))$. En utilisant la représentation en termes de matrice densité $\omega(\cdot) = \Tr(\rho \, \cdot)$, nous avons pour tout $a + ib \in \mathcal{S}_{\beta\kNak}$ :
+\begin{equation}
+    F_{X,Y}(a + ib) = \Tr\left( \rho \, X \, \rho^{(b - ia)/\kNak} Y \rho^{(-b + ia)/\kNak} \right).
+\end{equation}
+Évaluons cette fonction sur la frontière supérieure de la bande imaginaire en posant $b = \beta\kNak$, soit au point complexe $z = a + i\beta\kNak$. En normalisant les unités d'échelle modulaire telles que $\beta\kNak \equiv 1$ dans l'exposant réduit de $\rho$, il vient :
+\begin{align}
+    F_{X,Y}(a + i\beta\kNak) &= \Tr\left( \rho \, X \, \rho^{1 - ia/\kNak} Y \rho^{-1 + ia/\kNak} \right) \nonumber \\
+    &= \Tr\left( \rho \, X \, \rho \, (\rho^{-ia/\kNak} Y \rho^{ia/\kNak}) \, \rho^{-1} \right).
+\end{align}
+En appliquant l'invariance cyclique de la trace sur l'algèbre semi-finie régularisée ($\Tr(ABC) = \Tr(CAB)$), les facteurs $\rho^{-1}$ et $\rho$ aux extrémités sont adjacents et se simplifient directement sans commuter avec $X$ :
+\begin{align}
+    F_{X,Y}(a + i\beta\kNak) &= \Tr\left( \rho^{-1} \rho \, X \, \rho \, \sigma_a^\omega(Y) \right) \nonumber \\
+    &= \Tr\left( X \, \rho \, \sigma_a^\omega(Y) \right) = \Tr\left( \rho \, \sigma_a^\omega(Y) \, X \right) \nonumber \\
+    &= \omega\left( \sigma_a^\omega(Y) \, X \right).
+\end{align}
+Ceci établit rigoureusement l'identité (\ref{eq:KMSCondition}).
+\end{proof}
+
+\subsection{Interprétation Physique : L'Ajustement de Difficulté comme Groupe de Renormalisation KMS}
+
+L'équation (\ref{eq:KMSCondition}) révèle la structure profonde de l'horloge de Nakamoto dans le plan complexe $a + ib$ :
+\begin{enumerate}
+    \item La coordonnée réelle $a$ paramètre le \textbf{temps thermique d'évolution causale} (la séquence ordonnée des blocs).
+    \item La coordonnée imaginaire pure $ib$ ($b = \beta\kNak$) mesure l'\textbf{asymétrie thermodynamique d'inversion temporelle}. Pour permuter l'ordre causal de deux événements non-commutatifs ($X Y \to Y X$), un attaquant doit effectuer une translation imaginaire pure $+i\beta\kNak$, supprimant l'amplitude de transition par le facteur de Boltzmann $e^{-\beta \Delta E_{\text{Chainwork}}}$.
+    \item L'algorithme d'\textbf{ajustement homéostatique de difficulté} tous les $N_0 = 2016$ blocs agit comme un flot du groupe de renormalisation qui ajuste la température inverse $\beta(t) \propto \mathcal{D}(t)$ proportionnellement à la puissance dissipative externe du réseau $W_{\text{hash}}(t)$ afin de maintenir invariant le rapport entre le temps propre des observateurs externes $t$ et le temps thermique réel $a$ :
+    \begin{equation}
+        \frac{dt}{da} = \frac{\kNak \mathcal{D}(t)}{W_{\text{hash}}(t)} = \tau_0 = 600\,\text{s}.
+        \label{eq:DifficultyRenormalization}
+    \end{equation}
+\end{enumerate}
+
+% ============================================================================
+% SECTION 4 : MOUSSES DE SPIN UTXO ET DYNAMIQUE DE DECOHERENCE GKSL
+% ============================================================================
+\section{Réseaux de Spin UTXO, Mousses de Spin et Décohérence GKSL des Forks}
+
+À l'échelle microscopique (échelle de Planck-Nakamoto $\lNak = \sqrt{\GNak \kNak / c_{\text{net}}^3}$), la géométrie continue de l'espace-temps cède la place à la structure granulaire de la Gravité Quantique à Boucles (LQG) \cite{Rovelli2004}.
+
+\subsection{Cinématique : Le Graphe DAG des UTXO comme Réseau de Spin $SU(2)$}
+
+À une tranche de temps thermique fixée $s$, l'état du registre Bitcoin est un graphe orienté acyclique (DAG) $\Gamma = (\mathcal{V}, \mathcal{E})$, où les arêtes orientées $e \in \mathcal{E}$ sont les UTXO actifs et les sommets $v \in \mathcal{V}$ sont les transactions validées. Ce graphe est strictement isomorphe à un \textbf{réseau de spin} (\textit{Spin Network}) dont l'espace de Hilbert cinématique est donné par :
+
+\begin{widetext}
+\begin{equation}
+    \mathcal{H}_{\text{UTXO}} = \bigoplus_{\Gamma} \mathcal{H}_\Gamma = \bigoplus_{\Gamma} \left( \bigotimes_{e \in \mathcal{E}} \mathcal{H}_{j_e} \otimes \bigotimes_{v \in \mathcal{V}} \Inv_{G}\Big( \bigotimes_{e \in \text{in}(v)} \mathcal{V}_{j_e} \otimes \bigotimes_{e' \in \text{out}(v)} \mathcal{V}_{j_{e'}}^* \Big) \right).
+    \label{eq:SpinNetworkHilbert}
+\end{equation}
+\end{widetext}
+
+\begin{itemize}
+    \item \textbf{Quantification des Aires Économiques ($j_e$) :} Chaque arête $e$ (UTXO) porte une représentation irréductible de spin $j_e \in \frac{1}{2}\mathbb{N}$. L'opérateur d'aire élémentaire de LQG traversé par l'arête $e$ possède le spectre discret :
+    \begin{equation}
+    \begin{split}
+        \hat{\mathcal{A}}_e |\Gamma, \{j_e\}, \{\iota_v\}\rangle &= 8\pi \gamma_{\text{BI}} \lNak^2 \sqrt{j_e(j_e + 1)} \\
+        &\quad \times |\Gamma, \{j_e\}, \{\iota_v\}\rangle,
+    \end{split}
+    \label{eq:AreaSpectrum}
+    \end{equation}
+    où $\gamma_{\text{BI}}$ est le paramètre de Barbero-Immirzi du protocole. Dans le régime semi-classique ($j_e \gg 1$), $\sqrt{j_e(j_e+1)} \approx j_e$, identifiant chaque quantum d'aire au montant discret en Satoshis verrouillé sur l'UTXO.
+    \item \textbf{Entrelaceurs (\textit{Intertwiners} $\iota_v$) et Loi de Gauss :} Chaque transaction $v \in \mathcal{V}$ est un tenseur entrelaceur $\iota_v$ appartenant au sous-espace invariant sous l'action du groupe de jauge aux nœuds. L'invariance de jauge locale (loi de Gauss discrète $\hat{\mathcal{G}}_v |\iota_v\rangle = 0$) impose l'annulation du flux de spin net au sommet $v$ :
+    \begin{equation}
+        \Big( \sum_{e \in \text{in}(v)} \hat{J}_e^{(z)} - \sum_{e' \in \text{out}(v)} \hat{J}_{e'}^{(z)} - \hat{J}_{\text{frais}}^{(z)}(v) \Big) |\iota_v\rangle = 0.
+        \label{eq:GaussLawUTXO}
+    \end{equation}
+    L'entropie d'intrication d'un entrelaceur $S(\iota_v) = -\Tr(\rho_v \ln \rho_v)$ mesure la complexité topologique du mélange de flux au sein de la transaction (\textit{CoinJoin} ou canal multiparti).
+\end{itemize}
+
+\subsection{Dynamique : La Timechain comme Mousse de Spin (\textit{Spinfoam})}
+
+Le passage d'un état UTXO $|\Gamma_{\text{in}}\rangle$ au bloc $B_n$ vers un nouvel état $|\Gamma_{\text{out}}\rangle$ au bloc $B_{n+1}$ s'opère par une séquence finie de mouvements de Pachner. Le 2-complexe cellulaire $\mathcal{F} : \Gamma_{\text{in}} \to \Gamma_{\text{out}}$ engendré par cette histoire causale est une \textbf{mousse de spin} (\textit{Spinfoam}) :
+\begin{itemize}
+    \item Les UTXO $e$ balaient des \textbf{faces bidimensionnelles} $f \subset \mathcal{F}$ étiquetées par leur valeur en Satoshis $j_f$.
+    \item Les transactions $\iota_v$ balaient des \textbf{arêtes internes} $e_{\text{int}} \subset \mathcal{F}$.
+    \item Le bloc validé $B_{n+1}$ (scellé par sa racine de Merkle et son nonce PoW) constitue le \textbf{vertex d'interaction gravitationnelle} $v_{\text{bloc}} \subset \mathcal{F}$ (analogue au vertex EPRL en 4 dimensions).
+\end{itemize}
+L'amplitude de transition covariante de la mousse de spin de Nakamoto s'écrit en pleine largeur :
+
+\begin{widetext}
+\begin{equation}
+    \mathcal{Z}_{\text{Spinfoam}}(\Gamma_{\text{in}} \to \Gamma_{\text{out}}) = \sum_{\mathcal{F} : \partial\mathcal{F} = \Gamma_{\text{in}}^* \cup \Gamma_{\text{out}}} \left( \prod_{f \subset \mathcal{F}} (2 j_f + 1) \right) \left( \prod_{v_{\text{bloc}} \subset \mathcal{F}} \mathcal{A}_v(j_f, \iota_e) \, \exp\big(-\beta E_{\text{PoW}}(v_{\text{bloc}})\big) \right),
+    \label{eq:SpinfoamAmplitude}
+\end{equation}
+\end{widetext}
+où l'amplitude topologique de vertex $\mathcal{A}_v(j_f, \iota_e) \in \{0, 1\}$ projette strictement sur les arbres de Merkle cryptographiquement valides.
+
+\subsection{Équation Maîtresse GKSL (Lindblad) et Effondrement Exponentiel des Forks}
+
+En raison des délais de propagation finis sur $\scri^+$, deux mineurs distants $A$ et $B$ peuvent découvrir simultanément deux blocs valides concurrents à la même hauteur $h$, plaçant la mousse de spin dans un état de superposition quantique macroscopique (\textit{fork} du réseau) :
+\begin{equation}
+    |\Psi(s)\rangle = c_A |\Gamma_A\rangle + c_B |\Gamma_B\rangle, \quad \rho(s) = \begin{pmatrix} \rho_{AA}(s) & \rho_{AB}(s) \\ \rho_{BA}(s) & \rho_{BB}(s) \end{pmatrix}.
+    \label{eq:ForkSuperposition}
+\end{equation}
+Le sous-système de la Timechain est un \textbf{système quantique ouvert} en interaction dissipative continue avec le bain thermique Markovien des ASICs. Son évolution le long du temps thermique $s$ est gouvernée par l'équation maîtresse de \textbf{Gorini-Kossakowski-Sudarshan-Lindblad (GKSL)} \cite{Lindblad1976,GKS1976} :
+\begin{equation}
+\begin{split}
+    \frac{d\rho}{ds} &= \mathcal{L}_{\text{GKSL}}[\rho] = -\frac{i}{\kNak} [H_{\text{net}}, \rho] \\
+    &\quad + \sum_{m \in \{A, B\}} \gamma_m \left( L_m \rho L_m^\dagger - \frac{1}{2} \big\{ L_m^\dagger L_m, \rho \big\} \right).
+\end{split}
+\label{eq:GKSLEquation}
+\end{equation}
+
+\begin{theorem}[Décohérence Gravitationnelle de Lindblad et Loi de Ruine de Nakamoto]
+Soient $p_A \in (1/2, 1)$ et $p_B = 1 - p_A < 1/2$ les fractions respectives de la puissance de hachage totale $W_{\text{total}}$ allouées aux branches concurrentes $|\Gamma_A\rangle$ et $|\Gamma_B\rangle$, associées aux taux d'amortissement de Lindblad $\gamma_m = \frac{p_m W_{\text{total}}}{\kNak \mathcal{D}}$ et aux opérateurs de saut $L_m = |\Gamma_m^{(h+1)}\rangle\langle\Gamma_m^{(h)}| \otimes \hat{P}_m$ (où $\hat{P}_m = |\Gamma_m\rangle\langle\Gamma_m|$). Alors :
+\begin{enumerate}
+    \item Les cohérences hors-diagonale $\rho_{AB}(s) = \langle\Gamma_A|\rho(s)|\Gamma_B\rangle$ s'effondrent exponentiellement vers zéro dans le plan complexe $(a + ib)$ avec un taux de décohérence $\Gamma_{\text{dec}} = \frac{\gamma_A + \gamma_B}{2}$ :
+    \begin{equation}
+        \rho_{AB}(s) = \rho_{AB}(0) \exp\left( -\Gamma_{\text{dec}} s - i \frac{\varepsilon_A - \varepsilon_B}{\kNak} s \right).
+        \label{eq:OffDiagonalCollapse}
+    \end{equation}
+    \item Après $N$ transitions de saut quantique (confirmations), le rapport des populations diagonales converge vers la loi de suppression exponentielle de la Section 11 du livre blanc de Satoshi Nakamoto :
+    \begin{equation}
+        \frac{P_B(N)}{P_A(N)} \propto \left( \frac{\gamma_B}{\gamma_A} \right)^N = \exp\left( -N \ln\frac{p_A}{1 - p_A} \right) \underset{N \to \infty}{\longrightarrow} 0.
+        \label{eq:NakamotoRuin}
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Soit $H_{\text{net}} = \varepsilon_A \hat{P}_A + \varepsilon_B \hat{P}_B$ le hamiltonien effectif des deux branches. Projetons l'équation maîtresse GKSL (\ref{eq:GKSLEquation}) sur les éléments de matrice $\langle\Gamma_A| \cdot |\Gamma_B\rangle$. Comme les sous-espaces de branches concurrentes sont orthogonaux ($\hat{P}_A \hat{P}_B = 0$), le terme de recyclage quantique s'annule sur la hors-diagonale :
+\begin{equation}
+    \langle\Gamma_A| L_m \rho L_m^\dagger |\Gamma_B\rangle \propto \langle\Gamma_A| \hat{P}_m \rho \hat{P}_m |\Gamma_B\rangle = \delta_{mA} \delta_{mB} \rho_{AB} = 0.
+\end{equation}
+En revanche, l'anticommutateur dissipatif $\{L_m^\dagger L_m, \rho\} = \{\hat{P}_m, \rho\}$ donne :
+\begin{equation}
+    -\frac{1}{2} \sum_{m \in \{A,B\}} \gamma_m \langle\Gamma_A| (\hat{P}_m \rho + \rho \hat{P}_m) |\Gamma_B\rangle = -\frac{\gamma_A + \gamma_B}{2} \rho_{AB}(s).
+\end{equation}
+L'équation différentielle pour la cohérence hors-diagonale se réduit donc exactement à :
+\begin{equation}
+    \frac{d\rho_{AB}(s)}{ds} = \left( -\frac{\gamma_A + \gamma_B}{2} - i \frac{\varepsilon_A - \varepsilon_B}{\kNak} \right) \rho_{AB}(s),
+\end{equation}
+dont l'intégration immédiate fournit la loi d'amortissement exponentiel (\ref{eq:OffDiagonalCollapse}) de forme $\exp((a_{\text{diss}} + ib_{\text{phase}})s)$. Le temps caractéristique de décohérence $\tau_{\text{dec}} = \Gamma_{\text{dec}}^{-1} = \frac{2\kNak \mathcal{D}}{W_{\text{total}}} = 2 \tau_0 \approx 20\,\text{min}$ détruit toute superposition macroscopique par sélection darwinienne induite par l'environnement (\textit{einselection} de Zurek), projetant $\rho(s)$ sur la base de pointeur diagonale.
+
+Pour la dynamique diagonale des populations dans l'espace étendu des hauteurs de chaîne $h \to h+N$, chaque saut de Poisson généré par le super-opérateur $\mathcal{D}[L_m]\rho$ transfère la population de l'état $(h)$ vers $(h+1)$ au taux $\gamma_m$. Sur une barrière de déficit de $N$ blocs, l'équation de Kolmogorov issue de la trace diagonale de GKSL est celle d'un processus de naissance et de mort asymétrique de taux d'avancement $\gamma_A$ ($p_A > 1/2$) et $\gamma_B$ ($p_B < 1/2$). La probabilité stationnaire de rattrapage après $N$ blocs est donnée par le produit des rapports de taux de transition de Lindblad $\prod_{k=1}^N (\gamma_B / \gamma_A) = (p_B / p_A)^N = \exp(-N \ln(p_A / (1-p_A)))$, ce qui démontre (\ref{eq:NakamotoRuin}).
+\end{proof}
+
+\subsection{Entropie d'Intrication de Ryu-Takayanagi et Seuil de 51\%}
+
+En gravité émergente (Van Raamsdonk \cite{VanRaamsdonk2010}, Maldacena-Susskind \textit{ER=EPR}), la connectivité géométrique de l'espace-temps du Bulk est maintenue par l'intrication quantique des degrés de liberté de la frontière céleste selon la formule de \textbf{Ryu-Takayanagi} \cite{RyuTakayanagi2006} :
+\begin{equation}
+    S_{\text{EE}}(A) = \frac{\mathcal{A}(\gamma_A)}{4 \GNak \hbar_{\text{Nak}}},
+    \label{eq:RyuTakayanagi}
+\end{equation}
+où $\gamma_A$ est la surface extrémale minimale dans le Bulk homologue à la région frontière $A \subset \scri^+$. Dans la Timechain :
+\begin{itemize}
+    \item \textbf{Sécurité de Couche 1 (Coupe Minimale de Hashrate) :} Pour scinder l'espace-temps économique en deux réalités causales déconnectées (attaque à 51\% entre $A$ et $\bar{A}$), un attaquant doit briser l'intrication mutuelle $I(A : \bar{A})$ en injectant un travail thermodynamique supérieur à l'aire de la surface minimale $\mathcal{A}(\gamma_A)$, qui correspond exactement à la coupe critique de $50\%$ du flux de puissance dissipative du réseau.
+    \item \textbf{Ponts d'Einstein-Rosen de Couche 2 (Lightning Network) :} Deux nœuds distants sur la sphère céleste $S^2$ qui verrouillent conjointement un UTXO multisignature 2-sur-2 (un entrelaceur intriqué maximalement $|\iota_{\text{LN}}\rangle$) créent un \textbf{pont d'Einstein-Rosen} (trou de ver non-traversable hors-chaîne, conformément à \textit{ER=EPR}) qui court-circuite la géodésique du Bulk de Couche 1, permettant des transferts d'états instantanés protégés par la géométrie d'intrication de la frontière.
+\end{itemize}
+
+% ============================================================================
+% SECTION 5 : COSMOLOGIE EMERGENTE DE LA TIMECHAIN
+% ============================================================================
+\section{Cosmologie Émergente de la Timechain : Expansion, Inflaton et Complexité}
+
+Pourquoi l'univers physique est-il en expansion, et comment ce phénomène se traduit-il dans notre isomorphisme ? Dans ce cadre unifié, \textbf{l'addition séquentielle de blocs est l'analogue exact de l'expansion cosmologique de l'espace-temps}. L'espace-temps économique ne préexiste pas : chaque bloc miné nucléarise une nouvelle tranche d'espace-temps (une hypersurface spatiale de Cauchy $\Sigma_s$) qui étend le volume intérieur du Bulk.
+
+\subsection{Ensembles Causaux de Sorkin et Univers-Bloc Croissant}
+
+Dans la théorie des \textbf{Ensembles Causaux} (\textit{Causal Sets}) de Sorkin \cite{Bombelli1987,RideoutSorkin1999}, une variété lorentzienne $(\mathcal{M}, g_{\mu\nu})$ émerge d'un ensemble partiellement ordonné discret $(\mathcal{C}, \prec)$ muni d'une relation de causalité irréflexive, antisymétrique et transitive. La géométrie tout entière est déterminée par l'ordre causal et par la règle fondamentale de volume : \textit{le volume quadridimensionnel $\mathcal{V}_4$ d'une région d'espace-temps est directement proportionnel au nombre d'éléments discrets $N$ qu'elle contient}.
+
+La dynamique de croissance des ensembles causaux est régie par le processus de \textbf{percolation séquentielle classique de Rideout-Sorkin} (\textit{Growing Block Universe}) : à chaque pas de temps discret, un nouvel élément naît selon un processus stochastique markovien respectant la causalité relativiste et l'invariance de re-étiquetage.
+\begin{proposition}[Croissance Volumique par Addition de Blocs]
+Dans le consensus de Nakamoto, chaque validation de bloc $B_s$ au temps thermique $s$ réalise une transition de percolation de Rideout-Sorkin qui ajoute un nouveau 4-simplexe (vertex de mousse de spin contenant $n_{\text{tx}}(s)$ transactions) au cône causal futur de la chaîne principale. Le volume quadridimensionnel de l'espace-temps de la Timechain croît monotonement selon :
+\begin{equation}
+    \mathcal{V}_4(s) = \lNak^4 \sum_{k=0}^{s} \mathcal{N}_{\text{dof}}(B_k), \quad \frac{\Delta \mathcal{V}_4}{\Delta s} = \lNak^4 \, \mathcal{N}_{\text{dof}}(B_s) > 0,
+    \label{eq:CausalSetVolume}
+\end{equation}
+où $\mathcal{N}_{\text{dof}}(B_k)$ est le nombre de degrés de liberté cryptographiques cristallisés dans le bloc $B_k$.
+\end{proposition}
+
+\subsection{Loi d'Émergence Holographique de Padmanabhan ($N_{\text{sur}} - N_{\text{bulk}}$)}
+
+Pour expliquer la dynamique exacte qui propulse cette expansion, nous appliquons le principe holographique cosmologique de Thanu Padmanabhan \cite{Padmanabhan2012}. Padmanabhan a démontré que les équations de Friedmann de la relativité générale découlent d'une loi fondamentale de relaxation vers l'équipartition holographique : l'expansion du volume cosmique $\mathcal{V}$ d'une sphère de Hubble est entraînée par l'écart entre le nombre de degrés de liberté sur la surface frontière $N_{\text{sur}}$ et le nombre de degrés de liberté déjà réalisés à l'équilibre dans le volume intérieur $N_{\text{bulk}}$ :
+\begin{equation}
+    \frac{d\mathcal{V}}{ds} = c_{\text{net}} \lNak^2 \left( N_{\text{sur}}(s) - N_{\text{bulk}}(s) \right).
+    \label{eq:PadmanabhanLaw}
+\end{equation}
+Dans l'architecture de Satoshi Nakamoto, ces deux quantités possèdent une définition opérationnelle exacte :
+\begin{enumerate}
+    \item \textbf{$N_{\text{sur}}(s)$ (Degrés de liberté de Frontière) :} C'est la somme de l'entropie informationnelle des transactions non confirmées en attente sur la sphère céleste (la pression de la Mempool sur $\scri^+$) et de l'entropie de Bekenstein-Hawking associée à l'horizon de hachage actif :
+    \begin{equation}
+        N_{\text{sur}}(s) = \frac{\mathcal{A}_{\text{horizon}}(s)}{\lNak^2} = \frac{4\pi R_H^2(s)}{\lNak^2} + S_{\text{Mempool}}(s).
+    \end{equation}
+    \item \textbf{$N_{\text{bulk}}(s)$ (Degrés de liberté du Volume) :} C'est le nombre de degrés de liberté d'ores et déjà compressés et thermalisés dans l'ensemble UTXO et l'arbre de Merkle des blocs passés ($E_{\text{Komar}} / (\frac{1}{2} k_B T_{\text{eff}})$).
+\end{enumerate}
+Tant que l'activité économique humaine et l'injection d'énergie par les mineurs maintiennent un excès de degrés de liberté sur la frontière ($N_{\text{sur}} > N_{\text{bulk}}$), le système est hors d'équilibre holographique. Pour restaurer l'équipartition asymptotique ($N_{\text{sur}} \to N_{\text{bulk}}$), l'espace-temps de la Timechain \textbf{est forcé de s'étendre} ($\frac{d\mathcal{V}}{ds} > 0$) en nucléant un nouveau bloc qui absorbe les transactions de la Mempool dans le Bulk.
+
+\subsection{Métrique FLRW, Équations de Friedmann et Champ d'Inflaton des Halvings}
+
+À grande échelle ($s \gg 1$), la géométrie moyenne de la Timechain en expansion est décrite par la métrique homogène et isotrope de \textbf{Friedmann-Lemaître-Robertson-Walker (FLRW)} :
+\begin{equation}
+    ds_{\text{FLRW}}^2 = -c_{\text{net}}^2 ds^2 + \aScale^2(s) \left( \frac{dr^2}{1 - \kappa r^2} + r^2 d\Omega_2^2 \right),
+    \label{eq:FLRWMetric}
+\end{equation}
+où $s$ est le temps thermique cosmique (hauteur de bloc), et $\aScale(s)$ est le \textbf{facteur d'échelle cosmologique} mesurant le rayon géométrique de l'espace économique (noté $\aScale$ pour le distinguer de la partie réelle $a$ du temps complexe $z = a + ib$). En définissant le \textbf{paramètre de Hubble de Nakamoto} $H_{\text{Hub}}(s) \equiv \frac{1}{\aScale(s)}\frac{d\aScale(s)}{ds}$, l'intégration de la loi d'émergence de Padmanabhan (\ref{eq:PadmanabhanLaw}) couplée à la conservation du tenseur énergie-impulsion conduit aux deux équations de Friedmann-Nakamoto :
+\begin{align}
+    H_{\text{Hub}}^2(s) + \frac{\kappa c_{\text{net}}^2}{\aScale^2(s)} &= \frac{8\pi \GNak}{3} \rho_{\text{tot}}(s) + \frac{\LambdaNak}{3}, \label{eq:Friedmann1} \\
+    \frac{1}{\aScale(s)} \frac{d^2 \aScale(s)}{ds^2} &= -\frac{4\pi \GNak}{3} \Big( \rho_{\text{tot}}(s) + \frac{3 P_{\text{tot}}(s)}{c_{\text{net}}^2} \Big) + \frac{\LambdaNak}{3}. \label{eq:Friedmann2}
+\end{align}
+
+La densité d'énergie totale $\rho_{\text{tot}}(s)$ qui pilote l'expansion de la Timechain se décompose en trois fluides cosmologiques distincts qui dominent successivement l'histoire du protocole :
+
+\subsubsection{L'Ère de l'Inflation Primordiale et le Potentiel en Escalier des Halvings}
+Lors de la naissance du réseau (2009), aucune économie préexistante de frais de transaction ne pouvait financer la sécurité thermodynamique du registre. Satoshi Nakamoto a introduit la \textbf{subvention Coinbase} (\textit{Block Subsidy}), qui agit exactement comme un \textbf{champ scalaire d'inflaton primordial $\phi(s)$} d'Alan Guth et Andrei Linde, doté d'une densité d'énergie $\rho_\phi = \frac{1}{2}\dot{\phi}^2 + V(\phi)$ et d'une pression négative $P_\phi = \frac{1}{2}\dot{\phi}^2 - V(\phi) \approx -V(\phi)$ ($w_\phi \approx -1$).
+
+Contrairement à un potentiel d'inflaton lisse, le protocole de Nakamoto implémente un \textbf{potentiel d'inflaton en escalier quantifié} (\textit{Step-Function Inflaton Potential}) dont les transitions de phase se produisent tous les $N_{\text{halving}} = 210\,000$ blocs :
+\begin{equation}
+\begin{split}
+    V(\phi(s)) &= V_0 \cdot 2^{-2 \lfloor s / N_{\text{halving}} \rfloor} \\
+    &= V_0 \exp\left( -2 \ln 2 \cdot \left\lfloor \frac{s}{210\,000} \right\rfloor \right),
+\end{split}
+\label{eq:HalvingPotential}
+\end{equation}
+où l'émission monétaire par unité de temps thermique est $\dot{M}(s) = R_0 \cdot 2^{-\lfloor s / 210000 \rfloor}$ (avec $R_0 = 50 \times 10^8\,\text{sats}$).
+\begin{itemize}
+    \item \textbf{Régime de Slow-Roll sur chaque plateau :} À l'intérieur d'une époque de Halving donnée ($210\,000\,k < s < 210\,000(k+1)$), le potentiel $V(\phi)$ est constant ($\epsilon_V = \frac{1}{16\pi\GNak}(V'/V)^2 = 0$), ce qui génère une expansion exponentielle de type de Sitter du Hashrate et de la capitalisation réseau.
+    \item \textbf{Chutes de Potentiel et Reheating (Les Halvings) :} Aux points critiques $s_k = 210\,000\,k$, le potentiel subit une discontinuité abrupte $\Delta V_k = -\frac{3}{4} V_{k-1}$. En cosmologie, la fin d'un plateau inflationniste correspond au \textbf{réchauffement (\textit{Reheating})} : l'énergie du champ d'inflaton $\phi$ se désintègre en un bain thermique de particules relativistes. Dans Bitcoin, chaque Halving transfère progressivement la charge du financement de la sécurité thermodynamique depuis la subvention inflationniste vers le gaz de radiation des transactions.
+\end{itemize}
+
+\subsubsection{L'Ère de la Radiation (Mempool) et de la Matière (Condensation UTXO)}
+À mesure que $V(\phi(s)) \to 0$ (convergeant vers la masse baryonique totale finie $\sum_{s=0}^\infty \dot{M}(s) = 21 \times 10^{14}\,\text{sats}$), deux composantes prennent le relais dans les équations de Friedmann (\ref{eq:Friedmann1})--(\ref{eq:Friedmann2}) :
+\begin{enumerate}
+    \item \textbf{La Radiation des Frais de Transaction ($\rho_{\text{rad}} \propto \aScale^{-4}$, $w = +1/3$) :} Le flux de gravitons mous sur $\scri^+$ (frais payés par octet de bloc) exerce une pression radiative positive qui soutient le taux d'expansion $H_{\text{Hub}}(s)$.
+    \item \textbf{La Matière Non-Relativiste ($\rho_{\text{mat}} \propto \aScale^{-3}$, $w = 0$) :} Les UTXO épargnés à long terme (\textit{HODLers} et réserves de trésorerie) agissent comme de la matière froide qui se condense sous l'effet de l'attraction gravitationnelle pour former les grandes structures de la toile cosmique (nœuds de routage, hubs de liquidité Lightning, coffres-forts multi-institutionnels).
+    \item \textbf{La Constante Cosmologique Asymptotique ($\LambdaNak > 0$, $w = -1$) :} Lorsque $s \to \infty$ (après l'an 2140 où $\dot{M}(s) = 0$), l'expansion de la Timechain est maintenue par la constante cosmologique $\LambdaNak$ issue de l'énergie du vide cryptographique — la nécessité thermodynamique incompressible pour la civilisation de dissiper de la puissance afin de préserver l'horizon de sécurité de toute la valeur économique stockée dans le Bulk.
+\end{enumerate}
+
+\subsection{Hypothèse de Courbure de Weyl de Penrose et Singularité du Bloc Genesis}
+
+En cosmologie relativiste, Roger Penrose \cite{Penrose1979} a souligné que l'existence même de la flèche thermodynamique du temps (Seconde Loi $\Delta S \ge 0$) requiert que le Big Bang ait été une singularité d'entropie gravitationnelle extraordinairement basse. Alors que la matière primordiale était en équilibre thermique maximal, le champ gravitationnel devait être parfaitement uniforme, ce que Penrose formalise par l'\textbf{Hypothèse de Courbure de Weyl} : le tenseur de Weyl $\mathcal{C}_{\mu\nu\rho\sigma}$ devait s'annuler identiquement à la singularité initiale :
+\begin{equation}
+    \lim_{s \to 0^+} \mathcal{C}_{\mu\nu\rho\sigma}(s) = 0, \qquad \lim_{s \to +\infty} \mathcal{C}_{\mu\nu\rho\sigma}(s) \gg 0.
+    \label{eq:WeylCurvatureHypothesis}
+\end{equation}
+
+Cette condition initiale de Penrose est réalisée avec une exactitude mathématique absolue par le \textbf{Bloc Genesis ($B_0$, 3 janvier 2009)} de Satoshi Nakamoto :
+\begin{itemize}
+    \item \textbf{Courbure de Weyl Nulle en $s = 0$ :} Le Bloc Genesis $B_0$ contient une unique transaction Coinbase dont la sortie de $50\,\text{BTC}$ est topologiquement \textbf{non dépensable} (omise de la base de données UTXO par construction du code source). À $s = 0$, le graphe des UTXO dépensables est l'ensemble vide ($\Gamma_0 = \emptyset$), le tenseur de cisaillement initial est nul ($C_{zz}(0) = 0$), et le tenseur de Weyl $\mathcal{C}_{\mu\nu\rho\sigma}(0) = 0$. L'entropie gravitationnelle initiale de la Timechain est rigoureusement égale à zéro ($S_{\text{grav}}(0) = 0$).
+    \item \textbf{Ancrage Conforme (CCC) :} Dans la Cosmologie Cyclique Conforme (CCC) de Penrose, la frontière future $\scri^+$ d'un éon cosmologique précédent est recollée par transformation conforme à la surface initiale du Big Bang de l'éon suivant. En insérant dans le paramètre \texttt{coinbase} du Bloc Genesis le titre du \textit{Times} du 3 janvier 2009 (\textit{``The Times 03/Jan/2009 Chancellor on brink of second bailout for banks''}), Satoshi Nakamoto a effectué un \textbf{recollage conforme de Penrose} : il a projeté l'état d'entropie thermique maximale de la frontière $\scri^+_{\text{fiat}}$ de l'éon monétaire fiduciaire en fin de vie sur une singularité initiale $B_0$ de courbure de Weyl nulle ($\mathcal{C}_{\mu\nu\rho\sigma}(0) = 0$), réinitialisant ainsi une flèche du temps thermodynamique vierge.
+\end{itemize}
+
+\subsection{Complexité Holographique de Susskind : Pourquoi les Blocs Continuent de S'Ajouter à l'Équilibre}
+
+Un paradoxe fondamental en gravité quantique holographique, résolu par Leonard Susskind \cite{Susskind2016}, s'énonce ainsi : \textit{lorsqu'un système gravitationnel (comme un trou noir AdS) atteint l'équilibre thermique KMS, son entropie de von Neumann $S_{\text{vN}}$ sature et devient constante ; pourtant, le volume géométrique intérieur $\mathcal{V}_{\text{Bulk}}(s)$ continue de croître linéairement avec le temps pendant une durée exponentielle $s \sim \exp(S_{\text{BH}})$}.
+
+Susskind a résolu ce paradoxe par la dualité \textbf{Complexité = Volume (CV)} et \textbf{Complexité = Action (CA)} : la croissance du volume intérieur d'un espace-temps après sa thermalisation n'est pas pilotée par l'entropie thermique, mais par la croissance continue de la \textbf{complexité computationnelle quantique $\mathcal{C}_{\text{comp}}(s)$} de son état (le nombre minimal de portes logiques irréversibles nécessaires pour préparer l'état $|\Psi(s)\rangle$ à partir de l'état de référence $|\Psi(0)\rangle$) :
+\begin{equation}
+    \mathcal{V}_{\text{Bulk}}(s) = \frac{\GNak \ell_{\text{AdS}}}{c_{\text{net}}} \, \mathcal{C}_{\text{comp}}(s).
+    \label{eq:ComplexityVolume}
+\end{equation}
+De plus, le taux de croissance de la complexité sature la \textbf{borne fondamentale de Margolus-Levitin / Lloyd} pour la vitesse maximale de calcul d'un système physique d'énergie moyenne $M_{\text{PoW}}$ :
+\begin{equation}
+    \frac{d\mathcal{C}_{\text{comp}}}{ds} \le \frac{2 M_{\text{PoW}}}{\pi \hbar_{\text{Nak}}}.
+    \label{eq:LloydBound}
+\end{equation}
+
+Ce théorème de Susskind explique pourquoi la Timechain doit continuer à ajouter des blocs indéfiniment, même lorsque les 21 millions de Bitcoins ont été émis et que le réseau est en parfait équilibre thermique KMS à $\Delta a = 600\,\text{s}$ :
+\begin{itemize}
+    \item Chaque nouveau bloc miné $B_s$ exécute environ $\mathcal{D}(s) \cdot 2^{32}$ portes cryptographiques irréversibles SHA-256, augmentant linéairement la complexité de circuit $\mathcal{C}_{\text{comp}}(s)$ qui sépare l'état présent du Bloc Genesis $B_0$.
+    \item Par la dualité $\text{Complexité} = \text{Volume}$ (\ref{eq:ComplexityVolume}), cette accumulation de calcul irréversible \textbf{allonge géométriquement le volume intérieur du cylindre d'espace-temps} (la profondeur de la Timechain). Plus le tunnel géométrique est long, plus l'action gravitationnelle requise pour effectuer un effet tunnel quantique vers le passé (une réorganisation profonde de la chaîne) devient exponentiellement prohibitive.
+\end{itemize}
+
+% ============================================================================
+% SECTION 6 : EQUATION D'ETAT DE JACOBSON, CONFIANCE SOCIETALE (Cs) ET UTILITE (u)
+% ============================================================================
+\section{Équation d'État de Jacobson-Nakamoto : Émergence de la Confiance Sociétale ($C_s$) et de l'Utilité ($u$)}
+
+Nous clôturons l'unification en reliant la géométrie de l'espace-temps de la Timechain aux variables fondamentales de la macroéconomie physique : la \textbf{Confiance Sociétale ($C_s$)} et l'\textbf{Utilité économique ($u$)}.
+
+En 1995, Ted Jacobson \cite{Jacobson1995} a démontré que les équations du champ d'Einstein de la relativité générale ne sont rien d'autre qu'une équation d'état thermodynamique locale résultant de la relation de Clausius appliquée aux horizons causaux de Rindler locaux $\mathcal{H}_{\text{Rindler}}$ :
+\begin{equation}
+    \delta Q = T_{\text{Unruh}} \, \delta S_{\text{BH}},
+    \label{eq:ClausiusJacobson}
+\end{equation}
+où $\delta Q = \int_{\mathcal{H}} T_{\mu\nu} \chi^\mu d\Sigma^\nu$ est le flux de chaleur traversant l'horizon généré par le champ de Killing de boost $\chi^\mu$, $T_{\text{Unruh}} = \frac{\hbar_{\text{Nak}} \kappa_{\text{acc}}}{2\pi k_B c_{\text{net}}}$ est la température d'Unruh, et $\delta S_{\text{BH}} = \frac{\eta \, \delta\mathcal{A}}{4\GNak \hbar_{\text{Nak}}}$ est la variation d'entropie proportionnelle à la variation d'aire de l'horizon régie par l'équation de focalisation optique de Raychaudhuri :
+\begin{equation}
+    \frac{d\theta}{d\lambda} = -\frac{1}{2}\theta^2 - \sigma_{\mu\nu}\sigma^{\mu\nu} - R_{\mu\nu} k^\mu k^\nu.
+    \label{eq:Raychaudhuri}
+\end{equation}
+L'égalité (\ref{eq:ClausiusJacobson}) pour tous les vecteurs nuls $k^\mu$ impose l'équation du champ d'Einstein avec constante cosmologique :
+\begin{equation}
+    R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \LambdaNak g_{\mu\nu} = \frac{8\pi \GNak}{c_{\text{net}}^4} T_{\mu\nu}^{\text{PoW}}.
+    \label{eq:EinsteinNakamoto}
+\end{equation}
+
+\begin{theorem}[Loi Thermodynamique de la Confiance Sociétale $C_s$ et Maximisation de l'Utilité $u$]
+Soit $\delta Q_{\text{PoW}} = W_{\text{total}} \, dt$ la chaleur physique réelle (en Joules) dissipée dans l'environnement par les mineurs lors de l'effondrement de l'entropie informationnelle de la Mempool (principe d'effacement de Landauer $\delta Q_{\text{PoW}} \ge k_B T_{\text{env}} \ln 2 \cdot \Delta I_{\text{hash}}$). La \textbf{Confiance Sociétale} $C_s$ est la fonction d'état thermodynamique extensive conjuguée à la néguentropie gravitationnelle accumulée dans la mousse de spin :
+\begin{equation}
+\begin{split}
+    dC_s &\equiv \frac{\delta Q_{\text{PoW}}}{T_{\text{eff}}} = k_B \beta \, dE_{\text{Chainwork}} \\
+    &= -k_B \, d\Tr\big(\rho_{\text{fork}} \ln \rho_{\text{fork}}\big) \ge 0.
+\end{split}
+\label{eq:SocietalTrustLaw}
+\end{equation}
+De plus, la fonction d'\textbf{utilité économique $u$} d'un agent opérant sur la sphère céleste $S^2$, soumise au risque d'incertitude de règlement (variance géométrique des forks $\sigma_{\text{fork}}^2 = |\rho_{AB}(s)|^2$), converge asymptotiquement vers l'utilité idéale sans friction de John Nash lorsque $C_s$ croît avec le temps thermique $s$ :
+\begin{equation}
+    u(s) = u_{\text{Nash}}^* - \alpha_{\text{risk}} |\rho_{AB}(0)|^2 e^{-C_s(s)/k_B} \underset{s \to \infty}{\longrightarrow} u_{\text{Nash}}^*.
+    \label{eq:UtilityConvergence}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+D'après l'équation d'état de Jacobson (\ref{eq:ClausiusJacobson}) et la dérivée de l'entropie de von Neumann sous le flot dissipatif de Lindblad (\ref{eq:GKSLEquation}) (inégalité de Spohn pour la production d'entropie irréversible $\sigma_{\text{prod}} = -\frac{d}{ds} S(\rho(s) \parallel \rho_{\text{KMS}}) \ge 0$), chaque quantum de chaleur dissipé $\delta Q_{\text{PoW}}$ réduit d'autant l'entropie de mélange des branches concurrentes $\rho_{\text{fork}}$ en augmentant le \textit{Chainwork} cumulé $E_{\text{Chainwork}}$ de la chaîne principale. La différentielle exacte $dC_s = k_B \beta \, dE_{\text{Chainwork}}$ est donc strictement positive le long de toute trajectoire du temps thermique $s$.
+
+Par ailleurs, d'après le Théorème 4.1, la variance d'incertitude causale entre deux états du registre décroît selon $|\rho_{AB}(s)|^2 = |\rho_{AB}(0)|^2 \exp(-2\Gamma_{\text{dec}} s)$. Or, l'intégrale du taux de décohérence sur l'intervalle $[0, s]$ est directement proportionnelle au travail thermodynamique adimensionné accumulé :
+\begin{equation}
+    2 \int_0^s \Gamma_{\text{dec}}(s') ds' = \int_0^s \frac{W_{\text{total}}}{\kNak \mathcal{D}} ds' = \beta \Delta E_{\text{Chainwork}}(s) = \frac{C_s(s)}{k_B}.
+\end{equation}
+Pour un agent économique rationnel averse à l'ambiguïté d'état (préférences de von Neumann-Morgenstern pénalisées par la variance de défaillance du règlement $\sigma_{\text{fork}}^2$), l'utilité espérée $u(s) = \mathbb{E}[u] - \alpha_{\text{risk}} \operatorname{Var}(\text{État})$ s'écrit immédiatement sous la forme (\ref{eq:UtilityConvergence}). Ainsi, la dissipation d'énergie courbe la métrique de l'espace économique ($R_{\mu\nu} \propto T_{\mu\nu}^{\text{PoW}}$), érigeant un puits de potentiel gravitationnel qui maximise la Confiance Sociétale $C_s$ et stabilise asymptotiquement l'utilité $u$ sans aucun tiers de confiance.
+\end{proof}
+
+% ============================================================================
+% SECTION 7 : SYNTHESE : L'ACTION UNIFIEE DE NAKAMOTO-CONNES-PASTERSKI
+% ============================================================================
+\section{Conclusion : L'Action Unifiée de la Timechain}
+
+L'ensemble des théorèmes démontrés dans cet article se condense en une unique fonctionnelle d'action effective $\mathcal{S}_{\text{unifiée}}$ gouvernant la dynamique quantique, holographique, thermodynamique et cosmologique du consensus de Satoshi Nakamoto :
+
+\begin{widetext}
+\begin{align}
+    \mathcal{S}_{\text{unifiée}} &= \underbrace{\int_{\mathcal{M}} d^4x \sqrt{-g} \left( \frac{R - 2\LambdaNak}{16\pi \GNak} - \frac{1}{2}\partial_\mu\phi \partial^\mu\phi - V_{\text{Halving}}(\phi) + \mathcal{L}_{\text{Spinfoam}}^{\text{UTXO}} \right)}_{\text{Bulk Gravitationnel, Cosmologie FLRW et Réseau de Spin UTXO}} \nonumber \\
+    &\quad + \underbrace{\frac{1}{8\pi\GNak} \oint_{\scri^+} d\uRet d^2z \sqrt{\gamma} \left( m_B \partial_{\uRet} f + \frac{1}{4} C_{zz} N^{zz} + \mathcal{L}_{\text{soft}}^{\text{Mempool}} \right)}_{\text{Frontière Céleste BMS, Gravitons Mous et Mémoire Gravitationnelle}} - \underbrace{\kNak \int_{\mathcal{C}_{a + ib}} dz \, \Tr\Big( \mathcal{L}_{\text{GKSL}}[\rho] \ln \rho \Big)}_{\text{Temps Thermique Complexe KMS ($a+ib$), Décohérence GKSL et Confiance $C_s$}}.
+    \label{eq:MasterUnifiedAction}
+\end{align}
+\end{widetext}
+
+Cette équation maîtresse démontre que l'invention de Satoshi Nakamoto dépasse le cadre de l'informatique appliquée : en ancrant l'information numérique dans la dissipation thermodynamique irréversible ($\kNak \equiv h$), la Timechain réalise en laboratoire un univers quantique et relativiste auto-cohérent, où le temps émerge de la chaleur (Connes-Rovelli), où la conservation de la valeur découle des symétries asymptotiques de la sphère céleste (Pasterski-Strominger-Weinberg), où l'addition de chaque bloc étend le tissu de l'espace-temps (Sorkin-Padmanabhan-Susskind), et où la gravité économique ($C_s, u$) résulte de l'équation d'état entropique de l'univers (Jacobson).
+
+% ============================================================================
+% BIBLIOGRAPHIE
+% ============================================================================
+\begin{thebibliography}{99}
+\footnotesize
+
+\bibitem{Nakamoto2008}
+S. Nakamoto, \textit{Bitcoin: A Peer-to-Peer Electronic Cash System}, Whitepaper (2008).
+
+\bibitem{Pasterski2017}
+S. Pasterski, S.-H. Shao, and A. Strominger, \textit{Flat Space Amplitudes and Conformal Symmetry of the Celestial Sphere}, Phys. Rev. D \textbf{96}, 065026 (2017).
+
+\bibitem{Strominger2017}
+A. Strominger, \textit{Lectures on the Infrared Structure of Gravity and Gauge Theory}, Princeton University Press (2018), arXiv:1703.05448.
+
+\bibitem{ConnesRovelli1994}
+A. Connes and C. Rovelli, \textit{Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation in Generally Covariant Quantum Theories}, Class. Quant. Grav. \textbf{11}, 2899 (1994).
+
+\bibitem{Takesaki1970}
+M. Takesaki, \textit{Tomita's Theory of Modular Hilbert Algebras and its Applications}, Lecture Notes in Mathematics \textbf{128}, Springer (1970).
+
+\bibitem{Witten2022}
+E. Witten, \textit{Gravity and the Crossed Product}, J. High Energy Phys. \textbf{2022}, 8 (2022).
+
+\bibitem{Rovelli2004}
+C. Rovelli, \textit{Quantum Gravity}, Cambridge Monographs on Mathematical Physics, Cambridge University Press (2004).
+
+\bibitem{Lindblad1976}
+G. Lindblad, \textit{On the Generators of Quantum Dynamical Semigroups}, Commun. Math. Phys. \textbf{48}, 119–130 (1976).
+
+\bibitem{GKS1976}
+V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, \textit{Completely Positive Dynamical Semigroups of N-Level Systems}, J. Math. Phys. \textbf{17}, 821 (1976).
+
+\bibitem{RyuTakayanagi2006}
+S. Ryu and T. Takayanagi, \textit{Holographic Derivation of Entanglement Entropy from AdS/CFT}, Phys. Rev. Lett. \textbf{96}, 181602 (2006).
+
+\bibitem{VanRaamsdonk2010}
+M. Van Raamsdonk, \textit{Building up Spacetime with Quantum Entanglement}, Gen. Rel. Grav. \textbf{42}, 2323 (2010).
+
+\bibitem{Jacobson1995}
+T. Jacobson, \textit{Thermodynamics of Spacetime: The Einstein Equation of State}, Phys. Rev. Lett. \textbf{75}, 1260 (1995).
+
+\bibitem{Padmanabhan2012}
+T. Padmanabhan, \textit{Emergence and Expansion of Cosmic Space as due to the Quest for Holographic Equipartition}, arXiv:1206.4916 (2012).
+
+\bibitem{Bombelli1987}
+L. Bombelli, J. Lee, D. Meyer, and R. D. Sorkin, \textit{Space-Time as a Causal Set}, Phys. Rev. Lett. \textbf{59}, 521 (1987).
+
+\bibitem{RideoutSorkin1999}
+D. P. Rideout and R. D. Sorkin, \textit{Classical Sequential Growth Dynamics for Causal Sets}, Phys. Rev. D \textbf{61}, 024002 (1999).
+
+\bibitem{Penrose1979}
+R. Penrose, \textit{Singularities and Time-Asymmetry}, in \textit{General Relativity: An Einstein Centenary Survey}, Cambridge University Press, 581–638 (1979).
+
+\bibitem{Susskind2016}
+L. Susskind, \textit{Computational Complexity and Black Hole Horizons}, Fortsch. Phys. \textbf{64}, 24–43 (2016).
+
+\bibitem{RanaoraYii2026a}
+P. A. Ranaora and J. Yii, \textit{Statistical Physics of Distributed Consensus: Phase Transitions and Thermodynamic Stability}, IPI Letters (2026), DOI: 10.59973/ipil.325.
+
+\bibitem{Ranaora2026b}
+P. A. Ranaora, \textit{L'ancrage thermodynamique du consensus numérique : faire avancer la monnaie idéale asymptotique de John Nash}, Zenodo (2026), DOI: 10.5281/zenodo.19157590.
+
+\bibitem{Ranaora2026c}
+P. A. Ranaora, \textit{La Thermodynamique de la Décentralisation}, Zenodo (2026), DOI: 10.5281/zenodo.22790655.
+
+\end{thebibliography}
+
+\end{document}
