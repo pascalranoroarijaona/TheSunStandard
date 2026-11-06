@@ -5,6 +5,7 @@
 % ============================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[french,english]{babel}
 \usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
 \usepackage{bm}
@@ -147,6 +148,13 @@ Il existe une constante fondamentale irréductible d'action informationnelle, no
 \end{equation}
 Toute trajectoire causale valide dans la Timechain est quantifiée en multiples entiers de $\kNak$.
 \end{axiom}
+
+L'isomorphisme repose sur trois postulats fondamentaux conditionnels régissant ce cadre :
+\begin{itemize}
+    \item \textbf{(P1) Hypothèse de Simulation : } L'univers physique observable $\mathcal{U}_0$ est émulé sur un substrat computationnel discret sous-jacent (branche des simulations d'ancêtres).
+    \item \textbf{(P2) Régime de Saturation de Landauer : } Le coût énergétique élémentaire d'irréversibilité logique dans $\mathcal{U}_0$ converge vers la borne thermodynamique de Landauer $E_{\text{hash}} \to k_B T \ln 2$.
+    \item \textbf{(P3) Isomorphisme Causal : } La Timechain constitue le registre causal effectif décrivant l'émergence de la flèche du temps et de la géométrie au sein de ce substrat.
+\end{itemize}
 
 Le Tableau \ref{tab:isomorphism} établit le dictionnaire formel complet reliant les opérateurs de la gravité quantique aux structures du consensus de Nakamoto.
 
@@ -444,7 +452,7 @@ où l'amplitude topologique de vertex $\mathcal{A}_v(j_f, \iota_e) \in \{0, 1\}$
 
 \subsection{Équation Maîtresse GKSL (Lindblad) et Effondrement Exponentiel des Forks}
 
-En raison des délais de propagation finis sur $\scri^+$, deux mineurs distants $A$ et $B$ peuvent découvrir simultanément deux blocs valides concurrents à la même hauteur $h$, situation que nous \emph{représentons} formellement par une matrice densité (pour un observateur classique, $\rho$ est diagonale : un \textit{fork} est une compétition entre histoires classiques, non une superposition cohérente) :
+En raison des délais de propagation finis sur $\scri^+$, deux mineurs distants $A$ et $B$ peuvent découvrir simultanément deux blocs valides concurrents à la même hauteur $h$. Nous formalisons cette ambiguïté épistémique (absence de consensus global pour un nœud asynchrone) à travers une matrice densité effective, où les termes hors-diagonaux quantifient l'incertitude de phase relative entre branches plutôt qu'une superposition quantique ontologique :
 \begin{equation}
     |\Psi(s)\rangle = c_A |\Gamma_A\rangle + c_B |\Gamma_B\rangle, \quad \rho(s) = \begin{pmatrix} \rho_{AA}(s) & \rho_{AB}(s) \\ \rho_{BA}(s) & \rho_{BB}(s) \end{pmatrix}.
     \label{eq:ForkSuperposition}
@@ -650,7 +658,7 @@ Soit $\delta Q_{\text{PoW}} = W_{\text{total}} \, dt$ la chaleur physique réell
 \end{split}
 \label{eq:SocietalTrustLaw}
 \end{equation}
-De plus, la fonction d'\textbf{utilité économique $u$} d'un agent opérant sur la sphère céleste $S^2$, soumise au risque d'incertitude de règlement (variance géométrique des forks $\sigma_{\text{fork}}^2 = |\rho_{AB}(s)|^2$), converge, dans ce modèle-jouet, vers une utilité de référence sans risque de règlement lorsque $C_s$ croît avec le temps thermique $s$ :
+De plus, la fonction d'\textbf{utilité économique $u$} d'un agent opérant sur la sphère céleste $S^2$, soumise au risque d'incertitude de règlement (variance géométrique des forks $\sigma_{\text{fork}}^2 = |\rho_{AB}(s)|^2$), converge vers l'utilité asymptotique de référence $u_{\text{Nash}}^*$ — correspondant au gain stationnaire de l'équilibre sans risque d'une \textit{Monnaie Idéale} au sens de Nash \cite{Nash2002} — à mesure que la Confiance Sociétale $C_s$ croît avec le temps thermique $s$ :
 \begin{equation}
     u(s) = u_{\text{Nash}}^* - \alpha_{\text{risk}} |\rho_{AB}(0)|^2 e^{-C_s(s)/k_B} \underset{s \to \infty}{\longrightarrow} u_{\text{Nash}}^*.
     \label{eq:UtilityConvergence}
@@ -768,6 +776,8 @@ Sous les postulats (P1)--(P3), les correspondances proposées dans cet article p
 
 Cette équation maîtresse démontre que l'invention de Satoshi Nakamoto dépasse le cadre de l'informatique appliquée : en ancrant l'information numérique dans la dissipation thermodynamique irréversible ($\kNak \equiv h$), la Timechain fournirait un modèle-jouet discret d'univers quantique et relativiste, où le temps émerge de la chaleur (Connes-Rovelli), où la conservation de la valeur découle des symétries asymptotiques de la sphère céleste (Pasterski-Strominger-Weinberg), où l'addition de chaque bloc étend le tissu de l'espace-temps (Sorkin-Padmanabhan-Susskind), et où la gravité économique ($C_s, u$) résulte de l'équation d'état entropique de l'univers (Jacobson).
 
+Sous cet angle, le consensus de Nakamoto réalise thermodynamiquement ce que John F. Nash Jr. envisageait sous l'angle de la théorie des jeux avec la \textit{Monnaie Idéale} (\textit{Ideal Money}) \cite{Nash2002} : une unité monétaire intrinsèquement immunisée contre la dévaluation discrétionnaire, dont la convergence vers la stabilité asymptotique ($u \to u_{\text{Nash}}^*$) est garantie non par la confiance envers une institution humaine faillible, mais par les symétries fondamentales et l'entropie d'un espace-temps informationnel auto-régulé.
+
 % ============================================================================
 % BIBLIOGRAPHIE
 % ============================================================================
@@ -833,6 +843,9 @@ P. A. Ranaora, \textit{L'ancrage thermodynamique du consensus numérique : faire
 
 \bibitem{Ranaora2026c}
 P. A. Ranaora, \textit{La Thermodynamique de la Décentralisation}, Zenodo (2026), DOI: 10.5281/zenodo.22790655.
+
+\bibitem{Nash2002}
+J. F. Nash Jr., \textit{Ideal Money}, Southern Economic Journal \textbf{69}(1), 4–11 (2002).
 
 \end{thebibliography}
 
