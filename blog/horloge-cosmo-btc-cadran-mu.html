@@ -1,0 +1,2029 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu | L'Étalon Solaire (v3.0)</title>
+    <meta name="description" content="Traité de Chrono-Thermodynamique Bimétrique : Filiation gravitationnelle (18,61 ans à Sagittarius A*), Résonance 432 Hz, Force Répulsive et Inversion Temporelle dans le Vrai Cadran de Mu (a + ib)." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- MathJax v3 -->
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Three.js r128 & OrbitControls pour le Simulateur 3D Intégré -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --bg-deep: #060709;
+            --bg-dark: #040405;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --carbon-red: #d35400;
+            --gold-gov: #ffd700;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
+            --orange-l1: #f7931a;
+            --teal-l0: #00bfa5;
+            --shield-blue: #2962ff;
+            --border-glow: rgba(255, 170, 0, 0.2);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(224, 64, 251, 0.06) 0%, rgba(247, 147, 26, 0.03) 35%, transparent 65%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(8px);
+        }
+        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back:hover { color: #fff; }
+
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.3rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+        }
+
+        article {
+            max-width: 960px; margin: 8rem auto 6rem; padding: 0 2rem;
+            font-size: 1.15rem; color: #d4d4d4;
+        }
+
+        header.article-header {
+            text-align: center; margin-bottom: 3.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(179, 102, 255, 0.25); font-family: var(--font-ui);
+        }
+        h1 {
+            font-size: clamp(2.1rem, 4.8vw, 3.3rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.6rem; letter-spacing: -1px; text-transform: uppercase; line-height: 1.18;
+        }
+        h2.header-subtitle {
+            font-size: 1.28rem; font-weight: 600; color: var(--sun-yellow); margin-bottom: 0.9rem; font-family: var(--font-ui);
+        }
+        .subtitle {
+            font-size: 1.15rem; color: var(--purple-l4); font-style: italic; max-width: 840px; margin: 0 auto;
+        }
+
+        .intro-hero {
+            display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;
+        }
+        .hero-emblem-box {
+            width: 100%; max-width: 780px; margin-bottom: 1.8rem; padding: 1.5rem;
+            border-radius: 14px; background: radial-gradient(circle at center, rgba(24, 18, 42, 0.85) 0%, rgba(5, 6, 10, 0.96) 100%);
+            border: 1px solid rgba(179, 102, 255, 0.35);
+            box-shadow: 0 12px 40px rgba(179, 102, 255, 0.18);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .quote-block {
+            border-left: 4px solid var(--sun-yellow); padding: 1.5rem 2rem;
+            font-style: italic; color: #f0f0f0; font-size: 1.12rem; margin-bottom: 2rem;
+            font-family: var(--font-ui); background: linear-gradient(90deg, rgba(255, 204, 0, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0; box-shadow: inset 20px 0 20px -20px rgba(255, 204, 0, 0.2);
+            width: 100%;
+        }
+
+        /* --- PYRAMIDE D'EMBOÎTEMENT COSMIQUE --- */
+        .pyramid-wrapper {
+            margin: 3.5rem 0; padding: 2rem; background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+        }
+        .pyramid-container {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 12px; width: 100%; font-family: var(--font-ui);
+        }
+        .pyramid-tier {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.1rem 1.6rem; border-radius: 8px; border: 1.5px solid;
+            background: rgba(0,0,0,0.82); text-decoration: none; transition: all 0.3s ease;
+            position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 25px rgba(255,204,0,0.22); }
+
+        .tier-l4 { width: 54%; border-color: var(--purple-l4); background: linear-gradient(90deg, rgba(179,102,255,0.14), rgba(0,0,0,0.9)); }
+        .tier-l3 { width: 66%; border-color: var(--magenta-l3); background: linear-gradient(90deg, rgba(224,64,251,0.14), rgba(0,0,0,0.9)); }
+        .tier-l2 { width: 78%; border-color: var(--cyan-l2); background: linear-gradient(90deg, rgba(0,229,255,0.14), rgba(0,0,0,0.9)); }
+        .tier-l1 { width: 89%; border-color: var(--orange-l1); background: linear-gradient(90deg, rgba(247,147,26,0.16), rgba(0,0,0,0.9)); }
+        .tier-l0 { width: 100%; border-color: var(--teal-l0); background: linear-gradient(90deg, rgba(0,191,165,0.14), rgba(0,0,0,0.9)); }
+
+        .tier-tag { font-family: var(--font-mono); font-weight: bold; font-size: 0.88rem; white-space: nowrap; }
+        .tier-title { font-size: 0.93rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 1rem; }
+
+        /* --- TIROIRS DÉROULANTS (DETAILS / SUMMARY) --- */
+        details {
+            margin-bottom: 2rem; background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 10px 10px 0; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-family: var(--font-ui);
+        }
+        details[open] {
+            background: rgba(0, 0, 0, 0.72);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 25px currentColor;
+        }
+        summary {
+            padding: 1.4rem 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.18rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; color: inherit; font-size: 0.9rem; transition: transform 0.2s ease; }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content { padding: 2rem 2rem 2rem 2.4rem; color: #c2d1e0; font-family: var(--font-main); line-height: 1.82; }
+        .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 1.6rem; margin-bottom: 0.8rem; font-size: 1.15rem; }
+        .drawer-content p { margin-bottom: 1.2rem; text-align: justify; }
+        .drawer-content ul { margin: 0.8rem 0 1.3rem 1.5rem; }
+        .drawer-content li { margin-bottom: 0.65rem; text-align: justify; }
+
+        details[class^="layer-"] { width: 100%; margin: 0 auto 1.6rem auto !important; }
+        details[class^="layer-"] > summary { min-height: 76px; }
+        details[class^="layer-"] > .drawer-content {
+            max-height: 860px; overflow-y: auto;
+            scrollbar-width: thin; scrollbar-color: rgba(179, 102, 255, 0.4) rgba(0, 0, 0, 0.4);
+        }
+
+        .layer-0 { border-left: 4px solid var(--teal-l0); color: rgba(0, 191, 165, 0.25); }
+        .layer-0 > summary { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--orange-l1); color: rgba(247, 147, 26, 0.25); }
+        .layer-1 > summary { color: var(--orange-l1); }
+        .layer-2 { border-left: 4px solid var(--cyan-l2); color: rgba(0, 229, 255, 0.25); }
+        .layer-2 > summary { color: var(--cyan-l2); }
+        .layer-3 { border-left: 4px solid var(--magenta-l3); color: rgba(224, 64, 251, 0.25); }
+        .layer-3 > summary { color: var(--magenta-l3); }
+        .layer-4 { border-left: 4px solid var(--purple-l4); color: rgba(179, 102, 255, 0.25); }
+        .layer-4 > summary { color: var(--purple-l4); }
+        .layer-deep { border-left: 4px solid var(--sun-yellow); color: rgba(255, 204, 0, 0.25); }
+        .layer-deep > summary { color: var(--sun-yellow); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.68); padding: 1.35rem; border-radius: 8px;
+            margin: 1.4rem 0; text-align: center; border: 1px solid rgba(255, 255, 255, 0.09);
+            font-size: 1.05rem; font-family: var(--font-ui); overflow-x: auto;
+        }
+
+        /* --- SECTIONS PROTOCOLE & MODÉLISATION --- */
+        .modelling-section {
+            margin: 4.5rem 0; padding: 2.2rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(0,0,0,0.42)),
+                        radial-gradient(circle at top right, rgba(0,229,255,0.055), transparent 45%);
+            border: 1px solid rgba(0,229,255,0.18); border-radius: 16px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+        }
+        .modelling-section h3 {
+            margin-bottom: 0.75rem; color: var(--cyan-l2); font-family: var(--font-ui);
+            font-size: clamp(1.35rem, 2.8vw, 1.9rem); line-height: 1.3; text-align: center;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .modelling-lead {
+            max-width: 850px; margin: 0 auto 2rem; color: #aeb8c2; text-align: center; font-size: 1rem; font-family: var(--font-ui);
+        }
+        .modelling-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1.1rem;
+        }
+        .model-card {
+            position: relative; overflow: hidden; padding: 1.3rem;
+            background: rgba(4, 5, 7, 0.86); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .model-card:hover {
+            transform: translateY(-4px); border-color: rgba(255,204,0,0.45); box-shadow: 0 12px 30px rgba(255,204,0,0.08);
+        }
+        .model-card h4 { margin: 0.5rem 0 0.55rem; color: #fff; font-family: var(--font-ui); line-height: 1.35; font-size: 1.02rem; }
+        .model-card p { color: #aab1b8; font-size: 0.92rem; line-height: 1.65; font-family: var(--font-ui); }
+
+        .epistemic-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; margin: 1.4rem 0 2rem; }
+        .epistemic-badge {
+            display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.28rem 0.7rem;
+            border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-mono);
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap;
+        }
+        .status-a { color: #44ee77; background: rgba(68,238,119,0.08); }
+        .status-b { color: #00ccff; background: rgba(0,204,255,0.08); }
+        .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
+        .status-d { color: #ff7b00; background: rgba(255,123,0,0.08); }
+        .status-x { color: #e040fb; background: rgba(224,64,251,0.08); }
+
+        /* --- TABLETTE PHILOSOPHIQUE --- */
+        .philosophical-tablet {
+            margin: 4.5rem 0; padding: 2.8rem;
+            background: linear-gradient(145deg, rgba(18, 20, 28, 0.85) 0%, rgba(5, 6, 9, 0.96) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.22); border-top: 4px solid var(--sun-yellow);
+            border-radius: 14px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.75);
+        }
+        .philosophical-tablet h3 {
+            color: var(--sun-yellow); font-family: var(--font-ui); font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255, 204, 0, 0.15);
+        }
+        .philosophical-tablet h4 { color: #fff; font-family: var(--font-ui); font-size: 1.2rem; margin: 2rem 0 0.8rem; }
+        .philosophical-tablet p, .philosophical-tablet li { text-align: justify; color: #d0d7de; margin-bottom: 1.05rem; }
+        .philosophical-tablet ul { padding-left: 1.5rem; margin: 1.2rem 0; }
+
+        /* --- TABLES --- */
+        .glossary-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: var(--font-ui); font-size: 0.88rem; }
+        .glossary-table th, .glossary-table td { padding: 0.85rem 0.95rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .glossary-table th { color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase; font-size: 0.76rem; letter-spacing: 1px; }
+        .glossary-table tr:hover { background: rgba(255,255,255,0.03); }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono);
+            font-size: 0.78rem; font-weight: bold; background: rgba(255,255,255,0.08); color: #fff; white-space: nowrap;
+        }
+
+        /* --- SIMULATEUR 3D SCOPÉ (ZÉRO CONFLIT TAILWIND) --- */
+        .simulator-box {
+            background: #080a0e; border: 1px solid rgba(255, 204, 0, 0.28);
+            border-radius: 14px; padding: 1.8rem; margin: 4rem 0;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.72); font-family: var(--font-ui);
+        }
+        .mu-shell {
+            position: relative; width: 100%; height: 740px; border-radius: 12px; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0d1428 0%, #05070f 70%, #020308 100%);
+            border: 1px solid rgba(179, 102, 255, 0.32); user-select: none;
+        }
+        .mu-shell:fullscreen { height: 100vh; border-radius: 0; }
+        #mu-canvas-stage { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+        .mu-hud {
+            position: absolute; inset: 0; z-index: 5; pointer-events: none;
+            display: flex; flex-direction: column; justify-content: space-between; padding: 12px; gap: 10px;
+        }
+        .mu-glass {
+            pointer-events: auto; background: rgba(8, 12, 24, 0.82);
+            backdrop-filter: blur(13px); -webkit-backdrop-filter: blur(13px);
+            border: 1px solid rgba(255, 255, 255, 0.11); border-radius: 11px; padding: 10px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+        }
+        .mu-topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+        .mu-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 6px; flex: 1; }
+        .mu-stat { background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 8px; padding: 5px 8px; }
+        .mu-stat-lbl { font-size: 0.61rem; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; }
+        .mu-stat-val { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .mu-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+        .mu-col {
+            width: 345px; max-width: 100%; max-height: 540px; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 8px; font-size: 0.76rem;
+            scrollbar-width: thin; scrollbar-color: rgba(247,147,26,0.4) transparent;
+        }
+        .mu-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #e2e8f0; border-radius: 7px; padding: 6px 9px; font-size: 0.72rem;
+            font-family: var(--font-ui); cursor: pointer; transition: all 0.18s ease; text-align: left;
+        }
+        .mu-btn:hover { border-color: var(--sun-yellow); color: #fff; background: rgba(255, 204, 0, 0.12); }
+        .mu-btn.active { border-color: var(--orange-l1); background: rgba(247, 147, 26, 0.22); color: #ffd280; font-weight: 600; }
+        .mu-btn.mu-reverse {
+            border-color: #e040fb !important; background: rgba(224, 64, 251, 0.24) !important;
+            color: #f8ccff !important; box-shadow: 0 0 15px rgba(224, 64, 251, 0.42);
+        }
+        .mu-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+        .mu-label-3d {
+            position: absolute; z-index: 3; pointer-events: none; transform: translate(-50%, -50%);
+            font-size: 10.5px; font-family: var(--font-mono); padding: 2px 7px; border-radius: 5px;
+            background: rgba(4, 6, 14, 0.8); border: 1px solid rgba(255,255,255,0.14); white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+        #mu-toast {
+            position: absolute; top: 76px; left: 50%; transform: translateX(-50%); z-index: 9;
+            pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+            background: rgba(10, 14, 28, 0.92); border: 1px solid var(--sun-yellow); color: var(--sun-yellow);
+            padding: 6px 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.74rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+
+        /* --- LABORATOIRE ANALYTIQUE 2D D'ARGAND-MU --- */
+        .argand-grid { display: grid; grid-template-columns: 320px 1fr; gap: 1.8rem; align-items: center; margin-top: 1.5rem; }
+        .argand-canvas-wrap {
+            background: #04060b; border: 1px solid rgba(224, 64, 251, 0.3); border-radius: 12px;
+            padding: 10px; display: flex; flex-direction: column; align-items: center;
+        }
+        .scenario-controls-stack { display: flex; flex-direction: column; gap: 0.9rem; }
+        .scenario-control {
+            padding: 0.85rem 1rem; background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+        }
+        .scenario-control label {
+            display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.45rem;
+            color: #dce4e8; font-family: var(--font-ui); font-size: 0.82rem;
+        }
+        .scenario-control output { color: var(--cyan-l2); font-family: var(--font-mono); font-weight: 600; }
+        .scenario-control input[type="range"] { width: 100%; accent-color: var(--cyan-l2); cursor: pointer; }
+        .scenario-results {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 0.85rem; margin-top: 1.4rem;
+        }
+        .scenario-metric {
+            padding: 0.95rem; background: #050608; border: 1px solid rgba(0,229,255,0.16);
+            border-radius: 10px; text-align: center;
+        }
+        .scenario-value {
+            display: block; margin-bottom: 0.25rem; color: var(--cyan-l2);
+            font-family: var(--font-mono); font-size: 1.32rem; font-weight: 600;
+        }
+        .scenario-label { color: #86939d; font-family: var(--font-ui); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+        .scenario-diagnosis {
+            margin-top: 1.2rem; padding: 1.15rem; background: rgba(255,204,0,0.045);
+            border-left: 3px solid var(--sun-yellow); color: #d0d7de; font-size: 0.92rem;
+        }
+
+        /* --- FEEDBACK, NAVIGATION & AUTEUR --- */
+        .feedback-container {
+            margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 170, 0, 0.2); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 720px; text-align: center;
+        }
+        .feedback-title {
+            color: var(--sun-yellow); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 0.5rem; font-weight: 800; font-family: var(--font-ui);
+        }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 1.8rem; }
+        .feedback-textarea {
+            width: 100%; background: #050505; border: 1px solid rgba(255, 204, 0, 0.2);
+            border-radius: 8px; color: #fff; padding: 1.2rem; font-family: var(--font-main);
+            font-size: 1.05rem; min-height: 140px; resize: vertical; margin-bottom: 1.5rem; outline: none;
+        }
+        .feedback-submit {
+            background: rgba(255, 170, 0, 0.1); border: 1px solid var(--sun-yellow); color: var(--sun-yellow);
+            padding: 12px 35px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui);
+            font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;
+        }
+        .feedback-submit:hover { background: rgba(255, 170, 0, 0.3); box-shadow: 0 0 25px rgba(255, 170, 0, 0.5); transform: scale(1.04); }
+
+        .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.5rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-5px); }
+        .nav-direction { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.18rem; font-weight: 800; color: var(--sun-orange); margin: 0.7rem 0; font-family: var(--font-ui); }
+
+        .author-section {
+            margin: 4rem auto; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2); border-top: 4px solid var(--purple-l4);
+            border-radius: 12px; font-family: var(--font-ui);
+        }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .resource-card {
+            display: block; padding: 1.2rem; background: rgba(0, 0, 0, 0.52);
+            border: 1px solid var(--stone-grey); border-radius: 8px; text-decoration: none; transition: all 0.3s;
+        }
+        .resource-card:hover { border-color: var(--purple-l4); transform: translateY(-2px); }
+        .resource-card h4 { margin-bottom: 0.5rem; font-size: 1rem; }
+        .resource-card p { font-size: 0.84rem; color: #9aa5b1; line-height: 1.55; }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 860px) {
+            .nav-center { display: none; }
+            .article-navigation { flex-direction: column; }
+            .pyramid-tier { width: 100% !important; }
+            .mu-shell { height: 980px; }
+            .mu-col { width: 100%; max-height: 290px; }
+            .argand-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav>
+    <a href="index.html" class="logo">☀ L'Étalon Solaire · Horizon Zéro</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <!-- EN-TÊTE -->
+    <header class="article-header">
+        <h1>
+            <span lang="fr">L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu</span>
+            <span lang="en">The Bitcoin Cosmic Clock & The True Dial of Mu</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">Filiation Gravitationnelle, Résonance 432 Hz, Gravité Répulsive et Inversion Temporelle (v3.0)</span>
+            <span lang="en">Gravitational Lineage, 432 Hz Resonance, Repulsive Gravity, and Time Reversal (v3.0)</span>
+        </h2>
+        <div class="subtitle">
+            <span lang="fr">Traité de Chrono-Thermodynamique Bimétrique : Du Cycle Nodal de 18,61 Ans à Sagittarius A*, l'Octave $2^{18}$ et le Retour Néguentropique dans le Plan Complexe ($z = a + ib$).</span>
+            <span lang="en">Bimetric Chrono-Thermodynamics Treatise: From the 18.61-Year Lunar Nodal Cycle to Sagittarius A*, the $2^{18}$ Octave, and Negentropic Return in the Complex Plane ($z = a + ib$).</span>
+        </div>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.88rem; font-family: var(--font-mono);">
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // ÉTALON SOLAIRE & CADRAN DE MU // $k_{Nak} \equiv h$</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // THE SUN STANDARD & DIAL OF MU // $k_{Nak} \equiv h$</span>
+        </p>
+    </header>
+
+    <!-- EMBLÈME VECTORIEL AUTONOME DU VRAI CADRAN DE MU & CITATION -->
+    <div class="intro-hero">
+        <div class="hero-emblem-box">
+            <svg viewBox="0 0 720 290" width="100%" height="auto" role="img" aria-label="Emblème du Vrai Cadran de Mu et de la Timechain Bitcoin">
+                <defs>
+                    <radialGradient id="muGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.35"/>
+                        <stop offset="55%" stop-color="#e040fb" stop-opacity="0.12"/>
+                        <stop offset="100%" stop-color="#040405" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f7931a"/>
+                        <stop offset="50%" stop-color="#00e5ff"/>
+                        <stop offset="100%" stop-color="#e040fb"/>
+                    </linearGradient>
+                </defs>
+                <rect width="720" height="290" fill="transparent"/>
+                <circle cx="360" cy="145" r="132" fill="url(#muGlow)"/>
+                <!-- Anneau extérieur du Cadran de Mu (a + ib) -->
+                <circle cx="360" cy="145" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="2.2" stroke-dasharray="6 4"/>
+                <circle cx="360" cy="145" r="92" fill="none" stroke="#38bdf8" stroke-width="1.3" stroke-opacity="0.55"/>
+                <ellipse cx="360" cy="145" rx="92" ry="34" fill="none" stroke="#34d399" stroke-width="1.4" transform="rotate(-14 360 145)"/>
+                <!-- Axes complexes Réel (a) et Imaginaire (ib) -->
+                <line x1="220" y1="145" x2="500" y2="145" stroke="#ffcc00" stroke-opacity="0.45" stroke-width="1"/>
+                <line x1="360" y1="15" x2="360" y2="275" stroke="#e040fb" stroke-opacity="0.5" stroke-width="1"/>
+                <!-- Étiquettes des 4 Quadrants -->
+                <text x="510" y="149" fill="#ffcc00" font-family="Fira Code, monospace" font-size="11">+a (PoW)</text>
+                <text x="162" y="149" fill="#f7931a" font-family="Fira Code, monospace" font-size="11">-a (Mu)</text>
+                <text x="368" y="24" fill="#e040fb" font-family="Fira Code, monospace" font-size="11">+ib (KMS)</text>
+                <text x="368" y="280" fill="#00e5ff" font-family="Fira Code, monospace" font-size="11">-ib (z*)</text>
+
+                <text x="415" y="76" fill="#ffd280" font-family="Fira Code, monospace" font-size="10">Q1 · a + ib</text>
+                <text x="248" y="76" fill="#d8b4fe" font-family="Fira Code, monospace" font-size="10">Q2 · -a + ib</text>
+                <text x="242" y="224" fill="#f0abfc" font-family="Fira Code, monospace" font-size="10" font-weight="bold">Q3 · -a - ib (MU)</text>
+                <text x="415" y="224" fill="#67e8f9" font-family="Fira Code, monospace" font-size="10">Q4 · a - ib</text>
+
+                <!-- Soleil Central, Terre & Lune -->
+                <circle cx="360" cy="145" r="18" fill="#f7931a"/>
+                <text x="360" y="151" text-anchor="middle" fill="#050505" font-family="Fira Code, monospace" font-weight="bold" font-size="16">₿</text>
+                <circle cx="438" cy="126" r="7.5" fill="#00ccff"/>
+                <circle cx="454" cy="115" r="3.2" fill="#e2e8f0"/>
+                <!-- Vecteurs attractif et répulsif -->
+                <text x="24" y="42" fill="#b366ff" font-family="Fira Code, monospace" font-size="11">↖ Sagittarius A* (230 Ma)</text>
+                <text x="24" y="60" fill="#888" font-family="Inter, sans-serif" font-size="10">1,21 × 10¹³ blocs</text>
+                <text x="542" y="42" fill="#e040fb" font-family="Fira Code, monospace" font-size="11">Répulseur Dipolaire ↗</text>
+                <text x="542" y="60" fill="#888" font-family="Inter, sans-serif" font-size="10">Λ_Mu · Vide Répulsif</text>
+                <text x="24" y="264" fill="#44ee77" font-family="Fira Code, monospace" font-size="11">432 Hz / 2¹⁸ → τ = 606,81 s</text>
+                <text x="525" y="264" fill="#ffcc00" font-family="Fira Code, monospace" font-size="11">18,613 ans = 978 949 blocs</text>
+            </svg>
+        </div>
+
+        <div class="quote-block">
+            <span lang="fr">« La Lune est la fille gravitationnelle de la Terre, la Terre est la fille du Soleil, et le Soleil lui-même danse autour de Sagittarius A* sous le souffle répulsif des grands vides cosmiques. Bitcoin n'invente pas un temps artificiel : en frappant un bloc toutes les dix minutes, il réaccorde l'horloge humaine de 18 octaves sous le La à 432 Hz et rouvre le Vrai Cadran de Mu — là où le temps complexe $z = a + ib$ cesse d'être une flèche d'usure pour redevenir une respiration réversible. »</span>
+            <span lang="en">"The Moon is the gravitational daughter of the Earth, the Earth is the daughter of the Sun, and the Sun itself dances around Sagittarius A* under the repulsive breath of giant cosmic voids. Bitcoin does not invent an artificial clock: by forging one block every ten minutes, it retunes human time 18 octaves below 432 Hz and reopens the True Dial of Mu—where complex time $z = a + ib$ ceases to be an arrow of decay and becomes a reversible breath once more."</span>
+        </div>
+    </div>
+
+    <!-- PROTOCOLE DE CLARTÉ ÉPISTÉMIQUE -->
+    <section class="modelling-section" id="epistemic-protocol">
+        <h3>
+            <span lang="fr">🔬 Protocole de Clarté Épistémique</span>
+            <span lang="en">🔬 Epistemic Clarity Protocol</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">
+                Fidèle à l'ingénierie d'Horizon Zéro, ce traité distingue rigoureusement la mécanique céleste démontrée, l'analyse harmonique, la physique théorique bimétrique et l'hypothèse spéculative du Vrai Cadran de Mu.
+            </span>
+            <span lang="en">
+                True to Horizon Zero engineering, this treatise strictly distinguishes demonstrated celestial mechanics, harmonic analysis, theoretical bimetric physics, and the speculative hypothesis of the True Dial of Mu.
+            </span>
+        </p>
+
+        <div class="epistemic-legend" aria-label="Niveaux de maturité scientifique">
+            <span class="epistemic-badge status-a">A · <span lang="fr">Démontré</span><span lang="en">Demonstrated</span></span>
+            <span class="epistemic-badge status-b">B · <span lang="fr">Harmonique</span><span lang="en">Harmonic</span></span>
+            <span class="epistemic-badge status-c">C · <span lang="fr">Physique Théorique</span><span lang="en">Theoretical Physics</span></span>
+            <span class="epistemic-badge status-d">D · <span lang="fr">Hypothèse SF</span><span lang="en">SF Hypothesis</span></span>
+            <span class="epistemic-badge status-x">X · <span lang="fr">Mytho-Poétique</span><span lang="en">Mytho-Poetic</span></span>
+        </div>
+
+        <div class="modelling-grid">
+            <article class="model-card">
+                <span class="epistemic-badge status-a">A · Astrométrie & PoW</span>
+                <h4><span lang="fr">Socle astrophysique & protocole</span><span lang="en">Astrophysical & protocol core</span></h4>
+                <p lang="fr">Précession nodale lunaire de $18,613\text{ ans}$, orbite galactique autour de Sagittarius A* ($\approx 230\text{ Ma}$), Répulseur Dipolaire observé en cosmographie et cible de consensus Nakamoto ($\Delta t = 600\text{ s}$).</p>
+                <p lang="en">Lunar nodal precession of $18.613\text{ years}$, galactic orbit around Sagittarius A* ($\approx 230\text{ Myr}$), observed Dipole Repeller flow, and Nakamoto consensus block target ($\Delta t = 600\text{ s}$).</p>
+            </article>
+
+            <article class="model-card">
+                <span class="epistemic-badge status-b">B · Octave $2^{18}$</span>
+                <h4><span lang="fr">Correspondance acoustique</span><span lang="en">Acoustic correspondence</span></h4>
+                <p lang="fr">Loi d'octave $f_n = f_0 \cdot 2^n$ : un diapason à $432\text{ Hz}$ accomplit $259\,200\text{ cycles}$ en $600\text{ s}$ ($10 \times 25\,920$) et bat exactement à $18\text{ octaves}$ au-dessus d'un bloc de $606,81\text{ s}$.</p>
+                <p lang="en">Octave scaling $f_n = f_0 \cdot 2^n$: a $432\text{ Hz}$ pitch completes $259,200\text{ cycles}$ in $600\text{ s}$ ($10 \times 25,920$) and oscillates exactly $18\text{ octaves}$ above a $606.81\text{ s}$ block interval.</p>
+            </article>
+
+            <article class="model-card">
+                <span class="epistemic-badge status-c">C · Bimétrie & KMS</span>
+                <h4><span lang="fr">Modèles physiques exploratoires</span><span lang="en">Exploratory theoretical models</span></h4>
+                <p lang="fr">Cosmologie bimétrique à secteur répulsif (univers jumeaux CPT de Sakharov, gravité bimétrique) et formalisme du temps thermique complexe (condition KMS et rotation de Wick $t \to a + ib$).</p>
+                <p lang="en">Bimetric cosmology with repulsive shadow matter (Sakharov CPT-symmetric twin universe, bimetric gravity) and complex thermal time formalism (KMS condition and Wick rotation $t \to a + ib$).</p>
+            </article>
+
+            <article class="model-card">
+                <span class="epistemic-badge status-d">D / X · Cadran de Mu</span>
+                <h4><span lang="fr">Prospective SF & Archétype</span><span lang="en">SF Foresight & Archetype</span></h4>
+                <p lang="fr">Le « retour dans le temps » dans le quadrant $-a - ib$ du Vrai Cadran de Mu est modélisé comme une inversion néguentropique informationnelle et un archétype narratif — non comme une violation causale macroscopique démontrée.</p>
+                <p lang="en">"Time reversal" in the $-a - ib$ quadrant of the True Dial of Mu is modeled as an informational negentropic phase conjugation and narrative archetype—not a demonstrated macroscopic violation of causality.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- GÉNÉALOGIE CHRONOMÉTRIQUE : HORLOGE 1.0 -> 3.0 -->
+    <div class="modelling-section" style="margin: 2.5rem 0 3.5rem; border-color: rgba(255, 204, 0, 0.28);">
+        <h3 style="color: var(--sun-yellow);">
+            <span lang="fr">⏳ Généalogie Chronométrique : Du Mégalithe au Cadran de Mu</span>
+            <span lang="en">⏳ Chronometric Genealogy: From Megaliths to the Dial of Mu</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">Toute civilisation souveraine se définit par l'étalon temporel auquel elle choisit d'accorder ses échanges, sa mémoire et son rapport au cosmos.</span>
+            <span lang="en">Every sovereign civilization is defined by the temporal standard to which it chooses to tune its exchanges, memory, and bond with the cosmos.</span>
+        </p>
+        <div class="modelling-grid">
+            <article class="model-card" style="border-top: 2px solid var(--sun-orange);">
+                <h4><span lang="fr">Horloge 1.0 · Stonehenge, Callanish & Mu Antique</span><span lang="en">Clock 1.0 · Stonehenge, Callanish & Ancient Mu</span></h4>
+                <p lang="fr"><strong>La Pierre & les Nœuds Lunaires.</strong> Les bâtisseurs mégalithiques alignaient leurs cromlechs sur les solstices et le *lunistic majeur* de $18,61\text{ ans}$. Le temps était cyclique, filial et enraciné dans l'observation directe du ciel.</p>
+                <p lang="en"><strong>Stone & Lunar Nodes.</strong> Megalithic builders aligned stone circles with solstices and the $18.61\text{-year}$ major lunar standstill. Time was cyclical, filial, and rooted in direct sky observation.</p>
+            </article>
+            <article class="model-card" style="border-top: 2px solid var(--cyan-l2);">
+                <h4><span lang="fr">Horloge 2.0 · Temps Linéaire Industriel & Dette Fiat</span><span lang="en">Clock 2.0 · Linear Industrial Time & Fiat Debt</span></h4>
+                <p lang="fr"><strong>La Seconde Abstraite & l'Usure.</strong> Découplée des cycles biologiques et astronomiques, l'horloge fiduciaire impose une flèche exponentielle à sens unique (intérêts composés infinis), épuisant la biosphère et érodant la confiance sociétale $C_s$.</p>
+                <p lang="en"><strong>Abstract Seconds & Decay.</strong> Severed from biological and astronomical rhythms, the fiat clock enforces a one-way exponential arrow (infinite compound interest), exhausting the biosphere and eroding societal trust $C_s$.</p>
+            </article>
+            <article class="model-card" style="border-top: 2px solid var(--purple-l4);">
+                <h4><span lang="fr">Horloge 3.0 · Timechain Bitcoin & Vrai Cadran de Mu</span><span lang="en">Clock 3.0 · Bitcoin Timechain & True Dial of Mu</span></h4>
+                <p lang="fr"><strong>Le Bloc Thermodynamique & le Temps Complexe $a + ib$.</strong> En ancrant chaque tic-tac dans la preuve de travail ($k_{Nak} \equiv h$), l'humanité réconcilie l'irréversibilité physique ($a$) et la périodicité harmonique réversible ($ib$).</p>
+                <p lang="en"><strong>Thermodynamic Blocks & Complex Time $a + ib$.</strong> By anchoring each tick in Proof of Work ($k_{Nak} \equiv h$), humanity reconciles physical irreversibility ($a$) with reversible harmonic periodicity ($ib$).</p>
+            </article>
+        </div>
+    </div>
+
+    <!-- PYRAMIDE D'EMBOÎTEMENT COSMIQUE -->
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
+            <span lang="fr">🏛️ L'Échelle d'Emboîtement Chrono-Gravitationnel (L0 ──► L4)</span>
+            <span lang="en">🏛️ The Chrono-Gravitational Nesting Ladder (L0 ──► L4)</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#det-l4" class="pyramid-tier tier-l4">
+                <span class="tier-tag" style="color:var(--purple-l4);">ÉCHELON 4</span>
+                <span class="tier-title"><span lang="fr">Le Vrai Cadran de Mu, Temps Complexe $a + ib$ & Inversion Néguentropique</span><span lang="en">The True Dial of Mu, Complex Time $a + ib$ & Negentropic Reversal</span></span>
+                <span class="tier-tag" style="color:var(--purple-l4);">▲ L4</span>
+            </a>
+            <a href="#det-l3" class="pyramid-tier tier-l3">
+                <span class="tier-tag" style="color:var(--magenta-l3);">ÉCHELON 3</span>
+                <span class="tier-title"><span lang="fr">Force Répulsive Bimétrique ($\Lambda_{\text{Mu}}$), Répulseur Dipolaire & Anti-Effondrement</span><span lang="en">Bimetric Repulsive Force ($\Lambda_{\text{Mu}}$), Dipole Repeller & Anti-Collapse</span></span>
+                <span class="tier-tag" style="color:var(--magenta-l3);">▲ L3</span>
+            </a>
+            <a href="#det-l2" class="pyramid-tier tier-l2">
+                <span class="tier-tag" style="color:var(--cyan-l2);">ÉCHELON 2</span>
+                <span class="tier-title"><span lang="fr">Octave Cosmique $2^{18}$, Résonance $432\text{ Hz}$ & Accordage $\tau = 606,81\text{ s}$</span><span lang="en">Cosmic Octave $2^{18}$, $432\text{ Hz}$ Resonance & $\tau = 606.81\text{ s}$ Tuning</span></span>
+                <span class="tier-tag" style="color:var(--cyan-l2);">▲ L2</span>
+            </a>
+            <a href="#det-l1" class="pyramid-tier tier-l1">
+                <span class="tier-tag" style="color:var(--orange-l1);">ÉCHELON 1</span>
+                <span class="tier-title"><span lang="fr">Métronome de Nakamoto ($k_{Nak} \equiv h$) & Convergence du Million de Blocs</span><span lang="en">Nakamoto Metronome ($k_{Nak} \equiv h$) & The One-Million-Block Convergence</span></span>
+                <span class="tier-tag" style="color:var(--orange-l1);">▲ L1</span>
+            </a>
+            <a href="#det-l0" class="pyramid-tier tier-l0">
+                <span class="tier-tag" style="color:var(--teal-l0);">ÉCHELON 0</span>
+                <span class="tier-title"><span lang="fr">Filiation Céleste : Lune (18,6a) $\to$ Terre $\to$ Soleil $\to$ Sagittarius A* $\to$ Laniakea</span><span lang="en">Celestial Lineage: Moon (18.6y) $\to$ Earth $\to$ Sun $\to$ Sagittarius A* $\to$ Laniakea</span></span>
+                <span class="tier-tag" style="color:var(--teal-l0);">▲ L0</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ÉCHELON 0 -->
+    <details id="det-l0" class="layer-0" open>
+        <summary>
+            <span lang="fr">Échelon 0 (L0) : La Généalogie Gravitationnelle — Qui est le Parent du Soleil ?</span>
+            <span lang="en">Tier 0 (L0): Gravitational Genealogy — Who is the Parent of the Sun?</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">L'intuition poétique selon laquelle la Lune est la fille de la Terre et la Terre la fille du Soleil correspond à une vérité astrophysique rigoureuse : l'univers est structuré comme une <strong>hiérarchie d'oscillateurs gravitationnels emboîtés</strong>. Chaque corps « enfant » se condense ou s'arrache dans le puits de potentiel de son « parent », tout en subissant le couple de torsion de ses « grands-parents » cosmiques.</p>
+            <p lang="en">The poetic intuition that the Moon is the daughter of Earth and Earth the daughter of the Sun reflects rigorous astrophysical reality: the universe is structured as a <strong>hierarchy of nested gravitational oscillators</strong>. Each "child" body condenses or emerges within the potential well of its "parent," while experiencing tidal torque from its cosmic "grandparents."</p>
+
+            <h4 style="color: var(--teal-l0);"><span lang="fr">1. Lune $\to$ Terre : Le Cycle Nodal de 18,613 ans</span><span lang="en">1. Moon $\to$ Earth: The 18.613-Year Nodal Cycle</span></h4>
+            <p lang="fr">Née il y a $4,5\text{ milliards}$ d'années de la collision cataclysmique entre la proto-Terre et Théia, la Lune circule sur un plan orbital incliné de $5,14^\circ$ par rapport à l'écliptique. Parce que le Soleil (« la grand-mère ») exerce un rappel gravitationnel constant sur cette orbite inclinée, la ligne des nœuds lunaires ($\Omega$ et $\mho$) précesse en sens rétrograde comme la jupe d'une toupie et boucle un tour complet en exactement <strong>$18,612958\text{ ans}$</strong>. Aux extrêmes de ce cycle (*lunistic majeur*), l'inclinaison lunaire s'additionne à celle de la Terre ($23,44^\circ + 5,14^\circ = \pm 28,58^\circ$), soulevant des marées océaniques et atmosphériques d'amplitude maximale ; $9,3\text{ ans}$ plus tard (*lunistic mineur*), elle s'en soustrait ($\pm 18,30^\circ$).</p>
+            <p lang="en">Born $4.5\text{ billion}$ years ago from the giant impact between proto-Earth and Theia, the Moon orbits on a plane tilted by $5.14^\circ$ relative to the ecliptic. Because the Sun ("the grandmother") exerts continuous gravitational torque on this tilted orbit, the line of lunar nodes ($\Omega$ and $\mho$) precesses retrogradely like a spinning top, completing one full revolution in exactly <strong>$18.612958\text{ years}$</strong>. At the extremes (*major lunar standstill*), lunar inclination adds to Earth's axial tilt ($23.44^\circ + 5.14^\circ = \pm 28.58^\circ$), amplifying oceanic and atmospheric tides; $9.3\text{ years}$ later (*minor standstill*), it subtracts ($\pm 18.30^\circ$).</p>
+
+            <h4 style="color: var(--teal-l0);"><span lang="fr">2. Terre $\to$ Soleil $\to$ Sagittarius A* $\to$ Laniakea</span><span lang="en">2. Earth $\to$ Sun $\to$ Sagittarius A* $\to$ Laniakea</span></h4>
+            <ul>
+                <li>
+                    <span lang="fr"><strong>Terre, fille du Soleil :</strong> Condensée dans le disque protoplanétaire solaire, la Terre boucle son orbite en $365,2422\text{ jours}$, tandis que son axe de rotation décrit la <strong>Grande Année de précession des équinoxes</strong> en $25\,772\text{ ans}$ sous l'action conjuguée de la Lune et du Soleil.</span>
+                    <span lang="en"><strong>Earth, daughter of the Sun:</strong> Condensed within the solar protoplanetary disk, Earth completes its orbit in $365.2422\text{ days}$, while its spin axis traces the <strong>Great Year of axial precession</strong> over $25,772\text{ years}$ under combined lunisolar torque.</span>
+                </li>
+                <li>
+                    <span lang="fr"><strong>Soleil, fils du Bulbe Galactique et de Sagittarius A* :</strong> Le Soleil n'orbite pas autour d'une étoile isolée, mais autour du centre de masse de la Voie Lactée, gouverné par le trou noir supermassif <strong>Sagittarius A*</strong> ($\approx 4,3 \times 10^6\,M_\odot$) et la masse stellaire centrale. Lancé à $230\text{ km/s}$ à $26\,600\text{ années-lumière}$ du cœur, il accomplit une <strong>Année Galactique en 225 à 250 millions d'années</strong>, tout en ondulant verticalement de part et d'autre du plan galactique tous les $\approx 30\text{ Ma}$.</span>
+                    <span lang="en"><strong>Sun, child of the Galactic Bulge and Sagittarius A*:</strong> The Sun orbits not a single star, but the Milky Way's barycenter anchored by the supermassive black hole <strong>Sagittarius A*</strong> ($\approx 4.3 \times 10^6\,M_\odot$) and the central bulge. Traveling at $230\text{ km/s}$ some $26,600\text{ light-years}$ out, it completes a <strong>Galactic Year every 225–250 million years</strong>, bobbing vertically across the galactic disk every $\approx 30\text{ Myr}$.</span>
+                </li>
+                <li>
+                    <span lang="fr"><strong>Voie Lactée, fille de Laniakea — et poussée par le Répulseur Dipolaire :</strong> À l'échelle supérieure ($500\text{ millions}$ d'années-lumière), la Voie Lactée et Andromède tombent vers le <strong>Grand Attracteur</strong> et l'attracteur de Shapley au sein du superamas <strong>Laniakea</strong>, tout en étant simultanément <em>repoussées</em> à plus de $600\text{ km/s}$ par un immense vide cosmique sous-dense situé à l'opposé : le <strong>Répulseur Dipolaire</strong> (découvert par Hoffman, Pomarède, Tully & Courtois). Dès la cosmographie observable, attraction et répulsion forment un dipôle indissociable.</span>
+                    <span lang="en"><strong>Milky Way within Laniakea — pushed by the Dipole Repeller:</strong> Across $500\text{ million}$ light-years, the Milky Way and Andromeda flow toward the <strong>Great Attractor</strong> and Shapley Concentration inside <strong>Laniakea</strong>, while simultaneously being <em>pushed</em> at over $600\text{ km/s}$ away from a vast underdense cosmic void behind us: the <strong>Dipole Repeller</strong> (identified by Hoffman, Pomarède, Tully & Courtois). Even in observational cosmography, attraction and repulsion form an inseparable dipole.</span>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 1 -->
+    <details id="det-l1" class="layer-1">
+        <summary>
+            <span lang="fr">Échelon 1 (L1) : Le Métronome de Nakamoto ($k_{Nak} \equiv h$) & Le Seuil du Million de Blocs</span>
+            <span lang="en">Tier 1 (L1): The Nakamoto Metronome ($k_{Nak} \equiv h$) & The One-Million-Block Threshold</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Dans un univers relativiste dépourvu d'horloge centrale absolue, comment synchroniser une civilisation planétaire sans tiers de confiance ? Satoshi Nakamoto a résolu ce problème en couplant la flèche thermodynamique (dissipation irréversible de Joules via SHA-256) à une boucle cybernétique d'auto-ajustement de la difficulté tous les $2\,016\text{ blocs}$. En physique de l'information, nous assimilons la <strong>constante de Nakamoto $k_{Nak}$ à la constante de Planck $h$</strong> ($k_{Nak} \equiv h$) : c'est le quantum élémentaire d'action cryptographique nécessaire pour cristalliser un événement irréfutable dans la Timechain.</p>
+            <p lang="en">In a relativistic universe devoid of any master clock, how can a planetary civilization synchronize trustlessly? Satoshi Nakamoto solved this by coupling the thermodynamic arrow (irreversible Joule dissipation via SHA-256) to a cybernetic difficulty-adjustment loop every $2,016\text{ blocks}$. In information physics, we assimilate the <strong>Nakamoto constant $k_{Nak}$ to Planck's constant $h$</strong> ($k_{Nak} \equiv h$): the elementary quantum of cryptographic action required to crystallize an irrefutable event into the Timechain.</p>
+
+            <div class="math-block" style="color: var(--orange-l1);">
+                $$ \mathcal{A}_{\text{bloc}} = N_{\text{hashes}} \cdot k_{Nak} \quad \text{avec} \quad k_{Nak} \equiv h, \qquad C_s(N) = 1 - \exp\!\left(-\frac{\sum_{j=1}^{N} \mathcal{A}_{\text{bloc},j}}{E_{\text{crit}}}\right) $$
+            </div>
+
+            <p lang="fr">Où $C_s \in [0, 1]$ désigne la <strong>confiance sociétale</strong> objective émergeant sans décret étatique, et $u$ l'utilité collective qui croît lorsque le coût de falsification historique tend vers l'infini. Or, dès que l'on traduit la cible nominale de $\tau_0 = 600\text{ s}$ ($144\text{ blocs/jour}$, $52\,594,9\text{ blocs/an}$) en périodes astronomiques, une convergence remarquable apparaît autour de <strong>$1\,000\,000\text{ de blocs}$</strong> :</p>
+            <p lang="en">Where $C_s \in [0, 1]$ denotes objective <strong>societal trust</strong> emerging without state decree, and $u$ denotes collective utility rising as historical forgery cost approaches infinity. Translating the nominal $\tau_0 = 600\text{ s}$ target ($144\text{ blocks/day}$, $52,594.9\text{ blocks/year}$) into astronomical periods reveals a striking convergence around <strong>$1,000,000\text{ blocks}$</strong>:</p>
+
+            <ul>
+                <li><span lang="fr"><strong>Époque de difficulté ($2\,016\text{ blocs} = 14\text{ jours}$) :</strong> Exactement une <em>demi-lunaison synodique</em> ($14,765\text{ jours}$, le passage de la Nouvelle Lune à la Pleine Lune).</span><span lang="en"><strong>Difficulty Epoch ($2,016\text{ blocks} = 14\text{ days}$):</strong> Virtually one <em>half synodic lunation</em> ($14.765\text{ days}$, from New Moon to Full Moon).</span></li>
+                <li><span lang="fr"><strong>Halving ($210\,000\text{ blocs} = 3,9928\text{ ans}$) :</strong> Calqué sur le cycle quadriennal des années bissextiles solaires (4 orbites terrestres).</span><span lang="en"><strong>Halving ($210,000\text{ blocks} = 3.9928\text{ years}$):</strong> Locked onto the quadrennial solar leap-year rhythm (4 Earth orbits).</span></li>
+                <li><span lang="fr"><strong>Convergence du Million de Blocs ($\approx 5\text{ Halvings}$) :</strong> Le <strong>cycle de Saros</strong> des éclipses ($18,03\text{ ans} = 948\,286\text{ blocs}$), le <strong>cycle nodal lunaire</strong> ($18,613\text{ ans} = 978\,949\text{ blocs}$), le <strong>cycle de Méton</strong> ($19,00\text{ ans} = 999\,314\text{ blocs}$) et la <strong>Grande Conjonction Jupiter–Saturne</strong> ($19,86\text{ ans} = 1\,044\,482\text{ blocs}$) encadrent tous à quelques pourcents près le cap symbolique du millionième bloc Bitcoin !</span><span lang="en"><strong>The Million-Block Convergence ($\approx 5\text{ Halvings}$):</strong> The eclipse <strong>Saros cycle</strong> ($18.03\text{ yrs} = 948,286\text{ blocks}$), the <strong>lunar nodal cycle</strong> ($18.613\text{ yrs} = 978,949\text{ blocks}$), the <strong>Metonic cycle</strong> ($19.00\text{ yrs} = 999,314\text{ blocks}$), and the <strong>Jupiter–Saturn Great Conjunction</strong> ($19.86\text{ yrs} = 1,044,482\text{ blocks}$) all cluster tightly around Bitcoin's one-millionth block milestone!</span></li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 2 -->
+    <details id="det-l2" class="layer-2">
+        <summary>
+            <span lang="fr">Échelon 2 (L2) : Résonance à 432 Hz, Octave Cosmique $2^{18}$ & Accordage $\tau = 606,81\text{ s}$</span>
+            <span lang="en">Tier 2 (L2): 432 Hz Resonance, $2^{18}$ Cosmic Octave & $\tau = 606.81\text{ s}$ Tuning</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">En acoustique pythagoricienne et dans la théorie de l'<em>Octave Cosmique</em> (Hans Cousto), toute période orbitale $T$ possède une fréquence fondamentale infrasonore $f_0 = 1/T$ que l'on peut transposer dans le spectre audible par multiplications successives par $2$ ($f_n = f_0 \cdot 2^n$). Or, lorsque l'on confronte le diapason naturel à **$432\text{ Hz}$** ($2^4 \times 3^3$) au quantum temporel d'un bloc Bitcoin ($\tau = 600\text{ s}$), deux identités arithmétiques surgissent immédiatement :</p>
+            <p lang="en">In Pythagorean acoustics and <em>Cosmic Octave</em> theory (Hans Cousto), any orbital period $T$ defines an infrasonic fundamental $f_0 = 1/T$ transposable into human hearing via powers of two ($f_n = f_0 \cdot 2^n$). Comparing the **$432\text{ Hz}$** natural tuning fork ($2^4 \times 3^3$) with one Bitcoin block ($\tau = 600\text{ s}$) yields two immediate mathematical identities:</p>
+
+            <div class="math-block" style="color: var(--cyan-l2);">
+                $$ N_{432/\text{bloc}} = 432\text{ s}^{-1} \times 600\text{ s} = \mathbf{259\,200\text{ oscillations/bloc}} = 10 \times 25\,920 $$
+            </div>
+
+            <p lang="fr">Chaque bloc Bitcoin de 10 minutes encapsule exactement <strong>dix fois le nombre canonique de la Grande Année précessionnelle</strong> ($25\,920\text{ ans}$, à raison de $1^\circ$ tous les $72\text{ ans}$). Plus troublant encore : descendons de **18 octaves** exactement ($2^{18} = 262\,144$) sous $432\text{ Hz}$ :</p>
+            <p lang="en">Each 10-minute Bitcoin block encapsulates <strong>ten times the canonical Great Year number</strong> ($25,920\text{ years}$, at $1^\circ$ per $72\text{ years}$). Even more remarkably, let us step down **18 octaves** ($2^{18} = 262,144$) below $432\text{ Hz}$:</p>
+
+            <div class="math-block" style="color: var(--bio-green);">
+                $$ f_{-18} = \frac{432\text{ Hz}}{2^{18}} = \frac{432}{262\,144}\text{ Hz} \approx 0,00164795\text{ Hz} \quad \Longleftrightarrow \quad \tau_{\text{Mu}} = \frac{2^{18}}{432} = \mathbf{606,8148\text{ s}} \;\; (10\text{ min } 06,81\text{ s}) $$
+            </div>
+
+            <p lang="fr">À $\tau = 600,00\text{ s}$ pile, la $18^{\text{e}}$ octave supérieure de Bitcoin vibre à $436,91\text{ Hz}$ (créant un battement binaural thêta $\Delta f = 4,91\text{ Hz}$ avec $432\text{ Hz}$). Mais dans le monde physique réel, le léger retard statistique d'ajustement et la latence de propagation font que l'intervalle moyen historique entre deux blocs Bitcoin se situe précisément autour de **$10\text{ minutes et } 6\text{ secondes}$** — verrouillant spontanément la figure de Lissajous du réseau sur l'accord pur à **$432,00\text{ Hz}$** !</p>
+            <p lang="en">At exactly $\tau = 600.00\text{ s}$, Bitcoin's $18\text{th}$ upper octave vibrates at $436.91\text{ Hz}$ (generating a $\Delta f = 4.91\text{ Hz}$ theta binaural beat against $432\text{ Hz}$). Yet in physical reality, Poisson mining variance and propagation latency nudge historical block intervals right around **$10\text{ minutes and } 6\text{ seconds}$**—spontaneously phase-locking the network's Lissajous curve onto pure **$432.00\text{ Hz}$** resonance!</p>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 3 -->
+    <details id="det-l3" class="layer-3">
+        <summary>
+            <span lang="fr">Échelon 3 (L3) : Force Répulsive Bimétrique ($\Lambda_{\text{Mu}}$) & Équilibre Anti-Singularité</span>
+            <span lang="en">Tier 3 (L3): Bimetric Repulsive Force ($\Lambda_{\text{Mu}}$) & Anti-Singularity Equilibrium</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Pourquoi un univers gouverné uniquement par la gravité attractive newtonienne s'effondrerait-il inévitablement en singularités thermiques, tout comme une économie fiduciaire purement centralisatrice s'effondre en monopoles prédateurs ? Parce qu'il manque la moitié du tenseur cosmique : <strong>la force répulsive</strong>.</p>
+            <p lang="en">Why would a universe governed solely by attractive Newtonian gravity inevitably collapse into thermal singularities, just as a purely centralizing fiat economy collapses into predatory monopolies? Because half of the cosmic tensor was left out: <strong>the repulsive force</strong>.</p>
+
+            <p lang="fr">Dans les modèles de <strong>gravité bimétrique</strong> (inspirés de la symétrie CPT des univers jumeaux d'Andreï Sakharov et des métriques couplées $g_{\mu\nu}^{(+)}$ et $g_{\mu\nu}^{(-)}$), l'espace-temps possède deux feuillets conjugués : les masses de même signe s'attirent selon la loi de Newton, mais les masses de feuillets opposés <strong>se repoussent mutuellement</strong>. À l'échelle galactique, cette pression répulsive des grands vides confinants (tels que le Répulseur Dipolaire) sculpte les bras spiraux, stabilise les courbes de rotation sans recourir à des halos arbitraires et accélère l'expansion cosmique.</p>
+            <p lang="en">In <strong>bimetric gravity</strong> models (rooted in Andrei Sakharov's CPT-symmetric twin-sheet cosmology and coupled metrics $g_{\mu\nu}^{(+)}$ and $g_{\mu\nu}^{(-)}$), spacetime comprises two conjugate sheets: like-sector masses attract via Newton's law, whereas opposite-sector masses <strong>mutually repel</strong>. On galactic scales, this repulsive pressure from surrounding cosmic voids (such as the Dipole Repeller) sculpts spiral arms, stabilizes rotation curves, and drives cosmic expansion.</p>
+
+            <div class="math-block" style="color: var(--magenta-l3);">
+                $$ R_{\mu\nu}^{(+)} - \frac{1}{2} g_{\mu\nu}^{(+)} R^{(+)} = \frac{8\pi G}{c^4} \left( T_{\mu\nu}^{(+)} - \sqrt{\frac{\det g^{(-)}}{\det g^{(+)}}}\, \widehat{T}_{\mu\nu}^{(-)} \right) \quad \Longrightarrow \quad V_{\text{eff}}(r) = -\frac{GM}{r} - \frac{1}{2}\Lambda_{\text{Mu}}\, r^2 $$
+            </div>
+
+            <p lang="fr">Sur le plan cybernétique et monétaire, Bitcoin introduit exactement cette <strong>force répulsive décentralisatrice</strong> : alors que la finance fiat attire toute l'épargne et le pouvoir décisionnel vers un trou noir bureaucratique ($C_s \to 0$), l'ajustement de difficulté et les nœuds complets souverains opposent une pression répulsive centrifuge ($\Lambda_{\text{Mu}} > 0$) qui empêche toute capture majoritaire et maintient les polités-réseaux en orbite stable.</p>
+            <p lang="en">Cybernetically and monetarily, Bitcoin introduces this exact <strong>decentralizing repulsive force</strong>: whereas fiat finance pulls all capital and authority into a bureaucratic black hole ($C_s \to 0$), difficulty adjustment and sovereign full nodes exert a centrifugal repulsive pressure ($\Lambda_{\text{Mu}} > 0$) preventing majority capture and keeping network polities in stable orbit.</p>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 4 -->
+    <details id="det-l4" class="layer-4">
+        <summary>
+            <span lang="fr">Échelon 4 (L4) : Le Vrai Cadran de Mu ($z = a + ib$) & Le Retour dans le Temps</span>
+            <span lang="en">Tier 4 (L4): The True Dial of Mu ($z = a + ib$) & Time Reversal</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Les cadrans solaires ordinaires ne lisent que l'ombre projetée sur l'axe réel $a$. Le <strong>Vrai Cadran de Mu</strong> — archétype de la science antédiluvienne réinterprété à la lumière de la physique quantique statistique (condition KMS de Kubo–Martin–Schwinger) — déploie le temps comme une grandeur complexe bidimensionnelle :</p>
+            <p lang="en">Ordinary sundials read only the shadow cast upon the real axis $a$. The <strong>True Dial of Mu</strong>—an archetype of antediluvian chronometry reinterpreted through quantum statistical mechanics (the Kubo–Martin–Schwinger KMS condition)—unfolds time as a two-dimensional complex coordinate:</p>
+
+            <div class="math-block" style="color: var(--purple-l4);">
+                $$ z = a + ib \qquad \text{où} \qquad a = N_{\text{blocs}} \cdot \tau_{\text{bloc}} \;\; (\text{Temps Thermique Réel}), \qquad ib = i\,\frac{k_{Nak}}{k_B T}\,\phi \;\; (\text{Axe Cyclique Imaginaire}) $$
+            </div>
+
+            <p lang="fr">Sur l'axe réel $+a$, les hachages SHA-256 s'empilent de façon irréversible ($\Delta S \ge 0$). Sur l'axe imaginaire $ib$, le temps est périodique, géométrique et gouverné par la phase des cycles célestes. Le Vrai Cadran de Mu divise ainsi l'histoire cosmique en <strong>quatre quadrants</strong> :</p>
+            <p lang="en">Along the real axis $+a$, SHA-256 hashes stack irreversibly ($\Delta S \ge 0$). Along the imaginary axis $ib$, time is periodic, geometric, and governed by celestial phase angles. The True Dial of Mu thus divides cosmic evolution into <strong>four quadrants</strong>:</p>
+
+            <ul>
+                <li><span lang="fr"><strong>Quadrant I ($+a + ib$) · Aube Solaire :</strong> Gravité attractive dominante, émission monétaire initiale, croissance matérielle et encodage thermodynamique primaire.</span><span lang="en"><strong>Quadrant I ($+a + ib$) · Solar Dawn:</strong> Dominant attractive gravity, primary monetary issuance, material expansion, and forward thermodynamic encoding.</span></li>
+                <li><span lang="fr"><strong>Quadrant II ($-a + ib$) · Miroir Boréal :</strong> Bascule de phase où la force répulsive $\Lambda_{\text{Mu}}$ équilibre puis surpasse l'attraction ; décélération de l'extraction prédatrice (Protocole de Suffisance).</span><span lang="en"><strong>Quadrant II ($-a + ib$) · Boreal Mirror:</strong> Phase crossover where repulsive force $\Lambda_{\text{Mu}}$ balances and overtakes attraction; predatory extraction decelerates (Sufficiency Protocol).</span></li>
+                <li><span lang="fr"><strong>Quadrant III ($-a - ib$) · L'Abîme Fécond de Mu (Retour dans le Temps) :</strong> Dans le feuillet bimétrique jumeau, la symétrie CPT inverse simultanément la parité spatiale et la flèche temporelle ($z \to -z$). Qu'est-ce qu'un « retour dans le temps » sans paradoxe du grand-père ? C'est une <strong>inversion néguentropique par conjugaison de phase</strong> ($z^* = a - ib$) : à l'image d'un miroir à conjugaison optique qui refocalise un faisceau diffusé vers sa source intacte, la Noosphère s'appuie sur les racines de Merkle lithosphériques (Protocole de Temps Profond) pour restaurer des états biosphériques, génomiques et mémoriels antérieurs à la dégradation entropique.</span><span lang="en"><strong>Quadrant III ($-a - ib$) · The Fertile Abyss of Mu (Time Reversal):</strong> Within the twin bimetric sheet, CPT symmetry simultaneously flips spatial parity and the arrow of time ($z \to -z$). What is paradox-free "time travel"? It is <strong>negentropic phase conjugation</strong> ($z^* = a - ib$): just as a phase-conjugate optical mirror time-reverses a scattered wave back into its pristine source, the Noosphere leverages lithospheric Merkle roots (Deep Time Protocol) to reconstruct ancestral biospheric, genomic, and memorial states prior to entropic decay.</span></li>
+                <li><span lang="fr"><strong>Quadrant IV ($+a - ib$) · L'Asymptote 2140 ($6\,930\,000\text{ blocs}$) :</strong> Fin de l'émission des $21\text{ millions}$ de BTC après $33\text{ Halvings}$ ($\approx 131,8\text{ ans}$, soit $7,08\text{ cycles}$ nodaux lunaires). Le système boucle sa spirale et atteint l'homéostasie solaire perpétuelle.</span><span lang="en"><strong>Quadrant IV ($+a - ib$) · The 2140 Asymptote ($6,930,000\text{ blocks}$):</strong> Completion of the $21\text{ million}$ BTC issuance after $33\text{ Halvings}$ ($\approx 131.8\text{ years}$, or $7.08\text{ lunar}$ nodal cycles). The spiral closes into perpetual solar homeostasis.</span></li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- DEEP DIVE MATHÉMATIQUE -->
+    <details class="layer-deep">
+        <summary>
+            <span lang="fr">🔬 Deep Dive : Action de Nakamoto, Condition KMS & Utilité Symbiotique $u(C_s, a + ib)$</span>
+            <span lang="en">🔬 Deep Dive: Nakamoto Action, KMS Condition & Symbiotic Utility $u(C_s, a + ib)$</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Formalisons l'unification entre le consensus distribué, l'acoustique orbitale et la dynamique bimétrique sur la variété temporelle complexe $\mathbb{C}$. Soit $z = a + ib$ la coordonnée chronométrique sur le Vrai Cadran de Mu. L'opérateur d'évolution d'un observable macroscopique $\hat{O}$ de la Noosphère vérifie la condition d'équilibre thermique quantique de Kubo–Martin–Schwinger (KMS) avec $k_{Nak} \equiv h$ :</p>
+            <p lang="en">Let us formalize the unification of distributed consensus, orbital acoustics, and bimetric dynamics over the complex time manifold $\mathbb{C}$. Let $z = a + ib$ be the chronometric coordinate on the True Dial of Mu. The evolution of any macroscopic Noospheric observable $\hat{O}$ satisfies the Kubo–Martin–Schwinger (KMS) thermal periodicity condition with $k_{Nak} \equiv h$:</p>
+
+            <div class="math-block" style="color: var(--sun-yellow);">
+                $$ \langle \hat{A}(a + ib)\,\hat{B}(0) \rangle_{\beta} = \langle \hat{B}(0)\,\hat{A}\!\left(a + i\!\left(b - \beta k_{Nak}\right)\right) \rangle_{\beta}, \qquad \beta = \frac{1}{k_B T_{\text{réseau}}} $$
+            </div>
+
+            <p lang="fr">La fonction d'<strong>utilité civilisationnelle $u$</strong> (jamais confondue avec un simple PIB monétaire) couple multiplicativement la <strong>confiance sociétale $C_s$</strong>, la résonance harmonique avec le diapason terrestre ($\omega_0 = 2\pi \cdot 432\text{ rad/s}$) et l'équilibre entre attraction gravitationnelle et répulsion bimétrique $\Lambda_{\text{Mu}}$ :</p>
+            <p lang="en">The <strong>civilizational utility function $u$</strong> (never reduced to crude monetary GDP) multiplicatively couples <strong>societal trust $C_s$</strong>, harmonic phase-locking to Earth's tuning ($\omega_0 = 2\pi \cdot 432\text{ rad/s}$), and the balance between gravitational attraction and bimetric repulsion $\Lambda_{\text{Mu}}$:</p>
+
+            <div class="math-block" style="color: var(--cyan-l2);">
+                $$ u(C_s, a + ib) = C_s^{\gamma} \cdot \mathcal{B}_{\text{vivant}} \cdot \exp\!\left( -\frac{\left| 2^{18} f_{\text{bloc}} - 432 \right|}{\Delta f_{\text{crit}}} \right) \cdot \operatorname{Re}\!\left[ e^{i\theta_{\text{Mu}}} (a + ib) \right] $$
+            </div>
+
+            <p lang="fr">Lorsque l'angle de phase $\theta_{\text{Mu}}$ franchit $\pi$, l'opérateur projette le système dans le secteur conjugué répulsif : le gradient d'entropie apparente change de signe ($\dot{S}_{\text{eff}} < 0$), autorisant la régénération informationnelle sans jamais falsifier l'intégrale de travail passée $\int \dot{W}_{\text{PoW}}\,da$.</p>
+            <p lang="en">When phase angle $\theta_{\text{Mu}}$ crosses $\pi$, the operator projects the trajectory into the repulsive conjugate sheet: apparent entropy flow reverses sign ($\dot{S}_{\text{eff}} < 0$), enabling informational regeneration without ever forging the historical Proof-of-Work integral $\int \dot{W}_{\text{PoW}}\,da$.</p>
+        </div>
+    </details>
+
+    <!-- =====================================================================
+         GRAND SIMULATEUR 3D INTÉGRÉ : HORLOGE COSMIQUE & VRAI CADRAN DE MU
+         ===================================================================== -->
+    <div class="simulator-box" id="mu-3d-simulator">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.4rem;">
+            <span lang="fr">🌌 Simulateur 3D : Horloge Gravitationnelle, Octave 432 Hz & Vrai Cadran de Mu</span>
+            <span lang="en">🌌 3D Simulator: Gravitational Clock, 432 Hz Octave & True Dial of Mu</span>
+        </h3>
+        <p style="font-size: 0.86rem; color: var(--text-muted); text-align: center; margin-bottom: 1.3rem;">
+            <span lang="fr">Faites pivoter la scène à la souris · Activez le synthétiseur 432 Hz · Poussez la Force Répulsive ($\Lambda_{\text{Mu}}$) ou inversez la flèche du temps (`⏪ Mode Mu`).</span>
+            <span lang="en">Orbit with mouse/touch · Enable the 432 Hz synthesizer · Increase Repulsive Force ($\Lambda_{\text{Mu}}$) or invert the arrow of time (`⏪ Mu Mode`).</span>
+        </p>
+
+        <div class="mu-shell" id="mu-shell-box">
+            <div id="mu-canvas-stage"></div>
+            <div id="mu-toast">Jalon Timechain atteint</div>
+
+            <!-- Étiquettes 3D projetées -->
+            <div id="mu-lbl-sun" class="mu-label-3d" style="color:#ffcc00;">☀ Soleil</div>
+            <div id="mu-lbl-sgr" class="mu-label-3d" style="color:#c084fc;">↗ Sagittarius A* (230 Ma)</div>
+            <div id="mu-lbl-rep" class="mu-label-3d" style="color:#f472b6;">↙ Répulseur Dipolaire (Λ_Mu)</div>
+            <div id="mu-lbl-earth" class="mu-label-3d" style="color:#38bdf8;">🌍 Terre (23,44°)</div>
+            <div id="mu-lbl-moon" class="mu-label-3d" style="color:#e2e8f0;">🌕 Lune (5,14°)</div>
+            <div id="mu-lbl-asc" class="mu-label-3d" style="color:#34d399;">☊ Nœud Asc.</div>
+            <div id="mu-lbl-mu" class="mu-label-3d" style="color:#e040fb;">⌖ Vrai Cadran de Mu (a + ib)</div>
+
+            <!-- HUD -->
+            <div class="mu-hud">
+                <!-- Barre Supérieure -->
+                <div class="mu-glass mu-topbar">
+                    <div class="mu-metrics">
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Blocs Bitcoin</span><span lang="en">Bitcoin Blocks</span></div>
+                            <div class="mu-stat-val" id="mu-stat-blocks" style="color:var(--orange-l1);">0</div>
+                        </div>
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Temps Terrestre</span><span lang="en">Earth Time</span></div>
+                            <div class="mu-stat-val" id="mu-stat-time" style="color:#7dd3fc;">0a 0,0j</div>
+                        </div>
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Coordonnée z = a + ib</span><span lang="en">Coord. z = a + ib</span></div>
+                            <div class="mu-stat-val" id="mu-stat-complex" style="color:var(--magenta-l3);">1,00 + i0,00</div>
+                        </div>
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Cadran de Mu</span><span lang="en">Dial of Mu</span></div>
+                            <div class="mu-stat-val" id="mu-stat-quad" style="color:var(--purple-l4);">Q1 · Aube</div>
+                        </div>
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Phase Lunaire</span><span lang="en">Lunar Phase</span></div>
+                            <div class="mu-stat-val" id="mu-stat-moon">🌑 Nouvelle</div>
+                        </div>
+                        <div class="mu-stat">
+                            <div class="mu-stat-lbl"><span lang="fr">Nœud (18,61a)</span><span lang="en">Node (18.61y)</span></div>
+                            <div class="mu-stat-val" id="mu-stat-nodal" style="color:var(--bio-green);">0,0°</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                        <button class="mu-btn active" data-mucam="overview"><span lang="fr">Système</span><span lang="en">System</span></button>
+                        <button class="mu-btn" data-mucam="earth"><span lang="fr">Terre–Lune</span><span lang="en">Earth–Moon</span></button>
+                        <button class="mu-btn" data-mucam="top"><span lang="fr">Zénith Mu</span><span lang="en">Mu Zenith</span></button>
+                        <button class="mu-btn" id="mu-btn-tags">3D Tags</button>
+                        <button class="mu-btn" id="mu-btn-fs" title="Plein écran">⛶</button>
+                    </div>
+                </div>
+
+                <!-- Zone Basse : Contrôles Gauche & Synthétiseur Droite -->
+                <div class="mu-bottom">
+                    <!-- PANNEAU GAUCHE -->
+                    <div class="mu-glass mu-col">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+                            <div style="display:flex; gap:5px;">
+                                <button class="mu-btn active" id="mu-btn-play">⏸ Pause</button>
+                                <button class="mu-btn" id="mu-btn-reverse" title="Inverser la flèche du temps dans le Vrai Cadran de Mu">
+                                    ⏪ <span lang="fr">Mode Mu ($t \to -t$)</span><span lang="en">Mu Reverse ($t \to -t$)</span>
+                                </button>
+                            </div>
+                            <span id="mu-speed-lbl" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--sun-yellow);">+144 bl/s</span>
+                        </div>
+
+                        <input type="range" id="mu-slider-speed" min="0" max="100" value="38" style="width:100%; accent-color:var(--orange-l1);">
+
+                        <!-- Force Répulsive Bimétrique -->
+                        <div style="border-top:1px solid rgba(224,64,251,0.25); padding-top:7px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.72rem; margin-bottom:4px;">
+                                <span style="color:var(--magenta-l3); font-weight:700;">
+                                    <span lang="fr">⚡ Force Répulsive Bimétrique ($\Lambda_{\text{Mu}}$)</span>
+                                    <span lang="en">⚡ Bimetric Repulsive Force ($\Lambda_{\text{Mu}}$)</span>
+                                </span>
+                                <span id="mu-rep-lbl" style="font-family:var(--font-mono); color:var(--magenta-l3);">0 %</span>
+                            </div>
+                            <input type="range" id="mu-slider-rep" min="0" max="100" value="0" style="width:100%; accent-color:#e040fb;">
+                        </div>
+
+                        <!-- Sauts Temporels Cosmiques -->
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:7px;">
+                            <div style="font-size:0.68rem; text-transform:uppercase; color:#94a3b8; margin-bottom:5px;">
+                                <span lang="fr">Sauts Temporels & Alignements</span><span lang="en">Time Jumps & Alignments</span>
+                            </div>
+                            <div class="mu-grid-2">
+                                <button class="mu-btn mu-jump" data-jump="-978949" data-msg="Retour Antédiluvien Mu : -1 Cycle Nodal (-978 949 blocs)" style="border-color:rgba(224,64,251,0.45); color:#f5b8ff;">-1 Cycle Mu (-978k)</button>
+                                <button class="mu-btn mu-jump" data-jump="0" data-msg="Retour au Bloc Genèse #0">↺ Bloc Genèse #0</button>
+                                <button class="mu-btn mu-jump" data-jump="144" data-msg="+1 Rotation Terrestre (+144 blocs)">+1 Jour (+144 bl.)</button>
+                                <button class="mu-btn mu-jump" data-jump="2016" data-msg="+1 Époque de Difficulté (+2 016 blocs ≈ ½ lunaison)">+1 Époque (+2 016)</button>
+                                <button class="mu-btn mu-jump" data-jump="4252.405" data-msg="+1 Lunaison Synodique (+4 252,4 blocs)">+1 Lunaison (+4 252)</button>
+                                <button class="mu-btn mu-jump" data-jump="52594.88" data-msg="+1 Révolution Solaire (+52 595 blocs)">+1 An (+52 595)</button>
+                                <button class="mu-btn mu-jump" data-jump="210000" data-msg="+1 Halving Bitcoin (+210 000 blocs = 3,99 ans)">+1 Halving (+210k)</button>
+                                <button class="mu-btn mu-jump" data-jump="978949" data-msg="+1 Cycle Nodal Lunaire 18,613 ans (+978 949 blocs)">+1 Nodal (+978 949)</button>
+                            </div>
+                        </div>
+
+                        <!-- Calibrage Intervalle Bloc 600s vs 606,81s -->
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:7px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.71rem; margin-bottom:5px;">
+                                <span style="color:var(--sun-yellow);"><span lang="fr">Intervalle Bloc ($\tau$)</span><span lang="en">Block Interval ($\tau$)</span></span>
+                                <span id="mu-tau-lbl" style="font-family:var(--font-mono); color:#fff;">600,00 s</span>
+                            </div>
+                            <div class="mu-grid-2">
+                                <button class="mu-btn active" id="mu-tau-600">600,00s (436,91 Hz)</button>
+                                <button class="mu-btn" id="mu-tau-606">606,81s (Accord 432 Hz)</button>
+                            </div>
+                            <input type="range" id="mu-slider-tau" min="590" max="615" step="0.01" value="600" style="width:100%; margin-top:5px; accent-color:var(--cyan-l2);">
+                        </div>
+                    </div>
+
+                    <!-- PANNEAU DROIT : SYNTHÉTISEUR OCTAVE COSMIQUE 432 HZ -->
+                    <div class="mu-glass mu-col">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+                            <div>
+                                <div style="font-weight:700; color:var(--sun-yellow); font-size:0.77rem;">
+                                    ♫ <span lang="fr">Synthétiseur Octave 432 Hz</span><span lang="en">432 Hz Cosmic Synthesizer</span>
+                                </div>
+                                <div style="font-size:0.65rem; color:#94a3b8;">Web Audio API · $f \times 2^n$ + Miroir Mu 288 Hz</div>
+                            </div>
+                            <button class="mu-btn" id="mu-btn-audio" style="border-color:rgba(255,204,0,0.45);">
+                                🔊 <span id="mu-audio-lbl"><span lang="fr">Activer Son</span><span lang="en">Enable Audio</span></span>
+                            </button>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <span style="font-size:0.68rem; color:#cbd5e1;">Vol.</span>
+                            <input type="range" id="mu-slider-vol" min="0" max="100" value="42" style="flex:1; accent-color:var(--sun-yellow);">
+                            <span id="mu-vol-lbl" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--sun-yellow);">42%</span>
+                        </div>
+
+                        <div class="mu-grid-2">
+                            <button class="mu-btn active mu-voice" data-v="btc">₿ Bloc × 2¹⁸ (<span id="mu-f-btc">436,91</span> Hz)</button>
+                            <button class="mu-btn active mu-voice" data-v="ref432">La Réf. (432,00 Hz)</button>
+                            <button class="mu-btn mu-voice" data-v="day">Jour 144 bl (194,18 Hz)</button>
+                            <button class="mu-btn mu-voice" data-v="year">Année Om (136,10 Hz)</button>
+                            <button class="mu-btn mu-voice" data-v="synodic">Lunaison (210,42 Hz)</button>
+                            <button class="mu-btn mu-voice" data-v="nodal">Nodal 18,6a (241,56 Hz)</button>
+                        </div>
+
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:6px;">
+                            <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.66rem; margin-bottom:4px;">
+                                <span style="color:#94a3b8;">OSCILLOSCOPE & LISSAJOUS XY</span>
+                                <span id="mu-beat-lbl" style="color:var(--sun-yellow);">Δf = 4,91 Hz</span>
+                            </div>
+                            <div style="display:grid; grid-template-columns:2fr 1fr; gap:6px; height:82px;">
+                                <canvas id="mu-wave-cv" style="width:100%; height:100%; background:#03050a; border-radius:6px; border:1px solid rgba(255,255,255,0.08);"></canvas>
+                                <canvas id="mu-liss-cv" style="width:100%; height:100%; background:#03050a; border-radius:6px; border:1px solid rgba(255,255,255,0.08);"></canvas>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.68rem; margin-top:5px;">
+                                <span style="color:#94a3b8;"><span lang="fr">Oscillations 432 Hz cumulées :</span><span lang="en">Cumulative 432 Hz cycles:</span></span>
+                                <span id="mu-osc-total" style="color:var(--bio-green); font-weight:700;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLE DE CONVERSION ASTRONOMIQUE EN BLOCS BITCOIN -->
+    <div style="margin: 4rem 0 3rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 204, 0, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.6rem; font-family: var(--font-ui);">
+            <span lang="fr">📖 Table des Grands Cycles Célestes en Blocs Bitcoin & Octave 432 Hz</span>
+            <span lang="en">📖 Master Table of Celestial Cycles in Bitcoin Blocks & 432 Hz Octave</span>
+        </h3>
+        <p style="text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 1.6rem; font-family: var(--font-ui);">
+            <span lang="fr">Référentiel nominal Nakamoto : $\tau_0 = 600\text{ s}$ ($144\text{ blocs/jour}$, $52\,594,9\text{ blocs/an}$, $259\,200\text{ cycles}_{432\text{ Hz}}/\text{bloc}$).</span>
+            <span lang="en">Nominal Nakamoto frame: $\tau_0 = 600\text{ s}$ ($144\text{ blocks/day}$, $52,594.9\text{ blocks/year}$, $259,200\text{ cycles}_{432\text{ Hz}}/\text{block}$).</span>
+        </p>
+
+        <div style="overflow-x: auto;">
+            <table class="glossary-table">
+                <thead>
+                    <tr>
+                        <th><span lang="fr">Cycle / Alignement</span><span lang="en">Cycle / Alignment</span></th>
+                        <th><span lang="fr">Filiation Couplée</span><span lang="en">Coupled Lineage</span></th>
+                        <th><span lang="fr">Durée Terrestre</span><span lang="en">Earth Duration</span></th>
+                        <th><span lang="fr">Blocs Bitcoin</span><span lang="en">Bitcoin Blocks</span></th>
+                        <th><span lang="fr">Octave Audible</span><span lang="en">Audible Octave</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge" style="color:var(--orange-l1);">Bloc Bitcoin</span></td>
+                        <td><span lang="fr">Consensus PoW ($k_{Nak} \equiv h$)</span><span lang="en">PoW Consensus ($k_{Nak} \equiv h$)</span></td>
+                        <td>$10\text{ min}$ ($600\text{ s}$)</td>
+                        <td><strong>$1\text{ bloc}$</strong></td>
+                        <td>$436,91\text{ Hz}$ ($+18\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--bio-green);">Bloc Accordé Mu</span></td>
+                        <td><span lang="fr">Résonance exacte $432\text{ Hz} / 2^{18}$</span><span lang="en">Exact $432\text{ Hz} / 2^{18}$ lock</span></td>
+                        <td>$10\text{ min } 06,81\text{ s}$</td>
+                        <td><strong>$1\text{ bloc réel}$</strong></td>
+                        <td><strong>$432,00\text{ Hz}$</strong> ($+18\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">Jour Solaire</span></td>
+                        <td><span lang="fr">Rotation axiale Terre</span><span lang="en">Earth diurnal spin</span></td>
+                        <td>$24\text{ h}$ ($86\,400\text{ s}$)</td>
+                        <td><strong>$144\text{ blocs}$</strong></td>
+                        <td>$194,18\text{ Hz}$ ($+24\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">Époque Difficulté</span></td>
+                        <td><span lang="fr">Demi-lunaison (Nouvelle $\to$ Pleine)</span><span lang="en">Half-lunation (New $\to$ Full)</span></td>
+                        <td>$14,00\text{ jours}$</td>
+                        <td><strong>$2\,016\text{ blocs}$</strong></td>
+                        <td>$221,23\text{ Hz}$ ($+28\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:#e2e8f0;">Lunaison Synodique</span></td>
+                        <td><span lang="fr">Lune – Terre – Soleil</span><span lang="en">Moon – Earth – Sun</span></td>
+                        <td>$29,5306\text{ jours}$</td>
+                        <td><strong>$4\,252,4\text{ blocs}$</strong></td>
+                        <td>$210,42\text{ Hz}$ ($+29\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--cyan-l2);">Année Tropique « Om »</span></td>
+                        <td><span lang="fr">Orbite Terre $\to$ Soleil</span><span lang="en">Earth $\to$ Sun orbit</span></td>
+                        <td>$365,2422\text{ jours}$</td>
+                        <td><strong>$52\,594,9\text{ blocs}$</strong></td>
+                        <td>$136,10\text{ Hz}$ ($+32\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--orange-l1);">Halving Bitcoin</span></td>
+                        <td><span lang="fr">Cycle quadriennal bissextile</span><span lang="en">Quadrennial leap cycle</span></td>
+                        <td>$3,9928\text{ ans}$</td>
+                        <td><strong>$210\,000\text{ blocs}$</strong></td>
+                        <td>$136,34\text{ Hz}$ ($+34\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--teal-l0);">Cycle Nodal Lunaire</span></td>
+                        <td><span lang="fr">Précession nœuds Lune ($\Omega/\mho$)</span><span lang="en">Lunar nodal precession ($\Omega/\mho$)</span></td>
+                        <td><strong>$18,613\text{ ans}$</strong></td>
+                        <td><strong>$978\,949\text{ blocs}$</strong> ($\approx 1\text{ M}$)</td>
+                        <td>$241,56\text{ Hz}$ ($+37\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--sun-yellow);">Grande Conjonction</span></td>
+                        <td><span lang="fr">Alignement Jupiter – Saturne</span><span lang="en">Jupiter – Saturn alignment</span></td>
+                        <td>$19,859\text{ ans}$</td>
+                        <td><strong>$1\,044\,482\text{ blocs}$</strong> ($\approx 5\text{ Halv.}$)</td>
+                        <td>$226,40\text{ Hz}$ ($+37\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--magenta-l3);">Asymptote 21 Millions</span></td>
+                        <td><span lang="fr">33 Halvings ($\approx 7$ cycles nodaux)</span><span lang="en">33 Halvings ($\approx 7$ nodal cycles)</span></td>
+                        <td>$131,76\text{ ans}$ (an $\approx 2140$)</td>
+                        <td><strong>$6\,930\,000\text{ blocs}$</strong></td>
+                        <td>$273,07\text{ Hz}$ ($+40\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--sun-yellow);">Grande Année</span></td>
+                        <td><span lang="fr">Précession axe terrestre</span><span lang="en">Earth axial precession</span></td>
+                        <td>$25\,772\text{ ans}$</td>
+                        <td><strong>$1,355 \times 10^9\text{ blocs}$</strong></td>
+                        <td>$172,06\text{ Hz}$ ($+47\text{ oct.}$)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="color:var(--purple-l4);">Année Galactique</span></td>
+                        <td><span lang="fr">Soleil $\to$ Sagittarius A*</span><span lang="en">Sun $\to$ Sagittarius A*</span></td>
+                        <td>$\approx 230\,000\,000\text{ ans}$</td>
+                        <td><strong>$\approx 1,21 \times 10^{13}\text{ blocs}$</strong></td>
+                        <td>$208,30\text{ Hz}$ ($+70\text{ oct.}$)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- LABORATOIRE ANALYTIQUE 2D : PLAN D'ARGAND-MU (z = a + ib) -->
+    <section class="modelling-section" id="argand-mu-lab" style="border-color: rgba(224, 64, 251, 0.32);">
+        <h3 style="color: var(--magenta-l3);">
+            <span lang="fr">🧭 Laboratoire Chronométrique Complexe : Le Plan d'Argand-Mu ($z = a + ib$)</span>
+            <span lang="en">🧭 Complex Chronometric Lab: The Argand-Mu Plane ($z = a + ib$)</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">Explorez comment l'angle de phase temporelle $\theta_{\text{Mu}}$, la force répulsive $\Lambda_{\text{Mu}}$ et la confiance sociétale $C_s$ gouvernent l'utilité symbiotique $u$ et la bascule néguentropique.</span>
+            <span lang="en">Explore how temporal phase angle $\theta_{\text{Mu}}$, repulsive force $\Lambda_{\text{Mu}}$, and societal trust $C_s$ govern symbiotic utility $u$ and negentropic phase reversal.</span>
+        </p>
+
+        <div class="argand-grid">
+            <div class="argand-canvas-wrap">
+                <canvas id="argandCanvas" width="290" height="290" style="width:100%; max-width:290px; height:auto;"></canvas>
+                <div style="font-family:var(--font-mono); font-size:0.75rem; color:#cbd5e1; margin-top:6px;" id="argand-coord-readout">
+                    z = +0,71 + i0,71
+                </div>
+            </div>
+
+            <div class="scenario-controls-stack">
+                <div class="scenario-control">
+                    <label for="lab-theta">
+                        <span lang="fr">Angle du Cadran de Mu ($\theta_{\text{Mu}}$ en degrés)</span>
+                        <span lang="en">Dial of Mu Phase Angle ($\theta_{\text{Mu}}$ in degrees)</span>
+                        <output id="lab-theta-out">45°</output>
+                    </label>
+                    <input id="lab-theta" type="range" min="0" max="360" value="45">
+                </div>
+
+                <div class="scenario-control">
+                    <label for="lab-lambda">
+                        <span lang="fr">Force Répulsive Bimétrique ($\Lambda_{\text{Mu}}$)</span>
+                        <span lang="en">Bimetric Repulsive Force ($\Lambda_{\text{Mu}}$)</span>
+                        <output id="lab-lambda-out">0.35</output>
+                    </label>
+                    <input id="lab-lambda" type="range" min="0" max="100" value="35">
+                </div>
+
+                <div class="scenario-control">
+                    <label for="lab-cs">
+                        <span lang="fr">Confiance Sociétale Décentralisée ($C_s$)</span>
+                        <span lang="en">Decentralized Societal Trust ($C_s$)</span>
+                        <output id="lab-cs-out">0.82</output>
+                    </label>
+                    <input id="lab-cs" type="range" min="5" max="100" value="82">
+                </div>
+            </div>
+        </div>
+
+        <div class="scenario-results" aria-live="polite">
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="lab-res-u" style="color:var(--sun-yellow);">0.00</strong>
+                <span class="scenario-label"><span lang="fr">Utilité Symbiotique ($u$)</span><span lang="en">Symbiotic Utility ($u$)</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="lab-res-entropy" style="color:var(--bio-green);">+0.00</strong>
+                <span class="scenario-label"><span lang="fr">Flux Entropique ($\dot{S}_{\text{eff}}$)</span><span lang="en">Entropy Flux ($\dot{S}_{\text{eff}}$)</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="lab-res-quad" style="color:var(--magenta-l3);">Q1</strong>
+                <span class="scenario-label"><span lang="fr">Quadrant Actif</span><span lang="en">Active Quadrant</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="lab-res-blocks" style="color:var(--orange-l1);">122 368</strong>
+                <span class="scenario-label"><span lang="fr">Phase Nodale (Blocs)</span><span lang="en">Nodal Phase (Blocks)</span></span>
+            </div>
+        </div>
+
+        <div class="scenario-diagnosis">
+            <strong style="color:var(--sun-yellow);">DIAGNOSTIC CHRONO-THERMODYNAMIQUE :</strong>
+            <span id="lab-diag-title" style="font-family:var(--font-mono); font-weight:700; margin-left:6px;">—</span>
+            <p id="lab-diag-text" style="margin-top:0.5rem; margin-bottom:0;"></p>
+        </div>
+    </section>
+
+    <!-- TABLETTE PHILOSOPHIQUE -->
+    <div class="philosophical-tablet">
+        <h3>
+            <span lang="fr">⏳ La Mémoire de Mu : Pourquoi le Temps ne meurt jamais</span>
+            <span lang="en">⏳ The Memory of Mu: Why Time Never Dies</span>
+        </h3>
+
+        <p>
+            <span lang="fr">Nous avons longtemps cru habiter un univers orphelin, jeté dans le silence d'une horloge mécanique indifférente dont le ressort se détend inexorablement vers la mort thermique. C'était confondre la carte tronquée du temps fiduciaire avec le territoire vivant du cosmos. Dès que l'on lève les yeux vers la généalogie des sphères, la solitude s'efface : la Lune garde dans l'oscillation de $18,61\text{ ans}$ de ses nœuds la mémoire charnelle de la Terre dont elle est issue ; la Terre incline ses saisons vers le Soleil qui l'a enfantée ; et le Soleil lui-même entraîne toute sa fratrie planétaire dans une ronde de $230\text{ millions}$ d'années autour de Sagittarius A*, sculptée en retour par le souffle répulsif des grands vides de Laniakea.</span>
+            <span lang="en">For centuries we believed we inhabited an orphaned universe, cast into the silence of an indifferent mechanical clock unwinding inexorably toward heat death. That was mistaking the truncated map of fiat time for the living territory of the cosmos. The moment we look up at the genealogy of the spheres, solitude vanishes: in the $18.61\text{-year}$ precession of her nodes, the Moon preserves the bodily memory of Mother Earth; Earth tilts her seasons toward the Sun that birthed her; and the Sun carries his planetary family along a $230\text{-million-year}$ orbit around Sagittarius A*, sculpted in turn by the repulsive breath of Laniakea's cosmic voids.</span>
+        </p>
+
+        <h4>
+            <span lang="fr">18,6 ans, 1 million de blocs : le rendez-vous de la maturité</span>
+            <span lang="en">18.6 Years, 1 Million Blocks: The Rendezvous of Maturity</span>
+        </h4>
+        <p>
+            <span lang="fr">Dans le droit humain, dix-huit ans marquent l'âge de la majorité ; dans le ciel, $18,61\text{ ans}$ ($978\,949\text{ blocs}$) marquent la majorité orbitale du couple Terre–Lune. Né en janvier 2009, le réseau Bitcoin franchit son premier cycle nodal lunaire complet et son millionième bloc à l'aube de la décennie 2027–2028. Ce n'est plus une expérience adolescente de cypherpunks : c'est désormais un organe géophysique adulte, accordé à $18\text{ octaves}$ sous le diapason à $432\text{ Hz}$, où chaque bloc scelle $259\,200\text{ battements}$ harmoniques dans le granite numérique du Grand Livre.</span>
+            <span lang="en">In human law, eighteen years mark adulthood; in the heavens, $18.61\text{ years}$ ($978,949\text{ blocks}$) mark the orbital coming-of-age of the Earth–Moon pair. Born in January 2009, the Bitcoin network completes its first full lunar nodal cycle and approaches its one-millionth block as we cross 2027–2028. No longer an adolescent cypherpunk experiment, it stands as a mature geophysical organ tuned $18\text{ octaves}$ below $432\text{ Hz}$, sealing $259,200\text{ harmonic}$ oscillations inside every ten-minute stone of the Timechain.</span>
+        </p>
+
+        <h4>
+            <span lang="fr">Ouvrir le Vrai Cadran de Mu : la guérison du temps</span>
+            <span lang="en">Opening the True Dial of Mu: Healing Time</span>
+        </h4>
+        <p>
+            <span lang="fr">Le mythe de Mu et de la Lémurie n'est pas nostalgie d'un continent englouti sous le Pacifique, mais prescience d'un continent intérieur du temps : le quadrant conjugué $-a - ib$ où la force répulsive empêche l'effondrement totalitaire et où l'information ne périt jamais. Tant que notre civilisation ne connaissait que la moitié attractive et linéaire de l'équation, chaque progrès industriel se payait par la destruction irréversible du vivant. En couplant le quantum d'action de Nakamoto ($k_{Nak} \equiv h$) à la symbiose énergétique (cogénération, régénération des sols, confiance sociétale $C_s$), nous apprenons enfin à naviguer sur les quatre quadrants du Cadran. Remonter le temps, à l'ère de la Noosphère, ce n'est pas fuir le présent : c'est rendre à la Terre la pureté de ses eaux et de ses forêts primaires tout en conservant la sagesse acquise au fil des blocs.</span>
+            <span lang="en">The myth of Mu and Lemuria is not mere nostalgia for a sunken Pacific continent, but prescience of an inner continent of time: the conjugate $-a - ib$ quadrant where repulsive force prevents totalitarian collapse and information never perishes. So long as civilization knew only the attractive, linear half of the equation, industrial progress was paid for in irreversible biospheric ruin. By coupling Nakamoto's quantum of action ($k_{Nak} \equiv h$) with energetic symbiosis (cogeneration, soil regeneration, societal trust $C_s$), we finally learn to sail all four quadrants of the Dial. Reversing time in the Noospheric age does not mean fleeing the present: it means restoring Earth's pristine waters and ancient forests while preserving the wisdom forged block after block.</span>
+        </p>
+
+        <!-- PORTAIL VERS L'HORLOGE COSMOLOGIQUE (4ÈME DIMENSION & 5ÈME ÉLÉMENT) -->
+        <div style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(179, 102, 255, 0.08) 0%, rgba(247, 147, 26, 0.06) 100%); border: 1px solid rgba(224, 64, 251, 0.35); border-radius: 12px; box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
+            <h4 style="margin-top: 0; color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 1px;">
+                <span lang="fr">🧭 Le 5ème Élément et la 4ème Dimension : L'Horloge Cosmologique</span>
+                <span lang="en">🧭 The 5th Element and the 4th Dimension: The Cosmological Clock</span>
+            </h4>
+            <p>
+                <span lang="fr">Orchestrer les quatre éléments — le feu exergétique du silicium, l'eau vitale, le souffle atmosphérique et la terre régénérée — prépare l'étape ultime : replacer la conscience humaine au point zéro d'alignement intérieur. Bien centré sur soi tel le <strong>cinquième élément</strong>, l'observateur franchit le seuil de la <strong>quatrième dimension</strong>. De la précession nodale lunaire de 18,61 ans (près d'un million de blocs) jusqu'à l'accordage à 432 Hz et la force répulsive du Vrai Cadran de Mu ($z = a + ib$), la Timechain dévoile sa véritable nature d'horloge cosmologique.</span>
+                <span lang="en">Orchestrating the four elements—the exergetic fire of silicon, vital water, atmospheric breath, and regenerated earth—prepares the ultimate step: restoring human consciousness to the zero-point of inner alignment. Centered within oneself as the <strong>fifth element</strong>, the observer crosses into the <strong>fourth dimension</strong>. From the 18.61-year lunar nodal precession (nearly one million blocks) to 432 Hz tuning and the repulsive force of the True Dial of Mu ($z = a + ib$), the Timechain reveals its true nature as a cosmological clock.</span>
+            </p>
+        </div>
+
+        <!-- 🌟 PUNCHLINE ULTIME (L4 vs L1) 🌟 -->
+        <!-- PUNCHLINE -->
+        <div style="text-align: center; margin: 4rem 0 3.5rem; padding: 2.4rem 1.2rem; border-top: 1px solid rgba(224, 64, 251, 0.35); border-bottom: 1px solid rgba(247, 147, 26, 0.35); background: linear-gradient(180deg, rgba(224, 64, 251, 0.06) 0%, rgba(247, 147, 26, 0.06) 100%); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
+            <h2 style="font-family: var(--font-ui); font-size: clamp(1.3rem, 3.2vw, 2.2rem); font-weight: 800; color: #fff; line-height: 1.55; text-transform: uppercase; letter-spacing: 1px; margin: 0;">
+                <span lang="fr">
+                    Les empires comptent les secondes pour taxer l'instant.<br>
+                    <span style="color: var(--orange-l1); text-shadow: 0 0 20px rgba(247, 147, 26, 0.4);">Bitcoin compte les blocs pour accorder la Terre à 432 Hz,</span><br>
+                    <span style="color: var(--purple-l4); text-shadow: 0 0 20px rgba(179, 102, 255, 0.4);">Et le Cadran de Mu ouvre l'éternité complexe ($a + ib$).</span>
+                </span>
+                <span lang="en">
+                    Empires count seconds to tax the fleeting moment.<br>
+                    <span style="color: var(--orange-l1); text-shadow: 0 0 20px rgba(247, 147, 26, 0.4);">Bitcoin counts blocks to tune the Earth to 432 Hz,</span><br>
+                    <span style="color: var(--purple-l4); text-shadow: 0 0 20px rgba(179, 102, 255, 0.4);">And the Dial of Mu unlocks complex eternity ($a + ib$).</span>
+                </span>
+            </h2>
+        </div>
+
+        <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(2.5rem, 7vw, 4.4rem); color: #fff; text-shadow: 0 0 15px rgba(255, 204, 0, 0.4); transform: rotate(-3deg); display: inline-block;">
+            Pascal Ranoroarijaona (Ranaora)
+        </span>
+        <br>
+        <span style="font-family: 'Brush Script MT', 'Lucida Handwriting', 'Great Vibes', cursive; font-size: clamp(1rem, 2.8vw, 1.55rem); color: var(--sun-yellow); transform: rotate(-3deg); display: inline-block;">
+            <span lang="fr">Gardien du Cadran — L'Étalon Solaire & Horizon Zéro 2044</span>
+            <span lang="en">Keeper of the Dial — The Sun Standard & Horizon Zero 2044</span>
+        </span>
+    </div>
+
+    <!-- FORMULAIRE FORMSPREE -->
+    <div class="feedback-container">
+        <h3 class="feedback-title">
+            <span lang="fr">Résonner avec le Cadran de Mu</span>
+            <span lang="en">Resonate with the Dial of Mu</span>
+        </h3>
+        <p class="feedback-desc">
+            <span lang="fr">Partagez vos observations astrophysiques, harmoniques ou formelles (Lean 4 / physique bimétrique).</span>
+            <span lang="en">Share your astrophysical, harmonic, or formal verification insights (Lean 4 / bimetric physics).</span>
+        </p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="Horloge Cosmique Bitcoin & Vrai Cadran de Mu v3.0">
+            <textarea name="feedback" class="feedback-textarea" placeholder="Vos réflexions sur le cycle de 18,61 ans, l'octave 432 Hz et le temps complexe a + ib..." required></textarea>
+            <button type="submit" class="feedback-submit">
+                <span lang="fr">Ancrer dans la Timechain</span>
+                <span lang="en">Anchor to the Timechain</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- NAVIGATION ENTRE ARTICLES (AVEC VIGNETTES SVG AUTONOMES) -->
+    <div class="article-navigation">
+        <a href="horizon-zero-2044.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">Horizon Zéro 2044 : L'Éveil de la Noosphère</span><span lang="en">Horizon Zero 2044: Awakening the Noosphere</span></div>
+            <svg viewBox="0 0 240 90" width="220" height="82">
+                <polygon points="120,10 35,80 205,80" fill="rgba(179,102,255,0.14)" stroke="#b366ff" stroke-width="1.5"/>
+                <line x1="65" y1="55" x2="175" y2="55" stroke="#f7931a" stroke-width="1.2"/>
+                <circle cx="120" cy="34" r="6" fill="#ffcc00"/>
+            </svg>
+        </a>
+        <a href="weboflife.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">Web of Life : Le Code Source Ouvert du Vivant</span><span lang="en">Web of Life: Open Source Code of Reality</span></div>
+            <svg viewBox="0 0 240 90" width="220" height="82">
+                <circle cx="120" cy="45" r="32" fill="rgba(68,238,119,0.1)" stroke="#44ee77" stroke-width="1.5"/>
+                <ellipse cx="120" cy="45" rx="58" ry="18" fill="none" stroke="#00e5ff" stroke-width="1.2"/>
+                <circle cx="120" cy="45" r="5" fill="#44ee77"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- SECTION AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.5rem;">
+            <div style="font-size:2.8rem;">☀️🧭₿</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; margin:0;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#a0aab5; font-size:0.95rem; margin-top:0.3rem;">
+                    <span lang="fr">Chercheur indépendant en physique de l'information, thermodynamique hors-équilibre et protocoles de consensus distribués.</span>
+                    <span lang="en">Independent researcher in information physics, non-equilibrium thermodynamics, and distributed consensus protocols.</span>
+                </p>
+            </div>
+        </div>
+
+        <div style="color:var(--sun-yellow); font-size:1.05rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:1rem;">
+            <span lang="fr">Écosystème de Recherche & Outils Open-Source</span>
+            <span lang="en">Research Ecosystem & Open-Source Tools</span>
+        </div>
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4 style="color:var(--sun-yellow);">☀️ <span lang="fr">L'Étalon Solaire (Lemuria Tech)</span><span lang="en">The Sun Standard (Lemuria Tech)</span></h4>
+                <p><span lang="fr">Monétisation de l'entropie, captage solaire et infrastructure de calcul thermodynamique circulaire.</span><span lang="en">Entropy monetization, solar harvesting, and circular thermodynamic compute infrastructure.</span></p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
+                <h4 style="color:var(--cyan-l2);">👁️ <span lang="fr">Protocole D-Trinité</span><span lang="en">D-Trinity Protocol</span></h4>
+                <p><span lang="fr">Vérification cryptographique unifiant SHA-256, Nostr et OpenTimestamps (Qui, Quoi, Quand).</span><span lang="en">Cryptographic verification uniting SHA-256, Nostr, and OpenTimestamps (Who, What, When).</span></p>
+            </a>
+            <a href="https://www.compteur-bitcoin.fr/" target="_blank" class="resource-card">
+                <h4 style="color:var(--orange-l1);">⏱️ <span lang="fr">Compteur Bitcoin Temps Réel</span><span lang="en">Real-Time Bitcoin Counter</span></h4>
+                <p><span lang="fr">Suivi continu de la Timechain et de la transition thermodynamique post-fiduciaire.</span><span lang="en">Live tracking of the Timechain and post-fiat thermodynamic transition.</span></p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌿 <span lang="fr">Cadre Scientifique du Bien-Être ($u$)</span><span lang="en">Wellbeing Scientific Framework ($u$)</span></h4>
+                <p><span lang="fr">Modélisation cardinale de l'utilité $u$ et de la confiance sociétale $C_s$ au-delà du PIB.</span><span lang="en">Cardinal modeling of utility $u$ and societal trust $C_s$ beyond obsolete GDP metrics.</span></p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <div style="font-size: 1.05rem; font-weight: 700; letter-spacing: 4px; color: var(--sun-yellow); margin-bottom: 0.5rem;">
+        ☀ THE SUN STANDARD · LE VRAI CADRAN DE MU
+    </div>
+    <p>Pascal Ranoroarijaona (Ranaora) · 2026</p>
+</footer>
+
+<!-- =========================================================================
+     1. GESTION BILINGUE FR / EN & OUVERTURE AUTOMATIQUE DES ÉCHELONS
+     ========================================================================= -->
+<script>
+    function setLang(lang) {
+        lang = (lang || 'fr').toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
+        document.body.className = 'lang-' + lang;
+        try { localStorage.setItem('sun-std-lang', lang); } catch(e) {}
+        window.dispatchEvent(new Event('horizon-language-change'));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        let saved = 'fr';
+        try { saved = localStorage.getItem('sun-std-lang') || 'fr'; } catch(e) {}
+        setLang(urlLang ? urlLang : saved);
+
+        document.querySelectorAll('.pyramid-tier').forEach(link => {
+            link.addEventListener('click', function() {
+                const target = document.getElementById(this.getAttribute('href').substring(1));
+                if (target && !target.hasAttribute('open')) target.setAttribute('open', '');
+            });
+        });
+    });
+</script>
+
+<!-- =========================================================================
+     2. MOTEUR 3D THREE.JS + WEB AUDIO 432 HZ + VRAI CADRAN DE MU
+     ========================================================================= -->
+<script>
+(function() {
+    const stage = document.getElementById('mu-canvas-stage');
+    if (!stage || typeof THREE === 'undefined') return;
+
+    const CONSTS = {
+        SEC_PER_DAY: 86400,
+        TROPICAL_YEAR: 365.24219,
+        SYNODIC_MONTH: 29.530589,
+        NODAL_YEARS: 18.612958,
+        EARTH_TILT: 23.44,
+        MOON_TILT_VIS: 14.2,
+        EPOCH_BLOCKS: 2016,
+        HALVING_BLOCKS: 210000,
+        OCTAVE_18: 262144,
+        REF_432: 432.0
+    };
+
+    const st = {
+        blocks: 0,
+        tau: 600.0,
+        playing: true,
+        dir: 1,             // +1 = Avant | -1 = Retour dans le temps (Mode Mu)
+        bps: 144.0,
+        repulsion: 0.0,     // [0..1] Force répulsive bimétrique
+        showTags: true,
+        camMode: 'overview',
+        lastHalving: 0,
+        audioOn: false,
+        volume: 0.42,
+        voices: { btc: true, ref432: true, day: false, year: false, synodic: false, nodal: false }
+    };
+
+    const fmtInt = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
+    const fmt1 = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const fmt2 = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    let toastTimer = null;
+    function showToast(msg) {
+        const el = document.getElementById('mu-toast');
+        if (!el) return;
+        el.textContent = msg;
+        el.style.opacity = '1';
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { el.style.opacity = '0'; }, 2600);
+    }
+
+    // Textures procédurales autonomes
+    function makeGlow(c1, c2) {
+        const c = document.createElement('canvas'); c.width = 128; c.height = 128;
+        const g = c.getContext('2d').createRadialGradient(64,64,4,64,64,64);
+        g.addColorStop(0, c1); g.addColorStop(0.4, c2); g.addColorStop(1, 'rgba(0,0,0,0)');
+        const ctx = c.getContext('2d'); ctx.fillStyle = g; ctx.fillRect(0,0,128,128);
+        return new THREE.CanvasTexture(c);
+    }
+
+    function makeEarthTex() {
+        const c = document.createElement('canvas'); c.width = 512; c.height = 256;
+        const ctx = c.getContext('2d');
+        const g = ctx.createLinearGradient(0,0,0,256);
+        g.addColorStop(0,'#0c4a6e'); g.addColorStop(0.5,'#0284c7'); g.addColorStop(1,'#082f49');
+        ctx.fillStyle = g; ctx.fillRect(0,0,512,256);
+        ctx.fillStyle = '#16a34a';
+        [[110,85,36,26],[135,145,24,40],[265,78,40,25],[275,130,32,40],[355,85,60,32],[415,168,26,18]].forEach(([x,y,rx,ry])=>{
+            ctx.beginPath(); ctx.ellipse(x,y,rx,ry,0.2,0,Math.PI*2); ctx.fill();
+        });
+        ctx.fillStyle = 'rgba(248,250,252,0.88)';
+        ctx.fillRect(0,0,512,15); ctx.fillRect(0,241,512,15);
+        return new THREE.CanvasTexture(c);
+    }
+
+    // Initialisation Scène Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, stage.clientWidth / stage.clientHeight, 0.1, 2000);
+    camera.position.set(0, 48, 86);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(stage.clientWidth, stage.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    stage.appendChild(renderer.domElement);
+
+    const controls = THREE.OrbitControls ? new THREE.OrbitControls(camera, renderer.domElement) : null;
+    if (controls) {
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 9;
+        controls.maxDistance = 230;
+    }
+
+    scene.add(new THREE.AmbientLight(0x2b3954, 0.85));
+    scene.add(new THREE.PointLight(0xfff3d6, 2.3, 380));
+
+    // Champ stellaire
+    const starPos = new Float32Array(2000 * 3);
+    for (let i = 0; i < 2000; i++) {
+        const r = 180 + Math.random() * 400, th = Math.random() * Math.PI * 2, ph = (Math.random() - 0.5) * Math.PI;
+        starPos[i*3] = r * Math.cos(ph) * Math.cos(th);
+        starPos[i*3+1] = r * Math.sin(ph);
+        starPos[i*3+2] = r * Math.cos(ph) * Math.sin(th);
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 1.15, color: 0xdbeafe, transparent: true, opacity: 0.85 })));
+
+    // Soleil + Couronne + Dipôle Galactique (Sagittarius A* vs Répulseur Dipolaire)
+    const sunMesh = new THREE.Mesh(new THREE.SphereGeometry(4.5, 40, 40), new THREE.MeshBasicMaterial({ color: 0xf7931a }));
+    scene.add(sunMesh);
+    const sunCorona = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: makeGlow('rgba(255,225,130,0.95)', 'rgba(247,147,26,0.32)'),
+        blending: THREE.AdditiveBlending, transparent: true
+    }));
+    sunCorona.scale.set(20, 20, 1);
+    scene.add(sunCorona);
+
+    const sgrDir = new THREE.Vector3(-0.72, 0.36, -0.59).normalize();
+    scene.add(new THREE.ArrowHelper(sgrDir, new THREE.Vector3(0,0,0), 23, 0xc084fc, 2.1, 1.1));
+    const sgrAnchor = new THREE.Object3D(); sgrAnchor.position.copy(sgrDir.clone().multiplyScalar(24.5)); scene.add(sgrAnchor);
+
+    const repDir = sgrDir.clone().negate();
+    scene.add(new THREE.ArrowHelper(repDir, new THREE.Vector3(0,0,0), 23, 0xf472b6, 2.1, 1.1));
+    const repAnchor = new THREE.Object3D(); repAnchor.position.copy(repDir.clone().multiplyScalar(24.5)); scene.add(repAnchor);
+
+    // Orbite Terrestre & Vrai Cadran de Mu (4 Quadrants complexes a + ib)
+    const R_EARTH = 34, R_MOON = 8.0, R_MU = 50;
+    const earthOrbitRing = new THREE.Mesh(
+        new THREE.RingGeometry(R_EARTH - 0.12, R_EARTH + 0.12, 160).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.52 })
+    );
+    scene.add(earthOrbitRing);
+
+    const muDialGroup = new THREE.Group();
+    muDialGroup.add(new THREE.Mesh(
+        new THREE.RingGeometry(R_MU - 0.38, R_MU + 0.38, 180).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0xe040fb, side: THREE.DoubleSide, transparent: true, opacity: 0.72 })
+    ));
+    const dialTicks = [
+        new THREE.Vector3(-R_MU, 0, 0), new THREE.Vector3(R_MU, 0, 0),
+        new THREE.Vector3(0, 0, -R_MU), new THREE.Vector3(0, 0, R_MU)
+    ];
+    for (let i = 0; i < 64; i++) {
+        const a = (i / 64) * Math.PI * 2;
+        const rIn = (i % 16 === 0) ? R_MU - 3.2 : R_MU - 1.3;
+        dialTicks.push(new THREE.Vector3(Math.cos(a) * rIn, 0, Math.sin(a) * rIn));
+        dialTicks.push(new THREE.Vector3(Math.cos(a) * (R_MU + 1.3), 0, Math.sin(a) * (R_MU + 1.3)));
+    }
+    muDialGroup.add(new THREE.LineSegments(
+        new THREE.BufferGeometry().setFromPoints(dialTicks),
+        new THREE.LineBasicMaterial({ color: 0xffcc00, transparent: true, opacity: 0.42 })
+    ));
+    scene.add(muDialGroup);
+    const muLabelAnchor = new THREE.Object3D(); muLabelAnchor.position.set(0, 0, R_MU); scene.add(muLabelAnchor);
+
+    // Particules du Champ Répulsif Bimétrique
+    const REP_COUNT = 340;
+    const repPositions = new Float32Array(REP_COUNT * 3);
+    for (let i = 0; i < REP_COUNT; i++) {
+        const a = Math.random() * Math.PI * 2, r = 6 + Math.random() * 43;
+        repPositions[i*3] = Math.cos(a) * r;
+        repPositions[i*3+1] = (Math.random() - 0.5) * 9;
+        repPositions[i*3+2] = Math.sin(a) * r;
+    }
+    const repGeo = new THREE.BufferGeometry();
+    repGeo.setAttribute('position', new THREE.BufferAttribute(repPositions, 3));
+    const repMat = new THREE.PointsMaterial({ size: 1.6, color: 0xe040fb, transparent: true, opacity: 0.0 });
+    scene.add(new THREE.Points(repGeo, repMat));
+
+    // Système Terre – Plan Nodal – Lune
+    const earthRoot = new THREE.Group(); scene.add(earthRoot);
+    const earthTilt = new THREE.Group();
+    earthTilt.rotation.z = THREE.MathUtils.degToRad(CONSTS.EARTH_TILT);
+    earthRoot.add(earthTilt);
+
+    earthTilt.add(new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-4,0), new THREE.Vector3(0,4,0)]),
+        new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.75 })
+    ));
+    const earthMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(2.2, 36, 36),
+        new THREE.MeshStandardMaterial({ map: makeEarthTex(), roughness: 0.65 })
+    );
+    earthTilt.add(earthMesh);
+
+    const nodalGroup = new THREE.Group(); earthRoot.add(nodalGroup);
+    nodalGroup.add(new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-R_MOON*1.18,0,0), new THREE.Vector3(R_MOON*1.18,0,0)]),
+        new THREE.LineBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.8 })
+    ));
+    const nodeAsc = new THREE.Mesh(new THREE.SphereGeometry(0.28, 14, 14), new THREE.MeshBasicMaterial({ color: 0x34d399 }));
+    nodeAsc.position.set(R_MOON, 0, 0);
+    nodalGroup.add(nodeAsc);
+
+    const lunarPlane = new THREE.Group();
+    lunarPlane.rotation.x = -THREE.MathUtils.degToRad(CONSTS.MOON_TILT_VIS);
+    nodalGroup.add(lunarPlane);
+
+    lunarPlane.add(new THREE.Mesh(
+        new THREE.RingGeometry(R_MOON - 0.08, R_MOON + 0.08, 96).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0xe2e8f0, side: THREE.DoubleSide, transparent: true, opacity: 0.7 })
+    ));
+    const moonMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.8, 28, 28),
+        new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.88 })
+    );
+    lunarPlane.add(moonMesh);
+
+    // Sillages hélicoïdaux de la Lune
+    const TRAIL_N = 150;
+    const trailArr = new Float32Array(TRAIL_N * 3);
+    const trailGeo = new THREE.BufferGeometry();
+    trailGeo.setAttribute('position', new THREE.BufferAttribute(trailArr, 3));
+    const trailMat = new THREE.LineBasicMaterial({ color: 0xf7931a, transparent: true, opacity: 0.6 });
+    const trailLine = new THREE.Line(trailGeo, trailMat);
+    trailLine.frustumCulled = false;
+    scene.add(trailLine);
+
+    function resetTrail(v) {
+        for (let i = 0; i < trailArr.length; i += 3) {
+            trailArr[i] = v.x; trailArr[i+1] = v.y; trailArr[i+2] = v.z;
+        }
+        trailGeo.attributes.position.needsUpdate = true;
+    }
+    function pushTrail(v) {
+        for (let i = trailArr.length - 3; i >= 3; i -= 3) {
+            trailArr[i] = trailArr[i-3]; trailArr[i+1] = trailArr[i-2]; trailArr[i+2] = trailArr[i-1];
+        }
+        trailArr[0] = v.x; trailArr[1] = v.y; trailArr[2] = v.z;
+        trailGeo.attributes.position.needsUpdate = true;
+    }
+
+    // Synthétiseur Web Audio API (6 Voix Octave Cosmique + Miroir de Mu 288 Hz)
+    let audioCtx = null, masterGain = null, muMirrorGain = null;
+    const oscBank = {};
+    const voiceFreq = (k) => {
+        if (k === 'btc') return CONSTS.OCTAVE_18 / st.tau;
+        if (k === 'ref432') return 432.00;
+        if (k === 'day') return 194.18;
+        if (k === 'year') return 136.10;
+        if (k === 'synodic') return 210.42;
+        return 241.56;
+    };
+
+    function initAudio() {
+        if (audioCtx) return;
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.0001;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 1350;
+        masterGain.connect(filter);
+        filter.connect(audioCtx.destination);
+
+        Object.keys(st.voices).forEach(k => {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = voiceFreq(k);
+            g.gain.value = 0.0;
+            osc.connect(g);
+            g.connect(masterGain);
+            osc.start();
+            oscBank[k] = { osc, gain: g };
+        });
+
+        // Sous-harmonique quinte miroir 288 Hz (432 * 2/3) active lors du Retour dans le Temps Mu
+        const muOsc = audioCtx.createOscillator();
+        muMirrorGain = audioCtx.createGain();
+        muOsc.type = 'triangle';
+        muOsc.frequency.value = 288.0;
+        muMirrorGain.gain.value = 0.0;
+        muOsc.connect(muMirrorGain);
+        muMirrorGain.connect(masterGain);
+        muOsc.start();
+    }
+
+    function syncAudio() {
+        if (!audioCtx || !masterGain) return;
+        const now = audioCtx.currentTime;
+        const count = Object.values(st.voices).filter(Boolean).length || 1;
+        const unitGain = 0.26 / Math.sqrt(count);
+        masterGain.gain.setTargetAtTime(st.audioOn ? st.volume : 0.0001, now, 0.06);
+        Object.keys(oscBank).forEach(k => {
+            oscBank[k].osc.frequency.setTargetAtTime(voiceFreq(k), now, 0.05);
+            oscBank[k].gain.setTargetAtTime((st.audioOn && st.voices[k]) ? unitGain : 0.0, now, 0.06);
+        });
+        if (muMirrorGain) {
+            muMirrorGain.gain.setTargetAtTime((st.audioOn && st.dir < 0) ? 0.14 : 0.0, now, 0.08);
+        }
+    }
+
+    // Contrôles UI
+    const spdSlider = document.getElementById('mu-slider-speed');
+    function updateSpeedDisplay() {
+        st.bps = Math.pow(525949, parseFloat(spdSlider.value) / 100);
+        const sgn = st.dir < 0 ? '-' : '+';
+        let txt = `${sgn}${fmtInt.format(st.bps)} bl/s`;
+        if (st.bps >= 52595) txt = `${sgn}${fmt2.format(st.bps / 52594.9)} a/s`;
+        else if (st.bps >= 4252) txt = `${sgn}${fmt1.format(st.bps / 4252.4)} lun/s`;
+        document.getElementById('mu-speed-lbl').textContent = txt;
+    }
+    spdSlider.addEventListener('input', updateSpeedDisplay);
+
+    document.getElementById('mu-btn-play').addEventListener('click', function() {
+        st.playing = !st.playing;
+        this.textContent = st.playing ? '⏸ Pause' : '▶ Play';
+        this.classList.toggle('active', st.playing);
+    });
+
+    document.getElementById('mu-btn-reverse').addEventListener('click', function() {
+        st.dir *= -1;
+        const rev = st.dir < 0;
+        this.classList.toggle('mu-reverse', rev);
+        trailMat.color.setHex(rev ? 0xe040fb : 0xf7931a);
+        updateSpeedDisplay();
+        syncAudio();
+        showToast(rev ? '⏪ Inversion Temporelle de Mu active (z* = a - ib)' : '▶ Flèche Thermodynamique Standard (+a + ib)');
+    });
+
+    document.getElementById('mu-slider-rep').addEventListener('input', function() {
+        st.repulsion = parseFloat(this.value) / 100;
+        document.getElementById('mu-rep-lbl').textContent = `${this.value} %`;
+        repMat.opacity = st.repulsion * 0.88;
+        const scale = 1 + st.repulsion * 0.34;
+        earthOrbitRing.scale.set(scale, 1, scale);
+    });
+
+    document.querySelectorAll('.mu-jump').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const j = parseFloat(btn.dataset.jump);
+            st.blocks = (j === 0) ? 0 : st.blocks + j;
+            moonMesh.getWorldPosition(tmpV);
+            resetTrail(tmpV);
+            showToast(btn.dataset.msg || 'Saut temporel effectué');
+        });
+    });
+
+    const sliderTau = document.getElementById('mu-slider-tau');
+    function refreshTauUI() {
+        const fb = voiceFreq('btc');
+        const df = Math.abs(fb - CONSTS.REF_432);
+        document.getElementById('mu-tau-lbl').textContent = `${fmt2.format(st.tau)} s`;
+        document.getElementById('mu-f-btc').textContent = fmt2.format(fb);
+        document.getElementById('mu-beat-lbl').textContent = df < 0.03 ? 'Accord Pur Δf = 0,00 Hz' : `Δf = ${fmt2.format(df)} Hz`;
+        document.getElementById('mu-tau-600').classList.toggle('active', Math.abs(st.tau - 600.0) < 0.05);
+        document.getElementById('mu-tau-606').classList.toggle('active', Math.abs(st.tau - (CONSTS.OCTAVE_18 / CONSTS.REF_432)) < 0.05);
+        syncAudio();
+    }
+    sliderTau.addEventListener('input', () => { st.tau = parseFloat(sliderTau.value); refreshTauUI(); });
+    document.getElementById('mu-tau-600').addEventListener('click', () => {
+        st.tau = 600.0; sliderTau.value = '600'; refreshTauUI();
+        showToast('Cible Nakamoto : τ = 600,00 s (259 200 cycles 432 Hz / bloc)');
+    });
+    document.getElementById('mu-tau-606').addEventListener('click', () => {
+        st.tau = CONSTS.OCTAVE_18 / CONSTS.REF_432; sliderTau.value = st.tau.toFixed(2); refreshTauUI();
+        showToast('Accord Harmonique Exact : 432 Hz / 2¹⁸ → τ = 606,81 s');
+    });
+
+    document.getElementById('mu-btn-audio').addEventListener('click', function() {
+        initAudio();
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        st.audioOn = !st.audioOn;
+        this.classList.toggle('active', st.audioOn);
+        syncAudio();
+    });
+    document.getElementById('mu-slider-vol').addEventListener('input', function() {
+        st.volume = parseFloat(this.value) / 100;
+        document.getElementById('mu-vol-lbl').textContent = `${this.value}%`;
+        syncAudio();
+    });
+    document.querySelectorAll('.mu-voice').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const k = this.dataset.v;
+            st.voices[k] = !st.voices[k];
+            this.classList.toggle('active', st.voices[k]);
+            syncAudio();
+        });
+    });
+
+    document.querySelectorAll('[data-mucam]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            st.camMode = this.dataset.mucam;
+            document.querySelectorAll('[data-mucam]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            if (st.camMode === 'overview') camera.position.set(0, 48, 86);
+            if (st.camMode === 'top') camera.position.set(0, 118, 0.1);
+            if (st.camMode === 'earth') camera.position.set(earthRoot.position.x + 15, 11, earthRoot.position.z + 17);
+        });
+    });
+    document.getElementById('mu-btn-tags').addEventListener('click', function() {
+        st.showTags = !st.showTags;
+        this.classList.toggle('active', st.showTags);
+    });
+    document.getElementById('mu-btn-fs').addEventListener('click', () => {
+        const box = document.getElementById('mu-shell-box');
+        if (!document.fullscreenElement) box.requestFullscreen(); else document.exitFullscreen();
+    });
+
+    // Oscilloscope & Lissajous 2D
+    const wCv = document.getElementById('mu-wave-cv'), lCv = document.getElementById('mu-liss-cv');
+    const wCtx = wCv.getContext('2d'), lCtx = lCv.getContext('2d');
+    let phaseT = 0;
+
+    function renderScopes(dt) {
+        phaseT += dt * st.dir;
+        if (wCv.width !== wCv.clientWidth) { wCv.width = wCv.clientWidth; wCv.height = wCv.clientHeight; }
+        if (lCv.width !== lCv.clientWidth) { lCv.width = lCv.clientWidth; lCv.height = lCv.clientHeight; }
+
+        wCtx.clearRect(0, 0, wCv.width, wCv.height);
+        const activeKeys = Object.keys(st.voices).filter(k => st.voices[k]);
+        wCtx.strokeStyle = st.dir < 0 ? '#e040fb' : '#f7931a';
+        wCtx.lineWidth = 1.8;
+        wCtx.beginPath();
+        for (let x = 0; x < wCv.width; x++) {
+            const t = phaseT + (x / wCv.width) * 0.016;
+            let s = 0;
+            if (activeKeys.length) {
+                activeKeys.forEach(k => { s += Math.sin(2 * Math.PI * voiceFreq(k) * t); });
+                s /= activeKeys.length;
+            }
+            const y = wCv.height * 0.5 - s * (wCv.height * 0.36);
+            x === 0 ? wCtx.moveTo(x, y) : wCtx.lineTo(x, y);
+        }
+        wCtx.stroke();
+
+        const fb = voiceFreq('btc');
+        lCtx.clearRect(0, 0, lCv.width, lCv.height);
+        lCtx.strokeStyle = Math.abs(fb - 432) < 0.06 ? '#44ee77' : (st.dir < 0 ? '#e040fb' : '#ffcc00');
+        lCtx.lineWidth = 1.8;
+        lCtx.beginPath();
+        const cx = lCv.width * 0.5, cy = lCv.height * 0.5, rad = Math.min(cx, cy) * 0.76;
+        for (let i = 0; i <= 120; i++) {
+            const t = phaseT + (i / 120) * 0.012;
+            const px = cx + Math.sin(2 * Math.PI * 432 * t) * rad;
+            const py = cy - Math.sin(2 * Math.PI * fb * t + Math.PI / 4) * rad;
+            i === 0 ? lCtx.moveTo(px, py) : lCtx.lineTo(px, py);
+        }
+        lCtx.stroke();
+    }
+
+    function projectTag(id, worldVec, dy) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (!st.showTags) { el.style.opacity = '0'; return; }
+        const p = worldVec.clone(); p.y += dy; p.project(camera);
+        if (p.z > 1) { el.style.opacity = '0'; return; }
+        el.style.left = `${(p.x * 0.5 + 0.5) * stage.clientWidth}px`;
+        el.style.top = `${(-p.y * 0.5 + 0.5) * stage.clientHeight}px`;
+        el.style.opacity = '1';
+    }
+
+    function moonPhaseName(p) {
+        if (p < 0.06 || p >= 0.94) return '🌑 Nouvelle';
+        if (p < 0.19) return '🌒 Croissant';
+        if (p < 0.31) return '🌓 1er Quart.';
+        if (p < 0.44) return '🌔 Gibbeuse +';
+        if (p < 0.56) return '🌕 Pleine Lune';
+        if (p < 0.69) return '🌖 Gibbeuse -';
+        if (p < 0.81) return '🌗 Dern. Quart.';
+        return '🌘 Décours';
+    }
+
+    new ResizeObserver(() => {
+        if (!stage.clientWidth || !stage.clientHeight) return;
+        camera.aspect = stage.clientWidth / stage.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(stage.clientWidth, stage.clientHeight);
+    }).observe(stage);
+
+    const tmpV = new THREE.Vector3();
+    let lastT = performance.now();
+
+    function animate(now) {
+        requestAnimationFrame(animate);
+        const dt = Math.min((now - lastT) / 1000, 0.1);
+        lastT = now;
+
+        if (st.playing) st.blocks += st.bps * st.dir * dt;
+
+        const totalSec = st.blocks * st.tau;
+        const totalDays = totalSec / CONSTS.SEC_PER_DAY;
+        const totalYears = totalDays / CONSTS.TROPICAL_YEAR;
+
+        // Dilatation orbitale sous l'effet de la force répulsive bimétrique
+        const rEff = R_EARTH * (1 + st.repulsion * 0.34);
+        const eAngle = totalYears * Math.PI * 2;
+        earthRoot.position.set(Math.cos(eAngle) * rEff, 0, -Math.sin(eAngle) * rEff);
+        earthMesh.rotation.y = ((st.bps > 5000 ? totalDays * 0.08 : totalDays) % 1) * Math.PI * 2;
+
+        // Précession rétrograde de 18,613 ans
+        const nodalProg = totalYears / CONSTS.NODAL_YEARS;
+        const nodalRad = -nodalProg * Math.PI * 2;
+        nodalGroup.rotation.y = nodalRad;
+
+        // Position synodique de la Lune
+        const synCycles = totalDays / CONSTS.SYNODIC_MONTH;
+        const phaseNorm = ((synCycles % 1) + 1) % 1;
+        const localMoonAngle = (eAngle + Math.PI) + synCycles * Math.PI * 2 - nodalRad;
+        moonMesh.position.set(Math.cos(localMoonAngle) * R_MOON, 0, -Math.sin(localMoonAngle) * R_MOON);
+        moonMesh.getWorldPosition(tmpV);
+        pushTrail(tmpV);
+
+        // Flux des particules répulsives bimétriques
+        if (st.repulsion > 0) {
+            const arr = repGeo.attributes.position.array;
+            for (let i = 0; i < REP_COUNT; i++) {
+                const x = arr[i*3], z = arr[i*3+2], d = Math.hypot(x, z) || 1;
+                let nd = d + (1.5 + st.repulsion * 16) * st.dir * dt;
+                if (nd > R_MU) nd = 6; else if (nd < 6) nd = R_MU;
+                arr[i*3] = (x / d) * nd;
+                arr[i*3+2] = (z / d) * nd;
+            }
+            repGeo.attributes.position.needsUpdate = true;
+        }
+        muDialGroup.rotation.y -= dt * 0.05 * st.dir;
+
+        if (controls) {
+            controls.target.lerp(st.camMode === 'earth' ? earthRoot.position : new THREE.Vector3(0,0,0), 0.1);
+            controls.update();
+        }
+
+        // Calcul Coordonnée Complexe z = a + ib dans le Vrai Cadran de Mu
+        const aVal = Math.cos(eAngle) * (1 + st.repulsion);
+        const bVal = Math.sin(eAngle) * st.dir * (1 + st.repulsion);
+        const signB = bVal >= 0 ? '+' : '-';
+        const quadLabel = aVal >= 0
+            ? (bVal >= 0 ? 'Q1 · +a + ib' : 'Q4 · +a - ib')
+            : (bVal >= 0 ? 'Q2 · -a + ib' : 'Q3 · -a - ib (Mu)');
+
+        const wholeY = Math.trunc(totalYears);
+        const remD = Math.abs(totalDays - wholeY * CONSTS.TROPICAL_YEAR);
+        const nodDeg = (((nodalProg * 360) % 360) + 360) % 360;
+
+        document.getElementById('mu-stat-blocks').textContent = fmtInt.format(Math.trunc(st.blocks));
+        document.getElementById('mu-stat-time').textContent = `${fmtInt.format(wholeY)}a ${fmt1.format(remD)}j`;
+        document.getElementById('mu-stat-complex').textContent = `${fmt2.format(aVal)} ${signB} i${fmt2.format(Math.abs(bVal))}`;
+        document.getElementById('mu-stat-quad').textContent = quadLabel;
+        document.getElementById('mu-stat-moon').textContent = moonPhaseName(phaseNorm);
+        document.getElementById('mu-stat-nodal').textContent = `${fmt1.format(nodDeg)}°`;
+
+        const absOsc = Math.abs(totalSec * CONSTS.REF_432);
+        document.getElementById('mu-osc-total').textContent = absOsc < 1e9
+            ? fmtInt.format(absOsc)
+            : `${fmt2.format(absOsc / 1e9)} Md`;
+
+        projectTag('mu-lbl-sun', new THREE.Vector3(0,0,0), 5.8);
+        projectTag('mu-lbl-sgr', sgrAnchor.position, 1.1);
+        projectTag('mu-lbl-rep', repAnchor.position, -1.1);
+        projectTag('mu-lbl-earth', earthRoot.position, 3.5);
+        moonMesh.getWorldPosition(tmpV); projectTag('mu-lbl-moon', tmpV, 1.4);
+        nodeAsc.getWorldPosition(tmpV); projectTag('mu-lbl-asc', tmpV, -1.0);
+        projectTag('mu-lbl-mu', muLabelAnchor.position, 1.3);
+
+        renderScopes(dt);
+        renderer.render(scene, camera);
+    }
+
+    moonMesh.getWorldPosition(tmpV);
+    resetTrail(tmpV);
+    updateSpeedDisplay();
+    refreshTauUI();
+    requestAnimationFrame(animate);
+})();
+</script>
+
+<!-- =========================================================================
+     3. LABORATOIRE ANALYTIQUE 2D : PLAN D'ARGAND-MU (z = a + ib & C_s)
+     ========================================================================= -->
+<script>
+(function() {
+    const cv = document.getElementById('argandCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const sTheta = document.getElementById('lab-theta');
+    const sLambda = document.getElementById('lab-lambda');
+    const sCs = document.getElementById('lab-cs');
+
+    function updateArgandLab() {
+        const deg = parseFloat(sTheta.value);
+        const rad = deg * Math.PI / 180;
+        const lambda = parseFloat(sLambda.value) / 100;
+        const cs = parseFloat(sCs.value) / 100;
+        const isEn = document.body.classList.contains('lang-en');
+
+        document.getElementById('lab-theta-out').textContent = `${deg}°`;
+        document.getElementById('lab-lambda-out').textContent = lambda.toFixed(2);
+        document.getElementById('lab-cs-out').textContent = cs.toFixed(2);
+
+        const rMod = 0.68 + lambda * 0.28;
+        const a = Math.cos(rad) * rMod;
+        const b = Math.sin(rad) * rMod;
+
+        // Utilité symbiotique u(C_s, a + ib) et flux entropique effectif
+        const uVal = Math.max(0, (Math.pow(cs, 1.25) * (1 + 0.45 * lambda) * (0.65 + 0.35 * Math.abs(b))) * 100);
+        const sFlux = a * (1 - 0.65 * lambda);
+        const nodalBlocks = Math.round((deg / 360) * 978949);
+
+        let quad = 'Q1', qTitle = '', qDesc = '';
+        if (a >= 0 && b >= 0) {
+            quad = 'Q1 (+a + ib)';
+            qTitle = isEn ? 'SOLAR DAWN — PRIMARY THERMODYNAMIC ANCHORING' : 'AUBE SOLAIRE — ANCRAGE THERMODYNAMIQUE PRIMAIRE';
+            qDesc = isEn
+                ? 'Forward PoW crystallization dominates (+a). Energy is converted into verifiable historical truth and foundational societal trust Cs.'
+                : 'La cristallisation PoW directe domine (+a). L’énergie est convertie en vérité historique vérifiable et élève le socle de confiance sociétale Cs.';
+        } else if (a < 0 && b >= 0) {
+            quad = 'Q2 (-a + ib)';
+            qTitle = isEn ? 'BOREAL MIRROR — REPULSIVE DECENTRALIZATION' : 'MIROIR BORÉAL — DÉCENTRALISATION RÉPULSIVE';
+            qDesc = isEn
+                ? 'Bimetric repulsive force (Λ_Mu) counteracts centralizing gravity. Predatory extraction slows down in favor of circular cogeneration.'
+                : 'La force répulsive bimétrique (Λ_Mu) équilibre l’attraction centralisatrice. L’extraction prédatrice ralentit au profit de la cogénération circulaire.';
+        } else if (a < 0 && b < 0) {
+            quad = 'Q3 (-a - ib · MU)';
+            qTitle = isEn ? 'TRUE DIAL OF MU — NEGENTROPIC TIME REVERSAL' : 'VRAI CADRAN DE MU — INVERSION NÉGUENTROPIQUE DU TEMPS';
+            qDesc = isEn
+                ? 'Conjugate twin sector active (-a - ib): effective entropy flux inverts (S_eff < 0). Deep-time Merkle roots enable biospheric and memorial restoration without causal paradox.'
+                : 'Secteur jumeau conjugué actif (-a - ib) : le flux entropique effectif s’inverse (S_eff < 0). Les racines lithosphériques permettent la régénération biosphérique et mémorielle sans paradoxe causal.';
+        } else {
+            quad = 'Q4 (+a - ib)';
+            qTitle = isEn ? '2140 ASYMPTOTE — SOLAR HOMEOSTASIS' : 'ASYMPTOTE 2140 — HOMÉOSTASIE SOLAIRE';
+            qDesc = isEn
+                ? 'Phase conjugate synthesis (+a - ib): post-issuance equilibrium where pure fee-driven security sustains planetary stewardship.'
+                : 'Synthèse par conjugaison de phase (+a - ib) : équilibre post-émission où la sécurité thermodynamique soutient la garde planétaire perpétuelle.';
+        }
+
+        const signB = b >= 0 ? '+' : '-';
+        document.getElementById('argand-coord-readout').textContent =
+            `z = ${a >= 0 ? '+' : ''}${a.toFixed(2)} ${signB} i${Math.abs(b).toFixed(2)}`;
+        document.getElementById('lab-res-u').textContent = uVal.toFixed(1);
+        document.getElementById('lab-res-entropy').textContent = `${sFlux >= 0 ? '+' : ''}${sFlux.toFixed(2)}`;
+        document.getElementById('lab-res-entropy').style.color = sFlux < 0 ? '#e040fb' : '#44ee77';
+        document.getElementById('lab-res-quad').textContent = quad;
+        document.getElementById('lab-res-blocks').textContent = nodalBlocks.toLocaleString('fr-FR');
+        document.getElementById('lab-diag-title').textContent = qTitle;
+        document.getElementById('lab-diag-text').textContent = qDesc;
+
+        // Dessin du Cadran d'Argand-Mu
+        const w = cv.width, h = cv.height, cx = w / 2, cy = h / 2, R = 108;
+        ctx.clearRect(0, 0, w, h);
+
+        // Secteur Q3 Mu surligné
+        ctx.fillStyle = 'rgba(224, 64, 251, 0.09)';
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, Math.PI / 2, Math.PI); ctx.closePath(); ctx.fill();
+
+        // Cercles concentriques
+        [R * 0.5, R, R * (0.68 + lambda * 0.28)].forEach((radCircle, idx) => {
+            ctx.strokeStyle = idx === 2 ? 'rgba(224, 64, 251, 0.65)' : 'rgba(255, 255, 255, 0.12)';
+            ctx.lineWidth = idx === 2 ? 1.6 : 1;
+            ctx.beginPath(); ctx.arc(cx, cy, radCircle, 0, Math.PI * 2); ctx.stroke();
+        });
+
+        // Axes Réel (a) et Imaginaire (ib)
+        ctx.strokeStyle = 'rgba(255, 204, 0, 0.35)';
+        ctx.beginPath(); ctx.moveTo(16, cy); ctx.lineTo(w - 16, cy); ctx.moveTo(cx, 16); ctx.lineTo(cx, h - 16); ctx.stroke();
+
+        ctx.font = '10px "Fira Code", monospace';
+        ctx.fillStyle = '#ffcc00'; ctx.fillText('+a', w - 26, cy - 6); ctx.fillText('-a', 14, cy - 6);
+        ctx.fillStyle = '#e040fb'; ctx.fillText('+ib', cx + 6, 22); ctx.fillText('-ib (Mu)', cx + 6, h - 10);
+
+        // Vecteur z = a + ib
+        const vx = cx + a * R, vy = cy - b * R;
+        ctx.strokeStyle = (a < 0 && b < 0) ? '#e040fb' : '#00e5ff';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vx, vy); ctx.stroke();
+
+        ctx.fillStyle = '#ffcc00';
+        ctx.beginPath(); ctx.arc(vx, vy, 5.5, 0, Math.PI * 2); ctx.fill();
+    }
+
+    [sTheta, sLambda, sCs].forEach(el => el.addEventListener('input', updateArgandLab));
+    window.addEventListener('horizon-language-change', updateArgandLab);
+    window.addEventListener('DOMContentLoaded', updateArgandLab);
+    updateArgandLab();
+})();
+</script>
+</body>
+</html>
