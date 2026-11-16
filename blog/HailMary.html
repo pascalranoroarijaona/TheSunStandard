@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Project Hail Mary : Cogénération ASIC & Support de Vie | L'Étalon Solaire</title>
+    <meta name="description" content="Ingénierie thermodynamique appliquée : récupération de chaleur par immersion ASIC, aquaponie centrifuge en transit interplanétaire, serres martiennes et régénération terrestre." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- MathJax v3 -->
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --bg-deep: #060709;
+            --bg-dark: #040405;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
+            --orange-l1: #f7931a;
+            --teal-l0: #00bfa5;
+            --border-glow: rgba(255, 170, 0, 0.2);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(247, 147, 26, 0.07) 0%, rgba(68, 238, 119, 0.03) 35%, transparent 65%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(8px);
+        }
+        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav a.back:hover { color: #fff; }
+
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.15rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.08); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); transform: scale(1.08);
+            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+        }
+
+        article {
+            max-width: 960px; margin: 8rem auto 6rem; padding: 0 2rem;
+            font-size: 1.12rem; color: #d4d4d4;
+        }
+
+        header.article-header {
+            text-align: center; margin-bottom: 3.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(247, 147, 26, 0.28); font-family: var(--font-ui);
+        }
+        h1 {
+            font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.6rem; letter-spacing: -1px; text-transform: uppercase; line-height: 1.18;
+        }
+        h2.header-subtitle {
+            font-size: 1.25rem; font-weight: 600; color: var(--sun-yellow); margin-bottom: 0.9rem; font-family: var(--font-ui);
+        }
+        .subtitle {
+            font-size: 1.08rem; color: var(--bio-green); font-style: italic; max-width: 820px; margin: 0 auto;
+        }
+
+        .intro-hero {
+            display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;
+        }
+        .hero-emblem-box {
+            width: 100%; max-width: 780px; margin-bottom: 1.8rem; padding: 1.5rem;
+            border-radius: 14px; background: radial-gradient(circle at center, rgba(32, 22, 14, 0.85) 0%, rgba(5, 6, 10, 0.96) 100%);
+            border: 1px solid rgba(247, 147, 26, 0.35);
+            box-shadow: 0 12px 40px rgba(247, 147, 26, 0.14);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .quote-block {
+            border-left: 4px solid var(--sun-yellow); padding: 1.5rem 2rem;
+            font-style: italic; color: #f0f0f0; font-size: 1.1rem; margin-bottom: 2rem;
+            font-family: var(--font-ui); background: linear-gradient(90deg, rgba(255, 204, 0, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0; width: 100%;
+        }
+
+        /* --- PYRAMIDE D'ARCHITECTURE --- */
+        .pyramid-wrapper {
+            margin: 3rem 0; padding: 2rem; background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+        }
+        .pyramid-container {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 12px; width: 100%; font-family: var(--font-ui);
+        }
+        .pyramid-tier {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.5rem; border-radius: 8px; border: 1.5px solid;
+            background: rgba(0,0,0,0.82); text-decoration: none; transition: all 0.3s ease;
+        }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 25px rgba(255,204,0,0.2); }
+
+        .tier-l4 { width: 58%; border-color: var(--bio-green); background: linear-gradient(90deg, rgba(68,238,119,0.14), rgba(0,0,0,0.9)); }
+        .tier-l3 { width: 69%; border-color: var(--purple-l4); background: linear-gradient(90deg, rgba(179,102,255,0.14), rgba(0,0,0,0.9)); }
+        .tier-l2 { width: 80%; border-color: var(--cyan-l2); background: linear-gradient(90deg, rgba(0,229,255,0.14), rgba(0,0,0,0.9)); }
+        .tier-l1 { width: 90%; border-color: var(--orange-l1); background: linear-gradient(90deg, rgba(247,147,26,0.16), rgba(0,0,0,0.9)); }
+        .tier-l0 { width: 100%; border-color: var(--teal-l0); background: linear-gradient(90deg, rgba(0,191,165,0.14), rgba(0,0,0,0.9)); }
+
+        .tier-tag { font-family: var(--font-mono); font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+        .tier-title { font-size: 0.92rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 1rem; }
+
+        /* --- TIROIRS DÉROULANTS --- */
+        details {
+            margin-bottom: 1.8rem; background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 10px 10px 0; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-family: var(--font-ui);
+        }
+        details[open] { background: rgba(0, 0, 0, 0.72); }
+        summary {
+            padding: 1.3rem 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.15rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '▶'; color: inherit; font-size: 0.88rem; transition: transform 0.2s ease; }
+        details[open] summary::before { transform: rotate(90deg); }
+
+        .drawer-content { padding: 1.8rem 2rem 2rem 2.2rem; color: #c2d1e0; font-family: var(--font-main); line-height: 1.8; }
+        .drawer-content h4 { font-family: var(--font-ui); color: #fff; margin-top: 1.5rem; margin-bottom: 0.7rem; font-size: 1.12rem; }
+        .drawer-content p { margin-bottom: 1.15rem; text-align: justify; }
+        .drawer-content ul { margin: 0.8rem 0 1.3rem 1.5rem; }
+        .drawer-content li { margin-bottom: 0.65rem; text-align: justify; }
+
+        .layer-0 { border-left: 4px solid var(--teal-l0); }
+        .layer-0 > summary { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--orange-l1); }
+        .layer-1 > summary { color: var(--orange-l1); }
+        .layer-2 { border-left: 4px solid var(--cyan-l2); }
+        .layer-2 > summary { color: var(--cyan-l2); }
+        .layer-3 { border-left: 4px solid var(--purple-l4); }
+        .layer-3 > summary { color: var(--purple-l4); }
+        .layer-4 { border-left: 4px solid var(--bio-green); }
+        .layer-4 > summary { color: var(--bio-green); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.68); padding: 1.25rem; border-radius: 8px;
+            margin: 1.3rem 0; text-align: center; border: 1px solid rgba(255, 255, 255, 0.09);
+            font-size: 1.02rem; font-family: var(--font-ui); overflow-x: auto;
+        }
+
+        /* --- SECTIONS DE MODÉLISATION & CALCULATEUR --- */
+        .modelling-section {
+            margin: 4rem 0; padding: 2.2rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(0,0,0,0.42)),
+                        radial-gradient(circle at top right, rgba(68,238,119,0.06), transparent 45%);
+            border: 1px solid rgba(68,238,119,0.22); border-radius: 16px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+        }
+        .modelling-section h3 {
+            margin-bottom: 0.7rem; color: var(--bio-green); font-family: var(--font-ui);
+            font-size: clamp(1.3rem, 2.6vw, 1.8rem); text-align: center;
+            text-transform: uppercase; letter-spacing: 1.8px;
+        }
+        .modelling-lead {
+            max-width: 820px; margin: 0 auto 1.8rem; color: #aeb8c2; text-align: center; font-size: 0.98rem; font-family: var(--font-ui);
+        }
+        .modelling-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1.1rem;
+        }
+        .model-card {
+            padding: 1.3rem; background: rgba(4, 5, 7, 0.86);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+        }
+        .model-card h4 { margin: 0.4rem 0 0.55rem; color: #fff; font-family: var(--font-ui); font-size: 1.02rem; }
+        .model-card p { color: #aab1b8; font-size: 0.9rem; line-height: 1.6; font-family: var(--font-ui); }
+
+        .scenario-controls-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+        .scenario-control {
+            padding: 0.9rem 1rem; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+        }
+        .scenario-control label {
+            display: flex; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.45rem;
+            color: #dce4e8; font-family: var(--font-ui); font-size: 0.82rem;
+        }
+        .scenario-control output { color: var(--sun-yellow); font-family: var(--font-mono); font-weight: 600; }
+        .scenario-control input[type="range"] { width: 100%; accent-color: var(--bio-green); cursor: pointer; }
+
+        .scenario-results {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 0.85rem; margin-top: 1.4rem;
+        }
+        .scenario-metric {
+            padding: 0.95rem; background: #050608; border: 1px solid rgba(68,238,119,0.2);
+            border-radius: 10px; text-align: center;
+        }
+        .scenario-value {
+            display: block; margin-bottom: 0.25rem; color: var(--bio-green);
+            font-family: var(--font-mono); font-size: 1.28rem; font-weight: 600;
+        }
+        .scenario-label { color: #86939d; font-family: var(--font-ui); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .scenario-diagnosis {
+            margin-top: 1.2rem; padding: 1.1rem; background: rgba(255,204,0,0.05);
+            border-left: 3px solid var(--sun-yellow); color: #d0d7de; font-size: 0.92rem; font-family: var(--font-ui);
+        }
+
+        /* --- GALERIE D'IMAGES ORIGINALES --- */
+        .media-gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem; margin: 2rem 0;
+        }
+        .media-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; overflow: hidden; text-align: center; padding: 0.7rem;
+        }
+        .media-card img { width: 100%; height: auto; border-radius: 6px; display: block; }
+        .media-card figcaption { font-family: var(--font-ui); font-size: 0.8rem; color: #94a3b8; margin-top: 0.55rem; }
+
+        /* --- TABLES --- */
+        .glossary-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: var(--font-ui); font-size: 0.88rem; }
+        .glossary-table th, .glossary-table td { padding: 0.85rem 0.95rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .glossary-table th { color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase; font-size: 0.76rem; letter-spacing: 1px; }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono);
+            font-size: 0.78rem; font-weight: bold; background: rgba(255,255,255,0.08); color: #fff;
+        }
+
+        /* --- TABLETTE DE SYNTHÈSE TERRE --- */
+        .philosophical-tablet {
+            margin: 4rem 0; padding: 2.5rem;
+            background: linear-gradient(145deg, rgba(18, 22, 20, 0.88) 0%, rgba(5, 6, 9, 0.96) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.22); border-top: 4px solid var(--sun-yellow);
+            border-radius: 14px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.7);
+        }
+        .philosophical-tablet h3 {
+            color: var(--sun-yellow); font-family: var(--font-ui); font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.3rem;
+        }
+        .philosophical-tablet p { text-align: justify; color: #d0d7de; margin-bottom: 1.1rem; }
+
+        .article-navigation { display: flex; gap: 2rem; margin: 4rem 0; justify-content: space-between; }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.4rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-4px); }
+        .nav-direction { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.12rem; font-weight: 800; color: var(--sun-orange); margin-top: 0.5rem; font-family: var(--font-ui); }
+
+        footer { font-family: var(--font-ui); text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.85rem; }
+        /* --- MODULE ANIMÉ HERO : PASSERELLE STARSHIP & CŒUR VIBRANT --- */
+        .starship-hero-stage {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            margin-bottom: 1.8rem;
+            border-radius: 16px;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 42%, #131126 0%, #06070d 65%, #030407 100%);
+            border: 1px solid rgba(247, 147, 26, 0.38);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.78), 0 0 35px rgba(247, 147, 26, 0.12);
+            user-select: none;
+        }
+        .starship-hero-stage:fullscreen {
+            height: 100vh;
+            border-radius: 0;
+            border: none;
+        }
+        #starshipHeroCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .sh-hud-top, .sh-hud-bottom {
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+            z-index: 4;
+            font-family: var(--font-ui);
+        }
+        .sh-hud-top { top: 12px; }
+        .sh-hud-bottom { bottom: 12px; flex-wrap: wrap; }
+
+        .sh-pill {
+            pointer-events: auto;
+            background: rgba(7, 9, 16, 0.76);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 0.72rem;
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+        }
+        .sh-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--bio-green);
+            box-shadow: 0 0 8px var(--bio-green);
+        }
+        .sh-btn {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 204, 0, 0.32);
+            color: var(--sun-yellow);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .sh-btn:hover {
+            background: rgba(255, 204, 0, 0.18);
+            transform: translateY(-1px);
+        }
+        .sh-slider {
+            width: 90px;
+            accent-color: var(--orange-l1);
+            cursor: pointer;
+        }
+        @media (max-width: 860px) {
+            .starship-hero-stage { height: 390px; }
+        }
+        @media (max-width: 860px) {
+            .nav-center { display: none; }
+            .article-navigation { flex-direction: column; }
+            .pyramid-tier { width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav>
+    <a href="index.html" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <!-- EN-TÊTE -->
+    <header class="article-header">
+        <h1>
+            <span lang="fr">Project Hail Mary : L'Étalon Solaire de la Terre à Mars</span>
+            <span lang="en">Project Hail Mary: The Solar Standard from Earth to Mars</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">Cogénération Thermique par Immersion ASIC, Aquaponie Centrifuge & Support de Vie en Boucle Fermée</span>
+            <span lang="en">Immersion ASIC Thermal Cogeneration, Centrifugal Aquaponics & Closed-Loop Life Support</span>
+        </h2>
+        <div class="subtitle">
+            <span lang="fr">De la capture photonique à la création d'ordre biologique : quand la loi de Joule et l'ingénierie des systèmes fermés transforment la masse informatique en infrastructure métabolique.</span>
+            <span lang="en">From photonic capture to biological order: how Joule heating and closed-loop systems engineering turn compute hardware into active metabolic infrastructure.</span>
+        </div>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.85rem; font-family: var(--font-mono);">
+            <span lang="fr">PUBLIÉ LE 2026-11-06 // PASCAL RANOROARIJAONA (RANAORA) // THERMODYNAMIQUE APPLIQUÉE</span>
+            <span lang="en">PUBLISHED 2026-11-06 // PASCAL RANOROARIJAONA (RANAORA) // APPLIED THERMODYNAMICS</span>
+        </p>
+    </header>
+    
+    <!-- EMBLÈME VECTORIEL DU CYCLE PHOTON -> SILICIUM -> VIVANT -->
+    <div class="intro-hero">
+        <div class="hero-emblem-box">
+            <svg viewBox="0 0 740 240" width="100%" height="auto" role="img" aria-label="Boucle thermodynamique Photon - Immersion ASIC - Serre Aquaponique">
+                <defs>
+                    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffcc00"/>
+                        <stop offset="50%" stop-color="#f7931a"/>
+                        <stop offset="100%" stop-color="#44ee77"/>
+                    </linearGradient>
+                </defs>
+                <rect width="740" height="240" fill="transparent"/>
+                <!-- Panneau Solaire -->
+                <rect x="40" y="75" width="145" height="90" rx="10" fill="rgba(255,204,0,0.08)" stroke="#ffcc00" stroke-width="1.8"/>
+                <text x="112" y="112" text-anchor="middle" fill="#ffcc00" font-family="Fira Code, monospace" font-size="13" font-weight="bold">☀ PHOTONS</text>
+                <text x="112" y="134" text-anchor="middle" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="11">500–1361 W/m²</text>
+                <text x="112" y="152" text-anchor="middle" fill="#94a3b8" font-family="Fira Code, monospace" font-size="10">Courant HVDC</text>
+
+                <!-- Flèche 1 -->
+                <line x1="190" y1="120" x2="275" y2="120" stroke="url(#flowGrad)" stroke-width="2.5" stroke-dasharray="6 4"/>
+                <polygon points="275,115 287,120 275,125" fill="#f7931a"/>
+
+                <!-- Cuve Immersion ASIC -->
+                <rect x="292" y="65" width="165" height="110" rx="10" fill="rgba(247,147,26,0.1)" stroke="#f7931a" stroke-width="1.8"/>
+                <text x="374" y="102" text-anchor="middle" fill="#f7931a" font-family="Fira Code, monospace" font-size="13" font-weight="bold">₿ IMMERSION ASIC</text>
+                <text x="374" y="124" text-anchor="middle" fill="#e2e8f0" font-family="Inter, sans-serif" font-size="11">Effet Joule : η = 100%</text>
+                <text x="374" y="144" text-anchor="middle" fill="#00ccff" font-family="Fira Code, monospace" font-size="10">Fluide 45–65 °C</text>
+                <text x="374" y="162" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="10">+ Bouclier H₂ passif</text>
+
+                <!-- Flèche 2 -->
+                <line x1="462" y1="120" x2="545" y2="120" stroke="url(#flowGrad)" stroke-width="2.5" stroke-dasharray="6 4"/>
+                <polygon points="545,115 557,120 545,125" fill="#44ee77"/>
+
+                <!-- Bioréacteur & Serre -->
+                <rect x="562" y="75" width="145" height="90" rx="10" fill="rgba(68,238,119,0.09)" stroke="#44ee77" stroke-width="1.8"/>
+                <text x="634" y="110" text-anchor="middle" fill="#44ee77" font-family="Fira Code, monospace" font-size="13" font-weight="bold">🌿 BIOMASSE</text>
+                <text x="634" y="132" text-anchor="middle" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="11">Eau 26°C · Air 22°C</text>
+                <text x="634" y="150" text-anchor="middle" fill="#94a3b8" font-family="Fira Code, monospace" font-size="10">CO₂ → O₂ + Kcal</text>
+            </svg>
+        </div>
+        <!-- SCÈNE INTERACTIVE : PASSERELLE STARSHIP, ANNEAU CENTRIFUGE & CŒUR VIBRANT -->
+        <div class="starship-hero-stage" id="starship-hero-box">
+            <canvas id="starshipHeroCanvas" aria-label="Animation interactive de la passerelle Starship Arche Thermodynamique"></canvas>
+
+            <!-- HUD Supérieur -->
+            <div class="sh-hud-top">
+                <div class="sh-pill">
+                    <span class="sh-dot"></span>
+                    <span style="font-family:var(--font-mono); font-weight:600; color:var(--sun-yellow);">STARSHIP · ARCHE 0.38g</span>
+                    <span style="color:#94a3b8;" lang="fr">| Cliquez sur le cœur pour pulser</span>
+                    <span style="color:#94a3b8;" lang="en">| Click core to pulse</span>
+                </div>
+                <div style="display:flex; gap:6px;">
+                    <button type="button" class="sh-btn" id="sh-btn-pulse">✦ Pulse</button>
+                    <button type="button" class="sh-btn" id="sh-btn-fs" title="Plein écran">⛶</button>
+                </div>
+            </div>
+
+            <!-- HUD Inférieur : Contrôles couplés -->
+            <div class="sh-hud-bottom">
+                <div class="sh-pill">
+                    <span lang="fr">Anneau :</span><span lang="en">Ring:</span>
+                    <input type="range" id="sh-spin" class="sh-slider" min="0" max="100" value="42">
+                    <span lang="fr">Cœur ASIC :</span><span lang="en">ASIC Core:</span>
+                    <input type="range" id="sh-heat" class="sh-slider" min="10" max="100" value="68">
+                </div>
+                <div class="sh-pill" style="font-family:var(--font-mono); font-size:0.69rem; color:#cbd5e1;">
+                    <span style="color:#00e5ff;">💧 26°C</span> ·
+                    <span style="color:#f7931a;">🔥 <span id="sh-kw-lbl">25</span> kWth</span> ·
+                    <span style="color:#44ee77;">🌿 O₂ Actif</span>
+                </div>
+            </div>
+        </div>
+        <div class="quote-block">
+            <span lang="fr">« De la capture photonique à la création d'ordre biologique : chaque watt électrique qui traverse les portes logiques d'un processeur immergé se dissipe intégralement en chaleur utile, valorisant chaque photon solaire deux fois — une fois en calcul, une fois en support de vie. »</span>
+            <span lang="en">"From photonic capture to biological order: every watt of electricity passing through an immersed processor's logic gates dissipates 100% into useful heat, putting every solar photon to work twice—once as computation, once as life support."</span>
+        </div>
+    </div>
+
+    <!-- PYRAMIDE D'INGÉNIERIE SYSTÈME -->
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.05rem; letter-spacing:2px; margin-bottom:1.5rem;">
+            <span lang="fr">🏛️ Architecture Thermodynamique & Biologique (Échelons L0 ──► L4)</span>
+            <span lang="en">🏛️ Thermodynamic & Biological Architecture (Tiers L0 ──► L4)</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#det-l4" class="pyramid-tier tier-l4">
+                <span class="tier-tag" style="color:var(--bio-green);">ÉCHELON 4</span>
+                <span class="tier-title"><span lang="fr">Application Terrestre Immédiate : Dessalement, Serres & Micro-Réseaux</span><span lang="en">Immediate Terrestrial Deployment: Desalination, Greenhouses & Microgrids</span></span>
+                <span class="tier-tag" style="color:var(--bio-green);">▲ L4</span>
+            </a>
+            <a href="#det-l3" class="pyramid-tier tier-l3">
+                <span class="tier-tag" style="color:var(--purple-l4);">ÉCHELON 3</span>
+                <span class="tier-title"><span lang="fr">Latence Relativiste Terre–Mars (3 à 22 min) & Chaînes Locales</span><span lang="en">Earth–Mars Relativistic Latency (3–22 min) & Local Spacechains</span></span>
+                <span class="tier-tag" style="color:var(--purple-l4);">▲ L3</span>
+            </a>
+            <a href="#det-l2" class="pyramid-tier tier-l2">
+                <span class="tier-tag" style="color:var(--cyan-l2);">ÉCHELON 2</span>
+                <span class="tier-title"><span lang="fr">Transit Interplanétaire : Soucoupe Centrifuge (0,38 g) & Kit Biologique</span><span lang="en">Interplanetary Transit: Centrifugal Saucer (0.38 g) & Biological Kit</span></span>
+                <span class="tier-tag" style="color:var(--cyan-l2);">▲ L2</span>
+            </a>
+            <a href="#det-l1" class="pyramid-tier tier-l1">
+                <span class="tier-tag" style="color:var(--orange-l1);">ÉCHELON 1</span>
+                <span class="tier-title"><span lang="fr">Boucle Souterraine Martienne : Silicium, Pergélisol & Photosynthèse</span><span lang="en">Subterranean Martian Loop: Silicon, Permafrost & Photosynthesis</span></span>
+                <span class="tier-tag" style="color:var(--orange-l1);">▲ L1</span>
+            </a>
+            <a href="#det-l0" class="pyramid-tier tier-l0">
+                <span class="tier-tag" style="color:var(--teal-l0);">ÉCHELON 0</span>
+                <span class="tier-title"><span lang="fr">Premier Principe & Loi de Joule : L'Illusion du Déchet Thermique</span><span lang="en">First Law & Joule Heating: The Myth of Thermal Waste</span></span>
+                <span class="tier-tag" style="color:var(--teal-l0);">▲ L0</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ÉCHELON 0 -->
+    <details id="det-l0" class="layer-0" open>
+        <summary>
+            <span lang="fr">Échelon 0 (L0) : L'Illusion du Déchet Thermique — La Loi de Joule au Service du Vivant</span>
+            <span lang="en">Tier 0 (L0): The Myth of Thermal Waste — Joule Heating Serving Biology</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">L'établissement d'avant-postes martiens se heurte à des contraintes physiques sévères : une atmosphère résiduelle composée à $95\,\%$ de dioxyde de carbone ($\text{CO}_2$), une pression inférieure à $1\,\%$ de celle de la Terre et une température moyenne avoisinant $-63\,^\circ\text{C}$. Pourtant, à $228\text{ millions}$ de kilomètres du Soleil, l'irradiance au zénith atteint encore près de $500\text{ W/m}^2$.</p>
+            <p lang="en">Establishing Martian outposts confronts stark physical constraints: a thin atmosphere of $95\%$ carbon dioxide ($\text{CO}_2$), surface pressure below $1\%$ of Earth's, and mean temperatures around $-63\,^\circ\text{C}$. Yet even $228\text{ million}$ kilometers from the Sun, zenith solar irradiance reaches nearly $500\text{ W/m}^2$.</p>
+
+            <p lang="fr">En vertu du premier principe de la thermodynamique, un processeur ASIC ou HPC affiche une efficacité de conversion électro-thermique de $100\,\%$ : chaque watt électrique qui traverse ses portes logiques se dissipe intégralement sous forme de chaleur ($Q_{\text{th}} = P_{\text{élec}}$). À dépense énergétique strictement identique à celle d'une résistance chauffante inerte, une cuve de calcul refroidie par immersion liquide maintient un habitat souterrain à $+22\,^\circ\text{C}$ face à une roche environnante à $-60\,^\circ\text{C}$, tout en exécutant du calcul cryptographique et scientifique.</p>
+            <p lang="en">By the First Law of Thermodynamics, an ASIC or HPC processor acts as a $100\%$ efficient electric heater: every electrical watt traversing its logic gates dissipates completely as heat ($Q_{\text{th}} = P_{\text{elec}}$). Using the exact same power budget as a dumb resistive heater, liquid-immersion compute tanks keep subterranean habitats at $+22\,^\circ\text{C}$ against $-60\,^\circ\text{C}$ bedrock while simultaneously executing cryptographic and scientific workloads.</p>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 1 -->
+    <details id="det-l1" class="layer-1" open>
+        <summary>
+            <span lang="fr">Échelon 1 (L1) : La Boucle Cybernétique Souterraine — Silicium, Eau et Chlorophylle</span>
+            <span lang="en">Tier 1 (L1): The Subterranean Cybernetic Loop — Silicon, Water, and Chlorophyll</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Pour protéger l'équipage et les cultures des rayons cosmiques galactiques (GCR) et des éruptions solaires (SPE), l'habitat martien est enfoui sous plusieurs mètres de régolithe ou au sein de tubes de lave :</p>
+            <p lang="en">To shield crew and crops from galactic cosmic rays (GCR) and solar particle events (SPE), the Martian outpost is buried beneath meters of regolith or inside lava tubes:</p>
+
+            <ul>
+                <li><span lang="fr"><strong>Moisson photonique (Surface) :</strong> Des champs photovoltaïques captent le flux solaire en surface sans exposer d'opérateurs humains, acheminant un courant continu haute tension sous terre.</span><span lang="en"><strong>Photonic harvesting (Surface):</strong> Surface photovoltaic arrays harvest sunlight without exposing human operators, feeding high-voltage DC power underground.</span></li>
+                <li><span lang="fr"><strong>Cœur métabolique (Cuves d'immersion ASIC) :</strong> Les processeurs baignent dans un fluide caloporteur diélectrique qui stabilise l'extraction thermique entre $55\,^\circ\text{C}$ et $65\,^\circ\text{C}$.</span><span lang="en"><strong>Metabolic core (Immersion tanks):</strong> Processors operate in dielectric fluid capturing heat cleanly at $55\text{–}65\,^\circ\text{C}$.</span></li>
+                <li><span lang="fr"><strong>Extraction hydrique (Pergélisol) :</strong> Une fraction du flux calorifique fait fondre la glace d'eau souterraine et alimente la distillation thermique.</span><span lang="en"><strong>Water extraction (Permafrost):</strong> Part of the thermal loop melts subsurface water ice and drives thermal distillation.</span></li>
+                <li><span lang="fr"><strong>Oasis photosynthétique (Serres pressurisées) :</strong> L'eau tempérée irrigue les racines hydroponiques tandis que le $\text{CO}_2$ martien filtré et pressurisé, couplé aux LED horticoles, accélère la fixation du carbone, la production alimentaire et la génération d'oxygène ($\text{O}_2$).</span><span lang="en"><strong>Photosynthetic oasis (Pressurized greenhouses):</strong> Warmed water feeds hydroponic root zones while filtered, compressed Martian $\text{CO}_2$ and horticultural LEDs drive carbon fixation, food growth, and $\text{O}_2$ release.</span></li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 2 -->
+    <details id="det-l2" class="layer-2">
+        <summary>
+            <span lang="fr">Échelon 2 (L2) : Éliminer la « Masse Morte » du Transit Terre–Mars (Starship Centrifuge)</span>
+            <span lang="en">Tier 2 (L2): Eliminating Interplanetary "Dead Mass" (Centrifugal Starship)</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Transporter des tonnes de serveurs éteints pendant les $6$ à $9\text{ mois}$ d'une orbite de transfert de Hohmann constitue une pénalité de masse morte. En activant les racks d'ASIC et de calcul IA/HPC dès le transit au sein d'un <strong>Starship</strong> ($\approx 1\,000\text{ m}^3$ pressurisés, $100\text{ à }150\text{ t}$ de charge utile) équipé d'un anneau centrifuge interne générant $0,38\,g$, la cargaison informatique devient le système de support de vie actif du vaisseau :</p>
+            <p lang="en">Hauling powered-down servers for $6\text{ to }9\text{ months}$ along a Hohmann transfer wastes payload as dead mass. Powering up ASIC and AI/HPC racks during cruise inside a <strong>Starship</strong> ($\approx 1,000\text{ m}^3$ pressurized volume, $100\text{–}150\text{ t}$ payload) fitted with a $0.38\,g$ centrifugal ring turns compute cargo into active life support:</p>
+
+            <ul>
+                <li><span lang="fr"><strong>Hydraulique centrifuge & Thermorégulation :</strong> La gravité artificielle de $0,38\,g$ rétablit la poussée d'Archimède (évitant l'asphyxie racinaire par bulles stagnantes) et le repère vestibulaire des poissons. Les échangeurs en titane maintiennent l'eau aquaponique à $26\,^\circ\text{C}$ et l'air à $22\,^\circ\text{C}$ sans brûler de méthane.</span><span lang="en"><strong>Centrifugal hydraulics & Thermoregulation:</strong> Artificial $0.38\,g$ gravity restores buoyancy-driven gas exchange around roots and fish vestibular orientation, while titanium heat exchangers hold aquaponic tanks at $26\,^\circ\text{C}$ and cabin air at $22\,^\circ\text{C}$ with zero methane burn.</span></li>
+                <li><span lang="fr"><strong>Bouclier anti-radiations passif :</strong> Placés sur la paroi périphérique, l'eau aquaponique, le fluide diélectrique riche en hydrogène et la biomasse atténuent les protons solaires (SPE) et les rayons cosmiques (GCR) sans rayonnement de freinage secondaire (*Bremsstrahlung*).</span><span lang="en"><strong>Passive radiation shielding:</strong> Positioned along the outer hull perimeter, hydrogen-rich aquaponic water, dielectric fluid, and plant biomass attenuate SPE protons and GCRs without secondary Bremsstrahlung.</span></li>
+            </ul>
+
+            <h4 style="color: var(--cyan-l2);"><span lang="fr">Sélection Biologique Haute Efficacité</span><span lang="en">High-Efficiency Biological Selection</span></h4>
+            <div style="overflow-x: auto;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th><span lang="fr">Sous-Système</span><span lang="en">Subsystem</span></th>
+                            <th><span lang="fr">Espèces Sélectionnées</span><span lang="en">Selected Species</span></th>
+                            <th><span lang="fr">Fonction Métabolique & Rendement</span><span lang="en">Metabolic Role & Yield</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge" style="color:var(--water-blue);">Aquaponie ($27\,^\circ\text{C}$)</span></td>
+                            <td><em>Oreochromis niloticus</em> (Tilapia) & Crevettes</td>
+                            <td><span lang="fr">Conversion alimentaire $\approx 1,2:1$ ; valorisation des résidus benthiques.</span><span lang="en">Feed conversion $\approx 1.2:1$; benthic waste recycling.</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" style="color:var(--bio-green);">Protéines Rapides</span></td>
+                            <td><em>Wolffia arrhiza</em> (Lentille d'eau) & <em>Azolla</em></td>
+                            <td><span lang="fr">Doublement de biomasse en $36\text{ h}$, jusqu'à $40\,\%$ de protéines complètes.</span><span lang="en">Biomass doubling in $36\text{ h}$, up to $40\%$ complete protein.</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" style="color:var(--sun-yellow);">Bouclage Détritique</span></td>
+                            <td><em>Hermetia illucens</em> (Mouche soldat noire)</td>
+                            <td><span lang="fr">Bioconversion rapide des tiges, racines mortes et biodéchets en lipides/protéines.</span><span lang="en">Rapid bioconversion of fibrous plant waste into fish-feed lipids/proteins.</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" style="color:var(--teal-l0);">Phytotron Alcalin</span></td>
+                            <td>Épinards, Kale, Pak Choï, Courge <em>styriaca</em></td>
+                            <td><span lang="fr">Cycle $25\text{–}35\text{ j}$, indice de récolte $>85\,\%$, magnésium, folates, zinc et lipides sans coque.</span><span lang="en">$25\text{–}35\text{ d}$ cycle, harvest index $>85\%$, antioxidants, hull-less lipid-dense seeds.</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" style="color:var(--cyan-l2);">Tampon $\text{O}_2/\text{CO}_2$</span></td>
+                            <td>Photobioréacteurs <em>Spirulina</em> & <em>Chlorella</em></td>
+                            <td><span lang="fr">Productivité oxygénique $8\text{ à }10\times$ supérieure aux cultures classiques à volume égal.</span><span lang="en">$8\text{–}10\times$ oxygenic output per unit volume vs. conventional crops.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p lang="fr"><strong>Avantage décisif à Sol 0 :</strong> À l'atterrissage sur Mars, l'équipage dispose immédiatement d'un écosystème nitrifiant mature, de poissons adultes et de racks d'immersion prêts à être raccordés au champ photovoltaïque de surface.</p>
+            <p lang="en"><strong>Sol 0 Readiness:</strong> Upon Martian touchdown, the crew deploys an already-cycled nitrifying ecosystem, adult fish stock, and pre-plumbed immersion racks ready for surface solar hookup.</p>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 3 -->
+    <details id="det-l3" class="layer-3">
+        <summary>
+            <span lang="fr">Échelon 3 (L3) : Latence Relativiste ($c$) & Architecture Spacechain Interplanétaire</span>
+            <span lang="en">Tier 3 (L3): Relativistic Light-Time ($c$) & Interplanetary Spacechain Architecture</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">La vitesse de la lumière ($c$) impose un délai de propagation aller simple compris entre $3\text{ et }22\text{ minutes}$ entre la Terre et Mars selon leur position orbitale. Avec un intervalle cible de bloc de $10\text{ minutes}$ ($\tau_0 = 600\text{ s}$), un mineur martien opérant directement sur la chaîne terrestre verrait ses blocs systématiquement rendus orphelins par la latence relativiste.</p>
+            <p lang="en">The speed of light ($c$) imposes a one-way communication delay of $3\text{ to }22\text{ minutes}$ between Earth and Mars. Against a $10\text{-minute}$ block target ($\tau_0 = 600\text{ s}$), Martian miners competing directly on Earth's mainchain would suffer systematic block orphaning.</p>
+
+            <div class="math-block" style="color: var(--purple-l4);">
+                $$ \Delta t_{\text{Terre–Mars}} \in [182\text{ s},\, 1\,340\text{ s}] > \tau_{\text{propagation critique}} \quad \Longrightarrow \quad \text{Ancrage Asynchrone (Spacechain / Sidechain)} $$
+            </div>
+
+            <p lang="fr">La contrainte relativiste conduit naturellement à une <strong>chaîne locale martienne</strong> (Spacechain ou chaîne latérale à engagements périodiques asynchrones sur le réseau terrestre, notamment à l'approche de jalons historiques tels que le bloc $\#1\,000\,000$). Sur Mars, chaque unité émise reflète directement l'énergie solaire convertie en chauffage souterrain, en glace fondue et en biomasse photosynthétique.</p>
+            <p lang="en">Relativistic physics naturally mandates a <strong>local Martian Spacechain</strong> periodically checkpointed asynchronously onto Earth's mainchain (around major milestones such as Block $\#1,000,000$). Locally, Proof-of-Work directly mirrors solar energy converted into habitat heating, melted ice, and photosynthetic biomass.</p>
+        </div>
+    </details>
+
+    <!-- ÉCHELON 4 -->
+    <details id="det-l4" class="layer-4">
+        <summary>
+            <span lang="fr">Échelon 4 (L4) : Le Prototype Terrestre — Régénérer la Biosphère dès Aujourd'hui</span>
+            <span lang="en">Tier 4 (L4): The Terrestrial Prototype — Regenerating Earth's Biosphere Today</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Avant même d'expédier des flottes interplanétaires vers un désert à $-63\,^\circ\text{C}$, la Terre offre une magnétosphère protectrice, une gravité de $9,81\text{ m/s}^2$, des océans d'eau liquide et d'immenses gisements solaires ou hydroélectriques souvent écrêtés faute de lignes de transport.</p>
+            <p lang="en">Long before dispatching interplanetary fleets to a $-63\,^\circ\text{C}$ desert, Earth already provides a functional magnetosphere, $9.81\text{ m/s}^2$ gravity, liquid oceans, and vast stranded solar or hydro surpluses curtailed for lack of grid transmission.</p>
+
+            <p lang="fr">Coupler le calcul refroidi par immersion au dessalement thermique, au chauffage de serres agricoles quatre-saisons, à l'aquaponie circulaire et à l'électrification de micro-réseaux ruraux permet de rentabiliser immédiatement de nouvelles capacités renouvelables tout en produisant localement de l'eau douce et des aliments à haute densité nutritionnelle.</p>
+            <p lang="en">Pairing immersion-cooled compute with thermal desalination, four-season greenhouse heating, circular aquaponics, and rural solar microgrids monetizes stranded renewable energy immediately while generating fresh water and nutrient-dense food locally.</p>
+        </div>
+    </details>
+
+    <!-- =====================================================================
+         SIMULATEUR INTERACTIF : BILAN CYBERNÉTIQUE & MÉTABOLIQUE EN CROISIÈRE
+         ===================================================================== -->
+    <section class="modelling-section" id="cybernetic-simulator">
+        <h3>
+            <span lang="fr">🧮 Simulateur de Bilan Thermique & Métabolique (Transit & Base)</span>
+            <span lang="en">🧮 Thermal & Metabolic Balance Simulator (Cruise & Outpost)</span>
+        </h3>
+        <p class="modelling-lead">
+            <span lang="fr">Modélisez les équations de référence du système couplé : ajustez la puissance des processeurs immergés ($P_{\text{ASIC}}$), la taille de l'équipage ($N_{\text{éq}}$) et la répartition surfacique Hydroponie / Aquaponie ($R_{\text{hydro}}$).</span>
+            <span lang="en">Model the coupled reference equations: adjust immersed processor power ($P_{\text{ASIC}}$), crew size ($N_{\text{crew}}$), and the Hydroponic / Aquaponic surface split ($R_{\text{hydro}}$).</span>
+        </p>
+
+        <div class="math-block" style="color: var(--bio-green);">
+            $$ Q_{\text{th}} = 1,0 \cdot P_{\text{ASIC}}, \qquad \text{O}_{2,\text{req}} = 0,84\,N_{\text{éq}}\;\text{kg/j}, \qquad \text{O}_{2,\text{prod}} = (0,42\,P_{\text{ASIC}})(0,5 + 0,5\,R_{\text{hydro}})\;\text{kg/j} $$
+        </div>
+
+        <div class="scenario-controls-stack">
+            <div class="scenario-control">
+                <label for="sim-power">
+                    <span lang="fr">Puissance Immersion ($P_{\text{ASIC}}$)</span>
+                    <span lang="en">Immersion Power ($P_{\text{ASIC}}$)</span>
+                    <output id="sim-power-out">25 kW</output>
+                </label>
+                <input id="sim-power" type="range" min="5" max="100" step="1" value="25">
+            </div>
+
+            <div class="scenario-control">
+                <label for="sim-crew">
+                    <span lang="fr">Équipage Pionnier ($N_{\text{éq}}$)</span>
+                    <span lang="en">Pioneer Crew ($N_{\text{crew}}$)</span>
+                    <output id="sim-crew-out">8 pers.</output>
+                </label>
+                <input id="sim-crew" type="range" min="2" max="20" step="1" value="8">
+            </div>
+
+            <div class="scenario-control">
+                <label for="sim-hydro">
+                    <span lang="fr">Part Hydroponie / Phytotron ($R_{\text{hydro}}$)</span>
+                    <span lang="en">Hydroponic / Phytotron Ratio ($R_{\text{hydro}}$)</span>
+                    <output id="sim-hydro-out">65 %</output>
+                </label>
+                <input id="sim-hydro" type="range" min="20" max="90" step="5" value="65">
+            </div>
+        </div>
+
+        <div class="scenario-results" aria-live="polite">
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="res-qth" style="color:var(--orange-l1);">25.0 kWth</strong>
+                <span class="scenario-label"><span lang="fr">Chaleur Utile ($Q_{\text{th}}$)</span><span lang="en">Useful Heat ($Q_{\text{th}}$)</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="res-o2" style="color:var(--cyan-l2);">8.66 / 6.72 kg</strong>
+                <span class="scenario-label"><span lang="fr">$\text{O}_2$ Produit / Requis (j)</span><span lang="en">$\text{O}_2$ Prod. / Req. (d)</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="res-kcal" style="color:var(--bio-green);">21 250 kcal</strong>
+                <span class="scenario-label"><span lang="fr">Calories Produites / Jour</span><span lang="en">Calories Produced / Day</span></span>
+            </div>
+            <div class="scenario-metric">
+                <strong class="scenario-value" id="res-prot" style="color:var(--sun-yellow);">950 g/j</strong>
+                <span class="scenario-label"><span lang="fr">Protéines (Wolffia/Tilapia)</span><span lang="en">Protein Output / Day</span></span>
+            </div>
+        </div>
+
+        <div class="scenario-diagnosis" id="sim-diagnosis"></div>
+    </section>
+
+    <!-- GALERIE VISUELLE ISSUE DU MANUSCRIT ORIGINAL -->
+    <section class="modelling-section" style="border-color: rgba(247, 147, 26, 0.25);">
+        <h3 style="color: var(--sun-yellow);">
+            <span lang="fr">🖼️ Schémas Conceptuels & Illustrations de l'Étude</span>
+            <span lang="en">🖼️ Study Concept Diagrams & Illustrations</span>
+        </h3>
+        <div class="media-gallery">
+            <figure class="media-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQG7aA-Ou0RZzA/article-inline_image-shrink_1500_2232/B56aG4CgMcLAAQ-/0/1794089026738?e=1796256000&v=beta&t=pc7qhRh77tB5iRAPaSqTs00MkwJGHHbl_i1VSXzGAZE" alt="Transition du modèle extractif vers la cogénération régénérative souterraine">
+                <figcaption><span lang="fr">Du modèle extractif fossile au calcul régénératif souterrain.</span><span lang="en">From fossil extraction to subterranean regenerative compute.</span></figcaption>
+            </figure>
+            <figure class="media-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQGTKXUY8SCGSw/article-inline_image-shrink_1000_1488/B56aG4fjHCHUAI-/0/1794096640683?e=1796256000&v=beta&t=EjbqgY09raMkbOZ3PcqreF1rdUkjsfDxJdphBe2DYiQ" alt="Manifeste de chargement Starship Arche Thermodynamique">
+                <figcaption><span lang="fr">Manifeste de chargement Starship — Configuration « Arche Thermodynamique ».</span><span lang="en">Starship Payload Manifest — "Thermodynamic Ark" Configuration.</span></figcaption>
+            </figure>
+            <figure class="media-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQHNGzlTvtsa9w/article-inline_image-shrink_1500_2232/B56aG4JJgpJ4AY-/0/1794090768926?e=1796256000&v=beta&t=FgZy8pRrkzMiUx0LOWGuGaoSR4H2QJnP93kH5qQdYaA" alt="Intégration aquaponique et serre pressurisée">
+                <figcaption><span lang="fr">Intégration thermique entre cuves d'immersion et bioréacteurs.</span><span lang="en">Thermal coupling between immersion tanks and bioreactors.</span></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- SYNTHÈSE INGÉNIERIE & CIVILISATION -->
+    <div class="philosophical-tablet">
+        <h3>
+            <span lang="fr">🌍 Conclusion : La Première Planète à Régénérer est sous nos Pieds</span>
+            <span lang="en">🌍 Conclusion: The First Planet to Regenerate Is Beneath Our Feet</span>
+        </h3>
+        <p>
+            <span lang="fr">Concevoir un système fermé capable de maintenir huit astronautes en vie entre la Terre et Mars agit comme un révélateur d'ingénierie : dans un volume fini, la notion de « déchet » disparaît au profit de flux couplés. La chaleur dissipée par le silicium chauffe l'eau, l'eau nourrit les poissons et les racines, et la photosynthèse régénère l'atmosphère respirable.</span>
+            <span lang="en">Designing a closed-loop system capable of sustaining eight astronauts from Earth to Mars acts as an engineering lens: inside a finite volume, "waste" disappears in favor of coupled flows. Silicon heat warms water, water sustains fish and roots, and photosynthesis regenerates breathable air.</span>
+        </p>
+        <p>
+            <span lang="fr">Appliquée dès maintenant sur Terre — à l'échelle d'une serre domestique, d'une ferme agroforestière ou d'une station de dessalement solaire — cette même architecture cybernétique réconcilie infrastructure numérique, autonomie énergétique et résilience alimentaire.</span>
+            <span lang="en">Applied right now on Earth—whether at the scale of a home greenhouse, an agroforestry farm, or a solar desalination plant—this same cybernetic architecture reconciles digital infrastructure, energy autonomy, and food resilience.</span>
+        </p>
+    </div>
+
+    <!-- NAVIGATION DU BLOG -->
+    <div class="article-navigation">
+        <a href="matrice-inversee.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">La Matrice Inversée : Infrastructure Souterraine</span><span lang="en">The Inverted Matrix: Subterranean Infrastructure</span></div>
+        </a>
+        <a href="horloge-cosmo-btc-cadran-mu.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">L'Horloge Cosmique Bitcoin & Cycles Célestes</span><span lang="en">The Bitcoin Cosmic Clock & Celestial Cycles</span></div>
+        </a>
+    </div>
+</article>
+
+<footer>
+    <div style="font-size: 1.02rem; font-weight: 700; letter-spacing: 3px; color: var(--sun-yellow); margin-bottom: 0.5rem;">
+        ☀ THE SUN STANDARD · THERMODYNAMIC ENGINEERING
+    </div>
+    <p>Pascal Ranoroarijaona (Ranaora) · 2026</p>
+</footer>
+
+<script>
+    function setLang(lang) {
+        lang = (lang || 'fr').toLowerCase() === 'en' ? 'en' : 'fr';
+        document.body.className = 'lang-' + lang;
+        try { localStorage.setItem('sun-std-lang', lang); } catch(e) {}
+        updateSimulator();
+    }
+
+    function updateSimulator() {
+        const pAsic = parseFloat(document.getElementById('sim-power').value);
+        const crew = parseInt(document.getElementById('sim-crew').value, 10);
+        const rHydroPct = parseFloat(document.getElementById('sim-hydro').value);
+        const rHydro = rHydroPct / 100.0;
+        const isEn = document.body.classList.contains('lang-en');
+
+        document.getElementById('sim-power-out').textContent = pAsic + ' kW';
+        document.getElementById('sim-crew-out').textContent = crew + (isEn ? ' crew' : ' pers.');
+        document.getElementById('sim-hydro-out').textContent = rHydroPct + ' %';
+
+        const qTh = pAsic * 1.0;
+        const o2Req = crew * 0.84;
+        const o2Prod = (pAsic * 0.42) * (0.5 + 0.5 * rHydro);
+        const kcalReq = crew * 2500;
+        const kcalProd = pAsic * 850;
+        const protProd = pAsic * 38;
+
+        const o2Ratio = Math.round((o2Prod / o2Req) * 100);
+        const kcalRatio = Math.round((kcalProd / kcalReq) * 100);
+
+        document.getElementById('res-qth').textContent = qTh.toFixed(1) + ' kWth';
+        document.getElementById('res-o2').textContent = o2Prod.toFixed(2) + ' / ' + o2Req.toFixed(2) + ' kg';
+        document.getElementById('res-kcal').textContent = kcalProd.toLocaleString('fr-FR') + ' kcal';
+        document.getElementById('res-prot').textContent = Math.round(protProd) + ' g/j';
+
+        const diag = document.getElementById('sim-diagnosis');
+        if (o2Ratio >= 100 && kcalRatio >= 100) {
+            diag.innerHTML = isEn
+                ? `<strong>AUTONOMOUS CLOSED LOOP:</strong> Oxygen coverage at <strong>${o2Ratio}%</strong> and caloric coverage at <strong>${kcalRatio}%</strong> (${kcalReq.toLocaleString()} kcal required). Surplus heat can be routed to permafrost distillation.`
+                : `<strong>BOUCLE FERMÉE AUTONOME :</strong> Couverture en oxygène à <strong>${o2Ratio} %</strong> et couverture calorique à <strong>${kcalRatio} %</strong> (besoin : ${kcalReq.toLocaleString('fr-FR')} kcal/j). L'excédent thermique peut alimenter la distillation d'eau.`;
+        } else {
+            diag.innerHTML = isEn
+                ? `<strong>PARTIAL COVERAGE:</strong> Oxygen at <strong>${o2Ratio}%</strong> and calories at <strong>${kcalRatio}%</strong> of crew needs (${kcalReq.toLocaleString()} kcal/d). Increase immersed compute power or spirulina photobioreactor ratio.`
+                : `<strong>COUVERTURE PARTIELLE :</strong> Oxygène à <strong>${o2Ratio} %</strong> et calories à <strong>${kcalRatio} %</strong> des besoins de l'équipage (${kcalReq.toLocaleString('fr-FR')} kcal/j). Augmentez la puissance immergée ou la part des photobioréacteurs.`;
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lg');
+        let saved = 'fr';
+        try { saved = localStorage.getItem('sun-std-lang') || 'fr'; } catch(e) {}
+        setLang(urlLang ? urlLang : saved);
+
+        ['sim-power', 'sim-crew', 'sim-hydro'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateSimulator);
+        });
+
+        document.querySelectorAll('.pyramid-tier').forEach(link => {
+            link.addEventListener('click', function() {
+                const target = document.getElementById(this.getAttribute('href').substring(1));
+                if (target && !target.hasAttribute('open')) target.setAttribute('open', '');
+            });
+        });
+    });
+</script>
+<script>
+(function() {
+    const canvas = document.getElementById('starshipHeroCanvas');
+    const stageBox = document.getElementById('starship-hero-box');
+    if (!canvas || !stageBox) return;
+    const ctx = canvas.getContext('2d');
+
+    let W = 0, H = 0, dpr = 1;
+    let ringAngle = 0;
+    let spinSpeed = 0.42;
+    let coreHeat = 0.68;
+    const shockwaves = [];
+
+    // Étoiles fixes en arrière-plan de la baie vitrée
+    const stars = Array.from({ length: 130 }, () => ({
+        x: Math.random(),
+        y: Math.random() * 0.56,
+        r: Math.random() * 1.3 + 0.3,
+        a: Math.random() * 0.7 + 0.25,
+        tw: Math.random() * 3 + 1
+    }));
+
+    // Particules des 4 secteurs élémentaires (Brume, Feu ASIC, Eau, Biomasse)
+    const mistParticles = Array.from({ length: 34 }, () => ({
+        phase: Math.random() * Math.PI * 2,
+        r: 0.68 + Math.random() * 0.26,
+        yOff: Math.random() * 18,
+        size: 14 + Math.random() * 20
+    }));
+
+    const fireSparks = Array.from({ length: 42 }, () => ({
+        slot: Math.floor(Math.random() * 6),
+        y: Math.random(),
+        xJitter: (Math.random() - 0.5) * 18,
+        speed: 0.6 + Math.random() * 0.9
+    }));
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = stageBox.clientWidth;
+        H = stageBox.clientHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(stageBox);
+    resize();
+
+    function triggerPulse() {
+        shockwaves.push({ r: 8, maxR: Math.min(W, H) * 0.46, alpha: 0.95 });
+    }
+
+    canvas.addEventListener('click', triggerPulse);
+    document.getElementById('sh-btn-pulse').addEventListener('click', triggerPulse);
+    document.getElementById('sh-btn-fs').addEventListener('click', () => {
+        if (!document.fullscreenElement) stageBox.requestFullscreen();
+        else document.exitFullscreen();
+    });
+
+    const spinInput = document.getElementById('sh-spin');
+    const heatInput = document.getElementById('sh-heat');
+    const kwLbl = document.getElementById('sh-kw-lbl');
+
+    spinInput.addEventListener('input', e => { spinSpeed = parseFloat(e.target.value) / 100; });
+    heatInput.addEventListener('input', e => {
+        coreHeat = parseFloat(e.target.value) / 100;
+        kwLbl.textContent = Math.round(coreHeat * 37);
+    });
+
+    // Couplage direct avec le simulateur thermodynamique de l'article
+    const articleSimPower = document.getElementById('sim-power');
+    if (articleSimPower) {
+        articleSimPower.addEventListener('input', e => {
+            const kw = parseFloat(e.target.value);
+            coreHeat = Math.min(1, Math.max(0.15, kw / 60));
+            heatInput.value = Math.round(coreHeat * 100);
+            kwLbl.textContent = Math.round(kw);
+        });
+    }
+
+    // Projection 3D isométrique pour la sphère sacrée (Dodécaèdre / Merkaba)
+    function project3D(x, y, z, cx, cy, scale, rotX, rotY) {
+        let y1 = y * Math.cos(rotX) - z * Math.sin(rotX);
+        let z1 = y * Math.sin(rotX) + z * Math.cos(rotX);
+        let x2 = x * Math.cos(rotY) + z1 * Math.sin(rotY);
+        let z2 = -x * Math.sin(rotY) + z1 * Math.cos(rotY);
+        const p = 3.4 / (3.4 + z2 * 0.45);
+        return { x: cx + x2 * scale * p, y: cy + y1 * scale * p, z: z2 };
+    }
+
+    let lastTime = performance.now();
+
+    function render(now) {
+        requestAnimationFrame(render);
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+        const t = now * 0.001;
+
+        ringAngle += dt * spinSpeed * 0.85;
+        ctx.clearRect(0, 0, W, H);
+
+        const cx = W * 0.5;
+        const floorY = H * 0.73;
+        const coreY = H * 0.37;
+        const rx = Math.min(W * 0.41, 350);
+        const ry = rx * 0.31;
+
+        // 1. COSMOS & ALIGNEMENT SOLEIL – LUNE – TERRE – MARS[cite: 2]
+        stars.forEach(s => {
+            const tw = 0.55 + 0.45 * Math.sin(t * s.tw + s.x * 10);
+            ctx.fillStyle = `rgba(226, 238, 255, ${s.a * tw})`;
+            ctx.beginPath();
+            ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        const celY = H * 0.27;
+        const sunX = W * 0.70;
+        const sunGlow = ctx.createRadialGradient(sunX, celY, 2, sunX, celY, 28);
+        sunGlow.addColorStop(0, '#fff7d6');
+        sunGlow.addColorStop(0.35, '#ffcc00');
+        sunGlow.addColorStop(1, 'rgba(255, 153, 0, 0)');
+        ctx.fillStyle = sunGlow;
+        ctx.beginPath(); ctx.arc(sunX, celY, 28, 0, Math.PI * 2); ctx.fill();
+
+        // Lune
+        ctx.fillStyle = '#cbd5e1';
+        ctx.beginPath(); ctx.arc(W * 0.74, celY + 2, 3.2, 0, Math.PI * 2); ctx.fill();
+
+        // Terre
+        const earthX = W * 0.775;
+        const eGrad = ctx.createRadialGradient(earthX - 3, celY - 3, 2, earthX, celY, 11);
+        eGrad.addColorStop(0, '#7dd3fc');
+        eGrad.addColorStop(0.6, '#0284c7');
+        eGrad.addColorStop(1, '#082f49');
+        ctx.fillStyle = eGrad;
+        ctx.beginPath(); ctx.arc(earthX, celY, 10.5, 0, Math.PI * 2); ctx.fill();
+
+        // Mars
+        const marsX = W * 0.835;
+        const mGrad = ctx.createRadialGradient(marsX - 2, celY - 2, 1, marsX, celY, 8);
+        mGrad.addColorStop(0, '#fdba74');
+        mGrad.addColorStop(0.65, '#c2410c');
+        mGrad.addColorStop(1, '#431407');
+        ctx.fillStyle = mGrad;
+        ctx.beginPath(); ctx.arc(marsX, celY + 1, 7.5, 0, Math.PI * 2); ctx.fill();
+
+        // Arche panoramique de la verrière du Starship[cite: 2]
+        ctx.save();
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.22)';
+        ctx.lineWidth = 10;
+        ctx.beginPath();
+        ctx.moveTo(W * 0.08, H * 0.56);
+        ctx.quadraticCurveTo(W * 0.08, H * 0.07, cx, H * 0.07);
+        ctx.quadraticCurveTo(W * 0.92, H * 0.07, W * 0.92, H * 0.56);
+        ctx.stroke();
+        ctx.restore();
+
+        // 2. ANNEAU CENTRIFUGE AU SOL & 4 SECTEURS ÉLÉMENTAIRES[cite: 2]
+        // Halo sous-jacent du plancher
+        const floorGlow = ctx.createRadialGradient(cx, floorY, 10, cx, floorY, rx * 1.15);
+        floorGlow.addColorStop(0, 'rgba(0, 229, 255, 0.20)');
+        floorGlow.addColorStop(0.55, 'rgba(247, 147, 26, 0.09)');
+        floorGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = floorGlow;
+        ctx.beginPath();
+        ctx.ellipse(cx, floorY, rx * 1.15, ry * 1.18, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Secteur Avant-Gauche : Bassins Aquaponiques Cyan[cite: 2]
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(cx, floorY, rx * 0.98, ry * 0.98, 0, Math.PI * 0.53, Math.PI * 0.96);
+        ctx.ellipse(cx, floorY, rx * 0.64, ry * 0.64, 0, Math.PI * 0.96, Math.PI * 0.53, true);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(0, 190, 235, 0.28)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(0, 229, 255, 0.65)';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        // Ondulations d'eau animées
+        for (let w = 0; w < 4; w++) {
+            const prog = ((t * 0.35 + w * 0.25) % 1);
+            const rWaveX = rx * (0.66 + prog * 0.30);
+            const rWaveY = ry * (0.66 + prog * 0.30);
+            ctx.strokeStyle = `rgba(125, 249, 255, ${(1 - prog) * 0.55})`;
+            ctx.beginPath();
+            ctx.ellipse(cx, floorY, rWaveX, rWaveY, 0, Math.PI * 0.56, Math.PI * 0.93);
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        // Secteur Avant-Droit : Serre Biologique sur Régolithe[cite: 2]
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(cx, floorY, rx * 0.98, ry * 0.98, 0, Math.PI * 0.04, Math.PI * 0.47);
+        ctx.ellipse(cx, floorY, rx * 0.64, ry * 0.64, 0, Math.PI * 0.47, Math.PI * 0.04, true);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(110, 42, 20, 0.55)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 204, 0, 0.45)';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        // Touffes végétales vibrant doucement (Photosynthèse)
+        for (let p = 0; p < 14; p++) {
+            const ang = Math.PI * (0.08 + (p / 14) * 0.36);
+            const radFrac = 0.72 + (p % 3) * 0.09;
+            const px = cx + Math.cos(ang) * rx * radFrac;
+            const py = floorY + Math.sin(ang) * ry * radFrac;
+            const sway = Math.sin(t * 2.2 + p) * 2.5;
+            ctx.fillStyle = p % 2 === 0 ? '#22c55e' : '#4ade80';
+            ctx.beginPath();
+            ctx.ellipse(px + sway, py - 5, 7, 4, -0.3, 0, Math.PI * 2);
+            ctx.ellipse(px - sway * 0.6, py - 8, 5, 3.2, 0.4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
+
+        // Secteur Arrière-Droit : Dalles d'Immersion ASIC Incandescentes[cite: 2]
+        for (let m = 0; m < 6; m++) {
+            const ang = -Math.PI * (0.08 + m * 0.065);
+            const radFrac = 0.74 + (m % 2) * 0.12;
+            const mx = cx + Math.cos(ang) * rx * radFrac;
+            const my = floorY + Math.sin(ang) * ry * radFrac;
+            const pulse = 0.75 + 0.25 * Math.sin(t * 5 + m);
+
+            ctx.fillStyle = `rgba(255, 120, 20, ${0.45 + coreHeat * 0.45})`;
+            ctx.strokeStyle = '#ffcc00';
+            ctx.lineWidth = 1.1;
+            ctx.beginPath();
+            ctx.rect(mx - 12, my - 4, 24, 8);
+            ctx.fill();
+            ctx.stroke();
+
+            // Flammes thermiques Joule au-dessus des dalles ASIC
+            const fGrad = ctx.createLinearGradient(mx, my, mx, my - 38 * coreHeat * pulse);
+            fGrad.addColorStop(0, `rgba(255, 165, 0, ${0.65 * coreHeat})`);
+            fGrad.addColorStop(1, 'rgba(255, 60, 0, 0)');
+            ctx.fillStyle = fGrad;
+            ctx.beginPath();
+            ctx.moveTo(mx - 11, my);
+            ctx.quadraticCurveTo(mx, my - 44 * coreHeat * pulse, mx + 11, my);
+            ctx.fill();
+        }
+
+        // Étincelles thermiques ascendantes
+        fireSparks.forEach(sp => {
+            sp.y += dt * sp.speed * (0.5 + coreHeat);
+            if (sp.y > 1) sp.y = 0;
+            const ang = -Math.PI * (0.08 + sp.slot * 0.065);
+            const bx = cx + Math.cos(ang) * rx * 0.8 + sp.xJitter;
+            const by = floorY + Math.sin(ang) * ry * 0.8 - sp.y * 55 * coreHeat;
+            ctx.fillStyle = `rgba(255, 200, 90, ${(1 - sp.y) * coreHeat})`;
+            ctx.beginPath(); ctx.arc(bx, by, 1.5, 0, Math.PI * 2); ctx.fill();
+        });
+
+        // Secteur Arrière-Gauche : Vapeur & Distillation Atmosphérique[cite: 2]
+        mistParticles.forEach(mp => {
+            const ang = Math.PI + (mp.phase % (Math.PI * 0.42)) + 0.06;
+            const mx = cx + Math.cos(ang) * rx * mp.r + Math.sin(t + mp.phase) * 8;
+            const my = floorY + Math.sin(ang) * ry * mp.r - mp.yOff - Math.cos(t * 0.8 + mp.phase) * 6;
+            const mGrad = ctx.createRadialGradient(mx, my, 1, mx, my, mp.size);
+            mGrad.addColorStop(0, 'rgba(226, 242, 255, 0.20)');
+            mGrad.addColorStop(1, 'rgba(226, 242, 255, 0)');
+            ctx.fillStyle = mGrad;
+            ctx.beginPath(); ctx.arc(mx, my, mp.size, 0, Math.PI * 2); ctx.fill();
+        });
+
+        // 3. CADRAN ROTATIF GRADUÉ DE LA SOUCOUPE CENTRIFUGE[cite: 2]
+        [0.60, 0.46, 0.28].forEach((k, idx) => {
+            ctx.strokeStyle = idx === 0 ? 'rgba(255, 204, 0, 0.65)' : 'rgba(0, 229, 255, 0.42)';
+            ctx.lineWidth = idx === 0 ? 1.8 : 1.1;
+            ctx.beginPath();
+            ctx.ellipse(cx, floorY, rx * k, ry * k, 0, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+
+        // Glyphes et graduations en rotation
+        const ticks = 36;
+        for (let i = 0; i < ticks; i++) {
+            const a = ringAngle + (i / ticks) * Math.PI * 2;
+            const r1 = 0.48, r2 = (i % 3 === 0) ? 0.57 : 0.53;
+            ctx.strokeStyle = i % 3 === 0 ? 'rgba(255, 204, 0, 0.78)' : 'rgba(125, 211, 252, 0.38)';
+            ctx.lineWidth = i % 3 === 0 ? 1.6 : 1;
+            ctx.beginPath();
+            ctx.moveTo(cx + Math.cos(a) * rx * r1, floorY + Math.sin(a) * ry * r1);
+            ctx.lineTo(cx + Math.cos(a) * rx * r2, floorY + Math.sin(a) * ry * r2);
+            ctx.stroke();
+        }
+
+        // 4. VORTEX TOROÏDAL & SPHÈRE HOLOGRAPHIQUE AVEC CŒUR VIBRANT[cite: 2]
+        const sphereR = Math.min(W, H) * 0.205;
+
+        // Colonnes filaires du champ toroïdal (du plafond au plancher)
+        ctx.save();
+        for (let s = -6; s <= 6; s++) {
+            if (s === 0) continue;
+            const spread = s * 0.16;
+            ctx.strokeStyle = s < 0 ? 'rgba(255, 190, 80, 0.14)' : 'rgba(216, 110, 255, 0.14)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(cx + spread * rx * 0.9, 0);
+            ctx.bezierCurveTo(
+                cx + spread * sphereR * 1.1, coreY - sphereR * 0.6,
+                cx + spread * sphereR * 1.1, coreY + sphereR * 0.6,
+                cx + spread * rx * 0.65, floorY
+            );
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        // Battement cardiaque harmonique (double pulsation organique)
+        const beatPhase = (t * (1.1 + coreHeat * 0.8)) % 1;
+        const heartPulse = Math.exp(-Math.pow((beatPhase - 0.18) * 9, 2)) * 0.32
+                         + Math.exp(-Math.pow((beatPhase - 0.36) * 11, 2)) * 0.18;
+        const coreScale = 1 + heartPulse;
+
+        // Halo externe de la sphère holographique
+        const holoGlow = ctx.createRadialGradient(cx, coreY, sphereR * 0.1, cx, coreY, sphereR * 1.35);
+        holoGlow.addColorStop(0, `rgba(255, 230, 150, ${0.42 + heartPulse * 0.5})`);
+        holoGlow.addColorStop(0.5, 'rgba(224, 64, 251, 0.22)');
+        holoGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = holoGlow;
+        ctx.beginPath(); ctx.arc(cx, coreY, sphereR * 1.35, 0, Math.PI * 2); ctx.fill();
+
+        // Contour irisé de la sphère
+        ctx.strokeStyle = 'rgba(245, 208, 254, 0.65)';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.arc(cx, coreY, sphereR, 0, Math.PI * 2); ctx.stroke();
+
+        // Double Tétraèdre Étoilé (Merkaba 3D en rotation)[cite: 2]
+        const vertsA = [[0, -1, 0], [0.94, 0.33, 0], [-0.47, 0.33, 0.81], [-0.47, 0.33, -0.81]];
+        const vertsB = [[0, 1, 0], [-0.94, -0.33, 0], [0.47, -0.33, 0.81], [0.47, -0.33, -0.81]];
+        const rotX = Math.sin(t * 0.45) * 0.35;
+        const rotY = t * (0.55 + spinSpeed * 0.8);
+
+        [vertsA, vertsB].forEach((grp, gIdx) => {
+            const pts = grp.map(v => project3D(v[0], v[1], v[2], cx, coreY, sphereR * 0.88, rotX, gIdx ? -rotY : rotY));
+            ctx.strokeStyle = gIdx === 0 ? 'rgba(255, 215, 110, 0.85)' : 'rgba(232, 121, 249, 0.78)';
+            ctx.lineWidth = 1.35;
+            for (let i = 0; i < pts.length; i++) {
+                for (let j = i + 1; j < pts.length; j++) {
+                    ctx.beginPath();
+                    ctx.moveTo(pts[i].x, pts[i].y);
+                    ctx.lineTo(pts[j].x, pts[j].y);
+                    ctx.stroke();
+                }
+            }
+            pts.forEach(p => {
+                ctx.fillStyle = '#fff7ed';
+                ctx.beginPath(); ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2); ctx.fill();
+            });
+        });
+
+        // LE CŒUR VIBRANT CENTRAL
+        const heartR = sphereR * 0.24 * coreScale;
+        const heartGrad = ctx.createRadialGradient(cx, coreY, 1, cx, coreY, heartR * 2.1);
+        heartGrad.addColorStop(0, '#ffffff');
+        heartGrad.addColorStop(0.35, '#ffcc00');
+        heartGrad.addColorStop(0.7, '#f7931a');
+        heartGrad.addColorStop(1, 'rgba(224, 64, 251, 0)');
+        ctx.fillStyle = heartGrad;
+        ctx.beginPath(); ctx.arc(cx, coreY, heartR * 2.1, 0, Math.PI * 2); ctx.fill();
+
+        ctx.strokeStyle = '#fffbeb';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.arc(cx, coreY, heartR, 0, Math.PI * 2); ctx.stroke();
+
+        // Ondes de choc interactives émanant du cœur
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+            const sw = shockwaves[i];
+            sw.r += dt * 190;
+            sw.alpha -= dt * 0.85;
+            if (sw.alpha <= 0 || sw.r >= sw.maxR) {
+                shockwaves.splice(i, 1);
+                continue;
+            }
+            ctx.strokeStyle = `rgba(255, 214, 102, ${sw.alpha})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(cx, coreY, sw.r, 0, Math.PI * 2); ctx.stroke();
+        }
+
+        // 5. SILHOUETTE DE L'ASTRONAUTE AU POINT ZÉRO CENTRAL[cite: 2]
+        const astroFootY = floorY + 4;
+        const astroH = Math.min(H * 0.22, 96);
+        const headY = astroFootY - astroH;
+
+        // Ombre portée sur le disque lumineux
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.55)';
+        ctx.beginPath(); ctx.ellipse(cx, astroFootY + 2, 16, 4.5, 0, 0, Math.PI * 2); ctx.fill();
+
+        // Combinaison éclairée par le cœur vibrant dans son dos (Rim light doré)
+        ctx.fillStyle = '#1e293b';
+        ctx.strokeStyle = `rgba(255, 210, 120, ${0.65 + heartPulse * 0.35})`;
+        ctx.lineWidth = 1.4;
+
+        // Jambes
+        ctx.beginPath();
+        ctx.roundRect(cx - 8, astroFootY - astroH * 0.45, 6.5, astroH * 0.45, 3);
+        ctx.roundRect(cx + 1.5, astroFootY - astroH * 0.45, 6.5, astroH * 0.45, 3);
+        ctx.fill(); ctx.stroke();
+
+        // Torse & Bras
+        ctx.beginPath();
+        ctx.roundRect(cx - 10, headY + 15, 20, astroH * 0.42, 5);
+        ctx.roundRect(cx - 15, headY + 17, 5, astroH * 0.34, 3);
+        ctx.roundRect(cx + 10, headY + 17, 5, astroH * 0.34, 3);
+        ctx.fill(); ctx.stroke();
+
+        // Casque
+        ctx.beginPath();
+        ctx.arc(cx, headY + 8, 7.5, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+    }
+
+    requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>
