@@ -1,0 +1,1715 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starship · Arche Thermodynamique & Cœur Vibrant | The Sun Standard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #040405;
+            --sun-yellow: #ffcc00;
+            --orange-l1: #f7931a;
+            --cyan-l2: #00ccff;
+            --bio-green: #44ee77;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+            font-family: var(--font-ui);
+            color: var(--text-main);
+            user-select: none;
+        }
+
+        #scene-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* --- EN-TÊTE DISCRET SUN STANDARD --- */
+        .top-badge {
+            position: fixed;
+            top: 18px;
+            left: 22px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 15px;
+            background: rgba(6, 8, 14, 0.72);
+            border: 1px solid rgba(255, 204, 0, 0.25);
+            border-radius: 999px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .top-badge .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--sun-yellow);
+            box-shadow: 0 0 12px var(--sun-yellow);
+            animation: pulseDot 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(0.9); opacity: 0.75; }
+            50% { transform: scale(1.25); opacity: 1; }
+        }
+
+        .top-badge-title {
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sun-yellow);
+        }
+
+        .top-badge-sub {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            border-left: 1px solid rgba(255, 255, 255, 0.14);
+            padding-left: 10px;
+        }
+
+        /* --- TÉLÉMÉTRIE HAUT DROITE --- */
+        .telemetry-bar {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .telemetry-pill {
+            padding: 7px 12px;
+            background: rgba(6, 8, 14, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(12px);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            min-width: 96px;
+        }
+
+        .telemetry-pill span.lbl {
+            font-size: 0.58rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+        }
+
+        .telemetry-pill strong.val {
+            font-size: 0.8rem;
+            margin-top: 1px;
+        }
+
+        /* --- PANNEAU HUD PRINCIPAL --- */
+        .hud-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: min(94vw, 880px);
+            padding: 14px 18px;
+            background: rgba(6, 8, 14, 0.78);
+            border: 1px solid rgba(255, 204, 0, 0.22);
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .hud-sliders {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .ctrl-group {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 8px 11px;
+        }
+
+        .ctrl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+            margin-bottom: 6px;
+            color: #d0d7de;
+            font-weight: 600;
+        }
+
+        .ctrl-header output {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 5px;
+            border-radius: 999px;
+            cursor: pointer;
+            accent-color: var(--sun-yellow);
+        }
+
+        .hud-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .hud-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-family: var(--font-ui);
+            font-size: 0.73rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hud-btn:hover {
+            border-color: var(--sun-yellow);
+            background: rgba(255, 204, 0, 0.12);
+            color: #fff;
+        }
+
+        .hud-btn.active {
+            border-color: var(--orange-l1);
+            background: rgba(247, 147, 26, 0.22);
+            color: #ffe099;
+            box-shadow: 0 0 14px rgba(247, 147, 26, 0.25);
+        }
+
+        .hud-hint {
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            color: var(--text-muted);
+        }
+
+        /* --- MODE CINÉMA --- */
+        body.cinema-mode .top-badge,
+        body.cinema-mode .telemetry-bar,
+        body.cinema-mode .hud-panel {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(16px);
+        }
+
+        body.cinema-mode .hud-panel {
+            transform: translate(-50%, 24px);
+        }
+
+        #restore-ui-btn {
+            position: fixed;
+            bottom: 18px;
+            right: 20px;
+            z-index: 30;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(6, 8, 14, 0.72);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            color: var(--sun-yellow);
+            border-radius: 999px;
+            padding: 8px 15px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.35s ease;
+        }
+
+        body.cinema-mode #restore-ui-btn {
+            opacity: 0.75;
+            pointer-events: auto;
+        }
+
+        body.cinema-mode #restore-ui-btn:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 780px) {
+            .hud-sliders { grid-template-columns: 1fr; gap: 8px; }
+            .telemetry-bar { display: none; }
+            .top-badge-sub { display: none; }
+            .hud-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="scene-canvas"></canvas>
+
+<!-- Badge Supérieur -->
+<div class="top-badge">
+    <span class="dot"></span>
+    <span class="top-badge-title">☀ Starship · Arche Thermodynamique</span>
+    <span class="top-badge-sub">Cœur Vibrant & Cadran Centrifuge 0,38 g</span>
+</div>
+
+<!-- Télémétrie Temps Réel -->
+<div class="telemetry-bar">
+    <div class="telemetry-pill">
+        <span class="lbl">Fréquence Cœur</span>
+        <strong class="val" id="tel-hz" style="color:var(--sun-yellow);">432,0 Hz · 68 BPM</strong>
+    </div>
+    <div class="telemetry-pill">
+        <span class="lbl">Flux Joule ASIC</span>
+        <strong class="val" id="tel-kw" style="color:var(--orange-l1);">45 kWth</strong>
+    </div>
+    <div class="telemetry-pill">
+        <span class="lbl">Gravité Anneau</span>
+        <strong class="val" id="tel-grav" style="color:var(--cyan-l2);">0,38 g · Synchrone</strong>
+    </div>
+</div>
+
+<!-- Interface de Contrôle HUD -->
+<div class="hud-panel">
+    <div class="hud-sliders">
+        <div class="ctrl-group">
+            <div class="ctrl-header">
+                <span>💓 Pulsation du Cœur Vibrant</span>
+                <output id="out-pulse" style="color:var(--sun-yellow);">68 BPM</output>
+            </div>
+            <input type="range" id="sl-pulse" min="30" max="140" value="68">
+        </div>
+
+        <div class="ctrl-group">
+            <div class="ctrl-header">
+                <span>🌀 Rotation Cercles & Cadran</span>
+                <output id="out-rot" style="color:var(--cyan-l2);">+1.0x</output>
+            </div>
+            <input type="range" id="sl-rot" min="-250" max="250" value="100" style="accent-color:var(--cyan-l2);">
+        </div>
+
+        <div class="ctrl-group">
+            <div class="ctrl-header">
+                <span>🔥 Puissance Thermique ASIC</span>
+                <output id="out-power" style="color:var(--orange-l1);">45 kWth</output>
+            </div>
+            <input type="range" id="sl-power" min="10" max="100" value="45" style="accent-color:var(--orange-l1);">
+        </div>
+    </div>
+
+    <div class="hud-actions">
+        <div class="btn-group">
+            <button class="hud-btn active" id="btn-play">⏸ Pause</button>
+            <button class="hud-btn active" id="btn-astro">👨‍🚀 Astronaute</button>
+            <button class="hud-btn" id="btn-audio">🔊 Son 432 Hz</button>
+            <button class="hud-btn" id="btn-cinema">🎬 Mode Cinéma</button>
+            <button class="hud-btn" id="btn-fs">⛶ Plein Écran</button>
+        </div>
+        <div class="hud-hint">Cliquez sur le Cœur Vibrant pour émettre une onde harmonique</div>
+    </div>
+</div>
+
+<button id="restore-ui-btn">👁 Afficher le HUD</button>
+
+<script>
+(function() {
+    const canvas = document.getElementById('scene-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // État global de la simulation
+    const state = {
+        playing: true,
+        bpm: 68,
+        rotSpeed: 1.0,
+        thermalKw: 45,
+        showAstronaut: true,
+        audioOn: false,
+        time: 0,
+        beatPhase: 0,
+        rotAngle: 0,
+        pointerX: 0,
+        pointerY: 0,
+        targetPointerX: 0,
+        targetPointerY: 0
+    };
+
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    // Canevas statique pré-rendu pour la coque nervurée du Starship (optimisation 60 FPS)
+    const hullCanvas = document.createElement('canvas');
+    const hullCtx = hullCanvas.getContext('2d');
+
+    // Collections d'entités animées
+    const stars = [];
+    const vortexParticles = [];
+    const sphereDots = [];
+    const shockwaves = [];
+    const embers = [];
+    const steamPuffs = [];
+    const bioSpores = [];
+    const ferns = [];
+
+    // =========================================================================
+    // INITIALISATION DES PARTICULES ET ÉLÉMENTS GÉOMÉTRIQUES
+    // =========================================================================
+    function initEntities() {
+        stars.length = 0;
+        for (let i = 0; i < 280; i++) {
+            stars.push({
+                u: Math.random(),
+                v: Math.random() * 0.58,
+                r: 0.5 + Math.random() * 1.4,
+                twinkleSpeed: 1.2 + Math.random() * 3.5,
+                phase: Math.random() * Math.PI * 2,
+                tint: Math.random() > 0.8 ? '#ffd88a' : (Math.random() > 0.6 ? '#bae6fd' : '#ffffff')
+            });
+        }
+
+        // Vortex toroïdal / hyperboloïde (gauche = or solaire, droite = violet/magenta)
+        vortexParticles.length = 0;
+        const VORTEX_COUNT = 560;
+        for (let i = 0; i < VORTEX_COUNT; i++) {
+            vortexParticles.push({
+                t: (Math.random() * 2 - 1), // -1 (haut) à +1 (sol)
+                theta: Math.random() * Math.PI * 2,
+                speed: 0.25 + Math.random() * 0.35,
+                size: 0.9 + Math.random() * 1.7,
+                alpha: 0.25 + Math.random() * 0.65
+            });
+        }
+
+        // Points de la coque sphérique holographique (distribution de Fibonacci)
+        sphereDots.length = 0;
+        const N_DOTS = 420;
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+        for (let i = 0; i < N_DOTS; i++) {
+            const y = 1 - (i / (N_DOTS - 1)) * 2;
+            const radius = Math.sqrt(1 - y * y);
+            const theta = goldenAngle * i;
+            sphereDots.push({
+                x: Math.cos(theta) * radius,
+                y: y,
+                z: Math.sin(theta) * radius
+            });
+        }
+
+        // Braises thermiques au-dessus des dalles ASIC (Haut-Droite)
+        embers.length = 0;
+        for (let i = 0; i < 85; i++) {
+            embers.push({
+                u: Math.random(),
+                v: Math.random(),
+                life: Math.random(),
+                speed: 0.35 + Math.random() * 0.65,
+                drift: (Math.random() - 0.5) * 0.4,
+                size: 1.2 + Math.random() * 2.5
+            });
+        }
+
+        // Nappes de vapeur atmosphérique (Haut-Gauche)
+        steamPuffs.length = 0;
+        for (let i = 0; i < 42; i++) {
+            steamPuffs.push({
+                angle: Math.PI + 0.08 + Math.random() * (Math.PI * 0.44),
+                radNorm: 0.62 + Math.random() * 0.36,
+                rise: Math.random(),
+                speed: 0.08 + Math.random() * 0.14,
+                scale: 0.6 + Math.random() * 1.1,
+                seed: Math.random() * Math.PI * 2
+            });
+        }
+
+        // Fougères et plantes de la serre martienne (Bas-Droite)
+        ferns.length = 0;
+        for (let i = 0; i < 34; i++) {
+            const frac = i / 33;
+            const angle = 0.08 + frac * (Math.PI * 0.40) + (Math.random() - 0.5) * 0.04;
+            const radNorm = 0.72 + (i % 3) * 0.085 + (Math.random() - 0.5) * 0.03;
+            ferns.push({
+                angle,
+                radNorm,
+                fronds: 5 + Math.floor(Math.random() * 4),
+                size: 0.75 + Math.random() * 0.55,
+                phase: Math.random() * Math.PI * 2,
+                hueShift: (Math.random() - 0.5) * 18
+            });
+        }
+
+        // Spores bioluminescentes vertes (#44ee77)
+        bioSpores.length = 0;
+        for (let i = 0; i < 45; i++) {
+            bioSpores.push({
+                angle: 0.06 + Math.random() * (Math.PI * 0.42),
+                radNorm: 0.68 + Math.random() * 0.28,
+                life: Math.random(),
+                speed: 0.14 + Math.random() * 0.25,
+                size: 1.1 + Math.random() * 2.0
+            });
+        }
+    }
+
+    // =========================================================================
+    // CHEMIN DE LA BAIE VITRÉE PANORAMIQUE DU STARSHIP
+    // =========================================================================
+    function traceViewportPath(c, w, h) {
+        const cx = w * 0.5;
+        const topY = h * 0.095;
+        const botY = h * 0.505;
+        const halfTopW = w * 0.355;
+        const halfBotW = w * 0.395;
+        const cornerR = Math.min(w, h) * 0.09;
+
+        c.beginPath();
+        c.moveTo(cx - halfTopW + cornerR, topY);
+        c.quadraticCurveTo(cx, topY - h * 0.028, cx + halfTopW - cornerR, topY);
+        c.quadraticCurveTo(cx + halfTopW + cornerR * 0.38, topY + cornerR * 0.15, cx + halfBotW, topY + cornerR * 1.25);
+        c.lineTo(cx + halfBotW * 1.01, botY - cornerR * 0.45);
+        c.quadraticCurveTo(cx + halfBotW, botY, cx + halfBotW - cornerR * 0.6, botY);
+        c.quadraticCurveTo(cx, botY - h * 0.014, cx - halfBotW + cornerR * 0.6, botY);
+        c.quadraticCurveTo(cx - halfBotW, botY, cx - halfBotW * 1.01, botY - cornerR * 0.45);
+        c.lineTo(cx - halfBotW, topY + cornerR * 1.25);
+        c.quadraticCurveTo(cx - halfTopW - cornerR * 0.38, topY + cornerR * 0.15, cx - halfTopW + cornerR, topY);
+        c.closePath();
+    }
+
+    // Pré-rendu haute précision de la structure métallique intérieure du Starship
+    function buildStarshipHull() {
+        hullCanvas.width = Math.floor(W * dpr);
+        hullCanvas.height = Math.floor(H * dpr);
+        hullCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        hullCtx.clearRect(0, 0, W, H);
+
+        // Fond métallique sombre de la passerelle
+        const wallGrad = hullCtx.createLinearGradient(0, 0, 0, H);
+        wallGrad.addColorStop(0, '#0d1017');
+        wallGrad.addColorStop(0.48, '#141821');
+        wallGrad.addColorStop(0.56, '#090b10');
+        wallGrad.addColorStop(1, '#040507');
+        hullCtx.fillStyle = wallGrad;
+        hullCtx.fillRect(0, 0, W, H);
+
+        // Arches structurelles concentriques de la voûte Starship
+        for (let k = 3; k >= 1; k--) {
+            hullCtx.save();
+            const scale = 1 + k * 0.055;
+            hullCtx.translate(W * 0.5, H * 0.30);
+            hullCtx.scale(scale, scale);
+            hullCtx.translate(-W * 0.5, -H * 0.30);
+            traceViewportPath(hullCtx, W, H);
+            hullCtx.strokeStyle = k === 1 ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)';
+            hullCtx.lineWidth = k === 1 ? 8 : 14;
+            hullCtx.stroke();
+            hullCtx.strokeStyle = '#050609';
+            hullCtx.lineWidth = 4;
+            hullCtx.stroke();
+            hullCtx.restore();
+        }
+
+        // Hublots / renforts latéraux gauche et droite (fidèle à la scène)
+        [-1, 1].forEach(side => {
+            const px = W * 0.5 + side * W * 0.485;
+            const py = H * 0.43;
+            hullCtx.save();
+            hullCtx.beginPath();
+            hullCtx.ellipse(px, py, W * 0.045, H * 0.11, side * 0.12, 0, Math.PI * 2);
+            hullCtx.strokeStyle = '#222834';
+            hullCtx.lineWidth = 10;
+            hullCtx.stroke();
+            hullCtx.strokeStyle = 'rgba(255, 204, 0, 0.14)';
+            hullCtx.lineWidth = 1.5;
+            hullCtx.stroke();
+            hullCtx.restore();
+        });
+
+        // Rebord inférieur technique sous la verrière (vérins hydrauliques & conduites)
+        const sillY = H * 0.505;
+        const sillGrad = hullCtx.createLinearGradient(0, sillY - 8, 0, sillY + H * 0.065);
+        sillGrad.addColorStop(0, '#1e2430');
+        sillGrad.addColorStop(0.5, '#0e1118');
+        sillGrad.addColorStop(1, '#050609');
+        hullCtx.fillStyle = sillGrad;
+        hullCtx.fillRect(W * 0.04, sillY - 4, W * 0.92, H * 0.062);
+
+        // Vérins et nervures mécaniques le long de la paroi courbe
+        const struts = [-0.36, -0.27, -0.18, 0.18, 0.27, 0.36];
+        struts.forEach(offset => {
+            const sx = W * (0.5 + offset);
+            hullCtx.fillStyle = '#1a202c';
+            hullCtx.strokeStyle = 'rgba(255,255,255,0.12)';
+            hullCtx.lineWidth = 1.2;
+            hullCtx.beginPath();
+            hullCtx.roundRect(sx - 12, sillY - 6, 24, H * 0.055, 4);
+            hullCtx.fill();
+            hullCtx.stroke();
+        });
+
+        // Découpe transparente de la grande baie vitrée panoramique
+        hullCtx.save();
+        hullCtx.globalCompositeOperation = 'destination-out';
+        traceViewportPath(hullCtx, W, H);
+        hullCtx.fill();
+        hullCtx.restore();
+
+        // Biseau métallique interne de la verrière
+        hullCtx.save();
+        traceViewportPath(hullCtx, W, H);
+        hullCtx.strokeStyle = 'rgba(180, 210, 255, 0.18)';
+        hullCtx.lineWidth = 2.4;
+        hullCtx.stroke();
+        hullCtx.restore();
+    }
+
+    function resize() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(W * dpr);
+        canvas.height = Math.floor(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildStarshipHull();
+    }
+
+    window.addEventListener('resize', resize);
+
+    // =========================================================================
+    // 1. RENDU DE L'ESPACE PROFOND & ALIGNEMENT CÉLESTE (SOLEIL, LUNE, TERRE, MARS)
+    // =========================================================================
+    function renderSpaceViewport(t) {
+        ctx.save();
+        traceViewportPath(ctx, W, H);
+        ctx.clip();
+
+        // Fond cosmos profond
+        const spaceGrad = ctx.createRadialGradient(
+            W * 0.68, H * 0.27, 10,
+            W * 0.5, H * 0.28, W * 0.55
+        );
+        spaceGrad.addColorStop(0, '#121324');
+        spaceGrad.addColorStop(0.45, '#060812');
+        spaceGrad.addColorStop(1, '#020306');
+        ctx.fillStyle = spaceGrad;
+        ctx.fillRect(0, 0, W, H * 0.55);
+
+        const parX = state.pointerX * 14;
+        const parY = state.pointerY * 8;
+
+        // Étoiles scintillantes
+        for (let i = 0; i < stars.length; i++) {
+            const s = stars[i];
+            const sx = s.u * W + parX * 0.5;
+            const sy = s.v * H + parY * 0.5;
+            const tw = 0.45 + 0.55 * Math.sin(t * s.twinkleSpeed + s.phase);
+            ctx.globalAlpha = tw;
+            ctx.fillStyle = s.tint;
+            ctx.beginPath();
+            ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        // Légère dérive orbitale lente dans la baie à droite
+        const drift = Math.sin(t * 0.08) * (W * 0.006);
+        const baseCy = H * 0.255 + parY * 0.7;
+        const unit = Math.min(W, H);
+
+        // --- A. SOLEIL DORÉ ---
+        const sunX = W * 0.675 + drift * 0.4 + parX;
+        const sunY = baseCy + H * 0.006;
+        const sunR = unit * 0.022;
+
+        const sunHalo = ctx.createRadialGradient(sunX, sunY, sunR * 0.2, sunX, sunY, sunR * 4.5);
+        sunHalo.addColorStop(0, '#ffffff');
+        sunHalo.addColorStop(0.22, '#ffe680');
+        sunHalo.addColorStop(0.5, 'rgba(255, 170, 0, 0.32)');
+        sunHalo.addColorStop(1, 'rgba(255, 102, 0, 0)');
+        ctx.fillStyle = sunHalo;
+        ctx.beginPath();
+        ctx.arc(sunX, sunY, sunR * 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // --- B. LUNE ---
+        const moonX = W * 0.713 + drift * 0.8 + parX * 1.08;
+        const moonY = baseCy + Math.sin(t * 0.22) * 3;
+        const moonR = unit * 0.0075;
+        const moonGrad = ctx.createRadialGradient(moonX - moonR * 0.5, moonY - moonR * 0.2, moonR * 0.1, moonX, moonY, moonR);
+        moonGrad.addColorStop(0, '#f1f5f9');
+        moonGrad.addColorStop(0.6, '#94a3b8');
+        moonGrad.addColorStop(1, '#1e293b');
+        ctx.fillStyle = moonGrad;
+        ctx.beginPath();
+        ctx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // --- C. TERRE BLEUE NUAGEUSE ÉCLAIRÉE À GAUCHE PAR LE SOLEIL ---
+        const earthX = W * 0.752 + drift + parX * 1.15;
+        const earthY = baseCy - H * 0.005;
+        const earthR = unit * 0.032;
+
+        // Halo atmosphérique cyan
+        const atmo = ctx.createRadialGradient(earthX - earthR * 0.3, earthY, earthR * 0.8, earthX, earthY, earthR * 1.35);
+        atmo.addColorStop(0, 'rgba(0, 204, 255, 0.45)');
+        atmo.addColorStop(1, 'rgba(0, 204, 255, 0)');
+        ctx.fillStyle = atmo;
+        ctx.beginPath();
+        ctx.arc(earthX, earthY, earthR * 1.35, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(earthX, earthY, earthR, 0, Math.PI * 2);
+        ctx.clip();
+
+        // Océans & continents stylisés
+        const oceanGrad = ctx.createLinearGradient(earthX - earthR, earthY, earthX + earthR, earthY);
+        oceanGrad.addColorStop(0, '#38bdf8');
+        oceanGrad.addColorStop(0.45, '#0284c7');
+        oceanGrad.addColorStop(0.75, '#082f49');
+        oceanGrad.addColorStop(1, '#030712');
+        ctx.fillStyle = oceanGrad;
+        ctx.fillRect(earthX - earthR, earthY - earthR, earthR * 2, earthR * 2);
+
+        // Nuages tourbillonnants
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+        for (let c = 0; c < 5; c++) {
+            const cyOff = (c - 2) * earthR * 0.34;
+            const cxOff = Math.sin(t * 0.15 + c * 1.7) * earthR * 0.25 - earthR * 0.25;
+            ctx.beginPath();
+            ctx.ellipse(earthX + cxOff, earthY + cyOff, earthR * 0.55, earthR * 0.13, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Ombre du terminateur nocturne (droite)
+        const termGrad = ctx.createLinearGradient(earthX - earthR * 0.35, earthY, earthX + earthR * 0.65, earthY);
+        termGrad.addColorStop(0, 'rgba(0,0,0,0)');
+        termGrad.addColorStop(0.55, 'rgba(3, 6, 15, 0.72)');
+        termGrad.addColorStop(1, 'rgba(2, 4, 10, 0.95)');
+        ctx.fillStyle = termGrad;
+        ctx.fillRect(earthX - earthR, earthY - earthR, earthR * 2, earthR * 2);
+        ctx.restore();
+
+        // --- D. MARS OCRE-ROUGE ---
+        const marsX = W * 0.828 + drift * 1.25 + parX * 1.25;
+        const marsY = baseCy + H * 0.008;
+        const marsR = unit * 0.020;
+
+        const marsGrad = ctx.createRadialGradient(marsX - marsR * 0.45, marsY - marsR * 0.2, marsR * 0.1, marsX, marsY, marsR);
+        marsGrad.addColorStop(0, '#f97316');
+        marsGrad.addColorStop(0.48, '#c2410c');
+        marsGrad.addColorStop(0.82, '#431407');
+        marsGrad.addColorStop(1, '#0c0504');
+        ctx.fillStyle = marsGrad;
+        ctx.beginPath();
+        ctx.arc(marsX, marsY, marsR, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    // =========================================================================
+    // 2. CADRAN CENTRIFUGE AU SOL & LES 4 SECTEURS ÉLÉMENTAIRES EN PERSPECTIVE
+    // =========================================================================
+    function renderFloorAndElements(t, pulseVal) {
+        const cx = W * 0.5;
+        const cy = H * 0.745;
+        const rxOuter = Math.min(W * 0.455, H * 0.68);
+        const ryOuter = H * 0.232;
+        const aspect = ryOuter / rxOuter;
+        const pNorm = state.thermalKw / 100;
+
+        // Sol sombre métallique de la plateforme
+        const floorBg = ctx.createRadialGradient(cx, cy, rxOuter * 0.1, cx, cy, rxOuter * 1.25);
+        floorBg.addColorStop(0, '#0d1826');
+        floorBg.addColorStop(0.58, '#090c12');
+        floorBg.addColorStop(1, '#030406');
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(1, aspect);
+        ctx.fillStyle = floorBg;
+        ctx.beginPath();
+        ctx.arc(0, 0, rxOuter * 1.18, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Fonction utilitaire pour tracer un secteur annulaire en perspective elliptique
+        function drawSectorBasin(a0, a1, rInFrac, rOutFrac, fillStyle, strokeColor) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.scale(1, aspect);
+            ctx.beginPath();
+            ctx.arc(0, 0, rxOuter * rOutFrac, a0, a1, false);
+            ctx.arc(0, 0, rxOuter * rInFrac, a1, a0, true);
+            ctx.closePath();
+            ctx.fillStyle = fillStyle;
+            ctx.fill();
+            if (strokeColor) {
+                ctx.strokeStyle = strokeColor;
+                ctx.lineWidth = 2.4;
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        const gap = 0.055;
+
+        // ---------------------------------------------------------------------
+        // SECTEUR 1 : BAS-GAUCHE — EAU / AQUAPONIE (Deux bassins étagés cyan)
+        // Angles : [Math.PI * 0.5 + gap, Math.PI - gap]
+        // ---------------------------------------------------------------------
+        const wA0 = Math.PI * 0.5 + gap;
+        const wA1 = Math.PI - gap;
+        const tiers = [[0.61, 0.78], [0.81, 0.99]];
+
+        tiers.forEach(([rIn, rOut], idx) => {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.scale(1, aspect);
+            ctx.beginPath();
+            ctx.arc(0, 0, rxOuter * rOut, wA0, wA1, false);
+            ctx.arc(0, 0, rxOuter * rIn, wA1, wA0, true);
+            ctx.closePath();
+            ctx.clip();
+
+            const wGrad = ctx.createRadialGradient(0, 0, rxOuter * rIn, 0, 0, rxOuter * rOut);
+            wGrad.addColorStop(0, '#042f44');
+            wGrad.addColorStop(0.45, idx === 0 ? '#0284c7' : '#0369a1');
+            wGrad.addColorStop(0.85, '#00ccff');
+            wGrad.addColorStop(1, '#083344');
+            ctx.fillStyle = wGrad;
+            ctx.fillRect(-rxOuter, 0, rxOuter, rxOuter);
+
+            // Caustiques et ondulations lumineuses animées
+            ctx.globalCompositeOperation = 'lighter';
+            for (let k = 0; k < 18; k++) {
+                const ang = wA0 + (k / 17) * (wA1 - wA0) + Math.sin(t * 1.4 + k) * 0.025;
+                const rr = rxOuter * (rIn + 0.03 + 0.11 * (0.5 + 0.5 * Math.sin(t * 2.1 + k * 1.7)));
+                const wx = Math.cos(ang) * rr;
+                const wy = Math.sin(ang) * rr;
+                ctx.strokeStyle = `rgba(125, 249, 255, ${0.16 + pNorm * 0.14})`;
+                ctx.lineWidth = 2.2;
+                ctx.beginPath();
+                ctx.arc(wx, wy, rxOuter * 0.045, ang - 0.5, ang + 0.5);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            // Bordure dorée-métallique du bassin
+            drawSectorBasin(wA0, wA1, rIn, rOut, 'rgba(0,0,0,0)', 'rgba(212, 175, 55, 0.42)');
+        });
+
+        // ---------------------------------------------------------------------
+        // SECTEUR 2 : BAS-DROITE — TERRE / SERRE MARTIENNE (Régolithe + Fougères)
+        // Angles : [gap, Math.PI * 0.5 - gap]
+        // ---------------------------------------------------------------------
+        const eA0 = gap;
+        const eA1 = Math.PI * 0.5 - gap;
+        drawSectorBasin(eA0, eA1, 0.61, 0.99, '#3b150c', 'rgba(212, 175, 55, 0.42)');
+
+        // Texture de régolithe martien ocre-rouge
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(1, aspect);
+        ctx.beginPath();
+        ctx.arc(0, 0, rxOuter * 0.985, eA0, eA1, false);
+        ctx.arc(0, 0, rxOuter * 0.615, eA1, eA0, true);
+        ctx.closePath();
+        ctx.clip();
+        const soilGrad = ctx.createRadialGradient(rxOuter * 0.5, rxOuter * 0.5, 10, rxOuter * 0.5, rxOuter * 0.5, rxOuter * 0.6);
+        soilGrad.addColorStop(0, '#7c2d12');
+        soilGrad.addColorStop(0.6, '#451a03');
+        soilGrad.addColorStop(1, '#1c0a04');
+        ctx.fillStyle = soilGrad;
+        ctx.fillRect(0, 0, rxOuter, rxOuter);
+        ctx.restore();
+
+        // Fougères verdoyantes en perspective (non écrasées verticalement)
+        ferns.forEach(f => {
+            const fx = cx + Math.cos(f.angle) * rxOuter * f.radNorm;
+            const fy = cy + Math.sin(f.angle) * ryOuter * f.radNorm;
+            const sway = Math.sin(t * 1.6 + f.phase) * 0.12;
+            const plantScale = (0.75 + f.radNorm * 0.45) * f.size * (W / 1400 + 0.35);
+
+            ctx.save();
+            ctx.translate(fx, fy);
+            // Ombre portée au sol
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+            ctx.beginPath();
+            ctx.ellipse(0, 4, 18 * plantScale, 7 * plantScale, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Frondes de fougère superposées
+            for (let b = 0; b < f.fronds; b++) {
+                const bAngle = -Math.PI * 0.5 + ((b / (f.fronds - 1)) - 0.5) * 2.1 + sway;
+                const len = (22 + (b % 2) * 8) * plantScale;
+                ctx.save();
+                ctx.rotate(bAngle);
+                const leafGrad = ctx.createLinearGradient(0, 0, 0, -len);
+                leafGrad.addColorStop(0, '#14532d');
+                leafGrad.addColorStop(0.6, '#22c55e');
+                leafGrad.addColorStop(1, '#86efac');
+                ctx.fillStyle = leafGrad;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(-6 * plantScale, -len * 0.5, 0, -len);
+                ctx.quadraticCurveTo(6 * plantScale, -len * 0.5, 0, 0);
+                ctx.fill();
+                ctx.restore();
+            }
+            ctx.restore();
+        });
+
+        // Spores bioluminescentes #44ee77
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        bioSpores.forEach(sp => {
+            sp.life += 0.004 * (0.6 + pNorm);
+            if (sp.life > 1) sp.life -= 1;
+            const sx = cx + Math.cos(sp.angle) * rxOuter * sp.radNorm + Math.sin(t * 2 + sp.life * 8) * 8;
+            const sy = cy + Math.sin(sp.angle) * ryOuter * sp.radNorm - sp.life * 48;
+            const alpha = Math.sin(sp.life * Math.PI) * (0.45 + pNorm * 0.5);
+            ctx.fillStyle = `rgba(68, 238, 119, ${alpha})`;
+            ctx.beginPath();
+            ctx.arc(sx, sy, sp.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.restore();
+
+        // ---------------------------------------------------------------------
+        // SECTEUR 3 : HAUT-DROITE — FEU / CUVES ASIC INCANDESCENTES
+        // Angles : [Math.PI * 1.5 + gap, Math.PI * 2 - gap]
+        // ---------------------------------------------------------------------
+        const fA0 = Math.PI * 1.5 + gap;
+        const fA1 = Math.PI * 2 - gap;
+        drawSectorBasin(fA0, fA1, 0.61, 0.99, '#1c0903', 'rgba(247, 147, 26, 0.45)');
+
+        // Grille en damier de dalles ASIC incandescentes en perspective
+        const tileRings = [0.68, 0.80, 0.92];
+        const tileCols = 4;
+        const flameAnchors = [];
+
+        tileRings.forEach((rFrac, rIdx) => {
+            for (let cIdx = 0; cIdx < tileCols; cIdx++) {
+                const aCenter = fA0 + 0.09 + (cIdx / (tileCols - 1)) * (fA1 - fA0 - 0.18);
+                const dA = 0.055;
+                const dR = 0.042;
+
+                // Sommets du carré en perspective polaire/elliptique
+                const pts = [
+                    [aCenter - dA, rFrac - dR],
+                    [aCenter + dA, rFrac - dR],
+                    [aCenter + dA, rFrac + dR],
+                    [aCenter - dA, rFrac + dR]
+                ].map(([a, r]) => ({
+                    x: cx + Math.cos(a) * rxOuter * r,
+                    y: cy + Math.sin(a) * ryOuter * r
+                }));
+
+                const pulseTile = 0.72 + 0.28 * Math.sin(t * 4.2 + rIdx * 1.4 + cIdx * 2.1);
+                const heat = Math.min(1, (0.45 + pNorm * 0.65) * pulseTile);
+
+                // Socle sombre épais de la dalle ASIC
+                ctx.fillStyle = '#291206';
+                ctx.beginPath();
+                pts.forEach((p, idx) => idx === 0 ? ctx.moveTo(p.x, p.y + 5) : ctx.lineTo(p.x, p.y + 5));
+                ctx.closePath();
+                ctx.fill();
+
+                // Surface supérieure incandescente orange/or
+                ctx.fillStyle = `rgba(255, ${Math.round(135 + heat * 95)}, ${Math.round(25 + heat * 60)}, ${0.75 + heat * 0.25})`;
+                ctx.strokeStyle = '#ffe680';
+                ctx.lineWidth = 1.4;
+                ctx.beginPath();
+                pts.forEach((p, idx) => idx === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                const centerPt = {
+                    x: (pts[0].x + pts[2].x) * 0.5,
+                    y: (pts[0].y + pts[2].y) * 0.5
+                };
+                flameAnchors.push({ x: centerPt.x, y: centerPt.y, heat });
+            }
+        });
+
+        // Colonnes de chaleur et flammes thermiques s'élevant des dalles ASIC
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        flameAnchors.forEach((fa, idx) => {
+            const flameH = (28 + pNorm * 68) * (0.75 + 0.25 * Math.sin(t * 6.5 + idx * 1.9));
+            const flameW = 14 + pNorm * 10;
+            const sway = Math.sin(t * 5.2 + idx) * 6;
+
+            const fGrad = ctx.createLinearGradient(fa.x, fa.y, fa.x + sway, fa.y - flameH);
+            fGrad.addColorStop(0, `rgba(255, 220, 100, ${0.42 * fa.heat})`);
+            fGrad.addColorStop(0.45, `rgba(247, 110, 15, ${0.28 * fa.heat})`);
+            fGrad.addColorStop(1, 'rgba(220, 38, 38, 0)');
+
+            ctx.fillStyle = fGrad;
+            ctx.beginPath();
+            ctx.moveTo(fa.x - flameW, fa.y);
+            ctx.quadraticCurveTo(fa.x - flameW * 0.4 + sway * 0.5, fa.y - flameH * 0.6, fa.x + sway, fa.y - flameH);
+            ctx.quadraticCurveTo(fa.x + flameW * 0.4 + sway * 0.5, fa.y - flameH * 0.6, fa.x + flameW, fa.y);
+            ctx.closePath();
+            ctx.fill();
+        });
+
+        // Braises montantes
+        embers.forEach((em, idx) => {
+            if (state.playing) {
+                em.life += 0.008 * em.speed * (0.5 + pNorm);
+                if (em.life > 1) em.life -= 1;
+            }
+            const anchor = flameAnchors[idx % flameAnchors.length];
+            if (!anchor) return;
+            const ex = anchor.x + Math.sin(t * 3 + idx) * 14 + em.drift * em.life * 40;
+            const ey = anchor.y - em.life * (55 + pNorm * 85);
+            const alpha = Math.sin(em.life * Math.PI) * (0.5 + pNorm * 0.5);
+            ctx.fillStyle = `rgba(255, 195, 60, ${alpha})`;
+            ctx.beginPath();
+            ctx.arc(ex, ey, em.size * (1 - em.life * 0.5), 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.restore();
+
+        // ---------------------------------------------------------------------
+        // SECTEUR 4 : HAUT-GAUCHE — AIR / VAPEUR ATMOSPHÉRIQUE
+        // Angles : [Math.PI + gap, Math.PI * 1.5 - gap]
+        // ---------------------------------------------------------------------
+        const aA0 = Math.PI + gap;
+        const aA1 = Math.PI * 1.5 - gap;
+        drawSectorBasin(aA0, aA1, 0.61, 0.99, '#0b131e', 'rgba(148, 163, 184, 0.3)');
+
+        // ---------------------------------------------------------------------
+        // LE CADRAN CENTRIFUGE CENTRAL (0,38 g) — ANNEAUX CYAN & RUNES DORÉES
+        // ---------------------------------------------------------------------
+        const dialR = rxOuter * 0.575;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(1, aspect);
+
+        // Glow cyan interne du cadran réagissant à la pulsation du Cœur Vibrant
+        const dialGlow = ctx.createRadialGradient(0, 0, dialR * 0.06, 0, 0, dialR);
+        dialGlow.addColorStop(0, `rgba(0, 229, 255, ${0.32 + pulseVal * 0.25})`);
+        dialGlow.addColorStop(0.55, 'rgba(2, 132, 199, 0.24)');
+        dialGlow.addColorStop(0.84, '#09111c');
+        dialGlow.addColorStop(1, '#05070b');
+        ctx.fillStyle = dialGlow;
+        ctx.beginPath();
+        ctx.arc(0, 0, dialR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Filaments d'énergie cyan sous le verre du cadran
+        ctx.save();
+        ctx.rotate(state.rotAngle * 0.45);
+        ctx.globalCompositeOperation = 'lighter';
+        for (let w = 0; w < 12; w++) {
+            const wa = (w / 12) * Math.PI * 2;
+            ctx.strokeStyle = `rgba(0, 229, 255, ${0.14 + 0.1 * Math.sin(t * 2.5 + w)})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(Math.cos(wa) * dialR * 0.2, Math.sin(wa) * dialR * 0.2);
+            ctx.quadraticCurveTo(
+                Math.cos(wa + 0.28) * dialR * 0.52,
+                Math.sin(wa + 0.28) * dialR * 0.52,
+                Math.cos(wa - 0.1) * dialR * 0.78,
+                Math.sin(wa - 0.1) * dialR * 0.78
+            );
+            ctx.stroke();
+        }
+        ctx.restore();
+
+        // Anneaux concentriques dorés & graduations runiques en rotation
+        [1.0, 0.83, 0.76, 0.34, 0.26].forEach((rf, i) => {
+            ctx.strokeStyle = i % 2 === 0 ? 'rgba(255, 204, 0, 0.62)' : 'rgba(0, 204, 255, 0.45)';
+            ctx.lineWidth = i === 0 ? 3.2 : 1.6;
+            ctx.beginPath();
+            ctx.arc(0, 0, dialR * rf, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+
+        // Rayons du cadran et glyphes angulaires
+        ctx.save();
+        ctx.rotate(state.rotAngle * 0.3);
+        for (let g = 0; g < 36; g++) {
+            const ga = (g / 36) * Math.PI * 2;
+            ctx.save();
+            ctx.rotate(ga);
+            if (g % 3 === 0) {
+                ctx.strokeStyle = 'rgba(255, 204, 0, 0.28)';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                ctx.moveTo(dialR * 0.34, 0);
+                ctx.lineTo(dialR * 0.76, 0);
+                ctx.stroke();
+            }
+            // Glyphes runiques sur la couronne externe
+            ctx.strokeStyle = 'rgba(255, 215, 100, 0.72)';
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(dialR * 0.86, -3);
+            ctx.lineTo(dialR * 0.94, (g % 2 === 0) ? 3 : 0);
+            if (g % 3 === 0) {
+                ctx.moveTo(dialR * 0.90, -4);
+                ctx.lineTo(dialR * 0.90, 4);
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
+        ctx.restore();
+        ctx.restore();
+
+        // Nappes de vapeur atmosphérique flottant au-dessus du secteur Haut-Gauche & Cadran
+        steamPuffs.forEach(sp => {
+            if (state.playing) {
+                sp.rise += 0.0022 * sp.speed * (0.65 + pNorm * 0.7);
+                if (sp.rise > 1) sp.rise -= 1;
+            }
+            const driftA = sp.angle + Math.sin(t * 0.4 + sp.seed) * 0.08;
+            const px = cx + Math.cos(driftA) * rxOuter * sp.radNorm;
+            const py = cy + Math.sin(driftA) * ryOuter * sp.radNorm - sp.rise * H * 0.13;
+            const puffR = (38 + sp.scale * 48) * (W / 1350 + 0.35);
+            const alpha = Math.sin(sp.rise * Math.PI) * (0.11 + pNorm * 0.08);
+
+            const mGrad = ctx.createRadialGradient(px, py, 2, px, py, puffR);
+            mGrad.addColorStop(0, `rgba(226, 240, 255, ${alpha})`);
+            mGrad.addColorStop(0.55, `rgba(148, 197, 235, ${alpha * 0.5})`);
+            mGrad.addColorStop(1, 'rgba(148, 197, 235, 0)');
+            ctx.fillStyle = mGrad;
+            ctx.beginPath();
+            ctx.ellipse(px, py, puffR * 1.35, puffR * 0.72, 0, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    }
+
+    // =========================================================================
+    // 3. VORTEX TOROÏDAL, SPHÈRE GÉOMÉTRIQUE & LE CŒUR VIBRANT CENTRAL
+    // =========================================================================
+    function renderVortexAndHeart(t, pulseVal) {
+        const cx = W * 0.5 + state.pointerX * 8;
+        const sphereCy = H * 0.335 + state.pointerY * 5;
+        const sphereR = Math.min(W, H) * 0.168;
+        const floorCy = H * 0.745;
+        const pNorm = state.thermalKw / 100;
+
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+
+        // --- A. VORTEX HYPERBOLOÏDE / TOROÏDAL DE PARTICULES (OR À GAUCHE, MAGENTA À DROITE) ---
+        for (let i = 0; i < vortexParticles.length; i++) {
+            const vp = vortexParticles[i];
+            if (state.playing) {
+                vp.theta += 0.008 * vp.speed * state.rotSpeed;
+                vp.t += 0.0025 * vp.speed * (state.rotSpeed >= 0 ? 1 : -1);
+                if (vp.t > 1) vp.t -= 2;
+                if (vp.t < -1) vp.t += 2;
+            }
+
+            // Profil en sablier / trompette reliant la voûte (y=0) au cadran au sol
+            const yWorld = sphereCy + vp.t * (H * 0.37);
+            const flare = 1.0 + 1.45 * Math.pow(vp.t, 2);
+            const rHoriz = sphereR * 0.96 * flare;
+
+            const x3d = Math.cos(vp.theta) * rHoriz;
+            const z3d = Math.sin(vp.theta) * rHoriz;
+            const persp = 1 / (1 - z3d / (W * 1.4));
+
+            const px = cx + x3d * persp;
+            const py = yWorld + (z3d * 0.14);
+
+            // Dégradé chromatique fidèle à l'image : Or solaire à gauche, Violet/Magenta à droite
+            const sideMix = (x3d / rHoriz + 1) * 0.5; // 0 = gauche, 1 = droite
+            const edgeFade = 1 - Math.pow(Math.abs(vp.t), 3.2);
+            const alpha = vp.alpha * edgeFade * (0.45 + pNorm * 0.35);
+
+            if (sideMix < 0.48) {
+                ctx.fillStyle = `rgba(255, 196, 55, ${alpha})`;
+            } else if (sideMix > 0.52) {
+                ctx.fillStyle = `rgba(216, 75, 255, ${alpha})`;
+            } else {
+                ctx.fillStyle = `rgba(255, 220, 190, ${alpha})`;
+            }
+
+            ctx.beginPath();
+            ctx.arc(px, py, vp.size * persp, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // --- B. COQUE SPHÉRIQUE DE POINTS LUMINEUX & HALO HOLOGRAPHIQUE ---
+        const outerAura = ctx.createRadialGradient(cx, sphereCy, sphereR * 0.15, cx, sphereCy, sphereR * 1.38);
+        outerAura.addColorStop(0, `rgba(255, 220, 130, ${0.22 + pulseVal * 0.22})`);
+        outerAura.addColorStop(0.55, 'rgba(179, 102, 255, 0.16)');
+        outerAura.addColorStop(0.76, 'rgba(224, 64, 251, 0.22)');
+        outerAura.addColorStop(1, 'rgba(179, 102, 255, 0)');
+        ctx.fillStyle = outerAura;
+        ctx.beginPath();
+        ctx.arc(cx, sphereCy, sphereR * 1.38, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Rotation 3D des points de la sphère
+        const rotY = state.rotAngle * 0.6;
+        const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+        for (let i = 0; i < sphereDots.length; i++) {
+            const d = sphereDots[i];
+            const rx = d.x * cosY - d.z * sinY;
+            const rz = d.x * sinY + d.z * cosY;
+            const depthAlpha = 0.2 + 0.65 * ((rz + 1) * 0.5);
+            const sx = cx + rx * sphereR;
+            const sy = sphereCy + d.y * sphereR;
+
+            ctx.fillStyle = rx < 0
+                ? `rgba(255, 214, 120, ${depthAlpha * 0.65})`
+                : `rgba(216, 130, 255, ${depthAlpha * 0.65})`;
+            ctx.beginPath();
+            ctx.arc(sx, sy, 1.25, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Contour irisé de la sphère holographique
+        const rimGrad = ctx.createLinearGradient(cx - sphereR, sphereCy - sphereR, cx + sphereR, sphereCy + sphereR);
+        rimGrad.addColorStop(0, 'rgba(255, 215, 110, 0.78)');
+        rimGrad.addColorStop(0.5, 'rgba(255, 180, 240, 0.45)');
+        rimGrad.addColorStop(1, 'rgba(205, 90, 255, 0.82)');
+        ctx.strokeStyle = rimGrad;
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.arc(cx, sphereCy, sphereR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // --- C. CERCLE GÉOMÉTRIQUE SACRÉ EN ROTATION (CUBE DE MÉTATRON / HEXAGRAMME) ---
+        const geoR = sphereR * 0.86;
+        // Micro-dilatation géométrique synchronisée au battement du cœur
+        const breathScale = 1 + pulseVal * 0.032;
+
+        ctx.save();
+        ctx.translate(cx, sphereCy);
+        ctx.scale(breathScale, breathScale);
+
+        // Anneau orbital extérieur contre-rotatif avec arcs gradués
+        ctx.save();
+        ctx.rotate(-state.rotAngle * 0.45);
+        ctx.strokeStyle = 'rgba(255, 215, 130, 0.42)';
+        ctx.lineWidth = 1.2;
+        ctx.setLineDash([8, 6]);
+        ctx.beginPath();
+        ctx.arc(0, 0, sphereR * 0.93, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        // Étoile à 6 branches principale & Hexagone externe (rotation horaire)
+        ctx.save();
+        ctx.rotate(state.rotAngle * 0.55);
+
+        const outerVerts = [];
+        for (let k = 0; k < 6; k++) {
+            const a = -Math.PI * 0.5 + (k * Math.PI) / 3;
+            outerVerts.push({ x: Math.cos(a) * geoR, y: Math.sin(a) * geoR });
+        }
+
+        // Hexagone externe
+        ctx.strokeStyle = 'rgba(255, 210, 125, 0.55)';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        outerVerts.forEach((v, i) => i === 0 ? ctx.moveTo(v.x, v.y) : ctx.lineTo(v.x, v.y));
+        ctx.closePath();
+        ctx.stroke();
+
+        // Deux grands triangles entrelacés (Merkaba / Étoile à 6 branches)
+        ctx.strokeStyle = 'rgba(255, 238, 175, 0.92)';
+        ctx.lineWidth = 2.0;
+        [0, 1].forEach(offset => {
+            ctx.beginPath();
+            for (let i = 0; i < 3; i++) {
+                const v = outerVerts[offset + i * 2];
+                i === 0 ? ctx.moveTo(v.x, v.y) : ctx.lineTo(v.x, v.y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        });
+
+        // Diagonales passant par le cœur et sommets lumineux
+        outerVerts.forEach(v => {
+            ctx.strokeStyle = 'rgba(255, 204, 0, 0.35)';
+            ctx.lineWidth = 1.1;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(v.x, v.y);
+            ctx.stroke();
+
+            ctx.fillStyle = '#fff7d6';
+            ctx.beginPath();
+            ctx.arc(v.x, v.y, 3.2, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.restore();
+
+        // Anneau géométrique intermédiaire contre-rotatif (Dodécagone / Hexagone interne)
+        ctx.save();
+        ctx.rotate(-state.rotAngle * 0.85);
+        const innerR = geoR * 0.52;
+        ctx.strokeStyle = 'rgba(255, 224, 140, 0.78)';
+        ctx.lineWidth = 1.7;
+        ctx.beginPath();
+        ctx.arc(0, 0, innerR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        const innerVerts = [];
+        for (let k = 0; k < 6; k++) {
+            const a = (k * Math.PI) / 3;
+            innerVerts.push({ x: Math.cos(a) * innerR, y: Math.sin(a) * innerR });
+        }
+        ctx.beginPath();
+        innerVerts.forEach((v, i) => i === 0 ? ctx.moveTo(v.x, v.y) : ctx.lineTo(v.x, v.y));
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.restore(); // Fin de la géométrie sacrée
+
+        // --- D. LE CŒUR VIBRANT AU CENTRE DE LA SPHÈRE ---
+        const vibFreq = 28 + (state.bpm * 0.25);
+        const vibAmp = (1.2 + pulseVal * 3.8) * (0.6 + pNorm * 0.6);
+        const jx = Math.cos(t * vibFreq) * vibAmp * 0.45;
+        const jy = Math.sin(t * vibFreq * 1.13) * vibAmp * 0.45;
+        const heartR = sphereR * (0.21 + pulseVal * 0.085 + pNorm * 0.03);
+
+        // Ondes de choc harmoniques expansives émises à chaque battement du cœur
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+            const sw = shockwaves[i];
+            if (state.playing) sw.progress += 0.014 * sw.speed;
+            if (sw.progress >= 1) {
+                shockwaves.splice(i, 1);
+                continue;
+            }
+            const rWave = sphereR * (0.18 + sw.progress * 0.92);
+            const aWave = (1 - sw.progress) * 0.55 * sw.power;
+            ctx.strokeStyle = sw.tint === 'magenta'
+                ? `rgba(224, 64, 251, ${aWave})`
+                : `rgba(255, 215, 100, ${aWave})`;
+            ctx.lineWidth = 2.4 * (1 - sw.progress * 0.6);
+            ctx.beginPath();
+            ctx.arc(cx, sphereCy, rWave, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        // Couronne vibratoire multicouche (membrane acoustique autour du cœur)
+        for (let layer = 0; layer < 3; layer++) {
+            const dir = layer % 2 === 0 ? 1 : -1;
+            ctx.strokeStyle = layer === 0
+                ? `rgba(255, 245, 200, ${0.65 + pulseVal * 0.3})`
+                : (layer === 1 ? `rgba(247, 147, 26, ${0.45 + pulseVal * 0.3})` : `rgba(224, 64, 251, ${0.38 + pulseVal * 0.25})`);
+            ctx.lineWidth = 2.2 - layer * 0.4;
+            ctx.beginPath();
+            const segs = 90;
+            for (let s = 0; s <= segs; s++) {
+                const ang = (s / segs) * Math.PI * 2;
+                const harmonic = Math.sin(ang * (6 + layer * 3) + t * 9 * dir) * (2.5 + pulseVal * 7.5);
+                const rr = heartR * (1.05 + layer * 0.22) + harmonic;
+                const px = cx + jx + Math.cos(ang) * rr;
+                const py = sphereCy + jy + Math.sin(ang) * rr;
+                s === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        // Filaments radiaux solaires du Cœur Vibrant
+        const numRays = 24;
+        for (let r = 0; r < numRays; r++) {
+            const ra = (r / numRays) * Math.PI * 2 + state.rotAngle * 0.9;
+            const rayLen = heartR * (1.35 + pulseVal * 0.95 + 0.25 * Math.sin(t * 8 + r * 2.3));
+            const rayGrad = ctx.createLinearGradient(
+                cx + jx, sphereCy + jy,
+                cx + Math.cos(ra) * rayLen, sphereCy + Math.sin(ra) * rayLen
+            );
+            rayGrad.addColorStop(0, 'rgba(255, 255, 240, 0.85)');
+            rayGrad.addColorStop(0.5, 'rgba(255, 190, 60, 0.35)');
+            rayGrad.addColorStop(1, 'rgba(224, 64, 251, 0)');
+            ctx.strokeStyle = rayGrad;
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.moveTo(cx + jx, sphereCy + jy);
+            ctx.lineTo(cx + Math.cos(ra) * rayLen, sphereCy + Math.sin(ra) * rayLen);
+            ctx.stroke();
+        }
+
+        // Noyau incandescent du Cœur Vibrant
+        const coreGlow = ctx.createRadialGradient(
+            cx + jx, sphereCy + jy, heartR * 0.08,
+            cx + jx, sphereCy + jy, heartR * 2.4
+        );
+        coreGlow.addColorStop(0, '#ffffff');
+        coreGlow.addColorStop(0.22, '#fff3b0');
+        coreGlow.addColorStop(0.48, `rgba(255, 175, 25, ${0.72 + pulseVal * 0.25})`);
+        coreGlow.addColorStop(0.78, `rgba(224, 64, 251, ${0.28 + pulseVal * 0.2})`);
+        coreGlow.addColorStop(1, 'rgba(247, 147, 26, 0)');
+
+        ctx.fillStyle = coreGlow;
+        ctx.beginPath();
+        ctx.arc(cx + jx, sphereCy + jy, heartR * 2.4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Colonne lumineuse subtile reliant le Cœur Vibrant au centre du cadran
+        const beamGrad = ctx.createLinearGradient(cx, sphereCy + sphereR * 0.7, cx, floorCy);
+        beamGrad.addColorStop(0, `rgba(255, 210, 120, ${0.12 + pulseVal * 0.14})`);
+        beamGrad.addColorStop(0.6, 'rgba(0, 204, 255, 0.07)');
+        beamGrad.addColorStop(1, 'rgba(0, 204, 255, 0)');
+        ctx.fillStyle = beamGrad;
+        ctx.fillRect(cx - sphereR * 0.28, sphereCy + sphereR * 0.5, sphereR * 0.56, floorCy - (sphereCy + sphereR * 0.5));
+
+        ctx.restore();
+    }
+
+    // =========================================================================
+    // 4. L'ASTRONAUTE AU CENTRE DU CADRAN (CONTRE-JOUR DORÉ & REFLETS CYAN)
+    // =========================================================================
+    function renderAstronaut(pulseVal) {
+        if (!state.showAstronaut) return;
+
+        const cx = W * 0.5;
+        const footY = H * 0.735;
+        const figH = Math.min(H * 0.235, W * 0.165);
+        const s = figH / 180;
+
+        ctx.save();
+        ctx.translate(cx, footY);
+
+        // Ombre portée vers l'observateur sur le cadran luminescent
+        const shGrad = ctx.createRadialGradient(0, 6 * s, 2 * s, 0, 16 * s, 44 * s);
+        shGrad.addColorStop(0, 'rgba(0, 0, 0, 0.78)');
+        shGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = shGrad;
+        ctx.beginPath();
+        ctx.ellipse(0, 10 * s, 32 * s, 11 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Halo de contre-jour du Cœur Vibrant derrière les épaules et le casque
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        const rimGlow = ctx.createRadialGradient(0, -145 * s, 4 * s, 0, -135 * s, 52 * s);
+        rimGlow.addColorStop(0, `rgba(255, 220, 130, ${0.38 + pulseVal * 0.28})`);
+        rimGlow.addColorStop(1, 'rgba(255, 170, 0, 0)');
+        ctx.fillStyle = rimGlow;
+        ctx.beginPath();
+        ctx.arc(0, -135 * s, 52 * s, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Couleurs de la combinaison spatiale éclairée en rim-light
+        const suitFill = '#1e242d';
+        const suitDark = '#10141b';
+        const rimStroke = `rgba(255, 218, 135, ${0.65 + pulseVal * 0.3})`;
+
+        function drawLimb(pts, fill) {
+            ctx.fillStyle = fill || suitFill;
+            ctx.strokeStyle = rimStroke;
+            ctx.lineWidth = 1.4 * s;
+            ctx.beginPath();
+            pts.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x * s, y * s) : ctx.lineTo(x * s, y * s));
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        // Jambes & Bottes
+        drawLimb([[-17, -78], [-5, -78], [-7, -8], [-19, -8]]);
+        drawLimb([[5, -78], [17, -78], [19, -8], [7, -8]]);
+        // Bottes sombres
+        ctx.fillStyle = suitDark;
+        ctx.beginPath();
+        ctx.ellipse(-14 * s, -4 * s, 8 * s, 5 * s, 0, 0, Math.PI * 2);
+        ctx.ellipse(14 * s, -4 * s, 8 * s, 5 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Torse de la combinaison pressurisée
+        drawLimb([[-21, -138], [21, -138], [18, -76], [-18, -76]]);
+
+        // Bras gauche & droit
+        drawLimb([[-21, -136], [-30, -112], [-28, -82], [-20, -84], [-19, -112]]);
+        drawLimb([[21, -136], [30, -112], [28, -82], [20, -84], [19, -112]]);
+
+        // Module thoracique & sangles techniques
+        ctx.fillStyle = '#2b3340';
+        ctx.strokeStyle = 'rgba(0, 204, 255, 0.45)';
+        ctx.lineWidth = 1.1 * s;
+        ctx.beginPath();
+        ctx.roundRect(-11 * s, -126 * s, 22 * s, 24 * s, 3 * s);
+        ctx.fill();
+        ctx.stroke();
+
+        // Anneaux d'articulation genoux / taille (reflet cyan du sol)
+        ctx.strokeStyle = 'rgba(0, 229, 255, 0.35)';
+        ctx.lineWidth = 1.5 * s;
+        ctx.beginPath();
+        ctx.moveTo(-18 * s, -78 * s); ctx.lineTo(18 * s, -78 * s);
+        ctx.moveTo(-18 * s, -44 * s); ctx.lineTo(-7 * s, -44 * s);
+        ctx.moveTo(7 * s, -44 * s); ctx.lineTo(18 * s, -44 * s);
+        ctx.stroke();
+
+        // Col & Casque / Tête éclairée par l'aura dorée supérieure
+        ctx.fillStyle = '#2d3644';
+        ctx.beginPath();
+        ctx.ellipse(0, -141 * s, 12 * s, 4.5 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        const headGrad = ctx.createRadialGradient(0, -162 * s, 2 * s, 0, -156 * s, 14 * s);
+        headGrad.addColorStop(0, '#eab68c');
+        headGrad.addColorStop(0.65, '#7c5338');
+        headGrad.addColorStop(1, '#1e242d');
+        ctx.fillStyle = headGrad;
+        ctx.strokeStyle = rimStroke;
+        ctx.lineWidth = 1.5 * s;
+        ctx.beginPath();
+        ctx.ellipse(0, -156 * s, 10.5 * s, 13 * s, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+    // =========================================================================
+    // SYNTHÉTISEUR WEB AUDIO API (NAPPE 432 HZ + BATTEMENT DU CŒUR)
+    // =========================================================================
+    let audioCtx = null;
+    let masterGain = null;
+
+    function initAudio() {
+        if (audioCtx) return;
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.0001;
+
+        const lp = audioCtx.createBiquadFilter();
+        lp.type = 'lowpass';
+        lp.frequency.value = 950;
+        masterGain.connect(lp);
+        lp.connect(audioCtx.destination);
+
+        // Accord harmonique doux autour de 432 Hz (Fondamentale 108 Hz, 216 Hz, Quinte 324 Hz, 432 Hz)
+        [108, 216, 324, 432].forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = idx === 0 ? 'triangle' : 'sine';
+            osc.frequency.value = freq;
+            g.gain.value = idx === 3 ? 0.05 : 0.07;
+            osc.connect(g);
+            g.connect(masterGain);
+            osc.start();
+        });
+    }
+
+    function triggerAudioHeartbeat() {
+        if (!state.audioOn || !audioCtx) return;
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(72, now);
+        osc.frequency.exponentialRampToValueAtTime(36, now + 0.24);
+        g.gain.setValueAtTime(0.18, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.connect(g);
+        g.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+    }
+
+    // =========================================================================
+    // BOUCLE D'ANIMATION PRINCIPALE (60 FPS)
+    // =========================================================================
+    let lastTime = performance.now();
+    let prevBeatCycle = 0;
+
+    function frame(now) {
+        requestAnimationFrame(frame);
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+
+        state.pointerX += (state.targetPointerX - state.pointerX) * 0.06;
+        state.pointerY += (state.targetPointerY - state.pointerY) * 0.06;
+
+        if (state.playing) {
+            state.time += dt;
+            state.rotAngle += dt * 0.38 * state.rotSpeed;
+            state.beatPhase += dt * (state.bpm / 60);
+
+            const currentCycle = Math.floor(state.beatPhase);
+            if (currentCycle > prevBeatCycle) {
+                prevBeatCycle = currentCycle;
+                shockwaves.push({ progress: 0, speed: 0.85, power: 1.0, tint: currentCycle % 2 === 0 ? 'gold' : 'magenta' });
+                triggerAudioHeartbeat();
+            }
+        }
+
+        // Courbe organique double-impulsion (« lub-dub » cardiaque & thermodynamique)
+        const fBeat = state.beatPhase % 1;
+        const lub = Math.exp(-Math.pow((fBeat - 0.12) / 0.075, 2));
+        const dub = 0.65 * Math.exp(-Math.pow((fBeat - 0.30) / 0.065, 2));
+        const pulseVal = Math.min(1, lub + dub);
+
+        ctx.clearRect(0, 0, W, H);
+
+        // 1. Espace profond & Planètes dans la baie
+        renderSpaceViewport(state.time);
+
+        // 2. Coque intérieure métallique du Starship pré-rendue
+        ctx.drawImage(hullCanvas, 0, 0, W, H);
+
+        // Reflets ambiants dynamiques du feu ASIC et du cœur sur les arches du Starship
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        const archGlow = ctx.createRadialGradient(W * 0.5, H * 0.33, 20, W * 0.5, H * 0.33, W * 0.48);
+        archGlow.addColorStop(0, `rgba(255, 200, 90, ${0.05 + pulseVal * 0.05})`);
+        archGlow.addColorStop(0.6, `rgba(179, 102, 255, ${0.03 + pulseVal * 0.03})`);
+        archGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = archGlow;
+        ctx.fillRect(0, 0, W, H * 0.56);
+        ctx.restore();
+
+        // 3. Cadran centrifuge au sol & les 4 Bassins Élémentaires
+        renderFloorAndElements(state.time, pulseVal);
+
+        // 4. Vortex toroïdal, Sphère géométrique & Cœur Vibrant
+        renderVortexAndHeart(state.time, pulseVal);
+
+        // 5. Silhouette de l'Astronaute au centre du cadran
+        renderAstronaut(pulseVal);
+    }
+
+    // =========================================================================
+    // ÉVÉNEMENTS INTERACTIFS & CONTRÔLES HUD
+    // =========================================================================
+    window.addEventListener('pointermove', (e) => {
+        state.targetPointerX = (e.clientX / W - 0.5) * 2;
+        state.targetPointerY = (e.clientY / H - 0.5) * 2;
+    });
+
+    canvas.addEventListener('click', (e) => {
+        const dx = e.clientX - W * 0.5;
+        const dy = e.clientY - H * 0.335;
+        const dist = Math.hypot(dx, dy);
+        if (dist < Math.min(W, H) * 0.25) {
+            shockwaves.push({ progress: 0, speed: 1.15, power: 1.35, tint: 'gold' });
+            shockwaves.push({ progress: 0.08, speed: 0.9, power: 1.1, tint: 'magenta' });
+            triggerAudioHeartbeat();
+        }
+    });
+
+    const slPulse = document.getElementById('sl-pulse');
+    const slRot = document.getElementById('sl-rot');
+    const slPower = document.getElementById('sl-power');
+
+    slPulse.addEventListener('input', () => {
+        state.bpm = parseInt(slPulse.value, 10);
+        document.getElementById('out-pulse').textContent = `${state.bpm} BPM`;
+        document.getElementById('tel-hz').textContent = `432,0 Hz · ${state.bpm} BPM`;
+    });
+
+    slRot.addEventListener('input', () => {
+        state.rotSpeed = parseInt(slRot.value, 10) / 100;
+        const sign = state.rotSpeed >= 0 ? '+' : '';
+        document.getElementById('out-rot').textContent = `${sign}${state.rotSpeed.toFixed(1)}x`;
+        document.getElementById('tel-grav').textContent = state.rotSpeed === 0
+            ? '0,00 g · Statique'
+            : `${(0.38 * Math.abs(state.rotSpeed)).toFixed(2).replace('.', ',')} g · ${state.rotSpeed > 0 ? 'Direct' : 'Inversé'}`;
+    });
+
+    slPower.addEventListener('input', () => {
+        state.thermalKw = parseInt(slPower.value, 10);
+        document.getElementById('out-power').textContent = `${state.thermalKw} kWth`;
+        document.getElementById('tel-kw').textContent = `${state.thermalKw} kWth`;
+    });
+
+    document.getElementById('btn-play').addEventListener('click', function() {
+        state.playing = !state.playing;
+        this.textContent = state.playing ? '⏸ Pause' : '▶ Lecture';
+        this.classList.toggle('active', state.playing);
+    });
+
+    document.getElementById('btn-astro').addEventListener('click', function() {
+        state.showAstronaut = !state.showAstronaut;
+        this.classList.toggle('active', state.showAstronaut);
+    });
+
+    document.getElementById('btn-audio').addEventListener('click', function() {
+        initAudio();
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        state.audioOn = !state.audioOn;
+        this.classList.toggle('active', state.audioOn);
+        if (masterGain && audioCtx) {
+            masterGain.gain.setTargetAtTime(state.audioOn ? 0.35 : 0.0001, audioCtx.currentTime, 0.12);
+        }
+    });
+
+    const toggleCinema = () => document.body.classList.toggle('cinema-mode');
+    document.getElementById('btn-cinema').addEventListener('click', toggleCinema);
+    document.getElementById('restore-ui-btn').addEventListener('click', toggleCinema);
+
+    document.getElementById('btn-fs').addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+            document.exitFullscreen().catch(() => {});
+        }
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            document.getElementById('btn-play').click();
+        } else if (e.key.toLowerCase() === 'h') {
+            toggleCinema();
+        }
+    });
+
+    // Démarrage
+    initEntities();
+    resize();
+    requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

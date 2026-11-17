@@ -466,7 +466,7 @@
                 </div>
                 <div style="display:flex; gap:6px;">
                     <button type="button" class="sh-btn" id="sh-btn-pulse">✦ Pulse</button>
-                    <button type="button" class="sh-btn" id="sh-btn-fs" title="Plein écran">⛶</button>
+                    <button type="button" class="sh-btn" id="sh-btn-fs" title="Plein écran">Full VIEW ⛶</button>
                 </div>
             </div>
 
@@ -899,8 +899,7 @@
     canvas.addEventListener('click', triggerPulse);
     document.getElementById('sh-btn-pulse').addEventListener('click', triggerPulse);
     document.getElementById('sh-btn-fs').addEventListener('click', () => {
-        if (!document.fullscreenElement) stageBox.requestFullscreen();
-        else document.exitFullscreen();
+        window.open('starship_arche_thermodynamique_c_ur_vibrant.html', '_blank');
     });
 
     const spinInput = document.getElementById('sh-spin');
