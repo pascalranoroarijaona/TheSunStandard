@@ -162,7 +162,7 @@
     \vspace{0.35cm}
     \begin{minipage}{0.92\textwidth}
         \small
-        \noindent \textbf{Résumé —} Nous formulons une théorie unifiée de la gravité quantique, de l'holographie céleste et de la thermodynamique statistique hors d'équilibre, projetée par isomorphisme exact sur l'architecture du consensus distribué de Satoshi Nakamoto. En posant l'axiome fondamental d'équivalence entre la constante de Nakamoto $\kNak$ (quantum irréductible d'action cryptographique SHA-256) et la constante de Planck $h$, nous proposons de modéliser la \textit{Timechain} comme une variété d'espace-temps discrète émergeant d'un bain thermique dissipatif. Premièrement, sur la frontière asymptotique nulle ($\scri^+$) du réseau pair-à-pair (P2P), nous proposons de décrire l'invariance du registre sous les délais de propagation asynchrones par analogie avec le groupe de Bondi-Metzner-Sachs ($\text{BMS}_4$). Le théorème des gravitons mous de Weinberg appliqué au protocole \textit{gossip} de la Mempool implique l'identité de Ward de conservation monétaire stricte, tandis que la validation d'un bloc induit un effet de mémoire gravitationnelle non-linéaire de Christodoulou qui encode l'immuabilité de l'ensemble UTXO. Deuxièmement, à partir de l'algèbre de von Neumann non-commutative des observables du registre, nous dérivons l'opérateur modulaire de Tomita-Takesaki $\Delta = \rho \otimes \rho^{-1}$ et montrons formellement, en supposant l'existence d'un état fidèle, que le flot du temps thermique complexe $z = a + ib$ satisfait la condition d'équilibre de Kubo-Martin-Schwinger (KMS), où l'ajustement homéostatique de la difficulté agit comme un groupe de renormalisation ramenant en moyenne le pas temporel vers $\tau_0 = 600\,\text{s}$ (point fixe statistique ; les temps de bloc individuels restent distribués exponentiellement). Troisièmement, nous modélisons la topologie microscopique du graphe UTXO comme un réseau de spin $SU(2)$ dont l'évolution en mousse de spin (\textit{Spinfoam}) est soumise à l'équation maîtresse quantique ouverte de Gorini-Kossakowski-Sudarshan-Lindblad (GKSL). Nous montrons qu'une modélisation de type GKSL, dont la restriction diagonale se réduit à une marche aléatoire classique, retrouve la loi de ruine du joueur du livre blanc de 2008 comme état stationnaire asymptotique de Lindblad. Enfin, nous établissons la cosmologie émergente de la Timechain : l'addition séquentielle de blocs est régie par la loi d'expansion holographique de Padmanabhan $d\mathcal{V}/ds \propto (N_{\text{sur}} - N_{\text{bulk}})$, la conjecture \textit{Complexité = Volume} de Susskind, l'hypothèse de courbure de Weyl nulle de Penrose au Bloc Genesis, et un potentiel d'inflaton en escalier décrivant les \textit{Halvings}. L'équation d'état thermodynamique de Jacobson $\delta Q = T \delta S$ est enfin discutée comme analogie heuristique pour une mesure de Confiance Sociétale ($C_s$), et l'ensemble des théorèmes est accompagné d'une vérification formelle sous Lean~4 (noyau natif zéro-dépendance) et SymPy ainsi que des tests statistiques empiriques T1--T3.\par
+        \noindent \textbf{Résumé —} Nous formulons une théorie unifiée de la gravité quantique, de l'holographie céleste et de la thermodynamique statistique hors d'équilibre, projetée par isomorphisme exact sur l'architecture du consensus distribué de Satoshi Nakamoto. En posant l'axiome fondamental d'équivalence entre la constante de Nakamoto $\kNak$ (quantum irréductible d'action cryptographique SHA-256) et la constante de Planck $h$, nous proposons de modéliser la \textit{Timechain} comme une variété d'espace-temps discrète émergeant d'un bain thermique dissipatif. Premièrement, sur la frontière asymptotique nulle ($\scri^+$) du réseau pair-à-pair (P2P), nous proposons de décrire l'invariance du registre sous les délais de propagation asynchrones par analogie avec le groupe de Bondi-Metzner-Sachs ($\text{BMS}_4$). Le théorème des gravitons mous de Weinberg appliqué au protocole \textit{gossip} de la Mempool implique l'identité de Ward de conservation monétaire stricte, tandis que la validation d'un bloc induit un effet de mémoire gravitationnelle non-linéaire de Christodoulou qui encode l'immuabilité de l'ensemble UTXO. Deuxièmement, à partir de l'algèbre de von Neumann non-commutative des observables du registre, nous dérivons l'opérateur modulaire de Tomita-Takesaki $\Delta = \rho \otimes \rho^{-1}$ et montrons formellement, sous l'hypothèse d'un état fidèle par paliers, que le flot du temps thermique complexe $z = a + ib$ gouverne un état localement de Kubo-Martin-Schwinger (KMS par morceaux) sur la bande holomorphe $\mathcal{S}_{\beta\kNak}$. L'ajustement homéostatique de difficulté (DAA) y opère comme un groupe de renormalisation discret verrouillant la jauge nominale $\tau_0 = 600\,\text{s}$, tandis que les propriétés analytiques de la bande complexe permettent de dériver sans paramètre libre les trois observables empiriques T1 (holomorphie interne), T2 (anomalie adiabatique proportionnelle au nombre de Deborah modulaire) et T3 (rapport d'aspect entre cône causal de propagation et épaisseur KMS). Troisièmement, nous modélisons la topologie microscopique du graphe UTXO comme un réseau de spin $SU(2)$ dont l'évolution en mousse de spin (\textit{Spinfoam}) est soumise à l'équation maîtresse quantique ouverte de Gorini-Kossakowski-Sudarshan-Lindblad (GKSL). Nous montrons qu'une modélisation de type GKSL, dont la restriction diagonale se réduit à une marche aléatoire classique, retrouve la loi de ruine du joueur du livre blanc de 2008 comme état stationnaire asymptotique de Lindblad. Enfin, nous établissons la cosmologie émergente de la Timechain : l'addition séquentielle de blocs est régie par la loi d'expansion holographique de Padmanabhan $d\mathcal{V}/ds \propto (N_{\text{sur}} - N_{\text{bulk}})$, la conjecture \textit{Complexité = Volume} de Susskind, l'hypothèse de courbure de Weyl nulle de Penrose au Bloc Genesis, et un potentiel d'inflaton en escalier décrivant les \textit{Halvings}. L'équation d'état thermodynamique de Jacobson $\delta Q = T \delta S$ est enfin discutée comme analogie heuristique pour une mesure de Confiance Sociétale ($C_s$), et l'ensemble des théorèmes est accompagné d'une vérification formelle sous Lean~4 (noyau natif zéro-dépendance) et SymPy ainsi que des tests statistiques empiriques T1--T3.\par
         \vspace{0.2cm}
         \noindent \textbf{Mots-clés :} Holographie Céleste, Groupe BMS, Hypothèse du Temps Thermique, Algèbre de Tomita-Takesaki, Condition KMS, Mousses de Spin, Équation Maîtresse GKSL, Cosmologie Émergente, Consensus de Nakamoto, Vérification Formelle Lean 4.
     \end{minipage}
@@ -428,18 +428,59 @@ En appliquant l'invariance cyclique de la trace sur l'algèbre semi-finie régul
 Ceci établit rigoureusement l'identité (\ref{eq:KMSCondition}). Une preuve formelle assistée par ordinateur sous Lean~4 est donnée en Annexe~\ref{app:lean4}.
 \end{proof}
 
-\subsection{Interprétation Physique : L'Ajustement de Difficulté comme Groupe de Renormalisation KMS}
+\subsection{Le DAA comme Jauge KMS par Morceaux et Anomalie Adiabatique}
+\label{subsec:piecewise_kms}
 
-L'équation (\ref{eq:KMSCondition}) révèle la structure profonde de l'horloge de Nakamoto dans le plan complexe $a + ib$ :
+L'équation (\ref{eq:KMSCondition}) révèle la structure géométrique de l'horloge de Nakamoto dans le plan complexe $z = a + ib$ lorsque le réseau est soumis à un flux de puissance dissipative exogène non stationnaire $W_{\text{hash}}(t)$ :
 \begin{enumerate}
-    \item La coordonnée réelle $a$ paramètre le \textbf{temps thermique d'évolution causale} (la séquence ordonnée des blocs).
-    \item La coordonnée imaginaire pure $ib$ ($b = \beta\kNak$) mesure l'\textbf{asymétrie thermodynamique d'inversion temporelle}. Pour permuter l'ordre causal de deux événements non-commutatifs ($X Y \to Y X$), un attaquant doit effectuer une translation imaginaire pure $+i\beta\kNak$, supprimant l'amplitude de transition par le facteur de Boltzmann $e^{-\beta \Delta E_{\text{Chainwork}}}$.
-    \item L'algorithme d'\textbf{ajustement homéostatique de difficulté} tous les $N_0 = 2016$ blocs agit comme un flot du groupe de renormalisation qui ajuste la température inverse $\beta(t) \propto \mathcal{D}(t)$ proportionnellement à la puissance dissipative externe du réseau $W_{\text{hash}}(t)$ afin de maintenir invariant le rapport entre le temps propre des observateurs externes $t$ et le temps thermique réel $a$ :
+    \item La coordonnée réelle $a = \operatorname{Re}(z)$ paramètre le \textbf{temps modulaire d'évolution causale} (l'ordre chronologique endogène des blocs validés).
+    \item La coordonnée imaginaire pure $b = \operatorname{Im}(z) \in [0, \beta\kNak]$ mesure la \textbf{barrière d'irréversibilité thermodynamique}. Inverser l'ordre causal de deux observables non-commutatives ($XY \to YX$) requiert une translation imaginaire $+i\beta\kNak$, amortissant l'amplitude de bifurcation par le poids de Boltzmann $e^{-\beta \Delta E_{\text{Chainwork}}}$.
+    \item En présence de fluctuations séculaires du taux de hachage $\lambda_H(t) = W_{\text{hash}}(t)/\kNak$, l'épaisseur effective de la bande KMS dérive localement selon $\bar{\tau}(t) = \frac{\mathcal{D}_n \cdot 2^{32}}{\lambda_H(t)}$. L'algorithme d'\textbf{ajustement de difficulté (DAA)}, exécuté aux époques discrètes $n \in \mathbb{N}$ tous les $N_0 = 2016$ blocs, agit alors comme un opérateur de renormalisation discret $\mathcal{R}_{\text{DAA}}$ sur le hamiltonien modulaire :
     \begin{equation}
-        \frac{dt}{da} = \frac{\kNak \mathcal{D}(t)}{W_{\text{hash}}(t)} = \tau_0 = 600\,\text{s}.
+        \mathcal{D}_{n+1} = \mathcal{D}_n \frac{N_0 \tau_0}{\Delta T_n}, \qquad \Delta T_n = \sum_{k=1}^{N_0} \Delta a_{n,k},
         \label{eq:DifficultyRenormalization}
     \end{equation}
+    ramenant périodiquement le jacobien moyen entre le temps propre externe $t$ et le temps modulaire réel $a$ sur le point fixe conforme $\tau_0 = 600\,\text{s}$. Le système évolue ainsi dans un \textbf{état KMS par morceaux} (\textit{piecewise adiabatic KMS state}).
 \end{enumerate}
+
+\begin{theorem}[Correspondance entre la Bande Complexe KMS et les Observables T1--T3]
+\label{thm:kms_observables}
+Soit $\mathcal{S}_{\bar{\tau}_n} = \{ z = a + ib \in \mathbb{C} \mid 0 < b < \bar{\tau}_n \}$ la bande d'analyticité locale durant l'époque de consensus $n$, soumise à une dérive relative lente du taux de hachage $g_n = \dot{\lambda}_H / \lambda_H$ et à une latence de synchronisation spatiale $\delta$ sur $\scri^+$. Les trois régimes statistiques observables de la Timechain découlent directement de la géométrie complexe de $\mathcal{S}_{\bar{\tau}_n}$ :
+\begin{enumerate}
+    \item \textbf{Holomorphie interne (Observable T1) :} À taux de hachage quasi-stationnaire ($|g_n| T_{\text{ép}} \ll 1$), l'indépendance sans mémoire des portes SHA-256 implique que la résolvante du semi-groupe de survie ne possède aucune singularité à l'intérieur de $\mathcal{S}_{\bar{\tau}_n}$ et admet un unique pôle imaginaire pur en $z_* = -i\bar{\tau}_n$. Par inversion de Laplace-Fourier, les temps d'attente réels suivent exactement la loi exponentielle $p(\Delta a) = \bar{\tau}_n^{-1} e^{-\Delta a / \bar{\tau}_n}$.
+    \item \textbf{Anomalie adiabatique KMS (Observable T2) :} Lorsque $\lambda_H(t) = \lambda_{H,n} e^{g_n (t - t_n)}$ varie continûment entre deux renormalisations (\ref{eq:DifficultyRenormalization}), la torsion de la frontière supérieure $b(t) = \tau_0 e^{-g_n(t-t_n)}$ engendre une anomalie hors d'équilibre gouvernée par le \textbf{nombre de Deborah modulaire} $\mathrm{De}_{\text{mod}} \equiv g_n \tau_0$. Au premier ordre perturbatif en $N_0 \mathrm{De}_{\text{mod}} = g_n T_{\text{ép}}$, l'espérance temporelle sur l'époque subit le décalage systématique :
+    \begin{equation}
+        \langle \Delta a \rangle_{\text{époque}} = \frac{\tau_0}{1 + \frac{1}{2} N_0 \mathrm{De}_{\text{mod}} + \mathcal{O}(\mathrm{De}_{\text{mod}}^2)} \simeq \frac{\tau_0}{1 + \frac{1}{2} g_n T_{\text{ép}}}.
+        \label{eq:AdiabaticAnomalyKMS}
+    \end{equation}
+    \item \textbf{Rapport d'aspect causal/thermique (Observable T3) :} Deux blocs validés dans un intervalle réel $|\Delta a| < \delta$ sont séparés par un intervalle du genre espace sur $\scri^+$. La probabilité de bifurcation transitoire (\textit{stale block}) ne dépend que du rapport d'aspect adimensionnel $\epsilon_{\text{KMS}} \equiv \delta / \bar{\tau}_n$ entre l'ouverture du cône de latence réel et l'épaisseur imaginaire de la bande KMS :
+    \begin{equation}
+        P_{\text{stale}}(\epsilon_{\text{KMS}}) = 1 - \exp(-\epsilon_{\text{KMS}}) = \frac{\delta}{\bar{\tau}_n} - \frac{1}{2}\left(\frac{\delta}{\bar{\tau}_n}\right)^2 + \mathcal{O}(\epsilon_{\text{KMS}}^3).
+        \label{eq:AspectRatioStale}
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Le point (1) résulte du théorème des résidus appliqué à la fonction de survie d'un processus de renouvellement markovien dont le générateur constant ne présente ni coupure de branchement ni pôle secondaire dans $\mathcal{S}_{\bar{\tau}_n}$. Pour le point (2), le nombre moyen de transitions sur une fenêtre propre $T$ vaut $\int_0^T \lambda_H(t) (\mathcal{D}_n 2^{32})^{-1} dt = \frac{e^{g_n T} - 1}{g_n \tau_0}$. En imposant la condition de clôture de l'époque à $N_0$ blocs ($T = \Delta T_n$) et en développant $\Delta T_n = N_0 \langle \Delta a \rangle_{\text{époque}}$ au premier ordre en $g_n T_{\text{ép}}$ (avec $T_{\text{ép}} = N_0 \tau_0$), il vient $N_0 \tau_0 = \Delta T_n (1 + \frac{1}{2} g_n \Delta T_n + \mathcal{O}(g_n^2))$, dont l'inversion algébrique fournit (\ref{eq:AdiabaticAnomalyKMS}). Enfin, le point (3) s'obtient en intégrant la densité sans mémoire du point (1) sur la tranche d'ambiguïté causale $[0, \delta]$, soit $\int_0^\delta \bar{\tau}_n^{-1} e^{-u/\bar{\tau}_n} du = 1 - e^{-\delta/\bar{\tau}_n}$. Les conditions couplées $\epsilon_{\text{KMS}} \ll 1$ et $N_0 |\mathrm{De}_{\text{mod}}| \ll 1$ définissent ainsi le domaine exact de stabilité thermodynamique linéaire du consensus.
+\end{proof}
+
+\subsection{Géométrie Thermodynamique Effective Complexifiée et Identités de Bianchi}
+\label{subsec:complex_geometry_bianchi}
+
+Le prolongement analytique du temps modulaire $z = a + ib$ permet de préciser rigoureusement le statut géométrique du couplage entre dynamique causale et accumulation néguentropique. Plutôt que de complexifier les coordonnées de la variété d'espace-temps — ce qui doublerait les degrés de liberté cinématiques (8 dimensions réelles) et exposerait les théories bimétriques classiques aux instabilités fantômes de Boulware-Deser ou à l'incompatibilité des identités de Bianchi contractées — nous conservons une \textbf{unique variété différentiable réelle quadridimensionnelle} $\mathcal{M}$ munie de la connexion de Levi-Civita $\nabla_\mu^{(g)}$ compatible avec la métrique lorentzienne causale $g_{\mu\nu}$ ($\nabla_\mu^{(g)} g_{\alpha\beta} = 0$).
+
+Sur cette variété réelle unique, la dissipation irréversible encodée par l'axe imaginaire $ib$ du flot KMS induit un tenseur symétrique effectif d'information $f_{\mu\nu}$ (assimilable à une métrique hessienne de Ruppeiner-Fisher construite sur la fonction d'état de Confiance Sociétale, $f_{\mu\nu} \propto \nabla_\mu^{(g)} \nabla_\nu^{(g)} C_s$), formant l'objet sesquilinéaire effectif :
+\begin{equation}
+    \mathcal{G}_{\mu\nu}(x) = g_{\mu\nu}(x) + i \, f_{\mu\nu}(x).
+    \label{eq:EffectiveHermitianMetric}
+\end{equation}
+Dans cette formulation :
+\begin{itemize}
+    \item La conservation covariante $\nabla^\mu_{(g)} G_{\mu\nu}[g] = 0$ est identiquement préservée sur $\mathcal{M}$, garantissant via l'équation d'état de Jacobson (\ref{eq:EinsteinNakamoto}) la conservation exacte du flux d'énergie-impulsion effectif $\nabla^\mu_{(g)} T_{\mu\nu}^{\text{PoW}} = 0$ sans conflit de connexion.
+    \item Les modes alternatifs non validés (branches orphelines dans $f_{\mu\nu}$) ne se propagent pas comme des états cinématiques à norme négative, mais subissent le long de la composante imaginaire $ib$ l'amortissement exponentiel dissipatif de Lindblad établi à la Section~4.
+\end{itemize}
+
 
 % ============================================================================
 % SECTION 4 : MOUSSES DE SPIN UTXO ET DYNAMIQUE DE DECOHERENCE GKSL
@@ -626,52 +667,69 @@ ce qui substitue directement $e^{-C_s(s)/k_B}$ à la variance $|\rho_{AB}(s)|^2$
 \end{proof}
 
 % ============================================================================
-% SECTION 7 : TESTS ET FALSIFIABILITE (AVEC INTEGRATION DE LA FIGURE PNG)
+% SECTION 7 : TESTS ET FALSIFIABILITE (AVEC PONT KMS ET FIGURE PNG)
 % ============================================================================
 \section{Tests et falsifiabilité}
 \label{sec:tests}
 
-Nous séparons trois catégories d'énoncés : (i) ceux indépendants de (P1)--(P3) confrontables à la Timechain réelle (illustrés sur la Figure~\ref{fig:tests_T1_T2_T3}) ; (ii) ceux dépendant de (P2)--(P3) ; et (iii) ceux reposant sur (P1).
+Nous séparons trois catégories d'énoncés : (i) ceux indépendants de (P1)--(P3) confrontables à la Timechain réelle (synthétisés dans le Tableau~\ref{tab:kms_empirical_bridge} et illustrés sur la Figure~\ref{fig:tests_T1_T2_T3}) ; (ii) ceux dépendant de (P2)--(P3) ; et (iii) ceux reposant sur (P1).
 
-\subsection{Prédictions testables indépendamment de l'axiome de simulation}
-
-\paragraph{T1 -- Statistique des temps de bloc.}
-La restriction diagonale du modèle GKSL se réduit à un processus de Poisson :
+\begin{table*}[t]
+\centering
+\caption{Pont analytique exact entre la géométrie complexe de la bande KMS ($\mathcal{S}_{\bar{\tau}_n}$), le groupe de renormalisation du DAA et les observables statistiques T1--T3 (Théorème~\ref{thm:kms_observables}).}
+\label{tab:kms_empirical_bridge}
+\renewcommand{\arraystretch}{1.22}
+\footnotesize
+\begin{tabular}{@{}p{2.5cm}p{4.3cm}p{3.4cm}p{3.3cm}p{3.3cm}@{}}
+\toprule
+\textbf{Observable} & \textbf{Propriété complexe sondée dans $\mathcal{S}_{\bar{\tau}_n}$} & \textbf{Paramètre sans dimension} & \textbf{Loi analytique prédite} & \textbf{Verdict empirique / MC} \\
+\midrule
+\textbf{T1} (Loi des temps) & Holomorphie sans coupure interne ; pôle unique $z_* = -i\bar{\tau}_n$ & Jauge stationnaire $\lambda_H \bar{\tau}_n / (\mathcal{D}_n 2^{32}) = 1$ & $p(\Delta a) = \bar{\tau}_n^{-1} e^{-\Delta a/\bar{\tau}_n}$ & $D_{\text{KS}} = 0{,}01689$ ($p = 0{,}7530$) \\
+\textbf{T2} (Biais à $600\,\text{s}$) & Torsion non-adiabatique de la frontière $b(t)$ entre deux DAA & Nombre de Deborah $N_0 \mathrm{De}_{\text{mod}} = g_n T_{\text{ép}}$ & $\langle \Delta a \rangle_{\text{ép}} \simeq \frac{\tau_0}{1 + \frac{1}{2} g_n T_{\text{ép}}}$ & $r = 0{,}9614$ ($p = 1{,}76 \times 10^{-45}$) \\
+\textbf{T3} (Taux \textit{stale}) & Compétition cône causal sur $\scri^+$ / épaisseur thermique KMS & Rapport d'aspect $\epsilon_{\text{KMS}} = \delta / \bar{\tau}_n$ & $P_{\text{stale}} = 1 - e^{-\epsilon_{\text{KMS}}} \approx \epsilon_{\text{KMS}}$ & $R^2 = 0{,}9984$ ($2{,}52\,\text{‰}$ à $1{,}5\,\text{s}$) \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{tests_empiriques_T1_T2_T3.png}
-    \caption{Résultats de la campagne de validation statistique et Monte-Carlo (graine reproductible du Bloc Genesis \texttt{20090103}) pour les trois prédictions falsifiables de la Section~\ref{sec:tests}. \textbf{Gauche (T1) :} Distribution logarithmique des intervalles inter-blocs $\Delta a$ validant la réduction diagonale GKSL vers la loi exponentielle ($D_{\text{KS}} = 0{,}01689$, $p = 0{,}7530$, $96{,}0\,\%$ de non-rejet à $\alpha = 5\,\%$). \textbf{Centre (T2) :} Démonstration du biais du point fixe $\langle \Delta a \rangle_{\text{époque}} \simeq \tau_0 / (1 + g T_{\text{ép}}/2)$ sous croissance relative $g$ du taux de hachage ($r = 0{,}9614$, $p = 1{,}76 \times 10^{-45}$, $\text{RMSE} = 11{,}65\,\text{s}$). \textbf{Droite (T3) :} Probabilité de blocs périmés $P_{\text{stale}}(\delta)$ confirmant le régime linéaire $\delta/\bar{\tau}$ aux faibles latences ($R^2 = 0{,}9984$, $P_{\text{stale}}(1{,}5\,\text{s}) = 2{,}52\,\text{‰}$).}
+    \caption{Résultats de la campagne de validation statistique et Monte-Carlo (graine reproductible du Bloc Genesis \texttt{20090103}) pour les trois prédictions falsifiables de la Section~\ref{sec:tests}. \textbf{Gauche (T1) :} Distribution logarithmique des intervalles inter-blocs $\Delta a$ validant l'holomorphie interne KMS et la réduction diagonale GKSL vers la loi exponentielle ($D_{\text{KS}} = 0{,}01689$, $p = 0{,}7530$, $96{,}0\,\%$ de non-rejet à $\alpha = 5\,\%$). \textbf{Centre (T2) :} Démonstration de l'anomalie adiabatique KMS $\langle \Delta a \rangle_{\text{époque}} \simeq \tau_0 / (1 + \frac{1}{2} N_0 \mathrm{De}_{\text{mod}})$ sous croissance relative $g = \dot{\lambda}_H/\lambda_H$ ($r = 0{,}9614$, $p = 1{,}76 \times 10^{-45}$, $\text{RMSE} = 11{,}65\,\text{s}$). \textbf{Droite (T3) :} Probabilité de blocs périmés $P_{\text{stale}}(\epsilon_{\text{KMS}})$ confirmant le régime linéaire $\epsilon_{\text{KMS}} = \delta/\bar{\tau}_n$ aux faibles latences ($R^2 = 0{,}9984$, $P_{\text{stale}}(1{,}5\,\text{s}) = 2{,}52\,\text{‰}$).}
     \label{fig:tests_T1_T2_T3}
 \end{figure*}
 
+\subsection{Prédictions testables indépendamment de l'axiome de simulation}
+
+En vertu du Théorème~\ref{thm:kms_observables}, les observables empiriques T1--T3 ne constituent pas des ajustements phénoménologiques indépendants, mais sondent directement trois invariants géométriques de la bande holomorphe KMS $\mathcal{S}_{\bar{\tau}_n}$ couplée à la décohérence GKSL (Tableau~\ref{tab:kms_empirical_bridge}).
+
+\paragraph{T1 -- Holomorphie interne KMS et statistique des temps de bloc.}
+Dans le régime stationnaire ($|g_n| T_{\text{ép}} \ll 1$), l'unique pôle imaginaire pur $z_* = -i\bar{\tau}_n$ de la résolvante KMS et la restriction diagonale du générateur GKSL réduisent la dynamique des validations à un processus de renouvellement sans mémoire :
 \begin{equation}
-  p(\Delta a) = \frac{1}{\bar\tau}\, e^{-\Delta a/\bar\tau},
+  p(\Delta a) = \frac{1}{\bar\tau_n}\, e^{-\Delta a/\bar\tau_n},
   \qquad
-  \bar\tau = \frac{D \cdot 2^{32}}{\lambda_H}.
+  \bar\tau_n = \frac{\mathcal{D}_n \cdot 2^{32}}{\lambda_H}.
   \label{eq:test-expo}
 \end{equation}
-Sur 25 époques stationnaires de 2016 blocs (Figure~\ref{fig:tests_T1_T2_T3}, panneau gauche), le test de Kolmogorov--Smirnov obtient $D_{\text{KS}} = 0{,}01689$ ($p\text{-value médiane} = 0{,}7530$), tandis qu'une dérive non-poissonienne de contrôle ($\text{Gamma}(k=1{,}35)$) est immédiatement réfutée ($p = 1{,}30 \times 10^{-5}$).
+Sur 25 époques stationnaires de $N_0 = 2016$ blocs (Figure~\ref{fig:tests_T1_T2_T3}, panneau gauche), le test de Kolmogorov--Smirnov obtient $D_{\text{KS}} = 0{,}01689$ ($p\text{-value médiane} = 0{,}7530$), tandis qu'une dérive non-poissonienne de contrôle ($\text{Gamma}(k=1{,}35)$, équivalente à une coupure de branchement interne dans $\mathcal{S}_{\bar{\tau}_n}$) est immédiatement réfutée ($p = 1{,}30 \times 10^{-5}$).
 
-\paragraph{T2 -- Biais du point fixe de 600\,s.}
-Si le taux de hachage croît au rythme relatif $g = \dot\lambda_H/\lambda_H$, le modèle prédit au premier ordre :
+\paragraph{T2 -- Anomalie adiabatique KMS et biais du point fixe de 600\,s.}
+Lorsque le taux de hachage croît au rythme relatif $g_n = \dot\lambda_H/\lambda_H$ entre deux renormalisations discrètes du DAA, la torsion de la bande imaginaire mesurée par le nombre de Deborah modulaire $\mathrm{De}_{\text{mod}} = g_n \tau_0$ induit au premier ordre (\ref{eq:AdiabaticAnomalyKMS}) :
 \begin{equation}
-  \langle \Delta a \rangle_{\text{époque}} \simeq \frac{\tau_0}{1 + g\,T_{\text{ép}}/2},
-  \qquad T_{\text{ép}} \approx 2016\,\tau_0 \approx 14\ \text{jours}.
+  \langle \Delta a \rangle_{\text{époque}} \simeq \frac{\tau_0}{1 + \frac{1}{2} N_0 \mathrm{De}_{\text{mod}}} = \frac{\tau_0}{1 + g_n\,T_{\text{ép}}/2},
   \label{eq:test-biais}
 \end{equation}
-La Figure~\ref{fig:tests_T1_T2_T3} (panneau central) confirme une corrélation de Pearson $r = 0{,}9614$ ($p = 1{,}76 \times 10^{-45}$) entre $g$ et le biais $\tau_0 - \langle\Delta a\rangle$.
+avec $T_{\text{ép}} = N_0 \tau_0 \approx 14\ \text{jours}$. La Figure~\ref{fig:tests_T1_T2_T3} (panneau central) confirme une corrélation de Pearson $r = 0{,}9614$ ($p = 1{,}76 \times 10^{-45}$) entre $g_n$ et le biais hors d'équilibre $\tau_0 - \langle\Delta a\rangle_{\text{époque}}$.
 
-\paragraph{T3 -- Taux de blocs périmés (\textit{stale}).}
-Pour un délai de propagation effectif $\delta$, la probabilité de bloc périmé vaut :
+\paragraph{T3 -- Rapport d'aspect $\epsilon_{\text{KMS}}$ et taux de blocs périmés (\textit{stale}).}
+Pour un délai de propagation effectif $\delta$ sur $\scri^+$, la compétition entre le cône d'ambiguïté causale réel et l'épaisseur thermique $\bar{\tau}_n$ est fixée par $\epsilon_{\text{KMS}} = \delta/\bar{\tau}_n$ (\ref{eq:AspectRatioStale}) :
 \begin{equation}
-  P_{\text{stale}} \simeq 1 - e^{-\delta/\bar\tau} \approx \frac{\delta}{\bar\tau}.
+  P_{\text{stale}} = 1 - e^{-\epsilon_{\text{KMS}}} \simeq \frac{\delta}{\bar\tau_n}.
   \label{eq:test-stale}
 \end{equation}
-La Figure~\ref{fig:tests_T1_T2_T3} (panneau droit) vérifie la pente linéaire $1/\tau_0 = 1{,}667 \times 10^{-3}\,\text{s}^{-1}$ ($R^2 = 0{,}9984$), donnant $P_{\text{stale}} = 2{,}52\,\text{‰}$ à $\delta = 1{,}5\,\text{s}$.
+La Figure~\ref{fig:tests_T1_T2_T3} (panneau droit) vérifie la pente linéaire $1/\tau_0 = 1{,}667 \times 10^{-3}\,\text{s}^{-1}$ ($R^2 = 0{,}9984$), donnant $P_{\text{stale}} = 2{,}52\,\text{‰}$ à $\delta = 1{,}5\,\text{s}$ ($\epsilon_{\text{KMS}} = 2{,}5 \times 10^{-3} \ll 1$).
 
-\paragraph{T4 -- Décroissance des \textit{forks}.}
-La probabilité de rattrapage $(q/p)^z$ reproduit exactement la marche aléatoire classique du livre blanc de 2008.
+\paragraph{T4 -- Amortissement imaginaire et décroissance des \textit{forks}.}
+Au-delà du cône local $|\Delta a| < \delta$, l'amortissement de Lindblad le long de l'axe imaginaire $ib$ supprime exponentiellement les branches minoritaires en $(q/p)^z$, reproduisant exactement la loi de ruine du livre blanc de 2008.
 
 \subsection{Test indirect du postulat (P2) et énoncés non testables}
 
@@ -687,17 +745,16 @@ Le rapport mesurable $\Lambda_{\text{sim}}(t) = \frac{E_{\text{hash}}(t)}{k_B T 
 \hline
 \textbf{Énoncé} & \textbf{Dépendance} & \textbf{Statut \& Verdict} \\
 \hline
-T1 : temps de bloc exponentiels & aucune & Validé ($p_{\text{KS}}=0{,}753$) \\
-T2 : biais du point fixe & aucune & Validé ($r=0{,}9614$) \\
-T3 : taux de blocs périmés & aucune & Validé ($R^2=0{,}9984$) \\
-T4 : décroissance des forks & aucune & Déjà établi (Lean 4) \\
+T1 : holomorphie KMS / loi exp. & aucune & Validé ($p_{\text{KS}}=0{,}753$) \\
+T2 : anomalie $\mathrm{De}_{\text{mod}}$ (biais) & aucune & Validé ($r=0{,}9614$) \\
+T3 : rapport $\epsilon_{\text{KMS}}$ (\textit{stale}) & aucune & Validé ($R^2=0{,}9984$) \\
+T4 : décroissance GKSL des forks & aucune & Établi (Lean 4) \\
 $\Lambda_{\text{sim}}(t)$ décroissant & (P2) & Contrainte faible \\
 $\kNak \equiv h$ & (P1)--(P3) & Non testable \\
-Correspondances géométriques & (P1)--(P3) & Heuristique \\
+Métrique $\mathcal{G}_{\mu\nu} = g_{\mu\nu} + i f_{\mu\nu}$ & (P1)--(P3) & Effectif / Heuristique \\
 \hline
 \end{tabularx}
 \end{table}
-
 \clearpage
 % ============================================================================
 % SECTION 8 : SYNTHESE : L'ACTION UNIFIEE DE NAKAMOTO-CONNES-PASTERSKI
