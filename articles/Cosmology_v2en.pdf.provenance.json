@@ -1,0 +1,18 @@
+{
+  "kind": 1040,
+  "created_at": 1794986480,
+  "tags": [
+    [
+      "x",
+      "c924e9e52a1f60425725d097e1c82a4b62792cff6cf7b78d25a454239a5d5055"
+    ],
+    [
+      "filename",
+      "Cosmology_v2en.pdf"
+    ]
+  ],
+  "content": "D-Trinity Proof of Provenance",
+  "pubkey": "929b62d1d54090b224f6e73f31e78ebe76df5e3822f891a4a542343dba8eed51",
+  "id": "c748049fd9d8b23fef05bfd2b833090230adb8f6d4cee76b3a5f76eb10a9b006",
+  "sig": "5eb126666835be5ad6b1fea96cde9be22a8d41d44ee3dca8ad03158ca9792f53ed39e809481be6aacf01ee63fe128dfa7933f1e6b23ff8f89b3714dbea1a468f"
+}
