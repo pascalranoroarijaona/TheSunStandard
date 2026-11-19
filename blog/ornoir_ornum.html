@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre | L'Étalon Solaire</title>
+    <meta name="description" content="La transition de l'extraction fossile au calcul régénératif. Invariance d'échelle, ponts symbiotiques et agenda 2027-2037 pour franchir le Grand Filtre." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #050608;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #f7931a;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --water-blue: #00ccff;
+            --oil-black: #111111;
+            --border-glow: rgba(247, 147, 26, 0.25);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(247, 147, 26, 0.05) 0%, transparent 60%);
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5,6,8,0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(10px);
+        }
+        nav .logo { font-size: 0.95rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+
+        article { max-width: 1000px; margin: 7rem auto 6rem; padding: 0 2rem; }
+
+        /* HERO SECTION & ANIMATION */
+        .hero-section {
+            text-align: center; padding: 3rem 1.5rem; margin-bottom: 4rem;
+            border: 1px solid rgba(247, 147, 26, 0.3); border-radius: 16px;
+            background: linear-gradient(180deg, rgba(17,17,17,0.8) 0%, rgba(5,6,8,0.95) 100%);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 40px rgba(247, 147, 26, 0.05);
+            position: relative; overflow: hidden;
+        }
+        
+        .hero-section h1 { font-family: var(--font-ui); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(247, 147, 26, 0.4); }
+        .hero-section .subtitle { font-family: var(--font-ui); color: var(--bio-green); font-size: 1.25rem; font-style: italic; margin-bottom: 2rem; }
+
+        /* SVG ANIMATION: OIL TO DIGITAL GOLD TO LIFE */
+        .svg-alchemical-stage {
+            width: 100%; max-width: 600px; height: 180px; margin: 0 auto 2rem; display: block;
+        }
+        .oil-drop { animation: drip 3s infinite ease-in; }
+        .gold-node { animation: pulseNode 3s infinite ease-out; transform-origin: center; }
+        .bio-leaf { animation: growLeaf 3s infinite ease-out; transform-origin: bottom center; }
+        
+        @keyframes drip {
+            0% { transform: translateY(-20px) scale(1); opacity: 0; fill: var(--oil-black); }
+            30% { transform: translateY(50px) scale(1.2); opacity: 1; fill: var(--oil-black); }
+            50% { transform: translateY(70px) scale(0); opacity: 0; }
+            100% { transform: translateY(70px) scale(0); opacity: 0; }
+        }
+        @keyframes pulseNode {
+            0%, 40% { transform: scale(0); opacity: 0; fill: var(--sun-orange); filter: drop-shadow(0 0 0px var(--sun-orange));}
+            50% { transform: scale(1.2); opacity: 1; fill: var(--sun-yellow); filter: drop-shadow(0 0 15px var(--sun-yellow));}
+            70% { transform: scale(1); opacity: 1; fill: var(--sun-yellow); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        @keyframes growLeaf {
+            0%, 60% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; fill: var(--bio-green); filter: drop-shadow(0 0 10px var(--bio-green));}
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        /* TEXT BLOCKS & PROSE */
+        h2 { font-family: var(--font-ui); color: var(--sun-yellow); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.12rem; color: #cbd5e1; text-align: justify; }
+        
+        .quote-block {
+            border-left: 4px solid var(--sun-orange); padding: 1.5rem 2rem;
+            background: linear-gradient(90deg, rgba(247, 147, 26, 0.08) 0%, transparent 100%);
+            font-style: italic; color: #fff; font-size: 1.15rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+        }
+
+        /* MATH & SCALE INVARIANCE BLOCK */
+        .math-block {
+            background: rgba(0, 0, 0, 0.6); padding: 2rem; border-radius: 12px;
+            border: 1px solid rgba(0, 204, 255, 0.2); border-left: 4px solid var(--water-blue);
+            margin: 2.5rem 0; font-family: var(--font-ui); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* PYRAMID SCALE CARDS */
+        .scale-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 3rem 0; }
+        .scale-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease;
+        }
+        .scale-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .sc-l1 { border-left: 4px solid var(--water-blue); } .sc-l1:hover { border-color: var(--water-blue); }
+        .sc-l2 { border-left: 4px solid var(--bio-green); } .sc-l2:hover { border-color: var(--bio-green); }
+        .sc-l3 { border-left: 4px solid var(--sun-orange); } .sc-l3:hover { border-color: var(--sun-orange); }
+        .sc-l4 { border-left: 4px solid var(--sun-yellow); } .sc-l4:hover { border-color: var(--sun-yellow); }
+        
+        .scale-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.8rem; }
+        .scale-title { font-family: var(--font-ui); font-size: 1.3rem; font-weight: 700; color: #fff; }
+        .scale-badge { font-family: var(--font-mono); font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); }
+        
+        .scale-metrics { display: flex; gap: 1rem; margin-bottom: 1.2rem; font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; }
+        .scale-metrics span { background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); }
+
+        /* THE 5 BRIDGES GRID */
+        .bridges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .bridge-card {
+            background: #080a0c; border: 1px solid rgba(68, 238, 119, 0.2); border-top: 3px solid var(--bio-green);
+            border-radius: 10px; padding: 1.8rem;
+        }
+        .bridge-card h4 { color: var(--bio-green); font-family: var(--font-ui); font-size: 1.2rem; margin: 0 0 1rem 0; text-transform: uppercase; }
+        .bridge-card ul { padding-left: 1.2rem; color: #cbd5e1; font-size: 1rem; }
+        .bridge-card li { margin-bottom: 0.5rem; }
+
+        /* GLOWING TIMELINE 2027-2037 */
+        .timeline { position: relative; max-width: 800px; margin: 4rem auto; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(247, 147, 26, 0.2); margin-left: -1px; }
+        .tl-item { position: relative; width: 50%; padding: 1.5rem 2.5rem; box-sizing: border-box; }
+        .tl-item:nth-child(odd) { left: 0; text-align: right; }
+        .tl-item:nth-child(even) { left: 50%; text-align: left; }
+        .tl-dot { position: absolute; top: 2rem; width: 16px; height: 16px; border-radius: 50%; background: var(--sun-orange); box-shadow: 0 0 15px var(--sun-orange); z-index: 10; }
+        .tl-item:nth-child(odd) .tl-dot { right: -8px; }
+        .tl-item:nth-child(even) .tl-dot { left: -8px; }
+        .tl-year { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--sun-yellow); margin-bottom: 0.5rem; }
+        .tl-content { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .tl-item { width: 100%; left: 0 !important; text-align: left !important; padding: 1.5rem 1.5rem 1.5rem 3rem; }
+            .tl-dot { left: 12px !important; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
+</nav>
+
+<article>
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+        <svg class="svg-alchemical-stage" viewBox="0 0 300 150">
+            <!-- Goutte de pétrole (Or Noir) -->
+            <path class="oil-drop" d="M150,20 C150,20 135,45 135,60 C135,70 142,75 150,75 C158,75 165,70 165,60 C165,45 150,20 150,20 Z" />
+            <!-- Nœud cryptographique (Or Numérique / Soleil) -->
+            <circle class="gold-node" cx="150" cy="75" r="18" />
+            <!-- Feuille régénérative (Vie) -->
+            <path class="bio-leaf" d="M150,75 C120,40 180,40 150,75 Z" />
+            
+            <line x1="50" y1="75" x2="110" y2="75" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4" />
+            <line x1="190" y1="75" x2="250" y2="75" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4" />
+            <text x="50" y="70" fill="#94a3b8" font-family="Fira Code" font-size="10" text-anchor="middle">ENTROPIE</text>
+            <text x="250" y="70" fill="#44ee77" font-family="Fira Code" font-size="10" text-anchor="middle">NÉGENTROPIE</text>
+        </svg>
+
+        <h1>De l'Or Noir à l'Or Numérique</h1>
+        <div class="subtitle">La Géodésique du Grand Filtre : De l'Extraction Fossile au Calcul Régénératif</div>
+        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px;">
+            PAR PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES
+        </div>
+    </header>
+
+    <p>Pendant deux siècles, le métabolisme de la civilisation industrielle a reposé sur un acte thermodynamique à sens unique : extraire du carbone ancien enfoui dans la lithosphère, le brûler pour en tirer du travail mécanique, et rejeter l'entropie résiduelle dans l'atmosphère. C'était le règne de l'<strong>Or Noir</strong> — le pétrodollar — où la valeur économique était indexée sur notre capacité à dégrader des stocks finis d'énergie solaire fossile.</p>
+    
+    <p>Ce modèle touche aujourd'hui à sa limite biophysique. Mais contrairement au récit décroissant classique qui oppose technologie et écologie, une bifurcation inattendue est en train de s'opérer sous nos yeux : le passage d'une économie d'extraction entropique à une économie de calcul régénératif négentropique, catalysée par la convergence de l'Or Numérique (Bitcoin) et de l'Intelligence Artificielle.</p>
+
+    <div class="quote-block">
+        "En passant de l'Or Noir à l'Or Numérique, l'humanité ne change pas simplement de technologie monétaire ; elle change d'échelle de Kardachev. Dans le nouveau paradigme, la prospérité humaine n'est plus l'ennemie de la Terre, mais le moteur même de sa régénération."
+    </div>
+
+    <!-- INVARIANCE D'ÉCHELLE & FRACTALITÉ THERMODYNAMIQUE -->
+    <h2>1. Invariance d'Échelle : Le Fractal Thermodynamique</h2>
+    <p>La beauté d'un système cyber-organique réside dans sa fractalité. Un système complexe devient exponentiellement plus efficace et résilient lorsqu'il passe à l'échelle, <strong>mais les lois thermodynamiques qui le régissent restent invariantes</strong>. Que l'on opère un processeur ASIC dans un garage ou un mégawatt sous une ancienne mine, l'équation d'état reste identique : chaque électron consommé dissipe 100 % de son énergie en chaleur (Effet Joule), et cette chaleur peut être couplée à la biosphère.</p>
+
+    <div class="math-block">
+        <div style="color: var(--water-blue); font-weight: bold; margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase;">La Symbiose Invariante d'Échelle (Scale-Invariant Symbiosis)</div>
+        $$ \dot{S}_{\text{interne}} + \dot{S}_{\text{calcul}} \le \dot{S}_{\text{export}} \quad \forall \text{ Échelle } L \in [\text{Nano}, \text{Terra}] $$
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 1rem; text-align: justify; font-family: var(--font-main);">
+            L'efficacité du couplage (PUE, $\Delta p$ aéraulique, rendement de reminéralisation de l'eau) s'améliore drastiquement avec l'échelle $L$. Une installation de 50 MW bénéficie d'un tirage convectif massif et d'économies d'échelle inaccessibles à un micro-pod. Pourtant, la mission fondamentale — convertir la vérité mathématique en chaleur vitale pour l'eau et le sol — est vraie à $1\text{ kW}$ comme à $1\text{ GW}$.
+        </p>
+    </div>
+
+    <!-- LA PYRAMIDE DE DÉPLOIEMENT (SCALES) -->
+    <h2>2. L'Ascension Pyramidale : Du Foyer à la Planète</h2>
+    <p>Pour réussir cette transition pacifique et désamorcer le monopole extractif (Big Oil, Big Food), la Matrice Inversée se déploie selon une architecture pyramidale, s'insérant d'abord dans les interstices du système avant de redéfinir l'infrastructure de la civilisation.</p>
+
+    <div class="scale-grid">
+        <!-- Scale 1 -->
+        <div class="scale-card sc-l1">
+            <div class="scale-header">
+                <span class="scale-title">Échelle 1 : Le Nano-Node Domestique</span>
+                <span class="scale-badge" style="color: var(--water-blue);">1 - 5 kW</span>
+            </div>
+            <div class="scale-metrics">
+                <span>Coût : ~5k $</span> <span>Impact : Souveraineté Familiale</span>
+            </div>
+            <p><strong>L'Individu Souverain :</strong> Un caisson d'immersion étanche (IP68) couplé au ballon d'eau chaude de la maison ou à une micro-serre aquaponique dans le jardin. La chaleur du minage remplace la résistance électrique classique. Le foyer sécurise le réseau mondial et génère un revenu passif qui subventionne sa propre autonomie alimentaire et thermique.</p>
+        </div>
+
+        <!-- Scale 2 -->
+        <div class="scale-card sc-l2">
+            <div class="scale-header">
+                <span class="scale-title">Échelle 2 : La Ferme Symbiotique (PME)</span>
+                <span class="scale-badge" style="color: var(--bio-green);">100 kW - 1 MW</span>
+            </div>
+            <div class="scale-metrics">
+                <span>Coût : 100k - 1M $</span> <span>Impact : Résilience Communautaire</span>
+            </div>
+            <p><strong>L'Agroécologie Renforcée :</strong> Déploiement dans les exploitations agricoles. La chaleur fatale à $65^\circ\text{C}$ est utilisée pour le pré-séchage de la biomasse végétale avant pyrolyse (production de Biochar) et le chauffage racinaire des serres ($22^\circ\text{C}$). Le calcul absorbe les surplus locaux des panneaux solaires des hangars agricoles (micro-grid).</p>
+        </div>
+
+        <!-- Scale 3 -->
+        <div class="scale-card sc-l3">
+            <div class="scale-header">
+                <span class="scale-title">Échelle 3 : L'Infrastructure Nationale (Brownfield)</span>
+                <span class="scale-badge" style="color: var(--sun-orange);">10 - 50+ MW</span>
+            </div>
+            <div class="scale-metrics">
+                <span>Coût : 10M - 50M+ $</span> <span>Impact : Stabilité Réseau & Remédiation</span>
+            </div>
+            <p><strong>Lemuria Technologies & Grands Projets :</strong> Réhabilitation d'anciennes mines de l'ère industrielle. Le minage capte le gaz de torchère isolé sur les sites pétroliers (réduisant instantanément les émissions de CO2e de >60%). En surface, les roues dessiccantes (MOF-303) extraient des milliers de litres d'eau pure de l'atmosphère. L'installation agit comme une "Batterie Virtuelle" (CLR) interruptible en quelques millisecondes, stabilisant le réseau public face à l'intermittence éolienne/solaire.</p>
+        </div>
+
+        <!-- Scale 4 -->
+        <div class="scale-card sc-l4">
+            <div class="scale-header">
+                <span class="scale-title">Échelle 4 : Le Vaisseau Terre (Planétaire)</span>
+                <span class="scale-badge" style="color: var(--sun-yellow);">Gigawatts & Terahash</span>
+            </div>
+            <div class="scale-metrics">
+                <span>Coût : Infrastructure Globale</span> <span>Impact : Passage du Grand Filtre</span>
+            </div>
+            <p><strong>La Civilisation de Type 1 :</strong> À l'échelle globale, la Preuve de Travail capte toutes les énergies perdues, bloquées ou intermittentes de la planète (hydroélectricité isolée, géothermie volcanique, torchères). Le coût de l'énergie pour attaquer le réseau (ou financer la guerre par l'inflation) devient physiquement inatteignable. L'économie biophysique mondiale s'aligne sur l'Étalon Solaire.</p>
+        </div>
+    </div>
+
+    <!-- LES 5 PONTS DE LA TRANSITION -->
+    <h2>3. Bâtir les Ponts de la Symbiose</h2>
+    <p>Une transition pacifique exige la construction de ponts praticables entre l'univers extractif d'hier et l'univers régénératif de demain. Il ne s'agit pas de détruire l'ancien monde, mais de le rendre économiquement obsolète.</p>
+
+    <div class="bridges-grid">
+        <div class="bridge-card">
+            <h4>💰 Le Pont Financier</h4>
+            <ul>
+                <li><strong>Problème :</strong> Monnaie fiat illimitée, inflation (Effet Cantillon), financement des guerres par la dette.</li>
+                <li><strong>Solution :</strong> Migration de la valeur vers un registre thermodynamiquement ancré. L'Or Numérique devient l'actif de réserve intègre des bilans d'entreprises et des États souverains.</li>
+            </ul>
+        </div>
+        <div class="bridge-card">
+            <h4>🌱 Le Pont Agricole</h4>
+            <ul>
+                <li><strong>Problème :</strong> Dépendance aux engrais fossiles (Haber-Bosch), épuisement des sols, stress hydrique.</li>
+                <li><strong>Solution :</strong> Monétisation de la chaleur informatique pour financer le dessalement, la capture d'eau atmosphérique (MOF) et la production massive de Biochar (Terra Preta) régénérant les sols.</li>
+            </ul>
+        </div>
+        <div class="bridge-card">
+            <h4>⚙️ Le Pont Technologique</h4>
+            <ul>
+                <li><strong>Problème :</strong> Pyrométallurgie destructrice et e-waste toxique.</li>
+                <li><strong>Solution :</strong> L'Ouroboros Matériel. Le recyclage à 99% des ASICs en fin de vie via hydrométallurgie douce (bains de biolixiviation) pilotée par l'Edge AI.</li>
+            </ul>
+        </div>
+        <div class="bridge-card">
+            <h4>🧠 Le Pont des Compétences</h4>
+            <ul>
+                <li><strong>Problème :</strong> Fuite des cerveaux vers des industries d'extraction ou de spéculation stérile (HFT, ingénierie pétrolière).</li>
+                <li><strong>Solution :</strong> Naissance du <em>Cyber-Agronome</em> et de <em>l'Ingénieur Thermicien Symbiotique</em>. Réorientation massive des ingénieurs BTP vers la réhabilitation des cavités brownfield.</li>
+            </ul>
+        </div>
+        <div class="bridge-card" style="grid-column: 1 / -1; border-top-color: var(--sun-yellow);">
+            <h4 style="color: var(--sun-yellow); text-align: center;">🛡️ Le Pont Humain</h4>
+            <p style="text-align: center; color: #cbd5e1; margin-bottom: 0;">Devenir l'<em>Homo Biodiversitas</em>. Quitter la posture du consommateur anxieux ou du soldat de l'ère pétrolière pour embrasser le rôle de Gardien de la Biosphère. L'automatisation souterraine des robots libère l'humain en surface pour cultiver le beau, le vrai et le vivant.</p>
+        </div>
+    </div>
+
+    <!-- AGENDA 2027-2037 : LA GÉODÉSIQUE -->
+    <h2>4. Agenda 2027 - 2037 : Franchir le Grand Filtre</h2>
+    <p>Les mathématiques ne font pas de politique, mais l'urgence climatique et géopolitique exige un plan d'action stricte. Voici la trajectoire optimale — la géodésique — pour désamorcer les conflits d'ici une décennie.</p>
+
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <div class="tl-year">2027 : L'Éveil des Nano-Nodes</div>
+                <p>Acceptation institutionnelle définitive de l'Or Numérique par les "Big Banks". Début de la prolifération des chaudières numériques domestiques. Le grand public comprend que le minage n'est pas un déchet, mais un chauffage autofinancé.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <div class="tl-year">2030 : L'Offensive Brownfield</div>
+                <p>Les directives ESG mondiales intègrent la Matrice Inversée. Déploiement massif dans les anciennes mines australiennes (piloté par Lemuria Technologies) et européennes. Fin du torchage de gaz naturel à l'air libre, massivement capté par des ASICs mobiles.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <div class="tl-year">2033 : La Singularité Réseau (Le Tipping Point)</div>
+                <p>Plus de 50 % des réseaux électriques renouvelables mondiaux (VRE) dépendent des datacenters ASICs comme acheteurs de dernier ressort et stabilisateurs de fréquence. La "Vallée de la Mort" du financement solaire/éolien est définitivement franchie. Le Biochar informatique fertilise les premières méga-serres autonomes.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <div class="tl-year">2037 : Le Grand Filtre Passé</div>
+                <p>L'inflation fiat par décret n'est plus le standard mondial. Financer des guerres d'usure par l'endettement secret devient économiquement impossible grâce à l'ancrage thermodynamique transparent de la monnaie. La symbiose entre le silicium enfoui et le carbone vivant est totale. La Terre commence sa phase de régénération active.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-block" style="border-left-color: var(--sun-yellow); background: rgba(255, 204, 0, 0.05);">
+        "La volonté est technologique, la bonté, elle, reste humaine et les maths ne font pas de politique. Ce sont les humains qui décideront de quoi en faire. <br><br>Always was, always will be."
+    </div>
+
+</article>
+
+</body>
+</html>
