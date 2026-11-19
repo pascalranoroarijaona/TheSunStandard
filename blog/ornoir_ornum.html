@@ -3,342 +3,1622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre | L'Étalon Solaire</title>
-    <meta name="description" content="La transition de l'extraction fossile au calcul régénératif. Invariance d'échelle, ponts symbiotiques et agenda 2027-2037 pour franchir le Grand Filtre." />
-
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+    <meta name="description" content="Traité d'ingénierie thermodynamique symbiotique : transition du pétrodollar extractif vers l'étalon solaire-numérique, ordres de grandeur matériaux L0-L5, MOF-303, Biochar et parcours interactif du Grand Filtre (2026-2044)." />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
         svg: { fontCache: 'global' }
       };
     </script>
     <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         :root {
-            --bg-dark: #050608;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --sun-yellow: #ffcc00;
-            --sun-orange: #f7931a;
-            --magma-orange: #ff5500;
-            --bio-green: #44ee77;
-            --water-blue: #00ccff;
-            --oil-black: #111111;
-            --border-glow: rgba(247, 147, 26, 0.25);
-            --font-main: 'Georgia', serif;
-            --font-ui: 'Inter', sans-serif;
-            --font-mono: 'Fira Code', monospace;
+            --bg-dark: #040507; --bg-deep: #07090f; --bg-panel: rgba(9, 12, 20, 0.88);
+            --text-main: #e2e8f0; --text-soft: #cbd5e1; --text-muted: #8b9bb0;
+            --sun-yellow: #ffcc00; --sun-orange: #f7931a; --magma-orange: #ff5500;
+            --bio-green: #44ee77; --water-blue: #00ccff; --cyan-l2: #00e5ff;
+            --purple-l4: #b366ff; --magenta-l3: #e040fb; --teal-l0: #00bfa5; --danger-red: #ef4444;
+            --border-glow: rgba(247, 147, 26, 0.26); --border-subtle: rgba(255, 255, 255, 0.09);
+            --font-main: 'Georgia', serif; --font-ui: 'Inter', -apple-system, sans-serif; --font-mono: 'Fira Code', monospace;
         }
-
         body {
-            margin: 0; padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(247, 147, 26, 0.05) 0%, transparent 60%);
+            background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(247, 147, 26, 0.08) 0%, rgba(68, 238, 119, 0.03) 34%, transparent 66%), radial-gradient(circle at 85% 45%, rgba(0, 229, 255, 0.04) 0%, transparent 52%);
         }
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
 
+        /* Navigation */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,6,8,0.92);
-            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
-            backdrop-filter: blur(10px);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 120; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 5, 7, 0.92); border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui); backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 0.95rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav .logo { font-size: 0.84rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; white-space: nowrap; }
+        nav .nav-links { display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; justify-content: center; }
+        nav .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s; }
+        nav .nav-links a:hover { color: #fff; background: rgba(247, 147, 26, 0.15); }
+        .lang-toggle { display: flex; gap: 6px; align-items: center; border-left: 1px solid rgba(255,255,255,0.12); padding-left: 0.9rem; white-space: nowrap; }
+        .lang-toggle button { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 8px; font-size: 0.78rem; font-family: var(--font-mono); color: #fff; cursor: pointer; opacity: 0.55; filter: grayscale(100%); transition: 0.22s; }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr { opacity: 1; filter: grayscale(0%); border-color: var(--sun-yellow); background: rgba(255, 204, 0, 0.14); box-shadow: 0 0 12px rgba(255, 204, 0, 0.26); }
 
-        article { max-width: 1000px; margin: 7rem auto 6rem; padding: 0 2rem; }
+        /* Layout & Typography */
+        article { max-width: 1050px; margin: 6.6rem auto 5rem; padding: 0 1.6rem; font-size: 1.1rem; }
+        header.article-header { text-align: center; margin-bottom: 2.4rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(247, 147, 26, 0.28); font-family: var(--font-ui); }
+        h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 800; color: #fff; margin-bottom: 0.65rem; letter-spacing: -1px; text-transform: uppercase; line-height: 1.15; text-shadow: 0 0 28px rgba(247, 147, 26, 0.28); }
+        h2.header-subtitle { font-size: clamp(1.05rem, 2.1vw, 1.3rem); font-weight: 600; color: var(--sun-yellow); margin-bottom: 0.8rem; font-family: var(--font-ui); }
+        .subtitle-lead { font-size: 1.03rem; color: var(--bio-green); font-style: italic; max-width: 860px; margin: 0 auto; line-height: 1.62; }
+        .meta-stamp { margin-top: 1rem; color: var(--text-muted); font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 0.8px; }
+        h2.section-heading { font-family: var(--font-ui); color: var(--sun-yellow); font-size: clamp(1.4rem, 2.8vw, 1.95rem); font-weight: 800; margin: 3.8rem 0 1.2rem; text-transform: uppercase; letter-spacing: 1.1px; border-bottom: 1px solid rgba(255, 204, 0, 0.22); padding-bottom: 0.6rem; scroll-margin-top: 5.4rem; }
+        h3.sub-heading { font-family: var(--font-ui); color: #fff; font-size: 1.24rem; font-weight: 700; margin: 2rem 0 0.8rem; }
+        p { margin-bottom: 1.3rem; color: var(--text-soft); text-align: justify; }
+        .quote-block { border-left: 4px solid var(--sun-orange); padding: 1.35rem 1.8rem; font-style: italic; color: #f8fafc; font-size: 1.06rem; margin: 1.8rem 0; font-family: var(--font-ui); background: linear-gradient(90deg, rgba(247, 147, 26, 0.11) 0%, rgba(68, 238, 119, 0.03) 65%, transparent 100%); border-radius: 0 10px 10px 0; }
+        .math-block { background: rgba(3, 5, 10, 0.8); padding: 1.35rem 1.1rem; border-radius: 10px; margin: 1.5rem 0; text-align: center; border: 1px solid rgba(0, 229, 255, 0.22); border-left: 4px solid var(--cyan-l2); font-size: 1rem; font-family: var(--font-ui); overflow-x: auto; box-shadow: 0 10px 28px rgba(0,0,0,0.45); }
 
-        /* HERO SECTION & ANIMATION */
-        .hero-section {
-            text-align: center; padding: 3rem 1.5rem; margin-bottom: 4rem;
-            border: 1px solid rgba(247, 147, 26, 0.3); border-radius: 16px;
-            background: linear-gradient(180deg, rgba(17,17,17,0.8) 0%, rgba(5,6,8,0.95) 100%);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 40px rgba(247, 147, 26, 0.05);
-            position: relative; overflow: hidden;
-        }
-        
-        .hero-section h1 { font-family: var(--font-ui); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(247, 147, 26, 0.4); }
-        .hero-section .subtitle { font-family: var(--font-ui); color: var(--bio-green); font-size: 1.25rem; font-style: italic; margin-bottom: 2rem; }
+        /* Buttons & UI Controls */
+        .ui-btn { background: rgba(247, 147, 26, 0.12); border: 1px solid rgba(255, 204, 0, 0.38); color: var(--sun-yellow); border-radius: 999px; padding: 6px 13px; font-family: var(--font-mono); font-size: 0.73rem; font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .ui-btn:hover { background: rgba(255, 204, 0, 0.24); color: #fff; transform: translateY(-1px); box-shadow: 0 0 14px rgba(255, 204, 0, 0.26); }
+        .ui-btn.active { background: rgba(68, 238, 119, 0.2); border-color: var(--bio-green); color: var(--bio-green); }
 
-        /* SVG ANIMATION: OIL TO DIGITAL GOLD TO LIFE */
-        .svg-alchemical-stage {
-            width: 100%; max-width: 600px; height: 180px; margin: 0 auto 2rem; display: block;
-        }
-        .oil-drop { animation: drip 3s infinite ease-in; }
-        .gold-node { animation: pulseNode 3s infinite ease-out; transform-origin: center; }
-        .bio-leaf { animation: growLeaf 3s infinite ease-out; transform-origin: bottom center; }
-        
-        @keyframes drip {
-            0% { transform: translateY(-20px) scale(1); opacity: 0; fill: var(--oil-black); }
-            30% { transform: translateY(50px) scale(1.2); opacity: 1; fill: var(--oil-black); }
-            50% { transform: translateY(70px) scale(0); opacity: 0; }
-            100% { transform: translateY(70px) scale(0); opacity: 0; }
-        }
-        @keyframes pulseNode {
-            0%, 40% { transform: scale(0); opacity: 0; fill: var(--sun-orange); filter: drop-shadow(0 0 0px var(--sun-orange));}
-            50% { transform: scale(1.2); opacity: 1; fill: var(--sun-yellow); filter: drop-shadow(0 0 15px var(--sun-yellow));}
-            70% { transform: scale(1); opacity: 1; fill: var(--sun-yellow); }
-            100% { transform: scale(0); opacity: 0; }
-        }
-        @keyframes growLeaf {
-            0%, 60% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.1); opacity: 1; fill: var(--bio-green); filter: drop-shadow(0 0 10px var(--bio-green));}
-            100% { transform: scale(1); opacity: 0; }
-        }
+        /* Hero Stage (#alchemicalHeroCanvas) */
+        .hero-stage-card { position: relative; width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 2.2rem; background: radial-gradient(circle at 50% 45%, #111628 0%, #06080f 70%, #030407 100%); border: 1px solid rgba(247, 147, 26, 0.36); box-shadow: 0 20px 55px rgba(0,0,0,0.78); }
+        #alchemicalHeroCanvas { display: block; width: 100%; height: 410px; cursor: pointer; }
+        .hero-hud-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; background: rgba(5, 7, 12, 0.94); border-top: 1px solid var(--border-subtle); font-family: var(--font-ui); }
+        .hero-slider-group { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 250px; }
+        .hero-slider-group label { font-size: 0.76rem; font-weight: 700; color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 0.7px; white-space: nowrap; }
+        .hero-slider-group input[type="range"] { flex: 1; accent-color: var(--sun-orange); cursor: pointer; }
+        .hud-metrics-strip { display: grid; grid-template-columns: repeat(4, minmax(115px, 1fr)); gap: 8px; padding: 10px 16px 14px; background: rgba(3, 4, 8, 0.96); border-top: 1px solid rgba(255,255,255,0.05); font-family: var(--font-ui); }
+        .hud-pill-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 7px 10px; text-align: center; }
+        .hud-pill-stat .lbl { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+        .hud-pill-stat .val { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: #fff; }
 
-        /* TEXT BLOCKS & PROSE */
-        h2 { font-family: var(--font-ui); color: var(--sun-yellow); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,204,0,0.2); padding-bottom: 0.5rem; }
-        p { margin-bottom: 1.5rem; font-size: 1.12rem; color: #cbd5e1; text-align: justify; }
-        
-        .quote-block {
-            border-left: 4px solid var(--sun-orange); padding: 1.5rem 2rem;
-            background: linear-gradient(90deg, rgba(247, 147, 26, 0.08) 0%, transparent 100%);
-            font-style: italic; color: #fff; font-size: 1.15rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+        /* Epistemic Section & Cards */
+        .modelling-section { margin: 3.2rem 0; padding: 2rem; background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(0,0,0,0.5)), radial-gradient(circle at top right, rgba(0,229,255,0.06), transparent 48%); border: 1px solid rgba(0,229,255,0.2); border-radius: 16px; box-shadow: 0 18px 48px rgba(0,0,0,0.5); scroll-margin-top: 5.4rem; }
+        .modelling-section h3 { margin-bottom: 0.65rem; color: var(--cyan-l2); font-family: var(--font-ui); font-size: clamp(1.25rem, 2.5vw, 1.75rem); text-align: center; text-transform: uppercase; letter-spacing: 1.6px; }
+        .modelling-lead { max-width: 840px; margin: 0 auto 1.6rem; color: #aeb8c5; text-align: center; font-size: 0.96rem; font-family: var(--font-ui); }
+        .epistemic-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 0.9rem 0 1.6rem; }
+        .epistemic-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.26rem 0.72rem; border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-mono); font-size: 0.71rem; font-weight: 600; white-space: nowrap; }
+        .status-a { color: #44ee77; background: rgba(68,238,119,0.08); }
+        .status-b { color: #00ccff; background: rgba(0,204,255,0.08); }
+        .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
+        .status-d { color: #b366ff; background: rgba(179,102,255,0.08); }
+        .modelling-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1rem; }
+        .model-card { padding: 1.2rem; background: rgba(4, 6, 10, 0.88); border: 1px solid var(--border-subtle); border-radius: 12px; transition: 0.25s; }
+        .model-card:hover { transform: translateY(-3px); border-color: rgba(255, 204, 0, 0.4); }
+        .model-card h4 { margin: 0.5rem 0 0.45rem; color: #fff; font-family: var(--font-ui); font-size: 0.98rem; }
+        .model-card p { color: #a3b1c2; font-size: 0.87rem; line-height: 1.58; font-family: var(--font-ui); margin: 0; text-align: left; }
+
+        /* Comparison Table */
+        .table-scroll { width: 100%; overflow-x: auto; margin: 1.6rem 0; border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(4, 6, 11, 0.84); }
+        .glossary-table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.85rem; }
+        .glossary-table th, .glossary-table td { padding: 0.8rem 0.9rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.07); vertical-align: top; }
+        .glossary-table th { color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase; font-size: 0.73rem; letter-spacing: 0.8px; background: rgba(255,255,255,0.03); }
+        .glossary-table tr:hover { background: rgba(255,255,255,0.025); }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 5px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; background: rgba(255,255,255,0.08); color: #fff; white-space: nowrap; }
+
+        /* Pyramid L0-L5 & Drawers */
+        .pyramid-wrapper { margin: 2.2rem 0 2.8rem; padding: 1.8rem; background: rgba(255,255,255,0.018); border: 1px solid rgba(255,204,0,0.2); border-radius: 14px; }
+        .pyramid-container { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; font-family: var(--font-ui); }
+        .pyramid-tier { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.35rem; border-radius: 9px; border: 1.5px solid; background: rgba(0,0,0,0.82); text-decoration: none; transition: 0.26s; box-shadow: 0 5px 16px rgba(0,0,0,0.45); }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 22px rgba(255,204,0,0.22); }
+        .tier-l5 { width: 50%; border-color: var(--magenta-l3); background: linear-gradient(90deg, rgba(224,64,251,0.16), rgba(0,0,0,0.9)); }
+        .tier-l4 { width: 60%; border-color: var(--purple-l4); background: linear-gradient(90deg, rgba(179,102,255,0.16), rgba(0,0,0,0.9)); }
+        .tier-l3 { width: 70%; border-color: var(--sun-orange); background: linear-gradient(90deg, rgba(247,147,26,0.18), rgba(0,0,0,0.9)); }
+        .tier-l2 { width: 80%; border-color: var(--bio-green); background: linear-gradient(90deg, rgba(68,238,119,0.16), rgba(0,0,0,0.9)); }
+        .tier-l1 { width: 90%; border-color: var(--cyan-l2); background: linear-gradient(90deg, rgba(0,229,255,0.16), rgba(0,0,0,0.9)); }
+        .tier-l0 { width: 100%; border-color: var(--teal-l0); background: linear-gradient(90deg, rgba(0,191,165,0.16), rgba(0,0,0,0.9)); }
+        .tier-tag { font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; white-space: nowrap; }
+        .tier-title { font-size: 0.88rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 0.7rem; }
+
+        details.scale-drawer { margin-bottom: 1.35rem; background: rgba(255,255,255,0.02); border-radius: 0 12px 12px 0; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.45); font-family: var(--font-ui); scroll-margin-top: 5.8rem; }
+        details.scale-drawer[open] { background: rgba(4, 6, 12, 0.9); }
+        details.scale-drawer > summary { padding: 1.15rem 1.4rem; cursor: pointer; font-weight: 700; font-size: 1.05rem; color: #fff; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        details.scale-drawer > summary::-webkit-details-marker { display: none; }
+        .sum-left { display: flex; align-items: center; gap: 10px; }
+        .sum-arrow { font-size: 0.82rem; transition: transform 0.2s; display: inline-block; }
+        details.scale-drawer[open] .sum-arrow { transform: rotate(90deg); }
+        .drawer-content { padding: 1.5rem 1.8rem; color: #c7d4e2; font-family: var(--font-main); line-height: 1.78; }
+        .bom-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.9rem; font-family: var(--font-mono); font-size: 0.76rem; }
+        .bom-chip { background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 10px; color: #f8fafc; }
+        .layer-0 { border-left: 4px solid var(--teal-l0); } .layer-0 > summary .sum-left { color: var(--teal-l0); }
+        .layer-1 { border-left: 4px solid var(--cyan-l2); } .layer-1 > summary .sum-left { color: var(--cyan-l2); }
+        .layer-2 { border-left: 4px solid var(--bio-green); } .layer-2 > summary .sum-left { color: var(--bio-green); }
+        .layer-3 { border-left: 4px solid var(--sun-orange); } .layer-3 > summary .sum-left { color: var(--sun-orange); }
+        .layer-4 { border-left: 4px solid var(--purple-l4); } .layer-4 > summary .sum-left { color: var(--purple-l4); }
+        .layer-5 { border-left: 4px solid var(--magenta-l3); } .layer-5 > summary .sum-left { color: var(--magenta-l3); }
+
+        /* Materials Explorer (#explorateur-materiaux) */
+        .materials-lab-box { background: #06080f; border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 16px; padding: 1.8rem; margin: 2.2rem 0 3.8rem; box-shadow: 0 20px 55px rgba(0,0,0,0.7); font-family: var(--font-ui); }
+        .preset-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 1.4rem; }
+        .preset-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); color: #dce5f0; border-radius: 8px; padding: 7px 12px; font-family: var(--font-mono); font-size: 0.74rem; cursor: pointer; transition: 0.2s; }
+        .preset-btn:hover { border-color: var(--cyan-l2); color: #fff; }
+        .preset-btn.active { background: rgba(0, 229, 255, 0.18); border-color: var(--cyan-l2); color: var(--cyan-l2); font-weight: 700; box-shadow: 0 0 14px rgba(0, 229, 255, 0.24); }
+        .lab-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 1rem; margin-bottom: 1.4rem; }
+        .lab-ctrl-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.95rem; }
+        .lab-ctrl-card label { display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: #cbd5e1; margin-bottom: 0.5rem; font-weight: 600; }
+        .lab-ctrl-card select, .lab-ctrl-card input[type="range"] { width: 100%; }
+        .lab-ctrl-card select { background: #0b101d; color: #fff; border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 6px; padding: 7px 9px; font-family: var(--font-ui); font-size: 0.81rem; outline: none; }
+        .bom-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.85rem; margin-bottom: 1.6rem; }
+        .bom-card { background: linear-gradient(160deg, rgba(15,20,34,0.9), rgba(5,7,13,0.95)); border: 1px solid var(--border-subtle); border-top: 2px solid var(--cyan-l2); border-radius: 10px; padding: 0.9rem; }
+        .bom-card .bom-icon { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+        .bom-card .bom-val { display: block; font-family: var(--font-mono); font-size: 1.12rem; font-weight: 700; color: #fff; margin: 0.25rem 0; }
+        .bom-card .bom-sub { font-size: 0.73rem; color: #94a3b8; line-height: 1.35; }
+        .dual-canvas-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.1rem; align-items: stretch; }
+        .canvas-panel { background: #04060b; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 0.95rem; display: flex; flex-direction: column; }
+        .canvas-panel h4 { font-size: 0.75rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.8px; color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center; }
+        #materialsRadarCanvas, #materialsBarCanvas { width: 100%; height: 270px; display: block; }
+
+        /* Five Bridges (#ponts-symbiose) */
+        .bridges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(295px, 1fr)); gap: 1.25rem; margin: 1.8rem 0 3.4rem; }
+        .bridge-card { background: rgba(8, 11, 18, 0.92); border: 1px solid rgba(68, 238, 119, 0.22); border-top: 3px solid var(--bio-green); border-radius: 12px; padding: 1.4rem; font-family: var(--font-ui); display: flex; flex-direction: column; gap: 0.8rem; }
+        .bridge-card.wide-human { grid-column: 1 / -1; border-top-color: var(--sun-yellow); border-color: rgba(255,204,0,0.28); background: linear-gradient(145deg, rgba(22,20,12,0.88), rgba(6,8,13,0.96)); }
+        .bridge-card h4 { color: var(--bio-green); font-size: 1.08rem; text-transform: uppercase; letter-spacing: 0.7px; }
+        .bridge-triptych { display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.86rem; }
+        .triptych-row { padding: 0.6rem 0.75rem; border-radius: 8px; background: rgba(255,255,255,0.025); border-left: 3px solid; line-height: 1.5; }
+        .triptych-row.impasse { border-left-color: var(--danger-red); }
+        .triptych-row.arch { border-left-color: var(--bio-green); }
+        .triptych-row.metric { border-left-color: var(--sun-yellow); font-family: var(--font-mono); font-size: 0.77rem; color: #fde68a; }
+
+        /* Great Filter Obstacle Course (#parcours-grand-filtre) */
+        .course-shell { background: #05070d; border: 1px solid rgba(247, 147, 26, 0.35); border-radius: 16px; padding: 1.5rem; margin: 2rem 0 3.8rem; box-shadow: 0 22px 60px rgba(0,0,0,0.78); font-family: var(--font-ui); }
+        .course-top-controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 1rem; }
+        .stage-selector-bar { display: grid; grid-template-columns: repeat(7, minmax(90px, 1fr)); gap: 6px; margin-bottom: 1rem; }
+        .stage-step-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 7px 5px; color: #cbd5e1; cursor: pointer; text-align: center; font-family: var(--font-mono); font-size: 0.7rem; transition: 0.2s; }
+        .stage-step-btn:hover { border-color: var(--sun-yellow); color: #fff; }
+        .stage-step-btn.active { background: rgba(247, 147, 26, 0.22); border-color: var(--sun-orange); color: #fff; box-shadow: 0 0 14px rgba(247, 147, 26, 0.3); }
+        .stage-step-btn.secured { border-bottom: 3px solid var(--bio-green); }
+        .stage-step-btn.drifting { border-bottom: 3px solid var(--danger-red); }
+        #geodesicCourseCanvas { width: 100%; height: 420px; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: #030408; cursor: pointer; margin-bottom: 1.1rem; }
+        .course-gauges-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.1rem; }
+        .gauge-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 9px 11px; }
+        .gauge-head { display: flex; justify-content: space-between; font-size: 0.72rem; font-weight: 600; margin-bottom: 5px; color: #dce4ee; }
+        .gauge-bar-bg { width: 100%; height: 7px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+        .gauge-bar-fill { height: 100%; border-radius: 999px; transition: width 0.35s ease, background-color 0.35s ease; }
+        .stage-cockpit-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.15rem; background: rgba(10, 14, 24, 0.92); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.25rem; }
+        .tactical-keys-list { display: flex; flex-direction: column; gap: 8px; }
+        .key-toggle-btn { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; width: 100%; text-align: left; padding: 9px 11px; border-radius: 9px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); color: #cbd5e1; cursor: pointer; font-family: var(--font-ui); font-size: 0.81rem; transition: 0.2s; }
+        .key-toggle-btn:hover { border-color: var(--sun-yellow); }
+        .key-toggle-btn.enabled { background: rgba(68, 238, 119, 0.12); border-color: var(--bio-green); color: #fff; }
+        .key-indicator { font-family: var(--font-mono); font-weight: 700; font-size: 0.72rem; padding: 2px 7px; border-radius: 5px; background: rgba(239, 68, 68, 0.22); color: #fca5a5; white-space: nowrap; }
+        .key-toggle-btn.enabled .key-indicator { background: rgba(68, 238, 119, 0.24); color: var(--bio-green); }
+        .course-verdict-banner { margin-top: 1rem; padding: 0.95rem 1.15rem; border-radius: 10px; border-left: 4px solid var(--bio-green); background: rgba(68, 238, 119, 0.07); font-size: 0.87rem; color: #e2e8f0; line-height: 1.55; }
+
+        /* Sankey & Ouroboros (#ouroboros-sankey) */
+        .sankey-box { background: #05080f; border: 1px solid rgba(68, 238, 119, 0.28); border-radius: 16px; padding: 1.5rem; margin: 1.8rem 0 3.8rem; box-shadow: 0 18px 50px rgba(0,0,0,0.7); font-family: var(--font-ui); }
+        #sankeyCanvas { width: 100%; height: 390px; display: block; border-radius: 12px; background: #03050a; border: 1px solid rgba(255,255,255,0.08); margin: 1rem 0; }
+
+        /* Closing Tablet, Nav & Footer */
+        .philosophical-tablet { margin: 3.8rem 0; padding: 2.4rem; background: linear-gradient(145deg, rgba(18,22,30,0.9) 0%, rgba(5,6,10,0.97) 100%); border: 1px solid rgba(255,204,0,0.24); border-top: 4px solid var(--sun-yellow); border-radius: 16px; box-shadow: 0 22px 58px rgba(0,0,0,0.78); }
+        .philosophical-tablet h3 { color: var(--sun-yellow); font-family: var(--font-ui); font-size: clamp(1.3rem, 2.6vw, 1.8rem); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 1.2rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,204,0,0.16); }
+        .philosophical-tablet h4 { color: #fff; font-family: var(--font-ui); font-size: 1.15rem; margin: 1.6rem 0 0.7rem; }
+        .punchline-monument { text-align: center; margin: 2.6rem 0 2rem; padding: 2rem 1.2rem; border-top: 1px solid rgba(247,147,26,0.4); border-bottom: 1px solid rgba(68,238,119,0.4); background: linear-gradient(180deg, rgba(247,147,26,0.07) 0%, rgba(68,238,119,0.06) 100%); border-radius: 12px; }
+        .article-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin: 3.2rem 0; }
+        .nav-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(247,147,26,0.22); border-radius: 12px; padding: 1.4rem; text-align: center; text-decoration: none; transition: 0.26s; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 0.65rem; }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.5); }
+        .nav-direction { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.08rem; font-weight: 800; color: var(--sun-orange); font-family: var(--font-ui); }
+        .author-section { margin: 3.2rem 0; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,204,0,0.2); border-top: 4px solid var(--sun-orange); border-radius: 14px; font-family: var(--font-ui); }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)); gap: 0.95rem; margin-top: 1.1rem; }
+        .resource-card { display: block; padding: 1.1rem; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; text-decoration: none; transition: 0.24s; }
+        .resource-card:hover { border-color: var(--sun-yellow); transform: translateY(-2px); }
+        .resource-card h4 { font-size: 0.94rem; margin-bottom: 0.4rem; }
+        .resource-card p { font-size: 0.8rem; color: #94a3b8; line-height: 1.48; margin: 0; text-align: left; }
+        footer { font-family: var(--font-ui); text-align: center; padding: 2.5rem 1.5rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem; }
+
+        @media (max-width: 920px) {
+            nav .nav-links { display: none; }
+            .hud-metrics-strip, .course-gauges-grid { grid-template-columns: repeat(2, 1fr); }
+            .dual-canvas-grid, .stage-cockpit-grid, .article-navigation { grid-template-columns: 1fr; }
+            .stage-selector-bar { grid-template-columns: repeat(4, 1fr); }
+            .pyramid-tier { width: 100% !important; }
         }
-
-        /* MATH & SCALE INVARIANCE BLOCK */
-        .math-block {
-            background: rgba(0, 0, 0, 0.6); padding: 2rem; border-radius: 12px;
-            border: 1px solid rgba(0, 204, 255, 0.2); border-left: 4px solid var(--water-blue);
-            margin: 2.5rem 0; font-family: var(--font-ui); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* PYRAMID SCALE CARDS */
-        .scale-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 3rem 0; }
-        .scale-card {
-            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease;
-        }
-        .scale-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .sc-l1 { border-left: 4px solid var(--water-blue); } .sc-l1:hover { border-color: var(--water-blue); }
-        .sc-l2 { border-left: 4px solid var(--bio-green); } .sc-l2:hover { border-color: var(--bio-green); }
-        .sc-l3 { border-left: 4px solid var(--sun-orange); } .sc-l3:hover { border-color: var(--sun-orange); }
-        .sc-l4 { border-left: 4px solid var(--sun-yellow); } .sc-l4:hover { border-color: var(--sun-yellow); }
-        
-        .scale-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.8rem; }
-        .scale-title { font-family: var(--font-ui); font-size: 1.3rem; font-weight: 700; color: #fff; }
-        .scale-badge { font-family: var(--font-mono); font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); }
-        
-        .scale-metrics { display: flex; gap: 1rem; margin-bottom: 1.2rem; font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; }
-        .scale-metrics span { background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); }
-
-        /* THE 5 BRIDGES GRID */
-        .bridges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
-        .bridge-card {
-            background: #080a0c; border: 1px solid rgba(68, 238, 119, 0.2); border-top: 3px solid var(--bio-green);
-            border-radius: 10px; padding: 1.8rem;
-        }
-        .bridge-card h4 { color: var(--bio-green); font-family: var(--font-ui); font-size: 1.2rem; margin: 0 0 1rem 0; text-transform: uppercase; }
-        .bridge-card ul { padding-left: 1.2rem; color: #cbd5e1; font-size: 1rem; }
-        .bridge-card li { margin-bottom: 0.5rem; }
-
-        /* GLOWING TIMELINE 2027-2037 */
-        .timeline { position: relative; max-width: 800px; margin: 4rem auto; padding: 2rem 0; }
-        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(247, 147, 26, 0.2); margin-left: -1px; }
-        .tl-item { position: relative; width: 50%; padding: 1.5rem 2.5rem; box-sizing: border-box; }
-        .tl-item:nth-child(odd) { left: 0; text-align: right; }
-        .tl-item:nth-child(even) { left: 50%; text-align: left; }
-        .tl-dot { position: absolute; top: 2rem; width: 16px; height: 16px; border-radius: 50%; background: var(--sun-orange); box-shadow: 0 0 15px var(--sun-orange); z-index: 10; }
-        .tl-item:nth-child(odd) .tl-dot { right: -8px; }
-        .tl-item:nth-child(even) .tl-dot { left: -8px; }
-        .tl-year { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--sun-yellow); margin-bottom: 0.5rem; }
-        .tl-content { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .tl-item { width: 100%; left: 0 !important; text-align: left !important; padding: 1.5rem 1.5rem 1.5rem 3rem; }
-            .tl-dot { left: 12px !important; }
+        @media (max-width: 560px) {
+            article { padding: 0 1rem; margin-top: 5.6rem; }
+            #alchemicalHeroCanvas { height: 330px; }
+            #geodesicCourseCanvas { height: 350px; }
+            .stage-selector-bar { grid-template-columns: repeat(2, 1fr); }
+            .course-gauges-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body>
+<body class="lang-fr">
 
+<!-- BARRE DE NAVIGATION FIXE BILINGUE -->
 <nav>
-    <a href="#" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
+    <a href="#top" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
+    <div class="nav-links">
+        <a href="#invariance-fractale"><span lang="fr">1. Invariance</span><span lang="en">1. Invariance</span></a>
+        <a href="#pyramide-echelles"><span lang="fr">2. Pyramide L0–L5</span><span lang="en">2. L0–L5 Pyramid</span></a>
+        <a href="#explorateur-materiaux"><span lang="fr">3. Matériaux & Échelles</span><span lang="en">3. Materials & Scales</span></a>
+        <a href="#ponts-symbiose"><span lang="fr">4. Cinq Ponts</span><span lang="en">4. Five Bridges</span></a>
+        <a href="#parcours-grand-filtre"><span lang="fr">5. Parcours Grand Filtre</span><span lang="en">5. Great Filter Course</span></a>
+        <a href="#ouroboros-sankey"><span lang="fr">6. Flux & Ouroboros</span><span lang="en">6. Flows & Ouroboros</span></a>
+    </div>
+    <div class="lang-toggle">
+        <button type="button" onclick="setLang('en')" id="btn-en" aria-label="Switch to English">EN 🇬🇧</button>
+        <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Passer en Français">FR 🇫🇷</button>
+    </div>
 </nav>
 
-<article>
-    <!-- HERO SECTION -->
-    <header class="hero-section">
-        <svg class="svg-alchemical-stage" viewBox="0 0 300 150">
-            <!-- Goutte de pétrole (Or Noir) -->
-            <path class="oil-drop" d="M150,20 C150,20 135,45 135,60 C135,70 142,75 150,75 C158,75 165,70 165,60 C165,45 150,20 150,20 Z" />
-            <!-- Nœud cryptographique (Or Numérique / Soleil) -->
-            <circle class="gold-node" cx="150" cy="75" r="18" />
-            <!-- Feuille régénérative (Vie) -->
-            <path class="bio-leaf" d="M150,75 C120,40 180,40 150,75 Z" />
-            
-            <line x1="50" y1="75" x2="110" y2="75" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4" />
-            <line x1="190" y1="75" x2="250" y2="75" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="4" />
-            <text x="50" y="70" fill="#94a3b8" font-family="Fira Code" font-size="10" text-anchor="middle">ENTROPIE</text>
-            <text x="250" y="70" fill="#44ee77" font-family="Fira Code" font-size="10" text-anchor="middle">NÉGENTROPIE</text>
-        </svg>
-
-        <h1>De l'Or Noir à l'Or Numérique</h1>
-        <div class="subtitle">La Géodésique du Grand Filtre : De l'Extraction Fossile au Calcul Régénératif</div>
-        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px;">
-            PAR PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES
+<article id="top">
+    <!-- EN-TÊTE -->
+    <header class="article-header">
+        <h1>
+            <span lang="fr">De l'Or Noir à l'Or Numérique</span>
+            <span lang="en">From Black Gold to Digital Gold</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">La Géodésique du Grand Filtre : De l'Extraction Fossile au Calcul Thermodynamique Régénératif</span>
+            <span lang="en">The Great Filter Geodesic: From Fossil Extraction to Regenerative Thermodynamic Compute</span>
+        </h2>
+        <div class="subtitle-lead">
+            <span lang="fr">Invariance d'échelle de L0 à L5, bilans massiques des matériaux critiques, extinction des torchères, roues hydriques MOF-303 et parcours symbiotique 2026–2044 pour désamorcer les guerres d'entropie.</span>
+            <span lang="en">Scale invariance from L0 to L5, critical material mass balances, flare-gas mitigation, MOF-303 atmospheric water wheels, and the 2026–2044 symbiotic course to defuse entropy wars.</span>
+        </div>
+        <div class="meta-stamp">
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $k_{\text{Nak}} \equiv h$</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $k_{\text{Nak}} \equiv h$</span>
         </div>
     </header>
 
-    <p>Pendant deux siècles, le métabolisme de la civilisation industrielle a reposé sur un acte thermodynamique à sens unique : extraire du carbone ancien enfoui dans la lithosphère, le brûler pour en tirer du travail mécanique, et rejeter l'entropie résiduelle dans l'atmosphère. C'était le règne de l'<strong>Or Noir</strong> — le pétrodollar — où la valeur économique était indexée sur notre capacité à dégrader des stocks finis d'énergie solaire fossile.</p>
-    
-    <p>Ce modèle touche aujourd'hui à sa limite biophysique. Mais contrairement au récit décroissant classique qui oppose technologie et écologie, une bifurcation inattendue est en train de s'opérer sous nos yeux : le passage d'une économie d'extraction entropique à une économie de calcul régénératif négentropique, catalysée par la convergence de l'Or Numérique (Bitcoin) et de l'Intelligence Artificielle.</p>
-
-    <div class="quote-block">
-        "En passant de l'Or Noir à l'Or Numérique, l'humanité ne change pas simplement de technologie monétaire ; elle change d'échelle de Kardachev. Dans le nouveau paradigme, la prospérité humaine n'est plus l'ennemie de la Terre, mais le moteur même de sa régénération."
+    <!-- MODULE 1 : SCÈNE HERO DE TRANSMUTATION ALCHIMIQUE -->
+    <div class="hero-stage-card">
+        <canvas id="alchemicalHeroCanvas" aria-label="Simulation interactive de la transmutation énergétique de l'Or Noir vers l'Or Numérique et la Biosphère"></canvas>
+        <div class="hero-hud-bar">
+            <div class="hero-slider-group">
+                <label for="hero-bifurcation-slider">
+                    <span lang="fr">Bifurcation Civilisationnelle :</span>
+                    <span lang="en">Civilizational Bifurcation:</span>
+                </label>
+                <input type="range" id="hero-bifurcation-slider" min="0" max="100" value="68">
+                <span id="hero-bifurcation-pct" style="font-family:var(--font-mono); font-size:0.84rem; color:#fff; font-weight:700; min-width:46px;">68 %</span>
+            </div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn" id="hero-btn-era0"><span lang="fr">1971 · Pétrodollar</span><span lang="en">1971 · Petrodollar</span></button>
+                <button type="button" class="ui-btn" id="hero-btn-era100"><span lang="fr">2044 · Étalon Solaire</span><span lang="en">2044 · Sun Standard</span></button>
+                <button type="button" class="ui-btn" id="hero-btn-pulse">✦ <span lang="fr">Choc d'Échelle</span><span lang="en">Scale Pulse</span></button>
+            </div>
+        </div>
+        <div class="hud-metrics-strip">
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Régime Dominateur</span><span lang="en">Dominant Regime</span></span>
+                <span class="val" id="hud-regime-val" style="color:var(--sun-yellow);">Transition Brownfield</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Indice Kardachev ($K$)</span><span lang="en">Kardashev Index ($K$)</span></span>
+                <span class="val" id="hud-kardashev-val" style="color:var(--cyan-l2);">0.910</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Bilan Carbone & Sols</span><span lang="en">Carbon & Soil Balance</span></span>
+                <span class="val" id="hud-carbon-val" style="color:var(--bio-green);">+4.0 Gt CO₂e/an</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Confiance Sociétale ($C_s$)</span><span lang="en">Societal Trust ($C_s$)</span></span>
+                <span class="val" id="hud-cs-val" style="color:var(--sun-orange);">0.71 / 1.00</span>
+            </div>
+        </div>
     </div>
 
-    <!-- INVARIANCE D'ÉCHELLE & FRACTALITÉ THERMODYNAMIQUE -->
-    <h2>1. Invariance d'Échelle : Le Fractal Thermodynamique</h2>
-    <p>La beauté d'un système cyber-organique réside dans sa fractalité. Un système complexe devient exponentiellement plus efficace et résilient lorsqu'il passe à l'échelle, <strong>mais les lois thermodynamiques qui le régissent restent invariantes</strong>. Que l'on opère un processeur ASIC dans un garage ou un mégawatt sous une ancienne mine, l'équation d'état reste identique : chaque électron consommé dissipe 100 % de son énergie en chaleur (Effet Joule), et cette chaleur peut être couplée à la biosphère.</p>
+    <p lang="fr">Pendant plus de deux siècles, le métabolisme industriel a reposé sur un acte thermodynamique irréversible : extraire de la lithosphère des hydrocarbures fossiles accumulés sur $300\text{ millions}$ d'années, les brûler dans des moteurs thermiques bridés par le rendement de Carnot, et rejeter plus de $60\,\%$ de l'énergie primaire en chaleur perdue et gaz à effet de serre. Ce règne de l'<strong>Or Noir</strong> — scellé en 1971–1974 par l'architecture du pétrodollar — indexait la monnaie sur notre vitesse de combustion d'un stock fini.</p>
+    <p lang="en">For over two centuries, industrial metabolism rested upon an irreversible thermodynamic act: extracting subsurface hydrocarbons accumulated over $300\text{ million}$ years, burning them inside Carnot-limited heat engines, and venting over $60\%$ of primary energy into the sky as unrecovered heat and greenhouse gases. That reign of <strong>Black Gold</strong>—cemented in 1971–1974 through the petrodollar architecture—indexed money to the speed at which humanity depleted a finite carbon stock.</p>
+
+    <p lang="fr">À l'heure où l'érosion du taux de retour énergétique (EROI), le stress hydrique et l'inflation fiduciaire poussent les blocs géopolitiques vers la guerre d'usure, une bifurcation physique s'opère : le passage de la <em>combustion entropique</em> au <strong>calcul thermodynamique régénératif</strong>, couplant la Preuve de Travail (Or Numérique) et l'Intelligence Artificielle locale (Edge AI) aux cycles de l'eau et de l'humus.</p>
+    <p lang="en">As declining fossil EROI, hydrological stress, and fiat monetary debasement push geopolitical blocs toward attrition warfare, a concrete physical bifurcation emerges: transitioning from <em>entropic combustion</em> to <strong>regenerative thermodynamic compute</strong>, coupling Proof-of-Work (Digital Gold) and local Edge AI directly to water and soil cycles.</p>
+
+    <div class="quote-block">
+        <span lang="fr">« Un baril de pétrole ne se brûle qu'une seule fois ; un photon solaire traversant du silicium immergé engendre simultanément une preuve mathématique infalsifiable, de la chaleur vitale à $60\,^\circ\text{C}$, de l'eau pure condensée et du Biochar fertile. »</span>
+        <span lang="en">"A barrel of oil can only be burned once; a solar photon flowing through immersed silicon simultaneously generates unforgeable mathematical truth, $60\,^\circ\text{C}$ life-sustaining heat, condensed pure water, and fertile Biochar."</span>
+    </div>
+
+    <!-- PROTOCOLE DE CLARTÉ ÉPISTÉMIQUE -->
+    <section class="modelling-section" id="epistemic-clarity">
+        <h3><span lang="fr">🔬 Protocole de Clarté Épistémique</span><span lang="en">🔬 Epistemic Clarity Protocol</span></h3>
+        <p class="modelling-lead">
+            <span lang="fr">Conformément à l'ingénierie de L'Étalon Solaire, chaque mécanisme présenté distingue la physique démontrée, les pilotes industriels validés, la modélisation réseau et la prospective de Type I.</span>
+            <span lang="en">Following Sun Standard engineering rigor, every mechanism distinguishes demonstrated physics, validated industrial pilots, grid-scale modeling, and Type I planetary foresight.</span>
+        </p>
+        <div class="epistemic-legend">
+            <span class="epistemic-badge status-a">A · <span lang="fr">Physique Démontrée</span><span lang="en">Demonstrated Physics</span></span>
+            <span class="epistemic-badge status-b">B · <span lang="fr">Pilotes Validés</span><span lang="en">Validated Pilots</span></span>
+            <span class="epistemic-badge status-c">C · <span lang="fr">Modélisation Brownfield</span><span lang="en">Brownfield Modeling</span></span>
+            <span class="epistemic-badge status-d">D · <span lang="fr">Prospective Type I & Mars</span><span lang="en">Type I & Mars Foresight</span></span>
+        </div>
+        <div class="modelling-grid">
+            <article class="model-card">
+                <span class="epistemic-badge status-a">A · Loi de Joule</span>
+                <h4><span lang="fr">Conversion 100 % en chaleur</span><span lang="en">100% Electro-Thermal Conversion</span></h4>
+                <p lang="fr">Toute puissance électrique dissipée dans une puce CMOS se transforme intégralement en enthalpie thermique ($Q_{\text{th}} = P_{\text{élec}}$), captée à $96\,\%$ par immersion liquide à $60\,^\circ\text{C}$.</p>
+                <p lang="en">Every electrical watt traversing CMOS logic converts 100% into thermal enthalpy ($Q_{\text{th}} = P_{\text{elec}}$), captured at $96\%$ efficiency via $60\,^\circ\text{C}$ liquid immersion.</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-b">B · MOF-303 & Torchères</span>
+                <h4><span lang="fr">Eau atmosphérique & Méthane</span><span lang="en">Atmospheric Water & Methane</span></h4>
+                <p lang="fr">Les réseaux métallo-organiques $\text{MOF-303}$ $[\text{Al(OH)(PZDC)}]$ captent $0,7\text{ à }1,3\text{ L}/\text{kg}/\text{cycle}$ dès $15\,\%$ d'humidité ; le minage sur torchère abat $>63\,\%$ des émissions $\text{CO}_2\text{e}$.</p>
+                <p lang="en">Crystalline $\text{MOF-303}$ $[\text{Al(OH)(PZDC)}]$ harvests $0.7\text{–}1.3\text{ L}/\text{kg}/\text{cycle}$ down to $15\%$ RH; flare-gas compute cuts methane $\text{CO}_2\text{e}$ emissions by $>63\%$.</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-c">C · Puits Miniers & CLR</span>
+                <h4><span lang="fr">Tirage convectif & Réponse < 50 ms</span><span lang="en">Shaft Draft & Sub-50ms Response</span></h4>
+                <p lang="fr">Réhabilitation de mines désaffectées (Lemuria Technologies) par tirage thermique naturel ($\Delta p \approx 560\text{ Pa}$) et effacement électrique instantané stabilisant les réseaux solaires/éoliens.</p>
+                <p lang="en">Rehabilitating decommissioned mine shafts (Lemuria Technologies) via natural buoyancy draft ($\Delta p \approx 560\text{ Pa}$) and sub-50ms demand response stabilizing VRE grids.</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-d">D · Géodésique 2044</span>
+                <h4><span lang="fr">Démonétisation des guerres</span><span lang="en">Demonetizing Attrition Wars</span></h4>
+                <p lang="fr">Ancrage thermodynamique empêchant le financement inflationniste occulte des conflits, enfouissement du silicium sous roche et déploiement d'arches interplanétaires.</p>
+                <p lang="en">Thermodynamic monetary anchoring ending covert inflationary war-financing, burying heavy compute underground, and extending closed-loop life support to Mars.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION 1 : INVARIANCE D'ÉCHELLE -->
+    <h2 class="section-heading" id="invariance-fractale">
+        <span lang="fr">1. Invariance d'Échelle : Le Fractal Thermodynamique & L'Inversion de Jevons</span>
+        <span lang="en">1. Scale Invariance: The Thermodynamic Fractal & Inverting Jevons' Paradox</span>
+    </h2>
+
+    <p lang="fr">Contrairement aux turbines fossiles qui exigent des centrales géantes pour approcher $40\,\%$ de rendement mécanique, une puce silicium obéit à une <strong>invariance d'échelle stricte</strong> : de $50\text{ W}$ à $50\text{ GW}$, l'effet Joule convertit $100\,\%$ des électrons en chaleur après exécution du travail logique. Ce qui croît non-linéairement avec la taille $L$, c'est l'efficacité aéraulique (tirage gravitaire $\Delta p_{\text{tirage}}$ dans les puits verticaux) et le couplage multi-étagé.</p>
+    <p lang="en">Unlike fossil turbines requiring massive central plants to approach $40\%$ mechanical efficiency, silicon logic exhibits <strong>strict scale invariance</strong>: from $50\text{ W}$ to $50\text{ GW}$, Joule heating converts $100\%$ of electrical input into heat right after computation. What improves nonlinearly with scale $L$ is buoyancy airflow ($\Delta p_{\text{tirage}}$ in vertical shafts) and multi-stage thermal cascading.</p>
 
     <div class="math-block">
-        <div style="color: var(--water-blue); font-weight: bold; margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase;">La Symbiose Invariante d'Échelle (Scale-Invariant Symbiosis)</div>
-        $$ \dot{S}_{\text{interne}} + \dot{S}_{\text{calcul}} \le \dot{S}_{\text{export}} \quad \forall \text{ Échelle } L \in [\text{Nano}, \text{Terra}] $$
-        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 1rem; text-align: justify; font-family: var(--font-main);">
-            L'efficacité du couplage (PUE, $\Delta p$ aéraulique, rendement de reminéralisation de l'eau) s'améliore drastiquement avec l'échelle $L$. Une installation de 50 MW bénéficie d'un tirage convectif massif et d'économies d'échelle inaccessibles à un micro-pod. Pourtant, la mission fondamentale — convertir la vérité mathématique en chaleur vitale pour l'eau et le sol — est vraie à $1\text{ kW}$ comme à $1\text{ GW}$.
+        $$ \dot{S}_{\text{interne}}(L) + \dot{S}_{\text{calcul}}(L) \le \dot{S}_{\text{export, biosphère}}(L) \quad \forall L \in [\text{L0},\, \text{L5}], \qquad \Delta p_{\text{tirage}} = \rho_0\, g\, H \left(\frac{T_{\text{int}} - T_{\text{ext}}}{T_{\text{int}}}\right) $$
+    </div>
+
+    <p lang="fr">En absorbant les surplus renouvelables écrêtés (prix négatifs) et le méthane fatal des torchères, cet acheteur de dernier ressort <strong>inverse le paradoxe de Jevons</strong> : chaque gain d'efficacité en $\text{J/TH}$ finance en amont de nouvelles capacités solaires et hydroélectriques tout en restituant la puissance au réseau civil en moins de $50\text{ millisecondes}$. Simultanément, l'étalon énergétique ($k_{\text{Nak}} \equiv h$) neutralise l'<strong>Effet Cantillon</strong> en rendant impossible l'impression monétaire sans dépense physique vérifiable.</p>
+    <p lang="en">By monetizing curtailed renewable surpluses (negative spot prices) and stranded flare methane, this location-agnostic buyer of last resort <strong>inverts Jevons' Paradox</strong>: every silicon efficiency gain ($\text{J/TH}$) underwrites new solar and hydro buildouts upfront while surrendering power back to citizens in under $50\text{ milliseconds}$. Simultaneously, thermodynamic proof ($k_{\text{Nak}} \equiv h$) neutralizes the <strong>Cantillon Effect</strong> by making unbacked money printing physically impossible.</p>
+
+    <!-- TABLEAU COMPARATIF 10 LIGNES -->
+    <div class="table-scroll">
+        <table class="glossary-table">
+            <thead>
+                <tr>
+                    <th><span lang="fr">Axe Systémique</span><span lang="en">Systemic Axis</span></th>
+                    <th><span lang="fr">Matrice de l'Or Noir (Pétrodollar 1971)</span><span lang="en">Black Gold Matrix (1971 Petrodollar)</span></th>
+                    <th><span lang="fr">Matrice de l'Or Numérique (Étalon Solaire)</span><span lang="en">Digital Gold Matrix (Sun Standard)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="badge" style="color:var(--sun-yellow);">1. Source</span></td><td><span lang="fr">Stock fossile lithosphérique épuisable.</span><span lang="en">Depletable subsurface fossil carbon stock.</span></td><td><span lang="fr">Flux solaire ($173\,000\text{ TW}$), hydro, géothermie & torchères captées.</span><span lang="en">Continuous solar flux ($173,000\text{ TW}$), hydro, geothermal & flare capture.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--sun-orange);">2. Monnaie</span></td><td><span lang="fr">Dette fiduciaire élastique & Effet Cantillon.</span><span lang="en">Elastic fiat credit & Cantillon insider privilege.</span></td><td><span lang="fr">Preuve de Travail ($k_{\text{Nak}} \equiv h$), plafond fixe $21\text{ M}$.</span><span lang="en">Thermodynamic Proof of Work ($k_{\text{Nak}} \equiv h$), hard $21\text{ M}$ cap.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--magma-orange);">3. Exergie</span></td><td><span lang="fr">$\sim 36\,\%$ utile ; $\sim 64\,\%$ perdus en fumées et tours froides.</span><span lang="en">$\sim 36\%$ work; $\sim 64\%$ vented via exhausts and cooling towers.</span></td><td><span lang="fr">$100\,\%$ effet Joule capté par immersion à $60\,^\circ\text{C}$ ($\text{PUE} \approx 1,02$).</span><span lang="en">$100\%$ Joule heat captured at $60\,^\circ\text{C}$ ($\text{PUE} \approx 1.02$).</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--danger-red);">4. Émissions</span></td><td><span lang="fr">$\text{CO}_2$, $\text{CH}_4$, $\text{NO}_x$, particules $\text{PM}_{2.5}$.</span><span lang="en">$\text{CO}_2$, $\text{CH}_4$, $\text{NO}_x$, and $\text{PM}_{2.5}$ particulates.</span></td><td><span lang="fr">Abattement $>63\,\%$ sur torchères + séquestration solide en Biochar.</span><span lang="en">$>63\%$ flare methane cut + solid carbon locked in Biochar.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--water-blue);">5. Cycle Eau</span></td><td><span lang="fr">Contamination de nappes (fracking) et évaporation thermique.</span><span lang="en">Aquifer fracking contamination and evaporative tower losses.</span></td><td><span lang="fr">Roues dessiccantes $\text{MOF-303}$ + distillation thermique MED fermée.</span><span lang="en">Closed-loop $\text{MOF-303}$ air harvesting + MED thermal desalination.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--bio-green);">6. Pédologie</span></td><td><span lang="fr">Engrais fossiles Haber-Bosch et minéralisation des sols.</span><span lang="en">Fossil-gas Haber-Bosch fertilizers and topsoil depletion.</span></td><td><span lang="fr">Séchage biomasse $65\,^\circ\text{C}$ $\to$ pyrolyse *Terra Preta* & aquaponie.</span><span lang="en">$65\,^\circ\text{C}$ biomass drying $\to$ *Terra Preta* pyrolysis & aquaponics.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--cyan-l2);">7. Topologie</span></td><td><span lang="fr">Détroits maritimes vulnérables (Ormuz, Malacca) & pipelines.</span><span lang="en">Vulnerable maritime chokepoints (Hormuz, Malacca) & pipelines.</span></td><td><span lang="fr">Maillage fractal sans goulet d'étranglement, transfert à vitesse $c$.</span><span lang="en">Chokepoint-free fractal mesh, value settlement at light speed $c$.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--purple-l4);">8. Réseau Élec.</span></td><td><span lang="fr">Centrales rigides peinant à absorber l'intermittence VRE.</span><span lang="en">Rigid baseload plants struggling with solar/wind intermittency.</span></td><td><span lang="fr">Batterie virtuelle interruptible en $<50\text{ ms}$ (CLR).</span><span lang="en">Sub-50ms interruptible virtual battery (*Controllable Load*).</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--teal-l0);">9. Matériaux</span></td><td><span lang="fr">Cendres, boues toxiques et plastiques à usage unique.</span><span lang="en">Toxic sludges, fly ash, and single-use petro-plastics.</span></td><td><span lang="fr">Ouroboros biolixiviation douce : $99\,\%$ $\text{Cu, Au, Ag, Pd, Si}$ recyclés.</span><span lang="en">Gentle bioleaching Ouroboros: $99\%$ $\text{Cu, Au, Ag, Pd, Si}$ recovery.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--magenta-l3);">10. Horizon</span></td><td><span lang="fr">Actualisation court-termiste et guerres de capture énergétique.</span><span lang="en">Short-term discounting and resource-capture wars.</span></td><td><span lang="fr">Préférence temporelle basse, Halvings quadriennaux & Temps Profond.</span><span lang="en">Low time preference, quadrennial Halvings & Deep Time stewardship.</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SECTION 2 : PYRAMIDE CLIQUABLE L0-L5 & ORDRES DE GRANDEUR -->
+    <h2 class="section-heading" id="pyramide-echelles">
+        <span lang="fr">2. L'Ascension Pyramidale (L0 ──► L5) : Architecture & Nomenclature Matériaux</span>
+        <span lang="en">2. The Pyramidal Ascent (L0 ──► L5): Architecture & Material Bill of Quantities</span>
+    </h2>
+
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:0.98rem; letter-spacing:2px; margin-bottom:1.3rem;">
+            <span lang="fr">🏛️ Cliquez sur un échelon pour ouvrir son bilan thermodynamique & matériel</span>
+            <span lang="en">🏛️ Click any tier to inspect its thermodynamic & material mass balance</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#drawer-l5" class="pyramid-tier tier-l5"><span class="tier-tag" style="color:var(--magenta-l3);">L5 · MARS</span><span class="tier-title"><span lang="fr">Arche Centrifuge Interplanétaire & Serres Souterraines (25 kW – 10 MW)</span><span lang="en">Interplanetary Centrifugal Ark & Martian Greenhouses (25 kW – 10 MW)</span></span><span class="tier-tag" style="color:var(--magenta-l3);">▲ 0,38 g</span></a>
+            <a href="#drawer-l4" class="pyramid-tier tier-l4"><span class="tier-tag" style="color:var(--purple-l4);">L4 · TERRA</span><span class="tier-title"><span lang="fr">Vaisseau Terre : Grille Planétaire Kardachev Type I (1 GW – 100+ GW)</span><span lang="en">Spaceship Earth: Kardashev Type I Planetary Grid (1 GW – 100+ GW)</span></span><span class="tier-tag" style="color:var(--purple-l4);">▲ GW–TW</span></a>
+            <a href="#drawer-l3" class="pyramid-tier tier-l3"><span class="tier-tag" style="color:var(--sun-orange);">L3 · MINE</span><span class="tier-title"><span lang="fr">Infrastructure Brownfield & Torchères — Lemuria Tech (10 – 50 MW)</span><span lang="en">Brownfield Mines & Flare Gas — Lemuria Tech (10 – 50 MW)</span></span><span class="tier-tag" style="color:var(--sun-orange);">▲ MOF-303</span></a>
+            <a href="#drawer-l2" class="pyramid-tier tier-l2"><span class="tier-tag" style="color:var(--bio-green);">L2 · AGRO</span><span class="tier-title"><span lang="fr">Ferme Symbiotique Agro-Écologique & Biochar (100 kW – 1 MW)</span><span lang="en">Symbiotic Agro-Ecological Farm & Biochar (100 kW – 1 MW)</span></span><span class="tier-tag" style="color:var(--bio-green);">▲ PYROLYSE</span></a>
+            <a href="#drawer-l1" class="pyramid-tier tier-l1"><span class="tier-tag" style="color:var(--cyan-l2);">L1 · FOYER</span><span class="tier-title"><span lang="fr">Nano-Bitplant Domestique : Eau Chaude & Dôme Hydroponique (1,5 – 5 kW)</span><span lang="en">Domestic Nano-Bitplant: Hot Water & Hydroponic Dome (1.5 – 5 kW)</span></span><span class="tier-tag" style="color:var(--cyan-l2);">▲ IP68</span></a>
+            <a href="#drawer-l0" class="pyramid-tier tier-l0"><span class="tier-tag" style="color:var(--teal-l0);">L0 · PUCE</span><span class="tier-title"><span lang="fr">Porte CMOS & Silicium 3 nm : Limite de Landauer & Effet Joule (10 – 500 W)</span><span lang="en">CMOS Gate & 3 nm Silicon: Landauer Limit & Joule Heating (10 – 500 W)</span></span><span class="tier-tag" style="color:var(--teal-l0);">▲ CMOS</span></a>
+        </div>
+    </div>
+
+    <!-- TIROIRS L0 à L5 -->
+    <details id="drawer-l0" class="scale-drawer layer-0" open>
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L0 : Porte CMOS & Puce Silicium 3 nm (10 W – 500 W)</span><span lang="en">Tier L0: CMOS Gate & 3 nm Silicon Die (10 W – 500 W)</span></span><span class="badge" style="color:var(--teal-l0);">10–500 W</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">À l'échelle atomique, l'effacement irréversible d'un bit impose le plancher de Landauer ($E_{\min} = k_B T \ln 2 \approx 2,9 \times 10^{-21}\text{ J}$ à $300\text{ K}$). Les processeurs ASIC gravés en $3\text{ nm}$ opèrent quelques ordres au-dessus pour garantir une commutation sans erreur à haute fréquence, convertissant chaque électron en preuve cryptographique puis en phonon thermique transféré au liquide diélectrique.</p>
+            <p lang="en">At the atomic scale, erasing one bit of information requires at least the Landauer bound ($E_{\min} = k_B T \ln 2 \approx 2.9 \times 10^{-21}\text{ J}$ at $300\text{ K}$). $3\text{ nm}$ ASICs operate orders above thermal noise for gigahertz reliability, converting every electron first into cryptographic truth and immediately into thermal phonons absorbed by dielectric fluid.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Si 11N : ~1,8 g / carte</span><span class="bom-chip">Cu pistes/bus : ~180 g</span><span class="bom-chip">Au/Ag/Pd : ~45 mg</span><span class="bom-chip">Fluide : 1,2 L</span><span class="bom-chip">Flux : 100 % Enthalpie 60 °C</span>
+            </div>
+        </div>
+    </details>
+
+    <details id="drawer-l1" class="scale-drawer layer-1">
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L1 : Nano-Bitplant Domestique & Dôme Hydroponique (1,5 – 5 kW)</span><span lang="en">Tier L1: Domestic Nano-Bitplant & Hydroponic Dome (1.5 – 5 kW)</span></span><span class="badge" style="color:var(--cyan-l2);">1,5–5 kW</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">Un caisson étanche en verre borosilicaté et acier inoxydable 316L (IP68, $0\text{ dB}$) immerge 1 à 2 unités ASIC/Edge-AI ($3,5\text{ kW}$) et s'interface par échangeur à plaques brasées avec le ballon d'eau chaude sanitaire ($250\text{ L/j}$ à $58\,^\circ\text{C}$) et un dôme hydroponique familial de 72 plants. La chaudière s'autofinance tout en sécurisant le foyer.</p>
+            <p lang="en">A silent ($0\text{ dB}$) IP68 borosilicate-and-316L stainless tank immerses 1–2 ASIC/Edge-AI units ($3.5\text{ kW}$), coupled via a brazed-plate heat exchanger to a $250\text{ L/day}$ domestic hot-water cylinder ($58\,^\circ\text{C}$) and a 72-site home hydroponic dome—turning heating bills into sovereign savings.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Si 11N : ~14 g</span><span class="bom-chip">Cu échangeur : 8,5 kg</span><span class="bom-chip">Inox & Verre : 42 kg</span><span class="bom-chip">Diélectrique : 28 L</span><span class="bom-chip">Eau chaude : 250 L/j</span>
+            </div>
+        </div>
+    </details>
+
+    <details id="drawer-l2" class="scale-drawer layer-2">
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L2 : Ferme Symbiotique Agro-Écologique & Biochar (100 kW – 1 MW)</span><span lang="en">Tier L2: Symbiotic Agro-Ecological Farm & Biochar (100 kW – 1 MW)</span></span><span class="badge" style="color:var(--bio-green);">0,1–1 MW</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">Couplé aux hangars photovoltaïques ruraux ($500\text{ kW}$ type), le conteneur d'immersion sèche à $65\,^\circ\text{C}$ les résidus ligneux avant pyrolyse en <strong>Biochar (*Terra Preta*)</strong>, abaissant de $35\,\%$ la pénalité énergétique d'évaporation. L'eau résiduelle à $28\,^\circ\text{C}$ chauffe les bassins de tilapias et les tables maraîchères quatre-saisons.</p>
+            <p lang="en">Paired with rural solar barns ($500\text{ kW}$ typical), the immersion skid pre-dries woody agricultural residues at $65\,^\circ\text{C}$ prior to <strong>Biochar (*Terra Preta*)</strong> pyrolysis, cutting moisture evaporation energy losses by $35\%$, while $28\,^\circ\text{C}$ return loops warm tilapia tanks and four-season greenhouses.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Si 11N : 1,6 kg</span><span class="bom-chip">Cu HVDC/Therm. : 1,1 t</span><span class="bom-chip">Acier conteneur : 9,5 t</span><span class="bom-chip">Diélectrique : 3,2 m³</span><span class="bom-chip">Biochar : ~280 t/an</span>
+            </div>
+        </div>
+    </details>
+
+    <details id="drawer-l3" class="scale-drawer layer-3">
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L3 : Infrastructure Brownfield & Torchères — Lemuria Tech (10 – 50 MW)</span><span lang="en">Tier L3: Brownfield Mines & Flare Extinction — Lemuria Tech (10 – 50 MW)</span></span><span class="badge" style="color:var(--sun-orange);">10–50 MW</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">Architecture phare de <strong>Lemuria Technologies</strong> : réhabiliter d'anciens puits miniers ($H = 300\text{–}600\text{ m}$) en cheminées convectives naturelles traversant des rotors de <strong>$\text{MOF-303}$</strong> régénérés gratuitement par la chaleur ASIC à $65\,^\circ\text{C}$, condensant jusqu'à $85\,000\text{ L/jour}$ d'eau pure en zone aride. Sur les champs pétroliers isolés, des modules mobiles éteignent les torchères de méthane ($>63\,\%$ d'abattement $\text{CO}_2\text{e}$), tout en offrant au réseau national une réserve primaire interruptible en $<50\text{ ms}$.</p>
+            <p lang="en">Flagship <strong>Lemuria Technologies</strong> blueprint: repurposing decommissioned mine shafts ($H = 300\text{–}600\text{ m}$) into natural buoyancy chimneys driving <strong>$\text{MOF-303}$</strong> desiccant wheels regenerated by $65\,^\circ\text{C}$ ASIC heat, harvesting up to $85,000\text{ L/day}$ of pure water in arid regions. On stranded oilfields, mobile skids extinguish open methane flares ($>63\%$ $\text{CO}_2\text{e}$ cut) while acting as sub-50ms grid stabilizers.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Si 11N : ~82 kg (25 MW)</span><span class="bom-chip">Cu : 54 t</span><span class="bom-chip">MOF-303 : 4,5 t</span><span class="bom-chip">Diélectrique : 145 m³</span><span class="bom-chip">Eau pure : ~62 000 L/j</span>
+            </div>
+        </div>
+    </details>
+
+    <details id="drawer-l4" class="scale-drawer layer-4">
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L4 : Vaisseau Terre — Grille Planétaire Kardachev Type I (1 – 100+ GW)</span><span lang="en">Tier L4: Spaceship Earth — Kardashev Type I Planetary Grid (1 – 100+ GW)</span></span><span class="badge" style="color:var(--purple-l4);">1–100+ GW</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">À l'échelle planétaire, les datacenters thermodynamiques enfouis absorbent tous les surplus solaires désertiques, hydroélectriques fluviaux et géothermiques volcaniques, couplés à des usines de dessalement multi-effets basse température (LT-MED). La monnaie mondiale adossée au travail réel démonétise les bons du Trésor inflationnistes qui finançaient jadis les conflits mondiaux.</p>
+            <p lang="en">At planetary scale, subterranean thermodynamic clusters monetize remote desert solar, run-of-river hydro, and volcanic geothermal surpluses, driving Low-Temperature Multi-Effect Distillation (LT-MED) desalination coastlines while removing inflationary war-bond financing from global geopolitics.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Si 11N : ~3,2 t / GW</span><span class="bom-chip">Cu HVDC : ~2 100 t / GW</span><span class="bom-chip">Recyclage Biolixiviation : 99 %</span><span class="bom-chip">Dessalement MED : 2,8 M m³/an/GW</span>
+            </div>
+        </div>
+    </details>
+
+    <details id="drawer-l5" class="scale-drawer layer-5">
+        <summary><span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">Échelon L5 : Arche Centrifuge Interplanétaire & Serres Martiennes (25 kW – 10 MW)</span><span lang="en">Tier L5: Interplanetary Centrifugal Ark & Martian Greenhouses (25 kW – 10 MW)</span></span><span class="badge" style="color:var(--magenta-l3);">MARS 0,38 g</span></summary>
+        <div class="drawer-content">
+            <p lang="fr">En croisière Terre–Mars (anneau centrifuge à $0,38\,g$) puis sous des tubes de lave martiens à $-63\,^\circ\text{C}$, la masse informatique cesse d'être un fret inerte : le fluide hydrocarboné hydrogéné forme un bouclier passif contre les rayons cosmiques (GCR/SPE), fond le pergélisol, chauffe l'aquaponie (*Wolffia*, tilapias, spiruline) et ancre une Spacechain locale asynchrone face à la latence relativiste de $3\text{ à }22\text{ minutes}$.</p>
+            <p lang="en">During Earth–Mars transit ($0.38\,g$ centrifugal ring) and inside $-63\,^\circ\text{C}$ Martian lava tubes, compute racks eliminate dead payload mass: hydrogen-rich dielectric fluid shields crew against cosmic rays (GCR/SPE), melts subsurface permafrost, warms *Wolffia*/tilapia aquaponics, and anchors an asynchronous local Spacechain across the $3\text{–}22\text{ minute}$ light-time gap.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Échangeurs Titane Gr.5 : 180 kg</span><span class="bom-chip">Bouclier Fluide H₂ : 4,5 t</span><span class="bom-chip">O₂ Produit (100 kW) : ~34 kg/j</span><span class="bom-chip">Masse Morte : 0 %</span>
+            </div>
+        </details>
+
+    <!-- SECTION 3 : EXPLORATEUR DYNAMIQUE DE MATÉRIAUX & ÉCHELLES -->
+    <h2 class="section-heading" id="explorateur-materiaux">
+        <span lang="fr">3. Explorateur Dynamique des Ordres de Grandeur Matériaux & Régénératifs</span>
+        <span lang="en">3. Dynamic Explorer of Material & Regenerative Orders of Magnitude</span>
+    </h2>
+
+    <div class="materials-lab-box">
+        <div class="preset-pills">
+            <button type="button" class="preset-btn" data-preset="0.25">L0 · Puce (250 W)</button>
+            <button type="button" class="preset-btn" data-preset="3.5">L1 · Foyer (3,5 kW)</button>
+            <button type="button" class="preset-btn" data-preset="500">L2 · Ferme (500 kW)</button>
+            <button type="button" class="preset-btn active" data-preset="25000">L3 · Mine Lemuria (25 MW)</button>
+            <button type="button" class="preset-btn" data-preset="1000000">L4 · Grille (1 GW)</button>
+            <button type="button" class="preset-btn" data-preset="100">L5 · Arche Mars (100 kW)</button>
+        </div>
+
+        <div class="lab-controls-grid">
+            <div class="lab-ctrl-card">
+                <label for="mat-power-slider">
+                    <span><span lang="fr">Puissance Électrique ($P$)</span><span lang="en">Electrical Power ($P$)</span></span>
+                    <strong id="mat-power-readout" style="color:var(--cyan-l2); font-family:var(--font-mono);">25,0 MW</strong>
+                </label>
+                <!-- Échelle logarithmique : log10(kW) de -1.3 (50 W) à 7.0 (10 GW) -->
+                <input type="range" id="mat-power-slider" min="-1.3" max="7.0" step="0.02" value="4.3979">
+            </div>
+            <div class="lab-ctrl-card">
+                <label for="mat-cool-select"><span lang="fr">Couplage Thermique</span><span lang="en">Thermal Coupling</span></label>
+                <select id="mat-cool-select">
+                    <option value="mono">Immersion Monophasique 62 °C (η = 96 %)</option>
+                    <option value="two">Immersion Diphasique Fluorée (η = 98 %)</option>
+                    <option value="air">Air Forcé Classique (η = 58 % récup.)</option>
+                </select>
+            </div>
+            <div class="lab-ctrl-card">
+                <label for="mat-src-select"><span lang="fr">Gisement Énergétique</span><span lang="en">Energy Source</span></label>
+                <select id="mat-src-select">
+                    <option value="solar">Solaire / Éolien VRE Écrêté (Surplus)</option>
+                    <option value="flare">Gaz de Torchère Capté (Méthane Fatal)</option>
+                    <option value="hydro">Hydroélectricité / Géothermie Isolée</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="bom-cards-grid">
+            <div class="bom-card"><span class="bom-icon">1 · Silicium 11N (3 nm)</span><span class="bom-val" id="bom-si">82,5 kg</span><span class="bom-sub"><span lang="fr">Wafers gravés + contrôleurs Edge</span><span lang="en">Etched ASIC/AI dies + controllers</span></span></div>
+            <div class="bom-card"><span class="bom-icon">2 · Cuivre HVDC & Éch.</span><span class="bom-val" id="bom-cu">55,0 t</span><span class="bom-sub"><span lang="fr">Busbars + plaques thermiques</span><span lang="en">Busbars + brazed plate exchangers</span></span></div>
+            <div class="bom-card"><span class="bom-icon">3 · Structure Inox/Verre</span><span class="bom-val" id="bom-steel">425,0 t</span><span class="bom-sub"><span lang="fr">Cuves IP68, châssis & conduites</span><span lang="en">IP68 tanks, skids & piping</span></span></div>
+            <div class="bom-card"><span class="bom-icon">4 · Fluide Diélectrique</span><span class="bom-val" id="bom-fluid">150,0 m³</span><span class="bom-sub"><span lang="fr">Caloporteur synthétique recyclable</span><span lang="en">Non-toxic recyclable coolant</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--water-blue);"><span class="bom-icon">5 · Sorbant MOF-303</span><span class="bom-val" id="bom-mof" style="color:var(--water-blue);">4,50 t</span><span class="bom-sub"><span lang="fr">Cristaux Al(OH)(PZDC) poreux</span><span lang="en">Porous Al-based water crystals</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--cyan-l2);"><span class="bom-icon">6 · Eau Pure Produite</span><span class="bom-val" id="bom-water" style="color:var(--cyan-l2);">64 800 L/j</span><span class="bom-sub"><span lang="fr">Condensation MOF / MED thermique</span><span lang="en">MOF atmospheric / MED output</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--bio-green);"><span class="bom-icon">7 · Biochar Terra Preta</span><span class="bom-val" id="bom-biochar" style="color:var(--bio-green);">13 400 t/an</span><span class="bom-sub"><span lang="fr">Biomasse pré-séchée à 65 °C</span><span lang="en">65 °C pre-dried biomass pyrolysis</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--sun-yellow);"><span class="bom-icon">8 · Bilan Carbone Net</span><span class="bom-val" id="bom-co2" style="color:var(--sun-yellow);">-42 900 t/an</span><span class="bom-sub"><span lang="fr">Séquestration + méthane évité</span><span lang="en">Sequestered C + avoided flare CH₄</span></span></div>
+        </div>
+
+        <div class="dual-canvas-grid">
+            <div class="canvas-panel">
+                <h4><span lang="fr">Polygone de Performance Symbiotique vs Fossile</span><span lang="en">Symbiotic Performance Polygon vs Fossil Baseline</span></h4>
+                <canvas id="materialsRadarCanvas"></canvas>
+            </div>
+            <div class="canvas-panel">
+                <h4><span lang="fr">Empreinte Matérielle vs Flux Régénératif Annuel (Log₁₀)</span><span lang="en">Material Mass vs Annual Regenerative Output (Log₁₀)</span></h4>
+                <canvas id="materialsBarCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4 : LES 5 PONTS DE LA SYMBIOSE -->
+    <h2 class="section-heading" id="ponts-symbiose">
+        <span lang="fr">4. Bâtir les Cinq Ponts de la Symbiose Civilisationnelle</span>
+        <span lang="en">4. Building the Five Bridges of Civilizational Symbiosis</span>
+    </h2>
+
+    <div class="bridges-grid">
+        <article class="bridge-card">
+            <h4>💰 <span lang="fr">1. Le Pont Financier</span><span lang="en">1. The Financial Bridge</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Impasse :</span><span lang="en">Impasse:</span></strong> <span lang="fr">Dilution fiduciaire, Effet Cantillon et financement des guerres par la dette souveraine.</span><span lang="en">Fiat debasement, Cantillon wealth transfer, and deficit-funded warfare.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Architecture :</span><span lang="en">Architecture:</span></strong> <span lang="fr">Trésoreries adossées à la Preuve de Travail et obligations vertes gagées sur les PPA solaires/miniers.</span><span lang="en">PoW-anchored treasuries and infrastructure bonds backed by co-located solar/compute PPAs.</span></div>
+                <div class="triptych-row metric">Cible : Fin de l'écrêtement solaire (0 % MWh perdus) & Capex VRE accéléré ×2,4</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>🌱 <span lang="fr">2. Le Pont Agricole & Hydrique</span><span lang="en">2. The Agricultural & Water Bridge</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Impasse :</span><span lang="en">Impasse:</span></strong> <span lang="fr">Dépendance au gaz Haber-Bosch, salinisation des nappes et mort biologique des sols.</span><span lang="en">Fossil Haber-Bosch dependency, aquifer depletion, and microbial topsoil collapse.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Architecture :</span><span lang="en">Architecture:</span></strong> <span lang="fr">Enthalpie ASIC ($60\,^\circ\text{C}$) régénérant les roues $\text{MOF-303}$ et pré-séchant la biomasse en Biochar *Terra Preta*.</span><span lang="en">$60\,^\circ\text{C}$ ASIC enthalpy regenerating $\text{MOF-303}$ water wheels and drying *Terra Preta* Biochar feedstock.</span></div>
+                <div class="triptych-row metric">Cible : +3,1 t CO₂e séquestrées / t Biochar & +40 % rétention hydrique racinaire</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>⚙️ <span lang="fr">3. Le Pont Technologique (Ouroboros)</span><span lang="en">3. The Technological Bridge (Ouroboros)</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Impasse :</span><span lang="en">Impasse:</span></strong> <span lang="fr">Déchets électroniques (*e-waste*) et pyrométallurgie énergivore émettrice de dioxines.</span><span lang="en">Toxic e-waste landfills and dioxin-emitting high-temperature smelting.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Architecture :</span><span lang="en">Architecture:</span></strong> <span lang="fr">Démantèlement robotisé et biolixiviation hydrométallurgique douce (*Acidithiobacillus*) à $35\,^\circ\text{C}$ chauffée par les cuves actives.</span><span lang="en">Robotic disassembly and $35\,^\circ\text{C}$ microbial bioleaching (*Acidithiobacillus*) warmed by live immersion tanks.</span></div>
+                <div class="triptych-row metric">Cible : 99,1 % de récupération circulaire (Cu, Au, Ag, Pd, Ta, Si)</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>🧠 <span lang="fr">4. Le Pont des Compétences</span><span lang="en">4. The Skills & Craft Bridge</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Impasse :</span><span lang="en">Impasse:</span></strong> <span lang="fr">Captation des ingénieurs par le trading haute fréquence (HFT) ou le forage fossile profond.</span><span lang="en">Brain drain into zero-sum high-frequency trading (HFT) and deep-water fossil drilling.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Architecture :</span><span lang="en">Architecture:</span></strong> <span lang="fr">Reconversion des foreurs et géologues miniers en <em>Cyber-Agronomes</em> et architectes de puits convectifs souterrains.</span><span lang="en">Transitioning petroleum and mining engineers into <em>Cyber-Agronomists</em> and subterranean convective-shaft architects.</span></div>
+                <div class="triptych-row metric">Cible : Réhabilitation de >12 000 sites miniers Brownfield orphelins d'ici 2038</div>
+            </div>
+        </article>
+
+        <article class="bridge-card wide-human">
+            <h4 style="color:var(--sun-yellow); text-align:center;">🛡️ <span lang="fr">5. Le Pont Humain & Cognitif : Devenir l'Homo Biodiversitas</span><span lang="en">5. The Human & Cognitive Bridge: Becoming Homo Biodiversitas</span></h4>
+            <p style="text-align:center; font-size:0.95rem; color:#e2e8f0; margin:0;">
+                <span lang="fr">Opposer aux méga-clusters d'IA opaques et centralisés une <strong>Edge-AI ouverte et locale</strong> couplée au protocole de provenance cryptographique <strong>D-Trinité</strong> (SHA-256 + Nostr + OpenTimestamps). Enfouie sous le roc, la machine silencieuse libère la surface terrestre pour la restauration du vivant, la contemplation et le lien fraternel (*Fihavanana, Ubuntu, Wu Wei*).</span>
+                <span lang="en">Countering opaque centralized mega-AI with <strong>open local Edge-AI</strong> anchored by <strong>D-Trinity</strong> cryptographic provenance (SHA-256 + Nostr + OpenTimestamps). Buried quietly beneath the bedrock, autonomous silicon frees Earth's sunlit surface for ecological restoration, craft, and human kinship (*Fihavanana, Ubuntu, Wu Wei*).</span>
+            </p>
+        </article>
+    </div>
+
+    <!-- SECTION 5 : PARCOURS DU COMBATTANT INTERACTIF DU GRAND FILTRE (2026-2044) -->
+    <h2 class="section-heading" id="parcours-grand-filtre">
+        <span lang="fr">5. La Géodésique du Grand Filtre (2026–2044) : Parcours Tactique Interactif</span>
+        <span lang="en">5. The Great Filter Geodesic (2026–2044): Interactive Tactical Obstacle Course</span>
+    </h2>
+
+    <p lang="fr">Entre le gouffre supérieur du <strong>Mordor Technocratique</strong> (surveillance panoptique, CBDC programmables et Super-IA prédatrice non alignée) et le gouffre inférieur de l'<strong>Effondrement Entropique</strong> (pénuries fossiles, hyperinflation et guerres d'eau), la crête de moindre souffrance exige de verrouiller <strong>21 clés symbiotiques</strong> sur 7 jalons décisifs. Cliquez sur les étapes ou directement sur les nœuds du radar, et activez/désactivez les clés pour tester la stabilité de la trajectoire humaine !</p>
+    <p lang="en">Between the upper chasm of <strong>Technocratic Mordor</strong> (panoptic surveillance, programmable CBDCs, and unaligned predatory Super-AI) and the lower chasm of <strong>Entropic Collapse</strong> (fossil scarcity, hyperinflation, and water wars), the minimum-suffering ridge requires locking <strong>21 symbiotic keys</strong> across 7 milestones. Click stages or canvas nodes directly, and toggle keys on/off to test humanity's trajectory!</p>
+
+    <div class="course-shell">
+        <div class="course-top-controls">
+            <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--sun-yellow);">
+                🧭 <span lang="fr">TRAJECTOIRE 2026 ──► 2044 (946 708 BLOCS)</span><span lang="en">2026 ──► 2044 ARC (946,708 BLOCKS)</span>
+            </div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn" id="course-btn-play">▶ <span lang="fr">Simuler Traversée</span><span lang="en">Auto-Run Course</span></button>
+                <button type="button" class="ui-btn" id="course-btn-crisis" style="border-color:var(--danger-red); color:#fca5a5;">⚠ <span lang="fr">Tester Crise (Désactiver)</span><span lang="en">Test Crisis Drift</span></button>
+                <button type="button" class="ui-btn active" id="course-btn-all">✦ <span lang="fr">Symbiose Totale (21/21)</span><span lang="en">Full Symbiosis (21/21)</span></button>
+            </div>
+        </div>
+
+        <div class="stage-selector-bar" id="course-stage-tabs"></div>
+
+        <canvas id="geodesicCourseCanvas" aria-label="Carte interactive du parcours du combattant de la Géodésique du Grand Filtre"></canvas>
+
+        <div class="course-gauges-grid">
+            <div class="gauge-box"><div class="gauge-head"><span>⚡ <span lang="fr">Énergie & Réseau</span><span lang="en">Energy & Grid</span></span><strong id="g-val-energy">96%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="g-bar-energy" style="width:96%; background:var(--sun-yellow);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>💧 <span lang="fr">Eau & Biosphère</span><span lang="en">Water & Biosphere</span></span><strong id="g-val-bio">94%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="g-bar-bio" style="width:94%; background:var(--bio-green);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>🤝 <span lang="fr">Confiance $C_s$</span><span lang="en">Societal Trust $C_s$</span></span><strong id="g-val-trust">92%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="g-bar-trust" style="width:92%; background:var(--sun-orange);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>🛡️ <span lang="fr">Souveraineté IA</span><span lang="en">AI Sovereignty</span></span><strong id="g-val-ai">95%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="g-bar-ai" style="width:95%; background:var(--cyan-l2);"></div></div></div>
+        </div>
+
+        <div class="stage-cockpit-grid">
+            <div>
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:var(--sun-orange); text-transform:uppercase; margin-bottom:4px;" id="ck-stage-tag">ÉTAPE 1 / 7 · 2026</div>
+                <h4 style="color:#fff; font-size:1.18rem; margin-bottom:0.55rem;" id="ck-stage-title">—</h4>
+                <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.62; text-align:left; margin-bottom:0.8rem;" id="ck-stage-desc">—</p>
+                <div style="padding:0.65rem 0.85rem; border-radius:8px; background:rgba(239,68,68,0.08); border-left:3px solid var(--danger-red); font-size:0.81rem; color:#fecaca;" id="ck-stage-threat">—</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:var(--bio-green); text-transform:uppercase; margin-bottom:8px;">
+                    🔑 <span lang="fr">Clés Tactiques de Symbiose (Cliquez pour commuter) :</span><span lang="en">Tactical Symbiosis Keys (Click to toggle):</span>
+                </div>
+                <div class="tactical-keys-list" id="ck-keys-container"></div>
+            </div>
+        </div>
+
+        <div class="course-verdict-banner" id="course-verdict-box"></div>
+    </div>
+
+    <!-- SECTION 6 : DIAGRAMME DE FLUX EXERGÉTIQUE SANKEY & OUROBOROS -->
+    <h2 class="section-heading" id="ouroboros-sankey">
+        <span lang="fr">6. Cascade Exergétique Animée & Boucle Ouroboros à 99 %</span>
+        <span lang="en">6. Animated Exergetic Cascade & 99% Hydrometallurgical Ouroboros</span>
+    </h2>
+
+    <div class="sankey-box">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+            <div style="font-size:0.88rem; color:#cbd5e1;">
+                <span lang="fr">Comparez en temps réel la dissipation fossile avec la cascade enthalpique et matérielle de la Matrice Inversée :</span>
+                <span lang="en">Compare real-time fossil dissipation against the Inverted Matrix's enthalpic and material cascade:</span>
+            </div>
+            <div style="display:flex; gap:8px;">
+                <button type="button" class="ui-btn active" id="sankey-btn-solar">☀ <span lang="fr">Mode Étalon Solaire (96 % Utile)</span><span lang="en">Sun Standard Mode (96% Useful)</span></button>
+                <button type="button" class="ui-btn" id="sankey-btn-fossil" style="border-color:rgba(239,68,68,0.45); color:#fca5a5;">🛢️ <span lang="fr">Mode Pétrodollar (64 % Perte)</span><span lang="en">Petrodollar Mode (64% Waste)</span></button>
+            </div>
+        </div>
+        <canvas id="sankeyCanvas" aria-label="Diagramme de Sankey animé des flux énergétiques et matériels"></canvas>
+        <p style="font-size:0.84rem; color:var(--text-muted); text-align:center; margin:0;">
+            <span lang="fr">En fin de vie (~5 à 7 ans), les cartes ASIC entrent dans un bain de biolixiviation microbienne (*Acidithiobacillus ferrooxidans*) maintenu à $35\,^\circ\text{C}$ par les cuves voisines, extrayant $\text{Cu, Au, Ag, Pd}$ à $99,1\,\%$ sans fonderie toxique.</span>
+            <span lang="en">At end-of-life (~5–7 years), retired hashboards enter a $35\,^\circ\text{C}$ microbial bioleaching bath (*Acidithiobacillus ferrooxidans*) warmed by active tanks, recovering $99.1\%$ of $\text{Cu, Au, Ag, Pd}$ with zero toxic smelting.</span>
         </p>
     </div>
 
-    <!-- LA PYRAMIDE DE DÉPLOIEMENT (SCALES) -->
-    <h2>2. L'Ascension Pyramidale : Du Foyer à la Planète</h2>
-    <p>Pour réussir cette transition pacifique et désamorcer le monopole extractif (Big Oil, Big Food), la Matrice Inversée se déploie selon une architecture pyramidale, s'insérant d'abord dans les interstices du système avant de redéfinir l'infrastructure de la civilisation.</p>
+    <!-- TABLETTE PHILOSOPHIQUE DE CLÔTURE -->
+    <div class="philosophical-tablet">
+        <h3>
+            <span lang="fr">🌳 Le Retour à Gondor : La Machine dans l'Ombre, le Vivant dans la Lumière</span>
+            <span lang="en">🌳 Returning to Gondor: Machines in the Shadow, Life in the Sunlit Courtyard</span>
+        </h3>
+        <p>
+            <span lang="fr">Franchir le Grand Filtre d'ici l'horizon 2044 ne consiste ni à renoncer au génie mathématique humain, ni à transformer la surface terrestre en une mégapole grise asservie aux algorithmes. C'est accomplir l'<strong>inversion architecturale</strong> : descendre les cuves de silicium, les pompes et le recyclage robotisé dans le silence des cavités minérales réhabilitées, afin que seule remonte vers le jour une eau pure, une terre noire fertile et une monnaie incorruptible.</span>
+            <span lang="en">Crossing the Great Filter by the 2044 horizon requires neither renouncing human mathematical genius nor paving Earth into a grey algorithmic megastructure. It demands an <strong>architectural inversion</strong>: lowering silicon immersion tanks, pumps, and robotic recycling quietly into rehabilitated mineral caverns below, so that only pure water, dark fertile soil, and incorruptible money rise into the daylight.</span>
+        </p>
 
-    <div class="scale-grid">
-        <!-- Scale 1 -->
-        <div class="scale-card sc-l1">
-            <div class="scale-header">
-                <span class="scale-title">Échelle 1 : Le Nano-Node Domestique</span>
-                <span class="scale-badge" style="color: var(--water-blue);">1 - 5 kW</span>
-            </div>
-            <div class="scale-metrics">
-                <span>Coût : ~5k $</span> <span>Impact : Souveraineté Familiale</span>
-            </div>
-            <p><strong>L'Individu Souverain :</strong> Un caisson d'immersion étanche (IP68) couplé au ballon d'eau chaude de la maison ou à une micro-serre aquaponique dans le jardin. La chaleur du minage remplace la résistance électrique classique. Le foyer sécurise le réseau mondial et génère un revenu passif qui subventionne sa propre autonomie alimentaire et thermique.</p>
+        <div class="punchline-monument">
+            <h2 style="font-family:var(--font-ui); font-size:clamp(1.22rem, 2.8vw, 1.95rem); font-weight:800; color:#fff; line-height:1.55; text-transform:uppercase; letter-spacing:1px; margin:0;">
+                <span lang="fr">
+                    L'Or Noir brûlait le passé pour financer les empires.<br>
+                    <span style="color:var(--sun-orange);">L'Or Numérique capte le Soleil pour régénérer l'eau et les sols,</span><br>
+                    <span style="color:var(--bio-green);">Et rend la surface de la Terre à l'Arbre Blanc du Vivant.</span>
+                </span>
+                <span lang="en">
+                    Black Gold burned the ancient past to bankroll empires.<br>
+                    <span style="color:var(--sun-orange);">Digital Gold harvests the Sun to regenerate water and soil,</span><br>
+                    <span style="color:var(--bio-green);">Returning Earth's sunlit surface to the White Tree of Life.</span>
+                </span>
+            </h2>
         </div>
 
-        <!-- Scale 2 -->
-        <div class="scale-card sc-l2">
-            <div class="scale-header">
-                <span class="scale-title">Échelle 2 : La Ferme Symbiotique (PME)</span>
-                <span class="scale-badge" style="color: var(--bio-green);">100 kW - 1 MW</span>
-            </div>
-            <div class="scale-metrics">
-                <span>Coût : 100k - 1M $</span> <span>Impact : Résilience Communautaire</span>
-            </div>
-            <p><strong>L'Agroécologie Renforcée :</strong> Déploiement dans les exploitations agricoles. La chaleur fatale à $65^\circ\text{C}$ est utilisée pour le pré-séchage de la biomasse végétale avant pyrolyse (production de Biochar) et le chauffage racinaire des serres ($22^\circ\text{C}$). Le calcul absorbe les surplus locaux des panneaux solaires des hangars agricoles (micro-grid).</p>
-        </div>
-
-        <!-- Scale 3 -->
-        <div class="scale-card sc-l3">
-            <div class="scale-header">
-                <span class="scale-title">Échelle 3 : L'Infrastructure Nationale (Brownfield)</span>
-                <span class="scale-badge" style="color: var(--sun-orange);">10 - 50+ MW</span>
-            </div>
-            <div class="scale-metrics">
-                <span>Coût : 10M - 50M+ $</span> <span>Impact : Stabilité Réseau & Remédiation</span>
-            </div>
-            <p><strong>Lemuria Technologies & Grands Projets :</strong> Réhabilitation d'anciennes mines de l'ère industrielle. Le minage capte le gaz de torchère isolé sur les sites pétroliers (réduisant instantanément les émissions de CO2e de >60%). En surface, les roues dessiccantes (MOF-303) extraient des milliers de litres d'eau pure de l'atmosphère. L'installation agit comme une "Batterie Virtuelle" (CLR) interruptible en quelques millisecondes, stabilisant le réseau public face à l'intermittence éolienne/solaire.</p>
-        </div>
-
-        <!-- Scale 4 -->
-        <div class="scale-card sc-l4">
-            <div class="scale-header">
-                <span class="scale-title">Échelle 4 : Le Vaisseau Terre (Planétaire)</span>
-                <span class="scale-badge" style="color: var(--sun-yellow);">Gigawatts & Terahash</span>
-            </div>
-            <div class="scale-metrics">
-                <span>Coût : Infrastructure Globale</span> <span>Impact : Passage du Grand Filtre</span>
-            </div>
-            <p><strong>La Civilisation de Type 1 :</strong> À l'échelle globale, la Preuve de Travail capte toutes les énergies perdues, bloquées ou intermittentes de la planète (hydroélectricité isolée, géothermie volcanique, torchères). Le coût de l'énergie pour attaquer le réseau (ou financer la guerre par l'inflation) devient physiquement inatteignable. L'économie biophysique mondiale s'aligne sur l'Étalon Solaire.</p>
+        <p style="font-style:italic; color:var(--sun-yellow); text-align:center; margin-bottom:0.4rem;">
+            <span lang="fr">« La volonté est technologique, la bonté reste humaine, et les mathématiques ne font pas de politique. Always was, always will be. »</span>
+            <span lang="en">"Willpower is technological, goodness remains human, and mathematics plays no politics. Always was, always will be."</span>
+        </p>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:0.86rem; color:#94a3b8;">
+            — Pascal Ranoroarijaona (Ranaora) · Lemuria Technologies
         </div>
     </div>
 
-    <!-- LES 5 PONTS DE LA TRANSITION -->
-    <h2>3. Bâtir les Ponts de la Symbiose</h2>
-    <p>Une transition pacifique exige la construction de ponts praticables entre l'univers extractif d'hier et l'univers régénératif de demain. Il ne s'agit pas de détruire l'ancien monde, mais de le rendre économiquement obsolète.</p>
-
-    <div class="bridges-grid">
-        <div class="bridge-card">
-            <h4>💰 Le Pont Financier</h4>
-            <ul>
-                <li><strong>Problème :</strong> Monnaie fiat illimitée, inflation (Effet Cantillon), financement des guerres par la dette.</li>
-                <li><strong>Solution :</strong> Migration de la valeur vers un registre thermodynamiquement ancré. L'Or Numérique devient l'actif de réserve intègre des bilans d'entreprises et des États souverains.</li>
-            </ul>
-        </div>
-        <div class="bridge-card">
-            <h4>🌱 Le Pont Agricole</h4>
-            <ul>
-                <li><strong>Problème :</strong> Dépendance aux engrais fossiles (Haber-Bosch), épuisement des sols, stress hydrique.</li>
-                <li><strong>Solution :</strong> Monétisation de la chaleur informatique pour financer le dessalement, la capture d'eau atmosphérique (MOF) et la production massive de Biochar (Terra Preta) régénérant les sols.</li>
-            </ul>
-        </div>
-        <div class="bridge-card">
-            <h4>⚙️ Le Pont Technologique</h4>
-            <ul>
-                <li><strong>Problème :</strong> Pyrométallurgie destructrice et e-waste toxique.</li>
-                <li><strong>Solution :</strong> L'Ouroboros Matériel. Le recyclage à 99% des ASICs en fin de vie via hydrométallurgie douce (bains de biolixiviation) pilotée par l'Edge AI.</li>
-            </ul>
-        </div>
-        <div class="bridge-card">
-            <h4>🧠 Le Pont des Compétences</h4>
-            <ul>
-                <li><strong>Problème :</strong> Fuite des cerveaux vers des industries d'extraction ou de spéculation stérile (HFT, ingénierie pétrolière).</li>
-                <li><strong>Solution :</strong> Naissance du <em>Cyber-Agronome</em> et de <em>l'Ingénieur Thermicien Symbiotique</em>. Réorientation massive des ingénieurs BTP vers la réhabilitation des cavités brownfield.</li>
-            </ul>
-        </div>
-        <div class="bridge-card" style="grid-column: 1 / -1; border-top-color: var(--sun-yellow);">
-            <h4 style="color: var(--sun-yellow); text-align: center;">🛡️ Le Pont Humain</h4>
-            <p style="text-align: center; color: #cbd5e1; margin-bottom: 0;">Devenir l'<em>Homo Biodiversitas</em>. Quitter la posture du consommateur anxieux ou du soldat de l'ère pétrolière pour embrasser le rôle de Gardien de la Biosphère. L'automatisation souterraine des robots libère l'humain en surface pour cultiver le beau, le vrai et le vivant.</p>
-        </div>
+    <!-- NAVIGATION DU CORPUS -->
+    <div class="article-navigation">
+        <a href="HailMary.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Exploration Connexe ←</span><span lang="en">Related Study ←</span></div>
+            <div class="nav-title"><span lang="fr">Project Hail Mary : Cogénération ASIC de la Terre à Mars</span><span lang="en">Project Hail Mary: ASIC Cogeneration from Earth to Mars</span></div>
+            <svg viewBox="0 0 220 64" width="200" height="58"><circle cx="45" cy="32" r="14" fill="rgba(255,204,0,0.2)" stroke="#ffcc00" stroke-width="1.5"/><line x1="65" y1="32" x2="155" y2="32" stroke="#f7931a" stroke-dasharray="4 3" stroke-width="1.5"/><circle cx="175" cy="32" r="14" fill="rgba(68,238,119,0.18)" stroke="#44ee77" stroke-width="1.5"/></svg>
+        </a>
+        <a href="horloge-cosmo-btc-cadran-mu.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu (432 Hz)</span><span lang="en">The Bitcoin Cosmic Clock & True Dial of Mu (432 Hz)</span></div>
+            <svg viewBox="0 0 220 64" width="200" height="58"><circle cx="110" cy="32" r="24" fill="none" stroke="#e040fb" stroke-dasharray="4 3" stroke-width="1.4"/><ellipse cx="110" cy="32" rx="46" ry="14" fill="none" stroke="#00e5ff" stroke-width="1.2"/><circle cx="110" cy="32" r="6" fill="#f7931a"/></svg>
+        </a>
     </div>
 
-    <!-- AGENDA 2027-2037 : LA GÉODÉSIQUE -->
-    <h2>4. Agenda 2027 - 2037 : Franchir le Grand Filtre</h2>
-    <p>Les mathématiques ne font pas de politique, mais l'urgence climatique et géopolitique exige un plan d'action stricte. Voici la trajectoire optimale — la géodésique — pour désamorcer les conflits d'ici une décennie.</p>
-
-    <div class="timeline">
-        <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-                <div class="tl-year">2027 : L'Éveil des Nano-Nodes</div>
-                <p>Acceptation institutionnelle définitive de l'Or Numérique par les "Big Banks". Début de la prolifération des chaudières numériques domestiques. Le grand public comprend que le minage n'est pas un déchet, mais un chauffage autofinancé.</p>
+    <!-- AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1.1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.1rem;">
+            <div style="font-size:2.4rem;">☀️⛏️🌿</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; margin:0; font-size:1.1rem;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#94a3b8; font-size:0.88rem; margin:0.25rem 0 0; text-align:left;">
+                    <span lang="fr">Architecte systèmes thermodynamiques, fondateur de Lemuria Technologies & chercheur sur L'Étalon Solaire.</span>
+                    <span lang="en">Thermodynamic systems architect, founder of Lemuria Technologies & researcher on The Sun Standard.</span>
+                </p>
             </div>
         </div>
-        <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-                <div class="tl-year">2030 : L'Offensive Brownfield</div>
-                <p>Les directives ESG mondiales intègrent la Matrice Inversée. Déploiement massif dans les anciennes mines australiennes (piloté par Lemuria Technologies) et européennes. Fin du torchage de gaz naturel à l'air libre, massivement capté par des ASICs mobiles.</p>
-            </div>
-        </div>
-        <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-                <div class="tl-year">2033 : La Singularité Réseau (Le Tipping Point)</div>
-                <p>Plus de 50 % des réseaux électriques renouvelables mondiaux (VRE) dépendent des datacenters ASICs comme acheteurs de dernier ressort et stabilisateurs de fréquence. La "Vallée de la Mort" du financement solaire/éolien est définitivement franchie. Le Biochar informatique fertilise les premières méga-serres autonomes.</p>
-            </div>
-        </div>
-        <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-                <div class="tl-year">2037 : Le Grand Filtre Passé</div>
-                <p>L'inflation fiat par décret n'est plus le standard mondial. Financer des guerres d'usure par l'endettement secret devient économiquement impossible grâce à l'ancrage thermodynamique transparent de la monnaie. La symbiose entre le silicium enfoui et le carbone vivant est totale. La Terre commence sa phase de régénération active.</p>
-            </div>
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4><p><span lang="fr">Réhabilitation minière Brownfield, roues MOF-303 et calcul symbiotique.</span><span lang="en">Brownfield mine rehabilitation, MOF-303 water wheels & symbiotic compute.</span></p></a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--cyan-l2);">👁️ Protocole D-Trinité</h4><p><span lang="fr">Provenance cryptographique SHA-256 + Nostr + OpenTimestamps face aux deepfakes.</span><span lang="en">SHA-256 + Nostr + OpenTimestamps provenance against synthetic manipulation.</span></p></a>
+            <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--sun-orange);">⏱️ Compteur Timechain</h4><p><span lang="fr">Télémétrie temps réel du consensus thermodynamique mondial.</span><span lang="en">Live telemetry of global thermodynamic Proof-of-Work consensus.</span></p></a>
         </div>
     </div>
-
-    <div class="quote-block" style="border-left-color: var(--sun-yellow); background: rgba(255, 204, 0, 0.05);">
-        "La volonté est technologique, la bonté, elle, reste humaine et les maths ne font pas de politique. Ce sont les humains qui décideront de quoi en faire. <br><br>Always was, always will be."
-    </div>
-
 </article>
 
+<footer>
+    <div style="font-size:0.98rem; font-weight:700; letter-spacing:3px; color:var(--sun-yellow); margin-bottom:0.4rem;">☀ THE SUN STANDARD · LEMURIA TECHNOLOGIES</div>
+    <p style="text-align:center; margin:0;">Pascal Ranoroarijaona (Ranaora) · 2026</p>
+</footer>
+
+<!-- ==========================================================================
+     MOTEURS JAVASCRIPT MODULAIRES (BILINGUE + 5 CANVASES INTERACTIFS)
+     ========================================================================== -->
+<script>
+/* 0. GESTION GLOBALE DE LA LANGUE & NAVIGATION PYRAMIDE */
+let currentLang = 'fr';
+function isEn() { return currentLang === 'en'; }
+
+function setLang(lang) {
+    currentLang = (lang === 'en') ? 'en' : 'fr';
+    document.body.className = 'lang-' + currentLang;
+    try { localStorage.setItem('sun-std-lang', currentLang); } catch (e) {}
+    window.dispatchEvent(new Event('sun-lang-change'));
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    let saved = 'fr';
+    try { saved = localStorage.getItem('sun-std-lang') || 'fr'; } catch (e) {}
+    const q = new URLSearchParams(window.location.search).get('lg');
+    setLang(q ? q : saved);
+
+    document.querySelectorAll('.pyramid-tier').forEach(link => {
+        link.addEventListener('click', function() {
+            const target = document.getElementById(this.getAttribute('href').substring(1));
+            if (target && !target.hasAttribute('open')) target.setAttribute('open', '');
+        });
+    });
+});
+
+/* 1. MODULE HERO : TRANSMUTATION ALCHIMIQUE (#alchemicalHeroCanvas) */
+(function() {
+    const cv = document.getElementById('alchemicalHeroCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const slider = document.getElementById('hero-bifurcation-slider');
+    const pctEl = document.getElementById('hero-bifurcation-pct');
+
+    let W = 0, H = 0, dpr = 1;
+    let bif = 0.68;
+    const waves = [];
+    const particles = Array.from({ length: 78 }, () => ({
+        x: Math.random(),
+        y: 0.25 + Math.random() * 0.52,
+        vx: 0.14 + Math.random() * 0.18,
+        seed: Math.random() * Math.PI * 2,
+        size: 2.5 + Math.random() * 3.5
+    }));
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(cv);
+    resize();
+
+    function updateHeroHUD() {
+        bif = parseFloat(slider.value) / 100;
+        pctEl.textContent = Math.round(bif * 100) + ' %';
+        const kIdx = (0.720 + bif * 0.280).toFixed(3);
+        const co2 = (38 - bif * 50).toFixed(1);
+        const cs = (0.18 + bif * 0.78).toFixed(2);
+
+        let regFr = '1971 · Extraction Pétrodollar', regEn = '1971 · Petrodollar Extraction';
+        if (bif >= 0.85) { regFr = '2044 · Étalon Solaire Type I'; regEn = '2044 · Type I Sun Standard'; }
+        else if (bif >= 0.50) { regFr = 'Transition Symbiotique Brownfield'; regEn = 'Symbiotic Brownfield Transition'; }
+        else if (bif >= 0.22) { regFr = 'Hybridation & Extinction Torchères'; regEn = 'Flare Mitigation & Hybrid Grid'; }
+
+        document.getElementById('hud-regime-val').textContent = isEn() ? regEn : regFr;
+        document.getElementById('hud-kardashev-val').textContent = kIdx;
+        const cEl = document.getElementById('hud-carbon-val');
+        cEl.textContent = (co2 > 0 ? '+' : '') + co2 + (isEn() ? ' Gt CO₂e/yr' : ' Gt CO₂e/an');
+        cEl.style.color = co2 <= 0 ? '#44ee77' : (co2 < 15 ? '#ffcc00' : '#ef4444');
+        document.getElementById('hud-cs-val').textContent = cs + ' / 1.00';
+    }
+
+    function spawnPulse() { waves.push({ r: 16, max: Math.min(W, H) * 0.45, a: 0.95 }); }
+    slider.addEventListener('input', updateHeroHUD);
+    document.getElementById('hero-btn-era0').addEventListener('click', () => { slider.value = 0; updateHeroHUD(); spawnPulse(); });
+    document.getElementById('hero-btn-era100').addEventListener('click', () => { slider.value = 100; updateHeroHUD(); spawnPulse(); });
+    document.getElementById('hero-btn-pulse').addEventListener('click', spawnPulse);
+    cv.addEventListener('click', spawnPulse);
+    window.addEventListener('sun-lang-change', updateHeroHUD);
+    updateHeroHUD();
+
+    let last = performance.now();
+    function render(now) {
+        requestAnimationFrame(render);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        const t = now * 0.001;
+        ctx.clearRect(0, 0, W, H);
+
+        const cx = W * 0.5, cy = H * 0.52;
+        const leftX = W * 0.16, rightX = W * 0.84;
+
+        // Fond atmosphérique gauche (fumée fossile) vs droite (aura bio-solaire)
+        const bgL = ctx.createRadialGradient(leftX, cy, 10, leftX, cy, W * 0.38);
+        bgL.addColorStop(0, `rgba(120, 53, 15, ${(1 - bif) * 0.34})`);
+        bgL.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = bgL; ctx.fillRect(0, 0, W, H);
+
+        const bgR = ctx.createRadialGradient(rightX, cy, 10, rightX, cy, W * 0.42);
+        bgR.addColorStop(0, `rgba(68, 238, 119, ${0.08 + bif * 0.25})`);
+        bgR.addColorStop(0.55, `rgba(0, 229, 255, ${bif * 0.12})`);
+        bgR.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = bgR; ctx.fillRect(0, 0, W, H);
+
+        // Lignes directrices horizontales
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(leftX, cy); ctx.lineTo(rightX, cy); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // GAUCHE : Derrick Or Noir & Panache d'Entropie
+        const oilAlpha = 0.25 + (1 - bif) * 0.75;
+        ctx.save();
+        ctx.strokeStyle = `rgba(217, 119, 6, ${oilAlpha})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(leftX - 22, cy + 48); ctx.lineTo(leftX - 6, cy - 38);
+        ctx.lineTo(leftX + 6, cy - 38); ctx.lineTo(leftX + 22, cy + 48);
+        ctx.moveTo(leftX - 15, cy + 12); ctx.lineTo(leftX + 15, cy + 12);
+        ctx.moveTo(leftX - 10, cy - 14); ctx.lineTo(leftX + 10, cy - 14);
+        ctx.stroke();
+        // Flamme de torchère qui s'éteint quand bif -> 1
+        if (bif < 0.92) {
+            const fh = (1 - bif) * 28 * (0.85 + 0.15 * Math.sin(t * 9));
+            const fg = ctx.createLinearGradient(leftX, cy - 40, leftX, cy - 40 - fh);
+            fg.addColorStop(0, '#ff5500'); fg.addColorStop(1, 'rgba(239,68,68,0)');
+            ctx.fillStyle = fg;
+            ctx.beginPath(); ctx.arc(leftX, cy - 42 - fh * 0.35, 7 * (1 - bif * 0.6), 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.restore();
+
+        // Flux de particules : Or Noir -> Silicium Immergé -> Eau MOF & Chlorophylle
+        particles.forEach(p => {
+            p.x += dt * p.vx * (0.55 + bif * 0.65);
+            if (p.x > 0.92) p.x = 0.12;
+            const px = p.x * W;
+            const py = cy + Math.sin(t * 2.2 + p.seed + p.x * 9) * (28 * (1 - Math.abs(p.x - 0.5) * 1.3));
+
+            if (p.x < 0.46) {
+                // Entrée : passe du brut sombre aux photons dorés selon bif
+                ctx.fillStyle = bif > 0.55
+                    ? `rgba(255, 204, 0, ${0.5 + bif * 0.4})`
+                    : `rgba(140, 85, 45, ${0.75})`;
+                ctx.beginPath(); ctx.arc(px, py, p.size, 0, Math.PI * 2); ctx.fill();
+            } else if (p.x < 0.55) {
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath(); ctx.arc(px, py, p.size * 0.9, 0, Math.PI * 2); ctx.fill();
+            } else {
+                // Sortie : si bif faible -> fumée grise montante ; si bif élevé -> eau cyan + bio-vert
+                const isRegen = ((p.seed * 10) % 1) < bif;
+                if (isRegen) {
+                    const isWater = (Math.floor(p.seed * 10) % 2 === 0);
+                    ctx.fillStyle = isWater ? 'rgba(0, 229, 255, 0.85)' : 'rgba(68, 238, 119, 0.88)';
+                    ctx.beginPath(); ctx.arc(px, py, p.size * 1.05, 0, Math.PI * 2); ctx.fill();
+                } else {
+                    const smokeY = py - (p.x - 0.55) * 150;
+                    ctx.fillStyle = 'rgba(148, 163, 184, 0.38)';
+                    ctx.beginPath(); ctx.arc(px, smokeY, p.size * 1.5, 0, Math.PI * 2); ctx.fill();
+                }
+            }
+        });
+
+        // CENTRE : CŒUR HEXAGONAL D'IMMERSION SILICIUM (₿ + 60°C)
+        const coreR = Math.min(W, H) * 0.145;
+        const glow = ctx.createRadialGradient(cx, cy, coreR * 0.15, cx, cy, coreR * 1.65);
+        glow.addColorStop(0, `rgba(247, 147, 26, ${0.35 + bif * 0.4})`);
+        glow.addColorStop(0.55, `rgba(0, 229, 255, ${0.12 + bif * 0.22})`);
+        glow.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath(); ctx.arc(cx, cy, coreR * 1.65, 0, Math.PI * 2); ctx.fill();
+
+        // Hexagone tournant
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(t * (0.25 + bif * 0.45));
+        ctx.strokeStyle = '#f7931a';
+        ctx.lineWidth = 2.2;
+        ctx.fillStyle = 'rgba(10, 15, 28, 0.86)';
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            const a = (i * Math.PI) / 3;
+            const hx = Math.cos(a) * coreR, hy = Math.sin(a) * coreR;
+            i === 0 ? ctx.moveTo(hx, hy) : ctx.lineTo(hx, hy);
+        }
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.restore();
+
+        ctx.fillStyle = '#ffcc00';
+        ctx.font = `bold ${Math.round(coreR * 0.62)}px "Fira Code", monospace`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('₿', cx, cy - 2);
+        ctx.fillStyle = '#00e5ff';
+        ctx.font = '600 10px "Fira Code", monospace';
+        ctx.fillText('60°C JOULE', cx, cy + coreR * 0.56);
+
+        // DROITE : Arbre / Dôme Régénératif (croît avec bif)
+        const treeScale = 0.45 + bif * 0.75;
+        ctx.save();
+        ctx.translate(rightX, cy + 45);
+        ctx.strokeStyle = `rgba(68, 238, 119, ${0.35 + bif * 0.65})`;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -52 * treeScale); ctx.stroke();
+        for (let b = -2; b <= 2; b++) {
+            if (b === 0) continue;
+            const ang = b * 0.36 + Math.sin(t * 1.8 + b) * 0.04;
+            const bx = Math.sin(ang) * 34 * treeScale;
+            const by = -48 * treeScale - Math.cos(ang) * 22 * treeScale;
+            ctx.beginPath(); ctx.moveTo(0, -34 * treeScale); ctx.quadraticCurveTo(bx * 0.5, by, bx, by); ctx.stroke();
+            ctx.fillStyle = b % 2 === 0 ? `rgba(68, 238, 119, ${0.3 + bif * 0.55})` : `rgba(0, 229, 255, ${0.3 + bif * 0.5})`;
+            ctx.beginPath(); ctx.arc(bx, by, 7 * treeScale, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.restore();
+
+        // Légendes sur Canvas
+        ctx.font = '600 11px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillText(isEn() ? (bif > 0.55 ? '☀ SOLAR + FLARE' : '🛢️ BLACK GOLD') : (bif > 0.55 ? '☀ SOLAIRE + TORCHÈRE' : '🛢️ OR NOIR FOSSILE'), leftX, H - 22);
+        ctx.fillStyle = '#ffcc00';
+        ctx.fillText(isEn() ? 'IMMERSION CORE (η=100%)' : 'CŒUR IMMERGÉ (η=100%)', cx, H - 22);
+        ctx.fillStyle = '#44ee77';
+        ctx.fillText(isEn() ? '💧 MOF-303 + BIOCHAR' : '💧 EAU MOF-303 + BIOCHAR', rightX, H - 22);
+
+        // Ondes de choc
+        for (let i = waves.length - 1; i >= 0; i--) {
+            waves[i].r += dt * 220; waves[i].a -= dt * 0.85;
+            if (waves[i].a <= 0 || waves[i].r > waves[i].max) { waves.splice(i, 1); continue; }
+            ctx.strokeStyle = `rgba(255, 204, 0, ${waves[i].a})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(cx, cy, waves[i].r, 0, Math.PI * 2); ctx.stroke();
+        }
+    }
+    requestAnimationFrame(render);
+})();
+
+/* 2. MODULE EXPLORATEUR DE MATÉRIAUX & ÉCHELLES (#explorateur-materiaux) */
+(function() {
+    const pSlider = document.getElementById('mat-power-slider');
+    const cSelect = document.getElementById('mat-cool-select');
+    const sSelect = document.getElementById('mat-src-select');
+    const rCv = document.getElementById('materialsRadarCanvas');
+    const bCv = document.getElementById('materialsBarCanvas');
+    if (!pSlider || !rCv || !bCv) return;
+
+    function fmtMass(kg) {
+        if (kg < 1) return (kg * 1000).toFixed(1) + ' g';
+        if (kg < 1000) return kg.toFixed(1) + ' kg';
+        if (kg < 1e6) return (kg / 1000).toFixed(2) + ' t';
+        return (kg / 1e6).toFixed(2) + ' kt';
+    }
+    function fmtVol(liters) {
+        if (liters < 1000) return liters.toFixed(1) + ' L';
+        return (liters / 1000).toFixed(1) + ' m³';
+    }
+    function fmtPower(kw) {
+        if (kw < 1) return Math.round(kw * 1000) + ' W';
+        if (kw < 1000) return kw.toFixed(1) + ' kW';
+        if (kw < 1e6) return (kw / 1000).toFixed(2) + ' MW';
+        return (kw / 1e6).toFixed(2) + ' GW';
+    }
+
+    function updateExplorer() {
+        const kw = Math.pow(10, parseFloat(pSlider.value));
+        const cool = cSelect.value;
+        const src = sSelect.value;
+
+        const eta = cool === 'two' ? 0.98 : (cool === 'mono' ? 0.96 : 0.58);
+        const fluidFactor = cool === 'air' ? 0.05 : (cool === 'two' ? 4.2 : 6.0); // L / kW
+
+        // Bilans physiques par kW électrique installé
+        const siKg = kw * 0.0033;
+        const cuKg = kw * 2.2;
+        const steelKg = kw * 17.0;
+        const fluidL = kw * fluidFactor;
+        const mofKg = kw * 0.18 * (eta / 0.96);
+        const waterDayL = kw * 2.7 * eta;
+        const biocharYrKg = kw * 560 * eta;
+        const flareBonus = src === 'flare' ? 4.1 : (src === 'solar' ? 1.75 : 1.55); // t CO2e / kW / an
+        const co2YrTons = (kw * flareBonus * eta);
+
+        document.getElementById('mat-power-readout').textContent = fmtPower(kw);
+        document.getElementById('bom-si').textContent = fmtMass(siKg);
+        document.getElementById('bom-cu').textContent = fmtMass(cuKg);
+        document.getElementById('bom-steel').textContent = fmtMass(steelKg);
+        document.getElementById('bom-fluid').textContent = fmtVol(fluidL);
+        document.getElementById('bom-mof').textContent = fmtMass(mofKg);
+        document.getElementById('bom-water').textContent = waterDayL >= 10000
+            ? (waterDayL / 1000).toFixed(1) + (isEn() ? ' m³/d' : ' m³/j')
+            : Math.round(waterDayL) + (isEn() ? ' L/d' : ' L/j');
+        document.getElementById('bom-biochar').textContent = fmtMass(biocharYrKg) + (isEn() ? '/yr' : '/an');
+        document.getElementById('bom-co2').textContent = '-' + (co2YrTons >= 1e6
+            ? (co2YrTons / 1e6).toFixed(2) + ' Mt'
+            : Math.round(co2YrTons).toLocaleString('fr-FR') + ' t') + (isEn() ? '/yr' : '/an');
+
+        drawRadar(eta, src, kw);
+        drawBars(cuKg + steelKg, waterDayL * 365, biocharYrKg, co2YrTons * 1000);
+    }
+
+    function drawRadar(eta, src, kw) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = rCv.clientWidth, h = rCv.clientHeight;
+        if (!w || !h) return;
+        rCv.width = w * dpr; rCv.height = h * dpr;
+        const ctx = rCv.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        const labels = isEn()
+            ? ['Heat Capture', 'Water Yield', 'Carbon Sink', 'Grid Flex <50ms', '99% Circularity', 'Local Autonomy']
+            : ['Captage Therm.', 'Eau MOF/MED', 'Puits Carbone', 'Flex Réseau', 'Circularité 99%', 'Autonomie'];
+        const scaleBonus = Math.min(1, (Math.log10(kw) + 1.5) / 8.5);
+        const symVals = [
+            eta,
+            0.55 + 0.42 * eta,
+            src === 'flare' ? 0.98 : 0.84,
+            0.78 + 0.20 * scaleBonus,
+            0.96,
+            0.88
+        ];
+        const fosVals = [0.34, 0.12, 0.08, 0.28, 0.18, 0.22];
+
+        const cx = w / 2, cy = h / 2 + 4, R = Math.min(w, h) * 0.34;
+        for (let lv = 1; lv <= 4; lv++) {
+            ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const a = -Math.PI / 2 + (i * Math.PI) / 3;
+                const x = cx + Math.cos(a) * R * (lv / 4), y = cy + Math.sin(a) * R * (lv / 4);
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+            ctx.closePath(); ctx.stroke();
+        }
+
+        // Polygone Fossile (Rouge)
+        ctx.fillStyle = 'rgba(239, 68, 68, 0.16)'; ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        fosVals.forEach((v, i) => {
+            const a = -Math.PI / 2 + (i * Math.PI) / 3;
+            const x = cx + Math.cos(a) * R * v, y = cy + Math.sin(a) * R * v;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        });
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+
+        // Polygone Symbiotique (Vert/Cyan)
+        ctx.fillStyle = 'rgba(68, 238, 119, 0.22)'; ctx.strokeStyle = '#44ee77'; ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        symVals.forEach((v, i) => {
+            const a = -Math.PI / 2 + (i * Math.PI) / 3;
+            const x = cx + Math.cos(a) * R * v, y = cy + Math.sin(a) * R * v;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        });
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#cbd5e1'; ctx.font = '600 10px "Inter", sans-serif'; ctx.textAlign = 'center';
+        labels.forEach((lb, i) => {
+            const a = -Math.PI / 2 + (i * Math.PI) / 3;
+            ctx.fillText(lb, cx + Math.cos(a) * (R + 24), cy + Math.sin(a) * (R + 16));
+        });
+    }
+
+    function drawBars(hwMassKg, waterYrKg, biocharYrKg, co2YrKg) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = bCv.clientWidth, h = bCv.clientHeight;
+        if (!w || !h) return;
+        bCv.width = w * dpr; bCv.height = h * dpr;
+        const ctx = bCv.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        const items = [
+            { lbl: isEn() ? 'Hardware Mass (99% Recyc.)' : 'Masse Matérielle (Recyc. 99%)', val: Math.max(1, hwMassKg), col: '#f7931a' },
+            { lbl: isEn() ? 'Pure Water Output / yr' : 'Eau Pure Condensée / an', val: Math.max(1, waterYrKg), col: '#00e5ff' },
+            { lbl: isEn() ? 'Biochar Soil Mass / yr' : 'Biochar Produit / an', val: Math.max(1, biocharYrKg), col: '#44ee77' },
+            { lbl: isEn() ? 'Avoided & Locked CO₂e / yr' : 'CO₂e Évité & Séquestré / an', val: Math.max(1, co2YrKg), col: '#ffcc00' }
+        ];
+
+        const maxLog = 12; // jusqu'à 10^12 kg
+        const padL = 18, padR = 24, barH = 22, gap = 54, startY = 34;
+
+        items.forEach((it, idx) => {
+            const y = startY + idx * gap;
+            const logV = Math.max(0.2, Math.log10(it.val));
+            const bw = Math.min(1, logV / maxLog) * (w - padL - padR);
+
+            ctx.fillStyle = '#cbd5e1'; ctx.font = '600 11px "Inter", sans-serif'; ctx.textAlign = 'left';
+            ctx.fillText(it.lbl, padL, y - 6);
+
+            ctx.fillStyle = 'rgba(255,255,255,0.06)';
+            ctx.fillRect(padL, y, w - padL - padR, barH);
+            ctx.fillStyle = it.col;
+            ctx.fillRect(padL, y, bw, barH);
+
+            ctx.fillStyle = '#ffffff'; ctx.font = '600 10.5px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(fmtMass(it.val), w - padR, y - 6);
+        });
+    }
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            pSlider.value = Math.log10(parseFloat(this.dataset.preset)).toFixed(4);
+            updateExplorer();
+        });
+    });
+
+    [pSlider, cSelect, sSelect].forEach(el => el.addEventListener('input', updateExplorer));
+    new ResizeObserver(updateExplorer).observe(rCv);
+    window.addEventListener('sun-lang-change', updateExplorer);
+    updateExplorer();
+})();
+
+/* 3. MODULE PARCOURS DU COMBATTANT DU GRAND FILTRE (#parcours-grand-filtre) */
+(function() {
+    const cv = document.getElementById('geodesicCourseCanvas');
+    const tabsBox = document.getElementById('course-stage-tabs');
+    const keysBox = document.getElementById('ck-keys-container');
+    if (!cv || !tabsBox) return;
+    const ctx = cv.getContext('2d');
+
+    const stages = [
+        {
+            yr: '2026', blk: '#940k',
+            frT: 'Éveil des Nano-Nodes Domestiques', enT: 'Domestic Nano-Nodes Awakening',
+            frD: 'Déploiement massif des chaudières numériques silencieuses (IP68) dans les foyers et serres urbaines, démonétisant le chauffage fossile.',
+            enD: 'Widespread rollout of silent IP68 digital home boilers and urban greenhouses, displacing fossil domestic heating.',
+            frTh: 'Obstacle : Hausse des tarifs électriques résidentiels & panique réglementaire anti-calcul.',
+            enTh: 'Obstacle: Rising residential power tariffs & anti-compute regulatory panic.',
+            driftDir: -1,
+            keys: [
+                { fr: 'Chaudières immersion 3,5 kW (Eau chaude + Serre)', en: '3.5 kW Immersion Home Boilers (Hot Water + Greenhouse)', on: true },
+                { fr: 'Auto-garde souveraine & nœuds complets locaux', en: 'Sovereign self-custody & home full nodes', on: true },
+                { fr: 'Micro-réseaux solaires de toiture couplés', en: 'Coupled rooftop solar DC microgrids', on: true }
+            ]
+        },
+        {
+            yr: '2028', blk: '#1 000 000',
+            frT: 'Majorité Nodale (18,6a) & Million de Blocs', enT: '18.6y Nodal Maturity & Block #1,000,000',
+            frD: 'Franchissement du 5e Halving et du millionième bloc : l’Or Numérique devient actif de réserve intègre face aux crises de dette souveraine.',
+            enD: 'Crossing the 5th Halving and one-millionth block: Digital Gold matures into a pristine reserve asset amid sovereign debt turmoil.',
+            frTh: 'Obstacle : Tentation de CBDC programmables coercitives (Dérive Mordor).',
+            enTh: 'Obstacle: Push for coercive programmable CBDCs (Mordor Drift).',
+            driftDir: 1,
+            keys: [
+                { fr: 'Réserves thermodynamiques auditées par preuve', en: 'Proof-of-Reserve thermodynamic balance sheets', on: true },
+                { fr: 'Épargne pair-à-pair sans contrôle arbitraire', en: 'Censorship-resistant peer-to-peer settlement', on: true },
+                { fr: 'Pactes municipaux d’électrification circulaire', en: 'Municipal circular electrification charters', on: true }
+            ]
+        },
+        {
+            yr: '2030', blk: '#1 140k',
+            frT: 'Offensive Brownfield & Fin des Torchères', enT: 'Brownfield Offensive & Flare Extinction',
+            frD: 'Lemuria Technologies réhabilite les puits miniers désaffectés en cheminées convectives et éteint les torchères pétrolières par calcul mobile.',
+            enD: 'Lemuria Technologies rehabilitates orphaned mine shafts into convective chimneys and extinguishes oilfield methane flares.',
+            frTh: 'Obstacle : Fuites massives de méthane & stress hydrique des régions minières arides.',
+            enTh: 'Obstacle: Unabated methane flaring & severe arid-zone water scarcity.',
+            driftDir: -1,
+            keys: [
+                { fr: 'Captage mobile 100 % gaz de torchère (>63 % abattement)', en: '100% mobile flare-gas capture (>63% CO₂e cut)', on: true },
+                { fr: 'Tirage convectif naturel dans les puits Brownfield', en: 'Natural buoyancy cooling inside Brownfield shafts', on: true },
+                { fr: 'Roues dessiccantes MOF-303 (Eau atmosphérique)', en: 'MOF-303 atmospheric water-harvesting rotors', on: true }
+            ]
+        },
+        {
+            yr: '2033', blk: '#1 300k',
+            frT: 'Singularité Réseau 50 % Renouvelables', enT: '50% VRE Grid Balancing Singularity',
+            frD: 'Les datacenters d’immersion agissent comme batteries virtuelles interruptibles en <50 ms, abolissant la Vallée de la Mort du solaire.',
+            enD: 'Immersion compute clusters operate as sub-50ms interruptible virtual batteries, ending renewable curtailment.',
+            frTh: 'Obstacle : Instabilité de fréquence et blackouts sur réseaux intermittents.',
+            enTh: 'Obstacle: Grid frequency instability and renewable curtailment blackouts.',
+            driftDir: -1,
+            keys: [
+                { fr: 'Effacement automatique CLR < 50 millisecondes', en: 'Automated sub-50ms Controllable Load shedding', on: true },
+                { fr: 'Financement ex-ante des fermes solaires/hydro isolées', en: 'Upfront monetization of stranded solar/hydro builds', on: true },
+                { fr: 'Dessalement thermique MED côtier sur surplus', en: 'Coastal MED thermal desalination on surplus power', on: true }
+            ]
+        },
+        {
+            yr: '2036', blk: '#1 460k',
+            frT: 'Souveraineté Edge-AI & Protocole D-Trinité', enT: 'Edge-AI Sovereignty & D-Trinity Protocol',
+            frD: 'Face aux méga-modèles opaques, chaque communauté opère ses modèles IA ouverts en périphérie, signés par provenance cryptographique PoW.',
+            enD: 'Against centralized mega-AI monopolies, communities run open local Edge-AI verified by PoW cryptographic provenance.',
+            frTh: 'Obstacle : Manipulation algorithmique de masse & Super-IA non alignée (Mordor).',
+            enTh: 'Obstacle: Synthetic mass manipulation & unaligned centralized AGI (Mordor).',
+            driftDir: 1,
+            keys: [
+                { fr: 'Inférence Edge-AI ouverte chauffant les habitats', en: 'Open-weights Edge-AI inference heating local habitats', on: true },
+                { fr: 'Authentification D-Trinité (SHA-256 + Nostr + OTS)', en: 'D-Trinity provenance (SHA-256 + Nostr + OTS)', on: true },
+                { fr: 'Vérification formelle des noyaux critiques (Lean 4)', en: 'Formal verification of critical safety kernels (Lean 4)', on: true }
+            ]
+        },
+        {
+            yr: '2040', blk: '#1 670k',
+            frT: 'Ouroboros Biolixiviation & Terra Preta', enT: 'Bioleaching Ouroboros & Terra Preta Soils',
+            frD: 'Bouclage matériel à 99 % des métaux stratégiques par bactéries lithotrophes et séquestration gigatonnique de carbone en Biochar agricole.',
+            enD: '99% closed-loop recovery of strategic metals via microbial bioleaching and gigaton-scale agricultural Biochar sequestration.',
+            frTh: 'Obstacle : Épuisement minier du cuivre/or et érosion des terres arables.',
+            enTh: 'Obstacle: Critical mineral depletion and global arable soil exhaustion.',
+            driftDir: -1,
+            keys: [
+                { fr: 'Biolixiviation douce à 35 °C (99 % Cu, Au, Pd, Si)', en: '35 °C microbial bioleaching (99% Cu, Au, Pd, Si)', on: true },
+                { fr: 'Pyrolyse Biochar couplée au séchage ASIC 65 °C', en: 'Biochar pyrolysis paired with 65 °C ASIC drying', on: true },
+                { fr: 'Méga-serres aquaponiques autonomes sans pesticides', en: 'Pesticide-free autonomous aquaponic greenhouses', on: true }
+            ]
+        },
+        {
+            yr: '2044', blk: '#1 886k',
+            frT: 'Horizon Gondor : Civilisation Solaire Type I', enT: 'Gondor Horizon: Solar Type I Civilization',
+            frD: 'La Matrice est inversée : l’infrastructure lourde ronronne sous le roc, le financement inflationniste des guerres est éteint, le vivant règne en surface.',
+            enD: 'The Matrix is inverted: heavy compute hums beneath bedrock, inflationary war-financing is extinct, and life flourishes on the surface.',
+            frTh: 'Obstacle : Rechute dans l’hubris centralisatrice ou l’oubli mémoriel.',
+            enTh: 'Obstacle: Relapse into centralizing hubris or generational amnesia.',
+            driftDir: 1,
+            keys: [
+                { fr: 'Enfouissement lithosphérique du calcul lourd', en: 'Subterranean placement of heavy compute clusters', on: true },
+                { fr: 'Démonétisation structurelle des guerres d’usure', en: 'Structural demonetization of inflationary warfare', on: true },
+                { fr: 'Archivage quartz 5D (Protocole de Temps Profond)', en: '5D quartz archiving (Deep Time Stewardship)', on: true }
+            ]
+        }
+    ];
+
+    let curIdx = 2; // 2030 sélectionné par défaut
+    let autoPlay = false;
+    let shipProg = 0.33;
+    let W = 0, H = 0, dpr = 1;
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(cv);
+    resize();
+
+    function stageScore(st) { return st.keys.filter(k => k.on).length / 3; }
+
+    function rebuildUI() {
+        tabsBox.innerHTML = '';
+        stages.forEach((s, idx) => {
+            const sc = stageScore(s);
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'stage-step-btn' + (idx === curIdx ? ' active' : '') + (sc >= 0.66 ? ' secured' : ' drifting');
+            btn.innerHTML = `<div style="font-weight:700; color:#ffcc00;">${s.yr}</div><div style="font-size:0.63rem; opacity:0.85;">${s.keys.filter(k=>k.on).length}/3 🔑</div>`;
+            btn.addEventListener('click', () => { curIdx = idx; shipProg = idx / (stages.length - 1); rebuildUI(); });
+            tabsBox.appendChild(btn);
+        });
+
+        const st = stages[curIdx];
+        document.getElementById('ck-stage-tag').textContent = (isEn() ? `STAGE ${curIdx + 1} / 7 · ${st.yr} (${st.blk})` : `ÉTAPE ${curIdx + 1} / 7 · ${st.yr} (${st.blk})`);
+        document.getElementById('ck-stage-title').textContent = isEn() ? st.enT : st.frT;
+        document.getElementById('ck-stage-desc').textContent = isEn() ? st.enD : st.frD;
+        document.getElementById('ck-stage-threat').textContent = isEn() ? st.enTh : st.frTh;
+
+        keysBox.innerHTML = '';
+        st.keys.forEach((k, kIdx) => {
+            const kb = document.createElement('button');
+            kb.type = 'button';
+            kb.className = 'key-toggle-btn' + (k.on ? ' enabled' : '');
+            const statusTxt = k.on ? (isEn() ? 'ACTIVE ✓' : 'ACTIF ✓') : (isEn() ? 'OFF ✗' : 'INACTIF ✗');
+            kb.innerHTML = `<span>${isEn() ? k.en : k.fr}</span><span class="key-indicator">${statusTxt}</span>`;
+            kb.addEventListener('click', () => {
+                k.on = !k.on;
+                rebuildUI();
+            });
+            keysBox.appendChild(kb);
+        });
+
+        // Calcul des 4 jauges globales
+        const totalOn = stages.reduce((acc, s) => acc + s.keys.filter(k => k.on).length, 0);
+        const ratio = totalOn / 21;
+        const gE = Math.round(18 + ratio * 79);
+        const gB = Math.round(14 + ratio * 82);
+        const gT = Math.round(16 + ratio * 79);
+        const gA = Math.round(12 + (stageScore(stages[4]) * 0.45 + ratio * 0.55) * 85);
+
+        const setGauge = (id, v, col) => {
+            document.getElementById('g-val-' + id).textContent = v + '%';
+            const bar = document.getElementById('g-bar-' + id);
+            bar.style.width = v + '%';
+            bar.style.background = v < 45 ? '#ef4444' : (v < 75 ? '#ffcc00' : col);
+        };
+        setGauge('energy', gE, '#ffcc00');
+        setGauge('bio', gB, '#44ee77');
+        setGauge('trust', gT, '#f7931a');
+        setGauge('ai', gA, '#00e5ff');
+
+        const vbox = document.getElementById('course-verdict-box');
+        if (totalOn >= 18) {
+            vbox.style.borderLeftColor = '#44ee77';
+            vbox.style.background = 'rgba(68, 238, 119, 0.08)';
+            vbox.innerHTML = isEn()
+                ? `<strong>SYMBIOTIC GEODESIC LOCKED (${totalOn}/21 keys):</strong> Minimum-suffering corridor maintained! Humanity avoids both Technocratic Mordor and Entropic Collapse, reaching the 2044 Solar Horizon.`
+                : `<strong>GÉODÉSIQUE SYMBIOTIQUE VERROUILLÉE (${totalOn}/21 clés) :</strong> Trajectoire de moindre souffrance stabilisée ! L'humanité évite le Mordor technocratique comme l'effondrement entropique vers l'Horizon 2044.`;
+        } else if (totalOn >= 11) {
+            vbox.style.borderLeftColor = '#ffcc00';
+            vbox.style.background = 'rgba(255, 204, 0, 0.08)';
+            vbox.innerHTML = isEn()
+                ? `<strong>TURBULENT TRANSITION (${totalOn}/21 keys):</strong> Dangerous local oscillations near the chasms. Reactivate missing symbiotic keys on red-flagged stages to stabilize $C_s$.`
+                : `<strong>TRANSITION TURBULENTE (${totalOn}/21 clés) :</strong> Oscillations critiques à proximité des gouffres. Réactivez les clés manquantes sur les étapes en rouge pour stabiliser la confiance $C_s$.`;
+        } else {
+            vbox.style.borderLeftColor = '#ef4444';
+            vbox.style.background = 'rgba(239, 68, 68, 0.1)';
+            vbox.innerHTML = isEn()
+                ? `<strong>GREAT FILTER FAILURE (${totalOn}/21 keys):</strong> Trajectory has plunged into systemic collapse / technocratic capture. Activate symbiosis keys immediately!`
+                : `<strong>ALERTE GRAND FILTRE (${totalOn}/21 clés) :</strong> Décrochage hors du corridor viable vers la capture technocratique ou les guerres de raréfaction. Réactivez les clés de symbiose !`;
+        }
+    }
+
+    // Sélection directe d'un jalon par clic sur le Canvas
+    cv.addEventListener('click', e => {
+        const rect = cv.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const padX = 56, spanW = W - padX * 2;
+        let best = 0, minDist = 1e9;
+        stages.forEach((_, i) => {
+            const nx = padX + (i / (stages.length - 1)) * spanW;
+            const d = Math.abs(mx - nx);
+            if (d < minDist) { minDist = d; best = i; }
+        });
+        curIdx = best;
+        shipProg = best / (stages.length - 1);
+        rebuildUI();
+    });
+
+    document.getElementById('course-btn-play').addEventListener('click', function() {
+        autoPlay = !autoPlay;
+        this.classList.toggle('active', autoPlay);
+        this.innerHTML = autoPlay
+            ? (isEn() ? '⏸ Pause Sim' : '⏸ Pause')
+            : (isEn() ? '▶ Auto-Run Course' : '▶ Simuler Traversée');
+    });
+    document.getElementById('course-btn-crisis').addEventListener('click', () => {
+        stages.forEach((s, idx) => s.keys.forEach((k, ki) => { k.on = (idx === 0 && ki === 0); }));
+        rebuildUI();
+    });
+    document.getElementById('course-btn-all').addEventListener('click', () => {
+        stages.forEach(s => s.keys.forEach(k => { k.on = true; }));
+        rebuildUI();
+    });
+    window.addEventListener('sun-lang-change', rebuildUI);
+    rebuildUI();
+
+    function nodePosition(i) {
+        const padX = 58, spanW = Math.max(120, W - padX * 2);
+        const x = padX + (i / (stages.length - 1)) * spanW;
+        const midY = H * 0.5;
+        const deficit = 1 - stageScore(stages[i]); // 0 si parfait, 1 si 0/3 clés
+        const drift = deficit * stages[i].driftDir * (H * 0.31);
+        return { x, y: midY - drift, midY, deficit };
+    }
+
+    let last = performance.now();
+    function renderCourse(now) {
+        requestAnimationFrame(renderCourse);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        if (autoPlay) {
+            shipProg += dt * 0.11;
+            if (shipProg > 1) shipProg = 0;
+            const nearIdx = Math.round(shipProg * (stages.length - 1));
+            if (nearIdx !== curIdx) { curIdx = nearIdx; rebuildUI(); }
+        }
+
+        ctx.clearRect(0, 0, W, H);
+        const midY = H * 0.5;
+
+        // Zone Danger Haute : Mordor Technocratique & Super-IA Non-Alignée
+        const topG = ctx.createLinearGradient(0, 0, 0, H * 0.3);
+        topG.addColorStop(0, 'rgba(224, 64, 251, 0.22)');
+        topG.addColorStop(1, 'rgba(239, 68, 68, 0.0)');
+        ctx.fillStyle = topG; ctx.fillRect(0, 0, W, H * 0.3);
+
+        // Zone Danger Basse : Effondrement Entropique & Guerres Fossiles
+        const botG = ctx.createLinearGradient(0, H, 0, H * 0.7);
+        botG.addColorStop(0, 'rgba(239, 68, 68, 0.24)');
+        botG.addColorStop(1, 'rgba(120, 53, 15, 0.0)');
+        ctx.fillStyle = botG; ctx.fillRect(0, H * 0.7, W, H * 0.3);
+
+        // Corridor Central Doré (Géodésique Idéale)
+        const corG = ctx.createLinearGradient(0, midY - 46, 0, midY + 46);
+        corG.addColorStop(0, 'rgba(68, 238, 119, 0)');
+        corG.addColorStop(0.5, 'rgba(68, 238, 119, 0.11)');
+        corG.addColorStop(1, 'rgba(68, 238, 119, 0)');
+        ctx.fillStyle = corG; ctx.fillRect(0, midY - 46, W, 92);
+
+        ctx.strokeStyle = 'rgba(255, 204, 0, 0.28)';
+        ctx.setLineDash([6, 6]);
+        ctx.beginPath(); ctx.moveTo(40, midY); ctx.lineTo(W - 40, midY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Étiquettes des deux Gouffres
+        ctx.font = '700 10.5px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(244, 114, 182, 0.85)';
+        ctx.fillText(isEn() ? '▲ UPPER CHASM: TECHNOCRATIC MORDOR & UNALIGNED SUPER-AI' : '▲ GOUFFRE SUPÉRIEUR : MORDOR TECHNOCRATIQUE & SUPER-IA NON ALIGNÉE', W * 0.5, 20);
+        ctx.fillStyle = 'rgba(248, 113, 113, 0.85)';
+        ctx.fillText(isEn() ? '▼ LOWER CHASM: ENTROPIC COLLAPSE, INFLATION & RESOURCE WARS' : '▼ GOUFFRE INFÉRIEUR : EFFONDREMENT ENTROPIQUE, INFLATION & GUERRES D’USURE', W * 0.5, H - 12);
+
+        // Courbe de la trajectoire effective
+        const pts = stages.map((_, i) => nodePosition(i));
+        ctx.lineWidth = 3.2;
+        ctx.strokeStyle = '#ffcc00';
+        ctx.beginPath();
+        pts.forEach((p, i) => {
+            if (i === 0) ctx.moveTo(p.x, p.y);
+            else {
+                const prev = pts[i - 1];
+                const cxMid = (prev.x + p.x) * 0.5;
+                ctx.bezierCurveTo(cxMid, prev.y, cxMid, p.y, p.x, p.y);
+            }
+        });
+        ctx.stroke();
+
+        // Nœuds des 7 étapes
+        pts.forEach((p, i) => {
+            const sel = i === curIdx;
+            const ok = p.deficit < 0.34;
+            ctx.fillStyle = ok ? '#44ee77' : (p.deficit < 0.7 ? '#ffcc00' : '#ef4444');
+            ctx.beginPath(); ctx.arc(p.x, p.y, sel ? 9.5 : 6.5, 0, Math.PI * 2); ctx.fill();
+            if (sel) {
+                ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.arc(p.x, p.y, 14 + Math.sin(now * 0.006) * 2, 0, Math.PI * 2); ctx.stroke();
+            }
+            ctx.fillStyle = '#f8fafc'; ctx.font = '700 11px "Fira Code", monospace';
+            ctx.fillText(stages[i].yr, p.x, p.y - 18);
+        });
+
+        // Vaisseau Pionnier interpolé sur la courbe
+        const segFloat = shipProg * (pts.length - 1);
+        const idx0 = Math.min(pts.length - 2, Math.floor(segFloat));
+        const frac = segFloat - idx0;
+        const sx = pts[idx0].x + (pts[idx0 + 1].x - pts[idx0].x) * frac;
+        const sy = pts[idx0].y + (pts[idx0 + 1].y - pts[idx0].y) * frac;
+
+        ctx.fillStyle = '#00e5ff';
+        ctx.shadowColor = '#00e5ff'; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.arc(sx, sy, 5.5, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(renderCourse);
+})();
+
+/* 4. MODULE DIAGRAMME SANKEY EXERGÉTIQUE & OUROBOROS (#ouroboros-sankey) */
+(function() {
+    const cv = document.getElementById('sankeyCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    let solarMode = true;
+    let W = 0, H = 0, dpr = 1;
+
+    const btnS = document.getElementById('sankey-btn-solar');
+    const btnF = document.getElementById('sankey-btn-fossil');
+    btnS.addEventListener('click', () => { solarMode = true; btnS.classList.add('active'); btnF.classList.remove('active'); });
+    btnF.addEventListener('click', () => { solarMode = false; btnF.classList.add('active'); btnS.classList.remove('active'); });
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(cv);
+    resize();
+
+    const dots = Array.from({ length: 65 }, (_, i) => ({ t: Math.random(), branch: i % 4, spd: 0.22 + Math.random() * 0.16 }));
+
+    function bezierPt(p0, p1, p2, p3, t) {
+        const u = 1 - t;
+        return {
+            x: u*u*u*p0.x + 3*u*u*t*p1.x + 3*u*t*t*p2.x + t*t*t*p3.x,
+            y: u*u*u*p0.y + 3*u*u*t*p1.y + 3*u*t*t*p2.y + t*t*t*p3.y
+        };
+    }
+
+    let last = performance.now();
+    function renderSankey(now) {
+        requestAnimationFrame(renderSankey);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        ctx.clearRect(0, 0, W, H);
+
+        const xIn = W * 0.1, xCore = W * 0.44, xOut = W * 0.86, cy = H * 0.46;
+
+        const branches = solarMode ? [
+            { yEnd: H * 0.20, w: 26, col: '#00e5ff', fr: 'Eau MOF-303 & MED (34 %)', en: 'MOF-303 & MED Water (34%)' },
+            { yEnd: H * 0.42, w: 28, col: '#44ee77', fr: 'Séchage Biochar & Serres (42 %)', en: 'Biochar Drying & Greenhouses (42%)' },
+            { yEnd: H * 0.64, w: 18, col: '#ffcc00', fr: 'Preuve PoW + Inférence IA (20 %)', en: 'PoW Truth + Edge-AI (20%)' },
+            { yEnd: H * 0.84, w: 6,  col: '#64748b', fr: 'Pertes résiduelles (4 %)', en: 'Residual Loss (4%)' }
+        ] : [
+            { yEnd: H * 0.24, w: 46, col: '#ef4444', fr: 'Fumées CO₂ & Chaleur Perdue (64 %)', en: 'Exhaust CO₂ & Waste Heat (64%)' },
+            { yEnd: H * 0.54, w: 24, col: '#f59e0b', fr: 'Travail Mécanique / Élec. (36 %)', en: 'Mechanical / Grid Work (36%)' },
+            { yEnd: H * 0.78, w: 8,  col: '#78350f', fr: 'Déchets & E-Waste Non-Recyclés', en: 'Unrecycled Sludges & E-Waste' },
+            { yEnd: H * 0.78, w: 4,  col: '#78350f', fr: '', en: '' }
+        ];
+
+        // Tronc d'entrée primaire (100 %)
+        ctx.strokeStyle = solarMode ? 'rgba(247, 147, 26, 0.38)' : 'rgba(180, 83, 9, 0.42)';
+        ctx.lineWidth = 54;
+        ctx.beginPath(); ctx.moveTo(xIn, cy); ctx.lineTo(xCore, cy); ctx.stroke();
+
+        // Branches de sortie
+        branches.forEach(b => {
+            if (!b.fr) return;
+            ctx.strokeStyle = b.col + '44';
+            ctx.lineWidth = b.w;
+            ctx.beginPath();
+            ctx.moveTo(xCore, cy);
+            ctx.bezierCurveTo(W * 0.62, cy, W * 0.66, b.yEnd, xOut, b.yEnd);
+            ctx.stroke();
+
+            ctx.fillStyle = b.col;
+            ctx.font = '600 11px "Inter", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(isEn() ? b.en : b.fr, Math.min(W - 195, xOut - 135), b.yEnd - b.w * 0.5 - 6);
+        });
+
+        // Boucle Ouroboros de retour (99 % Biolixiviation) en mode Solaire
+        if (solarMode) {
+            ctx.strokeStyle = 'rgba(179, 102, 255, 0.45)';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(xOut - 30, H * 0.68);
+            ctx.bezierCurveTo(W * 0.72, H * 0.96, W * 0.34, H * 0.96, xCore, cy + 34);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#d8b4fe';
+            ctx.font = '600 10.5px "Fira Code", monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(isEn() ? '↺ OUROBOROS BIOLEACHING: 99.1% Cu, Au, Ag, Pd, Si RECOVERED' : '↺ OUROBOROS BIOLIXIVIATION : 99,1 % Cu, Au, Ag, Pd, Si RECYCLÉS', W * 0.56, H - 14);
+        }
+
+        // Particules animées dans les flux
+        dots.forEach(d => {
+            d.t += dt * d.spd;
+            if (d.t > 1) d.t = 0;
+            if (d.t < 0.42) {
+                const px = xIn + (d.t / 0.42) * (xCore - xIn);
+                ctx.fillStyle = solarMode ? '#ffcc00' : '#d97706';
+                ctx.beginPath(); ctx.arc(px, cy + (d.branch - 1.5) * 9, 3, 0, Math.PI * 2); ctx.fill();
+            } else {
+                const bt = (d.t - 0.42) / 0.58;
+                const br = branches[d.branch];
+                const pt = bezierPt({ x: xCore, y: cy }, { x: W * 0.62, y: cy }, { x: W * 0.66, y: br.yEnd }, { x: xOut, y: br.yEnd }, bt);
+                ctx.fillStyle = br.col;
+                ctx.beginPath(); ctx.arc(pt.x, pt.y, 3.2, 0, Math.PI * 2); ctx.fill();
+            }
+        });
+
+        // Boîte centrale du Cœur
+        ctx.fillStyle = '#090d18';
+        ctx.strokeStyle = solarMode ? '#f7931a' : '#ef4444';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.roundRect(xCore - 58, cy - 34, 116, 68, 10); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#ffffff'; ctx.font = '700 11px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(solarMode ? 'IMMERSION ASIC' : (isEn() ? 'COMBUSTION' : 'COMBUSTION'), xCore, cy - 6);
+        ctx.fillStyle = solarMode ? '#44ee77' : '#fca5a5';
+        ctx.fillText(solarMode ? 'PUE 1.02 · 60°C' : 'CARNOT ~36%', xCore, cy + 13);
+
+        // Étiquette d'entrée
+        ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'left';
+        ctx.fillText(solarMode ? (isEn() ? '100% SOLAR / FLARE' : '100 % SOLAIRE / TORCHÈRE') : (isEn() ? '100% CRUDE OIL / GAS' : '100 % PÉTROLE / GAZ'), 16, cy - 34);
+    }
+    requestAnimationFrame(renderSankey);
+})();
+</script>
 </body>
 </html>
