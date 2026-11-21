@@ -1,18 +1,18 @@
 {
   "kind": 1040,
-  "created_at": 1794986480,
+  "created_at": 1795243071,
   "tags": [
     [
       "x",
-      "c924e9e52a1f60425725d097e1c82a4b62792cff6cf7b78d25a454239a5d5055"
+      "82a2f0d2007e66fa13740c5546c90aa204fa54ee48b4f06c72222b65531ec3bf"
     ],
     [
       "filename",
-      "Cosmology_v2en.pdf"
+      "NakamotoSpaceTime_en.pdf"
     ]
   ],
   "content": "D-Trinity Proof of Provenance",
   "pubkey": "929b62d1d54090b224f6e73f31e78ebe76df5e3822f891a4a542343dba8eed51",
-  "id": "c748049fd9d8b23fef05bfd2b833090230adb8f6d4cee76b3a5f76eb10a9b006",
-  "sig": "5eb126666835be5ad6b1fea96cde9be22a8d41d44ee3dca8ad03158ca9792f53ed39e809481be6aacf01ee63fe128dfa7933f1e6b23ff8f89b3714dbea1a468f"
+  "id": "6d862ec3f5fb61b48edb4914e315c2fd2867333a6400c01c1d3c5b997560715e",
+  "sig": "3470efc3b6f6b85a60eab1be01fa45802c1e66d00558c8cee16621dcd036fba61a6b0bb1bcfa3752a507611706b54cce121c61e7a630cd644ab633863b6d0a4e"
 }
