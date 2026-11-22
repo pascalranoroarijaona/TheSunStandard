@@ -1,0 +1,2511 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>L'Horloge Critique : Riemann & Nakamoto / The Critical Clock — The Sun Standard</title>
+    <meta name="description" content="De la ligne critique Re(s)=1/2 de Bernhard Riemann au battement de 144 blocs/jour de Satoshi Nakamoto : dualité spectrale, système de Bost-Connes, temps thermique et confinement diffusif en √N." />
+
+    <!-- Open Graph / LinkedIn / WhatsApp / Social Preview Tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="L'Horloge Critique : De la Zêta de Riemann au Métronome de Nakamoto (144 Blocs/Jour)" />
+    <meta property="og:description" content="Comment l'ordre macroscopique émerge du chaos microscopique : ligne critique Re(s)=1/2, zéros spectraux, système thermodynamique de Bost-Connes et consensus de Nakamoto." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/nakamoto-riemann.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/logo-sunstandard.jpg" />
+
+    <!-- X / Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Critical Clock: Riemann's Zeta Line & Nakamoto's 144-Block Rhythm" />
+    <meta property="og:site_name" content="The Sun Standard" />
+    <meta name="twitter:description" content="Spectral duality, √N diffusive confinement, Bost-Connes quantum statistical mechanics, and Bitcoin's 2,016-block thermodynamic thermostat." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/logo-sunstandard.jpg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #080a0b;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
+            --magma-orange: #ff5500;
+            --bio-green: #44ee77;
+            --stone-grey: #2a2d30;
+            --water-blue: #00ccff;
+            --carbon-red: #d35400;
+            --gold-gov: #ffd700;
+            --bg-dark: #050505;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
+            --orange-l1: #f7931a;
+            --teal-l0: #00bfa5;
+            --crimson-err: #f43f5e;
+            --border-glow: rgba(0, 229, 255, 0.22);
+            --note-bg: rgba(0, 229, 255, 0.03);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top center, rgba(0, 229, 255, 0.06) 0%, rgba(247, 147, 26, 0.03) 35%, transparent 65%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Système Bilingue Zero-JS --- */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        /* Navigation Minimaliste */
+        nav.top-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2rem; background: rgba(5, 5, 8, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2); font-family: var(--font-ui);
+        }
+        nav.top-nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
+        nav.top-nav .nav-center { flex-grow: 1; margin-left: 2rem; }
+        nav.top-nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav.top-nav a.back:hover { color: #fff; }
+
+        /* Language Toggle Buttons */
+        .lang-toggle {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+        }
+        .lang-toggle button {
+            background: transparent; border: none; font-size: 1.35rem; color: white;
+            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+        }
+        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; color: white; filter: grayscale(0%) drop-shadow(0 0 8px rgba(0, 229, 255, 0.5));
+            transform: scale(1.1);
+        }
+
+        /* Conteneur de l'Article */
+        article {
+            max-width: 1100px; margin: 8rem auto 6rem; padding: 0 2rem;
+            font-size: 1.15rem; color: #d4d4d4;
+        }
+
+        /* --- Hero Header avec Pluie Spectrale Zêta & Blocs --- */
+        header.matrix-hero {
+            position: relative; text-align: center; margin-bottom: 3.5rem;
+            padding: 4.5rem 2rem 3.5rem;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-bottom: 2px solid var(--orange-l1);
+            border-radius: 14px; overflow: hidden;
+            background: rgba(5, 8, 13, 0.9);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), inset 0 0 60px rgba(0, 229, 255, 0.06);
+            font-family: var(--font-ui);
+        }
+        #zetaMatrixCanvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1; opacity: 0.65;
+        }
+        .matrix-hero-content { position: relative; z-index: 2; }
+        h1 {
+            font-size: 2.85rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem;
+            letter-spacing: -0.5px; text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.95), 0 0 18px rgba(0, 229, 255, 0.45);
+        }
+        .subtitle {
+            font-size: 1.18rem; color: var(--sun-yellow); font-style: italic;
+            max-width: 880px; margin: 0 auto; line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+        }
+
+        .quote-block {
+            border-left: 3px solid var(--sun-yellow); padding-left: 1.5rem;
+            font-style: italic; color: #fff; font-size: 1.08rem;
+            margin-bottom: 2rem; font-family: var(--font-ui);
+        }
+
+        /* Tiroirs (Details/Summary) */
+        details {
+            margin-bottom: 2rem; background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--stone-grey); border-radius: 0 8px 8px 0;
+            overflow: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.35); font-family: var(--font-ui);
+        }
+        details[open] {
+            background: rgba(4, 7, 12, 0.78);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.6);
+        }
+        summary {
+            padding: 1.4rem 1.5rem; cursor: pointer; font-weight: 600; font-size: 1.18rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            gap: 15px; background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::before {
+            content: '▶'; color: inherit; font-size: 0.9rem; transition: transform 0.2s ease;
+        }
+        details[open] > summary::before { transform: rotate(90deg); }
+
+        .drawer-content {
+            padding: 1.8rem 1.8rem 1.8rem 2.3rem; color: #b8c7d9; font-family: var(--font-main);
+        }
+        .drawer-content h4 { font-family: var(--font-ui); }
+        .drawer-content p { margin-bottom: 1rem; }
+
+        details[class^="level-"], #tiroir-dossier-scientifique {
+            width: 100%; max-width: 100%; margin: 0 auto 1.6rem auto !important;
+            border-left-width: 4px; border-left-style: solid; box-sizing: border-box;
+        }
+        details[class^="level-"] > summary, #tiroir-dossier-scientifique > summary {
+            min-height: 76px; display: flex; align-items: center;
+        }
+        details[class^="level-"] > .drawer-content, #tiroir-dossier-scientifique > #dossier-scientifique {
+            max-height: 860px; overflow-y: auto; scrollbar-width: thin;
+            scrollbar-color: rgba(0, 229, 255, 0.4) rgba(0, 0, 0, 0.4);
+        }
+
+        .level-1 { border-color: var(--cyan-l2); }
+        .level-1 > summary { color: var(--cyan-l2); }
+        .level-2 { border-color: var(--orange-l1); }
+        .level-2 > summary { color: var(--orange-l1); }
+        .level-3 { border-color: var(--sun-yellow); }
+        .level-3 > summary { color: var(--sun-yellow); }
+        .level-4 { border-color: var(--purple-l4); }
+        .level-4 > summary { color: var(--purple-l4); }
+        .level-5 { border-color: var(--bio-green); }
+        .level-5 > summary { color: var(--bio-green); }
+        .level-6 { border-color: var(--gold-gov); }
+        .level-6 > summary { color: var(--gold-gov); }
+        .level-7 { border-color: var(--teal-l0); }
+        .level-7 > summary { color: var(--teal-l0); }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.65); padding: 1.5rem; border-radius: 8px;
+            margin: 1.5rem 0; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 1.05rem; font-family: var(--font-ui); overflow-x: auto;
+        }
+
+        /* --- Coupe Spectrale SVG --- */
+        .cross-section-container {
+            margin: 4rem 0; padding: 2rem; background: #04070b;
+            border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.85), inset 0 0 35px rgba(0, 229, 255, 0.04);
+            font-family: var(--font-ui);
+        }
+        .cross-section-header { text-align: center; margin-bottom: 2rem; }
+        .cross-section-title {
+            color: var(--cyan-l2); font-size: 1.4rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;
+        }
+        .cross-section-desc {
+            color: #a0aab5; font-size: 0.95rem; max-width: 820px; margin: 0 auto; line-height: 1.6;
+        }
+        .cross-section-svg {
+            width: 100%; height: auto; border-radius: 10px;
+            background: linear-gradient(180deg, #050914 0%, #091322 45%, #0e1017 75%, #06080c 100%);
+            border: 1px solid rgba(255,255,255,0.08); display: block;
+        }
+        .flow-line { stroke-dasharray: 6, 6; animation: flowMove 1.6s linear infinite; }
+        @keyframes flowMove { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+
+        .cross-legend-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem; margin-top: 2rem;
+        }
+        .cross-legend-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px; padding: 1rem 1.2rem; border-left: 3px solid var(--stone-grey);
+        }
+        .cross-legend-card h5 {
+            margin: 0 0 0.4rem 0; font-size: 0.88rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .cross-legend-card p { margin: 0; font-size: 0.83rem; color: #94a3b8; line-height: 1.48; }
+
+        /* --- Simulateur Avancé --- */
+        .simulator-box {
+            background: #070a10; border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 12px; padding: 2.2rem; margin: 4rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.75), inset 0 0 25px rgba(0, 229, 255, 0.03);
+            font-family: var(--font-ui);
+        }
+        .sim-presets-bar {
+            display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+            margin-bottom: 1.8rem; padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+        .sim-preset-btn {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3);
+            color: #d4d4d4; padding: 0.45rem 0.95rem; border-radius: 20px;
+            font-size: 0.78rem; font-family: var(--font-mono); cursor: pointer; transition: all 0.25s ease;
+        }
+        .sim-preset-btn:hover, .sim-preset-btn.active {
+            background: rgba(0, 229, 255, 0.16); border-color: var(--cyan-l2); color: #fff;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+        }
+        .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 1.2rem; }
+        .sim-group-title {
+            font-family: var(--font-mono); font-size: 0.85rem; color: var(--sun-yellow);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sim-control { margin-bottom: 1.25rem; }
+        .sim-control label {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.82rem; color: #b0c4de; text-transform: uppercase;
+            letter-spacing: 0.6px; margin-bottom: 0.4rem;
+        }
+        .sim-control input[type="range"] {
+            width: 100%; accent-color: var(--cyan-l2); background: #1a202c;
+            height: 6px; border-radius: 3px; outline: none; cursor: pointer;
+        }
+        .sim-value { color: var(--sun-yellow); font-family: var(--font-mono); font-weight: 700; font-size: 0.92rem; }
+        .sim-outputs-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem; background: #04060a; border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px; padding: 1.4rem; margin-top: 1.8rem;
+        }
+        .sim-metric {
+            padding: 0.9rem; background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(255,255,255,0.04); border-radius: 6px;
+            border-left: 3px solid var(--stone-grey);
+        }
+        .sim-metric-label { font-size: 0.75rem; color: #8899aa; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
+        .sim-metric-value { font-size: 1.38rem; font-family: var(--font-mono); color: #fff; font-weight: bold; }
+
+        /* --- Dossier Scientifique --- */
+        #dossier-scientifique {
+            max-width: 1100px; padding: 2.2rem; font-family: var(--font-main);
+            color: #e0e6ed; background: #0b0f17; line-height: 1.65;
+        }
+        #dossier-scientifique h2 {
+            color: var(--sun-yellow); text-align: center; font-size: 1.6rem;
+            font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 2rem; padding-bottom: 0.85rem;
+            border-bottom: 2px solid rgba(255, 204, 0, 0.25);
+        }
+        #dossier-scientifique h3 {
+            color: var(--cyan-l2); font-size: 1.18rem; font-family: var(--font-ui);
+            margin-top: 2.4rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
+        }
+        #dossier-scientifique h3::before {
+            content: ""; display: inline-block; width: 4px; height: 1.2rem;
+            background: var(--orange-l1); border-radius: 2px;
+        }
+        #dossier-scientifique .calc-box {
+            background: #131924; border-left: 3px solid var(--cyan-l2);
+            padding: 1rem 1.35rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 0.94rem;
+        }
+        #dossier-scientifique .table-wrapper {
+            overflow-x: auto; margin: 1.25rem 0 1.75rem; border: 1px solid #2d3748;
+            border-radius: 8px; background: #111621;
+        }
+        #dossier-scientifique table {
+            width: 100%; border-collapse: collapse; text-align: left;
+            font-size: 0.9rem; font-family: var(--font-ui);
+        }
+        #dossier-scientifique caption {
+            text-align: left; font-weight: 700; padding: 0.85rem 1rem;
+            color: var(--sun-yellow); background: rgba(255, 204, 0, 0.05);
+            border-bottom: 1px solid #2d3748; font-size: 0.94rem;
+        }
+        #dossier-scientifique th {
+            background: #1a2232; color: #f0f6fc; font-weight: 600;
+            padding: 0.75rem 1rem; border-bottom: 1px solid #2d3748;
+        }
+        #dossier-scientifique td {
+            padding: 0.68rem 1rem; border-bottom: 1px solid #1e2636; color: #cbd5e1;
+        }
+        #dossier-scientifique tr:hover td { background: rgba(0, 229, 255, 0.04); }
+        #dossier-scientifique .figure-card {
+            margin: 1.5rem 0; padding: 1.2rem; background: #070a10;
+            border: 1px solid #2d3748; border-radius: 10px; text-align: center;
+        }
+        #dossier-scientifique .figure-caption {
+            margin-top: 0.75rem; font-size: 0.82rem; color: #8b949e; font-family: var(--font-mono);
+        }
+        #dossier-scientifique canvas.sci-canvas {
+            width: 100%; height: auto; display: block; border-radius: 6px;
+        }
+        #dossier-scientifique ol.bibliography {
+            padding-left: 1.5rem; margin: 1rem 0; color: #94a3b8; font-size: 0.88rem;
+        }
+        #dossier-scientifique ol.bibliography li { margin-bottom: 0.55rem; line-height: 1.5; }
+        #dossier-scientifique ol.bibliography a { color: var(--cyan-l2); text-decoration: none; }
+
+        .dashboard-box {
+            background: rgba(5, 8, 14, 0.9); border: 1px solid var(--orange-l1);
+            border-radius: 10px; padding: 2rem; margin: 4rem 0;
+            box-shadow: 0 0 25px rgba(247, 147, 26, 0.12); font-family: var(--font-ui);
+        }
+
+        /* Author, Feedback & Nav Cards */
+        .author-section {
+            margin: 4rem auto; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 204, 0, 0.2); border-top: 4px solid var(--sun-yellow);
+            border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); max-width: 960px;
+        }
+        .author-header {
+            display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;
+        }
+        .author-avatar { font-size: 3rem; line-height: 1; }
+        .author-bio h3 {
+            color: #fff; margin: 0 0 0.5rem 0; font-family: var(--font-ui);
+            font-size: 1.45rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .author-bio p { color: #a0aab5; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+        .author-bio .tags { color: var(--cyan-l2); font-family: var(--font-mono); font-size: 0.82rem; margin-top: 0.5rem; display: block; }
+        .resources-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.2rem;
+        }
+        .resource-card {
+            display: block; padding: 1.2rem; background: rgba(0, 0, 0, 0.55);
+            border: 1px solid var(--stone-grey); border-radius: 8px; text-decoration: none; transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            border-color: var(--cyan-l2); background: rgba(0, 229, 255, 0.05); transform: translateY(-2px);
+        }
+        .resource-card h4 { color: #fff; margin: 0 0 0.5rem 0; font-size: 1.02rem; font-family: var(--font-ui); }
+        .resource-card p { color: #94a3b8; font-size: 0.84rem; margin: 0; line-height: 1.45; }
+
+        .feedback-container {
+            margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 700px; text-align: center;
+        }
+        .feedback-title {
+            color: var(--sun-yellow); font-size: 1.45rem; text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800; font-family: var(--font-ui);
+        }
+        .feedback-desc { color: #aaa; font-style: italic; font-size: 0.95rem; margin-bottom: 1.8rem; }
+        .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .star-rating input { display: none; }
+        .star-rating label { color: #333; font-size: 2.4rem; cursor: pointer; transition: color 0.2s ease, transform 0.2s ease; }
+        .star-rating label:hover, .star-rating label:hover ~ label, .star-rating input:checked ~ label {
+            color: var(--sun-yellow); text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+        .feedback-textarea {
+            width: 100%; background: #050505; border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: 8px; color: #fff; padding: 1.1rem; font-family: var(--font-main);
+            font-size: 1.05rem; min-height: 150px; resize: vertical; margin-bottom: 1.2rem; outline: none;
+        }
+        .feedback-submit {
+            background: rgba(0, 229, 255, 0.08); border: 1px solid var(--cyan-l2); color: var(--cyan-l2);
+            padding: 11px 32px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui);
+            font-weight: bold; letter-spacing: 1.8px; text-transform: uppercase; transition: all 0.3s ease;
+        }
+        .feedback-submit:hover {
+            background: rgba(0, 229, 255, 0.22); box-shadow: 0 0 22px rgba(0, 229, 255, 0.45); transform: scale(1.04);
+        }
+        .feedback-popup {
+            display: none; position: fixed; bottom: 30px; right: 30px;
+            background: rgba(68, 238, 119, 0.15); border: 1px solid #44ee77; color: #44ee77;
+            padding: 15px 25px; border-radius: 8px; z-index: 1000; backdrop-filter: blur(5px);
+            font-family: var(--font-ui); font-weight: bold;
+        }
+
+        .article-navigation {
+            display: flex; gap: 2rem; margin-top: 4rem; margin-bottom: 2rem; justify-content: space-between;
+        }
+        .nav-card {
+            flex: 1; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 170, 0, 0.2);
+            border-radius: 12px; padding: 1.6rem; text-align: center; text-decoration: none;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .nav-card:hover {
+            background: rgba(0, 229, 255, 0.05); border-color: var(--cyan-l2);
+            transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+        .nav-direction { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 0.6rem; font-family: var(--font-ui); }
+        .nav-title { font-size: 1.2rem; font-weight: 800; color: var(--sun-yellow); line-height: 1.4; font-family: var(--font-ui); }
+
+        footer {
+            font-family: var(--font-ui); text-align: center; padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 204, 0, 0.2); color: var(--text-muted); font-size: 0.82rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            nav.top-nav .nav-center { display: none; }
+            .sim-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .article-navigation { flex-direction: column; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<nav class="top-nav">
+    <a href="index.html" class="logo">☀ Blog</a>
+    <div class="nav-center">
+        <a href="index.html" class="back">
+            <span lang="en">← Back to articles</span>
+            <span lang="fr">← Retour aux articles</span>
+        </a>
+    </div>
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    </div>
+</nav>
+
+<article>
+    <!-- BANNIÈRE DE NAVIGATION ÉPISTÉMIQUE -->
+    <nav class="article-nav" style="position:relative;margin:0 auto 1.5rem;max-width:1100px;padding:1rem 2rem;border:1px solid var(--border-glow);border-radius:8px;font-family:var(--font-ui);display:flex;gap:1.2rem;flex-wrap:wrap;background:rgba(0,229,255,0.02)">
+        <strong><span lang="fr">Navigation :</span><span lang="en">Navigation:</span></strong>
+        <a href="#partie-spectrale" style="color:var(--cyan-l2);text-decoration:none;">
+            <span lang="fr">I. Architecture Mathématique — Niveaux 1–4, Dossier &amp; Simulateur</span>
+            <span lang="en">I. Mathematical Architecture — Levels 1–4, Dossier &amp; Simulator</span>
+        </a>
+        <a href="#manifeste-thermique" style="color:var(--orange-l1);text-decoration:none;">
+            <span lang="fr">II. Physique &amp; Éconophysique — Bost-Connes, Temps Thermique &amp; Données Réelles</span>
+            <span lang="en">II. Physics &amp; Econophysics — Bost-Connes, Thermal Time &amp; Real Data</span>
+        </a>
+        <small style="width:100%;color:var(--text-muted)">
+            <span lang="fr">Note épistémique : cet article distingue strictement l'isomorphisme structurel exact (confinement diffusif en $\sqrt{N}$, dualité spectrale et mécanique statistique de Bost-Connes) d'une identité causale directe entre nombres premiers et hachages SHA-256.</span>
+            <span lang="en">Epistemic note: this paper strictly distinguishes rigorous structural isomorphisms ($\sqrt{N}$ diffusive confinement, spectral duality, and Bost-Connes statistical mechanics) from any naive causal equivalence between prime numbers and SHA-256 hashes.</span>
+        </small>
+    </nav>
+
+    <div id="partie-spectrale"></div>
+
+    <!-- HERO HEADER AVEC PLUIE SPECTRALE ZÊTA-NAKAMOTO -->
+    <header class="matrix-hero">
+        <canvas id="zetaMatrixCanvas"></canvas>
+        <div class="matrix-hero-content">
+            <h1>
+                <span lang="fr">L'Horloge Critique · Riemann &amp; Nakamoto</span>
+                <span lang="en">The Critical Clock · Riemann &amp; Nakamoto</span>
+            </h1>
+            <div class="subtitle">
+                <span lang="fr">De la Ligne Critique $\mathrm{Re}(s) = \frac{1}{2}$ de Bernhard Riemann au Métronome Thermodynamique de 144 Blocs/Jour de Satoshi Nakamoto : Dualité Spectrale, Système de Bost-Connes &amp; Géométrie de l'Équilibre.</span>
+                <span lang="en">From Bernhard Riemann's Critical Line $\mathrm{Re}(s) = \frac{1}{2}$ to Satoshi Nakamoto's 144-Block/Day Thermodynamic Metronome: Spectral Duality, Bost-Connes Mechanics &amp; The Geometry of Equilibrium.</span>
+            </div>
+            <p style="margin-top: 1.4rem; color: #94a3b8; font-size: 0.88rem; font-family: var(--font-mono);">
+                <span lang="fr">2026-11-22 // RECHERCHE OUVERTE EN ÉCONOPHYSIQUE &amp; THÉORIE SPECTRALE — L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-11-22 // OPEN RESEARCH IN ECONOPHYSICS &amp; SPECTRAL THEORY — THE SUN STANDARD</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- ENCADRÉ OPEN-SOURCE & TÉLÉCHARGEMENT HTML -->
+    <div class="ai-download-box" style="margin: -1.5rem auto 3rem; padding: 1.5rem; background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.25); border-left: 4px solid var(--cyan-l2); border-radius: 6px; font-family: var(--font-ui); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        <div lang="fr">
+            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
+                🧠 <strong>Don't Trust, Verify — Vérifiez les équations et le code !</strong> Téléchargez le code source HTML complet de cet article (incluant les moteurs numériques des zéros de Riemann, la simulation de Poisson et la télémétrie Blockchain) pour l'inspecter, le modifier ou l'analyser avec votre IA locale.
+            </p>
+        </div>
+        <div lang="en">
+            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
+                🧠 <strong>Don't Trust, Verify — Audit the Math &amp; Code!</strong> Download the complete standalone HTML source of this article (including the Riemann explicit-formula engine, Poisson retargeting simulator, and live blockchain telemetry) to inspect or extend with your favorite AI.
+            </p>
+        </div>
+        <div style="text-align: center;">
+            <button onclick="telechargerPageActuelle()" class="feedback-submit" style="padding: 8px 24px; font-size: 0.82rem;">
+                <span lang="fr">⬇️ Télécharger l'HTML autonome (nakamoto-riemann.html)</span>
+                <span lang="en">⬇️ Download Standalone HTML (nakamoto-riemann.html)</span>
+            </button>
+        </div>
+        <script>
+            function telechargerPageActuelle() {
+                const codeHTML = "<!doctype html>\n" + document.documentElement.outerHTML;
+                const blob = new Blob([codeHTML], { type: "text/html;charset=utf-8" });
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = blobUrl;
+                a.download = "nakamoto-riemann.html";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+            }
+        </script>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- RÉSONATEUR ORBITAL & SYNTHÉTISEUR AUDIO DES ZÉROS DE RIEMANN + 144    -->
+    <!-- ===================================================================== -->
+    <div class="resonator-wrapper" id="zeta-resonator-stage" style="position: relative; width: 100%; text-align: center; padding: 35px 20px 45px; margin-bottom: 3rem; background: radial-gradient(circle at center, rgba(0, 229, 255, 0.09) 0%, rgba(5, 6, 10, 0.96) 72%); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 14px; overflow: hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.8);">
+        <button type="button" onclick="playZetaNakamotoResonance()" style="position: absolute; top: 18px; right: 20px; background: rgba(8, 12, 18, 0.9); border: 1.5px solid var(--sun-yellow); border-radius: 30px; padding: 8px 16px; color: #fff; font-family: var(--font-mono); font-size: 0.76rem; cursor: pointer; z-index: 20; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 18px rgba(255, 204, 0, 0.3);">
+            <span style="color: var(--sun-yellow); font-size: 1.1rem;">🔊</span>
+            <span lang="fr">Écouter les Zéros &amp; le Pouls 144</span>
+            <span lang="en">Play Zeta Zeros &amp; 144 Pulse</span>
+        </button>
+
+        <canvas id="orbitalClockCanvas" width="440" height="440" onclick="playZetaNakamotoResonance()" title="Cliquez pour écouter la synthèse spectrale des premiers zéros non triviaux γ_k et du battement de Nakamoto" style="width: 340px; height: 340px; max-width: 90vw; max-height: 90vw; cursor: pointer; display: block; margin: 0 auto 1.2rem; border-radius: 50%;"></canvas>
+
+        <div style="font-family: var(--font-mono); font-size: 1.08rem; font-weight: bold; color: #ffffff; text-shadow: 0 0 14px rgba(0, 229, 255, 0.7); margin-bottom: 0.8rem;">
+            <span lang="fr">« Le hasard local est aveugle ; la symétrie critique en fait une horloge universelle. »</span>
+            <span lang="en">"Local randomness is blind; critical symmetry turns it into a universal clock."</span>
+        </div>
+        <p style="font-size: 0.84rem; color: #94a3b8; font-family: var(--font-ui); max-width: 680px; margin: 0 auto;">
+            <span lang="fr">Couronne extérieure : <strong>144 blocs cristallins</strong> ($\tau_0 = 600\text{ s}$). Axe vertical cyan : <strong>Ligne Critique $\mathrm{Re}(s) = \frac{1}{2}$</strong> portant les harmoniques $\gamma_1 = 14,13$, $\gamma_2 = 21,02$, $\gamma_3 = 25,01$. Cliquez sur le cadran pour synthétiser leurs fréquences exactes via Web Audio.</span>
+            <span lang="en">Outer ring: <strong>144 crystalline blocks</strong> ($\tau_0 = 600\text{ s}$). Vertical cyan axis: <strong>Critical Line $\mathrm{Re}(s) = \frac{1}{2}$</strong> carrying spectral harmonics $\gamma_1 = 14.13$, $\gamma_2 = 21.02$, $\gamma_3 = 25.01$. Click the dial to synthesize their exact eigenfrequencies via Web Audio.</span>
+        </p>
+
+        <script>
+        (function() {
+            const dial = document.getElementById('orbitalClockCanvas');
+            if (!dial) return;
+            const dCtx = dial.getContext('2d');
+            let phase = 0;
+            let pulseBoost = 0;
+            let dialVisible = true;
+            let dialAnim = null;
+
+            const gammas = [14.1347, 21.0220, 25.0108, 30.4248, 32.9350, 37.5861];
+
+            function renderDial() {
+                const W = 440, H = 440, cx = 220, cy = 220;
+                dCtx.clearRect(0, 0, W, H);
+                phase += 0.012;
+                pulseBoost *= 0.95;
+
+                // Fond du disque complexe
+                const bgGrad = dCtx.createRadialGradient(cx, cy, 10, cx, cy, 210);
+                bgGrad.addColorStop(0, 'rgba(14, 26, 42, 0.95)');
+                bgGrad.addColorStop(0.7, 'rgba(6, 10, 18, 0.98)');
+                bgGrad.addColorStop(1, 'rgba(2, 4, 8, 1)');
+                dCtx.fillStyle = bgGrad;
+                dCtx.beginPath(); dCtx.arc(cx, cy, 208, 0, Math.PI * 2); dCtx.fill();
+
+                // Bande critique 0 < Re(s) < 1
+                dCtx.fillStyle = 'rgba(255, 204, 0, 0.04)';
+                dCtx.fillRect(cx - 58, cy - 175, 116, 350);
+                dCtx.strokeStyle = 'rgba(255, 204, 0, 0.18)';
+                dCtx.lineWidth = 1;
+                dCtx.strokeRect(cx - 58, cy - 175, 116, 350);
+
+                // Ondes d'interférence des zéros non triviaux
+                gammas.forEach((g, idx) => {
+                    const yPos = cy - 125 + idx * 50;
+                    const waveR = 14 + ((phase * g * 1.4) % 95);
+                    const alpha = Math.max(0, 0.42 * (1 - waveR / 109)) + pulseBoost * 0.25;
+                    dCtx.strokeStyle = `rgba(0, 229, 255, ${alpha.toFixed(3)})`;
+                    dCtx.lineWidth = 1.2;
+                    dCtx.beginPath(); dCtx.arc(cx, yPos, waveR, 0, Math.PI * 2); dCtx.stroke();
+                });
+
+                // Ligne critique Re(s) = 1/2
+                dCtx.save();
+                dCtx.strokeStyle = '#00e5ff';
+                dCtx.shadowColor = '#00e5ff';
+                dCtx.shadowBlur = 14 + pulseBoost * 20;
+                dCtx.lineWidth = 2.6;
+                dCtx.beginPath(); dCtx.moveTo(cx, cy - 182); dCtx.lineTo(cx, cy + 182); dCtx.stroke();
+                dCtx.restore();
+
+                // Points lumineux des zéros rho_k = 1/2 + i*gamma_k
+                gammas.forEach((g, idx) => {
+                    const yPos = cy - 125 + idx * 50;
+                    const rDot = 4.2 + Math.sin(phase * 3 + idx) * 1.2 + pulseBoost * 3;
+                    dCtx.fillStyle = '#ffffff';
+                    dCtx.shadowColor = '#ffcc00';
+                    dCtx.shadowBlur = 12;
+                    dCtx.beginPath(); dCtx.arc(cx, yPos, rDot, 0, Math.PI * 2); dCtx.fill();
+                    dCtx.shadowBlur = 0;
+
+                    dCtx.fillStyle = 'rgba(255, 204, 0, 0.85)';
+                    dCtx.font = '10px "Fira Code", monospace';
+                    dCtx.textAlign = 'left';
+                    dCtx.fillText(`½ + ${g.toFixed(2)}i`, cx + 10, yPos + 3);
+                });
+
+                // Couronne des 144 blocs quotidiens de Nakamoto
+                const activeBlock = Math.floor((phase * 8) % 144);
+                for (let b = 0; b < 144; b++) {
+                    const ang = (b / 144) * Math.PI * 2 - Math.PI / 2;
+                    const isEpochTick = (b % 12 === 0);
+                    const rIn = isEpochTick ? 186 : 192;
+                    const rOut = b === activeBlock ? 206 : 201;
+                    const x1 = cx + Math.cos(ang) * rIn, y1 = cy + Math.sin(ang) * rIn;
+                    const x2 = cx + Math.cos(ang) * rOut, y2 = cy + Math.sin(ang) * rOut;
+
+                    dCtx.strokeStyle = (b === activeBlock)
+                        ? '#ffffff'
+                        : (b < activeBlock ? '#f7931a' : 'rgba(247, 147, 26, 0.28)');
+                    dCtx.lineWidth = isEpochTick ? 2.4 : 1.4;
+                    dCtx.beginPath(); dCtx.moveTo(x1, y1); dCtx.lineTo(x2, y2); dCtx.stroke();
+                }
+
+                // Anneau externe doré
+                dCtx.strokeStyle = 'rgba(247, 147, 26, 0.55)';
+                dCtx.lineWidth = 1.5;
+                dCtx.beginPath(); dCtx.arc(cx, cy, 207, 0, Math.PI * 2); dCtx.stroke();
+
+                if (dialVisible) dialAnim = requestAnimationFrame(renderDial);
+            }
+
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    dialVisible = e.isIntersecting;
+                    if (dialVisible && !dialAnim) dialAnim = requestAnimationFrame(renderDial);
+                    else if (!dialVisible && dialAnim) { cancelAnimationFrame(dialAnim); dialAnim = null; }
+                });
+            }, { threshold: 0.05 });
+            obs.observe(dial);
+            renderDial();
+
+            // Synthétiseur Web Audio : Accord Spectral des Zéros de Riemann + Battement 144 BPM/2
+            let audioCtx = null;
+            window.playZetaNakamotoResonance = function() {
+                pulseBoost = 1.0;
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContext) return;
+                    if (!audioCtx) audioCtx = new AudioContext();
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                    const now = audioCtx.currentTime;
+                    // 1. Sub-basse thermodynamique (6 battements = 6 confirmations de Nakamoto)
+                    for (let k = 0; k < 6; k++) {
+                        const tBeat = now + k * 0.4167; // 144 BPM -> 0.4167s par battement !
+                        const sub = audioCtx.createOscillator();
+                        const subGain = audioCtx.createGain();
+                        sub.type = 'sine';
+                        sub.frequency.setValueAtTime(72, tBeat);
+                        sub.frequency.exponentialRampToValueAtTime(36, tBeat + 0.32);
+                        subGain.gain.setValueAtTime(0.001, tBeat);
+                        subGain.gain.linearRampToValueAtTime(0.16, tBeat + 0.02);
+                        subGain.gain.exponentialRampToValueAtTime(0.0001, tBeat + 0.36);
+                        sub.connect(subGain);
+                        subGain.connect(audioCtx.destination);
+                        sub.start(tBeat);
+                        sub.stop(tBeat + 0.38);
+                    }
+
+                    // 2. Harmoniques spectrales des 6 premiers zéros de Riemann (f_k = 18 * gamma_k Hz)
+                    gammas.forEach((g, idx) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+                        osc.frequency.setValueAtTime(g * 18.0, now + idx * 0.12);
+
+                        gain.gain.setValueAtTime(0.0001, now + idx * 0.12);
+                        gain.gain.linearRampToValueAtTime(0.06 / (1 + idx * 0.35), now + idx * 0.12 + 0.15);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now + idx * 0.12);
+                        osc.stop(now + 2.9);
+                    });
+                } catch (err) {
+                    console.warn("Web Audio bloqué :", err);
+                }
+            };
+        })();
+        </script>
+    </div>
+
+    <!-- ENCADRÉ PRINCIPE FONDATEUR : LA VÉRITÉ SPECTRALE & THERMODYNAMIQUE -->
+    <div class="thermo-truth-box" style="margin: 0 auto 2.5rem; padding: 2rem; background: rgba(255, 204, 0, 0.03); border: 1px solid rgba(255, 204, 0, 0.25); border-left: 4px solid var(--sun-yellow); border-radius: 8px; font-family: var(--font-ui); box-shadow: 0 8px 25px rgba(0,0,0,0.35);">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+            <span>⚖️</span>
+            <span lang="fr">Le Principe Fondateur : La Musique du Bruit et l'Invariance d'Échelle</span>
+            <span lang="en">The Foundational Principle: The Music of Noise &amp; Scale Invariance</span>
+        </h3>
+        <div style="font-family: var(--font-main); font-size: 1.05rem; line-height: 1.82; color: #d4d4d4; text-align: justify;">
+            <div lang="fr">
+                <p style="margin-bottom: 1rem;">
+                    En 1859, Bernhard Riemann dévoile l'énigme la plus profonde des mathématiques pures : les nombres premiers — ces atomes indivisibles de l'arithmétique qui surgissent localement comme un jet de dés — obéissent globalement à une symphonie spectrale gouvernée par les zéros non triviaux $\rho_k = \frac{1}{2} + i\gamma_k$ de la fonction zêta $\zeta(s)$. Tant que tous ces zéros demeurent ancrés sur la <strong>ligne critique $\mathrm{Re}(s) = \frac{1}{2}$</strong>, le chaos arithmétique ne peut jamais diverger : il reste prisonnier d'une enveloppe diffusive optimale en $\mathcal{O}(\sqrt{x}\ln x)$.
+                </p>
+                <p style="margin-bottom: 1.2rem;">
+                    Cent cinquante ans plus tard, en 2008, Satoshi Nakamoto résout un problème structurellement isomorphe dans le monde physique : comment extraire une <strong>horloge causale universelle de 144 blocs par jour</strong> ($\tau_0 = 600\text{ s}$) à partir d'un océan mondial de collisions SHA-256 sans mémoire et d'une puissance énergétique en mutation permanente ? Sa réponse est un thermostat cybernétique — la boucle de rétroaction des <strong>2 016 blocs</strong> — qui piège l'entropie énergétique dans une bande d'équilibre en $\sqrt{N}$. Ce cadre théorique développé sur <a href="https://www.thesunstandard.net/" target="_blank" style="color: var(--sun-yellow);">thesunstandard.net</a> nourrit directement les architectures matérielles de <a href="https://www.regenerativecompute.io/" target="_blank" style="color: var(--bio-green); font-weight: bold;">regenerativecompute.io</a>.
+                </p>
+                <div style="margin-top: 1.4rem; padding: 1.2rem 1.4rem; background: rgba(0, 0, 0, 0.45); border-left: 3px solid var(--cyan-l2); border-radius: 0 6px 6px 0; font-style: italic; color: #f0f6fc;">
+                    « Qu'est-ce qu'une civilisation souveraine, sinon une architecture capable d'accueillir l'imprévisibilité radicale du vivant et du libre arbitre micro-échelle, tout en maintenant une ligne critique inviolable qui interdit l'emballement entropique du tout ? »
+                </div>
+            </div>
+            <div lang="en">
+                <p style="margin-bottom: 1rem;">
+                    In 1859, Bernhard Riemann uncovered the deepest mystery in pure mathematics: prime numbers—those indivisible atoms of arithmetic that appear locally like memoryless dice rolls—are globally orchestrated by a spectral symphony of non-trivial zeros $\rho_k = \frac{1}{2} + i\gamma_k$ of the zeta function $\zeta(s)$. As long as every zero remains locked onto the <strong>critical line $\mathrm{Re}(s) = \frac{1}{2}$</strong>, arithmetic noise can never explode: it remains strictly confined within a square-root diffusive envelope $\mathcal{O}(\sqrt{x}\ln x)$.
+                </p>
+                <p style="margin-bottom: 1.2rem;">
+                    Exactly 150 years later, Satoshi Nakamoto solved a structurally isomorphic problem in physical thermodynamics: how do you forge an <strong>invariant causal clock of 144 blocks per day</strong> ($\tau_0 = 600\text{ s}$) out of memoryless SHA-256 hash collisions and wildly fluctuating planetary exahash power? His answer was a cybernetic low-pass filter—the <strong>2,016-block difficulty adjustment</strong>—trapping physical entropy inside a $\sqrt{N}$ martingale boundary. Explored theoretically on <a href="https://www.thesunstandard.net/" target="_blank" style="color: var(--sun-yellow);">thesunstandard.net</a>, this temporal invariance underpins the physical systems built at <a href="https://www.regenerativecompute.io/" target="_blank" style="color: var(--bio-green); font-weight: bold;">regenerativecompute.io</a>.
+                </p>
+                <div style="margin-top: 1.4rem; padding: 1.2rem 1.4rem; background: rgba(0, 0, 0, 0.45); border-left: 3px solid var(--cyan-l2); border-radius: 0 6px 6px 0; font-style: italic; color: #f0f6fc;">
+                    "What is a resilient civilization, if not a spectral architecture capable of embracing micro-scale freedom and stochasticity while enforcing an unbreakable critical line that prevents macro-scale entropic runaway?"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- ARCHITECTURE EN COUPE SVG : DU PLAN COMPLEXE AU POULS DE 144 BLOCS    -->
+    <!-- ===================================================================== -->
+    <section class="cross-section-container">
+        <div class="cross-section-header">
+            <h3 class="cross-section-title">
+                <span>🎼</span>
+                <span lang="fr">Architecture Spectrale en Coupe : De $\mathrm{Re}(s) = \frac{1}{2}$ au Métronome de 144 Blocs/Jour</span>
+                <span lang="en">Spectral Cross-Section: From $\mathrm{Re}(s) = \frac{1}{2}$ to the 144-Block/Day Metronome</span>
+            </h3>
+            <p class="cross-section-desc">
+                <span lang="fr">
+                    Visualisation de l'isomorphisme structurel à trois étages : la bande critique analytique des nombres premiers (Haut), le pont de Fourier–Mellin et de Bost–Connes $Z(\beta)=\zeta(\beta)$ (Milieu), et l'homéostasie thermodynamique du protocole Bitcoin (Bas).
+                </span>
+                <span lang="en">
+                    Three-tier visualization of the structural isomorphism: the analytical critical strip of prime numbers (Top), the Fourier–Mellin and Bost–Connes partition bridge $Z(\beta)=\zeta(\beta)$ (Middle), and Bitcoin's thermodynamic difficulty homeostasis (Bottom).
+                </span>
+            </p>
+        </div>
+
+        <svg class="cross-section-svg" viewBox="0 0 940 590" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="stripGlow" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="rgba(255,204,0,0.02)"/>
+                    <stop offset="50%" stop-color="rgba(0,229,255,0.16)"/>
+                    <stop offset="100%" stop-color="rgba(255,204,0,0.02)"/>
+                </linearGradient>
+                <linearGradient id="btcPulseGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#f7931a"/>
+                    <stop offset="50%" stop-color="#ffcc00"/>
+                    <stop offset="100%" stop-color="#44ee77"/>
+                </linearGradient>
+            </defs>
+
+            <!-- ÉTAGE I : BANDE CRITIQUE DE RIEMANN (0 à 230px) -->
+            <rect x="290" y="25" width="360" height="195" fill="url(#stripGlow)" stroke="rgba(255,204,0,0.3)" stroke-width="1.2"/>
+            <line x1="290" y1="25" x2="290" y2="220" stroke="#ffcc00" stroke-dasharray="4,4" stroke-width="1"/>
+            <line x1="650" y1="25" x2="650" y2="220" stroke="#ffcc00" stroke-dasharray="4,4" stroke-width="1"/>
+            <line x1="470" y1="18" x2="470" y2="245" stroke="#00e5ff" stroke-width="3"/>
+
+            <!-- Étiquettes Plan Complexe -->
+            <text x="290" y="18" font-family="'Fira Code', monospace" font-size="11" fill="#ffcc00" text-anchor="middle">Re(s) = 0</text>
+            <text x="470" y="14" font-family="'Fira Code', monospace" font-size="12" font-weight="bold" fill="#00e5ff" text-anchor="middle">LIGNE CRITIQUE Re(s) = 1/2</text>
+            <text x="650" y="18" font-family="'Fira Code', monospace" font-size="11" fill="#ffcc00" text-anchor="middle">Re(s) = 1 (Pôle β_c=1)</text>
+
+            <!-- Zéros non triviaux sur l'axe cyan -->
+            <g fill="#ffffff" stroke="#00e5ff" stroke-width="2">
+                <circle cx="470" cy="58" r="5.5"/>
+                <circle cx="470" cy="102" r="5.5"/>
+                <circle cx="470" cy="146" r="5.5"/>
+                <circle cx="470" cy="190" r="5.5"/>
+            </g>
+            <g font-family="'Fira Code', monospace" font-size="10" fill="#e2e8f0">
+                <text x="484" y="62">ρ₁ = ½ + 14.1347i</text>
+                <text x="484" y="106">ρ₂ = ½ + 21.0220i</text>
+                <text x="484" y="150">ρ₃ = ½ + 25.0108i</text>
+                <text x="484" y="194">ρ₄ = ½ + 30.4248i</text>
+            </g>
+
+            <!-- Ondes stationnaires dans la bande critique -->
+            <path d="M 300 58 Q 340 35 380 58 T 460 58" fill="none" stroke="rgba(0,229,255,0.45)" stroke-width="1.5"/>
+            <path d="M 300 146 Q 330 120 360 146 T 420 146 T 465 146" fill="none" stroke="rgba(0,229,255,0.45)" stroke-width="1.5"/>
+
+            <!-- Encarts latéraux Étage I -->
+            <rect x="35" y="45" width="230" height="80" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(0,229,255,0.3)"/>
+            <text x="150" y="70" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#00e5ff" text-anchor="middle">PRODUIT D'EULER (ATOMES)</text>
+            <text x="150" y="92" font-family="'Fira Code', monospace" font-size="11" fill="#fff" text-anchor="middle">ζ(s) = ∏ (1 - p⁻ˢ)⁻¹</text>
+            <text x="150" y="112" font-family="'Inter', sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">Chaos local des nombres premiers p</text>
+
+            <rect x="675" y="45" width="230" height="80" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,204,0,0.3)"/>
+            <text x="790" y="70" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#ffcc00" text-anchor="middle">BORNE DIFFUSIVE OPTIMALE</text>
+            <text x="790" y="92" font-family="'Fira Code', monospace" font-size="11" fill="#fff" text-anchor="middle">|π(x) - Li(x)| = O(√x ln x)</text>
+            <text x="790" y="112" font-family="'Inter', sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">Équivalence exacte de l'Hypothèse RH</text>
+
+            <!-- ÉTAGE II : PONT SPECTRAL DE FOURIER-MELLIN & BOST-CONNES (235 à 355px) -->
+            <line x1="40" y1="245" x2="900" y2="245" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="190" y="262" width="560" height="72" rx="10" fill="rgba(68, 238, 119, 0.06)" stroke="#44ee77" stroke-width="1.6"/>
+            <text x="470" y="287" font-family="'Inter', sans-serif" font-size="11.5" font-weight="800" fill="#44ee77" text-anchor="middle">
+                🌉 PONT DE FOURIER–MELLIN &amp; MÉCANIQUE STATISTIQUE DE BOST–CONNES
+            </text>
+            <text x="470" y="307" font-family="'Fira Code', monospace" font-size="10.5" fill="#ffffff" text-anchor="middle">
+                Fonction de Partition Z(β) = Tr(e⁻ᵝᴴ) = ζ(β)  ⇄  Temps Thermique Connes–Rovelli α_t
+            </text>
+            <text x="470" y="324" font-family="'Inter', sans-serif" font-size="9.5" fill="#a0d4b5" text-anchor="middle">
+                Transformation des impulsions discrètes en modes propres d'équilibre autour d'un invariant d'échelle
+            </text>
+
+            <!-- Lignes de flux descendantes animées -->
+            <path d="M 470 220 L 470 262" fill="none" stroke="#00e5ff" stroke-width="2.5" class="flow-line"/>
+            <path d="M 470 334 L 470 385" fill="none" stroke="#f7931a" stroke-width="2.5" class="flow-line"/>
+            <path d="M 350 334 Q 260 365 200 415" fill="none" stroke="#ffcc00" stroke-width="1.6" class="flow-line"/>
+            <path d="M 590 334 Q 680 365 740 415" fill="none" stroke="#44ee77" stroke-width="1.6" class="flow-line"/>
+
+            <!-- ÉTAGE III : MÉTRONOME THERMODYNAMIQUE DE NAKAMOTO (365 à 575px) -->
+            <line x1="40" y1="362" x2="900" y2="362" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+            <!-- Bande d'équilibre ±2 sigma autour de 144 blocs/jour -->
+            <rect x="75" y="425" width="790" height="90" rx="6" fill="rgba(247, 147, 26, 0.06)" stroke="rgba(247, 147, 26, 0.28)" stroke-dasharray="5,5"/>
+            <line x1="75" y1="470" x2="865" y2="470" stroke="#00e5ff" stroke-width="2"/>
+
+            <!-- Courbe de battement cardiaque Poisson régulé -->
+            <path d="M 80 470 L 130 468 L 155 442 L 175 496 L 200 462 L 245 474 L 285 432 L 305 505 L 330 466 L 395 472 L 440 436 L 462 508 L 485 458 L 545 470 L 595 445 L 618 494 L 645 468 L 710 473 L 755 438 L 778 502 L 805 467 L 860 470"
+                  fill="none" stroke="url(#btcPulseGrad)" stroke-width="2.8"/>
+
+            <!-- Repères d'époques de 2 016 blocs -->
+            <g stroke="rgba(0,229,255,0.35)" stroke-width="1">
+                <line x1="230" y1="415" x2="230" y2="525"/>
+                <line x1="470" y1="415" x2="470" y2="525"/>
+                <line x1="710" y1="415" x2="710" y2="525"/>
+            </g>
+
+            <text x="470" y="405" font-family="'Fira Code', monospace" font-size="12" font-weight="bold" fill="#f7931a" text-anchor="middle">
+                ⚡ CONSENSUS DE NAKAMOTO : 144 BLOCS / JOUR (τ₀ = 600 s) &amp; FILTRE DES 2 016 BLOCS
+            </text>
+            <text x="470" y="546" font-family="'Fira Code', monospace" font-size="10.5" fill="#ffcc00" text-anchor="middle">
+                P(N(t)=k) = (λt)ᵏ e⁻ˡᵗ / k!   |   D_{m+1} = D_m · (14 jours / ΔT_m)   |   σ_N = √(144 · t_jours)
+            </text>
+            <text x="470" y="568" font-family="'Inter', sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">
+                Enveloppe homéostatique en O(√N) : absorption des chocs d'Exahash et émergence d'un temps propre infalsifiable
+            </text>
+        </svg>
+
+        <div class="cross-legend-grid">
+            <div class="cross-legend-card" style="border-left-color: var(--cyan-l2);">
+                <h5 style="color: var(--cyan-l2);">
+                    <span lang="fr">1. Axe Critique $\mathrm{Re}(s) = \frac{1}{2}$</span>
+                    <span lang="en">1. Critical Axis $\mathrm{Re}(s) = \frac{1}{2}$</span>
+                </h5>
+                <p lang="fr">Force chaque harmonique $x^{\rho_k} = \sqrt{x}\,e^{i\gamma_k\ln x}$ à partager exactement la même amplitude en racine carrée, interdisant toute dérive super-diffusive des nombres premiers.</p>
+                <p lang="en">Forces every zeta harmonic $x^{\rho_k} = \sqrt{x}\,e^{i\gamma_k\ln x}$ to share the exact $\sqrt{x}$ envelope, forbidding super-diffusive prime number clustering.</p>
+            </div>
+            <div class="cross-legend-card" style="border-left-color: var(--bio-green);">
+                <h5 style="color: var(--bio-green);">
+                    <span lang="fr">2. Pont de Bost–Connes</span>
+                    <span lang="en">2. Bost–Connes Bridge</span>
+                </h5>
+                <p lang="fr">En physique statistique quantique (Bost &amp; Connes, 1995), un gaz de « nombres premiers » d'énergies $\ln p$ possède littéralement $\zeta(\beta)$ pour fonction de partition thermodynamique.</p>
+                <p lang="en">In quantum statistical mechanics (Bost &amp; Connes, 1995), a prime-number system with energy levels $\ln p$ literally has $\zeta(\beta)$ as its thermodynamic partition function.</p>
+            </div>
+            <div class="cross-legend-card" style="border-left-color: var(--orange-l1);">
+                <h5 style="color: var(--orange-l1);">
+                    <span lang="fr">3. Filtre des 2 016 Blocs</span>
+                    <span lang="en">3. 2,016-Block Low-Pass Filter</span>
+                </h5>
+                <p lang="fr">Agit dans le domaine temporel comme un contrôleur intégral discret : il divise le bruit thermique des mineurs mondiaux pour restaurer la cadence cible de 144 blocs/jour.</p>
+                <p lang="en">Operates in the time domain as a discrete feedback controller, absorbing planetary exahash shocks to restore the 144-block/day invariant pace.</p>
+            </div>
+            <div class="cross-legend-card" style="border-left-color: var(--sun-yellow);">
+                <h5 style="color: var(--sun-yellow);">
+                    <span lang="fr">4. Confinement en $\mathcal{O}(\sqrt{N})$</span>
+                    <span lang="en">4. $\mathcal{O}(\sqrt{N})$ Confinement</span>
+                </h5>
+                <p lang="fr">Sur une journée, l'écart-type naturel du processus de Poisson vaut $\sqrt{144} = \pm 12\text{ blocs/jour}$, mais l'erreur relative $\sigma_N / N = 1/\sqrt{N}$ tend asymptotiquement vers zéro.</p>
+                <p lang="en">Over a single day, natural Poisson variance is $\sqrt{144} = \pm 12\text{ blocks/day}$, while relative clock drift $\sigma_N / N = 1/\sqrt{N}$ vanishes asymptotically.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENCART DE VULGARISATION : L'ANALOGIE DE L'ORCHESTRE ET DU THERMOSTAT -->
+    <div style="margin: 0 auto 3rem; padding: 2rem; background: rgba(0, 229, 255, 0.03); border: 1px dashed rgba(0, 229, 255, 0.38); border-radius: 8px; font-family: var(--font-ui);">
+        <h4 style="color: var(--cyan-l2); margin-top: 0; font-size: 1.08rem; margin-bottom: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+            <span>💡</span>
+            <span lang="fr">En termes simples : L'Analogie du Violoncelle et du Métronome Thermique</span>
+            <span lang="en">In Simple Terms: The Cello String &amp; The Thermal Metronome</span>
+        </h4>
+        <div style="font-family: var(--font-main); font-size: 1rem; line-height: 1.75; color: #b8c7d9; text-align: justify;">
+            <div lang="fr">
+                <p style="margin-bottom: 0.8rem;">
+                    Si vous zoomez sur la suite des nombres premiers ($2, 3, 5, 7, 11, 13\dots$), leurs écarts semblent erratiques. Pourtant, Riemann a montré que cet escalier irrégulier peut être reconstruit exactement en additionnant des ondes sonores pures — les zéros $\rho_k$. L'<strong>Hypothèse de Riemann</strong> affirme qu'aucun instrument de cet orchestre infini ne joue plus fort qu'un autre : tous sont alignés sur la ligne $\mathrm{Re}(s) = \frac{1}{2}$. Si un seul zéro quittait cette ligne, une note parasite écraserait l'harmonie des nombres.
+                </p>
+                <p style="margin-bottom: 0;">
+                    Bitcoin accomplit le même prodige dans le monde de l'énergie : chaque bloc trouvé par un mineur est un coup de dé poissonnien imprévisible (parfois 40 secondes, parfois 28 minutes). Mais grâce au recalibrage automatique de la difficulté tous les <strong>2 016 blocs</strong> (~14 jours), le protocole empêche toute « fausse note » énergétique durable : qu'il y ait mille ordinateurs portables en 2009 ou un Zettahash de silicium immergé en 2026, le pouls macroscopique demeure imperturbablement verrouillé autour de <strong>144 battements par rotation terrestre</strong>.
+                </p>
+            </div>
+            <div lang="en">
+                <p style="margin-bottom: 0.8rem;">
+                    Zoom in on the prime numbers ($2, 3, 5, 7, 11, 13\dots$) and their local gaps look erratic. Yet Riemann proved that this jagged staircase can be reconstructed exactly by summing pure sinusoidal harmonics—the zeta zeros $\rho_k$. The <strong>Riemann Hypothesis</strong> states that no single instrument in this infinite orchestra is louder than another: all sit on the critical balance line $\mathrm{Re}(s) = \frac{1}{2}$. If even one zero drifted off-line, a rogue harmonic would shatter arithmetic symmetry.
+                </p>
+                <p style="margin-bottom: 0;">
+                    Bitcoin achieves the exact same feat in physical energy space: each mined block is a memoryless Poisson dice roll (sometimes taking 40 seconds, sometimes 28 minutes). Yet through the <strong>2,016-block difficulty retargeting loop</strong> (~14 days), the protocol suppresses secular drift: whether secured by a handful of CPUs in 2009 or an exahash fleet of liquid-cooled ASICs in 2026, its macroscopic heartbeat stays phase-locked to <strong>144 beats per Earth rotation</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CADRE ÉPISTÉMIQUE RIGOUREUX -->
+    <div class="knowledge-box" style="margin: 0 auto 2.5rem; padding: 1.3rem 1.5rem; border: 1px solid rgba(68,238,119,.35); background: rgba(68,238,119,.05); font-size: .92rem; border-radius: 8px; font-family: var(--font-ui);">
+        <div lang="fr">
+            <strong>Cadre Épistémique — Rigueur Mathématique &amp; Limites de l'Isomorphisme :</strong><br>
+            <b style="color:#44ee77">Ce qui est démontré :</b> l'équivalence de l'Hypothèse de Riemann avec $|\psi(x)-x| = \mathcal{O}(\sqrt{x}\ln^2 x)$ (von Mangoldt, 1895), l'identité thermodynamique $Z(\beta) = \zeta(\beta)$ du système quantique de Bost–Connes (1995), et la convergence en $\mathcal{O}(\sqrt{N})$ d'un processus de renouvellement de Poisson régulé par époque.<br>
+            <b style="color:#ffcc00">Ce qui diffère physiquement :</b> les nombres premiers sont déterministes et leurs zéros présentent une répulsion spectrale de type matrices aléatoires GUE (Montgomery–Odlyzko), tandis que SHA-256 modélise un oracle aléatoire sans mémoire dont les temps d'attente intra-époque suivent une loi exponentielle/Erlang soumise à la latence réseau et aux chocs exogènes de hashrate.
+        </div>
+        <div lang="en">
+            <strong>Epistemic Framework — Mathematical Rigor &amp; Boundaries of the Isomorphism:</strong><br>
+            <b style="color:#44ee77">Proven Theorems:</b> RH equivalence to $|\psi(x)-x| = \mathcal{O}(\sqrt{x}\ln^2 x)$ (von Mangoldt, 1895), the exact partition function $Z(\beta) = \zeta(\beta)$ of the Bost–Connes quantum system (1995), and the $\mathcal{O}(\sqrt{N})$ martingale scaling of epoch-regulated Poisson arrivals.<br>
+            <b style="color:#ffcc00">Key Distinction:</b> primes are deterministic entities whose zeta zeros obey GUE random-matrix level repulsion (Montgomery–Odlyzko), whereas SHA-256 behaves as a memoryless random oracle producing exponential/Erlang waiting times subject to network latency and exogenous hashrate trends.
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- TIROIRS NIVEAUX 1 À 7                                                 -->
+    <!-- ===================================================================== -->
+
+    <!-- NIVEAU 1 -->
+    <details class="level-1" open>
+        <summary>
+            <span lang="fr">Niveau 1 : L'Atome et l'Impulsion — Produit d'Euler $\zeta(s)$ vs Collisions de Poisson SHA-256</span>
+            <span lang="en">Level 1: The Atom &amp; The Impulse — Euler Product $\zeta(s)$ vs SHA-256 Poisson Collisions</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>Tout édifice macroscopique repose sur un générateur microscopique irréductible. En théorie analytique des nombres, les briques élémentaires sont les nombres premiers $p \in \mathbb{P} = \{2, 3, 5, 7, 11, \dots\}$. Le théorème fondamental de l'arithmétique (unicité de la factorisation) se traduit analytiquement par l'identité du <strong>Produit d'Euler</strong> (1737), prolongée dans le plan complexe $s = \sigma + it$ par Riemann (1859).</p>
+                <p>Dans le protocole de Nakamoto, l'impulsion élémentaire est une épreuve de Bernoulli thermodynamique : chaque hachage double $\mathrm{SHA\text{-}256}(\mathrm{Header} \,\|\, \mathrm{Nonce})$ teste si un entier de 256 bits tombe sous une cible $T_{\mathrm{target}} = T_{\max} / D$. Comme la probabilité de succès par essai $p_h = \frac{1}{D \cdot 2^{32}}$ est infinitésimale tandis que le taux global d'essais $H(t)$ se chiffre en centaines d'Exahashes par seconde ($10^{20}\text{ H/s}$), la limite des événements rares engendre un <strong>processus de comptage de Poisson</strong> d'intensité nominale $\lambda_0 = \frac{1}{600}\text{ s}^{-1} = 144\text{ blocs/jour}$.</p>
+            </div>
+            <div lang="en">
+                <p>Every macroscopic order rests upon an irreducible microscopic generator. In analytical number theory, the elementary atoms are the primes $p \in \mathbb{P} = \{2, 3, 5, 7, 11, \dots\}$. Unique prime factorization translates analytically into Leonhard Euler's 1737 product identity, analytically continued across the complex plane $s = \sigma + it$ by Bernhard Riemann in 1859.</p>
+                <p>In Nakamoto consensus, the elementary impulse is a thermodynamic Bernoulli trial: each double hash $\mathrm{SHA\text{-}256}(\mathrm{Header} \,\|\, \mathrm{Nonce})$ tests whether a 256-bit integer falls below $T_{\mathrm{target}} = T_{\max} / D$. Because single-hash success probability $p_h = \frac{1}{D \cdot 2^{32}}$ is vanishingly small while global hashpower $H(t)$ reaches hundreds of exahashes per second ($10^{20}\text{ H/s}$), the law of rare events yields a <strong>Poisson counting process</strong> locked to a nominal rate $\lambda_0 = \frac{1}{600}\text{ s}^{-1} = 144\text{ blocks/day}$.</p>
+            </div>
+
+            <div class="math-block" style="border-color: rgba(0, 229, 255, 0.25); text-align: left; padding: 1.8rem;">
+                <div style="font-size: 0.88rem; color: var(--cyan-l2); font-weight: bold; text-transform: uppercase; margin-bottom: 0.8rem;">
+                    <span lang="fr">Dualité des Générateurs Microscopiques</span>
+                    <span lang="en">Duality of Microscopic Generators</span>
+                </div>
+                $$ \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \in \mathbb{P}} \frac{1}{1 - p^{-s}} \quad (\mathrm{Re}(s) > 1) \qquad \Longleftrightarrow \qquad \mathbb{P}\big(N(t) = k\big) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}, \quad \lambda = \frac{H(t)}{D \cdot 2^{32}} $$
+            </div>
+        </div>
+    </details>
+
+    <!-- NIVEAU 2 -->
+    <details class="level-2">
+        <summary>
+            <span lang="fr">Niveau 2 : La Formule Explicite de von Mangoldt &amp; La Loi Universelle du Confinement en $\sqrt{N}$</span>
+            <span lang="en">Level 2: Von Mangoldt's Explicit Formula &amp; The Universal $\sqrt{N}$ Confinement Law</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>Pour mesurer la régularité des nombres premiers, on étudie la fonction sommatoire de Tchebychev $\psi(x) = \sum_{p^k \le x} \ln p$, dont la pente moyenne vaut exactement $x$ (Théorème des Nombres Premiers : $\psi(x) \sim x$). La <strong>formule explicite de Riemann–von Mangoldt</strong> exprime la différence exacte entre l'escalier discret $\psi(x)$ et la droite idéale $x$ comme une somme infinie sur les zéros non triviaux $\rho_k = \sigma_k + i\gamma_k$ :</p>
+            </div>
+            <div lang="en">
+                <p>To measure prime regularity, number theorists track Chebyshev's prime-counting staircase $\psi(x) = \sum_{p^k \le x} \ln p$, whose asymptotic drift is the smooth diagonal $x$ (Prime Number Theorem: $\psi(x) \sim x$). The <strong>Riemann–von Mangoldt explicit formula</strong> decomposes the exact error $\psi(x) - x$ into an infinite spectral sum over the non-trivial zeros $\rho_k = \sigma_k + i\gamma_k$:</p>
+            </div>
+
+            <div class="math-block" style="border-color: rgba(247, 147, 26, 0.3);">
+                $$ \psi(x) - x = -\sum_{\rho} \frac{x^{\rho}}{\rho} - \ln(2\pi) - \frac{1}{2}\ln\!\left(1 - x^{-2}\right) \quad \text{où} \quad \left|x^{\rho_k}\right| = \left|x^{\sigma_k + i\gamma_k}\right| = x^{\sigma_k} $$
+            </div>
+
+            <div lang="fr">
+                <p>C'est ici qu'éclate la beauté géométrique de l'<strong>Hypothèse de Riemann ($\forall k, \, \sigma_k = \frac{1}{2}$)</strong> : l'amplitude de chaque onde vaut exactement $x^{1/2} = \sqrt{x}$, exactement comme l'écart-type d'une marche aléatoire symétrique de $N$ pas ou d'un processus de comptage de Nakamoto sur $t$ jours ($\sigma_{N(t)} = \sqrt{144 \cdot t_{\mathrm{jours}}}$). Si un seul zéro dérivait vers $\sigma_1 > \frac{1}{2}$, le résidu normalisé $(\psi(x)-x)/\sqrt{x}$ divergerait comme $x^{\sigma_1 - 1/2}$ — tout comme une blockchain privée de son recalibrage de difficulté voit son rythme de bloc diverger sous une croissance exponentielle du hashrate.</p>
+            </div>
+            <div lang="en">
+                <p>Here lies the geometric core of the <strong>Riemann Hypothesis ($\forall k, \, \sigma_k = \frac{1}{2}$)</strong>: every oscillatory mode has modulus $x^{1/2} = \sqrt{x}$, matching the exact diffusive scaling of a symmetric martingale or Bitcoin's block count variance over $t$ days ($\sigma_{N(t)} = \sqrt{144 \cdot t_{\mathrm{days}}}$). If a single zero drifted to $\sigma_1 > \frac{1}{2}$, the normalized residual $(\psi(x)-x)/\sqrt{x}$ would explode as $x^{\sigma_1 - 1/2}$—just as an unadjusted blockchain suffers runaway block inflation under exponential hashpower growth.</p>
+            </div>
+        </div>
+    </details>
+
+    <!-- NIVEAU 3 AVEC VISUALISATION 3D THREE.JS -->
+    <details class="level-3">
+        <summary>
+            <span lang="fr">Niveau 3 : Dualité Spectrale &amp; Hélice 3D — Les 2 016 Blocs comme Filtre Passe-Bas</span>
+            <span lang="en">Level 3: Spectral Duality &amp; 3D Helix — The 2,016-Block Epoch as a Low-Pass Filter</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>Dans la théorie du contrôle, l'algorithme d'ajustement de difficulté de Bitcoin recalibre la cible tous les $E = 2\,016$ blocs ($14\text{ jours} \times 144\text{ blocs/jour}$) selon la loi de rétroaction :</p>
+            </div>
+            <div lang="en">
+                <p>In control-systems theory, Bitcoin's Difficulty Adjustment Algorithm (DAA) updates the target every $E = 2,016$ blocks ($14\text{ days} \times 144\text{ blocks/day}$) via the discrete feedback law:</p>
+            </div>
+
+            <div class="math-block" style="border-color: rgba(255, 204, 0, 0.3);">
+                $$ D_{m+1} = D_m \cdot \mathrm{clamp}\!\left( \frac{2\,016 \times 600\text{ s}}{\sum_{i=1}^{2016} \Delta t_{m,i}}, \; \frac{1}{4}, \; 4 \right) $$
+            </div>
+
+            <div lang="fr">
+                <p>Explorez ci-dessous en <strong>3D interactive (Three.js)</strong> le couplage entre l'axe spectral critique $\mathrm{Re}(s)=\frac{1}{2}$ au centre et l'hélice temporelle des 144 blocs/jour en orbite. Déplacez le curseur de brisure de symétrie ($\sigma$) pour observer comment une déviation hors de $\sigma = 0,50$ détruit la géométrie cylindrique en cône divergent :</p>
+            </div>
+            <div lang="en">
+                <p>Explore below in <strong>interactive 3D (Three.js)</strong> the coupling between the central critical axis $\mathrm{Re}(s)=\frac{1}{2}$ and the orbiting 144-block helical Timechain. Drag the symmetry-breaking slider ($\sigma$) away from $0.50$ to watch the bounded cylinder deform into a divergent cone:</p>
+            </div>
+
+            <div style="margin-top: 1.5rem; border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 12px; overflow: hidden; background: #03050a; position: relative;">
+                <div style="padding: 12px 18px; background: rgba(0, 229, 255, 0.06); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; border-bottom: 1px solid rgba(0, 229, 255, 0.15);">
+                    <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--cyan-l2);">
+                        <span lang="fr">// VUE 3D WEBGL : AXE CRITIQUE ZÊTA &amp; HÉLICE DES 144 BLOCS</span>
+                        <span lang="en">// 3D WEBGL VIEW: ZETA CRITICAL AXIS &amp; 144-BLOCK HELIX</span>
+                    </span>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 0.78rem; color: #cbd5e1; font-family: var(--font-mono);">Re(ρ₁) = <strong id="sigma-3d-val" style="color:var(--sun-yellow);">0.50</strong></span>
+                        <input type="range" id="sigma-3d-slider" min="50" max="85" value="50" style="width: 130px; accent-color: var(--sun-yellow); cursor: pointer;">
+                    </div>
+                </div>
+                <div id="three-helix-container" style="width: 100%; height: 430px; position: relative; cursor: grab;"></div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+            <script>
+            (function() {
+                const container = document.getElementById('three-helix-container');
+                const slider = document.getElementById('sigma-3d-slider');
+                const valEl = document.getElementById('sigma-3d-val');
+                if (!container || typeof THREE === 'undefined') return;
+
+                const scene = new THREE.Scene();
+                scene.background = new THREE.Color('#03050a');
+
+                const camera = new THREE.PerspectiveCamera(48, (container.clientWidth || 800) / 430, 0.1, 500);
+                camera.position.set(14, 8, 18);
+
+                const renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(container.clientWidth || 800, 430);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+                container.appendChild(renderer.domElement);
+
+                const controls = (typeof THREE.OrbitControls !== 'undefined')
+                    ? new THREE.OrbitControls(camera, renderer.domElement) : null;
+                if (controls) { controls.enableDamping = true; controls.autoRotate = true; controls.autoRotateSpeed = 0.8; }
+
+                scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+                const pLight = new THREE.PointLight(0x00e5ff, 2.2, 50);
+                pLight.position.set(0, 0, 0);
+                scene.add(pLight);
+
+                // Axe critique central Re(s) = 1/2
+                const axisGeo = new THREE.CylinderGeometry(0.08, 0.08, 22, 16);
+                const axisMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
+                scene.add(new THREE.Mesh(axisGeo, axisMat));
+
+                // Sphères des zéros de Riemann sur l'axe
+                const zeroHeights = [-8, -5.2, -2.8, 0, 2.8, 5.2, 8];
+                zeroHeights.forEach(y => {
+                    const zSphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.28, 16, 16),
+                        new THREE.MeshBasicMaterial({ color: 0xffffff })
+                    );
+                    zSphere.position.set(0, y, 0);
+                    scene.add(zSphere);
+                });
+
+                // 144 Blocs cristallins en hélice autour de l'axe critique
+                const blocks = [];
+                const boxGeo = new THREE.BoxGeometry(0.36, 0.36, 0.36);
+                for (let i = 0; i < 144; i++) {
+                    const mat = new THREE.MeshStandardMaterial({
+                        color: (i % 12 === 0) ? 0x00e5ff : 0xf7931a,
+                        emissive: (i % 12 === 0) ? 0x004466 : 0x442200,
+                        metalness: 0.6, roughness: 0.3
+                    });
+                    const mesh = new THREE.Mesh(boxGeo, mat);
+                    scene.add(mesh);
+                    blocks.push(mesh);
+                }
+
+                let t3d = 0;
+                let vis3d = false;
+                let raf3d = null;
+
+                function updateHelix() {
+                    if (!vis3d) return;
+                    raf3d = requestAnimationFrame(updateHelix);
+                    t3d += 0.015;
+                    const sigma = parseInt(slider.value, 10) / 100;
+                    if (valEl) {
+                        valEl.textContent = sigma.toFixed(2);
+                        valEl.style.color = sigma > 0.51 ? '#f43f5e' : '#ffcc00';
+                    }
+
+                    blocks.forEach((b, i) => {
+                        const progress = i / 144; // 0 to 1
+                        const y = -9.5 + progress * 19.0;
+                        const angle = i * 0.28 + t3d;
+                        // Si sigma = 0.50 -> rayon borné à ~4.2; si sigma > 0.50 -> explosion exponentielle !
+                        const growth = Math.exp((sigma - 0.50) * 6.5 * progress);
+                        const jitter = 0.35 * Math.sin(i * 1.413 + t3d * 2.0);
+                        const r = (4.0 + jitter) * growth;
+                        b.position.set(Math.cos(angle) * r, y, Math.sin(angle) * r);
+                        b.rotation.y = -angle;
+                        if (sigma > 0.53 && i % 12 !== 0) {
+                            b.material.color.setHex(0xf43f5e);
+                        } else if (i % 12 !== 0) {
+                            b.material.color.setHex(0xf7931a);
+                        }
+                    });
+
+                    if (controls) controls.update();
+                    renderer.render(scene, camera);
+                }
+
+                const obs3d = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        vis3d = e.isIntersecting;
+                        if (vis3d && !raf3d) raf3d = requestAnimationFrame(updateHelix);
+                        else if (!vis3d && raf3d) { cancelAnimationFrame(raf3d); raf3d = null; }
+                    });
+                }, { threshold: 0.05 });
+                obs3d.observe(container);
+
+                const ro = new ResizeObserver(entries => {
+                    const w = entries[0].contentRect.width;
+                    if (w > 0) {
+                        camera.aspect = w / 430;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(w, 430);
+                    }
+                });
+                ro.observe(container);
+            })();
+            </script>
+        </div>
+    </details>
+
+    <!-- NIVEAU 4 -->
+    <details class="level-4">
+        <summary>
+            <span lang="fr">Niveau 4 : Universalité Statistique — Loi GUE de Montgomery–Odlyzko vs Lois d'Erlang-$k$</span>
+            <span lang="en">Level 4: Statistical Universality — Montgomery–Odlyzko GUE Law vs Erlang-$k$ Waiting Times</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>En 1972, lors d'une rencontre célèbre à Princeton entre le mathématicien Hugh Montgomery et le physicien Freeman Dyson, il apparut que les écarts normalisés $\delta_n = (\gamma_{n+1} - \gamma_n)\frac{\ln(\gamma_n / 2\pi)}{2\pi}$ entre les zéros de Riemann obéissent exactement à la statistique des valeurs propres des matrices aléatoires hermitiennes du <strong>Gaussian Unitary Ensemble (GUE)</strong> — la même loi qui régit les niveaux d'énergie des noyaux atomiques lourds en chaos quantique ! Les zéros se « repoussent » ($p(s) \approx \frac{32}{\pi^2} s^2 e^{-\frac{4}{\pi}s^2}$, probabilité nulle d'avoir $s \to 0$).</p>
+                <p>À l'inverse, dans une époque Bitcoin stationnaire, les blocs individuels sont indépendants ($p_{\mathrm{Poisson}}(s) = e^{-s}$, permettant des blocs rapprochés). <strong>Mais la répulsion spectrale émerge dès que l'on considère la finalité multi-blocs ($k$ confirmations, $k = 6$ ou $k = 144$) !</strong> Le temps cumulé $S_k = \sum_{j=1}^k \Delta t_j$ suit une distribution <strong>Erlang-$k$</strong> dont la probabilité de collision instantanée s'annule comme $t^{k-1}$ :</p>
+            </div>
+            <div lang="en">
+                <p>In 1972, over afternoon tea at Princeton, Hugh Montgomery and Freeman Dyson realized that the normalized spacings $\delta_n = (\gamma_{n+1} - \gamma_n)\frac{\ln(\gamma_n / 2\pi)}{2\pi}$ of Riemann zeta zeros obey the exact eigenvalue pair-correlation of the <strong>Gaussian Unitary Ensemble (GUE)</strong> from quantum chaos! Adjacent zeros actively repel one another ($p_{\mathrm{GUE}}(s) \approx \frac{32}{\pi^2} s^2 e^{-\frac{4}{\pi}s^2}$, vanishing as $s^2$ near zero).</p>
+                <p>Conversely, single Bitcoin block arrivals within an epoch are memoryless ($p_{\mathrm{Poisson}}(s) = e^{-s}$). <strong>Yet effective temporal repulsion emerges as soon as we measure $k$-confirmation finality ($k=6$ or $k=144$)!</strong> Cumulative waiting time $S_k = \sum_{j=1}^k \Delta t_j$ obeys an <strong>Erlang-$k$</strong> density whose short-time clustering probability vanishes as $t^{k-1}$, sculpting raw Poisson noise into crystal-like temporal rigidity:</p>
+            </div>
+
+            <div class="math-block" style="border-color: rgba(179, 102, 255, 0.3);">
+                $$ R_{2,\mathrm{GUE}}(u) = 1 - \left(\frac{\sin \pi u}{\pi u}\right)^2 \qquad \longleftrightarrow \qquad f_{S_k}(t) = \frac{\lambda^k t^{k-1} e^{-\lambda t}}{(k-1)!}, \quad \frac{\sigma_{S_k}}{\mathbb{E}[S_k]} = \frac{1}{\sqrt{k}} $$
+            </div>
+        </div>
+    </details>
+
+    <div id="manifeste-thermique"></div>
+
+    <!-- NIVEAU 5 : LE PONT PHYSIQUE PROFOND (BOST-CONNES & CONNES-ROVELLI) -->
+    <details class="level-5">
+        <summary>
+            <span lang="fr">Niveau 5 : Le Pont Quantique de Bost–Connes ($Z(\beta) = \zeta(\beta)$) &amp; Le Temps Thermique Propre</span>
+            <span lang="en">Level 5: The Bost–Connes Quantum Bridge ($Z(\beta) = \zeta(\beta)$) &amp; Proper Thermal Time</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>Le lien entre la fonction $\zeta(s)$ de Riemann et la thermodynamique du temps n'est pas une simple métaphore poétique : c'est un théorème fondamental de la géométrie non commutative établi par <strong>Jean-Benoît Bost et Alain Connes (1995)</strong>, directement relié à l'<strong>Hypothèse du Temps Thermique de Connes et Rovelli (1994)</strong>.</p>
+                <p>Dans un système hors d'équilibre dépourvu d'horloge maîtresse externe, Connes et Rovelli démontrent que le flux du temps physique émerge de l'état statistique $\omega$ lui-même via le groupe modulaire d'automorphismes de Tomita–Takesaki $\sigma_t^\omega(A) = \Delta^{-it} A \Delta^{it}$. Appliqué à l'algèbre arithmétique de Hecke dont les niveaux d'énergie fondamentaux sont les logarithmes des nombres premiers $E_p = \ln p$, le flot temporel engendre une fonction de partition thermodynamique à la température inverse $\beta = \frac{1}{k_B T}$ qui est <strong>identiquement égale à la fonction zêta de Riemann</strong> :</p>
+            </div>
+            <div lang="en">
+                <p>The bridge uniting Riemann's $\zeta(s)$ and thermodynamic time is not merely poetic—it is a celebrated theorem in noncommutative geometry proved by <strong>Jean-Benoît Bost and Alain Connes (1995)</strong>, directly rooted in the <strong>Connes–Rovelli Thermal Time Hypothesis (1994)</strong>.</p>
+                <p>In any system lacking an external Newtonian clock, Connes and Rovelli showed that physical time flows endogenously from the statistical state $\omega$ via the Tomita–Takesaki modular automorphism group $\sigma_t^\omega(A) = \Delta^{-it} A \Delta^{it}$. Applied to the arithmetic Hecke C*-algebra whose single-particle energy levels are the prime logarithms $E_p = \ln p$, the partition function at inverse temperature $\beta = \frac{1}{k_B T}$ is <strong>identically the Riemann zeta function</strong>:</p>
+            </div>
+
+            <div class="math-block" style="border-color: rgba(68, 238, 119, 0.35);">
+                $$ Z_{\mathrm{BC}}(\beta) = \mathrm{Tr}\!\left(e^{-\beta H}\right) = \sum_{n=1}^{\infty} e^{-\beta \ln n} = \sum_{n=1}^{\infty} \frac{1}{n^{\beta}} = \zeta(\beta) \qquad (\text{Pôle critique et brisure de symétrie en } \beta_c = 1) $$
+            </div>
+
+            <div lang="fr">
+                <p>Au pôle $\beta_c = 1$ de $\zeta(s)$, le système de Bost–Connes subit une <strong>transition de phase avec brisure spontanée de symétrie</strong> (du groupe de Galois $\mathrm{Gal}(\mathbb{Q}^{\mathrm{cycl}}/\mathbb{Q}) \simeq \hat{\mathbb{Z}}^*$). Or, le consensus de Nakamoto incarne macroscopiquement cette même physique : dépourvu d'horloge atomique centrale (impossible face à des acteurs byzantins), Bitcoin fait émerger son <strong>temps propre discret</strong> ($144\text{ blocs/jour}$) de la production irréversible d'entropie Joule dans le silicium et brise spontanément la symétrie des branches concurrentes au profit d'une histoire canonique unique !</p>
+            </div>
+            <div lang="en">
+                <p>At the pole $\beta_c = 1$ of $\zeta(s)$, the Bost–Connes system undergoes a <strong>spontaneous symmetry-breaking phase transition</strong> across its KMS equilibrium states. Nakamoto consensus enacts this exact physics macroscopically: lacking any trusted central clock under Byzantine adversaries, Bitcoin extracts its <strong>endogenous thermal time</strong> ($144\text{ blocks/day}$) directly from irreversible Joule dissipation and spontaneously breaks fork symmetry into a single canonical ledger history!</p>
+            </div>
+        </div>
+    </details>
+
+    <!-- NIVEAU 6 : ÉCONOPHYSIQUE & CANTILLON -->
+    <details class="level-6">
+        <summary>
+            <span lang="fr">Niveau 6 : Éconophysique Monétaire — L'Inflation Fiat comme Brisure de la Ligne Critique ($\sigma \to 1$)</span>
+            <span lang="en">Level 6: Monetary Econophysics — Fiat Debasement as Critical-Line Rupture ($\sigma \to 1$)</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>En éconophysique, la comparaison éclaire puissamment l'asymétrie entre une monnaie de décret (Fiat) et une monnaie thermodynamique asymptotiquement idéale (au sens de <strong>John Nash</strong>). Un système monétaire dont l'émission dépend d'une banque centrale discrétionnaire équivaut à un spectre dont les pôles quittent la ligne d'équilibre $\sigma = \frac{1}{2}$ vers $\sigma \to 1$ : les erreurs d'allocation du capital ne s'annulent plus par interférence destructive, elles s'accumulent exponentiellement au profit du centre émetteur (<strong>Effet Cantillon</strong>, $\nabla \cdot \vec{V}_{\mathrm{Cantillon}} > 0$).</p>
+                <p>En verrouillant simultanément le rythme temporel à $\langle \Delta N \rangle = 144\text{ blocs/jour}$ et la désinflation programmée tous les $210\,000$ blocs (Halving : $\sum_{h=0}^{32} 210\,000 \times \frac{50}{2^h} \to 21\,000\,000\text{ BTC}$), Nakamoto impose une condition d'incompressibilité monétaire ($\nabla \cdot \vec{V}_{\mathrm{Cantillon}} = 0$). Couplée à la cogénération souterraine de <em>La Matrice Inversée</em>, chaque pulsation de 10 minutes sécurise la vérité numérique tout en condensant de l'eau pure et en régénérant l'humus.</p>
+            </div>
+            <div lang="en">
+                <p>In econophysics, this spectral lens illuminates the gulf between discretionary fiat currency and <strong>John Nash's Asymptotic Ideal Money</strong>. A monetary ledger governed by arbitrary credit expansion behaves like a broken zeta spectrum with off-line poles ($\sigma \to 1$): price-signal distortions no longer cancel out symmetrically, compounding exponentially toward insiders closest to issuance (the <strong>Cantillon Effect</strong>, $\nabla \cdot \vec{V}_{\mathrm{Cantillon}} > 0$).</p>
+                <p>By locking causal block cadence to $\langle \Delta N \rangle = 144\text{ blocks/day}$ alongside deterministic 210,000-block halvings ($\to 21,000,000\text{ BTC}$), Nakamoto enforces monetary incompressibility ($\nabla \cdot \vec{V}_{\mathrm{Cantillon}} = 0$). Paired with subterranean heat recovery under <em>The Inverted Matrix</em>, every 10-minute heartbeat simultaneously anchors global monetary truth and regenerates local water and soil stocks.</p>
+            </div>
+        </div>
+    </details>
+
+    <!-- NIVEAU 7 : PROTOCOLE EMPIRIQUE SUR DONNÉES RÉELLES & CODE PYTHON -->
+    <details class="level-7">
+        <summary>
+            <span lang="fr">Niveau 7 : Protocole d'Étude Empirique sur les 900 000+ Blocs Réels &amp; Script Python Reproductible</span>
+            <span lang="en">Level 7: Empirical Study Protocol on 900,000+ Real Blocks &amp; Reproducible Python Script</span>
+        </summary>
+        <div class="drawer-content">
+            <div lang="fr">
+                <p>Pour éprouver quantitativement cette architecture sur les données historiques réelles de Bitcoin (depuis le bloc Genesis du 3 janvier 2009 jusqu'à aujourd'hui, soit plus de $450$ époques de difficulté), quatre tests statistiques rigoureux peuvent être exécutés directement sur votre nœud <em>Bitcoin Knots / Core</em> ou via l'API `mempool.space` :</p>
+                <ul style="padding-left: 1.3rem; margin-bottom: 1.2rem; line-height: 1.7;">
+                    <li><strong>T1 — Exposant de Hurst $H$ du Résidu Normalisé :</strong> Régression DFA (<em>Detrended Fluctuation Analysis</em>) sur $\Delta N(t) = N(t) - 144t$ après soustraction du biais analytique de retard d'une époque $\bar{\beta}_m = \frac{e^{14 r_m}-1}{14 r_m}$, testant $H \to 0,50$ (confinement diffusif exact).</li>
+                    <li><strong>T2 — Analyse Spectrale Lomb–Scargle :</strong> Périodogramme pour événements irrégulièrement espacés sur $\Delta t_n$, isolant la fréquence fondamentale du contrôleur DAA ($f_0 = 1/2016\text{ blocs}^{-1}$) et l'harmonique thermique diurne ($1\text{ cycle/jour}$) liée aux réseaux électriques solaires VRE.</li>
+                    <li><strong>T3 — Test Kolmogorov–Smirnov Intra-Époque :</strong> Quantification de l'écart entre $\Delta t_n / \bar{\Delta t}_m$ et $\mathrm{Exp}(1)$ dû au délai de propagation de compact-blocks ($\tau_{\mathrm{prop}} \approx 0,5\text{–}2,5\text{ s}$).</li>
+                    <li><strong>T4 — RMT (Marchenko–Pastur vs GUE) :</strong> Spectre des valeurs propres de la matrice de covariance des sommes d'Erlang $S_k$ sur fenêtres glissantes.</li>
+                </ul>
+            </div>
+            <div lang="en">
+                <p>To test this framework empirically across Bitcoin's real historical timechain (over $900,000$ blocks and $450+$ difficulty epochs since January 3, 2009), four falsifiable statistical tests can be run directly against a local <em>Bitcoin Knots / Core</em> node or the public `mempool.space` API:</p>
+                <ul style="padding-left: 1.3rem; margin-bottom: 1.2rem; line-height: 1.7;">
+                    <li><strong>T1 — Hurst Exponent $H$ via Detrended Fluctuation Analysis (DFA):</strong> Testing whether de-biased cumulative block residuals $\Delta N(t) = N(t) - 144t$ converge to $H = 0.50$ ($\sqrt{N}$ diffusive scaling).</li>
+                    <li><strong>T2 — Lomb–Scargle Unevenly Sampled Periodogram:</strong> Extracting the resonant peak at $f_0 = 1/2016\text{ blocks}^{-1}$ alongside the $24\text{-hour}$ diurnal VRE/thermal modulation harmonic.</li>
+                    <li><strong>T3 — Intra-Epoch Kolmogorov–Smirnov Goodness-of-Fit:</strong> Measuring micro-scale departure from $\mathrm{Exp}(1)$ induced by peer-to-peer block propagation latency ($\tau_{\mathrm{prop}} \approx 0.5\text{–}2.5\text{ s}$).</li>
+                    <li><strong>T4 — Random Matrix Theory (Marchenko–Pastur vs GUE):</strong> Eigenvalue spacing analysis of normalized Erlang-$k$ confirmation intervals across rolling epochs.</li>
+                </ul>
+            </div>
+
+            <pre style="background: #05070c; border: 1px solid rgba(0, 191, 165, 0.35); border-radius: 8px; padding: 1.1rem; color: #44ee77; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; overflow-x: auto;">import urllib.request, json, numpy as np
+from scipy import stats
+
+def audit_real_bitcoin_rhythm(n_blocks=2016):
+    tip = int(urllib.request.urlopen("https://mempool.space/api/blocks/tip/height").read().decode())
+    blocks, h = [], tip
+    while len(blocks) &lt; n_blocks:
+        batch = json.loads(urllib.request.urlopen(f"https://mempool.space/api/blocks/{h}").read().decode())
+        blocks.extend(batch); h = batch[-1]["height"] - 1
+    ts = np.array([b["timestamp"] for b in blocks[:n_blocks][::-1]], dtype=float)
+    dt = np.diff(ts); dt_pos = dt[dt &gt; 0]
+    pace = 86400.0 / np.mean(dt)
+    ks_d, ks_p = stats.kstest(dt_pos, "expon", args=(0, np.mean(dt_pos)))
+    print(f"Observed Pace: {pace:.2f} blocks/day | Target: 144.00 | KS D={ks_d:.4f} (p={ks_p:.3e})")
+
+if __name__ == "__main__":
+    audit_real_bitcoin_rhythm(2016)</pre>
+        </div>
+    </details>
+
+    <!-- ===================================================================== -->
+    <!-- TIROIR DOSSIER SCIENTIFIQUE & MATHÉMATIQUE COMPLET (4 GRAPHIQUES HD)  -->
+    <!-- ===================================================================== -->
+    <details id="tiroir-dossier-scientifique" open style="margin: 2.5rem auto; border-left: 4px solid var(--sun-yellow); background: rgba(11, 15, 23, 0.92); border-radius: 0 12px 12px 0; box-shadow: 0 12px 35px rgba(0,0,0,0.65);">
+        <summary style="color: var(--sun-yellow); font-size: 1.2rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; background: rgba(255, 204, 0, 0.06);">
+            <span>📐</span>
+            <span lang="fr">Dossier Mathématique &amp; Spectral — Tableaux d'Isomorphisme, 4 Courbes Analytiques &amp; 20 Références</span>
+            <span lang="en">Mathematical &amp; Spectral Dossier — Isomorphism Matrices, 4 Analytical Plots &amp; 20 References</span>
+        </summary>
+
+        <section id="dossier-scientifique">
+            <h2>
+                <span lang="fr">Dossier Scientifique — Démonstrations Numériques &amp; Preuves Visuelles</span>
+                <span lang="en">Scientific Dossier — Numerical Proofs &amp; Spectral Visualizations</span>
+            </h2>
+
+            <h3>
+                <span lang="fr">1. Matrice Comparative Complète : Hypothèse de Riemann vs Consensus de Nakamoto</span>
+                <span lang="en">1. Complete Structural Matrix: Riemann Hypothesis vs Nakamoto Consensus</span>
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <caption>
+                        <span lang="fr">Synthèse des opérateurs mathématiques, bornes d'erreur et invariants thermodynamiques</span>
+                        <span lang="en">Summary of mathematical operators, error bounds, and thermodynamic invariants</span>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th><span lang="fr">Dimension Structurelle</span><span lang="en">Structural Dimension</span></th>
+                            <th><span lang="fr">Fonction Zêta de Riemann $\zeta(s)$</span><span lang="en">Riemann Zeta Function $\zeta(s)$</span></th>
+                            <th><span lang="fr">Consensus de Nakamoto (144 Blocs/Jour)</span><span lang="en">Nakamoto Consensus (144 Blocks/Day)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><span lang="fr">Générateur Local</span><span lang="en">Local Generator</span></strong></td>
+                            <td>$\zeta(s) = \prod_{p \in \mathbb{P}} (1 - p^{-s})^{-1}$</td>
+                            <td>$\mathrm{SHA\text{-}256}(x) < T_{\max}/D \implies N(t) \sim \mathrm{Poisson}(\lambda t)$</td>
+                        </tr>
+                        <tr>
+                            <td><strong><span lang="fr">Trajectoire Asymptotique</span><span lang="en">Macro Asymptotic Drift</span></strong></td>
+                            <td>$\mathrm{Li}(x) = \int_2^x \frac{dt}{\ln t} \quad (\text{ou } \psi(x) \sim x)$</td>
+                            <td>$\mathbb{E}[N(t)] = \lambda_0 t = 144 \cdot t_{\mathrm{jours}} \quad (\tau_0 = 600\text{ s})$</td>
+                        </tr>
+                        <tr>
+                            <td><strong><span lang="fr">Décomposition des Fluctuations</span><span lang="en">Fluctuation Decomposition</span></strong></td>
+                            <td>$-\sum_{\rho_k} \frac{x^{1/2 + i\gamma_k}}{1/2 + i\gamma_k}$ (Ondes de von Mangoldt)</td>
+                            <td>$\Delta t_i \sim \mathrm{Exp}(\lambda_m)$ filtré tous les $E=2\,016$ blocs</td>
+                        </tr>
+                        <tr>
+                            <td><strong><span lang="fr">Axe d'Équilibre Critique</span><span lang="en">Critical Equilibrium Axis</span></strong></td>
+                            <td>$\mathrm{Re}(s) = \frac{1}{2}$ (Symétrie fonctionnelle $\xi(s)=\xi(1-s)$)</td>
+                            <td>$\langle \Delta t \rangle = 600\text{ s}$ (Homéostasie énergétique DAA)</td>
+                        </tr>
+                        <tr>
+                            <td><strong><span lang="fr">Borne Optimale du Bruit</span><span lang="en">Optimal Noise Bound</span></strong></td>
+                            <td>$|\psi(x) - x| = \mathcal{O}(\sqrt{x}\ln^2 x) \iff \text{RH vraie}$</td>
+                            <td>$|N(t) - 144t| = \mathcal{O}(\sqrt{144t})$ (Martingale stationnaire)</td>
+                        </tr>
+                        <tr>
+                            <td><strong><span lang="fr">Fonction de Partition</span><span lang="en">Thermodynamic Partition</span></strong></td>
+                            <td>$Z_{\mathrm{BC}}(\beta) = \mathrm{Tr}(e^{-\beta H}) = \zeta(\beta)$ ($\beta_c = 1$) [5]</td>
+                            <td>$Z_{\mathrm{PoW}}(\beta) = \sum_{\mathcal{C}} e^{-\beta E_{\mathrm{cum}}(\mathcal{C})}$ ( Sélection chaîne lourde) [19]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>
+                <span lang="fr">2. Preuve Numérique I : Reconstruction de $(\psi(x)-x)/\sqrt{x}$ par les Zéros de Riemann vs Brisure</span>
+                <span lang="en">2. Numerical Proof I: $(\psi(x)-x)/\sqrt{x}$ Reconstruction via Zeta Zeros vs Broken Symmetry</span>
+            </h3>
+            <div class="figure-card">
+                <canvas id="riemannProofCanvas" class="sci-canvas" width="900" height="360"></canvas>
+                <div class="figure-caption">
+                    <span lang="fr">Fig. 1 — Calcul exact en temps réel dans votre navigateur : résidu arithmétique exact $(\psi(x)-x)/\sqrt{x}$ (ambre), reconstruction spectrale par les 35 premiers zéros sur $\mathrm{Re}(s)=1/2$ (cyan, confiné dans $\pm 1$), et explosion divergente si $\rho_1$ dérive à $\mathrm{Re}(\rho_1)=0,80$ (rouge pointillé).</span>
+                    <span lang="en">Fig. 1 — Exact in-browser computation: true prime residual $(\psi(x)-x)/\sqrt{x}$ (amber), spectral reconstruction from the first 35 zeros on $\mathrm{Re}(s)=1/2$ (cyan, trapped inside $\pm 1$), and super-diffusive explosion when $\rho_1$ drifts to $\mathrm{Re}(\rho_1)=0.80$ (dashed crimson).</span>
+                </div>
+            </div>
+
+            <h3>
+                <span lang="fr">3. Preuve Numérique II : Confinement Homéostatique des 144 Blocs/Jour sur 10 Époques</span>
+                <span lang="en">3. Numerical Proof II: 144-Block/Day Homeostatic Confinement Across 10 Epochs</span>
+            </h3>
+            <div class="figure-card">
+                <canvas id="nakamotoProofCanvas" class="sci-canvas" width="900" height="360"></canvas>
+                <div class="figure-caption">
+                    <span lang="fr">Fig. 2 — Résidu normalisé $(N(t)-144t)/\sqrt{144t}$ sur 140 jours (10 époques de 2 016 blocs) sous croissance exponentielle du hashrate : sans recalibrage DAA, la dérive explose (+58σ, rouge) ; avec recalibrage Nakamoto, le bruit de Poisson reste piégé autour du rythme de 144 blocs/jour (ambre).</span>
+                    <span lang="en">Fig. 2 — Normalized block residual $(N(t)-144t)/\sqrt{144t}$ over 140 days (ten 2,016-block epochs) under exponential hashpower growth: without DAA retargeting, block drift explodes (+58σ, crimson); with Nakamoto feedback, Poisson variance stays locked to 144 blocks/day (amber).</span>
+                </div>
+            </div>
+
+            <h3>
+                <span lang="fr">4. Universalité des Espacements : Répulsion GUE (Zéros $\gamma_k$) vs Rigidification d'Erlang-$k$ (Blocs)</span>
+                <span lang="en">4. Spacing Universality: GUE Wigner Surmise ($\gamma_k$ Zeros) vs Erlang-$k$ Confirmation Rigidity</span>
+            </h3>
+            <div class="figure-card">
+                <canvas id="gueErlangCanvas" class="sci-canvas" width="900" height="350"></canvas>
+                <div class="figure-caption">
+                    <span lang="fr">Fig. 3 — Densité des espacements normalisés $s$ (moyenne 1) : loi exponentielle sans mémoire d'un bloc isolé $e^{-s}$ (pointillés gris), rigidification progressive d'un cycle de $k=6$ confirmations Bitcoin (ambre), et loi de répulsion quantique GUE de Montgomery–Odlyzko $\frac{32}{\pi^2}s^2 e^{-4s^2/\pi}$ des zéros de Riemann (cyan).</span>
+                    <span lang="en">Fig. 3 — Normalized spacing density $s$ (unit mean): memoryless single-block exponential $e^{-s}$ (dashed grey), temporal sharpening of $k=6$ Bitcoin confirmations (amber), and Montgomery–Odlyzko GUE quantum level repulsion $\frac{32}{\pi^2}s^2 e^{-4s^2/\pi}$ of Riemann zeros (cyan).</span>
+                </div>
+            </div>
+
+            <h3>
+                <span lang="fr">5. Transition de Phase de Bost–Connes $Z(\beta) = \zeta(\beta)$ &amp; Sélection Thermodynamique de Chaîne</span>
+                <span lang="en">5. Bost–Connes Phase Transition $Z(\beta) = \zeta(\beta)$ &amp; Thermodynamic Chain Selection</span>
+            </h3>
+            <div class="figure-card">
+                <canvas id="bostConnesCanvas" class="sci-canvas" width="900" height="340"></canvas>
+                <div class="figure-caption">
+                    <span lang="fr">Fig. 4 — Singularité au seuil critique $\beta_c = 1$ de la fonction de partition $Z(\beta)=\zeta(\beta)$ et paramètre d'ordre de brisure spontanée de symétrie (émergence d'une histoire macroscopique unique à basse température effective $\beta > 1$).</span>
+                    <span lang="en">Fig. 4 — Critical pole at $\beta_c = 1$ of the Bost–Connes partition function $Z(\beta)=\zeta(\beta)$ alongside the spontaneous symmetry-breaking order parameter (emergence of a unique canonical history in the ordered phase $\beta > 1$).</span>
+                </div>
+            </div>
+
+            <h3>
+                <span lang="fr">6. Bibliographie Scientifique Consolidée (20 Références Fondatrices)</span>
+                <span lang="en">6. Consolidated Scientific Bibliography (20 Foundational References)</span>
+            </h3>
+            <ol class="bibliography">
+                <li>Riemann, B. (1859), “Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse”, <i>Monatsberichte der Berliner Akademie</i>, 671–680.</li>
+                <li>von Mangoldt, H. (1895), “Zu Riemanns Abhandlung ‘Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse’”, <i>Journal für die reine und angewandte Mathematik</i>, 114, 255–305.</li>
+                <li>Montgomery, H.L. (1973), “The pair correlation of zeros of the zeta function”, <i>Analytic Number Theory, Proc. Symp. Pure Math.</i>, 24, 181–193.</li>
+                <li>Odlyzko, A.M. (1987), “On the distribution of spacings between zeros of the zeta function”, <i>Mathematics of Computation</i>, 48(177), 273–308.</li>
+                <li>Bost, J.-B., Connes, A. (1995), “Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory”, <i>Selecta Mathematica</i>, 1(3), 411–457.</li>
+                <li>Connes, A., Rovelli, C. (1994), “Von Neumann algebra automorphisms and time-thermodynamics relation in generally covariant quantum theories”, <i>Classical and Quantum Gravity</i>, 11(12), 2899–2917.</li>
+                <li>Berry, M.V., Keating, J.P. (1999), “The Riemann zeros and eigenvalue asymptotics”, <i>SIAM Review</i>, 41(2), 236–266.</li>
+                <li>Connes, A. (1999), “Trace formula in noncommutative geometry and the zeros of the Riemann zeta function”, <i>Selecta Mathematica</i>, 5, 29–106.</li>
+                <li>Nakamoto, S. (2008), <i>Bitcoin: A Peer-to-Peer Electronic Cash System</i>, <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">bitcoin.org/bitcoin.pdf</a>.</li>
+                <li>Bowden, R., Keeler, H.P., Krzesinski, A.E., Taylor, P.G. (2020), “Modeling and analysis of block arrival times in the Bitcoin blockchain”, <i>Stochastic Models</i>, 36(4), 602–637.</li>
+                <li>Garay, J., Kiayias, A., Leonardos, N. (2015), “The Bitcoin Backbone Protocol: Analysis and Applications”, <i>Advances in Cryptology – EUROCRYPT 2015</i>, LNCS 9057, 281–310.</li>
+                <li>Pass, R., Seeman, L., shelat, a. (2017), “Analysis of the Blockchain Protocol in Asynchronous Networks”, <i>EUROCRYPT 2017</i>, 643–673.</li>
+                <li>Grunspan, C., Pérez-Marco, R. (2018), “Double spend races”, <i>International Journal of Theoretical and Applied Finance</i>, 21(08), 1850053.</li>
+                <li>Nash, J.F. (2002), “Ideal Money”, <i>Southern Economic Journal</i>, 69(1), 4–11.</li>
+                <li>Odum, H.T. (1996), <i>Environmental Accounting: EMERGY and Environmental Decision Making</i>, Wiley.</li>
+                <li>Mehta, M.L. (2004), <i>Random Matrices</i>, 3<sup>rd</sup> ed., Elsevier Academic Press.</li>
+                <li>Edwards, H.M. (1974), <i>Riemann's Zeta Function</i>, Academic Press, New York.</li>
+                <li>Ranoroarijaona, P. (2026), “Thermodynamic Stability and Phase Transitions in the Nakamoto Consensus”, <i>IPI Letters</i>, 4(2), 1–12, DOI: 10.59973/ipil.325.</li>
+                <li>Ranoroarijaona, P., Yii, J. (2026), <i>A Phenomenological Statistical-Physics Framework for Distributed Consensus: Phase Transitions and Thermodynamic Stability</i>, Zenodo, DOI: 10.5281/zenodo.19160047.</li>
+                <li>Ranoroarijaona, P. (2026), <i>La Thermodynamique de la Décentralisation &amp; La Matrice Inversée</i>, The Sun Standard Open Research, <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener">thesunstandard.net</a>.</li>
+            </ol>
+        </section>
+    </details>
+
+    <!-- ENCADRÉ CITATION ACADÉMIQUE & BIBTEX -->
+    <div style="margin: 3.5rem auto; padding: 1.8rem 2rem; background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.25); border-left: 4px solid var(--cyan-l2); border-radius: 10px; font-family: var(--font-ui);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem;">
+            <h4 style="color: var(--sun-yellow); margin: 0; font-size: 1.02rem; text-transform: uppercase; letter-spacing: 1.5px;">
+                <span>📌</span>
+                <span lang="fr">Citer cet article de recherche</span>
+                <span lang="en">Cite This Research Article</span>
+            </h4>
+            <button type="button" onclick="copyBibtexRiemann(this)" style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.4); color: var(--cyan-l2); padding: 6px 14px; border-radius: 20px; font-family: var(--font-mono); font-size: 0.78rem; cursor: pointer;">
+                <span lang="fr">📋 Copier le BibTeX</span>
+                <span lang="en">📋 Copy BibTeX</span>
+            </button>
+        </div>
+        <p style="font-family: var(--font-main); font-size: 0.94rem; color: #d4d4d4; margin-bottom: 1rem;">
+            Ranoroarijaona, P. (2026). <em>The Critical Clock: Spectral Duality Between Riemann's Zeta Function and Nakamoto's 144-Block Thermodynamic Rhythm</em>. The Sun Standard Research Portal. <a href="https://www.thesunstandard.net/blog/nakamoto-riemann.html" target="_blank" style="color: var(--cyan-l2); text-decoration: none;">https://www.thesunstandard.net/blog/nakamoto-riemann.html</a>
+        </p>
+        <pre id="bibtex-riemann-block" style="background: #050709; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 1rem 1.2rem; color: #44ee77; font-family: var(--font-mono); font-size: 0.8rem; overflow-x: auto; margin: 0;">@misc{Ranoroarijaona2026CriticalClock,
+  author = {Ranoroarijaona, Pascal},
+  title = {The Critical Clock: Spectral Duality Between Riemann's Zeta Function and Nakamoto's 144-Block Thermodynamic Rhythm},
+  year = {2026},
+  publisher = {The Sun Standard},
+  howpublished = {\url{https://www.thesunstandard.net/blog/nakamoto-riemann.html}}
+}</pre>
+        <script>
+            function copyBibtexRiemann(btn) {
+                const txt = document.getElementById('bibtex-riemann-block').innerText;
+                navigator.clipboard.writeText(txt).then(() => {
+                    const fr = document.body.classList.contains('lang-fr');
+                    const orig = btn.innerHTML;
+                    btn.innerHTML = fr ? '✅ Copié !' : '✅ Copied!';
+                    setTimeout(() => { btn.innerHTML = orig; }, 2000);
+                });
+            }
+        </script>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SIMULATEUR INTERACTIF D'ÉQUILIBRE SPECTRAL & THERMODYNAMIQUE          -->
+    <!-- ===================================================================== -->
+    <div class="simulator-box" id="simulateur-spectral">
+        <h3 style="color: var(--sun-yellow); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 0.5rem;">
+            <span lang="fr">🎛️ Simulateur d'Équilibre Spectral &amp; Stochastique (Zêta $\zeta(s)$ ⇄ Timechain 144)</span>
+            <span lang="en">🎛️ Spectral &amp; Stochastic Equilibrium Simulator (Zeta $\zeta(s)$ ⇄ 144 Timechain)</span>
+        </h3>
+        <p style="font-size: 0.86rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 1.5rem; max-width: 820px; margin-left: auto; margin-right: auto;">
+            <span lang="fr">Testez en direct la stabilité de la ligne critique $\mathrm{Re}(s)=\sigma$ face à la régulation de difficulté de Nakamoto : observez comment la violation de la symétrie fait exploser l'enveloppe en $\sqrt{N}$.</span>
+            <span lang="en">Stress-test critical-line stability $\mathrm{Re}(s)=\sigma$ alongside Nakamoto difficulty retargeting in real time: watch how symmetry violation shatters the $\sqrt{N}$ equilibrium envelope.</span>
+        </p>
+
+        <div class="sim-presets-bar">
+            <button type="button" class="sim-preset-btn active" onclick="applySpectralPreset('equilibrium', this)">
+                <span lang="fr">⚖️ 1. Équilibre Critique Pur (RH + 2 016)</span>
+                <span lang="en">⚖️ 1. Pure Critical Equilibrium (RH + 2,016)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySpectralPreset('broken_rh', this)">
+                <span lang="fr">💥 2. Brisure de Riemann (Re(ρ₁) = 0,78)</span>
+                <span lang="en">💥 2. Broken Riemann Line (Re(ρ₁) = 0.78)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySpectralPreset('hash_boom', this)">
+                <span lang="fr">⚡ 3. Choc d'Exahash (+1,5 %/j Régulé)</span>
+                <span lang="en">⚡ 3. Exahash Boom (+1.5%/d Regulated)</span>
+            </button>
+            <button type="button" class="sim-preset-btn" onclick="applySpectralPreset('fiat_runaway', this)">
+                <span lang="fr">🔥 4. Sans Thermostat (Dérive Fiat / Non-Régulé)</span>
+                <span lang="en">🔥 4. Unregulated Runaway (No Retarget)</span>
+            </button>
+        </div>
+
+        <div class="sim-grid">
+            <!-- Colonne 1 : Paramètres Riemann -->
+            <div>
+                <div class="sim-group-title">
+                    <span>🎼</span>
+                    <span lang="fr">Spectre Analytique de Riemann $\zeta(s)$</span>
+                    <span lang="en">Riemann Analytical Spectrum $\zeta(s)$</span>
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-zeros">
+                        <span lang="fr">Harmoniques Non Triviales ($K$ Zéros)</span>
+                        <span lang="en">Non-Trivial Harmonics ($K$ Zeros)</span>
+                        <span class="sim-value" id="val-sim-zeros">30</span>
+                    </label>
+                    <input type="range" id="sim-zeros" min="3" max="40" value="30" step="1">
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-sigma">
+                        <span lang="fr">Position Réelle du 1er Zéro $\mathrm{Re}(\rho_1)$</span>
+                        <span lang="en">1st Zero Real Part $\mathrm{Re}(\rho_1)$</span>
+                        <span class="sim-value" id="val-sim-sigma">0.50</span>
+                    </label>
+                    <input type="range" id="sim-sigma" min="0.50" max="0.85" value="0.50" step="0.01">
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-xmax">
+                        <span lang="fr">Échelle Arithmétique Explorée ($x_{\max}$)</span>
+                        <span lang="en">Arithmetic Scale Explored ($x_{\max}$)</span>
+                        <span class="sim-value" id="val-sim-xmax">20 000</span>
+                    </label>
+                    <input type="range" id="sim-xmax" min="2000" max="40000" value="20000" step="2000">
+                </div>
+            </div>
+
+            <!-- Colonne 2 : Paramètres Nakamoto -->
+            <div>
+                <div class="sim-group-title">
+                    <span>⚡</span>
+                    <span lang="fr">Thermostat de Nakamoto (144 Blocs/Jour)</span>
+                    <span lang="en">Nakamoto Thermostat (144 Blocks/Day)</span>
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-growth">
+                        <span lang="fr">Croissance Hashrate $r$ (%/jour)</span>
+                        <span lang="en">Hashpower Growth $r$ (%/day)</span>
+                        <span class="sim-value" id="val-sim-growth">+0.4 %/j</span>
+                    </label>
+                    <input type="range" id="sim-growth" min="-0.5" max="2.0" value="0.4" step="0.1">
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-epoch">
+                        <span lang="fr">Fenêtre d'Ajustement ($E$ Blocs ; $0=\text{Off}$)</span>
+                        <span lang="en">Retarget Window ($E$ Blocks; $0=\text{Off}$)</span>
+                        <span class="sim-value" id="val-sim-epoch">2016 blocs</span>
+                    </label>
+                    <input type="range" id="sim-epoch" min="0" max="4032" value="2016" step="504">
+                </div>
+
+                <div class="sim-control">
+                    <label for="sim-conf">
+                        <span lang="fr">Confirmations d'Erlang ($k$ Blocs)</span>
+                        <span lang="en">Erlang Finality Depth ($k$ Blocks)</span>
+                        <span class="sim-value" id="val-sim-conf">6 blocs</span>
+                    </label>
+                    <input type="range" id="sim-conf" min="1" max="24" value="6" step="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-outputs-grid">
+            <div class="sim-metric" style="border-left-color: var(--cyan-l2);">
+                <div class="sim-metric-label"><span lang="fr">1. État de la Ligne Critique</span><span lang="en">1. Critical Line Status</span></div>
+                <div class="sim-metric-value" id="out-rh-state" style="color: var(--bio-green);">CONFINÉ √x</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-rh-max">Max |ψ(x)-x|/√x : 0.64</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--orange-l1);">
+                <div class="sim-metric-label"><span lang="fr">2. Cadence Moyenne Observée</span><span lang="en">2. Observed Block Pace</span></div>
+                <div class="sim-metric-value" id="out-btc-pace" style="color: var(--orange-l1);">148.1 / j</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-btc-tau">τ moyen : 583 s (Cible : 600 s)</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--sun-yellow);">
+                <div class="sim-metric-label"><span lang="fr">3. Biais Analytique de Retard</span><span lang="en">3. Analytical Epoch-Lag Bias</span></div>
+                <div class="sim-metric-value" id="out-lag-bias" style="color: var(--sun-yellow);">+2.8 %</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-lag-sub">Formule : (e^{Er/144}-1)/(Er/144)</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--purple-l4);">
+                <div class="sim-metric-label"><span lang="fr">4. Précision Finale d'Erlang-$k$</span><span lang="en">4. Erlang-$k$ Clock Precision</span></div>
+                <div class="sim-metric-value" id="out-erlang-cv" style="color: var(--purple-l4);">±40.8 %</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-erlang-time">Temps k-blocs : 60 min (1/√k)</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--bio-green);">
+                <div class="sim-metric-label"><span lang="fr">5. Exposant Effectif d'Échelle</span><span lang="en">5. Effective Scaling Exponent</span></div>
+                <div class="sim-metric-value" id="out-hurst" style="color: var(--bio-green);">H ≈ 0.50</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-hurst-sub">Marche diffusive optimale</span>
+            </div>
+
+            <div class="sim-metric" style="border-left-color: var(--teal-l0);">
+                <div class="sim-metric-label"><span lang="fr">6. Dérive Cumulée à J+112 ($8$ Époques)</span><span lang="en">6. Cumulative Drift at Day 112</span></div>
+                <div class="sim-metric-value" id="out-drift-sigma" style="color: #fff;">+3.4 σ</div>
+                <span style="font-size: 0.72rem; color: #8899aa;" id="out-drift-blocks">Écart : +432 blocs sur 16 128</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 1.8rem; background: #04060a; border-radius: 8px; padding: 1rem; border: 1px solid rgba(255,255,255,0.06);">
+            <canvas id="interactiveDualSimCanvas" width="900" height="310" style="width:100%; height:auto; display:block;"></canvas>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- TÉLÉMÉTRIE LIVE DE LA TIMECHAIN (API MEMPOOL.SPACE + FALLBACK)        -->
+    <!-- ===================================================================== -->
+    <div class="dashboard-box">
+        <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase; letter-spacing: 1.5px;">
+            <span lang="fr">🌍 Télémétrie Live de l'Horloge de Nakamoto (Mempool.space)</span>
+            <span lang="en">🌍 Live Nakamoto Clock Telemetry (Mempool.space)</span>
+        </h3>
+        <p style="text-align: center; color: #94a3b8; font-size: 0.9rem; margin-bottom: 2rem;">
+            <span lang="fr">Mesure en direct du battement cardiaque du réseau face à l'invariant théorique $\lambda_0 = 144\text{ blocs/jour}$ ($\tau_0 = 600\text{ s}$).</span>
+            <span lang="en">Real-time measurement of Bitcoin's planetary heartbeat against the theoretical invariant $\lambda_0 = 144\text{ blocks/day}$ ($\tau_0 = 600\text{ s}$).</span>
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; text-align: center;">
+            <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="font-size: 0.82rem; color: #94a3b8; text-transform: uppercase;">
+                    <span lang="fr">Hauteur du Temps Propre</span><span lang="en">Proper Time Block Height</span>
+                </div>
+                <div id="live-tip-height" style="font-size: 2rem; font-family: var(--font-mono); color: #fff; font-weight: bold; margin-top: 0.3rem;">#924,812</div>
+            </div>
+
+            <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(0,229,255,0.2);">
+                <div style="font-size: 0.82rem; color: var(--cyan-l2); text-transform: uppercase;">
+                    <span lang="fr">Cadence Récente Observée</span><span lang="en">Recent Observed Pace</span>
+                </div>
+                <div id="live-block-pace" style="font-size: 2rem; font-family: var(--font-mono); color: var(--cyan-l2); font-weight: bold; margin-top: 0.3rem;">144.8 / j</div>
+            </div>
+
+            <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(247,147,26,0.25);">
+                <div style="font-size: 0.82rem; color: var(--orange-l1); text-transform: uppercase;">
+                    <span lang="fr">Temps Moyen Inter-Bloc</span><span lang="en">Mean Inter-Block Time</span>
+                </div>
+                <div id="live-mean-tau" style="font-size: 2rem; font-family: var(--font-mono); color: var(--orange-l1); font-weight: bold; margin-top: 0.3rem;">596 s</div>
+            </div>
+
+            <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(68,238,119,0.25);">
+                <div style="font-size: 0.82rem; color: var(--bio-green); text-transform: uppercase;">
+                    <span lang="fr">Prochain Ajustement (2 016)</span><span lang="en">Next Retarget (2,016)</span>
+                </div>
+                <div id="live-retarget-est" style="font-size: 2rem; font-family: var(--font-mono); color: var(--bio-green); font-weight: bold; margin-top: 0.3rem;">+0.55 %</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- CONCLUSION COSMOLOGIQUE & PHILOSOPHIQUE                               -->
+    <!-- ===================================================================== -->
+    <blockquote style="border-left: 4px solid var(--sun-yellow); padding: 1.8rem 2.2rem; margin: 3.5rem auto; max-width: 900px; background: rgba(255, 204, 0, 0.04); border-radius: 0 10px 10px 0; color: #e6edf3;">
+        <div lang="fr" style="font-size: 1.08rem; line-height: 1.8;">
+            <h2 style="font-size: 1.5rem; color: var(--sun-yellow); margin-bottom: 1rem; font-family: var(--font-ui);">
+                Conclusion — La Symétrie Critique contre l'Hubris de l'Infini
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                De Göttingen en 1859 au bloc Genesis de 2009, une même loi traverse les mathématiques pures et la physique de l'information : <strong>la liberté microscopique n'engendre un cosmos habitable que lorsqu'elle s'ordonne autour d'une ligne critique inviolable.</strong>
+            </p>
+            <p style="margin-bottom: 1rem;">
+                Lorsque notre civilisation prétend créer de la richesse par décret sans coût énergétique, ou extraire sans fin les ressources d'une biosphère finie, elle tente de briser l'exposant $\frac{1}{2}$ au profit d'une divergence illusoire. Les nombres premiers de Riemann et le métronome de 144 blocs par jour de Nakamoto nous rappellent la sagesse de la finitude : accueillir le bruit du vivant, absorber les chocs avec résilience, et garder le cap sur l'axe d'équilibre.
+            </p>
+            <p style="font-style: italic; color: var(--cyan-l2); margin-top: 1.2rem;">
+                « Cent quarante-quatre battements par jour terrestre ; une seule ligne critique à l'horizon de l'esprit. Que nos machines calculent dans le silence de la roche, et que le temps retrouvé appartienne au Vivant. » — <strong>Pascal Ra' · L'Étalon Solaire</strong>
+            </p>
+        </div>
+
+        <div lang="en" style="font-size: 1.08rem; line-height: 1.8;">
+            <h2 style="font-size: 1.5rem; color: var(--sun-yellow); margin-bottom: 1rem; font-family: var(--font-ui);">
+                Conclusion — Critical Symmetry Against Runaway Hubris
+            </h2>
+            <p style="margin-bottom: 1rem;">
+                From Göttingen in 1859 to the Genesis Block in 2009, a single structural truth bridges pure mathematics and information physics: <strong>microscopic freedom yields a coherent universe only when anchored to an unbreakable critical line.</strong>
+            </p>
+            <p style="margin-bottom: 1rem;">
+                Whenever human institutions attempt to conjure purchasing power at zero thermodynamic cost, or demand exponential extraction from a finite biosphere, they attempt to violate the $\frac{1}{2}$ equilibrium bound. Riemann's primes and Nakamoto's 144-block daily heartbeat teach the geometry of temperance: embrace local stochasticity, absorb energetic shocks through honest feedback, and hold the critical line.
+            </p>
+            <p style="font-style: italic; color: var(--cyan-l2); margin-top: 1.2rem;">
+                "One hundred and forty-four beats per Earth rotation; one critical line across the horizon of mind. Let machines compute quietly beneath the stone, so reclaimed time may belong to Life." — <strong>Pascal Ra' · The Sun Standard</strong>
+            </p>
+        </div>
+    </blockquote>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION AUTEUR & RESSOURCES OPEN SOURCE                               -->
+    <!-- ===================================================================== -->
+    <div class="author-section">
+        <div class="author-header">
+            <div class="author-avatar">🏝️☀️🎼⚡</div>
+            <div class="author-bio">
+                <h3 lang="fr">À propos de l'auteur</h3>
+                <h3 lang="en">About the Author</h3>
+                <p>
+                    <span lang="fr">
+                        <strong>Pascal Ranoroarijaona (Ranaora)</strong> | Ingénieur en informatique (HPC) &amp; chercheur indépendant affilié à l'<em>Information Physics Institute</em> (Sydney, Australie). Ses travaux explorent la physique statistique hors d'équilibre, le temps thermique modulaire, la vérification formelle en Lean 4, l'éconophysique du consensus de Nakamoto et les infrastructures de calcul régénératif souterrain (<em>Lemuria Technologies</em>).
+                    </span>
+                    <span lang="en">
+                        <strong>Pascal Ranoroarijaona (Ranaora)</strong> | Computer Engineer (HPC) &amp; Independent Researcher affiliated with the <em>Information Physics Institute</em> (Sydney, Australia). His work bridges non-equilibrium statistical mechanics, modular thermal time, Lean 4 formal theorem proving, Nakamoto econophysics, and subterranean regenerative compute infrastructure (<em>Lemuria Technologies</em>).
+                    </span>
+                </p>
+                <span class="tags">// GitHub: https://github.com/pascalranoroarijaona/ // Sydney, NSW, Australia // Fihavanana &amp; Sun Standard</span>
+            </div>
+        </div>
+
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+                <h4 style="color: var(--sun-yellow);">☀️ The Sun Standard (thesunstandard.net)</h4>
+                <p>
+                    <span lang="fr">Portail de recherche bilingue : thermodynamique de la décentralisation, temps thermique, preuves formelles Lean 4 et comptabilité post-PIB en Unités de Bien-Être (WU).</span>
+                    <span lang="en">Bilingual open-science portal: thermodynamics of decentralization, thermal time, Lean 4 formal proofs, and post-GDP Wellbeing Unit (WU) accounting.</span>
+                </p>
+            </a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" class="resource-card">
+                <h4 style="color: var(--bio-green);">🌱 Regenerative Compute (regenerativecompute.io)</h4>
+                <p>
+                    <span lang="fr">Ingénierie open-hardware et industrielle : du BitTerrarium™ de bureau aux sanctuaires souterrains de classe mégawatt couplant calcul, eau MOF-303, aquaponie et Biochar.</span>
+                    <span lang="en">Scale-invariant open hardware &amp; industrial execution: from desktop BitTerrarium™ biospheres to megawatt subterranean compute sanctuaries.</span>
+                </p>
+            </a>
+            <a href="https://www.compteur-bitcoin.fr/" target="_blank" class="resource-card">
+                <h4 style="color: var(--cyan-l2);">⏱️ Compteur &amp; Simulateur Bitcoin</h4>
+                <p>
+                    <span lang="fr">Observatoire temps réel et modélisation thermodynamique du réseau Bitcoin, des cycles d'époques et de la transition énergétique VRE.</span>
+                    <span lang="en">Real-time observatory and thermodynamic modeling of Bitcoin's block cadence, difficulty epochs, and renewable VRE grid synergy.</span>
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <!-- SECTION FEEDBACK FORMSPREE -->
+    <div class="feedback-container">
+        <h3 class="feedback-title">
+            <span lang="fr">Aidez à affiner ce manuscrit</span>
+            <span lang="en">Help Refine This Manuscript</span>
+        </h3>
+        <p class="feedback-desc">
+            <span lang="fr">Vos retours mathématiques, physiques ou éditoriaux nourrissent directement la revue ouverte de L'Étalon Solaire.</span>
+            <span lang="en">Your mathematical, physical, or editorial feedback directly strengthens open peer review at The Sun Standard.</span>
+        </p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="L'Horloge Critique : Riemann & Nakamoto">
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" required /><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1">★</label>
+            </div>
+            <textarea name="feedback" class="feedback-textarea" required placeholder="Commentaires, théorèmes connexes, pistes empiriques... / Comments, theorems, empirical ideas..."></textarea>
+            <button type="submit" class="feedback-submit" id="feedback-btn">
+                <span lang="en">Submit Feedback</span>
+                <span lang="fr">Envoyer le retour</span>
+            </button>
+        </form>
+    </div>
+
+    <div id="success-popup" class="feedback-popup">
+        <span lang="en">✅ Feedback submitted! Thank you.</span>
+        <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
+    </div>
+
+    <!-- NAVIGATION INTER-ARTICLES -->
+    <div class="article-navigation">
+        <a href="matrice-inversee.html" class="nav-card">
+            <div class="nav-direction">
+                <span lang="en">← Companion Architecture</span>
+                <span lang="fr">← Architecture Compagne</span>
+            </div>
+            <div class="nav-title">
+                <span lang="en">The Inverted Matrix · Subterranean Regenerative Compute</span>
+                <span lang="fr">La Matrice Inversée · Calcul Régénératif Souterrain</span>
+            </div>
+        </a>
+        <a href="horizon-zero-2044.html" class="nav-card">
+            <div class="nav-direction">
+                <span lang="en">Next Horizon →</span>
+                <span lang="fr">Horizon Suivant →</span>
+            </div>
+            <div class="nav-title">
+                <span lang="en">Horizon Zero 2044 · The Trust Protocol</span>
+                <span lang="fr">Horizon Zéro 2044 · Le Protocole de Confiance</span>
+            </div>
+        </a>
+    </div>
+</article>
+
+<footer>
+    <div style="font-size: 1.02rem; font-weight: 700; letter-spacing: 3px; color: var(--sun-yellow); margin-bottom: 0.8rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
+        <a href="https://www.thesunstandard.net/" target="_blank" style="text-decoration: none; color: var(--sun-yellow);">
+            <span lang="en">☀ THE SUN STANDARD (Theory)</span>
+            <span lang="fr">☀ L'ÉTALON SOLAIRE (Théorie)</span>
+        </a>
+        <span style="color: #555;">⇄</span>
+        <a href="https://www.regenerativecompute.io/" target="_blank" style="text-decoration: none; color: var(--bio-green);">
+            <span lang="en">🌱 REGENERATIVE COMPUTE (Practice)</span>
+            <span lang="fr">🌱 REGENERATIVE COMPUTE (Pratique)</span>
+        </a>
+    </div>
+    <p>Pascal Ranoroarijaona · Information Physics &amp; Lemuria Technologies · 2026</p>
+</footer>
+
+<!-- ========================================================================= -->
+<!-- SCRIPTS GLOBAUX : LANGUE, PLUIE SPECTRALE, 4 GRAPHIQUES HD, SIMULATEUR    -->
+<!-- ========================================================================= -->
+<script>
+// 1. DONNÉES MATHÉMATIQUES EXACTES : 40 PREMIERS ZÉROS NON TRIVIAUX DE RIEMANN + CRIBLE D'ÉRATOSTHÈNE
+const RIEMANN_GAMMAS = [
+    14.134725, 21.022040, 25.010858, 30.424876, 32.935062,
+    37.586178, 40.918719, 43.327073, 48.005151, 49.773832,
+    52.970321, 56.446248, 59.347044, 60.831779, 65.112544,
+    67.079811, 69.546402, 72.067158, 75.704691, 77.144840,
+    79.337375, 82.910381, 84.735493, 87.425275, 88.809111,
+    92.491899, 94.651344, 95.870634, 98.831194, 101.317851,
+    103.725538, 105.446623, 107.168611, 111.029536, 111.874659,
+    114.320220, 116.226680, 118.790783, 121.370125, 122.946829
+];
+
+const N_PRIME_MAX = 40000;
+const PSI_EXACT = new Float64Array(N_PRIME_MAX + 1);
+(function computeChebyshevPsi() {
+    const isP = new Uint8Array(N_PRIME_MAX + 1);
+    isP.fill(1); isP[0] = 0; isP[1] = 0;
+    for (let i = 2; i * i <= N_PRIME_MAX; i++) {
+        if (isP[i]) {
+            for (let j = i * i; j <= N_PRIME_MAX; j += i) isP[j] = 0;
+        }
+    }
+    const vm = new Float64Array(N_PRIME_MAX + 1);
+    for (let p = 2; p <= N_PRIME_MAX; p++) {
+        if (isP[p]) {
+            const lp = Math.log(p);
+            for (let pk = p; pk <= N_PRIME_MAX; pk *= p) {
+                vm[pk] = lp;
+                if (pk > N_PRIME_MAX / p) break;
+            }
+        }
+    }
+    let acc = 0;
+    for (let n = 1; n <= N_PRIME_MAX; n++) {
+        acc += vm[n];
+        PSI_EXACT[n] = acc;
+    }
+})();
+
+function explicitPsiAt(x, kZeros, sigmaFirst) {
+    const lnX = Math.log(x);
+    const sqrtX = Math.sqrt(x);
+    let osc = 0.0;
+    const lim = Math.min(kZeros, RIEMANN_GAMMAS.length);
+    for (let i = 0; i < lim; i++) {
+        const g = RIEMANN_GAMMAS[i];
+        const sig = (i === 0) ? sigmaFirst : 0.5;
+        const amp = (i === 0 && sig !== 0.5) ? Math.pow(x, sig) : sqrtX;
+        const denom = sig * sig + g * g;
+        const cosPart = Math.cos(g * lnX);
+        const sinPart = Math.sin(g * lnX);
+        // Re(x^(sig + i*g) / (sig + i*g)) = amp * (sig*cos + g*sin) / (sig^2 + g^2)
+        osc += 2.0 * amp * (sig * cosPart + g * sinPart) / denom;
+    }
+    return x - osc - Math.log(2 * Math.PI);
+}
+
+// Générateur pseudo-aléatoire déterministe pour reproductibilité des courbes
+function mulberry32(a) {
+    return function() {
+        let t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+}
+
+function setupHiDPI(canvas, w, h) {
+    if (!canvas) return null;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, w, h };
+}
+
+// 2. RENDU DES 4 FIGURES SCIENTIFIQUES DU DOSSIER
+function renderDossierCharts() {
+    const fr = document.body.classList.contains('lang-fr');
+
+    // --- FIG 1 : RIEMANN EXPLICIT FORMULA ---
+    const c1 = setupHiDPI(document.getElementById('riemannProofCanvas'), 900, 360);
+    if (c1) {
+        const { ctx, w, h } = c1;
+        ctx.fillStyle = '#070a10'; ctx.fillRect(0, 0, w, h);
+        const padL = 70, padR = 35, padT = 48, padB = 48;
+        const pw = w - padL - padR, ph = h - padT - padB;
+
+        ctx.fillStyle = '#00e5ff';
+        ctx.font = 'bold 13px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(
+            fr ? 'CONFINEMENT ARITHMÉTIQUE : (ψ(x) - x) / √x SUR [50, 30 000]'
+               : 'ARITHMETIC CONFINEMENT: (ψ(x) - x) / √x OVER [50, 30,000]',
+            w / 2, 25
+        );
+
+        const getX = x => padL + ((x - 50) / (30000 - 50)) * pw;
+        const getY = y => padT + ph / 2 - (y / 4.5) * (ph / 2);
+
+        // Bande d'équilibre ±1.5
+        ctx.fillStyle = 'rgba(0, 229, 255, 0.06)';
+        ctx.fillRect(padL, getY(1.5), pw, getY(-1.5) - getY(1.5));
+
+        [-4, -2, 0, 2, 4].forEach(yv => {
+            const py = getY(yv);
+            ctx.strokeStyle = yv === 0 ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.06)';
+            ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(w - padR, py); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.font = '10.5px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(yv.toFixed(1), padL - 8, py + 4);
+        });
+
+        [5000, 10000, 15000, 20000, 25000, 30000].forEach(xv => {
+            const px = getX(xv);
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.beginPath(); ctx.moveTo(px, padT); ctx.lineTo(px, padT + ph); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.textAlign = 'center';
+            ctx.fillText('x=' + (xv / 1000) + 'k', px, padT + ph + 20);
+        });
+
+        ctx.save(); ctx.beginPath(); ctx.rect(padL, padT, pw, ph); ctx.clip();
+
+        // Courbe 1 : Résidu exact Tchebychev
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.3; ctx.beginPath();
+        for (let i = 0; i <= 500; i++) {
+            const x = Math.round(50 + (i / 500) * 29950);
+            const val = (PSI_EXACT[x] - x) / Math.sqrt(x);
+            if (i === 0) ctx.moveTo(getX(x), getY(val)); else ctx.lineTo(getX(x), getY(val));
+        }
+        ctx.stroke();
+
+        // Courbe 2 : 35 Zéros sur Re(s)=1/2
+        ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 1.5; ctx.beginPath();
+        for (let i = 0; i <= 500; i++) {
+            const x = 50 + (i / 500) * 29950;
+            const val = (explicitPsiAt(x, 35, 0.5) - x) / Math.sqrt(x);
+            if (i === 0) ctx.moveTo(getX(x), getY(val)); else ctx.lineTo(getX(x), getY(val));
+        }
+        ctx.stroke();
+
+        // Courbe 3 : Brisure Re(rho_1) = 0.80
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]); ctx.beginPath();
+        for (let i = 0; i <= 500; i++) {
+            const x = 50 + (i / 500) * 29950;
+            const val = (explicitPsiAt(x, 35, 0.80) - x) / Math.sqrt(x);
+            if (i === 0) ctx.moveTo(getX(x), getY(val)); else ctx.lineTo(getX(x), getY(val));
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+        ctx.restore();
+
+        ctx.strokeStyle = '#2d3748'; ctx.strokeRect(padL, padT, pw, ph);
+        ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillStyle = '#f59e0b'; ctx.fillText(fr ? '━ Exact (ψ(x)-x)/√x' : '━ Exact (ψ(x)-x)/√x', padL + 14, padT + 20);
+        ctx.fillStyle = '#00e5ff'; ctx.fillText(fr ? '━ 35 Zéros sur Re(s)=1/2' : '━ 35 Zeros on Re(s)=1/2', padL + 185, padT + 20);
+        ctx.fillStyle = '#f43f5e'; ctx.fillText(fr ? '┅ Brisure Re(ρ₁)=0.80 (Divergent)' : '┅ Broken Re(ρ₁)=0.80 (Diverges)', padL + 390, padT + 20);
+    }
+
+    // --- FIG 2 : NAKAMOTO 140-DAY RETARGETING PROOF ---
+    const c2 = setupHiDPI(document.getElementById('nakamotoProofCanvas'), 900, 360);
+    if (c2) {
+        const { ctx, w, h } = c2;
+        ctx.fillStyle = '#070a10'; ctx.fillRect(0, 0, w, h);
+        const padL = 70, padR = 35, padT = 48, padB = 48;
+        const pw = w - padL - padR, ph = h - padT - padB;
+
+        ctx.fillStyle = '#f7931a'; ctx.font = 'bold 13px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(
+            fr ? 'HOMÉOSTASIE DE NAKAMOTO : (N(t) - 144t) / √(144t) SUR 140 JOURS (10 ÉPOQUES)'
+               : 'NAKAMOTO HOMEOSTASIS: (N(t) - 144t) / √(144t) ACROSS 140 DAYS (10 EPOCHS)',
+            w / 2, 25
+        );
+
+        function simChainDays(retarget) {
+            const rng = mulberry32(1442016);
+            let t = 0, b = 0, diff = 1.0, epStart = 0;
+            const times = [];
+            while (t < 140.0) {
+                const hRate = Math.exp(0.0045 * t);
+                const rate = 144.0 * (hRate / diff);
+                const u = Math.max(1e-9, rng());
+                t += -Math.log(u) / rate;
+                if (t <= 140.0) {
+                    b++; times.push(t);
+                    if (retarget && b % 2016 === 0) {
+                        diff *= 14.0 / (t - epStart);
+                        epStart = t;
+                    }
+                }
+            }
+            return times;
+        }
+        const tReg = simChainDays(true);
+        const tUnreg = simChainDays(false);
+
+        const getX = d => padL + (d / 140) * pw;
+        const getY = s => padT + ph - ((s - (-6)) / (30 - (-6))) * ph;
+
+        ctx.fillStyle = 'rgba(247, 147, 26, 0.07)';
+        ctx.fillRect(padL, getY(3.5), pw, getY(-3.5) - getY(3.5));
+
+        [-5, 0, 5, 10, 15, 20, 25].forEach(sv => {
+            const py = getY(sv);
+            ctx.strokeStyle = sv === 0 ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.06)';
+            ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(w - padR, py); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.font = '10.5px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(sv + 'σ', padL - 8, py + 4);
+        });
+
+        for (let ep = 14; ep <= 140; ep += 14) {
+            const px = getX(ep);
+            ctx.strokeStyle = 'rgba(0, 229, 255, 0.2)';
+            ctx.beginPath(); ctx.moveTo(px, padT); ctx.lineTo(px, padT + ph); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.textAlign = 'center';
+            ctx.fillText((fr ? 'J' : 'D') + ep, px, padT + ph + 20);
+        }
+
+        function countBefore(arr, val) {
+            let lo = 0, hi = arr.length;
+            while (lo < hi) { const mid = (lo + hi) >> 1; if (arr[mid] <= val) lo = mid + 1; else hi = mid; }
+            return lo;
+        }
+
+        ctx.save(); ctx.beginPath(); ctx.rect(padL, padT, pw, ph); ctx.clip();
+        // Non régulé
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]); ctx.beginPath();
+        for (let i = 1; i <= 280; i++) {
+            const d = (i / 280) * 140;
+            const n = countBefore(tUnreg, d);
+            const s = (n - 144 * d) / Math.sqrt(144 * d);
+            if (i === 1) ctx.moveTo(getX(d), getY(s)); else ctx.lineTo(getX(d), getY(s));
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+
+        // Régulé 2016 blocs
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.2; ctx.beginPath();
+        for (let i = 1; i <= 280; i++) {
+            const d = (i / 280) * 140;
+            const n = countBefore(tReg, d);
+            const s = (n - 144 * d) / Math.sqrt(144 * d);
+            if (i === 1) ctx.moveTo(getX(d), getY(s)); else ctx.lineTo(getX(d), getY(s));
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.strokeStyle = '#2d3748'; ctx.strokeRect(padL, padT, pw, ph);
+        ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillStyle = '#f59e0b'; ctx.fillText(fr ? '━ Recalibrage 2 016 Blocs (Confiné)' : '━ 2,016-Block Retargeting (Bounded)', padL + 14, padT + 20);
+        ctx.fillStyle = '#f43f5e'; ctx.fillText(fr ? '┅ Sans Recalibrage (Explosion Exponentielle)' : '┅ Unregulated Hashrate (Runaway Drift)', padL + 295, padT + 20);
+    }
+
+    // --- FIG 3 : GUE WIGNER SURMISE VS POISSON & ERLANG-6 ---
+    const c3 = setupHiDPI(document.getElementById('gueErlangCanvas'), 900, 350);
+    if (c3) {
+        const { ctx, w, h } = c3;
+        ctx.fillStyle = '#070a10'; ctx.fillRect(0, 0, w, h);
+        const padL = 70, padR = 35, padT = 48, padB = 48;
+        const pw = w - padL - padR, ph = h - padT - padB;
+
+        ctx.fillStyle = '#b366ff'; ctx.font = 'bold 13px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(
+            fr ? 'DENSITÉ DES ESPACEMENTS NORMALISÉS p(s) : POISSON (k=1) vs ERLANG (k=6) vs GUE RIEMANN'
+               : 'NORMALIZED SPACING DENSITY p(s): POISSON (k=1) vs ERLANG (k=6) vs RIEMANN GUE',
+            w / 2, 25
+        );
+
+        const getX = s => padL + (s / 3.2) * pw;
+        const getY = p => padT + ph - (p / 1.15) * ph;
+
+        [0, 0.25, 0.5, 0.75, 1.0].forEach(pv => {
+            const py = getY(pv);
+            ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+            ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(w - padR, py); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.font = '10.5px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(pv.toFixed(2), padL - 8, py + 4);
+        });
+        [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0].forEach(sv => {
+            const px = getX(sv);
+            ctx.fillStyle = '#8b949e'; ctx.textAlign = 'center';
+            ctx.fillText('s=' + sv.toFixed(1), px, padT + ph + 20);
+        });
+
+        // Poisson e^-s
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6; ctx.setLineDash([5, 5]); ctx.beginPath();
+        for (let i = 0; i <= 300; i++) {
+            const s = (i / 300) * 3.2;
+            const p = Math.exp(-s);
+            if (i === 0) ctx.moveTo(getX(s), getY(p)); else ctx.lineTo(getX(s), getY(p));
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+
+        // Erlang k=6 normalisé à moyenne 1 : p_6(s) = (6^6 / 5!) s^5 e^{-6s} = (46656/120) s^5 e^{-6s}
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.4; ctx.beginPath();
+        for (let i = 0; i <= 300; i++) {
+            const s = (i / 300) * 3.2;
+            const p = 388.8 * Math.pow(s, 5) * Math.exp(-6 * s);
+            if (i === 0) ctx.moveTo(getX(s), getY(p)); else ctx.lineTo(getX(s), getY(p));
+        }
+        ctx.stroke();
+
+        // GUE Wigner surmise : (32 / pi^2) s^2 exp(-4 s^2 / pi)
+        ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 2.6; ctx.beginPath();
+        for (let i = 0; i <= 300; i++) {
+            const s = (i / 300) * 3.2;
+            const p = (32 / (Math.PI * Math.PI)) * s * s * Math.exp((-4 * s * s) / Math.PI);
+            if (i === 0) ctx.moveTo(getX(s), getY(p)); else ctx.lineTo(getX(s), getY(p));
+        }
+        ctx.stroke();
+
+        ctx.strokeStyle = '#2d3748'; ctx.strokeRect(padL, padT, pw, ph);
+        ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillStyle = '#94a3b8'; ctx.fillText(fr ? '┅ Bloc unique Poisson e⁻ˢ' : '┅ Single-block Poisson e⁻ˢ', padL + 360, padT + 25);
+        ctx.fillStyle = '#f59e0b'; ctx.fillText(fr ? '━ Finalité Bitcoin Erlang (k=6 blocs)' : '━ Bitcoin Finality Erlang (k=6 blocks)', padL + 360, padT + 45);
+        ctx.fillStyle = '#00e5ff'; ctx.fillText(fr ? '━ Répulsion Quantique GUE (Zéros de Riemann)' : '━ GUE Quantum Repulsion (Riemann Zeros)', padL + 360, padT + 65);
+    }
+
+    // --- FIG 4 : BOST-CONNES PARTITION FUNCTION Z(beta) = zeta(beta) ---
+    const c4 = setupHiDPI(document.getElementById('bostConnesCanvas'), 900, 340);
+    if (c4) {
+        const { ctx, w, h } = c4;
+        ctx.fillStyle = '#070a10'; ctx.fillRect(0, 0, w, h);
+        const padL = 70, padR = 35, padT = 48, padB = 48;
+        const pw = w - padL - padR, ph = h - padT - padB;
+
+        ctx.fillStyle = '#44ee77'; ctx.font = 'bold 13px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(
+            fr ? 'TRANSITION DE PHASE DE BOST–CONNES : Z(β) = ζ(β) & BRISURE DE SYMÉTRIE EN β_c = 1'
+               : 'BOST–CONNES PHASE TRANSITION: Z(β) = ζ(β) & SYMMETRY BREAKING AT β_c = 1',
+            w / 2, 25
+        );
+
+        const getX = b => padL + ((b - 0.2) / 3.0) * pw;
+        const getY = v => padT + ph - (v / 6.0) * ph;
+
+        [0, 1, 2, 3, 4, 5].forEach(yv => {
+            const py = getY(yv);
+            ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+            ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(w - padR, py); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.font = '10.5px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(yv.toFixed(1), padL - 8, py + 4);
+        });
+        [0.5, 1.0, 1.5, 2.0, 2.5, 3.0].forEach(bv => {
+            const px = getX(bv);
+            ctx.fillStyle = '#8b949e'; ctx.textAlign = 'center';
+            ctx.fillText('β=' + bv.toFixed(1), px, padT + ph + 20);
+        });
+
+        // Pôle critique beta = 1
+        const xCrit = getX(1.0);
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(xCrit, padT); ctx.lineTo(xCrit, padT + ph); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#f43f5e'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillText(fr ? 'Seuil Critique β_c = 1 (Pôle de ζ)' : 'Critical Pole β_c = 1 (Phase Transition)', xCrit + 8, padT + 22);
+
+        ctx.save(); ctx.beginPath(); ctx.rect(padL, padT, pw, ph); ctx.clip();
+        // Z(beta) = zeta(beta) pour beta > 1.08
+        ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 2.6; ctx.beginPath();
+        for (let i = 0; i <= 220; i++) {
+            const b = 1.18 + (i / 220) * 2.02;
+            let z = 0;
+            for (let n = 1; n <= 400; n++) z += Math.pow(n, -b);
+            if (i === 0) ctx.moveTo(getX(b), getY(z)); else ctx.lineTo(getX(b), getY(z));
+        }
+        ctx.stroke();
+
+        // Paramètre d'ordre normalisé (x3 pour visibilité) : m(beta) = tanh(2.2*(beta-1)) pour beta > 1
+        ctx.strokeStyle = '#44ee77'; ctx.lineWidth = 2.6; ctx.beginPath();
+        for (let i = 0; i <= 260; i++) {
+            const b = 0.2 + (i / 260) * 3.0;
+            const m = b <= 1.0 ? 0 : 3.5 * Math.sqrt(1 - Math.pow(b, -2.5));
+            if (i === 0) ctx.moveTo(getX(b), getY(m)); else ctx.lineTo(getX(b), getY(m));
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.strokeStyle = '#2d3748'; ctx.strokeRect(padL, padT, pw, ph);
+        ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillStyle = '#00e5ff'; ctx.fillText(fr ? '━ Fonction de Partition Z(β) = ζ(β)' : '━ Partition Function Z(β) = ζ(β)', padL + 390, padT + 50);
+        ctx.fillStyle = '#44ee77'; ctx.fillText(fr ? '━ Paramètre d\'Ordre (Histoire Unique β > 1)' : '━ Order Parameter (Canonical History β > 1)', padL + 390, padT + 72);
+    }
+}
+
+// 3. SIMULATEUR INTERACTIF (ZÊTA + TIMECHAIN)
+function applySpectralPreset(mode, btn) {
+    document.querySelectorAll('.sim-preset-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const elZ = document.getElementById('sim-zeros');
+    const elS = document.getElementById('sim-sigma');
+    const elX = document.getElementById('sim-xmax');
+    const elG = document.getElementById('sim-growth');
+    const elE = document.getElementById('sim-epoch');
+    const elC = document.getElementById('sim-conf');
+
+    if (mode === 'equilibrium') {
+        elZ.value = 30; elS.value = 0.50; elX.value = 20000; elG.value = 0.4; elE.value = 2016; elC.value = 6;
+    } else if (mode === 'broken_rh') {
+        elZ.value = 30; elS.value = 0.78; elX.value = 28000; elG.value = 0.4; elE.value = 2016; elC.value = 6;
+    } else if (mode === 'hash_boom') {
+        elZ.value = 35; elS.value = 0.50; elX.value = 20000; elG.value = 1.5; elE.value = 2016; elC.value = 12;
+    } else if (mode === 'fiat_runaway') {
+        elZ.value = 20; elS.value = 0.74; elX.value = 24000; elG.value = 1.0; elE.value = 0; elC.value = 1;
+    }
+    runSpectralSimulator();
+}
+
+function runSpectralSimulator() {
+    const fr = document.body.classList.contains('lang-fr');
+    const kZeros = parseInt(document.getElementById('sim-zeros').value, 10);
+    const sigma = parseFloat(document.getElementById('sim-sigma').value);
+    const xMax = parseInt(document.getElementById('sim-xmax').value, 10);
+    const growthPct = parseFloat(document.getElementById('sim-growth').value);
+    const epochLen = parseInt(document.getElementById('sim-epoch').value, 10);
+    const kConf = parseInt(document.getElementById('sim-conf').value, 10);
+
+    document.getElementById('val-sim-zeros').textContent = kZeros;
+    document.getElementById('val-sim-sigma').textContent = sigma.toFixed(2);
+    document.getElementById('val-sim-xmax').textContent = xMax.toLocaleString();
+    document.getElementById('val-sim-growth').textContent = (growthPct >= 0 ? '+' : '') + growthPct.toFixed(1) + (fr ? ' %/j' : ' %/d');
+    document.getElementById('val-sim-epoch').textContent = epochLen === 0 ? (fr ? 'OFF (Sans DAA)' : 'OFF (No DAA)') : epochLen + (fr ? ' blocs' : ' blocks');
+    document.getElementById('val-sim-conf').textContent = kConf + (fr ? ' blocs' : ' blocks');
+
+    // 1. Calcul Riemann sur [60, xMax]
+    let maxNormRiemann = 0;
+    const riemannPts = [];
+    for (let i = 0; i <= 240; i++) {
+        const x = 60 + (i / 240) * (xMax - 60);
+        const val = (explicitPsiAt(x, kZeros, sigma) - x) / Math.sqrt(x);
+        if (Math.abs(val) > maxNormRiemann) maxNormRiemann = Math.abs(val);
+        riemannPts.push({ u: i / 240, y: val });
+    }
+
+    // 2. Simulation Nakamoto sur 112 jours (8 époques de 14 jours)
+    const simDays = 112.0;
+    const r = growthPct / 100.0;
+    const rng = mulberry32(840000);
+    let t = 0, b = 0, diff = 1.0, epStart = 0;
+    const times = [];
+    while (t < simDays && b < 120000) {
+        const h_t = Math.exp(r * t);
+        const rate = Math.max(5.0, 144.0 * (h_t / diff));
+        t += -Math.log(Math.max(1e-9, rng())) / rate;
+        if (t <= simDays) {
+            b++; times.push(t);
+            if (epochLen > 0 && b % epochLen === 0) {
+                const nominalDays = epochLen / 144.0;
+                const ratio = Math.min(4.0, Math.max(0.25, nominalDays / Math.max(0.05, t - epStart)));
+                diff *= ratio;
+                epStart = t;
+            }
+        }
+    }
+
+    const btcPts = [];
+    let idxPtr = 0;
+    for (let i = 1; i <= 240; i++) {
+        const d = (i / 240) * simDays;
+        while (idxPtr < times.length && times[idxPtr] <= d) idxPtr++;
+        const normBtc = (idxPtr - 144.0 * d) / Math.sqrt(144.0 * d);
+        btcPts.push({ u: i / 240, y: normBtc });
+    }
+
+    const observedPace = times.length / simDays;
+    const meanTau = 86400.0 / Math.max(1, observedPace);
+    const epochDaysNom = epochLen > 0 ? (epochLen / 144.0) : simDays;
+    const lagFactor = Math.abs(r) < 1e-5 ? 1.0 : (Math.exp(epochDaysNom * r) - 1.0) / (epochDaysNom * r);
+    const lagPct = (lagFactor - 1.0) * 100.0;
+    const erlangCV = 100.0 / Math.sqrt(kConf);
+    const finalSigma = btcPts[btcPts.length - 1].y;
+    const deltaBlocks = Math.round(times.length - 144.0 * simDays);
+
+    // Mise à jour des cartes KPI
+    const rhEl = document.getElementById('out-rh-state');
+    if (sigma <= 0.505) {
+        rhEl.textContent = fr ? 'CONFINÉ √x' : 'BOUNDED √x';
+        rhEl.style.color = '#44ee77';
+    } else {
+        rhEl.textContent = fr ? `BRISÉ x^${sigma.toFixed(2)}` : `BROKEN x^${sigma.toFixed(2)}`;
+        rhEl.style.color = '#f43f5e';
+    }
+    document.getElementById('out-rh-max').textContent = `Max |ψ(x)-x|/√x : ${maxNormRiemann.toFixed(2)}`;
+    document.getElementById('out-btc-pace').textContent = `${observedPace.toFixed(1)} / ${fr ? 'j' : 'd'}`;
+    document.getElementById('out-btc-tau').textContent = `${fr ? 'τ moyen' : 'Mean τ'} : ${Math.round(meanTau)} s (${fr ? 'Cible' : 'Target'}: 600 s)`;
+    document.getElementById('out-lag-bias').textContent = (lagPct >= 0 ? '+' : '') + lagPct.toFixed(1) + ' %';
+    document.getElementById('out-erlang-cv').textContent = `±${erlangCV.toFixed(1)} %`;
+    document.getElementById('out-erlang-time').textContent = `${fr ? 'Fenêtre' : 'Window'} ${kConf} ${fr ? 'blocs' : 'blocks'} : ~${kConf * 10} min`;
+
+    const hurstEst = (sigma > 0.51 || epochLen === 0) ? Math.max(sigma, epochLen === 0 && Math.abs(r) > 0.002 ? 0.92 : 0.50) : 0.50;
+    const hEl = document.getElementById('out-hurst');
+    hEl.textContent = `H ≈ ${hurstEst.toFixed(2)}`;
+    hEl.style.color = hurstEst > 0.55 ? '#f43f5e' : '#44ee77';
+    document.getElementById('out-hurst-sub').textContent = hurstEst > 0.55
+        ? (fr ? 'Dérive super-diffusive !' : 'Super-diffusive runaway!')
+        : (fr ? 'Équilibre diffusif optimal' : 'Optimal diffusive equilibrium');
+
+    document.getElementById('out-drift-sigma').textContent = (finalSigma >= 0 ? '+' : '') + finalSigma.toFixed(1) + ' σ';
+    document.getElementById('out-drift-blocks').textContent = `${fr ? 'Écart' : 'Delta'} : ${deltaBlocks >= 0 ? '+' : ''}${deltaBlocks} ${fr ? 'blocs' : 'blocks'}`;
+
+    // Tracé du graphique double du simulateur
+    const cSim = setupHiDPI(document.getElementById('interactiveDualSimCanvas'), 900, 310);
+    if (cSim) {
+        const { ctx, w, h } = cSim;
+        ctx.fillStyle = '#04060a'; ctx.fillRect(0, 0, w, h);
+        const padL = 65, padR = 30, padT = 42, padB = 38;
+        const pw = w - padL - padR, ph = h - padT - padB;
+
+        const maxY = Math.max(4.5, maxNormRiemann * 1.15, Math.abs(finalSigma) * 1.15);
+        const getX = u => padL + u * pw;
+        const getY = y => padT + ph / 2 - (y / maxY) * (ph / 2);
+
+        ctx.fillStyle = '#ffcc00'; ctx.font = 'bold 12px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(
+            fr ? 'COMPARAISON DYNAMIQUE DES RÉSIDUS NORMALISÉS : ZÊTA (CYAN) vs NAKAMOTO (AMBRE)'
+               : 'LIVE NORMALIZED RESIDUAL COMPARISON: ZETA SPECTRUM (CYAN) vs NAKAMOTO CLOCK (AMBER)',
+            w / 2, 22
+        );
+
+        ctx.fillStyle = 'rgba(68, 238, 119, 0.06)';
+        ctx.fillRect(padL, getY(2.0), pw, getY(-2.0) - getY(2.0));
+
+        [-maxY * 0.75, 0, maxY * 0.75].forEach(yv => {
+            const py = getY(yv);
+            ctx.strokeStyle = yv === 0 ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.06)';
+            ctx.beginPath(); ctx.moveTo(padL, py); ctx.lineTo(w - padR, py); ctx.stroke();
+            ctx.fillStyle = '#8b949e'; ctx.font = '10px "Fira Code", monospace'; ctx.textAlign = 'right';
+            ctx.fillText(yv.toFixed(1), padL - 8, py + 4);
+        });
+
+        ctx.save(); ctx.beginPath(); ctx.rect(padL, padT, pw, ph); ctx.clip();
+        ctx.strokeStyle = sigma > 0.51 ? '#f43f5e' : '#00e5ff';
+        ctx.lineWidth = 1.8; ctx.beginPath();
+        riemannPts.forEach((p, idx) => { if (idx === 0) ctx.moveTo(getX(p.u), getY(p.y)); else ctx.lineTo(getX(p.u), getY(p.y)); });
+        ctx.stroke();
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.1; ctx.beginPath();
+        btcPts.forEach((p, idx) => { if (idx === 0) ctx.moveTo(getX(p.u), getY(p.y)); else ctx.lineTo(getX(p.u), getY(p.y)); });
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.strokeStyle = '#2d3748'; ctx.strokeRect(padL, padT, pw, ph);
+        ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillStyle = sigma > 0.51 ? '#f43f5e' : '#00e5ff';
+        ctx.fillText(`━ Riemann (K=${kZeros}, Re=${sigma.toFixed(2)})`, padL + 12, padT + 18);
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillText(`━ Nakamoto (${epochLen === 0 ? 'No DAA' : 'E=' + epochLen}, r=${growthPct}%/d)`, padL + 235, padT + 18);
+    }
+}
+
+// 4. TÉLÉMÉTRIE LIVE MEMPOOL.SPACE (AVEC FALLBACK GRACIEUX)
+async function fetchBitcoinClockTelemetry() {
+    try {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 6500);
+        const [blocksRes, diffRes] = await Promise.all([
+            fetch('https://mempool.space/api/v1/blocks', { signal: ctrl.signal }),
+            fetch('https://mempool.space/api/v1/difficulty-adjustment', { signal: ctrl.signal })
+        ]);
+        clearTimeout(tid);
+        if (blocksRes.ok) {
+            const blocks = await blocksRes.json();
+            if (Array.isArray(blocks) && blocks.length >= 10) {
+                const tipH = blocks[0].height;
+                const dtTotal = blocks[0].timestamp - blocks[blocks.length - 1].timestamp;
+                const meanTau = dtTotal / (blocks.length - 1);
+                const pace = 86400.0 / Math.max(60, meanTau);
+                const fr = document.body.classList.contains('lang-fr');
+                document.getElementById('live-tip-height').textContent = '#' + tipH.toLocaleString();
+                document.getElementById('live-block-pace').textContent = pace.toFixed(1) + (fr ? ' / j' : ' / d');
+                document.getElementById('live-mean-tau').textContent = Math.round(meanTau) + ' s';
+            }
+        }
+        if (diffRes.ok) {
+            const dj = await diffRes.json();
+            if (typeof dj.difficultyChange === 'number') {
+                const sign = dj.difficultyChange >= 0 ? '+' : '';
+                document.getElementById('live-retarget-est').textContent = sign + dj.difficultyChange.toFixed(2) + ' %';
+            }
+        }
+    } catch (e) {
+        // Conserve les valeurs nominales réalistes affichées par défaut en cas de mode hors-ligne
+    }
+}
+
+// 5. PLUIE SPECTRALE HERO CANVAS
+(function initHeroSpectralRain() {
+    const canvas = document.getElementById('zetaMatrixCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const header = canvas.parentElement;
+    const glyphs = ['ζ(s)', '½+iγ', '144', '₿', '∏p', '√N', '2016', 'SHA', '14.13i', '21.02i', '600s', 'π(x)'];
+    const palette = ['#00e5ff', '#ffcc00', '#f7931a', '#44ee77', '#b366ff'];
+
+    let cols = 0, rows = 0, drops = [], speeds = [], anim = null, visible = true;
+    const colW = 48, rowH = 26;
+
+    function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = header.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = Math.max(6, Math.floor(rect.width / colW));
+        rows = Math.ceil(rect.height / rowH);
+        drops = Array.from({ length: cols }, () => Math.random() * rows);
+        speeds = Array.from({ length: cols }, () => 0.04 + Math.random() * 0.06);
+    }
+
+    function draw() {
+        const rect = header.getBoundingClientRect();
+        ctx.fillStyle = 'rgba(5, 8, 13, 0.12)';
+        ctx.fillRect(0, 0, rect.width, rect.height);
+        ctx.font = '11px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+
+        for (let i = 0; i < cols; i++) {
+            drops[i] -= speeds[i];
+            if (drops[i] < -1) drops[i] = rows + Math.random() * 6;
+            if (Math.random() > 0.86) {
+                const sym = glyphs[Math.floor(Math.random() * glyphs.length)];
+                ctx.fillStyle = palette[Math.floor(Math.random() * palette.length)];
+                ctx.fillText(sym, i * colW + colW / 2, drops[i] * rowH);
+            }
+        }
+        if (visible) anim = requestAnimationFrame(draw);
+    }
+
+    const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+            visible = e.isIntersecting;
+            if (visible && !anim) anim = requestAnimationFrame(draw);
+            else if (!visible && anim) { cancelAnimationFrame(anim); anim = null; }
+        });
+    }, { threshold: 0.05 });
+    obs.observe(header);
+    window.addEventListener('resize', resize);
+    resize();
+    anim = requestAnimationFrame(draw);
+})();
+
+// 6. GESTION BILINGUE FR / EN & INITIALISATION
+function setLang(lang) {
+    lang = (lang || 'fr').toLowerCase() === 'en' ? 'en' : 'fr';
+    document.body.className = 'lang-' + lang;
+    try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
+    try {
+        const url = new URL(window.location);
+        url.searchParams.set('lg', lang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    } catch (e) {}
+    renderDossierCharts();
+    runSpectralSimulator();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const simBox = document.getElementById('simulateur-spectral');
+    if (simBox) simBox.addEventListener('input', runSpectralSimulator);
+
+    const dossier = document.getElementById('tiroir-dossier-scientifique');
+    if (dossier) dossier.addEventListener('toggle', () => { if (dossier.open) setTimeout(renderDossierCharts, 40); });
+
+    const params = new URLSearchParams(window.location.search);
+    const initLang = params.get('lg') || (function(){ try { return localStorage.getItem('sun-std-lang'); } catch(e){ return null; } })() || 'fr';
+    setLang(initLang);
+    fetchBitcoinClockTelemetry();
+
+    // Formspree handler
+    const form = document.getElementById('feedback-form');
+    const popup = document.getElementById('success-popup');
+    const btn = document.getElementById('feedback-btn');
+    if (form) {
+        form.addEventListener('submit', async (ev) => {
+            ev.preventDefault();
+            const orig = btn.innerHTML; btn.innerHTML = '⏳ ...'; btn.disabled = true;
+            try {
+                const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+                if (res.ok) {
+                    form.reset(); popup.style.display = 'block';
+                    setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                }
+            } catch (e) {}
+            btn.innerHTML = orig; btn.disabled = false;
+        });
+    }
+});
+
+window.addEventListener('resize', () => {
+    renderDossierCharts();
+    runSpectralSimulator();
+});
+</script>
+</body>
+</html>
