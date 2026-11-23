@@ -1,0 +1,2575 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LFDV8LWZSL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>La Blockchain et la Forêt : Le Wood Wide Web | L'Étalon Solaire</title>
+    <meta name="description" content="Chapitre 4 de Homo Biodiversitas : protocole mycélien P2P, photosynthèse comme Preuve de Travail, ADN registre immuable, arbre de Merkle biologique, graines Cold Storage et immunité byzantine (BFT)." />
+
+    <!-- Open Graph / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="La Blockchain et la Forêt : Le Wood Wide Web | The Sun Standard" />
+    <meta property="og:description" content="Des forêts primaires de Madagascar au Lightning Network : comment 450 millions d'années de symbiose mycorhizienne révèlent le code source d'Homo Biodiversitas." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/wood-wide-web.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/wood-wide-web-cover.jpg" />
+
+    <!-- X / Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Blockchain and the Forest — The Wood Wide Web" />
+    <meta name="twitter:description" content="Photosynthetic Proof-of-Work, Mycelial Lightning Markets, DNA Chains, Dendro-Merkle Oracles & BFT Forest Security." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/wood-wide-web-cover.jpg" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --bg-dark: #040605;
+            --bg-deep: #070c09;
+            --bg-panel: rgba(8, 15, 11, 0.90);
+            --text-main: #e2e8f0;
+            --text-soft: #cbd5e1;
+            --text-muted: #8b9bb0;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #f7931a;
+            --amber-sap: #ff9900;
+            --bio-green: #44ee77;
+            --emerald-deep: #10b981;
+            --mycelium-cyan: #00e5ff;
+            --water-blue: #00ccff;
+            --purple-dna: #b366ff;
+            --magenta-seed: #e040fb;
+            --teal-l0: #00bfa5;
+            --danger-red: #ef4444;
+            --border-glow: rgba(68, 238, 119, 0.26);
+            --border-subtle: rgba(255, 255, 255, 0.09);
+            --font-main: 'Georgia', serif;
+            --font-ui: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.82;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(68, 238, 119, 0.09) 0%, rgba(255, 204, 0, 0.04) 34%, transparent 66%),
+                radial-gradient(circle at 85% 45%, rgba(0, 229, 255, 0.05) 0%, transparent 54%);
+        }
+
+        /* Système Bilingue Zero-JS */
+        body.lang-en [lang="fr"] { display: none !important; }
+        body.lang-fr [lang="en"] { display: none !important; }
+
+        /* Navigation Fixe */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.78rem 1.5rem; background: rgba(4, 6, 5, 0.92);
+            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
+        }
+        nav .logo {
+            font-size: 0.83rem; font-weight: 800; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--bio-green); text-decoration: none; white-space: nowrap;
+        }
+        nav .nav-links {
+            display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.71rem; font-weight: 600;
+            letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav .nav-links a:hover { color: #fff; background: rgba(68, 238, 119, 0.14); }
+        .nav-right-tools {
+            display: flex; align-items: center; gap: 8px; white-space: nowrap;
+        }
+        .nav-dl-btn {
+            background: rgba(68, 238, 119, 0.14); border: 1px solid rgba(68, 238, 119, 0.45);
+            color: var(--bio-green); border-radius: 7px; padding: 4px 10px; font-size: 0.74rem;
+            font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover {
+            background: rgba(68, 238, 119, 0.28); color: #fff; transform: translateY(-1px);
+            box-shadow: 0 0 14px rgba(68, 238, 119, 0.32);
+        }
+        .lang-toggle {
+            display: flex; gap: 6px; align-items: center;
+            border-left: 1px solid rgba(255,255,255,0.12); padding-left: 0.75rem;
+        }
+        .lang-toggle button {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px; padding: 4px 8px; font-size: 0.76rem; font-family: var(--font-mono);
+            color: #fff; cursor: pointer; opacity: 0.55; filter: grayscale(100%); transition: 0.22s;
+        }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
+        body.lang-en #btn-en, body.lang-fr #btn-fr {
+            opacity: 1; filter: grayscale(0%); border-color: var(--sun-yellow);
+            background: rgba(255, 204, 0, 0.15); box-shadow: 0 0 12px rgba(255, 204, 0, 0.28);
+        }
+
+        /* Conteneur Principal & Typographie */
+        article { max-width: 1050px; margin: 6.4rem auto 5rem; padding: 0 1.6rem; font-size: 1.09rem; }
+        header.article-header {
+            text-align: center; margin-bottom: 1.8rem; padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(68, 238, 119, 0.28); font-family: var(--font-ui);
+        }
+        .chapter-pill {
+            display: inline-block; padding: 4px 14px; border-radius: 999px;
+            background: rgba(68, 238, 119, 0.1); border: 1px solid rgba(68, 238, 119, 0.35);
+            color: var(--bio-green); font-family: var(--font-mono); font-size: 0.74rem;
+            font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.9rem;
+        }
+        h1 {
+            font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 800; color: #fff;
+            margin-bottom: 0.65rem; letter-spacing: -1px; text-transform: uppercase; line-height: 1.14;
+            text-shadow: 0 0 32px rgba(68, 238, 119, 0.25);
+        }
+        h2.header-subtitle {
+            font-size: clamp(1.04rem, 2.1vw, 1.28rem); font-weight: 600;
+            color: var(--sun-yellow); margin-bottom: 0.8rem; font-family: var(--font-ui);
+        }
+        .subtitle-lead {
+            font-size: 1.02rem; color: #a7f3d0; font-style: italic;
+            max-width: 860px; margin: 0 auto; line-height: 1.62;
+        }
+        .meta-stamp {
+            margin-top: 1rem; color: var(--text-muted); font-size: 0.79rem;
+            font-family: var(--font-mono); letter-spacing: 0.8px;
+        }
+
+        /* Bannière d'Export HTML & Dossier img/ */
+        .export-toolkit-bar {
+            margin: 0 0 2rem; padding: 1.15rem 1.4rem;
+            background: linear-gradient(90deg, rgba(68, 238, 119, 0.08) 0%, rgba(0, 229, 255, 0.06) 55%, rgba(255, 204, 0, 0.06) 100%);
+            border: 1px solid rgba(68, 238, 119, 0.32); border-left: 4px solid var(--bio-green);
+            border-radius: 12px; font-family: var(--font-ui);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+        }
+        .export-row {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+        }
+        .export-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+        .ui-btn {
+            background: rgba(247, 147, 26, 0.12); border: 1px solid rgba(255, 204, 0, 0.38);
+            color: var(--sun-yellow); border-radius: 999px; padding: 7px 14px;
+            font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600;
+            cursor: pointer; transition: 0.2s; white-space: nowrap;
+        }
+        .ui-btn:hover {
+            background: rgba(255, 204, 0, 0.24); color: #fff; transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.28);
+        }
+        .ui-btn.active, .ui-btn.green-cta {
+            background: rgba(68, 238, 119, 0.18); border-color: var(--bio-green); color: var(--bio-green);
+        }
+        .ui-btn.green-cta:hover {
+            background: rgba(68, 238, 119, 0.32); color: #fff;
+            box-shadow: 0 0 16px rgba(68, 238, 119, 0.35);
+        }
+        .img-guide-details {
+            margin-top: 0.75rem; padding-top: 0.65rem; border-top: 1px dashed rgba(255,255,255,0.12);
+            font-size: 0.8rem; color: #94a3b8;
+        }
+        .img-guide-details summary {
+            cursor: pointer; color: var(--mycelium-cyan); font-family: var(--font-mono);
+            font-size: 0.75rem; font-weight: 600; user-select: none;
+        }
+        .img-guide-list {
+            margin-top: 0.55rem; padding-left: 1.2rem; font-family: var(--font-mono);
+            font-size: 0.74rem; line-height: 1.65; color: #cbd5e1;
+        }
+
+        /* Couverture Photo LinkedIn/Locale optionnelle */
+        .cover-banner-wrap {
+            margin: 0 0 1.8rem; border-radius: 14px; overflow: hidden;
+            border: 1px solid rgba(68, 238, 119, 0.26); background: #050a07;
+            box-shadow: 0 16px 42px rgba(0,0,0,0.65);
+        }
+        .cover-banner-wrap img {
+            width: 100%; max-height: 360px; object-fit: cover; display: block; opacity: 0.92;
+        }
+
+        /* Titres de sections, paragraphes & blocs mathématiques */
+        h2.section-heading {
+            font-family: var(--font-ui); color: var(--sun-yellow);
+            font-size: clamp(1.38rem, 2.7vw, 1.92rem); font-weight: 800;
+            margin: 3.8rem 0 1.2rem; text-transform: uppercase; letter-spacing: 1.05px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.22); padding-bottom: 0.6rem;
+            scroll-margin-top: 5.4rem;
+        }
+        h3.sub-heading {
+            font-family: var(--font-ui); color: #fff; font-size: 1.22rem;
+            font-weight: 700; margin: 1.9rem 0 0.75rem;
+        }
+        p { margin-bottom: 1.28rem; color: var(--text-soft); text-align: justify; }
+        .quote-block {
+            border-left: 4px solid var(--bio-green); padding: 1.35rem 1.8rem;
+            font-style: italic; color: #f8fafc; font-size: 1.06rem; margin: 1.8rem 0;
+            font-family: var(--font-ui);
+            background: linear-gradient(90deg, rgba(68, 238, 119, 0.11) 0%, rgba(255, 204, 0, 0.04) 68%, transparent 100%);
+            border-radius: 0 10px 10px 0;
+        }
+        .math-block {
+            background: rgba(3, 8, 6, 0.85); padding: 1.35rem 1.1rem; border-radius: 10px;
+            margin: 1.5rem 0; text-align: center; border: 1px solid rgba(0, 229, 255, 0.24);
+            border-left: 4px solid var(--mycelium-cyan); font-size: 0.98rem;
+            font-family: var(--font-ui); overflow-x: auto; box-shadow: 0 10px 28px rgba(0,0,0,0.48);
+        }
+
+        /* Hero Stage (#woodWideWebHeroCanvas) */
+        .hero-stage-card {
+            position: relative; width: 100%; border-radius: 16px; overflow: hidden;
+            margin-bottom: 2.3rem;
+            background: radial-gradient(circle at 50% 35%, #0c1f14 0%, #060d09 68%, #030504 100%);
+            border: 1px solid rgba(68, 238, 119, 0.38); box-shadow: 0 20px 55px rgba(0,0,0,0.8);
+        }
+        #woodWideWebHeroCanvas { display: block; width: 100%; height: 430px; cursor: pointer; }
+        .hero-hud-bar {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+            gap: 12px; padding: 11px 16px; background: rgba(5, 9, 7, 0.95);
+            border-top: 1px solid var(--border-subtle); font-family: var(--font-ui);
+        }
+        .hero-slider-group { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 250px; }
+        .hero-slider-group label {
+            font-size: 0.75rem; font-weight: 700; color: var(--bio-green);
+            text-transform: uppercase; letter-spacing: 0.7px; white-space: nowrap;
+        }
+        .hero-slider-group input[type="range"] { flex: 1; accent-color: var(--bio-green); cursor: pointer; }
+        .hud-metrics-strip {
+            display: grid; grid-template-columns: repeat(4, minmax(115px, 1fr)); gap: 8px;
+            padding: 10px 16px 14px; background: rgba(3, 6, 4, 0.97);
+            border-top: 1px solid rgba(255,255,255,0.05); font-family: var(--font-ui);
+        }
+        .hud-pill-stat {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px; padding: 7px 10px; text-align: center;
+        }
+        .hud-pill-stat .lbl {
+            display: block; font-size: 0.64rem; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-muted);
+        }
+        .hud-pill-stat .val { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: #fff; }
+
+        /* Protocole de Clarté Épistémique */
+        .modelling-section {
+            margin: 3.1rem 0; padding: 2rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(0,0,0,0.55)),
+                        radial-gradient(circle at top right, rgba(68,238,119,0.07), transparent 50%);
+            border: 1px solid rgba(68,238,119,0.22); border-radius: 16px;
+            box-shadow: 0 18px 48px rgba(0,0,0,0.52); scroll-margin-top: 5.4rem;
+        }
+        .modelling-section h3 {
+            margin-bottom: 0.65rem; color: var(--bio-green); font-family: var(--font-ui);
+            font-size: clamp(1.25rem, 2.5vw, 1.72rem); text-align: center;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        .modelling-lead {
+            max-width: 840px; margin: 0 auto 1.5rem; color: #aeb8c5;
+            text-align: center; font-size: 0.95rem; font-family: var(--font-ui);
+        }
+        .epistemic-legend {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 0.9rem 0 1.6rem;
+        }
+        .epistemic-badge {
+            display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.26rem 0.72rem;
+            border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-mono);
+            font-size: 0.71rem; font-weight: 600; white-space: nowrap;
+        }
+        .status-a { color: #44ee77; background: rgba(68,238,119,0.08); }
+        .status-b { color: #00e5ff; background: rgba(0,229,255,0.08); }
+        .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
+        .status-d { color: #b366ff; background: rgba(179,102,255,0.08); }
+        .modelling-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1rem;
+        }
+        .model-card {
+            padding: 1.2rem; background: rgba(4, 9, 6, 0.88);
+            border: 1px solid var(--border-subtle); border-radius: 12px; transition: 0.25s;
+        }
+        .model-card:hover { transform: translateY(-3px); border-color: rgba(68, 238, 119, 0.42); }
+        .model-card h4 { margin: 0.5rem 0 0.45rem; color: #fff; font-family: var(--font-ui); font-size: 0.97rem; }
+        .model-card p { color: #a3b1c2; font-size: 0.86rem; line-height: 1.58; font-family: var(--font-ui); margin: 0; text-align: left; }
+
+        /* Tableau Comparatif */
+        .table-scroll {
+            width: 100%; overflow-x: auto; margin: 1.6rem 0;
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(4, 8, 6, 0.86);
+        }
+        .glossary-table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.84rem; }
+        .glossary-table th, .glossary-table td {
+            padding: 0.8rem 0.9rem; text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.07); vertical-align: top;
+        }
+        .glossary-table th {
+            color: var(--sun-yellow); font-family: var(--font-mono); text-transform: uppercase;
+            font-size: 0.72rem; letter-spacing: 0.8px; background: rgba(255,255,255,0.03);
+        }
+        .glossary-table tr:hover { background: rgba(68,238,119,0.03); }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 5px; font-family: var(--font-mono);
+            font-size: 0.73rem; font-weight: 700; background: rgba(255,255,255,0.08); color: #fff; white-space: nowrap;
+        }
+
+        /* Pyramide Biologique 4.1 -> 4.6 & Tiroirs */
+        .pyramid-wrapper {
+            margin: 2.1rem 0 2.6rem; padding: 1.8rem;
+            background: rgba(255,255,255,0.018); border: 1px solid rgba(68,238,119,0.22); border-radius: 14px;
+        }
+        .pyramid-container {
+            display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; font-family: var(--font-ui);
+        }
+        .pyramid-tier {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.9rem 1.35rem; border-radius: 9px; border: 1.5px solid;
+            background: rgba(0,0,0,0.82); text-decoration: none; transition: 0.26s;
+            box-shadow: 0 5px 16px rgba(0,0,0,0.45);
+        }
+        .pyramid-tier:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 22px rgba(68,238,119,0.22); }
+        .tier-46 { width: 52%; border-color: var(--magenta-seed); background: linear-gradient(90deg, rgba(224,64,251,0.16), rgba(0,0,0,0.9)); }
+        .tier-45 { width: 61%; border-color: var(--purple-dna); background: linear-gradient(90deg, rgba(179,102,255,0.16), rgba(0,0,0,0.9)); }
+        .tier-44 { width: 70%; border-color: var(--amber-sap); background: linear-gradient(90deg, rgba(255,153,0,0.18), rgba(0,0,0,0.9)); }
+        .tier-43 { width: 80%; border-color: var(--bio-green); background: linear-gradient(90deg, rgba(68,238,119,0.16), rgba(0,0,0,0.9)); }
+        .tier-42 { width: 90%; border-color: var(--sun-yellow); background: linear-gradient(90deg, rgba(255,204,0,0.16), rgba(0,0,0,0.9)); }
+        .tier-41 { width: 100%; border-color: var(--mycelium-cyan); background: linear-gradient(90deg, rgba(0,229,255,0.16), rgba(0,0,0,0.9)); }
+        .tier-tag { font-family: var(--font-mono); font-weight: 700; font-size: 0.79rem; white-space: nowrap; }
+        .tier-title { font-size: 0.87rem; color: #fff; font-weight: 600; text-align: center; flex-grow: 1; padding: 0 0.7rem; }
+
+        details.scale-drawer {
+            margin-bottom: 1.35rem; background: rgba(255,255,255,0.02);
+            border-radius: 0 12px 12px 0; overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.45); font-family: var(--font-ui); scroll-margin-top: 5.8rem;
+        }
+        details.scale-drawer[open] { background: rgba(4, 9, 6, 0.92); }
+        details.scale-drawer > summary {
+            padding: 1.15rem 1.4rem; cursor: pointer; font-weight: 700; font-size: 1.04rem;
+            color: #fff; outline: none; list-style: none; display: flex; align-items: center;
+            justify-content: space-between; gap: 12px; background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        details.scale-drawer > summary::-webkit-details-marker { display: none; }
+        .sum-left { display: flex; align-items: center; gap: 10px; }
+        .sum-arrow { font-size: 0.82rem; transition: transform 0.2s; display: inline-block; }
+        details.scale-drawer[open] .sum-arrow { transform: rotate(90deg); }
+        .drawer-content { padding: 1.55rem 1.85rem; color: #c7d4e2; font-family: var(--font-main); line-height: 1.8; }
+        .drawer-content ul, .drawer-content ol { margin: 0.8rem 0 1.2rem 1.4rem; color: var(--text-soft); }
+        .drawer-content li { margin-bottom: 0.55rem; }
+        .bom-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; }
+        .bom-chip { background: rgba(0,0,0,0.58); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 10px; color: #f8fafc; }
+
+        .layer-41 { border-left: 4px solid var(--mycelium-cyan); } .layer-41 > summary .sum-left { color: var(--mycelium-cyan); }
+        .layer-42 { border-left: 4px solid var(--sun-yellow); } .layer-42 > summary .sum-left { color: var(--sun-yellow); }
+        .layer-43 { border-left: 4px solid var(--bio-green); } .layer-43 > summary .sum-left { color: var(--bio-green); }
+        .layer-44 { border-left: 4px solid var(--amber-sap); } .layer-44 > summary .sum-left { color: var(--amber-sap); }
+        .layer-45 { border-left: 4px solid var(--purple-dna); } .layer-45 > summary .sum-left { color: var(--purple-dna); }
+        .layer-46 { border-left: 4px solid var(--magenta-seed); } .layer-46 > summary .sum-left { color: var(--magenta-seed); }
+
+        /* Laboratoire Marché Mycélien & Dendro-Merkle (#marche-merkle-lab) */
+        .materials-lab-box {
+            background: #050a07; border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 16px; padding: 1.8rem; margin: 2.2rem 0 3.8rem;
+            box-shadow: 0 20px 55px rgba(0,0,0,0.75); font-family: var(--font-ui);
+        }
+        .preset-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 1.4rem; }
+        .preset-btn {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
+            color: #dce5f0; border-radius: 8px; padding: 7px 12px; font-family: var(--font-mono);
+            font-size: 0.73rem; cursor: pointer; transition: 0.2s;
+        }
+        .preset-btn:hover { border-color: var(--mycelium-cyan); color: #fff; }
+        .preset-btn.active {
+            background: rgba(0, 229, 255, 0.18); border-color: var(--mycelium-cyan);
+            color: var(--mycelium-cyan); font-weight: 700; box-shadow: 0 0 14px rgba(0, 229, 255, 0.24);
+        }
+        .lab-controls-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem; margin-bottom: 1.4rem;
+        }
+        .lab-ctrl-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; padding: 0.95rem;
+        }
+        .lab-ctrl-card label {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.75rem; color: #cbd5e1; margin-bottom: 0.5rem; font-weight: 600; gap: 6px;
+        }
+        .lab-ctrl-card input[type="range"] { width: 100%; accent-color: var(--mycelium-cyan); cursor: pointer; }
+        .bom-cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+            gap: 0.85rem; margin-bottom: 1.6rem;
+        }
+        .bom-card {
+            background: linear-gradient(160deg, rgba(11,22,16,0.92), rgba(4,8,6,0.96));
+            border: 1px solid var(--border-subtle); border-top: 2px solid var(--mycelium-cyan);
+            border-radius: 10px; padding: 0.9rem;
+        }
+        .bom-card .bom-icon { font-size: 0.69rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+        .bom-card .bom-val { display: block; font-family: var(--font-mono); font-size: 1.06rem; font-weight: 700; color: #fff; margin: 0.26rem 0; }
+        .bom-card .bom-sub { font-size: 0.73rem; color: #94a3b8; line-height: 1.35; }
+        .dual-canvas-grid {
+            display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.1rem; align-items: stretch;
+        }
+        .canvas-panel {
+            background: #030705; border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 0.95rem; display: flex; flex-direction: column;
+        }
+        .canvas-panel h4 {
+            font-size: 0.74rem; font-family: var(--font-mono); text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--sun-yellow); margin-bottom: 0.5rem; text-align: center;
+        }
+        #mycelialMarketCanvas, #merkleDendroCanvas { width: 100%; height: 300px; display: block; border-radius: 8px; cursor: pointer; }
+
+        /* Simulateur Pare-Feu Byzantin (BFT) & Éthylène (#parefeu-bft) */
+        .course-shell {
+            background: #040806; border: 1px solid rgba(68, 238, 119, 0.35);
+            border-radius: 16px; padding: 1.5rem; margin: 2rem 0 3.8rem;
+            box-shadow: 0 22px 60px rgba(0,0,0,0.8); font-family: var(--font-ui);
+        }
+        .course-top-controls {
+            display: flex; flex-wrap: wrap; justify-content: space-between;
+            align-items: center; gap: 10px; margin-bottom: 1rem;
+        }
+        .bft-actions-bar {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem;
+            padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.08); align-items: center; justify-content: space-between;
+        }
+        #bftForestCanvas {
+            width: 100%; height: 400px; display: block; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1); background: #030604;
+            cursor: crosshair; margin-bottom: 1.1rem;
+        }
+        .course-gauges-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1rem;
+        }
+        .gauge-box {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; padding: 9px 11px;
+        }
+        .gauge-head {
+            display: flex; justify-content: space-between; font-size: 0.72rem;
+            font-weight: 600; margin-bottom: 5px; color: #dce4ee;
+        }
+        .gauge-bar-bg { width: 100%; height: 7px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+        .gauge-bar-fill { height: 100%; border-radius: 999px; transition: width 0.35s ease, background-color 0.35s ease; }
+        .course-verdict-banner {
+            margin-top: 0.6rem; padding: 0.95rem 1.15rem; border-radius: 10px;
+            border-left: 4px solid var(--bio-green); background: rgba(68, 238, 119, 0.08);
+            font-size: 0.87rem; color: #e2e8f0; line-height: 1.55;
+        }
+
+        /* Les 5 Lois du Protocole Homo Biodiversitas */
+        .isomorphism-strip {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: 0.85rem; margin: 1.5rem 0 2.2rem; font-family: var(--font-ui);
+        }
+        .iso-pill {
+            background: rgba(68, 238, 119, 0.05); border: 1px solid rgba(68, 238, 119, 0.25);
+            border-radius: 10px; padding: 0.95rem; text-align: center;
+        }
+        .iso-pill .tech { display: block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--sun-yellow); }
+        .iso-pill .eq { display: block; font-size: 0.9rem; color: var(--mycelium-cyan); margin: 2px 0; }
+        .iso-pill .bio { display: block; font-size: 0.84rem; font-weight: 600; color: #fff; }
+
+        .bridges-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+            gap: 1.25rem; margin: 1.8rem 0 3.4rem;
+        }
+        .bridge-card {
+            background: rgba(7, 13, 10, 0.92); border: 1px solid rgba(68, 238, 119, 0.22);
+            border-top: 3px solid var(--bio-green); border-radius: 12px; padding: 1.4rem;
+            font-family: var(--font-ui); display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .bridge-card.wide-human {
+            grid-column: 1 / -1; border-top-color: var(--sun-yellow);
+            border-color: rgba(255,204,0,0.28);
+            background: linear-gradient(145deg, rgba(20,22,12,0.90), rgba(5,9,7,0.96));
+        }
+        .bridge-card h4 { color: var(--bio-green); font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.6px; }
+        .bridge-triptych { display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.85rem; }
+        .triptych-row {
+            padding: 0.6rem 0.75rem; border-radius: 8px;
+            background: rgba(255,255,255,0.025); border-left: 3px solid; line-height: 1.5;
+        }
+        .triptych-row.impasse { border-left-color: var(--danger-red); }
+        .triptych-row.arch { border-left-color: var(--bio-green); }
+        .triptych-row.metric { border-left-color: var(--sun-yellow); font-family: var(--font-mono); font-size: 0.76rem; color: #fde68a; }
+
+        /* Sankey & Galerie Visuelle Originale */
+        .sankey-box {
+            background: #040906; border: 1px solid rgba(68, 238, 119, 0.28);
+            border-radius: 16px; padding: 1.5rem; margin: 1.8rem 0 3rem;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.72); font-family: var(--font-ui);
+        }
+        #forestSankeyCanvas {
+            width: 100%; height: 390px; display: block; border-radius: 12px;
+            background: #030604; border: 1px solid rgba(255,255,255,0.08); margin: 1rem 0;
+        }
+
+        .visual-gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.5rem; margin: 2.2rem 0;
+        }
+        .gallery-figure {
+            background: rgba(7, 13, 10, 0.9); border: 1px solid rgba(68, 238, 119, 0.25);
+            border-radius: 14px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+            display: flex; flex-direction: column;
+        }
+        .gallery-figure img {
+            width: 100%; height: 330px; object-fit: cover; display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-figure:hover img { transform: scale(1.02); }
+        .gallery-figure figcaption {
+            padding: 1rem 1.25rem; font-family: var(--font-ui); font-size: 0.87rem;
+            color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.08); line-height: 1.55;
+        }
+        .linkedin-embed-card {
+            margin: 2.2rem auto; padding: 1.5rem; background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 14px;
+            text-align: center; font-family: var(--font-ui);
+        }
+        .linkedin-embed-card iframe {
+            width: 100%; max-width: 720px; height: 405px; border: 0;
+            border-radius: 10px; margin: 0.8rem auto 0; display: block; background: #fff;
+        }
+
+        /* Tablette Philosophique, Références, Auteur & Navigation */
+        .philosophical-tablet {
+            margin: 3.6rem 0; padding: 2.4rem;
+            background: linear-gradient(145deg, rgba(13,24,17,0.92) 0%, rgba(4,7,5,0.97) 100%);
+            border: 1px solid rgba(255,204,0,0.26); border-top: 4px solid var(--sun-yellow);
+            border-radius: 16px; box-shadow: 0 22px 58px rgba(0,0,0,0.78);
+        }
+        .philosophical-tablet h3 {
+            color: var(--sun-yellow); font-family: var(--font-ui);
+            font-size: clamp(1.28rem, 2.5vw, 1.78rem); text-transform: uppercase;
+            letter-spacing: 1.3px; margin-bottom: 1.2rem; padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,204,0,0.16);
+        }
+        .punchline-monument {
+            text-align: center; margin: 2.4rem 0 2rem; padding: 2rem 1.2rem;
+            border-top: 1px solid rgba(247,147,26,0.4); border-bottom: 1px solid rgba(68,238,119,0.4);
+            background: linear-gradient(180deg, rgba(247,147,26,0.07) 0%, rgba(68,238,119,0.07) 100%);
+            border-radius: 12px;
+        }
+        .references-box {
+            margin: 2.8rem 0; padding: 1.8rem; background: rgba(6, 11, 8, 0.9);
+            border: 1px solid rgba(255, 204, 0, 0.22); border-left: 4px solid var(--sun-yellow);
+            border-radius: 12px; font-family: var(--font-ui);
+        }
+        .references-box ol { padding-left: 1.3rem; font-size: 0.87rem; color: #cbd5e1; line-height: 1.7; }
+        .references-box li { margin-bottom: 0.6rem; }
+        .references-box a { color: var(--mycelium-cyan); text-decoration: none; word-break: break-all; }
+        .references-box a:hover { text-decoration: underline; }
+
+        .article-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin: 3.2rem 0; }
+        .nav-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(68,238,119,0.22);
+            border-radius: 12px; padding: 1.4rem; text-align: center; text-decoration: none;
+            transition: 0.26s; display: flex; flex-direction: column; align-items: center;
+            justify-content: space-between; gap: 0.65rem;
+        }
+        .nav-card:hover { border-color: var(--sun-yellow); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.5); }
+        .nav-direction { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-family: var(--font-ui); }
+        .nav-title { font-size: 1.06rem; font-weight: 800; color: var(--bio-green); font-family: var(--font-ui); }
+
+        .author-section {
+            margin: 3.2rem 0; padding: 2rem; background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(68,238,119,0.24); border-top: 4px solid var(--bio-green);
+            border-radius: 14px; font-family: var(--font-ui);
+        }
+        .author-grid {
+            display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem;
+            align-items: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .author-portrait {
+            width: 150px; height: 150px; border-radius: 14px; object-fit: cover;
+            border: 2px solid rgba(68, 238, 119, 0.45); box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+        }
+        .resources-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+            gap: 0.95rem; margin-top: 1.1rem;
+        }
+        .resource-card {
+            display: block; padding: 1.1rem; background: rgba(0,0,0,0.55);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+            text-decoration: none; transition: 0.24s;
+        }
+        .resource-card:hover { border-color: var(--bio-green); transform: translateY(-2px); }
+        .resource-card img {
+            width: 100%; height: 110px; object-fit: cover; border-radius: 7px;
+            margin-bottom: 0.65rem; border: 1px solid rgba(255,255,255,0.08);
+        }
+        .resource-card h4 { font-size: 0.92rem; margin-bottom: 0.35rem; }
+        .resource-card p { font-size: 0.79rem; color: #94a3b8; line-height: 1.48; margin: 0; text-align: left; }
+
+        /* Notification Toast */
+        .sun-toast {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            background: rgba(6, 20, 12, 0.96); border: 1px solid var(--bio-green);
+            color: var(--bio-green); padding: 12px 20px; border-radius: 10px;
+            font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+            opacity: 0; pointer-events: none; transform: translateY(14px);
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+        .sun-toast.visible { opacity: 1; transform: translateY(0); }
+
+        footer {
+            font-family: var(--font-ui); text-align: center; padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem;
+        }
+
+        @media (max-width: 920px) {
+            nav .nav-links { display: none; }
+            .hud-metrics-strip, .course-gauges-grid { grid-template-columns: repeat(2, 1fr); }
+            .dual-canvas-grid, .article-navigation { grid-template-columns: 1fr; }
+            .pyramid-tier { width: 100% !important; }
+            .author-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+        }
+        @media (max-width: 560px) {
+            article { padding: 0 1rem; margin-top: 5.5rem; }
+            #woodWideWebHeroCanvas { height: 340px; }
+            #bftForestCanvas { height: 340px; }
+            .course-gauges-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="lang-fr">
+
+<!-- BARRE DE NAVIGATION FIXE BILINGUE + TÉLÉCHARGEMENT DIRECT -->
+<nav>
+    <a href="index.html" class="logo">☀ L'Étalon Solaire · Homo Biodiversitas</a>
+    <div class="nav-links">
+        <a href="#mycelium-p2p"><span lang="fr">1. Mycélium P2P</span><span lang="en">1. P2P Mycelium</span></a>
+        <a href="#pyramide-foret"><span lang="fr">2. Chapitres 4.1–4.6</span><span lang="en">2. Chapters 4.1–4.6</span></a>
+        <a href="#marche-merkle-lab"><span lang="fr">3. Marché C↔P & Merkle</span><span lang="en">3. C↔P Market & Merkle</span></a>
+        <a href="#parefeu-bft"><span lang="fr">4. Pare-feu BFT</span><span lang="en">4. BFT Firewall</span></a>
+        <a href="#protocole-vivant"><span lang="fr">5. Le Protocole</span><span lang="en">5. The Protocol</span></a>
+        <a href="#galerie-sankey"><span lang="fr">6. Flux & Galerie</span><span lang="en">6. Flows & Gallery</span></a>
+    </div>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadStandaloneHTML()" title="Télécharger wood-wide-web.html">
+            ⬇️ .HTML
+        </button>
+        <div class="lang-toggle">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="Switch to English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Passer en Français">FR 🇫🇷</button>
+        </div>
+    </div>
+</nav>
+
+<article id="top">
+    <!-- EN-TÊTE DE L'ARTICLE -->
+    <header class="article-header">
+        <div class="chapter-pill">
+            <span lang="fr">Extrait du Livre « Homo Biodiversitas » — Chapitre 4</span>
+            <span lang="en">Excerpt from the Book "Homo Biodiversitas" — Chapter 4</span>
+        </div>
+        <h1>
+            <span lang="fr">La Blockchain et la Forêt : Le Wood Wide Web</span>
+            <span lang="en">The Blockchain and the Forest: The Wood Wide Web</span>
+        </h1>
+        <h2 class="header-subtitle">
+            <span lang="fr">Protocole Mycélien P2P, Preuve de Travail Photosynthétique, Registre ADN & Consensus Byzantin du Vivant</span>
+            <span lang="en">P2P Mycelial Protocol, Photosynthetic Proof-of-Work, DNA Ledger & Living Byzantine Consensus</span>
+        </h2>
+        <div class="subtitle-lead">
+            <span lang="fr">Des forêts anciennes de Madagascar au Lightning Network : comment 450 millions d'années d'ingénierie symbiotique entre arbres-mineurs et champignons-banquiers révèlent le code source de notre avenir économique.</span>
+            <span lang="en">From ancient forests in Madagascar to Bitcoin's Lightning Network: how 450 million years of symbiotic engineering between miner-trees and banker-fungi reveal the architectural blueprint of our economic future.</span>
+        </div>
+        <div class="meta-stamp">
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // PUBLIÉ LE 9 AVRIL 2026 // L'ÉTALON SOLAIRE // $h\nu \equiv \text{PoW}$</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // PUBLISHED APRIL 9, 2026 // THE SUN STANDARD // $h\nu \equiv \text{PoW}$</span>
+        </div>
+    </header>
+
+    <!-- BOÎTE DE TÉLÉCHARGEMENT AUTOMATIQUE DU FICHIER .HTML & GUIDE DOSSIER IMG/ -->
+    <div class="export-toolkit-bar">
+        <div class="export-row">
+            <div style="font-size: 0.9rem; color: #e2e8f0; max-width: 600px;">
+                <span lang="fr">🌲 <strong>Prêt pour <code>thesunstandard.net/blog/</code> :</strong> Téléchargez le fichier complet autonome <code>wood-wide-web.html</code> (bilingue FR/EN, équations MathJax et 5 moteurs JS inclus) en un clic.</span>
+                <span lang="en">🌲 <strong>Ready for <code>thesunstandard.net/blog/</code>:</strong> Download the complete standalone <code>wood-wide-web.html</code> file (bilingual FR/EN, MathJax equations & 5 interactive JS engines) in one click.</span>
+            </div>
+            <div class="export-actions">
+                <button type="button" class="ui-btn green-cta" onclick="downloadStandaloneHTML()">
+                    <span lang="fr">⬇️ Télécharger wood-wide-web.html</span>
+                    <span lang="en">⬇️ Download wood-wide-web.html</span>
+                </button>
+                <button type="button" class="ui-btn" onclick="copyStandaloneHTML()">
+                    <span lang="fr">📋 Copier le code HTML</span>
+                    <span lang="en">📋 Copy Raw HTML</span>
+                </button>
+            </div>
+        </div>
+        <!-- <details class="img-guide-details">
+            <summary>
+                <span lang="fr">📁 Voir les noms des images à glisser dans votre dossier <code>blog/img/</code> (bascule LinkedIn active par défaut)</span>
+                <span lang="en">📁 View image filenames to place in your <code>blog/img/</code> folder (LinkedIn live fallbacks active by default)</span>
+            </summary>
+            <ul class="img-guide-list">
+                <li><code>img/wood-wide-web-cover.jpg</code> — Bannière de couverture LinkedIn (optionnelle)</li>
+                <li><code>img/baobab-alley-madagascar.jpg</code> — Photo <em>Great Baobab Alley - Madagascar</em></li>
+                <li><code>img/nausicaa-nature-healing.jpg</code> — Illustration <em>Nausicaä, Valley of the Wind / Nature Healing</em></li>
+                <li><code>img/homo-biodiversitas-author.jpg</code> — Visuel auteur / <em>Homo Biodiversitas</em></li>
+                <li><code>img/logo-sunstandard.jpg</code>, <code>img/logo-lemuriatech.jpg</code>, <code>img/logo-homobiodiversitas.png</code>, <code>img/logo-trinity.png</code> — Logos ressources</li>
+            </ul>
+        </details> -->
+    </div>
+
+    <!-- IMAGE DE COUVERTURE ISSUE DE LINKEDIN / DOSSIER IMG/ -->
+    <div class="cover-banner-wrap">
+        <img src="img/wood-wide-web-cover.jpg"
+             alt="The Blockchain and the Forest — The Wood Wide Web"
+             onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://media.licdn.com/mediaD5612AQFEU-sZ3P6fgw';}else{this.parentElement.style.display='none';}">
+    </div>
+
+    <!-- MODULE 1 : SCÈNE HERO INTERACTIVE (#woodWideWebHeroCanvas) -->
+    <div class="hero-stage-card">
+        <canvas id="woodWideWebHeroCanvas" aria-label="Simulation interactive en coupe de la photosynthèse de canopée et du réseau souterrain mycorhizien"></canvas>
+        <div class="hero-hud-bar">
+            <div class="hero-slider-group">
+                <label for="hero-rhizome-slider">
+                    <span lang="fr">Architecture du Système :</span>
+                    <span lang="en">System Architecture:</span>
+                </label>
+                <input type="range" id="hero-rhizome-slider" min="0" max="100" value="86">
+                <span id="hero-rhizome-pct" style="font-family:var(--font-mono); font-size:0.84rem; color:#fff; font-weight:700; min-width:46px;">86 %</span>
+            </div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn" id="hero-btn-mono"><span lang="fr">0 % · Monoculture SysAdmin</span><span lang="en">0% · SysAdmin Monoculture</span></button>
+                <button type="button" class="ui-btn active" id="hero-btn-forest"><span lang="fr">100 % · Wood Wide Web</span><span lang="en">100% · Wood Wide Web</span></button>
+                <button type="button" class="ui-btn" id="hero-btn-photon">☀ <span lang="fr">Bloc Photosynthétique</span><span lang="en">Photosynthetic Block</span></button>
+            </div>
+        </div>
+        <div class="hud-metrics-strip">
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Topologie Dominante</span><span lang="en">Dominant Topology</span></span>
+                <span class="val" id="hud-topo-val" style="color:var(--bio-green);">Rhizome Mycélien P2P</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Fibre Fongique ($1\text{ m}^3$)</span><span lang="en">Fungal Fiber ($1\text{ m}^3$)</span></span>
+                <span class="val" id="hud-hyphae-val" style="color:var(--mycelium-cyan);">345 km / m³</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Frais Smart Contract</span><span lang="en">Smart Contract Fee</span></span>
+                <span class="val" id="hud-fee-val" style="color:var(--sun-yellow);">26 % Sucres (C↔P)</span>
+            </div>
+            <div class="hud-pill-stat">
+                <span class="lbl"><span lang="fr">Dette Thermodynamique</span><span lang="en">Thermodynamic Debt</span></span>
+                <span class="val" id="hud-debt-val" style="color:var(--bio-green);">0,00 J (Exergie Solaire)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROTOCOLE DE CLARTÉ ÉPISTÉMIQUE -->
+    <section class="modelling-section" id="epistemic-clarity">
+        <h3><span lang="fr">🔬 Protocole de Clarté Épistémique</span><span lang="en">🔬 Epistemic Clarity Protocol</span></h3>
+        <p class="modelling-lead">
+            <span lang="fr">Nous ne faisons pas seulement de la poésie : nous faisons de la rétro-ingénierie (<em>reverse engineering</em>). Chaque analogie du Wood Wide Web s'ancre dans des mécanismes physiques, biologiques et cryptographiques précis.</span>
+            <span lang="en">We do not merely write poetry: we perform reverse engineering. Every correspondence in the Wood Wide Web rests on rigorous physical, biological, and cryptographic mechanisms.</span>
+        </p>
+        <div class="epistemic-legend">
+            <span class="epistemic-badge status-a">A · <span lang="fr">Biophysique Démontrée</span><span lang="en">Demonstrated Biophysics</span></span>
+            <span class="epistemic-badge status-b">B · <span lang="fr">Écologie Isotopique</span><span lang="en">Isotopic Ecology</span></span>
+            <span class="epistemic-badge status-c">C · <span lang="fr">Isomorphisme Cybernétique</span><span lang="en">Cybernetic Isomorphism</span></span>
+            <span class="epistemic-badge status-d">D · <span lang="fr">Prospective Homo Biodiversitas</span><span lang="en">Homo Biodiversitas Horizon</span></span>
+        </div>
+        <div class="modelling-grid">
+            <article class="model-card">
+                <span class="epistemic-badge status-a">A · Photosynthèse</span>
+                <h4><span lang="fr">Preuve de Travail Solaire</span><span lang="en">Solar Proof of Work</span></h4>
+                <p lang="fr">Conversion endergonique ($\Delta G^\circ = +2\,870\text{ kJ/mol}$ de glucose) : impossible d'imprimer de la biomasse sans capter des milliards de photons réels.</p>
+                <p lang="en">Endergonic conversion ($\Delta G^\circ = +2,870\text{ kJ/mol}$ glucose): biomass cannot be counterfeited without capturing billions of physical photons.</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-b">B · Simard & Kiers</span>
+                <h4><span lang="fr">Marché Biologique C ↔ P</span><span lang="en">Biological C ↔ P Market</span></h4>
+                <p lang="fr">Traçage par isotopes $^{13}\text{C}/^{14}\text{C}$ et $^{32}\text{P}$ démontrant les transferts inter-espèces (Simard, 1997) et les sanctions réciproques contre les tricheurs (Kiers, 2011).</p>
+                <p lang="en">Isotopic $^{13}\text{C}/^{14}\text{C}$ and $^{32}\text{P}$ tracing proving inter-species carbon routing (Simard, 1997) and bilateral sanctions against non-payers (Kiers, 2011).</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-c">C · Systèmes Distribués</span>
+                <h4><span lang="fr">Merkle, ADN & Sécurité BFT</span><span lang="en">Merkle, DNA & BFT Security</span></h4>
+                <p lang="fr">Continuité généalogique de l'ADN sur $3,8\text{ Ga}$, agrégation dendrochronologique sans tiers de confiance et pare-feu immunitaire par diversité d'espèces.</p>
+                <p lang="en">$3.8\text{ Gyr}$ unbroken genetic hash chain, trustless climate recording in tree rings, and Byzantine fault tolerance via polyculture diversity.</p>
+            </article>
+            <article class="model-card">
+                <span class="epistemic-badge status-d">D · Civilisation Rhizome</span>
+                <h4><span lang="fr">Quitter le Piédestal SysAdmin</span><span lang="en">Stepping Down as SysAdmin</span></h4>
+                <p lang="fr">Abandonner les pyramides centralisées à point unique de défaillance (banques centrales, monocultures) pour redevenir des nœuds symbiotiques du vivant.</p>
+                <p lang="en">Replacing fragile centralized pyramids (central banks, clonal monocultures) with distributed mycorrhizal-grade economic architectures.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION 1 : ARCHITECTURE P2P (4.1) & TABLEAU COMPARATIF -->
+    <h2 class="section-heading" id="mycelium-p2p">
+        <span lang="fr">1. Architecture P2P : Le Protocole Mycélien et le Marché de l'Ombre (4.1)</span>
+        <span lang="en">1. P2P Architecture: The Mycelial Protocol and the Shadow Market (4.1)</span>
+    </h2>
+
+    <p lang="fr">Si vous creusez un mètre cube de sol dans une forêt ancienne de Madagascar, vous ne tenez pas simplement de la terre entre vos mains. Vous tenez un <strong>Data Center</strong>. Ce cube contient des centaines de kilomètres de filaments fongiques : le <em>mycélium</em>. Pendant longtemps, la biologie a ignoré ces filaments, les réduisant à de simples parasites ou à des décomposeurs passifs. C'était un contresens fondamental. Le mycélium est l'infrastructure physique du réseau. C'est le câble à fibre optique de la biosphère.</p>
+    <p lang="en">If you dig a cubic meter of soil in an ancient forest in Madagascar, you're not holding earth in your hands. You're holding a <strong>Data Center</strong>. That cube contains hundreds of kilometres of fungal filaments, the <em>mycelium</em>. For a long time, biology ignored these filaments, treating them as parasites or as passive decomposers. This was a fundamental misreading. The mycelium is the network's physical infrastructure. It's the fibre optic cable.</p>
+
+    <h3 class="sub-heading">
+        <span lang="fr">Le Modèle FAI (Fournisseur d'Accès) & le Smart Contract de 450 Millions d'Années</span>
+        <span lang="en">The ISP Model & the 450-Million-Year-Old Biological Smart Contract</span>
+    </h3>
+
+    <p lang="fr">Dans l'éconophysique de la forêt, les arbres sont les « Nœuds » et les « Mineurs » (producteurs d'énergie libre via la photosynthèse). Les champignons mycorhiziens sont les fournisseurs d'accès et les banquiers de liquidité. Un contrat intelligent (<em>Smart Contract</em>) biologique s'exécute sans interruption depuis 450 millions d'années :</p>
+    <p lang="en">In the econophysics of the forest, trees are the "Nodes" and the "Miners" (energy producers via photosynthesis). Mycorrhizal fungi are the access providers and the bankers. There is a biological <em>Smart Contract</em>, 450 million years old:</p>
+
+    <div class="modelling-grid" style="margin: 1.4rem 0 1.8rem;">
+        <div class="model-card" style="border-left: 3px solid var(--sun-yellow);">
+            <h4 style="color:var(--sun-yellow);">☀️ <span lang="fr">1. L'Arbre (Le Mineur)</span><span lang="en">1. The Tree (The Miner)</span></h4>
+            <p lang="fr">Possède la nanotechnologie moléculaire pour capturer le dioxyde de carbone ($\text{CO}_2$) et le transformer en sucres (hydrates de carbone) grâce à l'énergie solaire. C'est la <em>Preuve de Travail (Proof of Work)</em>.</p>
+            <p lang="en">Possesses the technology to capture carbon dioxide ($\text{CO}_2$) and transform it into sugars (carbohydrates) using solar energy. This is the <em>Proof of Work</em>.</p>
+        </div>
+        <div class="model-card" style="border-left: 3px solid var(--mycelium-cyan);">
+            <h4 style="color:var(--mycelium-cyan);">🍄 <span lang="fr">2. Le Champignon (Le Banquier)</span><span lang="en">2. The Fungus (The Banker)</span></h4>
+            <p lang="fr">Incapable de photosynthétiser, il vit dans l'obscurité totale. Mais il détient un monopole biochimique : ses enzymes dissolvent la roche mère pour en extraire les minéraux rares (Phosphore $\text{P}$, Azote $\text{N}$, Magnésium $\text{Mg}$). C'est la <em>liquidité minérale</em>.</p>
+            <p lang="en">Can't photosynthesise. It lives in the dark. But it possesses a unique ability: its enzymes can dissolve rock to extract rare minerals (Phosphorus $\text{P}$, Nitrogen $\text{N}$, Magnesium $\text{Mg}$). This is <em>mineral liquidity</em>.</p>
+        </div>
+    </div>
+
+    <p lang="fr">Le « Deal » est d'une précision chirurgicale : le champignon étend ses hyphes jusqu'aux racines de l'arbre, injecte le phosphore directement dans les cellules corticales, et en échange, l'arbre lui verse une commission pouvant atteindre <strong>30 % de sa production totale de sucres</strong>. Ce n'est pas de l'entraide romantique idéalisée : <strong>c'est un marché libre décentralisé</strong>. Les études par traçage isotopique montrent que si un arbre cesse de payer (parce qu'il est à l'ombre ou malade), le champignon coupe immédiatement le flux de nutriments : il met le nœud sur « liste noire » (<em>blacklist</em>). Inversement, si un champignon tente d'augmenter abusivement ses tarifs (moins de phosphore pour la même quantité de carbone), l'arbre déconnecte ses racines et se branche sur un concurrent plus honnête. Le prix du phosphore en « étalon-sucre » fluctue en temps réel selon l'offre et la demande locales, sans aucun régulateur central.</p>
+    <p lang="en">The "Deal" is as follows: the fungus extends its hyphae to the tree's roots. It injects phosphorus directly into the tree's cells, and in exchange, the tree pays it a fee of up to <strong>30% of its sugar production</strong>. This isn't romanticised mutual aid. <strong>It's a decentralised free market</strong>. Isotopic studies have shown that if a tree stops paying (because it's shaded or diseased), the fungus immediately cuts off nutrient flow. It "blacklists" the node. Conversely, if the fungus tries to raise its prices (by providing less phosphorus for the same sugar), the tree disconnects its roots and connects to a more honest competitor. It is a perfectly competitive market with dynamic price adjustments. There is no central regulator. The price of phosphorus in "standard sugar" fluctuates in real-time according to local supply and demand.</p>
+
+    <div class="math-block">
+        $$ 6\,\text{CO}_2 + 6\,\text{H}_2\text{O} + 48\,h\nu \xrightarrow{\text{PoW Chlorophylle}} \text{C}_6\text{H}_{12}\text{O}_6 + 6\,\text{O}_2 \qquad \Longleftrightarrow \qquad \pi_{\text{P/C}}(x,t) = \frac{\partial J_{\text{sucre}}}{\partial J_{\text{phosphore}}} \le \tau_{\max} \;(\approx 30\,\%) $$
+    </div>
+
+    <p lang="fr"><strong>Le Réseau Maillé (Mesh Network) :</strong> Plus fascinant encore, le mycélium interconnecte des arbres d'espèces différentes. Un sapin de Douglas peut transférer du carbone à un bouleau via le réseau fongique. Suzanne Simard a cartographié ces flux et découvert que les arbres anciens — les « Arbres-Mères » (<em>Hubs</em> ou <em>Full Nodes</em>) — agissent comme des banques centrales de liquidité énergétique, injectant des ressources dans le réseau pour soutenir les jeunes pousses à l'ombre (les <em>Light Clients</em>) qui ne disposent pas encore d'assez de puissance de hachage foliaire pour survivre seules. Le <em>Wood Wide Web</em> est littéralement l'ancêtre biologique du <strong>Lightning Network</strong> de Bitcoin : pair-à-pair, résistant à la censure, sans point unique de défaillance, adossé à une monnaie-énergie.</p>
+    <p lang="en"><strong>The Mesh Network:</strong> Even more fascinating, mycelium connects trees of different species. A Douglas fir can send carbon to a birch via the fungal network. Suzanne Simard mapped these flows. She discovered that older trees (the "Hubs" or "Full Nodes") act as central banks of liquidity, injecting resources into the network to support young saplings (the "Light Clients") that don't yet have enough hashing power (foliage) to survive on their own. The <em>Wood Wide Web</em> is a peer-to-peer (P2P) network, censorship-resistant, with no single point of failure, operating on an energy-based (carbon) currency. It is, quite literally, the ancestor of Bitcoin's Lightning Network.</p>
+
+    <!-- TABLEAU D'ISOMORPHISME EN 10 AXES -->
+    <div class="table-scroll">
+        <table class="glossary-table">
+            <thead>
+                <tr>
+                    <th><span lang="fr">Axe Systémique</span><span lang="en">Systemic Axis</span></th>
+                    <th><span lang="fr">Pyramide Anthropocène (Fiat / Monoculture)</span><span lang="en">Anthropocene Pyramid (Fiat / Monoculture)</span></th>
+                    <th><span lang="fr">Le Wood Wide Web (Forêt Primaire)</span><span lang="en">The Wood Wide Web (Primary Forest)</span></th>
+                    <th><span lang="fr">Protocole de Nakamoto (Bitcoin & Lightning)</span><span lang="en">Nakamoto Protocol (Bitcoin & Lightning)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="badge" style="color:var(--mycelium-cyan);">1. Réseau</span></td><td><span lang="fr">Serveurs centraux & silos fragiles.</span><span lang="en">Centralized mainframes & fragile silos.</span></td><td><span lang="fr">Filaments mycéliens ($>300\text{ km/m}^3$ de sol).</span><span lang="en">Mycelial hyphae ($>300\text{ km/m}^3$ of soil).</span></td><td><span lang="fr">Maillage TCP/IP mondial & canaux Lightning P2P.</span><span lang="en">Global P2P gossip mesh & Lightning channels.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--sun-yellow);">2. Preuve</span></td><td><span lang="fr">Décret politique & création monétaire ex nihilo.</span><span lang="en">Political decree & ex nihilo credit creation.</span></td><td><span lang="fr">Photosynthèse foliaire (capture de photons $h\nu$).</span><span lang="en">Foliar photosynthesis (capturing solar photons $h\nu$).</span></td><td><span lang="fr">Preuve de Travail thermodynamique SHA-256.</span><span lang="en">Thermodynamic SHA-256 Proof-of-Work.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--sun-orange);">3. Devise</span></td><td><span lang="fr">Dette fiduciaire inflationniste.</span><span lang="en">Inflationary debt-backed fiat units.</span></td><td><span lang="fr">Hydrates de carbone / Exergie ($\text{C}_6\text{H}_{12}\text{O}_6$).</span><span lang="en">Carbohydrates / Free Joules ($\text{C}_6\text{H}_{12}\text{O}_6$).</span></td><td><span lang="fr">Satoshis (énergie-temps cristallisée, plafond $21\text{ M}$).</span><span lang="en">Satoshis (crystallized energy-time, $21\text{ M}$ cap).</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--water-blue);">4. Liquidité</span></td><td><span lang="fr">Taux fixés arbitrairement par comité central.</span><span lang="en">Rates fixed arbitrarily by central committee.</span></td><td><span lang="fr">Échange dynamique Carbone $\leftrightarrow$ Phosphore ($\le 30\%$).</span><span lang="en">Dynamic real-time Carbon $\leftrightarrow$ Phosphorus market.</span></td><td><span lang="fr">Marché de frais libre (Mempool & routage LN).</span><span lang="en">Free fee market (Mempool & LN liquidity routing).</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--bio-green);">5. Topologie</span></td><td><span lang="fr">Hiérarchie pyramidale SysAdmin (SPOF).</span><span lang="en">SysAdmin top-down hierarchy (Single Point of Failure).</span></td><td><span lang="fr">Arbres-Mères (<em>Full Nodes</em>) & jeunes pousses (<em>Light</em>).</span><span lang="en">Mother Trees (<em>Full Nodes</em>) & saplings (<em>Light Clients</em>).</span></td><td><span lang="fr">Nœuds complets souverains & clients légers SPV.</span><span lang="en">Sovereign Full Nodes & SPV light wallets.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--purple-dna);">6. Registre</span></td><td><span lang="fr">Bases de données privées réécrites à volonté.</span><span lang="en">Mutable private databases & censored ledgers.</span></td><td><span lang="fr">ADN cellulaire ($3,8\text{ Ga}$ sans bloc orphelin).</span><span lang="en">Cellular DNA ($3.8\text{ Gyr}$ unbroken lineage).</span></td><td><span lang="fr">Timechain immuable chaînée par hachage.</span><span lang="en">Immutable cryptographically chained Timechain.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--teal-l0);">7. Évolution</span></td><td><span lang="fr">Mises à jour forcées & obsolescence planifiée.</span><span lang="en">Forced top-down mandates & planned obsolescence.</span></td><td><span lang="fr"><em>Soft Fork</em> (adaptation) & <em>Hard Fork</em> (spéciation).</span><span lang="en"><em>Soft Fork</em> (adaptation) & <em>Hard Fork</em> (speciation).</span></td><td><span lang="fr">BIPs consensuels (<em>Soft Forks</em> SegWit/Taproot).</span><span lang="en">Opt-in consensus upgrades (<em>Soft/Hard Forks</em>).</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--amber-sap);">8. Oracle</span></td><td><span lang="fr">Statistiques officielles manipulables.</span><span lang="en">Manipulable official reports & narratives.</span></td><td><span lang="fr">Arbre de Merkle inversé & cernes annuels du tronc.</span><span lang="en">Inverted Merkle oak & trustless annual tree rings.</span></td><td><span lang="fr">Racine de Merkle (<em>Merkle Root</em>) par bloc de 10 min.</span><span lang="en">Block header <em>Merkle Root</em> every ~10 minutes.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--magenta-seed);">9. Backup</span></td><td><span lang="fr">Disques durs fragiles (panne en ~5 ans, sous tension).</span><span lang="en">Fragile spinning/SSD drives (~5 yr lifespan).</span></td><td><span lang="fr">Graines dormantes (<em>Cold Storage</em> 10–100+ ans, 0 W).</span><span lang="en">Dormant seeds (<em>Cold Storage</em> 10–100+ yrs, 0 W).</span></td><td><span lang="fr">Seed phrase 12/24 mots gravée sur acier hors-ligne.</span><span lang="en">12/24-word mnemonic seed stamped on cold steel.</span></td></tr>
+                <tr><td><span class="badge" style="color:var(--danger-red);">10. Défense</span></td><td><span lang="fr">Champs clonés décimés au premier pathogène.</span><span lang="en">Clonal fields wiped out by a single pathogen.</span></td><td><span lang="fr">Biodiversité pare-feu BFT & gaz éthylène P2P.</span><span lang="en">Biodiversity BFT firewall & airborne ethylene alerts.</span></td><td><span lang="fr">Tolérance aux fautes byzantines & multi-implémentation.</span><span lang="en">Byzantine Fault Tolerance (BFT) & censorship immunity.</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SECTION 2 : PYRAMIDE CLIQUABLE & INTÉGRALITÉ DES CHAPITRES 4.1 À 4.6 -->
+    <h2 class="section-heading" id="pyramide-foret">
+        <span lang="fr">2. L'Architecture Complète du Vivant (Chapitres 4.1 ──► 4.6)</span>
+        <span lang="en">2. The Complete Architecture of Life (Chapters 4.1 ──► 4.6)</span>
+    </h2>
+
+    <div class="pyramid-wrapper">
+        <h3 style="color:var(--bio-green); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:0.96rem; letter-spacing:1.8px; margin-bottom:1.3rem;">
+            <span lang="fr">🌲 Cliquez sur une strate pour explorer le texte intégral du chapitre correspondant</span>
+            <span lang="en">🌲 Click any stratum to read the complete chapter text & biophysical metrics</span>
+        </h3>
+        <div class="pyramid-container">
+            <a href="#drawer-46" class="pyramid-tier tier-46"><span class="tier-tag" style="color:var(--magenta-seed);">4.6 · BFT</span><span class="tier-title"><span lang="fr">Immunité Collective & Sécurité Byzantine (La Sagesse de la Foule)</span><span lang="en">Herd Immunity & BFT Security (Wisdom of the Crowd)</span></span><span class="tier-tag" style="color:var(--magenta-seed);">▲ ÉTHYLÈNE</span></a>
+            <a href="#drawer-45" class="pyramid-tier tier-45"><span class="tier-tag" style="color:var(--purple-dna);">4.5 · SEED</span><span class="tier-title"><span lang="fr">Le Sommeil des Données : La Graine comme Cold Storage Ultime</span><span lang="en">Data Sleep: The Seed as Ultimate Cold Storage</span></span><span class="tier-tag" style="color:var(--purple-dna);">▲ 100 ANS</span></a>
+            <a href="#drawer-44" class="pyramid-tier tier-44"><span class="tier-tag" style="color:var(--amber-sap);">4.4 · MERKLE</span><span class="tier-title"><span lang="fr">L'Arbre de Vérité : Structure de Merkle & Oracle des Cernes</span><span lang="en">The Tree of Truth: Merkle's Structure & Ring Oracle</span></span><span class="tier-tag" style="color:var(--amber-sap);">▲ ORACLE</span></a>
+            <a href="#drawer-43" class="pyramid-tier tier-43"><span class="tier-tag" style="color:var(--bio-green);">4.3 · ADN</span><span class="tier-title"><span lang="fr">La Chaîne de Blocs Génétique : L'ADN, Soft Forks & Hard Forks</span><span lang="en">The Genetic Block Chain: DNA, Soft Forks & Hard Forks</span></span><span class="tier-tag" style="color:var(--bio-green);">▲ 3,8 Ga</span></a>
+            <a href="#drawer-42" class="pyramid-tier tier-42"><span class="tier-tag" style="color:var(--sun-yellow);">4.2 · PoW</span><span class="tier-title"><span lang="fr">L'Alchimie de la Preuve : La Photosynthèse comme Proof of Work</span><span lang="en">The Alchemy of Proof: Photosynthesis as Proof of Work</span></span><span class="tier-tag" style="color:var(--sun-yellow);">▲ PHOTONS</span></a>
+            <a href="#drawer-41" class="pyramid-tier tier-41"><span class="tier-tag" style="color:var(--mycelium-cyan);">4.1 · MESH</span><span class="tier-title"><span lang="fr">Infrastructure Mycélienne P2P & Marché Libre Souterrain</span><span lang="en">P2P Mycelial Infrastructure & Subterranean Free Market</span></span><span class="tier-tag" style="color:var(--mycelium-cyan);">▲ 450 Ma</span></a>
+        </div>
+    </div>
+
+    <!-- TIROIR 4.1 -->
+    <details id="drawer-41" class="scale-drawer layer-41">
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.1 · Synthèse Réseau : Le Protocole Mycélien & Lightning Biologique</span><span lang="en">4.1 · Network Synthesis: Mycelial Protocol & Biological Lightning</span></span>
+            <span class="badge" style="color:var(--mycelium-cyan);">450 Ma · P2P</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Le sous-sol forestier opère comme une chambre de compensation décentralisée : les hyphes fongiques (1 à $10\,\mu\text{m}$ de diamètre, cent fois plus fins qu'une radicelle) explorent les micropores de la roche inaccessible aux racines. En facturant jusqu'à $30\,\%$ des sucres photosynthétisés contre du phosphore biodisponible, et en routant l'excédent énergétique des grands arbres-hubs vers les semis sous couvert, le réseau mycorhizien combine <strong>marché au comptant auto-régulé</strong> et <strong>canaux de liquidité pair-à-pair</strong>.</p>
+            <p lang="en">The forest floor operates as a decentralized clearinghouse: fungal hyphae ($1\text{–}10\,\mu\text{m}$ wide, a hundred times finer than tree rootlets) penetrate rock micropores unreachable by roots. By charging up to $30\%$ of photosynthesized sugars in exchange for bioavailable phosphorus—and routing surplus carbon from towering hub trees to shaded seedlings—the mycorrhizal mesh unites a <strong>self-regulating spot market</strong> with <strong>peer-to-peer liquidity channels</strong>.</p>
+            <div class="bom-strip">
+                <span class="bom-chip">Densité : 100–500 km hyphes/m³</span>
+                <span class="bom-chip">Frais FAI : ≤ 30 % Carbone</span>
+                <span class="bom-chip">Sanction : Blacklist bilatéral</span>
+                <span class="bom-chip">Hubs : Arbres-Mères (Simard)</span>
+            </div>
+        </div>
+    </details>
+
+    <!-- TIROIR 4.2 (OUVERT PAR DÉFAUT) -->
+    <details id="drawer-42" class="scale-drawer layer-42" open>
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.2 · L'Alchimie de la Preuve (La Photosynthèse comme Preuve de Travail)</span><span lang="en">4.2 · The Alchemy of Proof (Photosynthesis as Proof of Work)</span></span>
+            <span class="badge" style="color:var(--sun-yellow);">300 000 km/s · PoW</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Pourquoi la forêt est-elle si précieuse ? Pourquoi ne pouvons-nous pas simplement « imprimer » une forêt comme nous imprimons des billets de banque ? Parce que la forêt repose sur une loi physique impitoyable : la <strong>Preuve de Travail</strong> (<em>Proof of Work</em>).</p>
+            <p lang="en">Why is the forest so precious? Why can't we simply "print" a forest like we print banknotes? Because the forest rests on an unforgiving physical law: the <strong>Proof of Work</strong>.</p>
+
+            <p lang="fr">Regardez une feuille. Ce n'est pas un ornement. C'est un panneau solaire biologique d'une complexité stupéfiante, conçu pour accomplir l'impossible : capturer au vol un photon (une particule de lumière filant à $300\,000\text{ km/s}$), l'utiliser pour briser une molécule d'eau par photolyse, et souder des atomes de carbone. Cela s'appelle la photosynthèse.</p>
+            <p lang="en">Look at a leaf. It's not an ornament. It's a biological solar panel of astonishing complexity, designed to achieve the impossible: capture a photon (a particle of light travelling at $300,000\text{ km/s}$), use it to break a water molecule, and join carbon. This is called photosynthesis.</p>
+
+            <p lang="fr">C'est un processus difficile. C'est un processus lent. C'est un processus qui exige un effort monumental. Pour fabriquer un seul gramme de bois sec, l'arbre doit traiter des milliers de litres d'air et capturer des milliards de photons. Il n'existe aucun raccourci. <strong>On ne peut pas tricher avec le soleil.</strong></p>
+            <p lang="en">It's a difficult process. It's a slow process. It's a process that requires a monumental effort. To create a single gram of wood, the tree must process thousands of litres of air and capture billions of photons. There are no shortcuts. <strong>You can't cheat the sun.</strong></p>
+
+            <p lang="fr">C'est précisément cette difficulté thermodynamique qui confère au vivant sa valeur intrinsèque. Dans l'univers numérique de Bitcoin, les mineurs dépensent de l'électricité pour sécuriser le réseau. Dans le monde physique, les plantes convertissent l'énergie solaire en biomasse pour soutenir toute la biosphère. Le tronc d'un arbre est la cristallisation matérielle de cet effort : c'est une <strong>colonne solide de temps</strong>, la preuve tangible et irréfutable qu'un travail réel a été accompli jour après jour, année après année.</p>
+            <p lang="en">It is this difficulty that gives life its value. In the digital world of Bitcoin, miners expend electricity to secure the network. In the real world, plants convert solar energy into biomass to sustain the biosphere. The trunk of a tree is the crystallisation of this effort. It is a <strong>solid column of time</strong>. It is tangible, irrefutable proof that work has been accomplished day after day, year after year.</p>
+
+            <div class="quote-block" style="margin: 1.2rem 0;">
+                <span lang="fr">L'homme moderne a cru pouvoir s'affranchir de cette loi. Il a cru pouvoir créer de la richesse à partir du néant, par la dette et la spéculation. Mais la nature nous rappelle que la seule vraie richesse est celle qui a subi l'épreuve du feu et de l'effort : <strong>« La richesse sans travail est une illusion qui se dissipe comme la brume. »</strong></span>
+                <span lang="en">The modern man believed he could break free from this rule. He believed he could create wealth out of thin air, through debt and speculation. But nature reminds us that the only true wealth is that which has withstood the test of fire and effort: <strong>"Wealth without work is an illusion that dissipates like mist."</strong></span>
+            </div>
+            <div class="bom-strip">
+                <span class="bom-chip">1 g de bois ≈ Milliers de L d'air</span>
+                <span class="bom-chip">Tronc = Colonne solide de temps</span>
+                <span class="bom-chip">Falsification solaire : 0 %</span>
+            </div>
+        </div>
+    </details>
+
+    <!-- TIROIR 4.3 -->
+    <details id="drawer-43" class="scale-drawer layer-43" open>
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.3 · La Chaîne de Blocs Génétique : L'ADN comme Registre Immuable</span><span lang="en">4.3 · The Genetic Block Chain: DNA as an Immutable Registry</span></span>
+            <span class="badge" style="color:var(--bio-green);">3,8 Milliards d'Années</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Si le mycélium constitue le réseau de transmission (TCP/IP), où se trouve la Blockchain ? Où réside le grand livre comptable immuable ? Il est logé au cœur du noyau de chaque cellule. Il s'appelle l'<strong>ADN</strong>.</p>
+            <p lang="en">If the mycelium is the transmission network (TCP/IP), where is the Blockchain? Where is the immutable ledger? It is in the nucleus of every cell. It is called <strong>DNA</strong>.</p>
+
+            <p lang="fr"><strong>Le Hash de l'Histoire :</strong> Une blockchain est une séquence de blocs où chaque bloc embarque l'empreinte cryptographique (le <em>hash</em>) du bloc précédent, garantissant une continuité inviolable. La biologie opère exactement selon ce principe :</p>
+            <p lang="en"><strong>The Hash of History:</strong> A blockchain is a sequence of blocks where each block contains the cryptographic fingerprint (the hash) of the previous block. This ensures continuity. You can't insert a false block without breaking the chain. Biology works on the same principle:</p>
+
+            <ul lang="fr">
+                <li><strong>« Bloc $N-1$ »</strong> : ce sont vos parents.</li>
+                <li><strong>« Bloc $N$ »</strong> : c'est vous.</li>
+                <li>Votre ADN contient la copie quasi intégrale de l'ADN paternel (le Hash précédent), recombinée à celui de votre mère, enrichie de quelques nouvelles transactions (les mutations).</li>
+            </ul>
+            <ul lang="en">
+                <li><strong>"Block $N-1$"</strong> is your father.</li>
+                <li><strong>"Block $N$"</strong> is you.</li>
+                <li>Your DNA contains a near-complete copy of your father's DNA (the previous Hash), mixed with that of your mother, plus a few new transactions (mutations).</li>
+            </ul>
+
+            <p lang="fr">Vous êtes la continuation cryptographique de vos ancêtres. Votre corps est la preuve vivante qu'une chaîne ininterrompue de survivants a validé sa <em>Preuve de Travail</em> depuis <strong>3,8 milliards d'années</strong>. Si un seul de vos ancêtres, il y a un milliard d'années, avait échoué à se reproduire (<em>bloc orphelin</em>), la chaîne se serait arrêtée net. Vous n'existeriez pas.</p>
+            <p lang="en">You are the cryptographic continuation of your ancestors. Your body is living proof that an unbroken chain of survivors has succeeded in its <em>Proof of Work</em> for <strong>3.8 billion years</strong>. If just one of your ancestors, a billion years ago, had failed to reproduce (<em>orphan block</em>), the chain would have stopped. You wouldn't exist.</p>
+
+            <p lang="fr"><strong>Le Hard Fork et le Soft Fork :</strong> L'évolution darwinienne n'est rien d'autre qu'une gestion distribuée de mises à jour logicielles (<em>Software Updates</em>) :</p>
+            <p lang="en"><strong>The Hard Fork and the Soft Fork:</strong> Evolution is nothing more than managing distributed <em>Software Updates</em>:</p>
+
+            <ul lang="fr">
+                <li><strong>Soft Fork (Adaptation mineure) :</strong> Une mutation modifie la couleur des yeux ou la résistance à un virus. Le protocole demeure rétrocompatible : l'espèce reste la même.</li>
+                <li><strong>Hard Fork (Spéciation) :</strong> Une population diverge géographiquement ou génétiquement. Les modifications deviennent si profondes que l'interfécondité avec la branche d'origine n'est plus possible : une nouvelle cryptomonnaie biologique (une nouvelle espèce) est née. <em>Homo Sapiens</em> est un Hard Fork d'<em>Homo Erectus</em>, lui-même issu d'un Hard Fork d'<em>Australopithecus</em>.</li>
+            </ul>
+            <ul lang="en">
+                <li><strong>Soft Fork (Minor Adaptation):</strong> A mutation changes eye colour or resistance to a virus. The protocol remains compatible. The species remains the same.</li>
+                <li><strong>Hard Fork (Speciation):</strong> A population splits geographically or genetically. The changes are so profound that reproduction with the original branch is no longer possible. A new cryptocurrency (a new species) is created. <em>Homo Sapiens</em> is a Hard Fork of <em>Homo Erectus</em>, which was a Hard Fork of <em>Australopithecus</em>.</li>
+            </ul>
+
+            <p lang="fr">La biodiversité actuelle représente l'ensemble des « Altcoins » génétiques qui ont réussi à survivre sur le marché impitoyable de l'énergie libre. La majorité des lignées passées (dinosaures non-aviens, dodos) ont fait faillite (extinction) lorsque leur modèle de consensus a cessé d'être adapté à un changement brutal de la « difficulté de minage » environnementale.</p>
+            <p lang="en">Biodiversity is the collection of all the genetic "Altcoins" that have managed to survive in the energy market. Most past lineages (dinosaurs, dodos) went bankrupt (extinct) because their consensus model was no longer suited to the environment after a sudden shift in mining difficulty.</p>
+        </div>
+    </details>
+
+    <!-- TIROIR 4.4 -->
+    <details id="drawer-44" class="scale-drawer layer-44" open>
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.4 · L'Arbre de Vérité (La Structure de Merkle & l'Oracle des Cernes)</span><span lang="en">4.4 · The Tree of Truth (Merkle's Structure & the Tree-Ring Oracle)</span></span>
+            <span class="badge" style="color:var(--amber-sap);">Merkle Root</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">En informatique, un <strong>arbre de Merkle</strong> est une structure de données permettant de vérifier l'intégrité d'un immense registre sans avoir à le télécharger intégralement : les données sont hachées deux à deux, puis les empreintes résultantes sont hachées à leur tour jusqu'à obtenir une racine unique : la <em>Merkle Root</em>. Regardez maintenant un arbre physique — un chêne centenaire. C'est un arbre de Merkle inversé (ou plus exactement, l'arbre informatique de Ralph Merkle est la copie conforme de l'arbre biologique) :</p>
+            <p lang="en">In computer science, a <strong>Merkle tree</strong> is a data structure that allows you to verify the integrity of a large dataset without downloading the entire dataset. The data is hashed in pairs, then the results are hashed until a single root is obtained: the <em>Merkle Root</em>. Look at a physical tree—an oak tree. It is an inverted Merkle tree (or rather, the computer tree is a copy of the biological tree):</p>
+
+            <ul lang="fr">
+                <li><strong>Les Feuilles (Transactions) :</strong> Des millions de feuilles captent des photons. Chaque photon converti est une micro-transaction énergétique.</li>
+                <li><strong>Les Branches (Hashes Intermédiaires) :</strong> Les sucres élaborés par les feuilles convergent des rameaux vers les branches charpentières — une agrégation hiérarchique des flux.</li>
+                <li><strong>Le Tronc (Merkle Root) :</strong> Tout converge dans le tronc, qui condense le résumé intégral de l'activité photosynthétique du houppier. En analysant la sève élaborée du tronc, on vérifie l'état sanitaire de millions de feuilles sans les inspecter une par une.</li>
+            </ul>
+            <ul lang="en">
+                <li><strong>The Leaves (Transactions):</strong> Millions of leaves capture photons. Each captured photon is a micro-energy transaction.</li>
+                <li><strong>The Branches (Intermediate Hashes):</strong> The sugars produced by the leaves are collected in the twigs, which converge towards the branches. This is an aggregation of flows.</li>
+                <li><strong>The Trunk (Merkle Root):</strong> Everything converges on the trunk. The trunk contains the condensed summary of all the photosynthetic activity of the crown. If you analyse the sap in the trunk, you can cryptographically check the health of millions of leaves without having to inspect them one by one.</li>
+            </ul>
+
+            <p lang="fr">L'arbre physique est une machine à compresser la donnée environnementale, et ses <strong>cernes de croissance</strong> constituent la Blockchain stockée :<br>
+            • <code>Cerne 1954</code> : étroit, dense $\Rightarrow$ <em>Hash d'une année de sécheresse sévère</em>.<br>
+            • <code>Cerne 1955</code> : large, tendre $\Rightarrow$ <em>Hash d'une année pluvieuse abondante</em>.<br>
+            L'arbre ne ment pas. Il ne peut pas mentir : il opère en <em>trustlessness</em> absolu, gravant la vérité climatique dans sa propre chair (preuve de vie). Un politicien peut déclarer à la tribune « il n'y a pas eu de sécheresse », mais le chêne a déjà inscrit la transaction sur la chaîne. <strong>La nature est le seul oracle fiable.</strong></p>
+            <p lang="en">The physical tree is a machine for compressing environmental data, and its <strong>tree rings</strong> are the historical record (the stored Blockchain):<br>
+            • <code>1954 ring</code>: Dry, dense $\Rightarrow$ <em>Hash from a year of drought</em>.<br>
+            • <code>1955 ring</code>: Large, tender $\Rightarrow$ <em>Hash from a rainy year</em>.<br>
+            The tree doesn't lie. It can't lie. It is in a state of trustlessness. It writes the climate truth in its own flesh (proof of life). A politician can say "there was no drought", but the oak has inscribed the data on the chain. <strong>Nature is the only reliable oracle.</strong></p>
+        </div>
+    </details>
+
+    <!-- TIROIR 4.5 -->
+    <details id="drawer-45" class="scale-drawer layer-45">
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.5 · Le Sommeil des Données : Cold Storage (La Graine)</span><span lang="en">4.5 · Data Sleep: Cold Storage (The Seed)</span></span>
+            <span class="badge" style="color:var(--purple-dna);">0 Watt · Auto-Réplicatif</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Si l'arbre meurt, tout est-il perdu ? Non. Car la nature a inventé l'ultime système de sauvegarde hors-ligne : <strong>la graine</strong>. Tenez un gland de chêne ou une graine millimétrique de séquoia géant au creux de votre main. Cet objet minuscule, inerte, dur comme la pierre, renferme le plan directeur intégral et tout le code source nécessaire pour rebâtir une cathédrale forestière. C'est un prodige de compression algorithmique : des gigaoctets d'instructions génétiques — comment orienter les feuilles vers le zénith, comment forer la roche avec les racines, comment résister au gel et au manque d'eau — sont compactés dans quelques picogrammes d'ADN.</p>
+            <p lang="en">If the tree dies, is it all lost? No. Because nature has invented the ultimate backup system: <strong>the seed</strong>. Hold an acorn or a redwood seed in your hand. It's tiny, inert, hard as stone. Yet this object contains the complete blueprint, the entire source code for rebuilding the forest. It's a miracle of compression. Gigabytes of genetic data—how to grow roots, how to orient leaves toward the sun, how to combat drought—are wrapped up in a few DNA molecules.</p>
+
+            <p lang="fr">La graine est une capsule temporelle, un véritable <em>Cold Storage</em>. Elle peut dormir dans l'humus dix ans, cent ans, parfois plus d'un millénaire, attendant le signal thermodynamique exact (humidité, chaleur, lumière) pour s'éveiller, sans consommer le moindre watt d'électricité ni exiger de maintenance. Et l'arbre ne met jamais tous ses œufs dans le même panier : il disperse des milliers de graines légèrement mutées aux quatre vents (redondance distribuée), sachant qu'une seule réussite suffit à perpétuer la chaîne. Quelle leçon d'humilité pour nos disques durs fragiles qui tombent en panne après cinq ans ! La nature ne stocke pas l'information sur des supports périssables ; elle la stocke dans des <strong>architectures capables d'auto-réplication</strong>.</p>
+            <p lang="en">The seed is a time capsule. It's a form of "cold storage". It can wait. It can lie dormant in the soil for ten years, a hundred years, waiting for the perfect conditions to awaken. It needs no electricity, no maintenance. It trusts in time. The tree doesn't put all its eggs in one basket: it produces thousands of seeds, each slightly different (redundancy), scattering its code to the four winds knowing that a single success keeps the chain of life going. This is a humbling lesson for our fragile hard drives that fail after five years. Nature doesn't store information on perishable media; it stores it in <strong>architectures capable of self-replication</strong>.</p>
+        </div>
+    </details>
+
+    <!-- TIROIR 4.6 -->
+    <details id="drawer-46" class="scale-drawer layer-46">
+        <summary>
+            <span class="sum-left"><span class="sum-arrow">▶</span> <span lang="fr">4.6 · Immunité Collective & Sécurité BFT (La Sagesse de la Foule)</span><span lang="en">4.6 · Herd Immunity & BFT Security (Wisdom of the Crowd)</span></span>
+            <span class="badge" style="color:var(--magenta-seed);">Pare-feu Byzantin</span>
+        </summary>
+        <div class="drawer-content">
+            <p lang="fr">Enfin, la forêt nous enseigne comment survivre aux mensonges, aux parasites et aux attaques coordonnées. <strong>Dans une forêt saine, la diversité règne en maître.</strong> Aucun arbre n'est identique à son voisin : chênes, hêtres, pins, baobabs et fougères cohabitent. Lorsqu'un virus ou un champignon pathogène attaque, il cherche une faille unique, un code commun à exploiter. Dans un champ de blé industriel où toutes les plantes sont des clones génétiques, le virus gagne instantanément : c'est l'effondrement systémique.</p>
+            <p lang="en">Finally, the forest teaches us how to survive lies and attacks. <strong>In a healthy forest, diversity reigns supreme.</strong> No two trees are alike. There are oaks, beeches, pines, and ferns. When a virus or parasite attacks, it seeks a weakness, a secret code common to all, to infiltrate. In an industrial wheat field where all the plants are clones, the virus wins instantly. It's systemic collapse.</p>
+
+            <p lang="fr">Mais dans la forêt primaire, la biodiversité agit comme un <strong>pare-feu cryptographique</strong> : le pathogène qui décime le chêne est inoffensif pour le pin, stoppant net la contagion. Mieux encore : les arbres s'avertissent mutuellement ! Lorsqu'une antilope commence à brouter les feuilles d'un acacia, celui-ci libère un gaz messager (l'éthylène, $\text{C}_2\text{H}_4$) porté par le vent. Les acacias voisins, « décodant » cette alerte chimique diffusée en broadcast, synthétisent aussitôt des tanins toxiques amers dans leur feuillage avant même d'être touchés.</p>
+            <p lang="en">But in the forest, diversity acts like a <strong>cryptographic firewall</strong>. The virus that kills oaks is harmless to pines. The attack is stopped in its tracks. Better still, the trees warn each other: if an antelope starts eating an acacia, it releases a gas (ethylene, $\text{C}_2\text{H}_4$) that travels on the wind. Neighbouring acacias, "sensing" this encrypted message, begin producing poison tannins even before being touched.</p>
+
+            <p lang="fr">C'est la confiance distribuée (<em>Byzantine Fault Tolerance</em>) sans « Chef Forestier » central donnant des ordres. Vous pouvez abattre un arbre ou brûler une clairière, vous ne pouvez pas tuer le réseau : l'information est déjà dupliquée dans les graines et le mycélium a déjà rerouté les flux nutritifs. La vie trouve toujours un chemin.</p>
+            <p lang="en">It's distributed trust with no "Chief Forester" giving orders—an emergent collective intelligence where everyone's safety depends on everyone's vigilance. You can cut down a tree or burn a plot of land, but you can't kill the network: the information has already been duplicated elsewhere and the mycelium has rerouted the flows. Life always finds a way.</p>
+        </div>
+    </details>
+
+    <!-- SECTION 3 : MODULE 2 — LABORATOIRE MARCHÉ MYCÉLIEN C↔P & ORACLE DENDRO-MERKLE -->
+    <h2 class="section-heading" id="marche-merkle-lab">
+        <span lang="fr">3. Laboratoire Interactif : Marché de l'Ombre (C ↔ P) & Oracle Dendro-Merkle</span>
+        <span lang="en">3. Interactive Lab: Mycelial Shadow Market (C ↔ P) & Dendro-Merkle Oracle</span>
+    </h2>
+
+    <p lang="fr">Expérimentez en direct la loi de l'offre et de la demande souterraine (si le Champignon B exige plus de $32\,\%$ de commission en sucre, observez l'Arbre-Mère couper ses racines et le mettre sur liste noire !) ainsi que l'inscription irréfutable du climat dans les cernes annuels (dont le fameux contraste entre la sécheresse de <strong>1954</strong> et les pluies de <strong>1955</strong>) :</p>
+    <p lang="en">Test subterranean supply-and-demand dynamics live (push Competitor Fungus B's fee above $32\%$ to watch the Mother Tree sever its root connection and blacklist the node!) alongside the trustless climate blockchain inscribed in annual tree rings (featuring the stark contrast between the <strong>1954 drought</strong> and <strong>1955 rains</strong>):</p>
+
+    <div class="materials-lab-box">
+        <div class="preset-pills">
+            <button type="button" class="preset-btn" data-year="1954">1954 · <span lang="fr">Cerne Sec (Sécheresse)</span><span lang="en">Dry Ring (Drought)</span></button>
+            <button type="button" class="preset-btn active" data-year="1955">1955 · <span lang="fr">Cerne Large (Pluie)</span><span lang="en">Wide Ring (Rainy)</span></button>
+            <button type="button" class="preset-btn" data-year="1997">1997 · <span lang="fr">Suzanne Simard (Nature)</span><span lang="en">Suzanne Simard (Nature)</span></button>
+            <button type="button" class="preset-btn" data-year="2009">2009 · <span lang="fr">Bloc Genesis Bitcoin</span><span lang="en">Bitcoin Genesis Block</span></button>
+            <button type="button" class="preset-btn" data-year="2026">2026 · <span lang="fr">Homo Biodiversitas</span><span lang="en">Homo Biodiversitas</span></button>
+        </div>
+
+        <div class="lab-controls-grid">
+            <div class="lab-ctrl-card">
+                <label for="lab-sun-slider">
+                    <span>☀️ <span lang="fr">Flux Solaire ($h\nu$)</span><span lang="en">Solar Flux ($h\nu$)</span></span>
+                    <strong id="lab-sun-val" style="color:var(--sun-yellow); font-family:var(--font-mono);">760 W/m²</strong>
+                </label>
+                <input type="range" id="lab-sun-slider" min="120" max="1000" step="10" value="760">
+            </div>
+            <div class="lab-ctrl-card">
+                <label for="lab-rock-slider">
+                    <span>🪨 <span lang="fr">Rareté du Phosphore</span><span lang="en">Phosphorus Scarcity</span></span>
+                    <strong id="lab-rock-val" style="color:var(--mycelium-cyan); font-family:var(--font-mono);">58 %</strong>
+                </label>
+                <input type="range" id="lab-rock-slider" min="10" max="95" step="1" value="58">
+            </div>
+            <div class="lab-ctrl-card">
+                <label for="lab-fungusb-slider">
+                    <span>🍄 <span lang="fr">Tarif Champignon B</span><span lang="en">Fungus B Fee Ask</span></span>
+                    <strong id="lab-fungusb-val" style="color:var(--bio-green); font-family:var(--font-mono);">24 %</strong>
+                </label>
+                <input type="range" id="lab-fungusb-slider" min="10" max="50" step="1" value="24">
+            </div>
+            <div class="lab-ctrl-card">
+                <label for="lab-year-slider">
+                    <span>🪵 <span lang="fr">Cerne Exploré</span><span lang="en">Inspected Ring</span></span>
+                    <strong id="lab-year-val" style="color:var(--amber-sap); font-family:var(--font-mono);">1955</strong>
+                </label>
+                <input type="range" id="lab-year-slider" min="1950" max="2026" step="1" value="1955">
+            </div>
+        </div>
+
+        <div class="bom-cards-grid">
+            <div class="bom-card"><span class="bom-icon">1 · Prix Spot (C : P)</span><span class="bom-val" id="m-rate">14,2 g C / g P</span><span class="bom-sub"><span lang="fr">Étalon-sucre dynamique sans banque centrale</span><span lang="en">Dynamic sugar-standard spot price</span></span></div>
+            <div class="bom-card"><span class="bom-icon">2 · Redevance Mycélienne</span><span class="bom-val" id="m-fee" style="color:var(--sun-yellow);">23,5 %</span><span class="bom-sub"><span lang="fr">Part des glucides versée au réseau fongique</span><span lang="en">Carbohydrate share paid to fungi</span></span></div>
+            <div class="bom-card"><span class="bom-icon">3 · Liquidité Minérale</span><span class="bom-val" id="m-phos" style="color:var(--mycelium-cyan);">48,6 mg P/h</span><span class="bom-sub"><span lang="fr">Phosphore & azote extraits de la roche</span><span lang="en">Rock-dissolved P & N delivered</span></span></div>
+            <div class="bom-card"><span class="bom-icon">4 · Routage Hub → Pousses</span><span class="bom-val" id="m-sapling" style="color:var(--bio-green);">11,4 % C</span><span class="bom-sub"><span lang="fr">Subvention énergétique aux Light Clients</span><span lang="en">Mother-tree subsidy to shaded saplings</span></span></div>
+            <div class="bom-card"><span class="bom-icon">5 · Statut Champignon B</span><span class="bom-val" id="m-status" style="color:var(--bio-green);">CONNECTÉ ✓</span><span class="bom-sub"><span lang="fr">Seuil de sanction racinaire : > 32 %</span><span lang="en">Root-severing sanction threshold: > 32%</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--amber-sap);"><span class="bom-icon">6 · Oracle Climatique</span><span class="bom-val" id="m-ring-climate" style="color:var(--amber-sap);">1955 · Pluvieux (6,8 mm)</span><span class="bom-sub"><span lang="fr">Largeur & densité cellulaire du cerne</span><span lang="en">Ring thickness & wood density</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--sun-orange);"><span class="bom-icon">7 · Merkle Root du Tronc</span><span class="bom-val" id="m-hash" style="color:var(--sun-orange);">0x55a9…f31c</span><span class="bom-sub"><span lang="fr">Condensat infalsifiable du houppier</span><span lang="en">Unforgeable crown activity digest</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--purple-dna);"><span class="bom-icon">8 · Graines Cold Storage</span><span class="bom-val" id="m-seeds" style="color:var(--purple-dna);">18 200 / an</span><span class="bom-sub"><span lang="fr">Capsules ADN auto-réplicatives (0 W)</span><span lang="en">Zero-watt self-replicating DNA backups</span></span></div>
+        </div>
+
+        <div class="dual-canvas-grid">
+            <div class="canvas-panel">
+                <h4><span lang="fr">Carnet d'Ordres Racinaire : Arbre-Mère ↔ Champignons A & B</span><span lang="en">Root-Hyphae Orderbook: Mother Tree ↔ Fungi A & B</span></h4>
+                <canvas id="mycelialMarketCanvas"></canvas>
+            </div>
+            <div class="canvas-panel">
+                <h4><span lang="fr">Cernes Annuels (1950–2026) & Arbre de Merkle Inversé</span><span lang="en">Annual Rings (1950–2026) & Inverted Merkle Tree</span></h4>
+                <canvas id="merkleDendroCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4 : MODULE 3 — PARE-FEU BYZANTIN (BFT) & ALERTE ÉTHYLÈNE -->
+    <h2 class="section-heading" id="parefeu-bft">
+        <span lang="fr">4. Simulateur Écosystémique : Pare-feu Byzantin (BFT) & Alerte Éthylène vs Monoculture</span>
+        <span lang="en">4. Ecosystem Simulator: Byzantine Firewall (BFT) & Ethylene Alert vs Monoculture</span>
+    </h2>
+
+    <p lang="fr">Testez expérimentalement le chapitre 4.6 : comparez la résilience d'une <strong>Forêt Primaire Biodiversifiée</strong> (chênes, pins, acacias, baobabs reliés par le mycélium) face à un <strong>Champ de Monoculture Industrielle</strong> composé de clones génétiques. Lancez un virus pathogène, simulez le broutage d'une antilope déclenchant un nuage d'alerte d'éthylène ($\text{C}_2\text{H}_4$), ou abattez un arbre-hub central pour observer le reroutage du réseau !</p>
+    <p lang="en">Experimentally test Chapter 4.6: compare a <strong>Biodiverse BFT Primary Forest</strong> (oaks, pines, acacias, and baobabs linked by mycelium) against an <strong>Industrial Clonal Monoculture</strong>. Inject a species-specific pathogen, trigger antelope grazing to watch windborne ethylene ($\text{C}_2\text{H}_4$) activate preemptive tannin shields, or fell a central hub tree to witness mycelial rerouting!</p>
+
+    <div class="course-shell">
+        <div class="course-top-controls">
+            <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--bio-green);">
+                🛡️ <span lang="fr">IMMUNITÉ DISTRIBUÉE SANS « CHEF FORESTIER » (CLIQUEZ AUSSI SUR LES ARBRES)</span><span lang="en">LEADERLESS DISTRIBUTED IMMUNITY (CLICK ANY TREE ON CANVAS)</span>
+            </div>
+            <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn active" id="bft-mode-forest">🌳 <span lang="fr">Forêt Biodiversifiée (BFT)</span><span lang="en">Biodiverse Forest (BFT)</span></button>
+                <button type="button" class="ui-btn" id="bft-mode-mono" style="border-color:rgba(239,68,68,0.45); color:#fca5a5;">🌾 <span lang="fr">Monoculture Clonale</span><span lang="en">Clonal Monoculture</span></button>
+            </div>
+        </div>
+
+        <div class="bft-actions-bar">
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn" id="bft-btn-virus" style="border-color:var(--danger-red); color:#fca5a5;">🦠 <span lang="fr">Injecter Virus Pathogène</span><span lang="en">Inject Pathogen Virus</span></button>
+                <button type="button" class="ui-btn" id="bft-btn-ethylene" style="border-color:var(--mycelium-cyan); color:var(--mycelium-cyan);">🦌 <span lang="fr">Antilope (Signal Éthylène)</span><span lang="en">Antelope (Ethylene Alert)</span></button>
+                <button type="button" class="ui-btn" id="bft-btn-cut" style="border-color:var(--amber-sap); color:var(--amber-sap);">🪓 <span lang="fr">Couper un Hub (Test Censure)</span><span lang="en">Fell Hub Tree (Censorship Test)</span></button>
+            </div>
+            <button type="button" class="ui-btn green-cta" id="bft-btn-reset">↺ <span lang="fr">Régénérer la Parcelle</span><span lang="en">Regenerate Plot</span></button>
+        </div>
+
+        <canvas id="bftForestCanvas" aria-label="Simulation spatiale du pare-feu par biodiversité et du signal éthylène"></canvas>
+
+        <div class="course-gauges-grid">
+            <div class="gauge-box"><div class="gauge-head"><span>🧬 <span lang="fr">Pare-feu Biodiversité</span><span lang="en">Biodiversity Firewall</span></span><strong id="bft-g-div">96%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="bft-bar-div" style="width:96%; background:var(--bio-green);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>🌲 <span lang="fr">Biomasse Vivante</span><span lang="en">Living Biomass</span></span><strong id="bft-g-alive">100%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="bft-bar-alive" style="width:100%; background:var(--sun-yellow);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>💨 <span lang="fr">Bouclier Tanins (Éthylène)</span><span lang="en">Tannin Shield (Ethylene)</span></span><strong id="bft-g-shield">Prêt</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="bft-bar-shield" style="width:100%; background:var(--mycelium-cyan);"></div></div></div>
+            <div class="gauge-box"><div class="gauge-head"><span>🕸️ <span lang="fr">Continuité Mycélienne</span><span lang="en">Mycelial Continuity</span></span><strong id="bft-g-mesh">100%</strong></div><div class="gauge-bar-bg"><div class="gauge-bar-fill" id="bft-bar-mesh" style="width:100%; background:var(--purple-dna);"></div></div></div>
+        </div>
+
+        <div class="course-verdict-banner" id="bft-verdict-box">
+            <span lang="fr"><strong>FORÊT SAINE (CONSENSUS BFT ACTIF) :</strong> Quatre espèces distinctes (Chênes, Pins, Acacias, Baobabs) forment un pare-feu cryptographique naturel relié par le mycélium souterrain. Déclenchez une attaque ci-dessus pour observer la réponse collective.</span>
+            <span lang="en"><strong>HEALTHY BFT FOREST ACTIVE:</strong> Four distinct species (Oaks, Pines, Acacias, Baobabs) form a natural cryptographic firewall interconnected by subterranean mycelium. Trigger an attack above to witness collective defense.</span>
+        </div>
+    </div>
+
+    <!-- SECTION 5 : CONCLUSION — LE CODE SOURCE RETROUVÉ & LES 5 LOIS DU PROTOCOLE -->
+    <h2 class="section-heading" id="protocole-vivant">
+        <span lang="fr">5. Le Code Source Retrouvé : Nous Sommes des Nœuds, Non les SysAdmins de la Nature</span>
+        <span lang="en">5. The Source Code Recovered: We Are All Nodes, Not SysAdmins, & Isomorphic with Nature</span>
+    </h2>
+
+    <p lang="fr">En contemplant ce « Wood Wide Web », nous réalisons que nos technologies les plus avancées — Blockchain, Bitcoin, réseaux décentralisés — ne sont pas des inventions futuristes hors-sol. Ce sont des <strong>redécouvertes</strong>. L'humanité a passé le XX<sup>e</sup> siècle à ériger des systèmes centralisés et fragiles dotés d'un point unique de défaillance (États-Nations hypertrophiés, Banques Centrales, Agriculture Intensive). Ces architectures violent frontalement les lois distribuées qui ont permis à la vie de traverser 4 milliards d'années de cataclysmes.</p>
+    <p lang="en">By contemplating this "Wood Wide Web", we realise that our most advanced technologies—Blockchain, Bitcoin, decentralised networks—are not futuristic inventions. They are <strong>rediscoveries</strong>. Humanity spent the 20th century building centralised, fragile systems with a single point of failure (Nation-States, Central Banks, Intensive Agriculture). These systems violate the laws of distributed architecture that have allowed life to survive for 4 billion years.</p>
+
+    <!-- BANDEAU D'ISOMORPHISME INVERSE -->
+    <div class="isomorphism-strip">
+        <div class="iso-pill"><span class="tech">BITCOIN</span><span class="eq">≡</span><span class="bio"><span lang="fr">Réseau mycorhizien mondial</span><span lang="en">Global mycorrhizal network</span></span></div>
+        <div class="iso-pill"><span class="tech">MINEURS / MINERS</span><span class="eq">≡</span><span class="bio"><span lang="fr">Plantes (PoW photosynthétique)</span><span lang="en">Plants (Photosynthetic PoW)</span></span></div>
+        <div class="iso-pill"><span class="tech">BLOCKCHAIN</span><span class="eq">≡</span><span class="bio"><span lang="fr">ADN (Registre immuable)</span><span lang="en">DNA (Immutable historical record)</span></span></div>
+        <div class="iso-pill"><span class="tech">NŒUDS / NODES</span><span class="eq">≡</span><span class="bio"><span lang="fr">Organismes individuels</span><span lang="en">Individual organisms</span></span></div>
+        <div class="iso-pill"><span class="tech">TOKEN</span><span class="eq">≡</span><span class="bio"><span lang="fr">Exergie (Joules libres)</span><span lang="en">Exergy (Free Joules)</span></span></div>
+    </div>
+
+    <p lang="fr">L'erreur fatale de l'Anthropocène fut de croire que nous étions les administrateurs système (<em>SysAdmin</em>) de la nature : nous avons voulu « optimiser » la forêt en plantations rectilignes, bétonner les rivières et manipuler la monnaie comme une banque centrale tentant de fixer par décret le prix du pain. Ce faisant, nous avons accumulé de colossales dettes techniques et écologiques. La transition vers <strong>Homo Biodiversitas</strong> consiste à descendre de ce piédestal imaginaire, accepter notre rôle de nœuds — possiblement des nœuds puissants et des mineurs influents — et respecter scrupuleusement les <strong>cinq règles du protocole du vivant</strong> :</p>
+    <p lang="en">The fatal error of the Anthropocene was believing that we were nature's system administrators (<em>SysAdmin</em>). We believed we could optimise the forest, straighten rivers, and act like a Central Bank trying to fix the price of bread—introducing systemic fragility and massive technical and ecological debts. The vision of <strong>Homo Biodiversitas</strong> is to come down from this imaginary pedestal, accept our role as nodes—powerful nodes, influential miners—and respect the <strong>five rules of the protocol</strong>:</p>
+
+    <div class="bridges-grid">
+        <article class="bridge-card">
+            <h4>⚡ <span lang="fr">1. Zéro Dette Thermodynamique</span><span lang="en">1. No Thermodynamic Debt</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Violation :</span><span lang="en">Violation:</span></strong> <span lang="fr">Créer du crédit ex nihilo en hypothéquant les écosystèmes futurs.</span><span lang="en">Printing unbacked fiat claims against future ecosystems.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Règle :</span><span lang="en">Rule:</span></strong> <span lang="fr">Ne jamais dépenser davantage d'exergie que celle réellement captée et disponible.</span><span lang="en">Don't expend more exergy than you have; there is no thermodynamic debt.</span></div>
+                <div class="triptych-row metric">Protocole #1 : Solde énergétique réel ≥ 0 J</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>🛡️ <span lang="fr">2. La Sécurité, Non la Guerre</span><span lang="en">2. Safety, Not War</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Violation :</span><span lang="en">Violation:</span></strong> <span lang="fr">Prédation impériale et guerres financées par la planche à billets.</span><span lang="en">Imperial predation and forever wars funded by monetary inflation.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Règle :</span><span lang="en">Rule:</span></strong> <span lang="fr">Assurer sa propre sécurité défensive et fournir sa juste preuve de travail.</span><span lang="en">Ensure your own defensive safety and provide verifiable proof of work.</span></div>
+                <div class="triptych-row metric">Protocole #2 : Défense asymétrique pacifique (PoW & Tanins)</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>🤝 <span lang="fr">3. Symbiose Pair-à-Pair</span><span lang="en">3. Symbiosis / We Are One</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Violation :</span><span lang="en">Violation:</span></strong> <span lang="fr">Rente de monopole et extraction coercitive de la valeur d'autrui.</span><span lang="en">Monopoly rent-seeking and coercive value extraction by force.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Règle :</span><span lang="en">Rule:</span></strong> <span lang="fr">Se connecter aux autres en P2P pour échanger librement de la valeur mutuelle.</span><span lang="en">Connect with others (P2P) to exchange value voluntarily, never by force.</span></div>
+                <div class="triptych-row metric">Protocole #3 : Contrat symbiotique Arbre ↔ Mycélium</div>
+            </div>
+        </article>
+
+        <article class="bridge-card">
+            <h4>🌿 <span lang="fr">4. Valeur Objective du Vivant</span><span lang="en">4. Real Objective Value for Life</span></h4>
+            <div class="bridge-triptych">
+                <div class="triptych-row impasse"><strong><span lang="fr">Violation :</span><span lang="en">Violation:</span></strong> <span lang="fr">Un PIB aveugle qui comptabilise une forêt rasée mais vaut zéro pour une forêt vivante.</span><span lang="en">Blind GDP counting clear-cut timber as growth while valuing standing forests at zero.</span></div>
+                <div class="triptych-row arch"><strong><span lang="fr">Règle :</span><span lang="en">Rule:</span></strong> <span lang="fr">Conférer une valeur thermodynamique objective aux biens, aux services et surtout à la vie elle-même.</span><span lang="en">Give an objective thermodynamic value to goods and services, and above all to life itself.</span></div>
+                <div class="triptych-row metric">Protocole #4 : L'heure du Vivant a sonné (Étalon Solaire)</div>
+            </div>
+        </article>
+
+        <article class="bridge-card wide-human">
+            <h4 style="color:var(--sun-yellow); text-align:center;">🌱 <span lang="fr">5. La Loi de Transmission : Faire Grandir le Vivant Autour de Soi</span><span lang="en">5. The Law of Transmission: Helping Life Grow Around You</span></h4>
+            <p style="text-align:center; font-size:0.95rem; color:#e2e8f0; margin:0;">
+                <span lang="fr">À l'image des Arbres-Mères injectant leur carbone excédentaire dans le réseau mycorhizien pour nourrir les jeunes pousses dans la pénombre du sous-bois : <strong>aider les autres êtres humains et la vie elle-même à grandir avec nous.</strong> Nous passons enfin de la pyramide (fragile, centralisée, artificielle) au rhizome (résilient, distribué, organique). Pour bâtir une civilisation pérenne, il ne faut pas s'éloigner de la nature, mais copier son code source.</span>
+                <span lang="en">Just as ancient Mother Trees route surplus carbon into the mycorrhizal mesh to nurture young saplings in the shaded understory: <strong>help other human beings and life itself grow alongside you.</strong> We are finally moving from the pyramid (fragile, centralised, artificial) to the rhizome (resilient, distributed, organic). To build an enduring civilisation, we must not distance ourselves from nature, but copy its source code.</span>
+            </p>
+        </article>
+    </div>
+
+    <!-- SECTION 6 : DIAGRAMME SANKEY EXERGÉTIQUE & GALERIE ORIGINALE -->
+    <h2 class="section-heading" id="galerie-sankey">
+        <span lang="fr">6. Flux Exergétiques Comparés & Galerie Visuelle d'Homo Biodiversitas</span>
+        <span lang="en">6. Comparative Exergetic Flows & Homo Biodiversitas Visual Gallery</span>
+    </h2>
+
+    <div class="sankey-box">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+            <div style="font-size:0.88rem; color:#cbd5e1;">
+                <span lang="fr">Comparez le métabolisme circulaire d'une forêt primaire (Rhizome) à la fuite entropique du modèle pyramidal :</span>
+                <span lang="en">Compare the closed-loop metabolism of a primary forest (Rhizome) against pyramidal entropic leakage:</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="ui-btn active" id="sankey-btn-rhizome">🌳 <span lang="fr">Mode Rhizome / Wood Wide Web</span><span lang="en">Rhizome / Wood Wide Web Mode</span></button>
+                <button type="button" class="ui-btn" id="sankey-btn-pyramid" style="border-color:rgba(239,68,68,0.45); color:#fca5a5;">🏛️ <span lang="fr">Mode Pyramide / SysAdmin</span><span lang="en">Pyramid / SysAdmin Mode</span></button>
+            </div>
+        </div>
+        <canvas id="forestSankeyCanvas" aria-label="Diagramme de Sankey animé des flux d'exergie de la forêt"></canvas>
+        <p style="font-size:0.83rem; color:var(--text-muted); text-align:center; margin:0;">
+            <span lang="fr">Le « Wood Wide Web » n'était pas une jolie métaphore poétique : c'était un plan d'architecture systèmes validé par 450 millions d'années d'évolution.</span>
+            <span lang="en">The "Wood Wide Web" wasn't a cute poetic metaphor: it was a systems architecture blueprint battle-tested over 450 million years.</span>
+        </p>
+    </div>
+
+    <!-- GALERIE DES PHOTOS ORIGINALES DE L'ARTICLE LINKEDIN (AVEC CHEMIN LOCAL IMG/ + FALLBACK) -->
+    <div class="visual-gallery-grid">
+        <figure class="gallery-figure">
+            <img src="img/baobab-alley-madagascar.jpg"
+                 alt="Great Baobab Alley - Madagascar"
+                 loading="lazy"
+                 onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://media.licdn.com/dms/image/v2/D5612AQF7JZT5kRvcfA/article-inline_image-shrink_1500_2232/B56Z1xLx.mH4AU-/0/1775720407627?e=1796256000&v=beta&t=jBE93iaq-Yp8wTPsx1w64gYpdv7nZ16z6bryF5Mcys4';}else if(!this.dataset.fb2){this.dataset.fb2='1';this.src='https://placehold.co/800x540/0b150e/ffcc00?text=Great+Baobab+Alley+%E2%80%94+Madagascar';}">
+            <figcaption>
+                <strong style="color:var(--sun-yellow); display:block; margin-bottom:4px;">
+                    <span lang="fr">Allée des Baobabs — Madagascar</span>
+                    <span lang="en">Great Baobab Alley — Madagascar</span>
+                </strong>
+                <span lang="fr">Colonnes vivantes de temps cristallisé : chaque baobab millénaire incarne l'accumulation patiente de la Preuve de Travail solaire et la mémoire hydro-climatique de l'île-continent.</span>
+                <span lang="en">Living columns of crystallized time: each millennial baobab embodies patient photosynthetic Proof-of-Work and the hydro-climatic ledger of Madagascar.</span>
+            </figcaption>
+        </figure>
+
+        <figure class="gallery-figure">
+            <img src="img/nausicaa-nature-healing.jpg"
+                 alt="Nausicaa, Valley of the Wind / Nature Healing"
+                 loading="lazy"
+                 onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://media.licdn.com/dms/image/v2/D5612AQEFzK5c2OthFw/article-inline_image-shrink_1500_2232/B56Z1xL4R5KcAY-/0/1775720433506?e=1796256000&v=beta&t=Vd6IzO7JdcHY2YtNgRDEgzw-ylYsCoTvVVdqrpSimDA';}else if(!this.dataset.fb2){this.dataset.fb2='1';this.src='https://placehold.co/800x540/071418/00e5ff?text=Nausicaa+%E2%80%94+Nature+Healing';}">
+            <figcaption>
+                <strong style="color:var(--mycelium-cyan); display:block; margin-bottom:4px;">
+                    <span lang="fr">Nausicaä de la Vallée du Vent — La Guérison par la Nature</span>
+                    <span lang="en">Nausicaä, Valley of the Wind — Nature Healing</span>
+                </strong>
+                <span lang="fr">Parabole visionnaire de Miyazaki : sous l'apparente toxicité de la Mer de la Décomposition, le réseau fongique filtre en silence les poisons industriels humains pour régénérer un sol pur.</span>
+                <span lang="en">Miyazaki's visionary parable: beneath the Sea of Decay, deep fungal networks silently mineralize industrial toxins to restore clean water and living soil.</span>
+            </figcaption>
+        </figure>
+    </div>
+
+    <!-- EMBED LINKEDIN ASSOCIÉ (CONSERVÉ DE L'ARTICLE ORIGINAL) -->
+    <div class="linkedin-embed-card">
+        <div style="font-family:var(--font-mono); font-size:0.76rem; color:var(--mycelium-cyan); text-transform:uppercase; letter-spacing:1px;">
+            <span lang="fr">// LECTURE CONNEXE DU CORPUS LINKEDIN ORIGINAL</span>
+            <span lang="en">// COMPANION EMBED FROM ORIGINAL LINKEDIN PUBLICATION</span>
+        </div>
+        <iframe allowfullscreen="true"
+                title="Publication LinkedIn associée — Pascal Ranaora"
+                src="https://www.linkedin.com/embeds/publishingEmbed.html?articleId=7576658908626199146"
+                loading="lazy"></iframe>
+        <div style="margin-top:0.75rem; font-size:0.8rem;">
+            <a href="https://www.linkedin.com/pulse/blockchain-forest-wood-wide-web-pascal-ranaora-llhjc" target="_blank" rel="noopener" style="color:var(--sun-yellow); text-decoration:none;">
+                ↗ <span lang="fr">Ouvrir l'article original sur LinkedIn Pulse</span><span lang="en">Open original article on LinkedIn Pulse</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- TABLETTE PHILOSOPHIQUE DE CLÔTURE -->
+    <div class="philosophical-tablet">
+        <h3>
+            <span lang="fr">🌳 La Sagesse dans le Code Source : Planter, Prouver, Transmettre</span>
+            <span lang="en">🌳 Wisdom in the Source Code: Plant, Prove, Transmit</span>
+        </h3>
+
+        <p lang="fr">Le pont a été franchi. Nous savons désormais que la forêt est une blockchain et que la blockchain est une forêt. Le mycélium et le consensus distribué ne sont pas deux objets étrangers : ce sont deux manifestations, à deux échelles différentes, d'une même loi universelle gouvernant l'auto-organisation des systèmes complexes hors équilibre. Une question décisive demeure ouverte pour la suite de notre voyage : comment ce système gère-t-il ses propres limites et la rareté dans un monde fini où rien ne peut croître indéfiniment ?</p>
+        <p lang="en">The bridge has been crossed. We now know that the forest is a blockchain and that the blockchain is a forest. Mycelium and the Blockchain are not two separate things: they are two manifestations, at two different scales, of the same universal law governing complex non-equilibrium systems. One decisive question remains: how does this system manage limits and scarcity in a finite world where nothing can grow indefinitely?</p>
+
+        <div class="punchline-monument">
+            <h2 style="font-family:var(--font-ui); font-size:clamp(1.18rem, 2.6vw, 1.85rem); font-weight:800; color:#fff; line-height:1.58; text-transform:uppercase; letter-spacing:0.9px; margin:0;">
+                <span lang="fr">
+                    Si le cancer de l'Humanité est son rapport à l'argent et au temps,<br>
+                    <span style="color:var(--sun-yellow);">Alors la Preuve de Travail sera le fondement de sa guérison.</span><br>
+                    <span style="color:var(--bio-green);">Car elle est le fondement même de la Vie.</span>
+                </span>
+                <span lang="en">
+                    If Humanity's cancer is its relationship with money and time,<br>
+                    <span style="color:var(--sun-yellow);">Then Proof-of-Work will be the foundation of its cure.</span><br>
+                    <span style="color:var(--bio-green);">Because it is the foundation of Life.</span>
+                </span>
+            </h2>
+        </div>
+
+        <p style="text-align:center; font-style:italic; color:#e2e8f0; margin-bottom:0.9rem;">
+            <span lang="fr">Peut-être le reste de l'humanité trouvera-t-il un jour « la sagesse à l'origine / dans le code source » — traduction quasi littérale du nom <em>Satoshi Nakamoto</em>. Le chemin est ouvert ; le plus difficile est de nous faire à nouveau confiance. Plantez une graine (<strong>Liberté</strong> d'action), accomplissez une preuve de travail (<strong>Égalité</strong> — les lois de la physique sont les mêmes pour tous) pour l'aider à croître, et aidez les autres autour de vous à grandir avec vous (<strong>Fraternité</strong> humaine).</span>
+            <span lang="en">Perhaps the rest of humanity will one day find "wisdom in the source code", which is quite the literal translation of <em>Satoshi Nakamoto</em>. The path is open; the hardest part is trusting ourselves. Plant a seed (<strong>Freedom</strong> of action), perform a proof of work (<strong>Equality</strong> — the laws of physics are the same for us all) to help it grow, and help others around us grow with us (human <strong>Brotherhood</strong>).</span>
+        </p>
+
+        <div style="text-align:center; font-family:var(--font-ui); font-weight:800; letter-spacing:3px; color:var(--sun-yellow); font-size:1.05rem; margin-bottom:0.4rem;">
+            LIBERTÉ · ÉGALITÉ · FRATERNITÉ
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:0.84rem; color:#94a3b8;">
+            <span lang="fr">Nous faisons tous partie du grand arbre de l'Humanité. — Pascal Ranaora</span>
+            <span lang="en">We are all part of the great tree of Humanity. — Pascal Ranaora</span>
+        </div>
+    </div>
+
+    <!-- RÉFÉRENCES ACADÉMIQUES & BIBTEX -->
+    <div class="references-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1rem;">
+            <h3 style="color:var(--sun-yellow); font-size:1.05rem; text-transform:uppercase; letter-spacing:1.2px; margin:0;">
+                📚 <span lang="fr">Références Scientifiques & Corpus Zenodo</span><span lang="en">Scientific References & Zenodo Corpus</span>
+            </h3>
+            <button type="button" class="ui-btn" onclick="copyBibtex()">
+                📋 <span lang="fr">Copier BibTeX</span><span lang="en">Copy BibTeX</span>
+            </button>
+        </div>
+        <ol>
+            <li>Ranaora, P., & Yii, J. (2026). <em>Nakamoto Distributed Consensus as a Non-Equilibrium Phase Transition: A Phenomenological Statistical-Physics Description</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.19160047" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19160047</a></li>
+            <li>Ranaora, P., & Yii, J. (2026). <em>Bitcoin as a Cybernetic Super-Organism: A Systems Biology Framework for the Nakamoto Consensus</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.19411598" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.19411598</a></li>
+            <li>Simard, S. W., Perry, D. A., Jones, M. D., Myrold, D. D., Durall, D. M., & Molina, R. (1997). Net transfer of carbon between ectomycorrhizal tree species in the field. <em>Nature</em>, 388, 579–582.</li>
+            <li>Kiers, E. T., Duhamel, M., Beesetty, Y., Mensah, J. A., Franken, O., Verbruggen, E., ... & Bücking, H. (2011). Reciprocal rewards stabilize cooperation in the mycorrhizal symbiosis. <em>Science</em>, 333(6044), 880–882.</li>
+        </ol>
+    </div>
+
+    <!-- NAVIGATION DU BLOG -->
+    <div class="article-navigation">
+        <a href="ornoir_ornum.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
+            <div class="nav-title"><span lang="fr">De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre</span><span lang="en">From Black Gold to Digital Gold: The Great Filter Geodesic</span></div>
+            <svg viewBox="0 0 220 56" width="200" height="50"><circle cx="48" cy="28" r="13" fill="rgba(247,147,26,0.2)" stroke="#f7931a" stroke-width="1.5"/><line x1="68" y1="28" x2="152" y2="28" stroke="#ffcc00" stroke-dasharray="4 3" stroke-width="1.5"/><circle cx="172" cy="28" r="13" fill="rgba(68,238,119,0.2)" stroke="#44ee77" stroke-width="1.5"/></svg>
+        </a>
+        <a href="matrice-inversee.html" class="nav-card">
+            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+            <div class="nav-title"><span lang="fr">La Matrice Inversée · Le Calcul Régénératif Souterrain</span><span lang="en">The Inverted Matrix · Subterranean Regenerative Compute</span></div>
+            <svg viewBox="0 0 220 56" width="200" height="50"><path d="M35 42 Q110 10 185 42" fill="none" stroke="#44ee77" stroke-width="1.8"/><circle cx="110" cy="30" r="11" fill="rgba(0,229,255,0.2)" stroke="#00e5ff" stroke-width="1.5"/></svg>
+        </a>
+    </div>
+
+    <!-- À PROPOS DE L'AUTEUR & RESSOURCES -->
+    <div class="author-section">
+        <div class="author-grid">
+            <img src="img/homo-biodiversitas-author.jpg"
+                 alt="Pascal Ranaora — Homo Biodiversitas"
+                 class="author-portrait"
+                 loading="lazy"
+                 onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://media.licdn.com/dms/image/v2/D5612AQFn8ZxfMQdBHQ/article-inline_image-shrink_1500_2232/B56Z1xMU4OGoAU-/0/1775720560374?e=1796256000&v=beta&t=FDU9JKVjzLcz_6_HErWdgRrfpBpwUoG0RAOIHcqYEDI';}else if(!this.dataset.fb2){this.dataset.fb2='1';this.src='https://placehold.co/300x300/08120c/44ee77?text=Homo+Biodiversitas';}">
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; margin:0 0 0.5rem; font-size:1.18rem;">
+                    <span lang="fr">À propos de l'auteur — Pascal Ranoroarijaona (Ranaora)</span>
+                    <span lang="en">About the Author — Pascal Ranoroarijaona (Ranaora)</span>
+                </h3>
+                <p style="color:#cbd5e1; font-size:0.9rem; margin:0; line-height:1.65; text-align:justify;">
+                    <span lang="fr">Explorateur des convergences scientifiques et défenseur du vivant, Pascal Ranaora est un polymathe curieux qui navigue à l'intersection de la thermodynamique, de la biologie des systèmes et de la cryptographie pour déchiffrer les lois universelles gouvernant nos organisations et comprendre l'économie comme un grand organisme vivant interconnecté. Dans son livre <em>Homo Biodiversitas</em>, il propose une théorie unifiée où la vie retrouve sa centralité économique — avec la vision d'un monde où les mathématiques deviendront un langage universel de paix transcendant les frontières politiques, traditionnelles et religieuses.</span>
+                    <span lang="en">Pascal Ranaora is an explorer of scientific convergences and an advocate for life. A curious and open-minded polymath, he navigates the intersection of thermodynamics, systems biology, and cryptography to decipher the universal laws that govern our systems and to understand the economy as a large, interconnected living organism. In his book <em>Homo Biodiversitas</em>, he proposes a unified theory where life regains its economic centrality—envisioning a world where mathematics becomes a universal language of peace, transcending political, traditional, and religious boundaries.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="resources-grid">
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
+                <img src="img/logo-sunstandard.jpg" alt="The Sun Standard" loading="lazy" onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://www.thesunstandard.net/blog/img/logo-sunstandard.jpg';}else{this.style.display='none';}">
+                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
+                <p><span lang="fr">Portail de recherche ouverte sur l'éconophysique post-fiduciaire, le temps thermique et les preuves formelles.</span><span lang="en">Open-science portal on post-fiat econophysics, thermal time, and formal verification.</span></p>
+            </a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
+                <img src="img/logo-lemuriatech.jpg" alt="Regenerative Compute" loading="lazy" onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://www.thesunstandard.net/blog/img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
+                <h4 style="color:var(--bio-green);">🌱 Regenerative Compute</h4>
+                <p><span lang="fr">Ingénierie symbiotique : recyclage de l'effet Joule informatique en eau MOF-303, biochar et serres vivrières.</span><span lang="en">Symbiotic hardware turning compute heat into MOF-303 water, biochar, and organic harvests.</span></p>
+            </a>
+            <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" class="resource-card">
+                <img src="img/logo-homobiodiversitas.png" alt="Homo Biodiversitas" loading="lazy" onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://www.thesunstandard.net/blog/img/logo-homobiodiversitas.png';}else{this.style.display='none';}">
+                <h4 style="color:var(--mycelium-cyan);">📖 Homo Biodiversitas (PDF)</h4>
+                <p><span lang="fr">Le manifeste thermodynamique complet unissant l'Émergie d'Odum à la Preuve de Travail de Nakamoto.</span><span lang="en">Full thermodynamic treatise uniting H.T. Odum's Emergy with Nakamoto's Proof-of-Work.</span></p>
+            </a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card">
+                <img src="img/logo-trinity.png" alt="Protocole D-Trinité" loading="lazy" onerror="if(!this.dataset.fb1){this.dataset.fb1='1';this.src='https://www.thesunstandard.net/blog/img/logo-trinity.png';}else{this.style.display='none';}">
+                <h4 style="color:var(--purple-dna);">👁️ Protocole D-Trinité</h4>
+                <p><span lang="fr">Provenance cryptographique SHA-256 + Nostr + OpenTimestamps face à l'inflation synthétique du faux.</span><span lang="en">SHA-256 + Nostr + OpenTimestamps provenance shielding authentic human truth.</span></p>
+            </a>
+        </div>
+    </div>
+</article>
+
+<!-- TOAST DE NOTIFICATION ÉLÉGANT -->
+<div id="sun-toast" class="sun-toast" role="status" aria-live="polite"></div>
+
+<footer>
+    <div style="font-size:0.98rem; font-weight:700; letter-spacing:3px; color:var(--bio-green); margin-bottom:0.4rem;">
+        ☀ THE SUN STANDARD · HOMO BIODIVERSITAS · LEMURIA TECHNOLOGIES
+    </div>
+    <p style="text-align:center; margin:0;">Pascal Ranoroarijaona (Ranaora) · 2026</p>
+</footer>
+
+<!-- ==========================================================================
+     MOTEURS JAVASCRIPT : CAPTURE PRISTINE, BILINGUE & 5 CANVASES INTERACTIFS
+     ========================================================================== -->
+<script>
+/* 0. CAPTURE IMMÉDIATE DU CODE SOURCE PROPRE AVANT MUTATION MATHJAX / DOM */
+const PRISTINE_HTML_SOURCE = "<!doctype html>\n" + document.documentElement.outerHTML;
+
+let currentLang = 'fr';
+function isEn() { return currentLang === 'en'; }
+
+function showToast(msgFr, msgEn) {
+    const t = document.getElementById('sun-toast');
+    if (!t) return;
+    t.textContent = isEn() ? msgEn : msgFr;
+    t.classList.add('visible');
+    clearTimeout(window._sunToastTimer);
+    window._sunToastTimer = setTimeout(() => t.classList.remove('visible'), 3200);
+}
+
+function copyTextSafe(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).catch(() => {});
+        return true;
+    }
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+}
+
+function downloadStandaloneHTML() {
+    try {
+        const blob = new Blob([PRISTINE_HTML_SOURCE], { type: 'text/html;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'wood-wide-web.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+        showToast('✅ Fichier wood-wide-web.html téléchargé !', '✅ wood-wide-web.html downloaded!');
+    } catch (err) {
+        copyTextSafe(PRISTINE_HTML_SOURCE);
+        showToast('📋 Téléchargement bloqué par le cadre : HTML copié !', '📋 Frame blocked download: full HTML copied!');
+    }
+}
+
+function copyStandaloneHTML() {
+    copyTextSafe(PRISTINE_HTML_SOURCE);
+    showToast('📋 Code HTML complet copié dans le presse-papiers !', '📋 Complete HTML source copied to clipboard!');
+}
+
+function copyBibtex() {
+    const bib = `@article{ranaora_yii_2026_superorganism,
+  author = {Ranaora, Pascal and Yii, J.},
+  title = {Bitcoin as a Cybernetic Super-Organism: A Systems Biology Framework for the Nakamoto Consensus},
+  year = {2026},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.19411598},
+  url = {https://doi.org/10.5281/zenodo.19411598}
+}
+
+@inbook{ranaora_2026_woodwideweb,
+  author = {Ranoroarijaona, Pascal},
+  booktitle = {Homo Biodiversitas: The Solar Standard},
+  title = {Chapter 4: The Blockchain and the Forest — The Wood Wide Web},
+  year = {2026},
+  url = {https://www.thesunstandard.net/blog/wood-wide-web.html}
+}`;
+    copyTextSafe(bib);
+    showToast('📋 Références BibTeX copiées !', '📋 BibTeX references copied!');
+}
+
+function setLang(lang) {
+    currentLang = (lang && lang.toLowerCase() === 'en') ? 'en' : 'fr';
+    document.body.className = 'lang-' + currentLang;
+    try { localStorage.setItem('sun-std-lang', currentLang); } catch (e) {}
+    try {
+        const u = new URL(window.location.href);
+        u.searchParams.set('lg', currentLang.toUpperCase());
+        window.history.replaceState({}, '', u);
+    } catch (e) {}
+    window.dispatchEvent(new Event('sun-lang-change'));
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    let saved = 'fr';
+    try { saved = localStorage.getItem('sun-std-lang') || 'fr'; } catch (e) {}
+    let urlLg = null;
+    try { urlLg = new URLSearchParams(window.location.search).get('lg'); } catch (e) {}
+    setLang(urlLg ? urlLg : saved);
+
+    document.querySelectorAll('.pyramid-tier').forEach(link => {
+        link.addEventListener('click', function() {
+            const target = document.getElementById(this.getAttribute('href').substring(1));
+            if (target && !target.hasAttribute('open')) target.setAttribute('open', '');
+        });
+    });
+});
+
+/* ==========================================================================
+   1. MODULE HERO : COUPE VIVANTE CANOPÉE & MYCÉLIUM (#woodWideWebHeroCanvas)
+   ========================================================================== */
+(function() {
+    const cv = document.getElementById('woodWideWebHeroCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const slider = document.getElementById('hero-rhizome-slider');
+    const pctEl = document.getElementById('hero-rhizome-pct');
+
+    let W = 0, H = 0, dpr = 1;
+    let rhizome = 0.86;
+    const pulses = [];
+
+    const photons = Array.from({ length: 42 }, () => ({
+        x: 0.1 + Math.random() * 0.8,
+        y: Math.random() * 0.5,
+        spd: 0.09 + Math.random() * 0.12,
+        r: 1.8 + Math.random() * 2.2
+    }));
+
+    const packets = Array.from({ length: 58 }, (_, i) => ({
+        prog: Math.random(),
+        spd: 0.22 + Math.random() * 0.25,
+        linkIdx: i % 9,
+        type: i % 3 === 0 ? 'mineral' : 'sugar'
+    }));
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(cv);
+    resize();
+
+    function updateHUD() {
+        rhizome = parseFloat(slider.value) / 100;
+        pctEl.textContent = Math.round(rhizome * 100) + ' %';
+
+        const hyphaeKm = Math.round(12 + rhizome * 390);
+        const feePct = Math.round(5 + rhizome * 24);
+
+        let topoFr = 'Monoculture Clonale (SPOF)', topoEn = 'Clonal Monoculture (SPOF)';
+        let debtFr = '+Élevée (Intrants Fossiles)', debtEn = '+High (Fossil Inputs)';
+        let debtCol = '#ef4444';
+
+        if (rhizome >= 0.72) {
+            topoFr = 'Rhizome Mycélien P2P (BFT)'; topoEn = 'P2P Mycelial Rhizome (BFT)';
+            debtFr = '0,00 J (Exergie Solaire)'; debtEn = '0.00 J (Pure Solar Exergy)';
+            debtCol = '#44ee77';
+        } else if (rhizome >= 0.35) {
+            topoFr = 'Forêt Secondaire Hybride'; topoEn = 'Hybrid Secondary Forest';
+            debtFr = 'Modérée (En Régénération)'; debtEn = 'Moderate (Regenerating)';
+            debtCol = '#ffcc00';
+        }
+
+        document.getElementById('hud-topo-val').textContent = isEn() ? topoEn : topoFr;
+        document.getElementById('hud-hyphae-val').textContent = hyphaeKm + ' km / m³';
+        document.getElementById('hud-fee-val').textContent = feePct + (isEn() ? '% Sugars (C↔P)' : ' % Sucres (C↔P)');
+        const dEl = document.getElementById('hud-debt-val');
+        dEl.textContent = isEn() ? debtEn : debtFr;
+        dEl.style.color = debtCol;
+    }
+
+    function spawnPulse(px, py) {
+        pulses.push({ x: px ?? W * 0.5, y: py ?? H * 0.52, r: 10, max: Math.max(W, H) * 0.55, a: 0.95 });
+    }
+
+    slider.addEventListener('input', updateHUD);
+    document.getElementById('hero-btn-mono').addEventListener('click', () => {
+        slider.value = 0; updateHUD();
+        document.getElementById('hero-btn-mono').classList.add('active');
+        document.getElementById('hero-btn-forest').classList.remove('active');
+        spawnPulse(W * 0.5, H * 0.35);
+    });
+    document.getElementById('hero-btn-forest').addEventListener('click', () => {
+        slider.value = 100; updateHUD();
+        document.getElementById('hero-btn-forest').classList.add('active');
+        document.getElementById('hero-btn-mono').classList.remove('active');
+        spawnPulse(W * 0.5, H * 0.52);
+    });
+    document.getElementById('hero-btn-photon').addEventListener('click', () => spawnPulse(W * 0.5, H * 0.52));
+    cv.addEventListener('click', e => {
+        const rect = cv.getBoundingClientRect();
+        spawnPulse(e.clientX - rect.left, e.clientY - rect.top);
+    });
+    window.addEventListener('sun-lang-change', updateHUD);
+    updateHUD();
+
+    function drawTree(x, groundY, scale, species, health, t) {
+        ctx.save();
+        ctx.translate(x, groundY);
+        const trunkH = 74 * scale;
+        const trunkW = 8 * scale;
+
+        ctx.fillStyle = health > 0.4 ? '#5c4028' : '#474747';
+        ctx.beginPath();
+        ctx.moveTo(-trunkW, 0);
+        ctx.lineTo(-trunkW * 0.55, -trunkH);
+        ctx.lineTo(trunkW * 0.55, -trunkH);
+        ctx.lineTo(trunkW, 0);
+        ctx.closePath();
+        ctx.fill();
+
+        const sway = Math.sin(t * 1.4 + x * 0.02) * 2.5;
+        if (species === 'mother') {
+            const g = ctx.createRadialGradient(sway, -trunkH - 18 * scale, 6, sway, -trunkH - 12 * scale, 56 * scale);
+            g.addColorStop(0, `rgba(110, 255, 155, ${0.45 + health * 0.45})`);
+            g.addColorStop(1, `rgba(16, 125, 68, ${0.25 + health * 0.55})`);
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(sway, -trunkH - 12 * scale, 48 * scale, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(sway - 28 * scale, -trunkH + 2 * scale, 30 * scale, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(sway + 28 * scale, -trunkH + 2 * scale, 30 * scale, 0, Math.PI * 2); ctx.fill();
+        } else if (species === 'pine') {
+            ctx.fillStyle = health > 0.35 ? `rgba(20, 165, 115, ${0.5 + health * 0.4})` : 'rgba(115, 125, 110, 0.55)';
+            ctx.beginPath();
+            ctx.moveTo(sway, -trunkH - 52 * scale);
+            ctx.lineTo(-30 * scale, -trunkH + 10 * scale);
+            ctx.lineTo(30 * scale, -trunkH + 10 * scale);
+            ctx.closePath(); ctx.fill();
+        } else {
+            ctx.fillStyle = health > 0.35 ? `rgba(68, 238, 119, ${0.45 + health * 0.45})` : 'rgba(120, 130, 110, 0.5)';
+            ctx.beginPath(); ctx.arc(sway, -trunkH - 8 * scale, 26 * scale, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.restore();
+    }
+
+    let last = performance.now();
+    function render(now) {
+        requestAnimationFrame(render);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        const t = now * 0.001;
+        ctx.clearRect(0, 0, W, H);
+
+        const groundY = H * 0.53;
+
+        const skyG = ctx.createLinearGradient(0, 0, 0, groundY);
+        skyG.addColorStop(0, rhizome > 0.4 ? '#071911' : '#181614');
+        skyG.addColorStop(1, rhizome > 0.4 ? '#0b2217' : '#24201c');
+        ctx.fillStyle = skyG; ctx.fillRect(0, 0, W, groundY);
+
+        const sunX = W * 0.5, sunY = 40;
+        const sunGlow = ctx.createRadialGradient(sunX, sunY, 4, sunX, sunY, 95);
+        sunGlow.addColorStop(0, 'rgba(255, 225, 95, 0.95)');
+        sunGlow.addColorStop(0.35, 'rgba(247, 147, 26, 0.32)');
+        sunGlow.addColorStop(1, 'rgba(247, 147, 26, 0)');
+        ctx.fillStyle = sunGlow;
+        ctx.beginPath(); ctx.arc(sunX, sunY, 95, 0, Math.PI * 2); ctx.fill();
+
+        photons.forEach(p => {
+            p.y += dt * p.spd;
+            if (p.y > 0.51) { p.y = 0.04; p.x = 0.08 + Math.random() * 0.84; }
+            ctx.fillStyle = `rgba(255, 215, 64, ${0.35 + rhizome * 0.45})`;
+            ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2); ctx.fill();
+        });
+
+        const soilG = ctx.createLinearGradient(0, groundY, 0, H);
+        soilG.addColorStop(0, '#0a130e');
+        soilG.addColorStop(0.55, '#060b09');
+        soilG.addColorStop(1, '#040608');
+        ctx.fillStyle = soilG; ctx.fillRect(0, groundY, W, H - groundY);
+
+        ctx.strokeStyle = `rgba(68, 238, 119, ${0.28 + rhizome * 0.5})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+
+        const trees = [
+            { x: W * 0.15, s: 0.78, sp: rhizome > 0.35 ? 'pine' : 'clone', lblFr: 'Pin (Nœud)', lblEn: 'Pine (Node)' },
+            { x: W * 0.31, s: 0.46, sp: 'sapling', lblFr: 'Jeune Pousse (Light)', lblEn: 'Sapling (Light Client)' },
+            { x: W * 0.50, s: 1.12 * (0.75 + rhizome * 0.25), sp: rhizome > 0.25 ? 'mother' : 'clone', lblFr: 'ARBRE-MÈRE (FULL NODE)', lblEn: 'MOTHER TREE (FULL NODE)' },
+            { x: W * 0.69, s: 0.48, sp: 'sapling', lblFr: 'Jeune Pousse (Light)', lblEn: 'Sapling (Light Client)' },
+            { x: W * 0.85, s: 0.82, sp: rhizome > 0.35 ? 'birch' : 'clone', lblFr: 'Bouleau (Nœud)', lblEn: 'Birch (Node)' }
+        ];
+
+        const fungi = [
+            { x: W * 0.24, y: groundY + (H - groundY) * 0.46 },
+            { x: W * 0.50, y: groundY + (H - groundY) * 0.62 },
+            { x: W * 0.76, y: groundY + (H - groundY) * 0.46 }
+        ];
+
+        trees.forEach(tr => drawTree(tr.x, groundY, tr.s, tr.sp, rhizome, t));
+
+        const links = [
+            { ax: trees[0].x, ay: groundY + 12, bx: fungi[0].x, by: fungi[0].y },
+            { ax: trees[1].x, ay: groundY + 8,  bx: fungi[0].x, by: fungi[0].y },
+            { ax: trees[2].x, ay: groundY + 18, bx: fungi[0].x, by: fungi[0].y },
+            { ax: trees[2].x, ay: groundY + 18, bx: fungi[1].x, by: fungi[1].y },
+            { ax: trees[2].x, ay: groundY + 18, bx: fungi[2].x, by: fungi[2].y },
+            { ax: trees[3].x, ay: groundY + 8,  bx: fungi[2].x, by: fungi[2].y },
+            { ax: trees[4].x, ay: groundY + 12, bx: fungi[2].x, by: fungi[2].y },
+            { ax: fungi[0].x, ay: fungi[0].y,   bx: fungi[1].x, by: fungi[1].y },
+            { ax: fungi[1].x, ay: fungi[1].y,   bx: fungi[2].x, by: fungi[2].y }
+        ];
+
+        if (rhizome > 0.08) {
+            ctx.lineWidth = 1.2 + rhizome * 2.1;
+            links.forEach((lk, idx) => {
+                const grad = ctx.createLinearGradient(lk.ax, lk.ay, lk.bx, lk.by);
+                grad.addColorStop(0, `rgba(255, 204, 0, ${rhizome * 0.55})`);
+                grad.addColorStop(1, `rgba(0, 229, 255, ${rhizome * 0.65})`);
+                ctx.strokeStyle = grad;
+                ctx.beginPath();
+                const mx = (lk.ax + lk.bx) * 0.5;
+                const my = (lk.ay + lk.by) * 0.5 + Math.sin(idx * 2.1) * 16;
+                ctx.moveTo(lk.ax, lk.ay);
+                ctx.quadraticCurveTo(mx, my, lk.bx, lk.by);
+                ctx.stroke();
+            });
+
+            packets.forEach((pk, idx) => {
+                pk.prog += dt * pk.spd * (0.3 + rhizome * 0.9);
+                if (pk.prog > 1) pk.prog = 0;
+                const lk = links[idx % links.length];
+                const u = pk.type === 'sugar' ? pk.prog : (1 - pk.prog);
+                const mx = (lk.ax + lk.bx) * 0.5;
+                const my = (lk.ay + lk.by) * 0.5 + Math.sin((idx % links.length) * 2.1) * 16;
+                const inv = 1 - u;
+                const px = inv * inv * lk.ax + 2 * inv * u * mx + u * u * lk.bx;
+                const py = inv * inv * lk.ay + 2 * inv * u * my + u * u * lk.by;
+
+                ctx.fillStyle = pk.type === 'sugar'
+                    ? `rgba(255, 204, 0, ${0.35 + rhizome * 0.65})`
+                    : `rgba(0, 229, 255, ${0.35 + rhizome * 0.65})`;
+                ctx.beginPath(); ctx.arc(px, py, 2.8, 0, Math.PI * 2); ctx.fill();
+            });
+        }
+
+        fungi.forEach(fg => {
+            ctx.fillStyle = `rgba(0, 229, 255, ${0.2 + rhizome * 0.65})`;
+            ctx.beginPath(); ctx.arc(fg.x, fg.y, 6 + rhizome * 4, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = `rgba(179, 102, 255, ${0.3 + rhizome * 0.5})`;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.arc(fg.x, fg.y, 12 + Math.sin(t * 3 + fg.x) * 2, 0, Math.PI * 2); ctx.stroke();
+        });
+
+        ctx.font = '700 10.5px "Fira Code", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#ffcc00';
+        ctx.fillText(isEn() ? '☀ PHOTOSYNTHETIC PROOF-OF-WORK (hν → SUGARS)' : '☀ PREUVE DE TRAVAIL PHOTOSYNTHÉTIQUE (hν → SUCRES)', W * 0.5, 18);
+
+        ctx.fillStyle = '#a7f3d0';
+        ctx.font = '600 10px "Inter", sans-serif';
+        ctx.fillText(isEn() ? trees[2].lblEn : trees[2].lblFr, trees[2].x, groundY - 12);
+        if (W > 620) {
+            ctx.fillStyle = '#cbd5e1';
+            ctx.fillText(isEn() ? trees[1].lblEn : trees[1].lblFr, trees[1].x, groundY - 8);
+            ctx.fillText(isEn() ? trees[3].lblEn : trees[3].lblFr, trees[3].x, groundY - 8);
+        }
+
+        ctx.font = '600 10.5px "Fira Code", monospace';
+        ctx.fillStyle = rhizome > 0.25 ? '#00e5ff' : '#ef4444';
+        ctx.fillText(
+            rhizome > 0.25
+                ? (isEn() ? '🍄 MYCELIAL LIGHTNING NETWORK: GOLD = CARBON SUGARS | CYAN = ROCK PHOSPHORUS (P, N, Mg)' : '🍄 LIGHTNING MYCÉLIEN : OR = SUCRES (CARBONE) | CYAN = PHOSPHORE ROCHEUX (P, N, Mg)')
+                : (isEn() ? '⚠ STERILE CLONAL SOIL: BROKEN MYCELIAL MESH & HIGH ENTROPIC FRAGILITY' : '⚠ SOL CLONAL STÉRILE : RÉSEAU MYCÉLIEN ROMPU & FRAGILITÉ SYSTÉMIQUE'),
+            W * 0.5, H - 14
+        );
+
+        for (let i = pulses.length - 1; i >= 0; i--) {
+            pulses[i].r += dt * 210;
+            pulses[i].a -= dt * 0.78;
+            if (pulses[i].a <= 0 || pulses[i].r > pulses[i].max) { pulses.splice(i, 1); continue; }
+            ctx.strokeStyle = `rgba(68, 238, 119, ${pulses[i].a})`;
+            ctx.lineWidth = 2.2;
+            ctx.beginPath(); ctx.arc(pulses[i].x, pulses[i].y, pulses[i].r, 0, Math.PI * 2); ctx.stroke();
+        }
+    }
+    requestAnimationFrame(render);
+})();
+
+/* ==========================================================================
+   2. MODULE LABORATOIRE MARCHÉ C↔P & DENDRO-MERKLE (#marche-merkle-lab)
+   ========================================================================== */
+(function() {
+    const sunSl = document.getElementById('lab-sun-slider');
+    const rockSl = document.getElementById('lab-rock-slider');
+    const fbSl = document.getElementById('lab-fungusb-slider');
+    const yrSl = document.getElementById('lab-year-slider');
+    const mCv = document.getElementById('mycelialMarketCanvas');
+    const dCv = document.getElementById('merkleDendroCanvas');
+    if (!sunSl || !mCv || !dCv) return;
+
+    const mCtx = mCv.getContext('2d');
+    const dCtx = dCv.getContext('2d');
+    let mW = 0, mH = 0, dW = 0, dH = 0, dpr = 1;
+
+    function resizeLab() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        mW = mCv.clientWidth; mH = mCv.clientHeight;
+        dW = dCv.clientWidth; dH = dCv.clientHeight;
+        if (mW && mH) { mCv.width = mW * dpr; mCv.height = mH * dpr; mCtx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+        if (dW && dH) { dCv.width = dW * dpr; dCv.height = dH * dpr; dCtx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    }
+    new ResizeObserver(resizeLab).observe(mCv);
+    new ResizeObserver(resizeLab).observe(dCv);
+    resizeLab();
+
+    function ringData(yr) {
+        if (yr === 1954) return { widthMm: 1.1, drought: true, fr: '1954 · Sécheresse (1,1 mm)', en: '1954 · Severe Drought (1.1 mm)' };
+        if (yr === 1955) return { widthMm: 6.8, drought: false, fr: '1955 · Pluie Abondante (6,8 mm)', en: '1955 · Abundant Rain (6.8 mm)' };
+        if (yr === 1997) return { widthMm: 5.4, drought: false, fr: '1997 · Découverte Simard (5,4 mm)', en: '1997 · Simard Discovery (5.4 mm)' };
+        if (yr === 2009) return { widthMm: 5.9, drought: false, fr: '2009 · Bloc Genesis (5,9 mm)', en: '2009 · Genesis Block (5.9 mm)' };
+        if (yr === 2026) return { widthMm: 6.2, drought: false, fr: '2026 · Homo Biodiversitas (6,2 mm)', en: '2026 · Homo Biodiversitas (6.2 mm)' };
+        const wave = Math.sin(yr * 1.37) * 1.8 + Math.cos(yr * 0.53) * 0.9;
+        const w = Math.max(1.4, Math.min(6.4, 3.9 + wave));
+        const isDry = w < 2.5;
+        return {
+            widthMm: w,
+            drought: isDry,
+            fr: `${yr} · ${isDry ? 'Sec & Dense' : 'Croissance Saine'} (${w.toFixed(1)} mm)`,
+            en: `${yr} · ${isDry ? 'Dry & Dense' : 'Healthy Growth'} (${w.toFixed(1)} mm)`
+        };
+    }
+
+    function pseudoHash(yr, sun, scarcity) {
+        const v = Math.abs(Math.imul(yr * 2654435761, sun + scarcity * 17)) >>> 0;
+        const h1 = v.toString(16).padStart(8, '0');
+        const h2 = ((v ^ 0x9e3779b9) >>> 0).toString(16).padStart(8, '0');
+        return '0x' + h1.slice(0, 4) + '…' + h2.slice(4, 8);
+    }
+
+    let state = { sun: 760, rock: 58, fbAsk: 24, yr: 1955, blacklisted: false };
+
+    const marketParticles = Array.from({ length: 34 }, (_, i) => ({
+        t: Math.random(),
+        spd: 0.35 + Math.random() * 0.3,
+        branch: i % 3,
+        dir: i % 2 === 0 ? 1 : -1
+    }));
+
+    function updateLabState() {
+        state.sun = parseInt(sunSl.value, 10);
+        state.rock = parseInt(rockSl.value, 10);
+        state.fbAsk = parseInt(fbSl.value, 10);
+        state.yr = parseInt(yrSl.value, 10);
+        state.blacklisted = state.fbAsk > 32;
+
+        document.getElementById('lab-sun-val').textContent = state.sun + ' W/m²';
+        document.getElementById('lab-rock-val').textContent = state.rock + ' %';
+        const fbEl = document.getElementById('lab-fungusb-val');
+        fbEl.textContent = state.fbAsk + ' %';
+        fbEl.style.color = state.blacklisted ? '#ef4444' : '#44ee77';
+        document.getElementById('lab-year-val').textContent = state.yr;
+
+        const spotRate = (7.2 + (state.rock / 100) * 12.8 - (state.sun / 1000) * 2.2).toFixed(1);
+        const fungusAFee = 19.0;
+        const effFee = state.blacklisted ? fungusAFee : ((fungusAFee + state.fbAsk) * 0.5);
+        const phosRate = ((state.sun / 760) * (115 - state.rock * 0.72) * (state.blacklisted ? 0.84 : 1.0)).toFixed(1);
+        const saplingSub = Math.max(2.5, ((state.sun / 1000) * 15.2 - effFee * 0.14)).toFixed(1);
+        const rInfo = ringData(state.yr);
+        const seedsPerYr = Math.round((state.sun * 22.5) * (rInfo.drought ? 0.62 : 1.08));
+
+        document.getElementById('m-rate').textContent = (isEn() ? spotRate : spotRate.replace('.', ',')) + ' g C / g P';
+        document.getElementById('m-fee').textContent = (isEn() ? effFee.toFixed(1) : effFee.toFixed(1).replace('.', ',')) + ' %';
+        document.getElementById('m-phos').textContent = (isEn() ? phosRate : phosRate.replace('.', ',')) + ' mg P/h';
+        document.getElementById('m-sapling').textContent = (isEn() ? saplingSub : saplingSub.replace('.', ',')) + ' % C';
+
+        const stEl = document.getElementById('m-status');
+        stEl.textContent = state.blacklisted
+            ? (isEn() ? 'BLACKLISTED ✗' : 'LISTE NOIRE ✗')
+            : (isEn() ? 'CONNECTED ✓' : 'CONNECTÉ ✓');
+        stEl.style.color = state.blacklisted ? '#ef4444' : '#44ee77';
+
+        const clEl = document.getElementById('m-ring-climate');
+        clEl.textContent = isEn() ? rInfo.en : rInfo.fr;
+        clEl.style.color = rInfo.drought ? '#ef4444' : '#ff9900';
+
+        document.getElementById('m-hash').textContent = pseudoHash(state.yr, state.sun, state.rock);
+        document.getElementById('m-seeds').textContent = seedsPerYr.toLocaleString(isEn() ? 'en-US' : 'fr-FR') + (isEn() ? ' / yr' : ' / an');
+    }
+
+    document.querySelectorAll('.preset-btn[data-year]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.preset-btn[data-year]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const y = parseInt(this.dataset.year, 10);
+            yrSl.value = y;
+            if (y === 1954) { sunSl.value = 920; rockSl.value = 84; }
+            else if (y === 1955) { sunSl.value = 760; rockSl.value = 42; }
+            updateLabState();
+        });
+    });
+
+    [sunSl, rockSl, fbSl, yrSl].forEach(sl => sl.addEventListener('input', updateLabState));
+    window.addEventListener('sun-lang-change', updateLabState);
+    updateLabState();
+
+    // Clic sur le disque des cernes pour inspecter une année directement
+    dCv.addEventListener('click', e => {
+        const rect = dCv.getBoundingClientRect();
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+        const discX = dW * 0.30, discY = dH * 0.54;
+        const maxR = Math.min(dW * 0.25, dH * 0.39);
+        const dist = Math.hypot(mx - discX, my - discY);
+        if (dist <= maxR + 6) {
+            const yr = Math.round(1950 + Math.min(1, dist / maxR) * (2026 - 1950));
+            yrSl.value = Math.max(1950, Math.min(2026, yr));
+            updateLabState();
+        }
+    });
+
+    let last = performance.now();
+    function renderLab(now) {
+        requestAnimationFrame(renderLab);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        const t = now * 0.001;
+
+        /* --- CANVAS GAUCHE : CARNET D'ORDRES MYCÉLIEN --- */
+        if (mW && mH) {
+            mCtx.clearRect(0, 0, mW, mH);
+            const hub = { x: mW * 0.50, y: mH * 0.22 };
+            const fA  = { x: mW * 0.22, y: mH * 0.76 };
+            const fB  = { x: mW * 0.78, y: mH * 0.76 };
+            const sap = { x: mW * 0.18, y: mH * 0.25 };
+
+            // Canal A (Toujours honnête : 19 %)
+            mCtx.lineWidth = state.blacklisted ? 4.2 : 2.8;
+            mCtx.strokeStyle = 'rgba(68, 238, 119, 0.75)';
+            mCtx.beginPath(); mCtx.moveTo(hub.x, hub.y); mCtx.quadraticCurveTo(mW * 0.32, mH * 0.50, fA.x, fA.y); mCtx.stroke();
+
+            // Canal Arbre-Mère -> Jeune Pousse via Champignon A
+            mCtx.lineWidth = 1.8;
+            mCtx.strokeStyle = 'rgba(0, 229, 255, 0.55)';
+            mCtx.beginPath(); mCtx.moveTo(fA.x, fA.y); mCtx.quadraticCurveTo(mW * 0.14, mH * 0.50, sap.x, sap.y); mCtx.stroke();
+
+            // Canal B (Actif si <= 32 %, coupé en pointillés rouges si > 32 %)
+            if (state.blacklisted) {
+                mCtx.setLineDash([5, 5]);
+                mCtx.lineWidth = 1.8;
+                mCtx.strokeStyle = 'rgba(239, 68, 68, 0.65)';
+                mCtx.beginPath(); mCtx.moveTo(hub.x, hub.y); mCtx.lineTo(fB.x, fB.y); mCtx.stroke();
+                mCtx.setLineDash([]);
+
+                // Croix rouge de sanction racinaire
+                const midX = (hub.x + fB.x) * 0.5, midY = (hub.y + fB.y) * 0.5;
+                mCtx.strokeStyle = '#ef4444'; mCtx.lineWidth = 3;
+                mCtx.beginPath();
+                mCtx.moveTo(midX - 8, midY - 8); mCtx.lineTo(midX + 8, midY + 8);
+                mCtx.moveTo(midX + 8, midY - 8); mCtx.lineTo(midX - 8, midY + 8);
+                mCtx.stroke();
+            } else {
+                mCtx.lineWidth = 2.8;
+                mCtx.strokeStyle = 'rgba(0, 229, 255, 0.72)';
+                mCtx.beginPath(); mCtx.moveTo(hub.x, hub.y); mCtx.quadraticCurveTo(mW * 0.68, mH * 0.50, fB.x, fB.y); mCtx.stroke();
+            }
+
+            // Particules d'échange C <-> P
+            marketParticles.forEach(p => {
+                p.t += dt * p.spd * (state.sun / 650);
+                if (p.t > 1) p.t = 0;
+                const u = p.dir > 0 ? p.t : (1 - p.t);
+                let ax, ay, cx, cy, bx, by;
+                if (p.branch === 0 || (p.branch === 1 && state.blacklisted)) {
+                    ax = hub.x; ay = hub.y; cx = mW * 0.32; cy = mH * 0.50; bx = fA.x; by = fA.y;
+                } else if (p.branch === 1) {
+                    ax = hub.x; ay = hub.y; cx = mW * 0.68; cy = mH * 0.50; bx = fB.x; by = fB.y;
+                } else {
+                    ax = fA.x; ay = fA.y; cx = mW * 0.14; cy = mH * 0.50; bx = sap.x; by = sap.y;
+                }
+                const inv = 1 - u;
+                const px = inv * inv * ax + 2 * inv * u * cx + u * u * bx;
+                const py = inv * inv * ay + 2 * inv * u * cy + u * u * by;
+                mCtx.fillStyle = p.dir > 0 ? '#ffcc00' : '#00e5ff';
+                mCtx.beginPath(); mCtx.arc(px, py, 3.1, 0, Math.PI * 2); mCtx.fill();
+            });
+
+            // Dessin des Nœuds
+            const drawNode = (pt, r, fill, stroke, lbl, sub) => {
+                mCtx.fillStyle = fill; mCtx.strokeStyle = stroke; mCtx.lineWidth = 2.2;
+                mCtx.beginPath(); mCtx.arc(pt.x, pt.y, r, 0, Math.PI * 2); mCtx.fill(); mCtx.stroke();
+                mCtx.fillStyle = '#ffffff'; mCtx.font = '700 10.5px "Fira Code", monospace'; mCtx.textAlign = 'center';
+                mCtx.fillText(lbl, pt.x, pt.y - r - 8);
+                mCtx.fillStyle = stroke; mCtx.font = '600 9.5px "Inter", sans-serif';
+                mCtx.fillText(sub, pt.x, pt.y + r + 13);
+            };
+
+            drawNode(hub, 18, '#0c2617', '#44ee77', isEn() ? 'MOTHER TREE' : 'ARBRE-MÈRE', `PoW: ${state.sun} W/m²`);
+            drawNode(sap, 11, '#091f18', '#a7f3d0', isEn() ? 'SAPLING' : 'JEUNE POUSSE', 'Light Client');
+            drawNode(fA, 15, '#072229', '#00e5ff', isEn() ? 'FUNGUS A' : 'CHAMPIGNON A', isEn() ? 'Honest Fee: 19%' : 'Honnête : 19 %');
+            drawNode(
+                fB, 15,
+                state.blacklisted ? '#2a0c0c' : '#072229',
+                state.blacklisted ? '#ef4444' : '#44ee77',
+                isEn() ? 'FUNGUS B' : 'CHAMPIGNON B',
+                state.blacklisted ? (isEn() ? `CUT OFF (${state.fbAsk}%)` : `COUPÉ (${state.fbAsk} %)`) : (isEn() ? `Active (${state.fbAsk}%)` : `Actif (${state.fbAsk} %)`)
+            );
+        }
+
+        /* --- CANVAS DROIT : CERNES ANNUELS & ARBRE DE MERKLE INVERSÉ --- */
+        if (dW && dH) {
+            dCtx.clearRect(0, 0, dW, dH);
+
+            // 1. Coupe transversale du tronc (Gauche : Cernes 1950–2026)
+            const discX = dW * 0.29, discY = dH * 0.54;
+            const maxR = Math.min(dW * 0.24, dH * 0.38);
+
+            dCtx.fillStyle = '#2d1c10';
+            dCtx.beginPath(); dCtx.arc(discX, discY, maxR + 5, 0, Math.PI * 2); dCtx.fill();
+
+            const totalYrs = 2026 - 1950;
+            for (let y = 1950; y <= 2026; y += 2) {
+                const frac = (y - 1950) / totalYrs;
+                const r = 6 + frac * (maxR - 6);
+                const info = ringData(y);
+                const isSelected = Math.abs(y - state.yr) <= 1;
+                dCtx.strokeStyle = isSelected
+                    ? '#00e5ff'
+                    : (info.drought ? 'rgba(135, 78, 38, 0.9)' : 'rgba(218, 160, 95, 0.55)');
+                dCtx.lineWidth = isSelected ? 2.6 : (info.drought ? 0.9 : 1.7);
+                dCtx.beginPath(); dCtx.arc(discX, discY, r, 0, Math.PI * 2); dCtx.stroke();
+            }
+
+            // Anneau exact sélectionné mis en évidence
+            const selFrac = (state.yr - 1950) / totalYrs;
+            const selR = 6 + selFrac * (maxR - 6);
+            dCtx.strokeStyle = '#ffcc00';
+            dCtx.lineWidth = 2.4;
+            dCtx.beginPath(); dCtx.arc(discX, discY, selR, 0, Math.PI * 2); dCtx.stroke();
+
+            dCtx.fillStyle = '#fde68a';
+            dCtx.font = '700 10px "Fira Code", monospace';
+            dCtx.textAlign = 'center';
+            dCtx.fillText(isEn() ? `RING ${state.yr} (CLICK DISC)` : `CERNE ${state.yr} (CLIQUER)`, discX, dH - 12);
+
+            // 2. Arbre de Merkle Inversé (Droite : 4 Feuilles -> 2 Branches -> 1 Tronc Root)
+            const leavesX = [0.60, 0.70, 0.80, 0.90].map(k => dW * k);
+            const leafY = dH * 0.20;
+            const branchX = [dW * 0.65, dW * 0.85];
+            const branchY = dH * 0.50;
+            const rootX = dW * 0.75, rootY = dH * 0.80;
+
+            const pulseU = (t * 0.75) % 1;
+
+            // Arêtes Feuilles -> Branches
+            dCtx.strokeStyle = 'rgba(68, 238, 119, 0.5)';
+            dCtx.lineWidth = 1.8;
+            leavesX.forEach((lx, i) => {
+                const bx = branchX[i < 2 ? 0 : 1];
+                dCtx.beginPath(); dCtx.moveTo(lx, leafY); dCtx.lineTo(bx, branchY); dCtx.stroke();
+                const px = lx + (bx - lx) * pulseU, py = leafY + (branchY - leafY) * pulseU;
+                dCtx.fillStyle = '#ffcc00';
+                dCtx.beginPath(); dCtx.arc(px, py, 2.5, 0, Math.PI * 2); dCtx.fill();
+            });
+
+            // Arêtes Branches -> Tronc (Merkle Root)
+            dCtx.strokeStyle = 'rgba(255, 153, 0, 0.75)';
+            dCtx.lineWidth = 2.6;
+            branchX.forEach(bx => {
+                dCtx.beginPath(); dCtx.moveTo(bx, branchY); dCtx.lineTo(rootX, rootY); dCtx.stroke();
+                const px = bx + (rootX - bx) * pulseU, py = branchY + (rootY - branchY) * pulseU;
+                dCtx.fillStyle = '#00e5ff';
+                dCtx.beginPath(); dCtx.arc(px, py, 3, 0, Math.PI * 2); dCtx.fill();
+            });
+
+            leavesX.forEach((lx, i) => {
+                dCtx.fillStyle = '#10b981';
+                dCtx.beginPath(); dCtx.arc(lx, leafY, 7, 0, Math.PI * 2); dCtx.fill();
+                dCtx.fillStyle = '#d1fae5'; dCtx.font = '600 8.5px "Fira Code", monospace';
+                dCtx.fillText(`hν${i + 1}`, lx, leafY - 11);
+            });
+
+            branchX.forEach((bx, i) => {
+                dCtx.fillStyle = '#0c241b'; dCtx.strokeStyle = '#44ee77'; dCtx.lineWidth = 1.8;
+                dCtx.beginPath(); dCtx.roundRect(bx - 22, branchY - 11, 44, 22, 5); dCtx.fill(); dCtx.stroke();
+                dCtx.fillStyle = '#44ee77'; dCtx.font = '700 8.5px "Fira Code", monospace';
+                dCtx.fillText(`H${i === 0 ? '12' : '34'}`, bx, branchY + 3);
+            });
+
+            dCtx.fillStyle = '#261707'; dCtx.strokeStyle = '#ff9900'; dCtx.lineWidth = 2.2;
+            dCtx.beginPath(); dCtx.roundRect(rootX - 48, rootY - 14, 96, 28, 6); dCtx.fill(); dCtx.stroke();
+            dCtx.fillStyle = '#ffcc00'; dCtx.font = '700 9px "Fira Code", monospace';
+            dCtx.fillText('MERKLE ROOT', rootX, rootY + 3);
+            dCtx.fillStyle = '#cbd5e1';
+            dCtx.fillText(pseudoHash(state.yr, state.sun, state.rock), rootX, dH - 12);
+        }
+    }
+    requestAnimationFrame(renderLab);
+})();
+
+/* ==========================================================================
+   3. MODULE PARE-FEU BYZANTIN (BFT) & ALERTE ÉTHYLÈNE (#bftForestCanvas)
+   ========================================================================== */
+(function() {
+    const cv = document.getElementById('bftForestCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+
+    let W = 0, H = 0, dpr = 1;
+    let isForestBFT = true;
+    let nodes = [];
+    let edges = [];
+    const clouds = [];
+
+    const SPECIES = [
+        { id: 'oak',    col: '#44ee77', fr: 'Chêne',  en: 'Oak' },
+        { id: 'pine',   col: '#10b981', fr: 'Pin',    en: 'Pine' },
+        { id: 'acacia', col: '#ffcc00', fr: 'Acacia', en: 'Acacia' },
+        { id: 'baobab', col: '#ff9900', fr: 'Baobab', en: 'Baobab' }
+    ];
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (nodes.length === 0) initPlot();
+    }
+    new ResizeObserver(resize).observe(cv);
+
+    function initPlot() {
+        nodes = [];
+        edges = [];
+        clouds.length = 0;
+
+        const cols = 6, rows = 4;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const idx = r * cols + c;
+                const jitterX = isForestBFT ? (Math.sin(idx * 3.7) * 0.035) : 0;
+                const jitterY = isForestBFT ? (Math.cos(idx * 2.3) * 0.045) : 0;
+                const nx = 0.11 + (c / (cols - 1)) * 0.78 + jitterX;
+                const ny = 0.16 + (r / (rows - 1)) * 0.68 + jitterY;
+                const sp = isForestBFT ? SPECIES[(r * 3 + c) % SPECIES.length] : { id: 'clone', col: '#eab308', fr: 'Blé Clonal', en: 'Clonal Wheat' };
+                const isHub = isForestBFT && (idx === 8 || idx === 15);
+                nodes.push({
+                    idx, nx, ny,
+                    sp,
+                    isHub,
+                    state: 'healthy', // 'healthy' | 'infected' | 'dead' | 'shielded' | 'felled'
+                    timer: 0
+                });
+            }
+        }
+
+        // Maillage mycélien entre voisins proches
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const d = Math.hypot(nodes[i].nx - nodes[j].nx, nodes[i].ny - nodes[j].ny);
+                if (d < 0.24) edges.push([i, j]);
+            }
+        }
+        updateBFTGauges('init');
+    }
+
+    function updateBFTGauges(eventKey) {
+        const aliveNodes = nodes.filter(n => n.state === 'healthy' || n.state === 'shielded');
+        const shieldedCount = nodes.filter(n => n.state === 'shielded').length;
+        const alivePct = Math.round((aliveNodes.length / Math.max(1, nodes.length)) * 100);
+        const divPct = isForestBFT ? 96 : 8;
+        const activeEdges = edges.filter(([a, b]) =>
+            (nodes[a].state === 'healthy' || nodes[a].state === 'shielded') &&
+            (nodes[b].state === 'healthy' || nodes[b].state === 'shielded')
+        ).length;
+        const meshPct = isForestBFT ? Math.min(100, Math.round((activeEdges / Math.max(1, edges.length)) * 112)) : Math.round(alivePct * 0.25);
+
+        document.getElementById('bft-g-div').textContent = divPct + '%';
+        document.getElementById('bft-bar-div').style.width = divPct + '%';
+        document.getElementById('bft-bar-div').style.background = isForestBFT ? '#44ee77' : '#ef4444';
+
+        document.getElementById('bft-g-alive').textContent = alivePct + '%';
+        document.getElementById('bft-bar-alive').style.width = alivePct + '%';
+        document.getElementById('bft-bar-alive').style.background = alivePct > 70 ? '#ffcc00' : '#ef4444';
+
+        document.getElementById('bft-g-shield').textContent = shieldedCount > 0
+            ? `${shieldedCount} ${isEn() ? 'Armed' : 'Armés'}`
+            : (isEn() ? 'Standby' : 'Veille');
+        document.getElementById('bft-bar-shield').style.width = (shieldedCount > 0 ? Math.min(100, 35 + shieldedCount * 8) : (isForestBFT ? 100 : 18)) + '%';
+
+        document.getElementById('bft-g-mesh').textContent = meshPct + '%';
+        document.getElementById('bft-bar-mesh').style.width = meshPct + '%';
+
+        const vbox = document.getElementById('bft-verdict-box');
+        if (eventKey === 'virus') {
+            if (isForestBFT) {
+                vbox.style.borderLeftColor = '#44ee77';
+                vbox.style.background = 'rgba(68, 238, 119, 0.09)';
+                vbox.innerHTML = isEn()
+                    ? `<strong>BYZANTINE FIREWALL HELD (${alivePct}% ALIVE):</strong> The oak-specific pathogen was halted immediately by surrounding Pines, Acacias, and Baobabs. Diversity prevented systemic contagion!`
+                    : `<strong>PARE-FEU BYZANTIN VALIDÉ (${alivePct} % VIVANTS) :</strong> Le virus ciblant une seule espèce a été stoppé net par les Pins, Acacias et Baobabs voisins. La biodiversité empêche l'effondrement systémique !`;
+            } else {
+                vbox.style.borderLeftColor = '#ef4444';
+                vbox.style.background = 'rgba(239, 68, 68, 0.12)';
+                vbox.innerHTML = isEn()
+                    ? `<strong>SYSTEMIC MONOCULTURE COLLAPSE (${alivePct}% ALIVE):</strong> Because all plants share the exact same clonal DNA vulnerability, the pathogen cascaded across the entire field!`
+                    : `<strong>EFFONDREMENT SYSTÉMIQUE CLONAL (${alivePct} % VIVANTS) :</strong> Toutes les plantes partageant exactement le même code génétique vulnérable, le pathogène a décimé toute la parcelle !`;
+            }
+        } else if (eventKey === 'ethylene') {
+            vbox.style.borderLeftColor = '#00e5ff';
+            vbox.style.background = 'rgba(0, 229, 255, 0.09)';
+            vbox.innerHTML = isEn()
+                ? `<strong>P2P ETHYLENE BROADCAST (C₂H₄):</strong> As soon as an antelope grazed a node, airborne ethylene gas warned neighboring trees, triggering bitter protective tannins before contact!`
+                : `<strong>ALERTE P2P À L'ÉTHYLÈNE (C₂H₄) :</strong> Dès le broutage du premier acacia, un nuage gazeux d'éthylène a averti les arbres voisins, qui ont synthétisé un bouclier de tanins toxiques avant même d'être touchés !`;
+        } else if (eventKey === 'cut') {
+            vbox.style.borderLeftColor = '#ff9900';
+            vbox.style.background = 'rgba(255, 153, 0, 0.09)';
+            vbox.innerHTML = isEn()
+                ? `<strong>UNCENSORABLE MESH REROUTING:</strong> A major Mother-Tree Hub was felled, yet zero single point of failure occurred—mycelial hyphae instantly rerouted nutrient liquidity around the stump and dormant seeds remain ready.`
+                : `<strong>RÉSEAU INCENSURABLE & REROUTAGE :</strong> Un Arbre-Mère central a été abattu, mais aucun point unique de défaillance n'existe — le mycélium a instantanément rerouté les flux autour de la souche.`;
+        } else {
+            vbox.style.borderLeftColor = isForestBFT ? '#44ee77' : '#ffcc00';
+            vbox.style.background = isForestBFT ? 'rgba(68, 238, 119, 0.08)' : 'rgba(255, 204, 0, 0.08)';
+            vbox.innerHTML = isForestBFT
+                ? (isEn()
+                    ? `<strong>HEALTHY BFT FOREST ACTIVE:</strong> Four distinct species (Oaks, Pines, Acacias, Baobabs) form a natural cryptographic firewall interconnected by subterranean mycelium.`
+                    : `<strong>FORÊT SAINE (CONSENSUS BFT ACTIF) :</strong> Quatre espèces distinctes (Chênes, Pins, Acacias, Baobabs) forment un pare-feu cryptographique naturel relié par le mycélium souterrain.`)
+                : (isEn()
+                    ? `<strong>INDUSTRIAL CLONAL MONOCULTURE LOADED:</strong> High superficial uniformity, broken mycelial mesh, and extreme vulnerability to any single-exploit pathogen.`
+                    : `<strong>MONOCULTURE INDUSTRIELLE CLONALE :</strong> Alignement géométrique uniforme, mycélium détruit et vulnérabilité critique au moindre virus.`);
+        }
+    }
+
+    function triggerVirus(startNode) {
+        const candidates = nodes.filter(n => n.state === 'healthy');
+        if (!candidates.length) return;
+        const p0 = startNode || candidates[Math.floor(Math.random() * candidates.length)];
+        p0.state = 'infected';
+        p0.timer = 0.45;
+        p0.targetSpecies = p0.sp.id;
+        updateBFTGauges('virus');
+    }
+
+    function triggerEthylene(startNode) {
+        const candidates = nodes.filter(n => n.state === 'healthy');
+        if (!candidates.length) return;
+        const src = startNode || candidates.find(n => n.sp.id === 'acacia') || candidates[0];
+        clouds.push({ x: src.nx * W, y: src.ny * H, r: 8, maxR: Math.max(W, H) * (isForestBFT ? 0.48 : 0.18), a: 0.9 });
+        src.state = 'shielded';
+        updateBFTGauges('ethylene');
+    }
+
+    function triggerCutHub() {
+        const hub = nodes.find(n => n.isHub && n.state !== 'felled') || nodes.find(n => n.state === 'healthy');
+        if (!hub) return;
+        hub.state = 'felled';
+        updateBFTGauges('cut');
+    }
+
+    document.getElementById('bft-mode-forest').addEventListener('click', function() {
+        isForestBFT = true;
+        this.classList.add('active');
+        document.getElementById('bft-mode-mono').classList.remove('active');
+        initPlot();
+    });
+    document.getElementById('bft-mode-mono').addEventListener('click', function() {
+        isForestBFT = false;
+        this.classList.add('active');
+        document.getElementById('bft-mode-forest').classList.remove('active');
+        initPlot();
+    });
+
+    document.getElementById('bft-btn-virus').addEventListener('click', () => triggerVirus());
+    document.getElementById('bft-btn-ethylene').addEventListener('click', () => triggerEthylene());
+    document.getElementById('bft-btn-cut').addEventListener('click', triggerCutHub);
+    document.getElementById('bft-btn-reset').addEventListener('click', initPlot);
+
+    cv.addEventListener('click', e => {
+        const rect = cv.getBoundingClientRect();
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+        let hit = null, best = 28;
+        nodes.forEach(n => {
+            const d = Math.hypot(mx - n.nx * W, my - n.ny * H);
+            if (d < best) { best = d; hit = n; }
+        });
+        if (hit) {
+            if (isForestBFT) triggerEthylene(hit);
+            else triggerVirus(hit);
+        }
+    });
+
+    window.addEventListener('sun-lang-change', () => updateBFTGauges('init'));
+    resize();
+
+    let last = performance.now();
+    function renderBFT(now) {
+        requestAnimationFrame(renderBFT);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        ctx.clearRect(0, 0, W, H);
+
+        // Propagation virale pas-à-pas
+        let changed = false;
+        nodes.forEach(n => {
+            if (n.state === 'infected') {
+                n.timer -= dt;
+                if (n.timer <= 0) {
+                    n.state = 'dead';
+                    changed = true;
+                    edges.forEach(([a, b]) => {
+                        const nb = a === n.idx ? nodes[b] : (b === n.idx ? nodes[a] : null);
+                        if (nb && nb.state === 'healthy') {
+                            // En forêt BFT, seule la même espèce non protégée peut être touchée (faible prob) ; en monoculture, contagion totale !
+                            if (!isForestBFT || (nb.sp.id === n.sp.id && Math.random() < 0.55)) {
+                                nb.state = 'infected';
+                                nb.timer = isForestBFT ? 0.55 : 0.22;
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        if (changed) updateBFTGauges('virus');
+
+        // Dessin du réseau mycélien souterrain
+        if (isForestBFT) {
+            edges.forEach(([a, b]) => {
+                const na = nodes[a], nb = nodes[b];
+                const ok = (na.state === 'healthy' || na.state === 'shielded') && (nb.state === 'healthy' || nb.state === 'shielded');
+                ctx.strokeStyle = ok ? 'rgba(0, 229, 255, 0.24)' : 'rgba(239, 68, 68, 0.12)';
+                ctx.lineWidth = ok ? 1.5 : 0.8;
+                ctx.beginPath();
+                ctx.moveTo(na.nx * W, na.ny * H);
+                ctx.lineTo(nb.nx * W, nb.ny * H);
+                ctx.stroke();
+            });
+        }
+
+        // Nuages d'alerte chimique Éthylène (C2H4)
+        for (let i = clouds.length - 1; i >= 0; i--) {
+            const c = clouds[i];
+            c.r += dt * 135;
+            c.a -= dt * 0.34;
+            if (c.a <= 0 || c.r > c.maxR) { clouds.splice(i, 1); continue; }
+
+            if (isForestBFT) {
+                nodes.forEach(n => {
+                    if (n.state === 'healthy') {
+                        const dist = Math.hypot(n.nx * W - c.x, n.ny * H - c.y);
+                        if (dist <= c.r) {
+                            n.state = 'shielded';
+                            updateBFTGauges('ethylene');
+                        }
+                    }
+                });
+            }
+
+            const g = ctx.createRadialGradient(c.x, c.y, c.r * 0.2, c.x, c.y, c.r);
+            g.addColorStop(0, 'rgba(0, 229, 255, 0)');
+            g.addColorStop(0.75, `rgba(0, 229, 255, ${c.a * 0.35})`);
+            g.addColorStop(1, 'rgba(0, 229, 255, 0)');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Dessin des arbres / clones
+        nodes.forEach(n => {
+            const px = n.nx * W, py = n.ny * H;
+            const rad = n.isHub ? 15 : 10.5;
+
+            if (n.state === 'felled') {
+                ctx.fillStyle = '#5c4028';
+                ctx.strokeStyle = '#ff9900';
+                ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+                ctx.fillStyle = '#ffcc00'; ctx.font = '700 9px "Fira Code", monospace'; ctx.textAlign = 'center';
+                ctx.fillText(isEn() ? 'STUMP (REROUTED)' : 'SOUCHE (REROUTÉ)', px, py - 13);
+                return;
+            }
+
+            let fill = n.sp.col;
+            if (n.state === 'infected') fill = '#ef4444';
+            else if (n.state === 'dead') fill = '#334155';
+
+            ctx.fillStyle = fill;
+            ctx.beginPath(); ctx.arc(px, py, rad, 0, Math.PI * 2); ctx.fill();
+
+            if (n.isHub) {
+                ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.arc(px, py, rad + 4, 0, Math.PI * 2); ctx.stroke();
+            }
+            if (n.state === 'shielded') {
+                ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 2.5;
+                ctx.beginPath(); ctx.arc(px, py, rad + 5 + Math.sin(now * 0.008) * 1.5, 0, Math.PI * 2); ctx.stroke();
+            }
+
+            ctx.fillStyle = n.state === 'dead' ? '#64748b' : '#e2e8f0';
+            ctx.font = '600 9px "Inter", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(isEn() ? n.sp.en : n.sp.fr, px, py + rad + 12);
+        });
+    }
+    requestAnimationFrame(renderBFT);
+})();
+
+/* ==========================================================================
+   4. MODULE DIAGRAMME SANKEY EXERGÉTIQUE (#forestSankeyCanvas)
+   ========================================================================== */
+(function() {
+    const cv = document.getElementById('forestSankeyCanvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    let rhizomeMode = true;
+    let W = 0, H = 0, dpr = 1;
+
+    const btnR = document.getElementById('sankey-btn-rhizome');
+    const btnP = document.getElementById('sankey-btn-pyramid');
+    btnR.addEventListener('click', () => { rhizomeMode = true; btnR.classList.add('active'); btnP.classList.remove('active'); });
+    btnP.addEventListener('click', () => { rhizomeMode = false; btnP.classList.add('active'); btnR.classList.remove('active'); });
+
+    function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = cv.clientWidth; H = cv.clientHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    new ResizeObserver(resize).observe(cv);
+    resize();
+
+    const dots = Array.from({ length: 64 }, (_, i) => ({ t: Math.random(), branch: i % 4, spd: 0.21 + Math.random() * 0.16 }));
+
+    function bezierPt(p0, p1, p2, p3, t) {
+        const u = 1 - t;
+        return {
+            x: u * u * u * p0.x + 3 * u * u * t * p1.x + 3 * u * t * t * p2.x + t * t * t * p3.x,
+            y: u * u * u * p0.y + 3 * u * u * t * p1.y + 3 * u * t * t * p2.y + t * t * t * p3.y
+        };
+    }
+
+    let last = performance.now();
+    function renderSankey(now) {
+        requestAnimationFrame(renderSankey);
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        ctx.clearRect(0, 0, W, H);
+
+        const xIn = W * 0.10, xCore = W * 0.43, xOut = W * 0.85, cy = H * 0.46;
+
+        const branches = rhizomeMode ? [
+            { yEnd: H * 0.20, w: 30, col: '#44ee77', fr: 'Biomasse Tronc & Feuillage (52 %)', en: 'Standing Biomass & Canopy (52%)' },
+            { yEnd: H * 0.43, w: 22, col: '#00e5ff', fr: 'Marché Mycélien C↔P (28 %)', en: 'Mycelial C↔P Market Fee (28%)' },
+            { yEnd: H * 0.65, w: 14, col: '#ffcc00', fr: 'Soutien Jeunes Pousses (12 %)', en: 'Mother-Tree Sapling Subsidy (12%)' },
+            { yEnd: H * 0.84, w: 10, col: '#b366ff', fr: 'Graines Cold Storage ADN (8 %)', en: 'Cold-Storage DNA Seeds (8%)' }
+        ] : [
+            { yEnd: H * 0.24, w: 46, col: '#ef4444', fr: 'Érosion Sols & Dette Thermique (62 %)', en: 'Soil Erosion & Thermal Debt (62%)' },
+            { yEnd: H * 0.54, w: 22, col: '#f59e0b', fr: 'Rendement Court-Terme Fragile (28 %)', en: 'Fragile Short-Term Yield (28%)' },
+            { yEnd: H * 0.79, w: 10, col: '#94a3b8', fr: 'Pertes Chimiques & Ruissellement (10 %)', en: 'Fertilizer Runoff & Waste (10%)' },
+            { yEnd: H * 0.79, w: 4,  col: '#94a3b8', fr: '', en: '' }
+        ];
+
+        ctx.strokeStyle = rhizomeMode ? 'rgba(255, 204, 0, 0.36)' : 'rgba(239, 68, 68, 0.35)';
+        ctx.lineWidth = 52;
+        ctx.beginPath(); ctx.moveTo(xIn, cy); ctx.lineTo(xCore, cy); ctx.stroke();
+
+        branches.forEach(b => {
+            if (!b.fr) return;
+            ctx.strokeStyle = b.col + '44';
+            ctx.lineWidth = b.w;
+            ctx.beginPath();
+            ctx.moveTo(xCore, cy);
+            ctx.bezierCurveTo(W * 0.60, cy, W * 0.65, b.yEnd, xOut, b.yEnd);
+            ctx.stroke();
+
+            ctx.fillStyle = b.col;
+            ctx.font = '600 11px "Inter", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(isEn() ? b.en : b.fr, Math.min(W - 220, xOut - 145), b.yEnd - b.w * 0.5 - 6);
+        });
+
+        // Boucle retour de liquidité minérale (P, N, Mg) en mode Rhizome
+        if (rhizomeMode) {
+            ctx.strokeStyle = 'rgba(0, 229, 255, 0.45)';
+            ctx.lineWidth = 2.8;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(xOut - 40, H * 0.46);
+            ctx.bezierCurveTo(W * 0.70, H * 0.96, W * 0.32, H * 0.96, xCore, cy + 34);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#67e8f9';
+            ctx.font = '600 10px "Fira Code", monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(
+                isEn() ? '↺ MINERAL LIQUIDITY LOOP: ENZYMATIC ROCK PHOSPHORUS (P, N, Mg) → ROOTS' : '↺ BOUCLE DE LIQUIDITÉ MINÉRALE : PHOSPHORE ROCHEUX (P, N, Mg) → RACINES',
+                W * 0.54, H - 12
+            );
+        }
+
+        dots.forEach(d => {
+            d.t += dt * d.spd;
+            if (d.t > 1) d.t = 0;
+            if (d.t < 0.42) {
+                const px = xIn + (d.t / 0.42) * (xCore - xIn);
+                ctx.fillStyle = rhizomeMode ? '#ffcc00' : '#f87171';
+                ctx.beginPath(); ctx.arc(px, cy + (d.branch - 1.5) * 9, 3, 0, Math.PI * 2); ctx.fill();
+            } else {
+                const bt = (d.t - 0.42) / 0.58;
+                const br = branches[d.branch];
+                const pt = bezierPt({ x: xCore, y: cy }, { x: W * 0.60, y: cy }, { x: W * 0.65, y: br.yEnd }, { x: xOut, y: br.yEnd }, bt);
+                ctx.fillStyle = br.col;
+                ctx.beginPath(); ctx.arc(pt.x, pt.y, 3.2, 0, Math.PI * 2); ctx.fill();
+            }
+        });
+
+        ctx.fillStyle = '#06120c';
+        ctx.strokeStyle = rhizomeMode ? '#44ee77' : '#ef4444';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.roundRect(xCore - 64, cy - 34, 128, 68, 10); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#ffffff'; ctx.font = '700 10.5px "Fira Code", monospace'; ctx.textAlign = 'center';
+        ctx.fillText(rhizomeMode ? 'CHLOROPHYLLE PoW' : 'SYSADMIN PYRAMID', xCore, cy - 6);
+        ctx.fillStyle = rhizomeMode ? '#ffcc00' : '#fca5a5';
+        ctx.fillText(rhizomeMode ? '0 THERMO DEBT' : 'SPOF + DEBT', xCore, cy + 13);
+
+        ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'left';
+        ctx.fillText(
+            rhizomeMode
+                ? (isEn() ? '100% SOLAR PHOTONS (hν)' : '100 % PHOTONS SOLAIRES (hν)')
+                : (isEn() ? 'FOSSIL NPK + FIAT CREDIT' : 'NPK FOSSILE + CRÉDIT FIAT'),
+            16, cy - 34
+        );
+    }
+    requestAnimationFrame(renderSankey);
+})();
+</script>
+</body>
+</html>
