@@ -1908,12 +1908,12 @@
         </p>
 
         <h4>
-            <span lang="fr">Le cycle de 18 ans : l'oscillation entre ombre et néguentropie</span>
-            <span lang="en">The 18-Year Cycle: Oscillation Between Shadow and Negentropy</span>
+            <span lang="fr">Harmoniques de 18,61 à 21 ans : de l'oscillation astrophysique aux cycles de Kondratiev et Strauss-Howe</span>
+            <span lang="en">18.61 to 21-Year Harmonics: From Astrophysical Oscillation to Kondratiev & Strauss-Howe Cycles</span>
         </h4>
         <p>
-            <span lang="fr">L'évolution de nos technologies de coordination et de nos régimes énergétiques obéit à des boucles de maturation d'environ dix-huit ans, alternant phases d'accumulation d'entropie (centralisation, distorsion fiduciaire, guerres) et ruptures néguentropiques (réorganisation ordonnée de l'information et ancrage physique) :</span>
-            <span lang="en">The evolution of our coordination technologies and energy regimes follows maturation cycles of roughly eighteen years, alternating between phases of entropy accumulation (centralization, fiat distortion, wars) and negentropic breakthroughs (ordered reorganization of information and physical grounding):</span>
+            <span lang="fr">L'évolution de nos technologies de coordination et de nos régimes énergétiques obéit à des interférences d'ondes où la physique du système Terre-Lune-Soleil rencontre la mémoire générationnelle. Sur le plan physique, le <strong>cycle nodal lunaire de 18,61 ans</strong> (<em>lunistices majeurs</em> modulant les marées et le climat) entre en battement avec le <strong>cycle magnétique solaire de Hale (~22 ans)</strong>, dont les pics influencent l'agitation de la biosphère (travaux d'Alexandre Tchijevski). Sur le plan socio-historique, ce rythme correspond au pas générationnel de <strong>21 ans</strong> identifié par <strong>Strauss et Howe</strong> — dont quatre battements forment un <em>Saeculum</em> de <strong>84 ans</strong> (égal à la révolution d'Uranus) — ainsi qu'aux ondes longues d'innovation technologique de <strong>Kondratiev</strong> (45–60 ans), alternant accumulation d'entropie et ruptures néguentropiques :</span>
+            <span lang="en">The evolution of our coordination technologies and energy regimes obeys wave interferences where Earth-Moon-Sun physics meets generational memory. Physically, the <strong>18.61-year lunar nodal cycle</strong> (<em>major lunistices</em> modulating tides and climate) creates a beat frequency with the <strong>~22-year Hale solar magnetic cycle</strong>, whose peaks influence biosphere agitation (Alexander Chizhevsky). Socio-historically, this rhythm matches the <strong>21-year</strong> generational step identified by <strong>Strauss and Howe</strong> — four beats of which form an <strong>84-year</strong> <em>Saeculum</em> (matching Uranus's orbital period) — alongside <strong>Kondratiev's</strong> long technological waves (45–60 yrs), alternating between entropy accumulation and negentropic breakthroughs:</span>
         </p>
         <ul>
             <li>
@@ -1949,6 +1949,76 @@
                 <span lang="en"><strong>2026–2044 — Traversing the Great Filter (The Hardened Noosphere):</strong> Frictions within the fiat model become untenable. A decisive shift toward pure negentropy is underway: global coordination rooted in Thermodynamic Easing (IMP), Deep Time (DTP), and Telluric Guardians. Ending arbitrary administrative control (<em>permission denied</em>) in favor of universally verifiable mathematical rules (<em>chmod 777</em> across 21 million units).</span>
             </li>
         </ul>
+
+        <!-- EXPLORATEUR INTERACTIF DES CYCLES PHYSIQUES & HISTORIQUES -->
+        <div id="cycle-resonance-box" style="margin: 2rem 0; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; background: rgba(0, 0, 0, 0.25);">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div>
+                    <strong style="font-size: 1.05rem;">
+                        <span lang="fr">🎛 Matrice de Battement : Ondes Néguentropiques (18,61a) vs Géopolitiques (21a)</span>
+                        <span lang="en">🎛 Beat Matrix: Negentropic Waves (18.61y) vs Geopolitical Cycles (21y)</span>
+                    </strong>
+                </div>
+                <div>
+                    <label for="hz-year-slider" style="font-weight: bold; font-family: monospace;">
+                        <span lang="fr">ANNÉE : </span><span lang="en">YEAR: </span>
+                        <span id="hz-year-val" style="color: #f59e0b; font-size: 1.15rem;">2044</span>
+                    </label>
+                </div>
+            </div>
+
+            <input type="range" id="hz-year-slider" min="1900" max="2065" value="2044" step="1" style="width: 100%; margin-bottom: 0.8rem; accent-color: #f59e0b; cursor: pointer;">
+
+            <!-- Boutons d'accès rapide aux deux séries (18a et 21a) -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; font-size: 0.8rem;">
+                <span style="opacity: 0.7; align-self: center; margin-right: 0.3rem;">
+                    <span lang="fr">Nœuds :</span><span lang="en">Nodes:</span>
+                </span>
+                <button type="button" class="hz-node-btn" data-y="1918">1918</button>
+                <button type="button" class="hz-node-btn" data-y="1936">1936/39</button>
+                <button type="button" class="hz-node-btn" data-y="1954">1954/60</button>
+                <button type="button" class="hz-node-btn" data-y="1972">1972</button>
+                <button type="button" class="hz-node-btn" data-y="1981">1981</button>
+                <button type="button" class="hz-node-btn" data-y="1990">1990</button>
+                <button type="button" class="hz-node-btn" data-y="2002">2002</button>
+                <button type="button" class="hz-node-btn" data-y="2008">2008</button>
+                <button type="button" class="hz-node-btn" data-y="2023">2023</button>
+                <button type="button" class="hz-node-btn" data-y="2044" style="border-color: #f59e0b; color: #f59e0b;">2044</button>
+            </div>
+
+            <canvas id="hzResonanceCanvas" width="800" height="200" style="width: 100%; height: 200px; background: rgba(5, 8, 14, 0.9); border-radius: 6px; display: block; margin-bottom: 1rem;"></canvas>
+
+            <!-- Légende des courbes -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; opacity: 0.85; margin-bottom: 1rem;">
+                <span><span style="color: #38bdf8;">━</span> <span lang="fr">Cycle Nodal Lunaire & Tech (18,61 ans)</span><span lang="en">Lunar Nodal & Tech Cycle (18.61 yrs)</span></span>
+                <span><span style="color: #f59e0b;">━</span> <span lang="fr">Cycle Générationnel Strauss-Howe (21 ans) & Hale (22 ans)</span><span lang="en">Strauss-Howe Generational (21 yrs) & Hale Solar (22 yrs)</span></span>
+                <span><span style="color: #a78bfa;">┄</span> <span lang="fr">Saeculum / Uranus (84 ans) & Kondratiev</span><span lang="en">Saeculum / Uranus (84 yrs) & Kondratiev</span></span>
+            </div>
+
+            <!-- Diagnostic dynamique bilingue -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; font-size: 0.88rem;">
+                <div style="padding: 0.7rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                    <div style="opacity: 0.65; font-size: 0.75rem; text-transform: uppercase;">
+                        <span lang="fr">Phase Strauss-Howe (Saeculum 84a)</span><span lang="en">Strauss-Howe Phase (84y Saeculum)</span>
+                    </div>
+                    <div id="hz-saeculum-out" style="font-weight: bold; color: #f59e0b; margin-top: 0.2rem;">--</div>
+                </div>
+                <div style="padding: 0.7rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                    <div style="opacity: 0.65; font-size: 0.75rem; text-transform: uppercase;">
+                        <span lang="fr">Onde Longue de Kondratiev</span><span lang="en">Kondratiev Long Wave</span>
+                    </div>
+                    <div id="hz-kondratiev-out" style="font-weight: bold; color: #a78bfa; margin-top: 0.2rem;">--</div>
+                </div>
+                <div style="padding: 0.7rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                    <div style="opacity: 0.65; font-size: 0.75rem; text-transform: uppercase;">
+                        <span lang="fr">Résonance Physique (Lune 18,61a / Soleil 22a)</span><span lang="en">Physical Resonance (Moon 18.61y / Sun 22y)</span>
+                    </div>
+                    <div id="hz-astro-out" style="font-weight: bold; color: #38bdf8; margin-top: 0.2rem;">--</div>
+                </div>
+            </div>
+
+            <div id="hz-context-note" style="margin-top: 0.9rem; padding: 0.75rem; border-left: 3px solid #10b981; background: rgba(16, 185, 129, 0.08); font-size: 0.9rem;"></div>
+        </div>
 
         <h4>
             <span lang="fr">Le temps est thermique : la relativité de nos trajectoires</span>
@@ -3065,5 +3135,199 @@
         });
     });
 </script>
+<script>
+(function() {
+  const slider = document.getElementById('hz-year-slider');
+  const yearVal = document.getElementById('hz-year-val');
+  const canvas = document.getElementById('hzResonanceCanvas');
+  if (!slider || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const btns = document.querySelectorAll('.hz-node-btn');
+
+  // Détecte si la page est actuellement affichée en anglais ou en français
+  function isEnglish() {
+    const htmlLang = document.documentElement.lang;
+    if (htmlLang && htmlLang.toLowerCase().startsWith('en')) return true;
+    const enSample = document.querySelector('.philosophical-tablet span[lang="en"]');
+    if (enSample && window.getComputedStyle(enSample).display !== 'none') return true;
+    return false;
+  }
+
+  // Onde néguentropique / lunaire (18.61 ans, calée sur les nœuds 1900, 1918, 1936, 1954, 1972, 1990, 2008, 2026, 2044)
+  function wave18(y) {
+    return Math.cos(2 * Math.PI * (y - 1900) / 18.0);
+  }
+  // Onde géopolitique / générationnelle (21 ans, calée sur 1918, 1939, 1960, 1981, 2002, 2023, 2044)
+  function wave21(y) {
+    return Math.cos(2 * Math.PI * (y - 1918) / 21.0);
+  }
+  // Onde séculaire / Uranus (84 ans, calée sur 1939 -> 2023 / 1960 -> 2044)
+  function wave84(y) {
+    return Math.cos(2 * Math.PI * (y - 1960) / 84.0);
+  }
+
+  const notes = {
+    1900: {
+      fr: "1900 — Nœud 18a : Quanta (Planck), entropie statistique (Boltzmann) et étalon-or industriel.",
+      en: "1900 — 18y Node: Quanta (Planck), statistical entropy (Boltzmann), and industrial gold standard."
+    },
+    1918: {
+      fr: "1918 — CONVERGENCE (18a & 21a) : Fin de la 1ère Guerre mondiale, chute de 4 empires, rupture de l'équilibre monétaire classique.",
+      en: "1918 — CONVERGENCE (18y & 21y): End of WWI, collapse of 4 empires, fracture of classical monetary equilibrium."
+    },
+    1936: {
+      fr: "1936–1939 — Nœud double : Machine de Turing (1936) et déclenchement de la 2nde Guerre mondiale (1939, +21 ans).",
+      en: "1936–1939 — Double Node: Turing machine (1936) and outbreak of WWII (1939, +21 yrs)."
+    },
+    1954: {
+      fr: "1954–1960 — Aube cybernétique (transistor silicium, 1954) suivie de l'apogée de la décolonisation (1960, +21 ans).",
+      en: "1954–1960 — Cybernetic dawn (silicon transistor, 1954) followed by peak decolonization (1960, +21 yrs)."
+    },
+    1972: {
+      fr: "1972 — Nœud 18a : Fin de Bretton Woods (1971), découplage monnaie-énergie et rapport Meadows sur les limites planétaires.",
+      en: "1972 — 18y Node: End of Bretton Woods (1971), currency-energy decoupling, and Meadows Report on planetary limits."
+    },
+    1981: {
+      fr: "1981 — Nœud 21a : Virage néolibéral, crise des euromissiles et conjonction Jupiter-Saturne.",
+      en: "1981 — 21y Node: Neoliberal shift, Euromissile crisis, and Jupiter-Saturn conjunction."
+    },
+    1990: {
+      fr: "1990 — Nœud 18a : Naissance du World Wide Web, première interconnexion ouverte de la Noosphère.",
+      en: "1990 — 18y Node: Birth of the World Wide Web, first open interconnection of the Noosphere."
+    },
+    2002: {
+      fr: "2002 — Nœud 21a : Post-11 septembre, lancement de l'euro fiduciaire et achèvement d'un Saeculum de 84 ans depuis 1918.",
+      en: "2002 — 21y Node: Post-9/11 era, physical Euro launch, and completion of an 84-year Saeculum since 1918."
+    },
+    2008: {
+      fr: "2008 — Nœud 18a : Crise financière systémique et publication du livre blanc Bitcoin (ancrage thermodynamique PoW).",
+      en: "2008 — 18y Node: Systemic financial crisis and Bitcoin whitepaper release (PoW thermodynamic anchoring)."
+    },
+    2023: {
+      fr: "2023 — Nœud 21a : Fragmentation géopolitique, percée de l'IA générative et convergence solaire (cycle 25) / lunaire (18,61a).",
+      en: "2023 — 21y Node: Geopolitical fragmentation, generative AI breakthrough, and solar (cycle 25) / lunar (18.61y) convergence."
+    },
+    2044: {
+      fr: "2044 — RESYNCHRONISATION TOTALE (1900 + 8×18a = 1918 + 6×21a = 2044) : Centenaire de Bretton Woods, fin du 4e Tournant de Strauss-Howe et franchissement du Grand Filtre vers Kardashev Type I.",
+      en: "2044 — FULL RESYNCHRONIZATION (1900 + 8×18y = 1918 + 6×21y = 2044): Bretton Woods centennial, end of Strauss-Howe Fourth Turning, and Great Filter crossing to Kardashev Type I."
+    }
+  };
+
+  function render(year) {
+    const en = isEnglish();
+    yearVal.textContent = year;
+
+    // 1. Phase Strauss-Howe (cycle de 84 ans depuis 1939 ou 1945)
+    const pos84 = (((year - 1945) % 84) + 84) % 84;
+    let shText = "";
+    if (pos84 < 21) shText = en ? "1st Turning (High / Expansion)" : "1er Tournant (Apogée / Expansion)";
+    else if (pos84 < 42) shText = en ? "2nd Turning (Awakening)" : "2e Tournant (Éveil culturel)";
+    else if (pos84 < 63) shText = en ? "3rd Turning (Unraveling)" : "3e Tournant (Délitement)";
+    else shText = en ? "4th Turning (Crisis & Refoundation)" : "4e Tournant (Crise & Refondation)";
+    document.getElementById('hz-saeculum-out').textContent = shText;
+
+    // 2. Vague de Kondratiev
+    let kText = "";
+    if (year < 1945) kText = en ? "3rd Wave (Steel, Electricity)" : "3e Vague (Acier, Électricité)";
+    else if (year < 1973) kText = en ? "4th Wave (Petrochemicals, Space)" : "4e Vague (Pétrochimie, Spatial)";
+    else if (year < 2015) kText = en ? "5th Wave (IT, Internet, Bitcoin)" : "5e Vague (Informatique, Web, Bitcoin)";
+    else kText = en ? "6th Wave (AI, Fusion/SMR, Noosphere)" : "6e Vague (IA, Fusion/SMR, Noosphère)";
+    document.getElementById('hz-kondratiev-out').textContent = kText;
+
+    // 3. Couplage physique (Lune 18.61a / Soleil Hale 22a)
+    const lunarPhase = Math.round(((Math.cos(2 * Math.PI * (year - 2024.5) / 18.61) + 1) / 2) * 100);
+    const solarPhase = Math.round(((Math.cos(2 * Math.PI * (year - 1917) / 22.0) + 1) / 2) * 100);
+    document.getElementById('hz-astro-out').textContent = en
+      ? `Lunar 18.61y: ${lunarPhase}% | Hale Solar: ${solarPhase}%`
+      : `Lune 18,61a : ${lunarPhase}% | Solaire Hale : ${solarPhase}%`;
+
+    // 4. Note contextuelle
+    const noteBox = document.getElementById('hz-context-note');
+    if (notes[year]) {
+      noteBox.textContent = en ? notes[year].en : notes[year].fr;
+    } else {
+      noteBox.textContent = en
+        ? `Year ${year}: Intermediate thermodynamic accumulation phase between structural inflection nodes.`
+        : `Année ${year} : Phase intermédiaire d'accumulation thermodynamique entre deux nœuds d'inflexion structurelle.`;
+    }
+
+    draw(year);
+  }
+
+  function draw(selectedYear) {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    const minY = 1900;
+    const maxY = 2065;
+    const span = maxY - minY;
+
+    // Lignes verticales aux années clés
+    [1900, 1918, 1939, 1960, 1981, 2002, 2023, 2044].forEach(y => {
+      const x = ((y - minY) / span) * w;
+      ctx.strokeStyle = (y === 1918 || y === 2044) ? 'rgba(245, 158, 11, 0.45)' : 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = (y === 1918 || y === 2044) ? 1.5 : 1;
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+
+      ctx.fillStyle = (y === 1918 || y === 2044) ? '#f59e0b' : 'rgba(255, 255, 255, 0.45)';
+      ctx.font = '11px monospace';
+      ctx.fillText(y, x + 3, 13);
+    });
+
+    function drawCurve(fn, color, dashed) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.setLineDash(dashed ? [5, 5] : []);
+      ctx.beginPath();
+      for (let px = 0; px <= w; px += 2) {
+        const y = minY + (px / w) * span;
+        const py = (h / 2) - fn(y) * (h * 0.35);
+        if (px === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    drawCurve(wave84, 'rgba(167, 139, 250, 0.6)', true);  // Saeculum 84a (pointillés violets)
+    drawCurve(wave18, '#38bdf8', false);                    // Cycle 18a (bleu)
+    drawCurve(wave21, '#f59e0b', false);                    // Cycle 21a (or)
+
+    // Curseur de l'année choisie
+    const curX = ((selectedYear - minY) / span) * w;
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(curX, 0);
+    ctx.lineTo(curX, h);
+    ctx.stroke();
+  }
+
+  slider.addEventListener('input', () => render(parseInt(slider.value, 10)));
+  btns.forEach(b => {
+    b.style.cssText += "background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); color: inherit; padding: 2px 7px; border-radius: 4px; cursor: pointer;";
+    b.addEventListener('click', () => {
+      const y = parseInt(b.getAttribute('data-y'), 10);
+      slider.value = y;
+      render(y);
+    });
+  });
+
+  // Rafraîchit aussi le texte si l'utilisateur clique sur le bouton de changement de langue FR/EN de votre page
+  document.addEventListener('click', (e) => {
+    if (e.target && (e.target.textContent.includes('EN') || e.target.textContent.includes('FR'))) {
+      setTimeout(() => render(parseInt(slider.value, 10)), 50);
+    }
+  });
+
+  render(2044);
+})();
+</script>
+
 </body>
 </html>
