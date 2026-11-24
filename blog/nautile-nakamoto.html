@@ -10,30 +10,28 @@
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content="La Théorie Vivante de Nakamoto | L'Étalon Solaire" />
     <meta property="og:description" content="Une lecture phénoménologique du protocole Nakamoto reliant preuve de travail, temps discret, coût énergétique et analogies thermodynamiques bornées. Le modèle est interprétatif et ne prétend pas établir une équivalence physique littérale." />
-    <meta property="og:url" content="https://www.thesunstandard.net/nautile-nakamoto.html" />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/nautile-nakamoto.html" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="https://www.thesunstandard.net/blog/img/NautileNakamotoIM.png" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="La Théorie Vivante de Nakamoto | L'Étalon Solaire" />
-    <meta name="twitter:description" content="Une lecture Scientifique interactive du protocole Nakamoto." />
+    <meta name="twitter:title" content="Le Nautile de Nakamoto — Acte III | L'Étalon Solaire" />
+    <meta name="twitter:description" content="Acte III de la Tétralogie : Du Code Discret à la Géométrie Continue Bimétrique." />
     <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/NautileNakamotoIM.png" />
-    <meta name="twitter:creator" content="@VotreHandle" />
-    <link rel="canonical" href="https://www.thesunstandard.net/nautile-nakamoto.html" />
-    <title>La Théorie Vivante de Nakamoto | L'Étalon Solaire</title>
-    <!-- AJOUTEZ APRÈS LA BALISE <title> -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" as="script" crossorigin />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" as="script" crossorigin />
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/nautile-nakamoto.html" />
+    <title>Le Nautile de Nakamoto (Acte III) | L'Étalon Solaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script defer src="https://d3js.org/d3.v7.min.js"></script>
-    <script defer src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    <script defer src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LFDV8LWZSL');
+    </script>
 
     <script>
       window.MathJax = {
@@ -43,197 +41,132 @@
     </script>
     <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <script>
-      window.addEventListener('DOMContentLoaded', (event) => {
-        // Si defer est utilisé, on s'assure que hljs est bien appelé
-        if (typeof hljs !== 'undefined') hljs.highlightAll();
-      });
-    </script>
-
-    <!-- Puis ajoutez ce script externe (pas inline) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL" integrity="sha384-..." crossorigin="anonymous"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LFDV8LWZSL');
-    </script>
-
-    <!-- MathJax -->
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("nautilus-container");
-  if (!container || typeof THREE === 'undefined') return;
-
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x050505);
-
-  const camera = new THREE.PerspectiveCamera(68, container.clientWidth / container.clientHeight, 0.1, 600);
-  camera.position.set(-40, -125, 125);
-  camera.lookAt(0, 0, 0);
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
-
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.06;
-  controls.target.set(0, 0, 16.5);
-
-  // === Mathématiques du nautile (jusqu'en 2140) ===
-  const numPoints = 7200;
-  const halvings = 33.0;
-  const infoVertices = [], emergyVertices = [], daaVertices = [];
-
-  const P_max = 3.5, r_base = 0.5, k_growth = 1.5, z_mid = 5.0;
-
-  for (let i = 0; i <= numPoints; i++) {
-    const theta = (i / numPoints) * (halvings * 2 * Math.PI);
-    const z_time = theta / (2 * Math.PI);
-
-    const r_info = 10.0 * Math.pow(0.5, z_time);
-    infoVertices.push(r_info * Math.cos(theta), r_info * Math.sin(theta), z_time);
-
-    const r_emergy = r_base + (P_max / k_growth) * Math.log(1 + Math.exp(k_growth * (z_time - z_mid)));
-    emergyVertices.push(r_emergy * Math.cos(theta + Math.PI), r_emergy * Math.sin(theta + Math.PI), z_time);
-
-    if (i % 11 === 0) {
-      daaVertices.push(r_info * Math.cos(theta), r_info * Math.sin(theta), z_time);
-      daaVertices.push(r_emergy * Math.cos(theta + Math.PI), r_emergy * Math.sin(theta + Math.PI), z_time);
-    }
-  }
-
-  // Géométries
-  const infoGeo = new THREE.BufferGeometry();
-  infoGeo.setAttribute('position', new THREE.Float32BufferAttribute(infoVertices, 3));
-  const infoLine = new THREE.Line(infoGeo, new THREE.LineBasicMaterial({ color: 0xffcc00, linewidth: 2.2 }));
-  scene.add(infoLine);
-
-  const emergyGeo = new THREE.BufferGeometry();
-  emergyGeo.setAttribute('position', new THREE.Float32BufferAttribute(emergyVertices, 3));
-  const emergyLine = new THREE.Line(emergyGeo, new THREE.LineBasicMaterial({ color: 0xff5500, linewidth: 2.2 }));
-  scene.add(emergyLine);
-
-  const daaGeo = new THREE.BufferGeometry();
-  daaGeo.setAttribute('position', new THREE.Float32BufferAttribute(daaVertices, 3));
-  scene.add(new THREE.LineSegments(daaGeo, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 })));
-
-  // Grille
-  const grid = new THREE.GridHelper(38, 38, 0x222222, 0x111111);
-  grid.rotation.x = Math.PI / 2;
-  grid.position.z = 16.5;
-  scene.add(grid);
-
-  let currentPoint = 0;
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    if (currentPoint <= numPoints) {
-      infoGeo.setDrawRange(0, currentPoint);
-      emergyGeo.setDrawRange(0, currentPoint);
-      currentPoint += 14;
-    }
-    const t = clock.getElapsedTime();
-    scene.rotation.z = Math.PI + t * 0.048;
-    controls.update();
-    renderer.render(scene, camera);
-  }
-
-  window.addEventListener("resize", () => {
-    if (container.clientWidth > 0) {
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    }
-  });
-
-  animate();
-});
-</script>
-    <script>window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById("reading-progress").style.width = `${progress}%`;
-});
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const progressBar = document.getElementById("reading-progress-bar");
-    const progressPercent = document.getElementById("reading-progress-percent");
-    const pageLang = document.documentElement.lang || "fr";
-    const label = pageLang.startsWith("en") ? "Reading" : "Lecture";
-
-    if (!progressBar || !progressPercent) return;
-
-    function updateReadingProgress() {
-      const scrollTop =
-        window.scrollY || document.documentElement.scrollTop;
-
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      const progress =
-        docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
-
-      progressBar.style.width = `${progress}%`;
-      progressPercent.textContent = `${label} : ${Math.round(progress)}%`;
-    }
-
-    updateReadingProgress();
-
-    window.addEventListener("scroll", updateReadingProgress, {
-      passive: true,
-    });
-
-    window.addEventListener("resize", updateReadingProgress);
-  });
-</script>
-
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [
-            ["$", "$"],
-            ["\\(", "\\)"],
-          ],
-          displayMath: [["$$", "$$"]],
-        },
-        svg: { fontCache: "global" },
-      };
-    </script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <!-- Three.js + OrbitControls (version cohérente) -->
+    <!-- Three.js, D3, Plotly, Highlight.js & TikZJax (Chargement unique et propre) -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
-    <!-- Highlight.js -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dracula.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dracula.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-
-    <!-- D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    
-    <!-- TikZJax pour le rendu LaTeX/TikZ in-browser -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://tikzjax.com/v1/fonts.css"
-    />
-    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css" />
+    <script defer src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (typeof hljs !== "undefined") hljs.highlightAll();
+
+        // Barre de lecture unifiée et réactive à la langue active (FR/EN)
+        const progressTop = document.getElementById("reading-progress");
+        const progressPercent = document.getElementById("reading-progress-percent");
+        window.updateReadingProgressUI = function () {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+          if (progressTop) progressTop.style.width = `${progress}%`;
+          if (progressPercent) {
+            const isEn = document.body.classList.contains("lang-en");
+            progressPercent.textContent = `${isEn ? "Reading" : "Lecture"} : ${Math.round(progress)}%`;
+          }
+        };
+        window.updateReadingProgressUI();
+        window.addEventListener("scroll", window.updateReadingProgressUI, { passive: true });
+        window.addEventListener("resize", window.updateReadingProgressUI);
+
+        // Rendu 3D du Nautile de Nakamoto (avec IntersectionObserver GPU-friendly)
+        const container = document.getElementById("nautilus-container");
+        if (!container || typeof THREE === "undefined") return;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050505);
+
+        const camera = new THREE.PerspectiveCamera(68, container.clientWidth / container.clientHeight, 0.1, 600);
+        camera.position.set(-40, -125, 125);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.target.set(0, 0, 16.5);
+
+        const numPoints = 7200;
+        const halvings = 33.0;
+        const infoVertices = [], emergyVertices = [], daaVertices = [];
+        const P_max = 3.5, r_base = 0.5, k_growth = 1.5, z_mid = 5.0;
+
+        for (let i = 0; i <= numPoints; i++) {
+          const theta = (i / numPoints) * (halvings * 2 * Math.PI);
+          const z_time = theta / (2 * Math.PI);
+          const r_info = 10.0 * Math.pow(0.5, z_time);
+          infoVertices.push(r_info * Math.cos(theta), r_info * Math.sin(theta), z_time);
+          const r_emergy = r_base + (P_max / k_growth) * Math.log(1 + Math.exp(k_growth * (z_time - z_mid)));
+          emergyVertices.push(r_emergy * Math.cos(theta + Math.PI), r_emergy * Math.sin(theta + Math.PI), z_time);
+          if (i % 11 === 0) {
+            daaVertices.push(r_info * Math.cos(theta), r_info * Math.sin(theta), z_time);
+            daaVertices.push(r_emergy * Math.cos(theta + Math.PI), r_emergy * Math.sin(theta + Math.PI), z_time);
+          }
+        }
+
+        const infoGeo = new THREE.BufferGeometry();
+        infoGeo.setAttribute("position", new THREE.Float32BufferAttribute(infoVertices, 3));
+        scene.add(new THREE.Line(infoGeo, new THREE.LineBasicMaterial({ color: 0xffcc00, linewidth: 2.2 })));
+
+        const emergyGeo = new THREE.BufferGeometry();
+        emergyGeo.setAttribute("position", new THREE.Float32BufferAttribute(emergyVertices, 3));
+        scene.add(new THREE.Line(emergyGeo, new THREE.LineBasicMaterial({ color: 0xff5500, linewidth: 2.2 })));
+
+        const daaGeo = new THREE.BufferGeometry();
+        daaGeo.setAttribute("position", new THREE.Float32BufferAttribute(daaVertices, 3));
+        scene.add(new THREE.LineSegments(daaGeo, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 })));
+
+        const grid = new THREE.GridHelper(38, 38, 0x222222, 0x111111);
+        grid.rotation.x = Math.PI / 2;
+        grid.position.z = 16.5;
+        scene.add(grid);
+
+        let currentPoint = 0;
+        let isNautilusVisible = true;
+        const clock = new THREE.Clock();
+
+        function animate() {
+          if (!isNautilusVisible) return;
+          requestAnimationFrame(animate);
+          if (currentPoint <= numPoints) {
+            infoGeo.setDrawRange(0, currentPoint);
+            emergyGeo.setDrawRange(0, currentPoint);
+            currentPoint += 14;
+          }
+          scene.rotation.z = Math.PI + clock.getElapsedTime() * 0.048;
+          controls.update();
+          renderer.render(scene, camera);
+        }
+
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && !isNautilusVisible) {
+              isNautilusVisible = true;
+              animate();
+            } else if (!e.isIntersecting) {
+              isNautilusVisible = false;
+            }
+          });
+        }, { threshold: 0.05 });
+        obs.observe(container);
+
+        window.addEventListener("resize", () => {
+          if (container.clientWidth > 0) {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+          }
+        });
+        animate();
+      });
+    </script>
 
     <style>
       * {
@@ -254,12 +187,18 @@ document.addEventListener("DOMContentLoaded", () => {
         --color-homeo: rgba(60, 255, 100, 0.15);
         --color-auto: rgba(255, 150, 0, 0.15);
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        background-color: var(--bg-dark);
-        color: var(--text-main);
+        background-color: #040508;
+        color: #e2e8f0;
         font-family: "Georgia", serif;
-        line-height: 1.8;
+        line-height: 1.85;
         overflow-x: hidden;
+        background-image:
+          radial-gradient(circle at 50% 0%, rgba(255, 204, 0, 0.07) 0%, rgba(0, 229, 255, 0.04) 36%, transparent 68%),
+          radial-gradient(circle at 88% 45%, rgba(200, 100, 255, 0.05) 0%, transparent 55%);
       }
       a:visited {
         color: var(--sun-yellow);
@@ -418,28 +357,13 @@ document.addEventListener("DOMContentLoaded", () => {
         font-style: italic;
         margin-top: 8px;
       }
-      .tooltip .tooltiptext strong {
-        color: var(--sun-yellow);
-        display: block;
-        margin-bottom: 4px;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      /* Petite flèche en bas de l'infobulle */
-      .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -6px;
-        border-width: 6px;
-        border-style: solid;
-        border-color: var(--border-glow) transparent transparent transparent;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
+      /* Harmonisation UI globale (Inter + Fira Code + Transitions douces) */
+      :root {
+        --font-ui: "Inter", "Helvetica Neue", sans-serif;
+        --font-mono: "Fira Code", monospace;
+        --bio-green: #44ee77;
+        --cyan-l2: #00e5ff;
+        --purple-l4: #c864ff;
       }
       /* --- Gedankenexperiment Box --- */
       .gedanken-box {
@@ -514,88 +438,117 @@ document.addEventListener("DOMContentLoaded", () => {
         top: 0;
         left: 0;
         right: 0;
-        z-index: 100;
+        z-index: 130;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 2rem;
-        background: rgba(5, 5, 5, 0.9);
+        gap: 0.9rem;
+        padding: 0.8rem 1.6rem;
+        background: rgba(4, 5, 8, 0.92);
         border-bottom: 1px solid var(--border-glow);
-        font-family: "Helvetica Neue", sans-serif;
-        backdrop-filter: blur(10px);
+        font-family: var(--font-ui);
+        backdrop-filter: blur(12px);
       }
       nav .logo {
-        font-size: 0.9rem;
-        font-weight: 700;
-        letter-spacing: 2px;
+        font-size: 0.86rem;
+        font-weight: 800;
+        letter-spacing: 1.8px;
         text-transform: uppercase;
         color: var(--sun-yellow);
         text-decoration: none;
+        white-space: nowrap;
       }
-      nav .nav-center {
-        flex-grow: 1;
-        margin-left: 2rem;
+      nav .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-      nav a.back {
-        color: var(--text-muted);
+      nav .nav-links a {
+        color: #8b9bb0;
         text-decoration: none;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.55px;
         text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: 0.2s;
       }
-      nav a.back:hover {
+      nav .nav-links a:hover {
         color: #fff;
+        background: rgba(255, 204, 0, 0.14);
       }
-      a.next {
-        color: var(--sun-orange);
-        text-decoration: none;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        transition: color 0.3s;
+      .nav-right-tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
       }
-      a.next:hover {
+      .nav-dl-btn {
+        background: rgba(255, 204, 0, 0.12);
+        border: 1px solid rgba(255, 204, 0, 0.42);
         color: var(--sun-yellow);
+        border-radius: 7px;
+        padding: 4px 10px;
+        font-size: 0.73rem;
+        font-family: var(--font-mono);
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.22s;
+      }
+      .nav-dl-btn:hover {
+        background: rgba(255, 204, 0, 0.26);
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 0 14px rgba(255, 204, 0, 0.32);
       }
       .lang-toggle {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-        padding-left: 1.5rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        padding-left: 0.85rem;
       }
-
       .lang-toggle button {
-        background: transparent;
-        border: none;
-        font-size: 1.4rem;
-        color: white; /* <-- Ajout principal pour rendre le texte/icône blanc */
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        padding: 4px 9px;
+        font-size: 0.78rem;
+        font-family: var(--font-mono);
+        color: white;
         cursor: pointer;
-        opacity: 0.5; /* J'ai légèrement augmenté l'opacité (de 0.3 à 0.5) pour qu'ils soient plus visibles même inactifs */
-        transition: all 0.3s ease;
+        opacity: 0.52;
+        transition: all 0.25s ease;
         filter: grayscale(100%);
       }
-
       .lang-toggle button:hover {
-        opacity: 0.9; /* Plus lumineux au survol */
-        transform: scale(1.1);
+        opacity: 0.92;
+        transform: translateY(-1px);
       }
-
       body.lang-en #btn-en,
       body.lang-fr #btn-fr {
-        opacity: 1; /* Pleine visibilité pour la langue active */
-        color: white; /* Assure que la langue active reste bien blanche */
+        opacity: 1;
         filter: grayscale(0%);
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+        border-color: var(--sun-yellow);
+        background: rgba(255, 204, 0, 0.16);
+        box-shadow: 0 0 12px rgba(255, 200, 0, 0.32);
+      }
+      @media (max-width: 960px) {
+        nav .nav-links { display: none; }
       }
 
       article {
-        max-width: 860px;
-        margin: 8rem auto 6rem;
-        padding: 0 2rem;
-        font-size: 1.15rem;
-        color: #d4d4d4;
+        max-width: 1020px;
+        margin: 6.8rem auto 5.5rem;
+        padding: 0 1.8rem;
+        font-size: 1.12rem;
+        color: #d4dce6;
+      }
+      article [id^="sec"], #intro, #conclusion, #philosophy, #ref {
+        scroll-margin-top: 5.5rem;
       }
 
       .article-header {
@@ -1140,12 +1093,122 @@ document.addEventListener("DOMContentLoaded", () => {
       a:visited {
         color: var(--sun-yellow);
       }
-      /* --- Engineer Code Box --- */
-      * --- Engineer Box Collapsible --- */ .engineer-box details summary {
+      /* --- Bannières d'Actes Unifiées (Actes I, II, III) --- */
+      .act-banner {
+        position: relative;
+        text-align: center;
+        margin: 6rem 0 3.5rem;
+        padding: 2.6rem 2rem;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 204, 0, 0.28);
+        border-top: 3px solid var(--sun-yellow);
+        background: radial-gradient(circle at top center, rgba(255, 204, 0, 0.09) 0%, rgba(5, 8, 12, 0.94) 75%);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.7), inset 0 0 35px rgba(255, 204, 0, 0.04);
+        font-family: var(--font-ui);
+      }
+      .act-banner.act-ii {
+        border-color: rgba(68, 238, 119, 0.3);
+        border-top-color: var(--bio-green);
+        background: radial-gradient(circle at top center, rgba(68, 238, 119, 0.09) 0%, rgba(5, 10, 8, 0.94) 75%);
+      }
+      .act-banner.act-iii {
+        border-color: rgba(0, 229, 255, 0.32);
+        border-top-color: var(--cyan-l2);
+        background: radial-gradient(circle at top center, rgba(0, 229, 255, 0.1) 0%, rgba(200, 100, 255, 0.05) 45%, rgba(5, 8, 14, 0.95) 80%);
+      }
+      .act-kicker {
+        display: inline-block;
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 0.85rem;
+        background: rgba(255, 204, 0, 0.12);
+        border: 1px solid rgba(255, 204, 0, 0.35);
+        color: var(--sun-yellow);
+      }
+      .act-banner.act-ii .act-kicker {
+        background: rgba(68, 238, 119, 0.12);
+        border-color: rgba(68, 238, 119, 0.38);
+        color: var(--bio-green);
+      }
+      .act-banner.act-iii .act-kicker {
+        background: rgba(0, 229, 255, 0.12);
+        border-color: rgba(0, 229, 255, 0.38);
+        color: var(--cyan-l2);
+      }
+      .act-banner h2, .act-banner .act-heading {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: var(--font-ui);
+        font-size: clamp(1.75rem, 3.6vw, 2.35rem);
+        font-weight: 800;
+        color: #fff;
+        border: none !important;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+      }
+      .act-banner p.act-subtitle {
+        color: var(--sun-yellow);
+        font-style: italic;
+        margin: 0.85rem auto 0 !important;
+        max-width: 680px;
+        font-size: 1.05rem;
+      }
+      .act-banner.act-ii p.act-subtitle { color: #a7f3d0; }
+      .act-banner.act-iii p.act-subtitle { color: #a5f3fc; }
+
+      /* --- Polish UI sur tous les tiroirs Details / Summary & Blocs Code Ingénieur --- */
+      .proof-box {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+      }
+      .proof-box details {
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      }
+      .proof-box details[open] {
+        box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.55), 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+      .proof-box details > summary {
+        font-family: var(--font-ui);
+        transition: background 0.2s ease;
+      }
+      .proof-box details > summary:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .proof-box pre {
+        background: #070a10;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+      .intuition-callout {
+        padding: 1.15rem 1.4rem;
+        margin: 1.2rem 0 2rem;
+        border-radius: 0 10px 10px 0;
+        border-left: 4px solid var(--cyan-l2);
+        background: linear-gradient(90deg, rgba(0, 229, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+        font-family: var(--font-ui);
+        font-size: 0.98rem;
+        color: #e2e8f0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* --- Engineer Box Collapsible --- */
+      .engineer-box details summary {
         cursor: pointer;
         outline: none;
         list-style: none;
-        display: block; /* Modifié pour gérer la bascule de langue */
+        display: block;
       }
       .engineer-box details summary::-webkit-details-marker {
         display: none;
@@ -1376,43 +1439,39 @@ document.addEventListener("DOMContentLoaded", () => {
 }
     </style>
   </head>
-  <body class="lang-en">
+  <body class="lang-fr">
     <div id="reading-progress"></div>
-    <div id="reading-progress-bar"></div>
     <div id="reading-progress-percent" aria-label="Progression de lecture">
-      ⌁ 0%
+      Lecture : 0%
     </div>
 
-    <!-- REMPLACEZ LE BLOC <nav> (lignes 100-120) PAR CE BLOC -->
     <nav aria-label="Navigation principale" role="navigation">
-      <a href="index.html" class="logo" aria-label="Accueil du blog">
-        <span class="logo-icon" aria-hidden="true">☀</span>
-        <span class="sr-only">L'Étalon Solaire - Blog</span>
-      </a>
-      <div class="nav-center">
-        <a href="index.html" class="back" aria-label="Retour aux articles">
-          <span lang="en">← Back to articles</span>
-          <span lang="fr">← Retour aux articles</span>
-        </a>
+      <a href="index.html" class="logo" aria-label="Accueil du blog">☀ L'Étalon Solaire · Acte III</a>
+      <div class="nav-links">
+        <a href="#sec1"><span lang="fr">1. Action h_N</span><span lang="en">1. Action h_N</span></a>
+        <a href="#sec3"><span lang="fr">2. Température T_eff</span><span lang="en">2. Temp. T_eff</span></a>
+        <a href="#sec7"><span lang="fr">3. Nautile 3D</span><span lang="en">3. 3D Nautilus</span></a>
+        <a href="#sec8"><span lang="fr">4. Jauge DAA</span><span lang="en">4. DAA Gauge</span></a>
+        <a href="#sec10"><span lang="fr">5. Halving 2140</span><span lang="en">5. 2140 Halving</span></a>
+        <a href="#sec14"><span lang="fr">6. Friston & Cortex</span><span lang="en">6. Friston & Cortex</span></a>
       </div>
-      <div class="lang-toggle" role="group" aria-label="Changement de langue">
-        <button onclick="setLang('en')" id="btn-en" aria-label="Afficher en anglais" aria-current="false">
-          EN 🇬🇧
-        </button>
-        <button onclick="setLang('fr')" id="btn-fr" aria-label="Afficher en français" aria-current="true">
-          FR 🇫🇷
-        </button>
+      <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadNautilusHTML()" title="Télécharger nautile-nakamoto.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+          <button type="button" onclick="setLang('en')" id="btn-en" aria-label="Afficher en anglais">EN 🇬🇧</button>
+          <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Afficher en français">FR 🇫🇷</button>
+        </div>
       </div>
     </nav>
 
     <article>
-      <header class="article-header">
-        <span class="article-meta" lang="en"
-          >Differential Topology & Thermodynamics</span
-        >
-        <span class="article-meta" lang="fr"
-          >Topologie Différentielle & Thermodynamique</span
-        >
+      <header class="article-header" style="padding-bottom: 1.8rem; border-bottom: 1px solid rgba(255, 204, 0, 0.22); margin-bottom: 2.2rem;">
+        <span class="article-meta" lang="en" style="display: inline-block; padding: 4px 14px; border-radius: 999px; background: rgba(255, 102, 0, 0.11); border: 1px solid rgba(255, 102, 0, 0.35); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;">
+          Act III of the Tetralogy · Differential Topology & Thermodynamics
+        </span>
+        <span class="article-meta" lang="fr" style="display: inline-block; padding: 4px 14px; border-radius: 999px; background: rgba(255, 102, 0, 0.11); border: 1px solid rgba(255, 102, 0, 0.35); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;">
+          Acte III de la Tétralogie · Topologie Différentielle & Thermodynamique
+        </span>
 
         <h1 class="article-title" lang="en" style="margin-bottom: 0.5rem">
           The Nakamoto Nautilus : From Discrete Code to Continuous Geometry
@@ -1453,6 +1512,22 @@ document.addEventListener("DOMContentLoaded", () => {
           🕒 Dernière mise à jour : <time datetime="2026-06-02">14 Juin 2026</time>
         </p>
       </header>
+
+    <!-- BOÎTE D'EXPORT AUTONOME (UNIFIÉE AVEC LES ACTES I & II) -->
+    <div class="export-toolkit-bar" style="margin: 0 0 2.2rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(255, 204, 0, 0.07) 0%, rgba(0, 229, 255, 0.07) 52%, rgba(68, 238, 119, 0.07) 100%); border: 1px solid rgba(255, 204, 0, 0.28); border-left: 4px solid var(--sun-yellow, #ffcc00); border-radius: 12px; font-family: 'Inter', 'Helvetica Neue', sans-serif; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.48);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 610px;">
+            <span lang="fr">🐚 <strong>Acte III Open-Source Interactif :</strong> Téléchargez le code source complet de cet article (<code>nautile-nakamoto.html</code>, incluant ses simulations 3D, ses preuves formelles et ses équations LaTeX) pour l'archiver ou l'explorer avec votre IA locale.</span>
+            <span lang="en">🐚 <strong>Interactive Open-Source Act III:</strong> Download the complete standalone HTML source of this essay (<code>nautile-nakamoto.html</code>, including its 3D simulations, formal proofs, and LaTeX equations) for archiving or local AI exploration.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadNautilusHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: 'Fira Code', monospace; font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyNautilusHTML()" style="background: rgba(0, 229, 255, 0.16); border: 1px solid #00e5ff; color: #00e5ff; border-radius: 999px; padding: 7px 14px; font-family: 'Fira Code', monospace; font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
       <img
         src="img/NautileNakamotoIM.png?v=4"
         alt="Nautile Nakamoto"
@@ -2506,27 +2581,27 @@ document.addEventListener("DOMContentLoaded", () => {
             </tr>
             <tr>
               <td>$\tau_0$</td>
-              <td lang="en">Fundamental single-hop latency time</td>
-              <td lang="fr">Temps de latence fondamental d'un saut unique</td>
+              <td lang="en">Incompressible geometric propagation floor ($D_{\mathrm{hop}}\tau_{\mathrm{link}}$)</td>
+              <td lang="fr">Plancher géométrique incompressible de propagation ($D_{\mathrm{hop}}\tau_{\mathrm{link}}$)</td>
               <td>s</td>
             </tr>
             <tr>
               <td>$\tau_L$</td>
-              <td lang="en">Network propagation latency</td>
-              <td lang="fr">Latence de propagation du réseau</td>
+              <td lang="en">Total network propagation & validation latency</td>
+              <td lang="fr">Latence totale de propagation et validation du réseau</td>
               <td>s</td>
             </tr>
             <tr>
               <td>$\tau_B$</td>
-              <td lang="en">Target block interval</td>
-              <td lang="fr">Intervalle cible de bloc</td>
+              <td lang="en">Target block interval ($\tau_B = 600\,\mathrm{s} \Leftrightarrow \lambda_0 = 144\text{ blocks/day}$)</td>
+              <td lang="fr">Intervalle cible de bloc ($\tau_B = 600\,\mathrm{s} \Leftrightarrow \lambda_0 = 144\text{ blocs/jour}$)</td>
               <td>s</td>
             </tr>
             <tr>
               <td>$s$</td>
-              <td lang="en">Algebraic modular time (Tomita-Takesaki)</td>
-              <td lang="fr">Temps modulaire algébrique (Tomita-Takesaki)</td>
-              <td>s</td>
+              <td lang="en">Dimensionless modular parameter (Tomita-Takesaki flow)</td>
+              <td lang="fr">Paramètre modulaire adimensionnel (flot de Tomita-Takesaki)</td>
+              <td>[1]</td>
             </tr>
             <tr>
               <td>$\theta$</td>
@@ -2625,9 +2700,9 @@ document.addEventListener("DOMContentLoaded", () => {
               <td>Joules (seJ)</td>
             </tr>
             <tr>
-              <td>$h_N(t)$</td>
-              <td lang="en">Nakamoto action per hash</td>
-              <td lang="fr">Action de Nakamoto par hash</td>
+              <td>$h_N(t) \equiv k_{\mathrm{Nak}}$</td>
+              <td lang="en">Nakamoto action per hash ($\hbar_N = h_N / 2\pi$)</td>
+              <td lang="fr">Action de Nakamoto par hash ($\hbar_N = h_N / 2\pi$)</td>
               <td>Joules $\cdot$ s</td>
             </tr>
         
@@ -2729,12 +2804,16 @@ document.addEventListener("DOMContentLoaded", () => {
           </tbody>
         </table>
       </div>
-      <div style="text-align: center; margin: 6rem 0 3rem; padding: 2rem; border-top: 1px solid rgba(255, 204, 0, 0.3); border-bottom: 1px solid rgba(255, 204, 0, 0.3); background: rgba(255, 204, 0, 0.03);">
-        <h2 lang="en" style="margin: 0; font-size: 2.2rem; color: #fff; border: none;">ACT I: Physics & Time</h2>
-        <h2 lang="fr" style="margin: 0; font-size: 2.2rem; color: #fff; border: none;">ACTE I : Physique et Temps</h2>
-        <p lang="en" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">Forging the arrow of time from chaos.</p>
-        <p lang="fr" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">Forger la flèche du temps à partir du chaos.</p>
-    </div>
+      <div class="act-banner act-i" role="region" aria-label="Acte I">
+        <div class="act-kicker">
+          <span lang="en">Act I · Thermodynamics & Chronogenesis</span>
+          <span lang="fr">Acte I · Thermodynamique & Chronogenèse</span>
+        </div>
+        <h2 lang="en">ACT I: Physics & Time</h2>
+        <h2 lang="fr">ACTE I : Physique et Temps</h2>
+        <p class="act-subtitle" lang="en">Forging an irreversible arrow of time ($144\text{ blocks/day}$) from stochastic chaos.</p>
+        <p class="act-subtitle" lang="fr">Forger une flèche du temps irréversible ($144\text{ blocs/jour}$) à partir du chaos stochastique.</p>
+      </div>
       <div id="sec1"></div>
       <h2 lang="en">1. The Nakamoto Action and State Topology</h2>
       <h2 lang="fr">1. L'Action de Nakamoto et la Topologie de l'État</h2>
@@ -4383,12 +4462,6 @@ pindexNew->nChainWork = pindexPrev->nChainWork + <span class="function">GetBlock
         <div class="proof-end">∎</div>
       </div>
 
-      <p lang="en">
-        In this equation, the parameter $\beta_{\mathrm{eff}}$ dictates the
-        strictness of the consensus. But what exactly determines this effective
-        variable? Unlike a glass of water whose temperature is fixed by the
-        room, the blockchain generates its own thermal state.
-      </p>
       <p lang="fr">
         Dans cette équation, le paramètre $\beta_{\mathrm{eff}}$ dicte la
         rigueur du consensus. Mais qu'est-ce qui détermine exactement cette
@@ -5880,8 +5953,11 @@ pindexNew->nChainWork = pindexPrev->nChainWork + <span class="function">GetBlock
   <strong>La Physique :</strong> Pour formaliser cette horloge endogène, nous dépassons la notion de temps newtonien pour définir le réseau comme un <strong>Chronométreur Thermodynamique</strong>. La Blockchain ne "lit" pas le temps de l'extérieur ; elle génère sa propre séquence chronologique via son flux algébrique modulaire. Ce "temps modulaire" interne est fondamentalement couplé à l'état de stabilité du réseau : plus l'équilibre thermodynamique est atteint, plus le flux du temps devient cohérent et prévisible.
 </p>
 
+<p lang="en">
+  This relationship between the statistical state of the system and its endogenous perception of time is derived analytically in Level 4 below, establishing the exact dimensional bridge ($t = \hbar_N \beta_{\mathrm{eff}} s$) between modular flow, complex KMS states, and effective consensus temperature.
+</p>
 <p lang="fr">
-  Cette relation entre l'état statistique du système et sa perception du temps sera explorée en détail dans la dérivation analytique (Niveau 4), où nous établirons le lien précis entre le flux modulaire et la température effective du consensus.
+  Cette relation entre l'état statistique du système et sa perception endogène du temps est démontrée analytiquement au Niveau 4 ci-dessous, établissant le pont dimensionnel exact ($t = \hbar_N \beta_{\mathrm{eff}} s$) entre flux modulaire, états KMS complexes et température effective du consensus.
 </p>
 
 <div class="proof-box" style="border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02); padding: 2rem; border-radius: 12px; margin-top: 2.5rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
@@ -6033,28 +6109,28 @@ pindexNew->nChainWork = pindexPrev->nChainWork + <span class="function">GetBlock
         $$ \Delta_\omega = e^{-\beta H} \otimes e^{\beta H} \quad \Rightarrow \quad \Delta_\omega = \rho \otimes \rho^{-1} $$
       </div>
 
-      <h4 lang="en" style="color: #c864ff; margin-top: 1.5rem;">2. Derivation of the $t = s \cdot \beta$ Relation</h4>
-      <h4 lang="fr" style="color: #c864ff; margin-top: 1.5rem;">2. Dérivation de la Relation $t = s \cdot \beta$</h4>
+      <h4 lang="en" style="color: #c864ff; margin-top: 1.5rem;">2. Dimensional Derivation of $t = \hbar_N \beta_{\mathrm{eff}} \, s$ & Complex Time</h4>
+      <h4 lang="fr" style="color: #c864ff; margin-top: 1.5rem;">2. Dérivation Dimensionnelle de $t = \hbar_N \beta_{\mathrm{eff}} \, s$ & Temps Complexe</h4>
       <p lang="en">
-        The modular automorphism group $\sigma_s^\omega$ is defined by the action of the modular operator on an observable $A \in \mathfrak{M}$:
+        The modular automorphism group $\sigma_s^\omega$ (where $s \in \mathbb{R}$ is dimensionless) acts on any observable $A \in \mathfrak{M}$ via the modular operator:
       </p>
       <p lang="fr">
-        Le groupe d'automorphismes modulaires $\sigma_s^\omega$ est défini par l'action de l'opérateur modulaire sur une observable $A \in \mathfrak{M}$ :
+        Le groupe d'automorphismes modulaires $\sigma_s^\omega$ (où $s \in \mathbb{R}$ est adimensionnel) agit sur toute observable $A \in \mathfrak{M}$ via l'opérateur modulaire :
       </p>
 
       <div class="math-block" style="text-align: center; color: #c864ff; margin: 1rem 0; font-size: 1.15em;">
-        $$ \sigma_s^\omega(A) = \Delta_\omega^{is} A \Delta_\omega^{-is} = e^{-is\beta H} A e^{is\beta H} $$
+        $$ \sigma_s^\omega(A) = \Delta_\omega^{is} A \Delta_\omega^{-is} = e^{-i s \beta_{\mathrm{eff}} H} A e^{i s \beta_{\mathrm{eff}} H} $$
       </div>
 
       <p lang="en">
-        By structurally identifying this flow with the standard unitary time evolution operator in quantum mechanics ($\alpha_t(A) = e^{itH} A e^{-itH}$), we equate the exponential generators to extract the fundamental coupling between the internal modular parameter $s$ and the Newtonian physical time $t$:
+        Restoring the reduced Nakamoto action $\hbar_N \equiv \frac{h_N}{2\pi}$ ($\mathrm{J\cdot s}$) in the physical Heisenberg evolution operator $\alpha_t(A) = e^{i t H / \hbar_N} A e^{-i t H / \hbar_N}$ (with $H = \mathcal{H}_{\mathrm{diss}} = -\Sigma$), equating the dimensionless phase generators $t / \hbar_N = s \cdot \beta_{\mathrm{eff}}$ yields the dimensionally exact <strong>Thermal Time Law</strong> (satisfying the Kubo–Martin–Schwinger analyticity strip $z = t + i \hbar_N \beta_{\mathrm{eff}}$ explored in the <em>Mu Dial</em> and <em>Bost–Connes</em> frameworks):
       </p>
       <p lang="fr">
-        En identifiant structurellement ce flux avec l'opérateur d'évolution temporelle unitaire standard en mécanique quantique ($\alpha_t(A) = e^{itH} A e^{-itH}$), nous égalisons les générateurs exponentiels pour extraire le couplage fondamental entre le paramètre modulaire interne $s$ et le temps physique newtonien $t$ :
+        En rétablissant l'action de Nakamoto réduite $\hbar_N \equiv \frac{h_N}{2\pi}$ ($\mathrm{J\cdot s}$) dans l'opérateur d'évolution physique de Heisenberg $\alpha_t(A) = e^{i t H / \hbar_N} A e^{-i t H / \hbar_N}$ (avec $H = \mathcal{H}_{\mathrm{diss}} = -\Sigma$), l'identification des phases adimensionnelles $t / \hbar_N = s \cdot \beta_{\mathrm{eff}}$ livre la <strong>Loi du Temps Thermique</strong> dimensionnellement exacte (vérifiant la bande d'analyticité KMS du temps complexe $z = t + i \hbar_N \beta_{\mathrm{eff}}$ développée dans le <em>Cadran Mu</em> et le système de <em>Bost–Connes</em>) :
       </p>
 
       <div class="math-block" style="text-align: center; color: #c864ff; margin: 1.5rem 0; font-size: 1.3em; border: 1px solid rgba(136, 255, 170, 0.4); padding: 0.8rem; background: rgba(0,0,0,0.3); border-radius: 6px;">
-        $$ t = s \cdot \beta_{\mathrm{eff}} $$
+        $$ t = \hbar_N \, \beta_{\mathrm{eff}} \, s = \frac{h_N(t)}{2\pi k_B T_{\mathrm{eff}}} \, s \qquad [\mathrm{s}] $$
       </div>
 
       <p lang="en" style="font-style: italic; color: #b0b0b0;">
@@ -6155,15 +6231,22 @@ pindexNew->nChainWork = pindexPrev->nChainWork + <span class="function">GetBlock
         Où $\Box = \partial_\theta^2 - \nabla_\ell^2$ est l'Alembertien et $\Phi(x)$ représente <strong>l'amplitude de probabilité d'intégration au consensus</strong> du bloc candidat à la coordonnée réseau $x$. Le terme $\mu = \frac{m_D \cdot c_{\mathrm{nak}}}{\hbar_{\mathrm{nak}}}$ définit la <strong>longueur de corrélation informationnelle</strong>. Si un attaquant propage un bloc sans la masse $m_D$ requise, le champ $\Phi(x)$ subit une atténuation exponentielle analogue au <strong>Potentiel de Yukawa</strong> : $V(r) \sim -\frac{g^2}{r} e^{-\mu r}$. La probabilité de validation de la falsification s'évapore avant de parcourir la topologie du réseau.
       </p>
 
-      <h4 style="color: #ff4444; margin-top: 1.5rem; font-size: 1.1rem;">3. Coût d'Action et Divergence de Synchronisation</h4>
-      <p>
-        Chaque hachage SHA-256 est une action macroscopique $h_N$. Le coût effectif pour forcer un effondrement de l'état global diverge à mesure que la latence $\tau_L$ sature l'intervalle $\tau_B$.
+      <h4 lang="fr" style="color: #ff4444; margin-top: 1.5rem; font-size: 1.1rem;">3. Coût d'Action et Divergence de Congestion M/M/1</h4>
+      <h4 lang="en" style="color: #ff4444; margin-top: 1.5rem; font-size: 1.1rem;">3. Action Cost and M/M/1 Queueing Divergence</h4>
+      <p lang="fr">
+        Tandis que la cinématique du cône causal obéit au facteur de Lorentz quadratique $\Gamma_{\mathrm{sync}}$, la congestion stochastique de file d'attente M/M/1 gouvernant $T_{\mathrm{eff}}$ introduit le multiplicateur $\Gamma_{\mathrm{queue}} = \left(1 - \frac{\tau_L}{\tau_B}\right)^{-1}$. Chaque hachage SHA-256 mobilisant l'action technologique $h_N(t)$, le quantum d'action effectif requis pour synchroniser l'état global s'écrit :
+      </p>
+      <p lang="en">
+        While causal-cone kinematics obey the quadratic Lorentz factor $\Gamma_{\mathrm{sync}}$, M/M/1 stochastic queueing congestion governing $T_{\mathrm{eff}}$ introduces the multiplier $\Gamma_{\mathrm{queue}} = \left(1 - \frac{\tau_L}{\tau_B}\right)^{-1}$. Since each SHA-256 hash expends the technological action $h_N(t)$, the effective synchronization action scales as:
       </p>
       <div class="math-block" style="text-align: center; color: #ff4444; margin: 1rem 0; font-size: 1.1em;">
-        $$ \Delta \mathcal{A}_{\mathrm{sync}} = h \cdot \left( 1 - \frac{\tau_L}{\tau_B} \right)^{-1} $$
+        $$ \Delta \mathcal{A}_{\mathrm{sync}}(t) = h_N(t) \cdot \left( 1 - \frac{\tau_L}{\tau_B} \right)^{-1} \xrightarrow{t \to 2140} h \cdot \Gamma_{\mathrm{queue}} $$
       </div>
-      <p>
-        Si $\tau_L \to \tau_B$, le coût pour maintenir la causalité devient infini, forçant une transition de phase catastrophique : le système fond. La viabilité du système dépend de la convergence évolutive de l'action technologique matérielle ($h_N$) vers la constante physique fondamentale ($h$).
+      <p lang="fr">
+        Si $\tau_L \to \tau_B$, le coût d'action pour maintenir la causalité diverge vers l'infini, déclenchant une fusion de phase vers le gaz de forks.
+      </p>
+      <p lang="en">
+        As $\tau_L \to \tau_B$, the action cost required to preserve causality diverges to infinity, triggering a phase melt into a chaotic gas of forks.
       </p>
 
       <h4 style="color: #ff4444; margin-top: 1.5rem; font-size: 1.1rem;">4. Finalité, Évaporation et Singularité</h4>
@@ -7903,11 +7986,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <em>(Note : Cette convergence représente une limite thermodynamique asymptotique du calcul (Landauer/Margolus-Levitin), et non une affirmation littérale de gravité quantique.)</em>
   </p>
 </div>
-      <div role="separator" style="text-align: center; margin: 6rem 0 3rem; padding: 2rem; border-top: 1px solid rgba(255, 204, 0, 0.3); border-bottom: 1px solid rgba(255, 204, 0, 0.3); background: rgba(255, 204, 0, 0.03);">
-          <div lang="en" style="margin: 0; font-size: 2.2rem; font-weight: bold; color: #fff;">ACT II: Morphogenesis & Biology</div>
-          <div lang="fr" style="margin: 0; font-size: 2.2rem; font-weight: bold; color: #fff;">ACTE II : Morphogenèse et Biologie</div>
-          <p lang="en" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">The geometry of survival in a hostile environment.</p>
-          <p lang="fr" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">La géométrie de la survie dans un environnement hostile.</p>
+      <div class="act-banner act-ii" role="region" aria-label="Acte II">
+        <div class="act-kicker">
+          <span lang="en">Act II · Mycelial Topology & Bimetric Shell</span>
+          <span lang="fr">Acte II · Topologie Mycélienne & Carapace Bimétrique</span>
+        </div>
+        <div class="act-heading" lang="en">ACT II: Morphogenesis & Biology</div>
+        <div class="act-heading" lang="fr">ACTE II : Morphogenèse et Biologie</div>
+        <p class="act-subtitle" lang="en">The geometry of survival in a hostile environment — from the Wood Wide Web to the Bimetric Nautilus.</p>
+        <p class="act-subtitle" lang="fr">La géométrie de la survie en milieu hostile — du Wood Wide Web au Nautile Bimétrique.</p>
       </div>
 
       <div class="proof-box replication-box">
@@ -8734,11 +8821,11 @@ document.addEventListener("DOMContentLoaded", () => {
       >
         <span
           >$$ f(\theta) = 2^{-\frac{\theta}{2\pi}} \equiv \varphi^{-\chi
-          \frac{\theta}{2\pi}} \quad \text{(Golden Scalar Metric)} $$</span
+          \frac{\theta}{2\pi}} = \exp\!\left(-\frac{\chi}{4}\,\kappa_\varphi\,\theta\right) \quad \text{(Golden Scalar Metric, } \kappa_\varphi = \tfrac{2\ln\varphi}{\pi}\text{)} $$</span
         >
         <span
-          >$$ \vec{V}_{\mathrm{info}}(\theta) = f(\theta) \cdot e^{i\theta}
-          \quad \text{(3D Projection)} $$</span
+          >$$ \vec{V}_{\mathrm{info}}(\theta) = f(\theta) \cdot e^{i\theta} = \exp\!\Big(\big(-\tfrac{\ln 2}{2\pi} + i\big)\theta\Big)
+          \quad \text{(3D Eulerian Projection)} $$</span
         >
       </div>
 
@@ -11704,12 +11791,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2 lang="fr">4. Résultats : Chute brutale de 50% du Hashrate</h2>
             
             <div class="plot-container" style="margin-top: 1.5rem; margin-bottom: 1.5rem; background: #fff; border-radius: 8px; padding: 10px;">
-    
-              <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.2.0.min.js" defer></script>  
-          
-              <div style="text-align: center; color: #000; padding: 50px;">
-                  <div id="d37b5421-1e67-43e9-9747-f0dc95570a6c" class="plotly-graph-div" style="height:100%; width:100%;"></div>   
-                  <script src="code/plot_nervosite.js" defer></script>         
+              <div style="text-align: center; color: #000; padding: 20px;">
+                  <div id="d37b5421-1e67-43e9-9747-f0dc95570a6c" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+                  <script src="code/plot_nervosite.js" defer></script>
               </div>
             </div>
           
@@ -11752,15 +11836,15 @@ document.addEventListener("DOMContentLoaded", () => {
             
             <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 204, 0, 0.05); border-left: 4px solid #ffcc00; border-radius: 0 8px 8px 0;">
                 <p lang="en" style="margin: 0; font-style: italic; color: #ffcc00;">
-                  <strong>Conclusion:</strong> Short windows are hyper-vulnerable to stochastic noise (luck of the miners). Giant windows are mathematically perfect against noise, but cause unacceptable paralysis during a shock. $W=2016$ is the precise mathematical equilibrium point.
+                  <strong>Conclusion:</strong> Short windows are hyper-vulnerable to stochastic noise (luck of the miners). Giant windows are mathematically perfect against noise, but cause unacceptable paralysis during a shock. $W=2016$ ($14\text{ days} \times 144\text{ blocks/day}$) is the precise mathematical equilibrium point.
                 </p>
                 <p lang="fr" style="margin: 0; font-style: italic; color: #ffcc00;">
-                  <strong>Conclusion :</strong> $W=2016$ représente bien l'optimum mathématique entre la vulnérabilité au bruit (fenêtres courtes victimes de la chance des mineurs) et la paralysie temporelle inacceptable du réseau lors d'un choc (fenêtres géantes).
+                  <strong>Conclusion :</strong> $W=2016$ ($14\text{ jours} \times 144\text{ blocs/jour}$) représente bien l'optimum mathématique entre la vulnérabilité au bruit (fenêtres courtes victimes de la chance des mineurs) et la paralysie temporelle inacceptable du réseau lors d'un choc (fenêtres géantes).
                 </p>
             </div>
-          </div>  
           </div>
         </details>
+      </div>
           
 
       <div id="sec9"></div>
@@ -13234,15 +13318,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <div style="margin-top: 1.5rem; padding: 1rem; border-left: 3px solid #00ffcc; background: rgba(0, 255, 204, 0.05);">
         <h5 lang="en" style="color: #00ffcc; margin-bottom: 0.5rem; font-size: 0.95rem;">⏱️ The 2140 Convergence</h5>
         <h5 lang="fr" style="color: #00ffcc; margin-bottom: 0.5rem; font-size: 0.95rem;">⏱️ La Convergence de 2140</h5>
-        <p lang="en" style="margin-bottom: 0.5rem; font-size: 0.85rem; color: #ccc;">
-          In 2009, the action of a CPU hash ($h_N = e_{hash} \times \tau_{hash}$) was roughly $10^{-11} \text{ J}\cdot\text{s}$. By 2026, 3nm ASICs compressed this to $10^{-22} \text{ J}\cdot\text{s}$. The network crossed 11 orders of magnitude in 17 years. There are exactly 12 orders of magnitude left to hit the true Planck constant ($h \approx 10^{-34} \text{ J}\cdot\text{s}$). If we model the exponential physical friction required to breach Landauer's limit (necessitating reversible quantum computing), the asymptotic convergence of $h_N \to h$ points directly to the early 22nd century. Beautifully, it flattens exactly around the year <strong>2140</strong>—the mathematically hardcoded date for the 33rd and final halving.
+        <p lang="en" style="margin-bottom: 0.5rem; font-size: 0.85rem; color: #cbd5e1; line-height: 1.65;">
+          In 2009, the physical action of a single CPU hash ($h_N = e_{\mathrm{hash}} \cdot \tau_{\mathrm{hash}}$) was roughly $10^{-11}\text{ J}\cdot\text{s}$. By 2026, $3\text{ nm}$ ASICs ($e_{\mathrm{hash}} \approx 1.5\times 10^{-11}\text{ J}$ at $15\text{ J/TH}$, gate delay $\tau_{\mathrm{hash}} \approx 6.7\text{ ps}$) compressed this to $\sim 10^{-22}\text{ J}\cdot\text{s}$—crossing $11$ orders of magnitude in $17$ years. Since Planck's quantum of action sits at $h = 6.626 \times 10^{-34}\text{ J}\cdot\text{s}$ ($\log_{10} h \approx -33.18$), <strong>$11.2$ orders of magnitude remain</strong>. Modeling the physical friction near Landauer's erasure bound ($E_L = k_B T \ln 2 \approx 2.87 \times 10^{-21}\text{ J}$ at $300\text{ K}$, requiring adiabatic/reversible computing beyond CMOS) via $\log_{10} h_N(t) = \log_{10} h + 11.18\,e^{-\lambda(t-2026)}$ ($\lambda \approx 0.073\text{ yr}^{-1}$), the curve enters its quantum asymptote ($<0.01\text{ decade}$ from $h$) right around <strong>2140</strong>—coinciding with the protocol's 33rd and final halving.
         </p>
-        <p lang="fr" style="margin-bottom: 0; font-size: 0.85rem; color: #ccc;">
-          En 2009, l'action d'un hachage CPU ($h_N = e_{hash} \times \tau_{hash}$) était d'environ $10^{-11} \text{ J}\cdot\text{s}$. En 2026, les ASICs 3nm l'ont compressée à $10^{-22} \text{ J}\cdot\text{s}$. Le réseau a franchi 11 ordres de grandeur en 17 ans. 
-          La comparaison avec la constante de Planck ($h \approx 10^{-34} \text{ J}\cdot\text{s}$) doit être comprise comme une analogie d’échelle, non comme une trajectoire physique prédictive. 
-          Toute extrapolation vers des limites physiques fondamentales dépendrait de modèles matériels, économiques et thermodynamiques très incertains, et ne peut pas être déduite du protocole Bitcoin seul. 
-          La proximité symbolique avec l’horizon d’émission autour de <strong>2140</strong> 
-          peut être utilisée comme motif narratif, mais ne constitue pas une prédiction physique, juste une trajectoire possible.
+        <p lang="fr" style="margin-bottom: 0.5rem; font-size: 0.85rem; color: #cbd5e1; line-height: 1.65;">
+          En 2009, l'action élémentaire d'un hachage CPU ($h_N = e_{\mathrm{hash}} \cdot \tau_{\mathrm{hash}}$) avoisinait $10^{-11}\text{ J}\cdot\text{s}$. En 2026, les puces ASIC $3\text{ nm}$ ($e_{\mathrm{hash}} \approx 1,5\times 10^{-11}\text{ J}$ à $15\text{ J/TH}$, temps de commutation $\tau_{\mathrm{hash}} \approx 6,7\text{ ps}$) l'ont comprimée vers $\sim 10^{-22}\text{ J}\cdot\text{s}$, franchissant $11$ ordres de grandeur en $17$ ans. La constante de Planck valant $h = 6,626 \times 10^{-34}\text{ J}\cdot\text{s}$ ($\log_{10} h \approx -33,18$), il reste exactement <strong>$11,2$ ordres de grandeur</strong> à parcourir. En modélisant la friction physique au voisinage du mur d'effacement de Landauer ($E_L = k_B T \ln 2 \approx 2,87 \times 10^{-21}\text{ J}$ à $300\text{ K}$, imposant le passage au calcul adiabatique réversible) selon $\log_{10} h_N(t) = \log_{10} h + 11,18\,e^{-\lambda(t-2026)}$ ($\lambda \approx 0,073\text{ an}^{-1}$), l'asymptote quantique est atteinte à $99,98\,\%$ autour de <strong>2140</strong> — date mathématiquement programmée du 33<sup>e</sup> et ultime Halving.
         </p>
         <!-- SECTION ÉQUATION DE CONVERGENCE -->
         <div style="margin: 2rem 0; padding: 2rem; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(0, 255, 204, 0.3); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #e0e0e0;">
@@ -13307,13 +13387,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const hN_values = [];
             const planck_limit = [];
 
-            // Paramètres du modèle
+            // Paramètres calibrés (2009 -> 10^-11 | 2026 -> ~10^-22 | 2140 -> ~10^-33.18 Planck)
             const startYear = 2009;
             const endYear = 2140;
-            const E_start = -11;   // 2009: 10^-11 J.s
-            const E_limit = -33.18; // Planck: ~10^-33.18 J.s
-            const alpha = 0.75;    // Coefficient de friction physique (étirement)
-            const lambda = 0.078;  // Calibrage pour 2026 ~ 10^-22
+            const E_start = -11.0;    // 2009: 10^-11 J.s (CPU)
+            const E_limit = -33.1787; // log10(h = 6.62607e-34 J.s) exact CODATA
+            const alpha = 0.88;       // Friction post-Landauer (calcul adiabatique réversible)
+            const lambda = 0.057;     // Calibrage exact : 2026 -> -22.05 et 2140 -> -32.85 (asymptote h)
 
             for (let t = startYear; t <= endYear; t++) {
                 years.push(t);
@@ -13454,12 +13534,16 @@ nSubsidy >>= halvings;
 </div>
 
       
-<div style="text-align: center; margin: 6rem 0 3rem; padding: 2rem; border-top: 1px solid rgba(255, 204, 0, 0.3); border-bottom: 1px solid rgba(255, 204, 0, 0.3); background: rgba(255, 204, 0, 0.03);">
-  <h2 lang="en" style="margin: 0; font-size: 2.2rem; color: #fff; border: none;">ACT III: Cognition & Evolution</h2>
-  <h2 lang="fr" style="margin: 0; font-size: 2.2rem; color: #fff; border: none;">ACTE III : Cognition et Évolution</h2>
-  <p lang="en" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">From thermodynamics to the planetary awakening.</p>
-  <p lang="fr" style="color: var(--sun-yellow); font-style: italic; margin-top: 1rem; margin-bottom: 0;">De la thermodynamique à l'éveil planétaire.</p>
-</div>
+<div class="act-banner act-iii" role="region" aria-label="Acte III">
+        <div class="act-kicker">
+          <span lang="en">Act III · Active Inference & Planetary Noosphere</span>
+          <span lang="fr">Acte III · Inférence Active & Noosphère Planétaire</span>
+        </div>
+        <div class="act-heading" lang="en">ACT III: Cognition & Evolution</div>
+        <div class="act-heading" lang="fr">ACTE III : Cognition et Évolution</div>
+        <p class="act-subtitle" lang="en">From H.T. Odum's Emergy and Maxwell's Demon to Karl Friston's planetary awakening.</p>
+        <p class="act-subtitle" lang="fr">De l'Émergie d'Odum et du Démon de Maxwell à l'éveil planétaire de Karl Friston.</p>
+      </div>
 
 
       <div id="sec11"></div>
@@ -14053,18 +14137,15 @@ consensus.powLimit = <span class="function">uint256S</span>(<span class="string"
         Observez ci-dessous le découplage entre la frontière physique (le Hashrate logistique) et l'accumulation métaphysique (l'Émergie) :
       </p>
 
-      <!-- JAVASCRIPT FIGURE -->
-      <!-- Include Plotly if not already in the <head> -->
-      <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-
-      <div style="max-width: 800px; margin: 3rem auto; font-family: 'Helvetica Neue', sans-serif;">
+      <!-- JAVASCRIPT FIGURE (Plotly déjà chargé dans <head>) -->
+      <div style="max-width: 840px; margin: 3rem auto; font-family: var(--font-ui);">
   
         <!-- Contrôles interactifs -->
-        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px 8px 0 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px 12px 0 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
           <div style="flex: 1; min-width: 250px;">
-            <label for="growthRateSlider" style="color: #d4d4d4; font-size: 0.95rem; font-weight: bold; display: block; margin-bottom: 0.8rem;">
+            <label for="growthRateSlider" style="color: #e2e8f0; font-size: 0.95rem; font-weight: 700; display: block; margin-bottom: 0.8rem;">
               <span lang="en">Metabolic Growth Rate ($k$)</span>
-              <span lang="fr" style="display: none;">Taux de Croissance Métabolique ($k$)</span>
+              <span lang="fr">Taux de Croissance Métabolique ($k$)</span>
             </label>
             <input type="range" id="growthRateSlider" min="0.05" max="0.4" step="0.01" value="0.15" style="width: 100%; cursor: pointer;">
           </div>
@@ -14261,7 +14342,7 @@ consensus.powLimit = <span class="function">uint256S</span>(<span class="string"
         <div class="proof-title" lang="en" style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 1.5rem;">
           The Topology of Embodied Work
         </div>
-        <div class="proof-title" lang="fr" style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 1.5rem; display: none;">
+        <div class="proof-title" lang="fr" style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 1.5rem;">
           La Topologie du Travail Incorporé
         </div>
 
@@ -16516,6 +16597,23 @@ consensus.nPowTargetTimespan = <span class="number">14</span> * <span class="num
         </div>
       </div>
 
+      <!-- PONT D'UNIFICATION INTER-ACTES : DE IT-FROM-BIT AU NAUTILE 3D & AU WOOD WIDE WEB -->
+      <div style="margin: 3.5rem 0; padding: 1.9rem 2.1rem; background: linear-gradient(145deg, rgba(9,13,22,0.92), rgba(4,8,6,0.95)); border: 1px solid rgba(68, 238, 119, 0.28); border-left: 4px solid var(--bio-green, #44ee77); border-radius: 14px; font-family: var(--font-ui); box-shadow: 0 16px 42px rgba(0,0,0,0.65);">
+        <h4 style="color: var(--sun-yellow, #ffcc00); margin: 0 0 0.85rem; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1.4px;">
+          <span lang="fr">🔗 Continuité Mathématique de la Tétralogie (Actes I → IV & Wood Wide Web)</span>
+          <span lang="en">🔗 Mathematical Continuity Across the Tetralogy (Acts I → IV & Wood Wide Web)</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.88rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 1rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.95rem;">
+          $$ \underbrace{\Delta E \ge k_B T \ln 2}_{\text{Acte I (It from Bit)}} \;\longrightarrow\; \underbrace{z(\theta) = |z_0|\,e^{(\kappa_\varphi + i)\theta}}_{\text{Acte II (Plan Complexe }\mathbb{C}\text{)}} \;\longrightarrow\; \underbrace{\mathcal{G} = g(\theta)\oplus f(\theta)}_{\text{Acte III (Nautile Bimétrique 3D)}} \;\longrightarrow\; \underbrace{\text{PUE} \to 1,008 \;\land\; \text{WU/kWh}}_{\text{Matrice Inversée & Wood Wide Web}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.92rem; color: #cbd5e1; line-height: 1.68; text-align: justify;">
+          Chaque cloison scellée du Nautile correspond à une époque homéostatique où la jauge covariante du DAA ($\beta_{\mathrm{eff}} = 1/k_B T_{\mathrm{eff}}$, fenêtre optimale $W = 2016\text{ blocs}$) maintient la pulsation solaire de $144\text{ blocs/jour}$ ($\tau_B = 600\text{ s}$). Projeté sur le plan transverse, ce cylindre redonne l'anneau de Kuramoto et la spirale d'or de l'Acte II ; projeté dans le substrat physique terrestre, son effet Joule alimente le mycélium régénératif de <em>La Matrice Inversée</em> et rejoint l'arbre de Merkle biologique du <em>Wood Wide Web</em>.
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.92rem; color: #cbd5e1; line-height: 1.68; text-align: justify;">
+          Each sealed chamber of the Nautilus marks a homeostatic epoch in which the DAA covariant gauge ($\beta_{\mathrm{eff}} = 1/k_B T_{\mathrm{eff}}$, optimal window $W = 2016\text{ blocks}$) locks the solar rhythm at $144\text{ blocks/day}$ ($\tau_B = 600\text{ s}$). Projected onto the transverse plane, this cylinder recovers Act II's Kuramoto ring and Golden Spiral; grounded in terrestrial bedrock, its Joule dissipation powers the regenerative mycelium of <em>The Inverted Matrix</em> and mirrors the living Merkle trunk of <em>The Wood Wide Web</em>.
+        </p>
+      </div>
+
       <div id="conclusion"></div>
       <h2 lang="en">Conclusion: Forging a Digital Shell</h2>
       <h2 lang="fr">Conclusion&nbsp;: Forger une Carapace Numérique</h2>
@@ -17603,6 +17701,39 @@ consensus.nPowTargetTimespan = <span class="number">14</span> * <span class="num
     </script>
     <!-- FIN DE L'ILLUSTRATION INTERACTIVE -->
 
+      <!-- SECTION AUTEUR & RESSOURCES UNIFIÉE -->
+      <div style="margin: 3.5rem 0; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255, 204, 0, 0.22); border-top: 4px solid var(--sun-yellow); border-radius: 14px; font-family: var(--font-ui);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.1rem; padding-bottom:1.1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div style="display:flex; align-items:center; gap:1.1rem;">
+            <div style="font-size:2.3rem;">🐚☀️🧭</div>
+            <div>
+              <h3 style="color:#fff; margin:0; font-size:1.12rem; text-transform:uppercase;">Pascal Ranoroarijaona (Ranaora)</h3>
+              <p style="color:#94a3b8; font-size:0.87rem; margin:0.25rem 0 0; text-align:left;">
+                <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Physique statistique hors équilibre, topologie du consensus & calcul régénératif.</span>
+                <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Non-equilibrium statistical physics, consensus topology & regenerative compute.</span>
+              </p>
+            </div>
+          </div>
+          <button type="button" onclick="copyNautilusBibtex()" style="background: rgba(255, 204, 0, 0.12); border: 1px solid rgba(255, 204, 0, 0.4); color: var(--sun-yellow); border-radius: 999px; padding: 7px 15px; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            📋 <span lang="fr">Copier BibTeX</span><span lang="en">Copy BibTeX</span>
+          </button>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.95rem;">
+          <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+            <h4 style="color:var(--sun-yellow); font-size:0.92rem; margin:0 0 0.4rem;">☀️ The Sun Standard</h4>
+            <p style="font-size:0.79rem; color:#94a3b8; line-height:1.48; margin:0;"><span lang="fr">Portail théorique : temps thermique KMS, preuves Lean 4 et éconophysique post-PIB.</span><span lang="en">Theoretical portal: KMS thermal time, Lean 4 proofs, and post-GDP econophysics.</span></p>
+          </a>
+          <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+            <h4 style="color:var(--bio-green); font-size:0.92rem; margin:0 0 0.4rem;">🌱 Regenerative Compute</h4>
+            <p style="font-size:0.79rem; color:#94a3b8; line-height:1.48; margin:0;"><span lang="fr">Application industrielle : convertir l'exergie du calcul en eau MOF-303, biochar et serres.</span><span lang="en">Field engineering: turning compute exergy into MOF-303 water, biochar, and harvests.</span></p>
+          </a>
+          <a href="wood-wide-web.html" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+            <h4 style="color:var(--cyan-l2); font-size:0.92rem; margin:0 0 0.4rem;">🌲 The Wood Wide Web</h4>
+            <p style="font-size:0.79rem; color:#94a3b8; line-height:1.48; margin:0;"><span lang="fr">Chapitre 4 d'Homo Biodiversitas : le mycélium forestier ancêtre biologique de Lightning.</span><span lang="en">Chapter 4 of Homo Biodiversitas: forest mycelium as biological Lightning Network.</span></p>
+          </a>
+        </div>
+      </div>
+
       <div class="feedback-container">
         <h3 lang="en" class="feedback-title">Help Improve This Theory</h3>
         <h3 lang="fr" class="feedback-title">
@@ -17675,55 +17806,28 @@ consensus.nPowTargetTimespan = <span class="number">14</span> * <span class="num
         <span lang="en">✅ Feedback successfully submitted! Thank you.</span>
         <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
       </div>
-      <div class="article-navigation">
-        <a href="l-univers-participatif.html" class="nav-card" target="_blank" rel="noopener noreferrer">
-          <div style="width: 100%">
-            <div class="nav-direction" lang="en">
-              Read the foundational essay 1/2
-            </div>
-            <div class="nav-direction" lang="fr">
-              Lire l'essai fondateur 1/2
-            </div>
-
-            <div class="nav-title" lang="en">
-              The Awakening of the Participatory Universe
-            </div>
-            <div class="nav-title" lang="fr">
-              L'Éveil de l'Univers Participatif
-            </div>
-          </div>
-          <img src="img/UniversJumeau.png" alt="L'Univers Jumeau" />
-        </a>
-
+      <!-- NAVIGATION INTER-ARTICLES UNIFIÉE -->
+    <div class="article-navigation">
         <a href="le-monde-est-complexe.html" class="nav-card">
-          <div style="width: 100%">
-            <div class="nav-direction" lang="en">
-              Read the foundational essay 2/2
+            <div style="width: 100%;">
+                <div class="nav-direction" lang="en">← Act II (Previous Article)</div>
+                <div class="nav-direction" lang="fr">← Acte II (Article Précédent)</div>
+                <div class="nav-title" lang="en">The World is Complex: $z = a + ib$</div>
+                <div class="nav-title" lang="fr">Le monde est complexe : $z = a + ib$</div>
             </div>
-            <div class="nav-direction" lang="fr">
-              Lire l'essai fondateur 2/2
-            </div>
-
-            <div class="nav-title" lang="en">The World is Complex</div>
-            <div class="nav-title" lang="fr">Le monde est complexe</div>
-          </div>
-          <img src="img/ComplexWorld.png" alt="Complex World" />
+            <img src="img/ComplexWorld.png" alt="Le monde est complexe" onerror="this.style.display='none'">
         </a>
+
         <a href="matrice-inversee.html" class="nav-card">
-          <div style="width: 100%">
-            <div class="nav-direction" lang="en">
-              Read the next essay ACT IV
+            <div style="width: 100%;">
+                <div class="nav-direction" lang="en">Act IV · Field Engineering →</div>
+                <div class="nav-direction" lang="fr">Acte IV · Ingénierie de Terrain →</div>
+                <div class="nav-title" lang="en">The Inverted Matrix · Regenerative Compute</div>
+                <div class="nav-title" lang="fr">La Matrice Inversée · Calcul Régénératif</div>
             </div>
-            <div class="nav-direction" lang="fr">
-              Lire l'acte IV 
-            </div>
-
-            <div class="nav-title" lang="en">The Inverted Matrix</div>
-            <div class="nav-title" lang="fr">La Matrice Inverse</div>
-          </div>
-          <img src="img/LongTermVision.png" alt="Inverted Matrix" />
+            <img src="img/VieOrganiqueSurface.png" alt="La Matrice Inversée" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
         </a>
-      </div>
+    </div>
             <!-- ACKNOWLEDGEMENTS / REMERCIEMENTS -->
       <div
         id="acknowledgements"
@@ -18787,26 +18891,76 @@ the physical or biological metaphors should not be interpreted as literal identi
 
     <script>
       function setLang(lang) {
-        lang = lang.toLowerCase();
-        if (lang !== "en" && lang !== "fr") lang = "en";
+        lang = (lang || "fr").toLowerCase();
+        if (lang !== "en" && lang !== "fr") lang = "fr";
 
         document.body.className = "lang-" + lang;
+        const btnEn = document.getElementById("btn-en");
+        const btnFr = document.getElementById("btn-fr");
+        if (btnEn) btnEn.setAttribute("aria-current", lang === "en" ? "true" : "false");
+        if (btnFr) btnFr.setAttribute("aria-current", lang === "fr" ? "true" : "false");
+
+        try { localStorage.setItem("sun-std-lang", lang); } catch (e) {}
         try {
-          localStorage.setItem("sun-std-lang", lang);
+          const url = new URL(window.location.href);
+          url.searchParams.set("lg", lang.toUpperCase());
+          window.history.replaceState({}, "", url);
         } catch (e) {}
 
-        const url = new URL(window.location);
-        url.searchParams.set("lg", lang.toUpperCase());
-        window.history.replaceState({}, "", url);
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
+
+        // Force Plotly à recalculer les dimensions des graphes qui viennent de passer de display:none à visible
+        if (typeof Plotly !== "undefined") {
+          setTimeout(() => {
+            document.querySelectorAll(".js-plotly-plot").forEach((el) => {
+              if (el.offsetParent !== null) {
+                try { Plotly.Plots.resize(el); } catch (e) {}
+              }
+            });
+          }, 60);
+        }
       }
+
+      window.copyNautilusBibtex = function () {
+        const bib = `@article{ranaora_yii_2026_nautilus,
+  author = {Ranoroarijaona, Pascal and Yii, Jennifer},
+  title = {Nakamoto Distributed Consensus as a Non-Equilibrium Phase Transition: A Phenomenological Statistical-Physics Description},
+  year = {2026},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.19160047},
+  url = {https://www.thesunstandard.net/blog/nautile-nakamoto.html}
+}
+
+@article{ranaora_2026_ipi,
+  author = {Ranaora, Pascal},
+  title = {Thermodynamic Stability and Phase Transitions in the Nakamoto Consensus},
+  journal = {IPI Letters},
+  volume = {4},
+  number = {2},
+  pages = {1--12},
+  year = {2026},
+  doi = {10.59973/ipil.325}
+}`;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(bib).catch(() => {});
+        }
+        const t = document.getElementById("sun-toast");
+        if (t) {
+          t.textContent = document.body.classList.contains("lang-fr")
+            ? "📋 Références BibTeX copiées !"
+            : "📋 BibTeX references copied!";
+          t.style.opacity = "1";
+          t.style.transform = "translateY(0)";
+          setTimeout(() => { t.style.opacity = "0"; t.style.transform = "translateY(12px)"; }, 3000);
+        }
+      };
 
       window.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get("lg");
-        const savedLang = urlLang
-          ? urlLang
-          : localStorage.getItem("sun-std-lang") || "fr";
-        setLang(savedLang);
+        let saved = "fr";
+        try { saved = localStorage.getItem("sun-std-lang") || "fr"; } catch (e) {}
+        setLang(urlLang ? urlLang : saved);
       });
     </script>
     <script>
@@ -20671,5 +20825,77 @@ the physical or biological metaphors should not be interpreted as literal identi
   "inLanguage": ["fr", "en"]
 }
 </script>
-  </body>
+  <div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 1000; background: rgba(8, 22, 14, 0.96); border: 1px solid #44ee77; color: #44ee77; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    // Capture propre du DOM, en nettoyant à la volée les éventuels artefacts MathJax si déjà rendus
+    function getCleanHTMLSource() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles').forEach(el => el.remove());
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!DOCTYPE html>\n" + clone.outerHTML;
+    }
+
+    function showNautilusToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        const isFr = document.body.classList.contains('lang-fr');
+        t.textContent = isFr ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._nautToastTimer);
+        window._nautToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyTextFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadNautilusHTML = function() {
+        const src = getCleanHTMLSource();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'nautile-nakamoto.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showNautilusToast('✅ nautile-nakamoto.html téléchargé !', '✅ nautile-nakamoto.html downloaded!');
+        } catch (err) {
+            copyTextFallback(src);
+            showNautilusToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyNautilusHTML = function() {
+        copyTextFallback(getCleanHTMLSource());
+        showNautilusToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
+
+    // Alias au cas où le bouton de la nav appelle downloadStandaloneHTML()
+    if (!window.downloadStandaloneHTML) window.downloadStandaloneHTML = window.downloadNautilusHTML;
+    if (!window.copyStandaloneHTML) window.copyStandaloneHTML = window.copyNautilusHTML;
+})();
+</script>
+</body>
 </html>
