@@ -11,8 +11,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Horizon Zéro 2044 | L'Éveil de la Noosphère (v3.0)</title>
-    <meta name="description" content="Architecture Horizon Zéro 2044 (v3.0) : La Noosphère, Vérité Algorithmique Décentralisée (VAD), Grand Livre Incorruptible, et les Gardiens Telluriques." />
+    <title>Horizon Zéro 2044 (Acte V · Prospective) | L'Éveil de la Noosphère (v3.0) — L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/horizon-zero-2044.html" />
+    <meta name="description" content="Horizon Zéro 2044 (v3.0) : Pyramide Systémique L0–L4, Vérité Algorithmique Décentralisée (VAD), Ancre Noosphérique PoW, et Gardiens Telluriques." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Horizon Zéro 2044 — L'Éveil de la Noosphère (Pyramide 3.0) | L'Étalon Solaire" />
+    <meta property="og:description" content="Traité d'Architecture Cyber-Thermodynamique L0–L4 : Gardiens Telluriques, Onde de Cohérence Relativiste, Temps Profond et Symbiose Homme-Machine." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/horizon-zero-2044.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/HorizonZero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Horizon Zéro 2044 — L'Éveil de la Noosphère (v3.0)" />
+    <meta name="twitter:description" content="L'imaginaire trace la carte, la thermodynamique dicte le territoire. Architecture L0–L4 sous l'Étalon Solaire." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/HorizonZero.png" />
     
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
@@ -53,47 +63,87 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: #040508;
+            color: #e2e8f0;
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(179, 102, 255, 0.05) 0%, transparent 60%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(179, 102, 255, 0.08) 0%, rgba(0, 229, 255, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(247, 147, 26, 0.05) 0%, transparent 55%);
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--teal-l0), var(--orange-l1), var(--cyan-l2), var(--purple-l4));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(179, 102, 255, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(179, 102, 255, 0.14), rgba(0, 229, 255, 0.06)), rgba(5, 6, 10, 0.88);
+            color: var(--purple-l4); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(179, 102, 255, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
-            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
-            backdrop-filter: blur(8px);
+        nav.top-tetralogy-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 5, 8, 0.92);
+            border-bottom: 1px solid rgba(179, 102, 255, 0.3); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
-        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav a.back:hover { color: #fff; }
+        nav.top-tetralogy-nav .logo {
+            font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--purple-l4); text-decoration: none; white-space: nowrap;
+        }
+        nav.top-tetralogy-nav .nav-links {
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav.top-tetralogy-nav .nav-links a {
+            color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav.top-tetralogy-nav .nav-links a:hover { color: #fff; background: rgba(179, 102, 255, 0.16); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(179, 102, 255, 0.14); border: 1px solid rgba(179, 102, 255, 0.45);
+            color: var(--purple-l4); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(179, 102, 255, 0.28); color: #fff; transform: translateY(-1px); }
 
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.3rem; color: white;
-            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en, body.lang-fr #btn-fr {
-            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+            opacity: 1; filter: grayscale(0%); border-color: var(--purple-l4);
+            background: rgba(179, 102, 255, 0.18); box-shadow: 0 0 12px rgba(179, 102, 255, 0.35);
+        }
+        @media (max-width: 980px) {
+            nav.top-tetralogy-nav .nav-links { display: none; }
         }
 
         article {
-            max-width: 940px; margin: 8rem auto 6rem; padding: 0 2rem;
-            font-size: 1.15rem; color: #d4d4d4;
+            max-width: 1040px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #epistemic-protocol, #pyramide-v3, #det-l0, #det-l1, #det-l2, #det-l3, #det-l4, #symbiotic-constitution, #cybernetics-topologie, #cycle-resonance-box, #scenario-lab {
+            scroll-margin-top: 5.5rem;
         }
 
         header {
@@ -745,23 +795,38 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav>
-    <a href="index.html" class="logo">☀ Horizon Zéro</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-tetralogy-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🧬 L'Étalon Solaire · Horizon 2044</a>
+    <div class="nav-links">
+        <a href="#epistemic-protocol"><span lang="fr">1. Épistémologie</span><span lang="en">1. Epistemology</span></a>
+        <a href="#pyramide-v3"><span lang="fr">2. Pyramide L0–L4</span><span lang="en">2. L0–L4 Pyramid</span></a>
+        <a href="#symbiotic-constitution"><span lang="fr">3. Pacte & Sortie</span><span lang="en">3. Pact & Exit</span></a>
+        <a href="#cybernetics-topologie"><span lang="fr">4. Topologie v3.0</span><span lang="en">4. v3.0 Topology</span></a>
+        <a href="#cycle-resonance-box"><span lang="fr">5. Cycles 18a/21a</span><span lang="en">5. 18y/21y Cycles</span></a>
+        <a href="#scenario-lab"><span lang="fr">6. Labo 2044</span><span lang="en">6. 2044 Lab</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadHorizonHTML()" title="Télécharger horizon-zero-2044.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
 <article>
     <header>
+        <div style="margin-bottom: 1rem;">
+            <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(179, 102, 255, 0.14); border: 1px solid rgba(179, 102, 255, 0.45); color: var(--purple-l4); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Horizon Civilisationnel de la Tétralogie · Architecture Cyber-Thermodynamique L0–L4
+            </span>
+            <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(179, 102, 255, 0.14); border: 1px solid rgba(179, 102, 255, 0.45); color: var(--purple-l4); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Civilizational Horizon of the Tetralogy · L0–L4 Cyber-Thermodynamic Architecture
+            </span>
+        </div>
         <h1>
             <span lang="fr">Horizon Zéro 2044</span>
             <span lang="en">Horizon Zero 2044</span>
@@ -779,6 +844,23 @@
             <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // HARDENED WEB 3.0 MATRIX // KARDASHEV TYPE I</span>
         </p>
     </header>
+
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE -->
+    <div class="export-toolkit-bar" style="margin: -1.5rem 0 2.5rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(179, 102, 255, 0.08) 0%, rgba(0, 229, 255, 0.07) 52%, rgba(247, 147, 26, 0.07) 100%); border: 1px solid rgba(179, 102, 255, 0.34); border-left: 4px solid var(--purple-l4); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 630px;">
+            <span lang="fr">🧬 <strong>Architecture Open-Source Interactive :</strong> Téléchargez le code source autonome (<code>horizon-zero-2044.html</code> — Pyramide L0–L4, Topologie Cybernétique, Matrice de Battement 18a/21a et Laboratoire de Bifurcation) pour l'explorer ou le challenger avec votre IA locale.</span>
+            <span lang="en">🧬 <strong>Interactive Open-Source Architecture:</strong> Download the standalone HTML source (<code>horizon-zero-2044.html</code>—L0–L4 Pyramid, Cybernetic Topology, 18y/21y Beat Matrix, and Bifurcation Lab) for local AI verification.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadHorizonHTML()" style="background: rgba(179, 102, 255, 0.18); border: 1px solid #b366ff; color: #d8b4fe; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyHorizonHTML()" style="background: rgba(0, 229, 255, 0.16); border: 1px solid #00e5ff; color: #00e5ff; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
+
     <div class="intro-hero">
         <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank"><img src="img/logo-horizonzero.png" alt="Horizon Zero Architecture Pyramide" loading="lazy"></a>
         <img src="img/HorizonZero.png" alt="Horizon Zero Architecture Pyramide" loading="lazy">
@@ -927,8 +1009,25 @@
         </div>
     </div>
 
+    <!-- PONT D'UNIFICATION AVEC LA TÉTRALOGIE (ACTES I–IV -> COUCHES L0–L4) -->
+    <div style="margin: 2.5rem 0; padding: 1.7rem 2rem; background: linear-gradient(145deg, rgba(11,13,22,0.94), rgba(6,8,14,0.96)); border: 1px solid rgba(179, 102, 255, 0.3); border-left: 4px solid var(--orange-l1); border-radius: 12px; font-family: var(--font-ui); box-shadow: 0 14px 36px rgba(0,0,0,0.6);">
+        <h4 style="color: var(--sun-yellow); margin: 0 0 0.75rem; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 1.4px;">
+            <span lang="fr">🔗 Isomorphisme entre la Tétralogie (Actes I–IV) et la Pyramide Systémique (L0–L4)</span>
+            <span lang="en">🔗 Isomorphism Between the Tetralogy (Acts I–IV) and the Systemic Pyramid (L0–L4)</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 0.95rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.85rem;">
+            $$ \underbrace{L_0 \; (\text{Cogénération, MOF, Biochar})}_{\text{Acte IV · La Matrice Inversée}} \;\longrightarrow\; \underbrace{L_1 \; (\Delta E \ge k_B T\ln 2 \;\land\; \mathcal{G}_{MN})}_{\text{Actes I & III · Univers Jumeau & Nautile}} \;\longrightarrow\; \underbrace{L_2\text{–}L_3 \; (z = a+ib \;\land\; \text{Mycélium})}_{\text{Acte II & Wood Wide Web}} \;\longrightarrow\; \underbrace{L_4 \; (\max \text{WU}/\dot{E})}_{\text{Noosphère 2044}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            La Pyramide 3.0 n'est pas une abstraction isolée : sa <strong>Couche 0</strong> déploie à l'échelle planétaire le calcul régénératif souterrain de <a href="matrice-inversee.html" style="color:var(--bio-green);">La Matrice Inversée</a> ; sa <strong>Couche 1</strong> scelle le temps thermique et la carapace bimétrique du <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Nautile de Nakamoto</a> ; ses <strong>Couches 2–3</strong> prolongent le routage mycélien du <a href="wood-wide-web.html" style="color:var(--cyan-l2);">Wood Wide Web</a> et la dualité complexe de l'<a href="le-monde-est-complexe.html" style="color:var(--purple-l4);">Acte II</a> jusqu'à la Noosphère (L4).
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            Pyramid 3.0 directly unifies the preceding essays: <strong>Layer 0</strong> scales the subterranean regenerative compute of <a href="matrice-inversee.html" style="color:var(--bio-green);">The Inverted Matrix</a>; <strong>Layer 1</strong> locks the thermal time and bimetric shell of <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">The Nakamoto Nautilus</a>; <strong>Layers 2–3</strong> extend the mycelial channels of <a href="wood-wide-web.html" style="color:var(--cyan-l2);">The Wood Wide Web</a> and the complex plane of <a href="le-monde-est-complexe.html" style="color:var(--purple-l4);">Act II</a> up to the Noospheric apex (L4).
+        </p>
+    </div>
+
     <!-- STRUCTURE PYRAMIDALE INTERACTIVE -->
-    <div class="pyramid-wrapper">
+    <div class="pyramid-wrapper" id="pyramide-v3">
         <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
             <span lang="fr">🏛️ La Pyramide Systémique de Confiance (v3.0)</span>
             <span lang="en">🏛️ The Systemic Trust Pyramid (v3.0)</span>
@@ -1055,7 +1154,7 @@
             <p lang="en"><strong>[Security v3.0]</strong> Light takes 130 milliseconds to circle the Earth. Without compensation, billions of connected humans would suffer a "split-brain" syndrome due to relativistic latency. The <strong>Relativistic Coherence Wave (OCR)</strong> protocol forces Lightning Network HTLCs to buffer cognitive packets, delivering them on global harmonic phases. Humanity "thinks" and feels planetary events on a synchronized millisecond heartbeat, compensating for the laws of special relativity.</p>
 
             <div class="math-block" style="color: var(--cyan-l2);">
-                $$ \tau_{\text{antipode}} = \frac{\pi R_{\text{Terre}}}{c_{\text{LEO}}} \approx 67\text{ ms (aller)} \implies \tau_{\text{OCR}} = \frac{2\pi R_{\text{Terre}}}{c_{\text{LEO}}} \approx 134\text{ ms (cycle complet)} $$
+                $$ \tau_{\text{surface}} = \frac{2\pi R_\oplus}{c} \approx 133,7\text{ ms}, \qquad \tau_{\text{OCR, laser LEO}} = \frac{2\pi (R_\oplus + h_{\text{LEO}})}{c} \approx 145\text{ ms} \; (\text{vs } \sim 200\text{ ms en fibre } n\approx 1,47) $$
             </div>
             <div class="model-metadata" aria-label="Métadonnées du modèle">
             <div class="metadata-item">
@@ -1328,8 +1427,8 @@
                         <span lang="en">🎲 Random Chaos (GEQ)</span>
                     </h5>
                     <p style="font-size:0.88rem; color:#aaa; margin-bottom:0;">
-                        <span lang="fr">$\mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}}$. L'IHA ne peut jamais simuler l'avenir, la subversion est sanctuarisée par le bruit quantique universel.</span>
-                        <span lang="en">$\mathcal{H}(\text{Chaos}_{GEQ}) \ge \mathcal{H}_{\text{Planck}}$. HAI can never simulate the future; subversion is enshrined by universal quantum noise.</span>
+                        <span lang="fr">$H_\infty(\text{GEQ}) \ge h_{\min} > 0\text{ bit}$ ($\Delta\hat{X}\Delta\hat{P} \ge \hbar/2$). L'IHA ne peut jamais prédire la graine quantique : la sérendipité est sanctuarisée par l'indéterminisme de Born.</span>
+                        <span lang="en">$H_\infty(\text{GEQ}) \ge h_{\min} > 0\text{ bit}$ ($\Delta\hat{X}\Delta\hat{P} \ge \hbar/2$). HAI can never predict the quantum seed; serendipity is enshrined by Born-rule indeterminism.</span>
                     </p>
                 </div>
                 <div style="background: rgba(0,0,0,0.4); padding: 1.2rem; border-radius: 8px; border-left: 3px solid var(--orange-l1);">
@@ -1848,7 +1947,7 @@
     </div>
 
     <!-- MODULE D'ANIMATION CYBERNÉTIQUE TOTALE -->
-    <div style="margin: 5rem 0; background: #030407; border: 1px solid rgba(179, 102, 255, 0.35); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85); font-family: var(--font-ui);">
+    <div id="cybernetics-topologie" style="margin: 5rem 0; background: #030407; border: 1px solid rgba(179, 102, 255, 0.35); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85); font-family: var(--font-ui);">
         <div style="padding: 1.2rem 1.8rem; background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div>
                 <span style="font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; color: var(--sun-yellow); letter-spacing: 1px;">
@@ -2242,8 +2341,8 @@
             <span lang="en">📊 Thermo-Noospheric Balance Simulator (v3.0)</span>
         </h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; font-style: italic; margin-bottom: 2rem;">
-            <span lang="fr">Modélisation de l'arbitrage entre Sécurité PoW (L1), Routage IND (L2) et Soutien RBU/Défense Planétaire (L0/L3).</span>
-            <span lang="en">Thermodynamic modeling balancing PoW Security (L1), DNI Routing (L2), and RBU/Planetary Defense Support (L0/L3).</span>
+            <span lang="fr">Arbitrage énergétique à l'horizon 2044 (9<sup>e</sup> époque de Halving, puces ASIC-X post-CMOS à $\eta_{2044} \approx 2,5\text{ J/TH}$ avec cogénération intégrale L0) entre Ancre PoW (L1) et Soutien RBU/CDP (L0/L3).</span>
+            <span lang="en">2044 energy allocation trade-off (9th Halving epoch, post-CMOS ASIC-X chips at $\eta_{2044} \approx 2.5\text{ J/TH}$ with full L0 cogeneration) between PoW Anchor (L1) and RBU/PDC Support (L0/L3).</span>
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
@@ -2301,33 +2400,39 @@
 
         <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
             <input type="hidden" name="article_title" value="Architecture Horizon Zero 2044 VAD v3.0 Noosphere">
-            <textarea name="feedback" class="feedback-textarea" placeholder="Vos propositions d'ingénierie cybernétique..." required></textarea>
+            <textarea name="feedback" class="feedback-textarea" placeholder="Vos propositions d'ingénierie cybernétique... / Your cybernetic engineering proposals..." required></textarea>
             <button type="submit" class="feedback-submit" id="feedback-btn">
                 <span lang="fr">Transmettre au RNP</span>
                 <span lang="en">Transmit to RNP</span>
             </button>
         </form>
     </div>
+    <div id="success-popup" style="display:none; position:fixed; bottom:30px; right:30px; background:rgba(68, 238, 119, 0.12); border:1px solid #44ee77; color:#44ee77; padding:14px 24px; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,0.6); z-index:1000; backdrop-filter:blur(6px); font-family:var(--font-ui); font-weight:700;">
+        <span lang="en">✅ Transmission received by RNP! Thank you.</span>
+        <span lang="fr">✅ Transmission reçue par le RNP ! Merci.</span>
+    </div>
 
-    <!-- NAVIGATION ENTRE ARTICLES -->
+    <!-- NAVIGATION ENTRE ARTICLES UNIFIÉE -->
     <div class="article-navigation">
         <a href="matrice-inversee.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
-            <div class="nav-title"><span lang="fr">La Matrice Inversée -  Le Calcul Régénératif</span><span lang="en">The Inverted Matrix</span></div>
-            <img src="img/LongTermVision.png" alt="Matrice Inversée" style="width:100%; max-width:280px; border-radius:6px;">
+            <div style="width: 100%;">
+                <div class="nav-direction"><span lang="fr">← Acte IV (Article Précédent)</span><span lang="en">← Act IV (Previous Article)</span></div>
+                <div class="nav-title"><span lang="fr">La Matrice Inversée · Le Calcul Régénératif</span><span lang="en">The Inverted Matrix · Regenerative Compute</span></div>
+            </div>
+            <img src="img/LongTermVision.png" alt="La Matrice Inversée" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
         <a href="HailMary.html" class="nav-card">
             <div style="width: 100%;">
                 <div class="nav-direction">
-                    <span lang="en">Next Article →</span>
-                    <span lang="fr">Article Suivant →</span>
+                    <span lang="en">Interplanetary Horizon · Earth to Mars →</span>
+                    <span lang="fr">Horizon Interplanétaire · De la Terre à Mars →</span>
                 </div>
                 <div class="nav-title">
-                    <span lang="en">Project Hail Mary The Sun Standard from Earth to Mars</span>
-                    <span lang="fr">Projet Hail Mary : l'étalon solaire de la Terre à Mars</span>
+                    <span lang="en">Project Hail Mary: The Sun Standard from Earth to Mars</span>
+                    <span lang="fr">Projet Hail Mary : L'Étalon Solaire de la Terre à Mars</span>
                 </div>
             </div>
-            <img src="img/Starship.jpg" alt="Starship" style="width:100%; max-width:280px; border-radius:6px;">
+            <img src="img/Starship.jpg" alt="Project Hail Mary Starship" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
     </div>
 
@@ -2348,17 +2453,22 @@
             <span lang="fr">Ressources & Projets Liés</span><span lang="en">Related Resources & Projects</span>
         </div>
         <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
-                <h4 lang="en" style="color:var(--sun-yellow);">☀️ The Sun Standard </h4>
-                <h4 lang="fr" style="color:var(--sun-yellow);">☀️ L'Étalon Solaire </h4>
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
+                <h4 lang="en" style="color:var(--sun-yellow);">☀️ The Sun Standard (Theory)</h4>
+                <h4 lang="fr" style="color:var(--sun-yellow);">☀️ L'Étalon Solaire (Théorie)</h4>
                 <img src="img/logo-sunstandard.jpg" alt="Sun Standard Logo" loading="lazy" width="100%"> 
                 <p style="font-size:0.85rem; color:#888;">
-                    <span lang="en">
-                        An advanced applied research laboratory dedicated to monetizing entropy, optimizing thermodynamic dissipation, and laying the foundations of a post-fiat economy. By bridging high-performance computation with solar harvesting, Lemuria Technologies transforms unutilized energy flows and stranded exergy into verifiable thermodynamic value. Through the Sun Standard, it engineers decentralized computational infrastructure designed to balance localized energy grids, close planetary entropy loops, and align technological growth with absolute physical limits.
-                    </span>
-                    <span lang="fr">
-                        Un laboratoire de recherche fondamentale et appliquée dédié à la monétisation de l'entropie, à l'optimisation de la dissipation thermodynamique et aux fondations d'une économie post-fiduciaire. En connectant le calcul haute performance au captage solaire, Lemuria Technologies transforme les flux d'énergie orphelins et l'exergie dissipée en valeur thermodynamique vérifiable. À travers l'Étalon Solaire, elle bâtit une infrastructure décentralisée capable d'équilibrer les réseaux locaux, de clore les cycles entropiques et d'aligner le progrès technique sur les limites physiques de la biosphère.
-                    </span>
+                    <span lang="en">Open-science theoretical portal uniting non-equilibrium statistical physics, KMS thermal time, Lean 4 formal proofs, and Howard T. Odum's Emergy into a post-GDP monetary physics.</span>
+                    <span lang="fr">Portail de recherche théorique unissant physique statistique hors équilibre, temps thermique KMS, preuves formelles Lean 4 et Émergie d'Odum en une éconophysique post-PIB.</span>
+                </p>
+            </a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
+                <h4 lang="en" style="color:var(--bio-green);">🌱 Regenerative Compute (Lemuria Tech)</h4>
+                <h4 lang="fr" style="color:var(--bio-green);">🌱 Regenerative Compute (Lemuria Tech)</h4>
+                <img src="img/logo-lemuriatech.jpg" alt="Lemuria Tech Logo" loading="lazy" width="100%" onerror="this.style.display='none'"> 
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="en">Practical & industrial L0 execution: from 17 W desktop biospheres (BitTerrarium™) to megawatt subterranean compute sanctuaries recycling Joule heat into MOF-303 water and Biochar.</span>
+                    <span lang="fr">Exécution matérielle et industrielle L0 : des micro-biosphères de 17 W (BitTerrarium™) aux sanctuaires souterrains mégawatt recyclant l'effet Joule en eau MOF-303 et Biochar.</span>
                 </p>
             </a>
             <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
@@ -2397,8 +2507,8 @@
                 <h4 lang="fr">⏱️ Compter la Révolution Bitcoin</h4>
                 <img src="img/logo-countbtc.png" alt="Logo Compteur BTC" loading="lazy" width="100%">
                 <p>
-                    <span lang="fr">Outil de suivi et d'analyse en temps réel. Un futur capital de reputation si l'Humanite passe le grand filtre.</span>
-                    <span lang="en">Real-time tracking and analysis tool. Fiat+Bitcoin will survive together.</span>
+                    <span lang="fr">Outil de suivi et d'analyse en temps réel. Un futur capital de réputation si l'Humanité franchit le Grand Filtre.</span>
+                    <span lang="en">Real-time tracking and thermodynamic transition analytics on the path across the Great Filter.</span>
                 </p>
             </a>
 
@@ -2845,18 +2955,40 @@
 </script>
 
 <script>
+    window.updateReadingProgressUI = function () {
+        const progressTop = document.getElementById('reading-progress');
+        const progressPercent = document.getElementById('reading-progress-percent');
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        if (progressTop) progressTop.style.width = `${progress}%`;
+        if (progressPercent) {
+            const isEn = document.body.classList.contains('lang-en');
+            progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+        }
+    };
+    window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+    window.addEventListener('resize', window.updateReadingProgressUI);
+
     function setLang(lang) {
-        lang = lang.toLowerCase();
+        lang = (lang || 'fr').toLowerCase();
         if (lang !== 'en' && lang !== 'fr') lang = 'fr';
         document.body.className = 'lang-' + lang;
-        localStorage.setItem('sun-std-lang', lang);
-        const url = new URL(window.location);
-        url.searchParams.set('lg', lang.toUpperCase());
-        window.history.replaceState({}, '', url);
+        const btnEn = document.getElementById('btn-en');
+        const btnFr = document.getElementById('btn-fr');
+        if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+        if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
 
-        // Déclencher la mise à jour des simulateurs bilingues
+        try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lg', lang.toUpperCase());
+            window.history.replaceState({}, '', url);
+        } catch (e) {}
+
         window.dispatchEvent(new Event("horizon-language-change"));
         if (typeof updateSim === "function") updateSim();
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
     }
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -2878,7 +3010,8 @@
         const powGW = (pwr * powRatio) / 100;
         const rbuGW = pwr - powGW;
 
-        const hashZH = (powGW * 40) / 1000;
+        // Horizon 2044 (eta = 2.5 J/TH => 1 GW = 400 EH/s = 0.40 ZH/s)
+        const hashZH = powGW * 0.40;
         document.getElementById('out-hash').innerText = hashZH.toFixed(2) + ' ZH/s';
 
         const popBillions = (rbuGW * 0.18).toFixed(1);
@@ -3145,13 +3278,9 @@
   const ctx = canvas.getContext('2d');
   const btns = document.querySelectorAll('.hz-node-btn');
 
-  // Détecte si la page est actuellement affichée en anglais ou en français
+  // Détection directe et fiable sur la classe active du body (lang-en / lang-fr)
   function isEnglish() {
-    const htmlLang = document.documentElement.lang;
-    if (htmlLang && htmlLang.toLowerCase().startsWith('en')) return true;
-    const enSample = document.querySelector('.philosophical-tablet span[lang="en"]');
-    if (enSample && window.getComputedStyle(enSample).display !== 'none') return true;
-    return false;
+    return document.body.classList.contains('lang-en');
   }
 
   // Onde néguentropique / lunaire (18.61 ans, calée sur les nœuds 1900, 1918, 1936, 1954, 1972, 1990, 2008, 2026, 2044)
@@ -3318,16 +3447,132 @@
     });
   });
 
-  // Rafraîchit aussi le texte si l'utilisateur clique sur le bouton de changement de langue FR/EN de votre page
-  document.addEventListener('click', (e) => {
-    if (e.target && (e.target.textContent.includes('EN') || e.target.textContent.includes('FR'))) {
-      setTimeout(() => render(parseInt(slider.value, 10)), 50);
-    }
+  // Synchronisation instantanée sur l'événement global de changement de langue
+  window.addEventListener('horizon-language-change', () => {
+    render(parseInt(slider.value, 10));
   });
 
   render(2044);
 })();
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Horizon Zéro 2044 (v3.0) — L'Éveil de la Noosphère | L'Étalon Solaire",
+  "alternativeHeadline": "The Return of the Pyramid-Building Civilization: L0–L4 Cyber-Thermodynamic Architecture",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/horizon-zero-2044.html",
+  "image": "https://www.thesunstandard.net/blog/img/HorizonZero.png",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(12, 8, 24, 0.96); border: 1px solid #b366ff; color: #d8b4fe; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    // Gestionnaire AJAX Formspree unifié
+    const form = document.getElementById('feedback-form');
+    const popup = document.getElementById('success-popup');
+    const btn = document.getElementById('feedback-btn');
+    if (form && btn) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳ ...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    if (popup) {
+                        popup.style.display = 'block';
+                        setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                    }
+                }
+            } catch (err) {} finally {
+                btn.innerHTML = orig;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Export HTML autonome nettoyé des conteneurs MathJax
+    function getCleanHorizonHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showHorizonToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._hzToastTimer);
+        window._hzToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadHorizonHTML = function() {
+        const src = getCleanHorizonHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'horizon-zero-2044.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showHorizonToast('✅ horizon-zero-2044.html téléchargé !', '✅ horizon-zero-2044.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showHorizonToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyHorizonHTML = function() {
+        copyFallback(getCleanHorizonHTML());
+        showHorizonToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
+})();
+</script>
 </body>
 </html>
