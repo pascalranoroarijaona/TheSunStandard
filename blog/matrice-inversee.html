@@ -11,8 +11,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-        <title>La Matrice Inversée / The Inverted Matrix — Regenerative Computing with Lemuria Technologies</title>
-    <meta name="description" content="Architecture selon Lemuria Technologies : enfouissement du minage, récupération thermique, biochar et sanctuarisation de la biosphère. / Subterranean compute, thermal recovery, biochar, and biosphere sanctuary." />
+        <title>La Matrice Inversée (Acte IV) — Calcul Régénératif | L'Étalon Solaire & Lemuria Technologies</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/matrice-inversee.html" />
+    <meta name="description" content="Acte IV de la Tétralogie : Architecture selon Lemuria Technologies — enfouissement du minage, récupération thermique, eau MOF-303, biochar et sanctuarisation de la biosphère." />
 
     <!-- Open Graph / LinkedIn / WhatsApp / Social Preview Tags -->
     <meta property="og:type" content="article" />
@@ -60,72 +61,96 @@
             --border-glow: rgba(255, 170, 0, 0.2);
             --note-bg: rgba(255, 204, 0, 0.03);
             --font-main: 'Georgia', serif;
-            --font-ui: 'Helvetica Neue', sans-serif;
+            --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
             --font-mono: 'Fira Code', monospace;
         }
 
+        html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: #040608;
+            color: #e2e8f0;
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(255, 204, 0, 0.05) 0%, transparent 50%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(68, 238, 119, 0.07) 0%, rgba(255, 204, 0, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(0, 229, 255, 0.04) 0%, transparent 55%);
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés (Actes I–IV) --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--bio-green), var(--sun-yellow), var(--cyan-l2));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(68, 238, 119, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(68, 238, 119, 0.12), rgba(255, 204, 0, 0.06)), rgba(5, 8, 6, 0.88);
+            color: var(--bio-green); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(68, 238, 119, 0.2); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        /* Navigation Minimaliste */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,5,5,0.9);
-            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
+        /* Navigation Unifiée de la Tétralogie */
+        nav.top-tetralogy-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 6, 8, 0.92);
+            border-bottom: 1px solid rgba(68, 238, 119, 0.28); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
-        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav a.back:hover { color: #fff; }
+        nav.top-tetralogy-nav .logo {
+            font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--bio-green); text-decoration: none; white-space: nowrap;
+        }
+        nav.top-tetralogy-nav .nav-links {
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav.top-tetralogy-nav .nav-links a {
+            color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav.top-tetralogy-nav .nav-links a:hover { color: #fff; background: rgba(68, 238, 119, 0.14); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(68, 238, 119, 0.12); border: 1px solid rgba(68, 238, 119, 0.45);
+            color: var(--bio-green); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(68, 238, 119, 0.25); color: #fff; transform: translateY(-1px); }
 
-        /* Language Toggle Buttons */
         .lang-toggle {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
-
         .lang-toggle button {
-            background: transparent;
-            border: none;
-            font-size: 1.4rem;
-            color: white; /* <-- Ajout principal pour rendre le texte/icône blanc */
-            cursor: pointer;
-            opacity: 0.5; /* J'ai légèrement augmenté l'opacité (de 0.3 à 0.5) pour qu'ils soient plus visibles même inactifs */
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-
-        .lang-toggle button:hover {
-            opacity: 0.9; /* Plus lumineux au survol */
-            transform: scale(1.1);
-        }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en,
         body.lang-fr #btn-fr {
-            opacity: 1; /* Pleine visibilité pour la langue active */
-            color: white; /* Assure que la langue active reste bien blanche */
-            filter: grayscale(0%);
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+            opacity: 1; filter: grayscale(0%); border-color: var(--bio-green);
+            background: rgba(68, 238, 119, 0.16); box-shadow: 0 0 12px rgba(68, 238, 119, 0.32);
+        }
+        @media (max-width: 980px) {
+            nav.top-tetralogy-nav .nav-links { display: none; }
         }
 
-        /* Conteneur de l'Article */
+        /* Conteneur de l'Article (Unifié à 1040px avec scroll-margin propre) */
         article {
-            max-width: 1100px; margin: 8rem auto 6rem; padding: 0 2rem;
-            font-size: 1.15rem; color: #d4d4d4;
+            max-width: 1040px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #partie-technique, #manifeste, #tiroir-dossier-scientifique, #simulateur-v3, #mvp-nsw, #epilogue {
+            scroll-margin-top: 5.5rem;
         }
 
         /* --- Hero Header avec Bio-Pluie Végétale (Matrice Inversée) --- */
@@ -1040,19 +1065,26 @@
         }
     </style>
 </head>
-<body class="lang-en">
+<body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav>
-    <a href="index.html" class="logo">☀ Blog</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-tetralogy-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🌱 L'Étalon Solaire · Acte IV</a>
+    <div class="nav-links">
+        <a href="#partie-technique"><span lang="fr">1. Coupe & Niveaux 1–4</span><span lang="en">1. Cross-Section & Lvl 1–4</span></a>
+        <a href="#manifeste"><span lang="fr">2. Ouroboros & VRE</span><span lang="en">2. Ouroboros & VRE</span></a>
+        <a href="#tiroir-dossier-scientifique"><span lang="fr">3. Dossier 30 Réf.</span><span lang="en">3. 30-Ref Dossier</span></a>
+        <a href="#simulateur-v3"><span lang="fr">4. Simulateur WU</span><span lang="en">4. WU Simulator</span></a>
+        <a href="#mvp-nsw"><span lang="fr">5. Pilote 1 MW NSW</span><span lang="en">5. 1 MW NSW Pilot</span></a>
+        <a href="#epilogue"><span lang="fr">6. Viatarianisme</span><span lang="en">6. Lifetarianism</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadMatrixHTML()" title="Télécharger matrice-inversee.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
@@ -1076,6 +1108,14 @@
     <header class="matrix-hero">
         <canvas id="bioMatrixCanvas"></canvas>
         <div class="matrix-hero-content">
+            <div style="margin-bottom: 1rem;">
+                <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(68, 238, 119, 0.14); border: 1px solid rgba(68, 238, 119, 0.45); color: var(--bio-green); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                    Acte IV de la Tétralogie · Ingénierie Thermodynamique & Régénération du Vivant
+                </span>
+                <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(68, 238, 119, 0.14); border: 1px solid rgba(68, 238, 119, 0.45); color: var(--bio-green); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                    Act IV of the Tetralogy · Thermodynamic Engineering & Biosphere Regeneration
+                </span>
+            </div>
             <h1>
                 <span lang="fr">La Matrice Inversée · Le Calcul Régénératif</span>
                 <span lang="en">The Inverted Matrix · Regenerative Compute</span>    
@@ -1096,45 +1136,20 @@
         </div>
     
     </header>
-    <div class="ai-download-box" style="margin: -1.5rem auto 3rem; padding: 1.5rem; background: rgba(200, 100, 255, 0.04); border: 1px solid rgba(200, 100, 255, 0.25); border-left: 4px solid #c864ff; border-radius: 4px; font-family: var(--font-ui); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-        <div lang="fr">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
-                🧠 <strong>Poussez la recherche open-source plus loin !</strong> Téléchargez le code source HTML de cet article pour le soumettre à votre IA favorite (Mistral, Gemini, Claude...) et continuez à explorer cette vision d'architecture symbiotique. Ne croyez pas, vérifiez l'information par vous-même.
-            </p>
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE (ACTES I–IV) -->
+    <div class="export-toolkit-bar" style="margin: -1rem 0 2.6rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(68, 238, 119, 0.08) 0%, rgba(255, 204, 0, 0.07) 52%, rgba(0, 229, 255, 0.07) 100%); border: 1px solid rgba(68, 238, 119, 0.32); border-left: 4px solid var(--bio-green); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.48);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 630px;">
+            <span lang="fr">🌱 <strong>Acte IV Open-Source & Open-Hardware :</strong> Téléchargez le code source complet de cet article (<code>matrice-inversee.html</code> — incluant le Dossier Scientifique à 30 références, le simulateur biophysique WU v3.2 et le plan pilote 1 MW NSW) pour l'explorer avec votre IA locale. <em>Don't trust, verify.</em></span>
+            <span lang="en">🌱 <strong>Open-Source & Open-Hardware Act IV:</strong> Download the complete standalone HTML source (<code>matrice-inversee.html</code>—including the 30-reference Scientific Dossier, WU v3.2 biophysical simulator, and 1 MW NSW pilot blueprint) for local AI verification. <em>Don't trust, verify.</em></span>
         </div>
-        <div lang="en">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
-                🧠 <strong>Take this open-source research further!</strong> Download the raw HTML source of this article, plug it into your favorite AI (ChatGPT, Claude, Gemini...), and keep exploring this symbiotic architectural design. Don't Trust, Verify Information.
-            </p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadMatrixHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyMatrixHTML()" style="background: rgba(0, 229, 255, 0.16); border: 1px solid #00e5ff; color: #00e5ff; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
         </div>
-        <div style="text-align: center;"> 
-        <button onclick="telechargerPageActuelle()" class="feedback-submit" style="text-decoration: none; display: inline-block; padding: 8px 24px; font-size: 0.85rem; border-color: #c864ff; color: #c864ff; background: rgba(200, 100, 255, 0.05); cursor: pointer; border-style: solid; border-width: 1px; border-radius: 30px;"> 
-            <span lang="fr">⬇️ Télécharger l'HTML de cette page</span> 
-            <span lang="en">⬇️ Download HTML of this page</span> 
-        </button> 
-        </div>
-        <script>
-            function telechargerPageActuelle() {
-            // 1. Récupère l'intégralité du code HTML de la page actuelle
-            const codeHTML = "<!doctype html>\n" + document.documentElement.outerHTML;
-            
-            // 2. Crée un fichier virtuel (Blob) contenant ce code
-            const blob = new Blob([codeHTML], { type: "text/html;charset=utf-8" });
-            
-            // 3. Crée un lien temporaire pour forcer le téléchargement
-            const blobUrl = window.URL.createObjectURL(blob);
-            const lienTemporaire = document.createElement("a");
-            lienTemporaire.href = blobUrl;
-            lienTemporaire.download = "matrice-inversee.html"; // Nom du fichier téléchargé
-            
-            // 4. Déclenche le clic et nettoie la mémoire
-            document.body.appendChild(lienTemporaire);
-            lienTemporaire.click();
-            document.body.removeChild(lienTemporaire);
-            window.URL.revokeObjectURL(blobUrl);
-            }
-        </script>
-
     </div>
     <div class="intro-hero">
     
@@ -2112,6 +2127,23 @@
             <b style="color:#00ccff">We Hope:</b> to valorize a significant fraction of low-grade waste heat for water and soil regeneration, without obscuring parasitic loads, seasonal saturation, or operational risks.
         </div>
     </div>
+    <!-- PONT D'UNIFICATION FORMELLE DE LA TÉTRALOGIE (ACTES I → IV) -->
+    <div style="margin: 2rem 0 2.2rem; padding: 1.7rem 2rem; background: linear-gradient(145deg, rgba(8,14,12,0.94), rgba(5,9,16,0.96)); border: 1px solid rgba(68, 238, 119, 0.3); border-left: 4px solid var(--sun-yellow); border-radius: 12px; font-family: var(--font-ui); box-shadow: 0 14px 36px rgba(0,0,0,0.6);">
+        <h4 style="color: var(--sun-yellow); margin: 0 0 0.75rem; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 1.4px;">
+            <span lang="fr">🔗 Continuité Mathématique de la Tétralogie : Du Bit de Landauer au Jardin Régénératif</span>
+            <span lang="en">🔗 Mathematical Continuity of the Tetralogy: From Landauer's Bit to the Living Garden</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.86rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 0.95rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.85rem;">
+            $$ \underbrace{\Delta E \ge k_B T \ln 2}_{\text{Acte I · It from Bit}} \;\longrightarrow\; \underbrace{z = a + ib = |z|\,e^{i\theta}}_{\text{Acte II · Plan Complexe}} \;\longrightarrow\; \underbrace{\mathcal{G} = g(\theta)\oplus f(\theta)}_{\text{Acte III · Nautile Bimétrique}} \;\longrightarrow\; \underbrace{\dot{Q}_{\text{Joule}} \equiv P_{\text{IT}} \implies \max\!\left(\frac{WU}{E_{\text{tot}}}\right)}_{\text{Acte IV · Matrice Inversée}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            Dans l'Acte III (<a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Le Nautile de Nakamoto</a>), nous avons démontré que le brin physique $g(\theta)$ (Émergie dissipée) forme la coquille protectrice du brin informationnel $f(\theta)$ (code monétaire). L'<strong>Acte IV</strong> franchit le dernier pas : au lieu de dissiper cette coquille d'effet Joule à perte dans l'atmosphère, l'enfouissement bimétrique ($g_{\mu\nu}$ sous terre à $-25\text{ m}$, $f_{\mu\nu}$ synchronisé par satellite/fibre) convertit chaque watt-heure de sécurité cryptographique en eau pure (MOF-303), en humus millénaire (Biochar) et en Unités de Bien-Être ($WU$), rejoignant l'architecture mycélienne du <a href="wood-wide-web.html" style="color:var(--bio-green);">Wood Wide Web</a>.
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            In Act III (<a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">The Nakamoto Nautilus</a>), we proved that the physical strand $g(\theta)$ (dissipated Emergy) secretes the protective shell around the informational strand $f(\theta)$ (deterministic code). <strong>Act IV</strong> completes the loop: rather than venting that Joule shell into the sky, bimetric burial ($g_{\mu\nu}$ underground at $-25\text{ m}$, $f_{\mu\nu}$ synced globally) turns every watt-hour of cryptographic finality into pure water (MOF-303), millennial humus (Biochar), and Wellbeing Units ($WU$), mirroring the forest mycelium of <a href="wood-wide-web.html" style="color:var(--bio-green);">The Wood Wide Web</a>.
+        </p>
+    </div>
+
     <details class="level-bridge" open style="margin: 0 auto 1.6rem auto; border-left: 4px solid var(--bio-green); background: rgba(68, 238, 119, 0.03);">
         <summary style="color: var(--bio-green); background: rgba(68, 238, 119, 0.06);">
             <span lang="fr">🌉 Le Pont Théorie ↔ Pratique : De TheSunStandard.net à RegenerativeCompute.io</span>
@@ -5962,7 +5994,7 @@
     <!-- ===================================================================== -->
     <!-- NIVEAU 9 BONUS : MVP 1 MW & SITE PILOTE NSW (ARCHITECTURE V2.0)     -->
     <!-- ===================================================================== -->
-    <details class="level-9" style="margin: 2.5rem auto; border-left-color: var(--teal-l0);">
+    <details id="mvp-nsw" class="level-9" style="margin: 2.5rem auto; border-left: 4px solid var(--teal-l0);">
         <summary style="border-left-color: var(--teal-l0); color: var(--teal-l0); background: rgba(255, 204, 0, 0.05);">
             <span lang="fr">Niveau Bonus : Ingénierie du Site Pilote 1 MW & MVP « Ultra-Lean » (Nouvelle-Galles du Sud, Australie)</span>
             <span lang="en">Level Bonus: 1 MW Pilot Site Engineering & "Ultra-Lean" MVP (New South Wales, Australia)</span>
@@ -6489,8 +6521,7 @@
 
                 <div class="math-block" style="margin: 0.8rem 0 1rem; padding: 1rem; background: rgba(0,0,0,0.55); border-color: rgba(88,166,255,0.25); color: #fff; font-size: 0.95rem; text-align: left;">
                     $$ \begin{aligned}
-                    \mathbf{1.\; W_{\text{vital}}} &= 0,18 \cdot \underbrace{1\,832\text{ m}^3}_{\text{Eau MOF + Pluie}} + 6,5 \cdot \underbrace{119\text{ t}}_{\text{Végétal &amp; Champ.}} + 22,0 \cdot \underbrace{25\text{ t}}_{\text{Barramundi, Redclaw, Œufs}} = \mathbf{1\,653,3\text{ WU/an}} \\
-                    \mathbf{2.\; W_{\text{éco}}} &= 0,04 \cdot \underbrace{4\,500\text{ m}^2_{\text{éq}}}_{\text{Canopée 6 niv. + Verger}} \cdot \left(1 + \frac{25\text{ m}}{150}\right) \cdot \underbrace{1,25}_{\text{Bonus Brownfield}} = \mathbf{262,5\text{ WU/an}} \\
+                    \mathbf{1.\; W_{\text{vital}}} &= 0,18 \cdot \underbrace{1\,832\text{ m}^3}_{\text{Eau MOF (912) + Pluie (920)}} + 6,5 \cdot \underbrace{119\text{ t}}_{\text{85t Lég. + 22t Champ. + 12t Verger}} + 22,0 \cdot \underbrace{25\text{ t}}_{\text{18t Barram. + 2,5t Écrev. + 4,5t Œufs}} = \mathbf{1\,653,3\text{ WU/an}} \\\mathbf{2.\; W_{\text{éco}}} &= 0,04 \cdot \underbrace{4\,500\text{ m}^2_{\text{éq}}}_{\text{Canopée 6 niv. + Verger}} \cdot \left(1 + \frac{25\text{ m}}{150}\right) \cdot \underbrace{1,25}_{\text{Bonus Brownfield}} = \mathbf{262,5\text{ WU/an}} \\
                     \mathbf{3.\; W_{\text{stocks}}} &= 0,85 \cdot \underbrace{721\text{ t CO}_2\text{e}}_{\text{220t Biochar + 501t Ouroboros/Géopolymère}} + 95 \cdot \underbrace{0,95}_{\eta_{\text{Ouro}}} \cdot 1\text{ MW} = \mathbf{703,2\text{ WU/an}}
                     \end{aligned} $$
                     <div style="margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dashed rgba(88,166,255,0.3); text-align: center; color: #44ee77; font-weight: bold; font-size: 1.05rem;">
@@ -6753,7 +6784,7 @@
                 <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Décentralisation maximale. Remplacement de la chaudière classique par le minage : chauffage de l'eau sanitaire (ECS) et plancher chauffant. Minage souverain incensurable.</span><span lang="en">Maximum decentralization. Replacing the classic boiler with mining: domestic hot water (DHW) and underfloor heating. Sovereign, uncensorable mining.</span></p>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
                     <iframe 
-                        style="position: absolute; top: 0; left: 0; width: 100%;" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
                         src="https://www.youtube.com/embed/W6aJCSi7qEQ?si=rPXAqRyBEjmUYxIM" 
                         title="Gridless" 
                         frameborder="0" 
@@ -6775,7 +6806,7 @@
                 <p style="font-size: 0.85rem; color: #d4d4d4; line-height: 1.4;"><strong>🎯 <span lang="fr">Focus (Output) :</span><span lang="en">Focus (Output):</span></strong> <span lang="fr">Modèle coopératif villageois. Séchage de semences agricoles (Niveau 2 priorisé) et autonomie énergétique. Niveau 4 désactivé. </span><span lang="en">Village cooperative model. Agricultural seed drying (Level 2 prioritized) and energy autonomy. Level 4 disabled. </span><span><a href="https://gridlesscompute.com/2025/11/11/building-the-emergent-grid/" target="_blank" style="color:var(--sun-yellow)">Building the Emergent Grid</a> </span></p>
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
                     <iframe 
-                        style="position: absolute; top: 0; left: 0; width: 100%;" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
                         src="https://www.youtube.com/embed/J2K1fgVyh5Y?si=HE5y0QvtT-B6D_sf" 
                         title="Gridless" 
                         frameborder="0" 
@@ -8841,7 +8872,7 @@
                         <strong>Pascal Ranoroarijaona (Ranaora)</strong> | Ingénieur en informatique &amp; chercheur indépendant.<br>
                         Parcours international (Kenya, Corée du Sud, Taïwan, France [Les Lazaristes, Grenoble INP], Suède [KTH Royal Institute of Technology], Madagascar, Australie). Spécialisé en intelligence artificielle, science des données, économie et modélisation des systèmes complexes, avec une expérience au sein de l'industrie technologique. Curieux et touche-à-tout à mes heures perdues, j'écris des articles et refais le monde dans ma tête — après tout, changer le monde commence par se changer soi-même, n'est-ce pas ?<br>
                         <em>Approches &amp; compétences transversales :</em> psychique et traditions ancestrales de Madagascar, processus d'individuation (Carl Jung) et accès aux états de flow par immersion musicale.<br><br>
-                        <strong>Mon travail se situe à l'intersection du calcul haute performance, de la thermodynamique appliquée, de l'économie et des sciences environnementales. Convaincu que l'innovation technologique doit impérativement s'aligner sur la préservation des ressources et la résilience écologique, je me consacre au développement d'architectures numériques durables et à l'exploration de solutions concrètes pour réconcilier puissance de calcul et équilibre biosphérique. Enraciné dans l'héritage d'une terre ancestrale que nous appelions jadis la Lémurie — un monde à la biodiversité éclatante et archétype d'harmonie avec le vivant —, mon travail pose une question essentielle : pouvons-nous concevoir des machines qui servent la biosphère au lieu d'accélérer son épuisement ? Si nous en venons à simuler des agents d’intelligence artificielle sur une surface holographique, qui peut affirmer que nous ne sommes pas, nous-mêmes, des êtres simulés au sein d’une infinité d’univers holographiques ? Mieux vaut vivre un rêve éveillé qu’un cauchemar en dormant. Si les lémuriens s'éteignent, nous serons que nous aurons choisi la Matrice plutôt que la Matrice Inverse comme modèle de société.</strong>
+                        <strong>Mon travail se situe à l'intersection du calcul haute performance, de la thermodynamique appliquée, de l'économie et des sciences environnementales. Convaincu que l'innovation technologique doit impérativement s'aligner sur la préservation des ressources et la résilience écologique, je me consacre au développement d'architectures numériques durables et à l'exploration de solutions concrètes pour réconcilier puissance de calcul et équilibre biosphérique. Enraciné dans l'héritage d'une terre ancestrale que nous appelions jadis la Lémurie — un monde à la biodiversité éclatante et archétype d'harmonie avec le vivant —, mon travail pose une question essentielle : pouvons-nous concevoir des machines qui servent la biosphère au lieu d'accélérer son épuisement ? Si nous en venons à simuler des agents d’intelligence artificielle sur une surface holographique, qui peut affirmer que nous ne sommes pas, nous-mêmes, des êtres simulés au sein d’une infinité d’univers holographiques ? Mieux vaut vivre un rêve éveillé qu’un cauchemar en dormant. Si les lémuriens s'éteignent, nous saurons que nous aurons choisi la Matrice plutôt que la Matrice Inversée comme modèle de société.</strong>
                     </span>
                     <span lang="en">
                         <strong>Pascal Ranoroarijaona (Ranaora)</strong> | Computer Scientist &amp; Independent Researcher.<br>
@@ -9100,31 +9131,31 @@
         <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
     </div>
     <div class="article-navigation">
-        <a href="le-monde-est-complexe.html" class="nav-card">
+        <a href="nautile-nakamoto.html" class="nav-card">
             <div style="width: 100%;">
                 <div class="nav-direction">
-                    <span lang="en">Previous Article →</span>
-                    <span lang="fr">Article Précédent ←</span>
+                    <span lang="en">← Act III (Previous Article)</span>
+                    <span lang="fr">← Acte III (Article Précédent)</span>
                 </div>
                 <div class="nav-title">
-                    <span lang="en">A Complex World</span>
-                    <span lang="fr">Le Monde est Complexe</span>
+                    <span lang="en">The Nakamoto Nautilus: From Discrete Code to Continuous Geometry</span>
+                    <span lang="fr">Le Nautile de Nakamoto : Du Code Discret à la Géométrie Continue</span>
                 </div>
             </div>
-            <img src="img/ComplexWorld.png" alt="Univers Jumeau">
+            <img src="img/NautileNakamotoIM.png" alt="Le Nautile de Nakamoto" onerror="this.style.display='none'">
         </a>
-        <a href="horizon-zero-2044.html" class="nav-card">
+        <a href="wood-wide-web.html" class="nav-card">
             <div style="width: 100%;">
                 <div class="nav-direction">
-                    <span lang="en">Next Article →</span>
-                    <span lang="fr">Article Suivant →</span>
+                    <span lang="en">Homo Biodiversitas · Symbiotic Forest →</span>
+                    <span lang="fr">Homo Biodiversitas · La Forêt Symbiotique →</span>
                 </div>
                 <div class="nav-title">
-                    <span lang="en">Horizon Zero 2044 : The Return of the Pyramid-Building Civilization (3.0)</span>
-                    <span lang="fr">Horizon Zéro 2044 : Le retour de la civilisation bâtisseuse de pyramides (3.0)</span>
+                    <span lang="en">The Wood Wide Web: The Blockchain & The Forest</span>
+                    <span lang="fr">The Wood Wide Web : La Blockchain et la Forêt</span>
                 </div>
             </div>
-            <img src="img/HorizonZero.png" alt="Horizon Zero">
+            <img src="img/wood-wide-web-cover.jpg" alt="The Wood Wide Web & Horizon Zero" onerror="this.style.display='none'">
         </a>
     </div>
     <!-- <div class="pdf-container" style="margin: 5rem auto 4rem; padding: 2.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 204, 0, 0.2); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 900px;">
@@ -9294,15 +9325,13 @@
         const powerGW = (recoverablePowerWatts / 1e9).toFixed(2);
         document.getElementById('live-power').innerText = powerGW + ' GW';
 
-        // Production d'eau calculée sur la puissance récupérable : 4500 Litres par Mégawatt (MW)
-        const recoverablePowerMW = recoverablePowerWatts / 1e6; // Conversion des Watts en Mégawatts
-        const waterLiters = Math.round(recoverablePowerMW * 4500); // L'eau totale en Litres
-        
-        // Formatage lisible (ex: 103,500,000)
-        const formattedWater = waterLiters.toLocaleString();
+        // Production d'eau réaliste sur sorbant MOF-303 : 2 000 L/j/MW (plage 1 500–2 500 L/j/MW ; plafond théorique 3 739–4 500 L/j/MW)
+        const recoverablePowerMW = recoverablePowerWatts / 1e6;
+        const waterLitersRealistic = Math.round(recoverablePowerMW * 2000);
+        const formattedWater = waterLitersRealistic.toLocaleString();
         
         const isEn = document.body.classList.contains('lang-en');
-        document.getElementById('live-water').innerText = formattedWater + (isEn ? ' L/day' : ' L/jour');
+        document.getElementById('live-water').innerText = formattedWater + (isEn ? ' L/day (MOF)' : ' L/j (MOF)');
     }
 
     // Lancement initial
@@ -9435,24 +9464,50 @@
         }
     });
 
-    // --- 4. SCRIPT LANGUE ZERO-JS ---
+    // --- 4. SCRIPT LANGUE & PROGRESSION DE LECTURE UNIFIÉS (ACTES I–IV) ---
+    window.updateReadingProgressUI = function () {
+        const progressTop = document.getElementById('reading-progress');
+        const progressPercent = document.getElementById('reading-progress-percent');
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        if (progressTop) progressTop.style.width = `${progress}%`;
+        if (progressPercent) {
+            const isEn = document.body.classList.contains('lang-en');
+            progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+        }
+    };
+    window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+    window.addEventListener('resize', window.updateReadingProgressUI);
+
     function setLang(lang) {
-        lang = lang.toLowerCase();
-        if (lang !== 'en' && lang !== 'fr') lang = 'en';
+        lang = (lang || 'fr').toLowerCase();
+        if (lang !== 'en' && lang !== 'fr') lang = 'fr';
         
         document.body.className = 'lang-' + lang;
+        const btnEn = document.getElementById('btn-en');
+        const btnFr = document.getElementById('btn-fr');
+        if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+        if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
+
         try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
-        
-        const url = new URL(window.location);
-        url.searchParams.set('lg', lang.toUpperCase());
-        window.history.replaceState({}, '', url);
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lg', lang.toUpperCase());
+            window.history.replaceState({}, '', url);
+        } catch (e) {}
+
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
+        if (window.runSimulation) setTimeout(window.runSimulation, 40);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lg');
-        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'en');
-        setLang(savedLang);
+        let savedLang = 'fr';
+        try { savedLang = localStorage.getItem('sun-std-lang') || 'fr'; } catch (e) {}
+        setLang(urlLang ? urlLang : savedLang);
+        window.updateReadingProgressUI();
     });
 </script>
 
@@ -10612,6 +10667,95 @@
     });
     </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5","spa":2}' crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "La Matrice Inversée (Acte IV) — Calcul Régénératif | L'Étalon Solaire & Lemuria Technologies",
+  "alternativeHeadline": "The Inverted Matrix: Subterranean Exergetic Compute, MOF-303 Water & Biosphere Regeneration",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire / Lemuria Technologies",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/matrice-inversee.html",
+  "image": "https://www.thesunstandard.net/blog/img/logo-lemuriatech.jpg",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(8, 22, 14, 0.96); border: 1px solid #44ee77; color: #44ee77; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    function getCleanMatrixHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showMatrixToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._matToastTimer);
+        window._matToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadMatrixHTML = function() {
+        const src = getCleanMatrixHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'matrice-inversee.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showMatrixToast('✅ matrice-inversee.html téléchargé !', '✅ matrice-inversee.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showMatrixToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyMatrixHTML = function() {
+        copyFallback(getCleanMatrixHTML());
+        showMatrixToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
+
+    // Rétrocompatibilité si un ancien appel subsiste
+    window.telechargerPageActuelle = window.downloadMatrixHTML;
+})();
+</script>
 </body>
 </html>
