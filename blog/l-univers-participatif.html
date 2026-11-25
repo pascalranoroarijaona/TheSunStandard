@@ -19,7 +19,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="L'Éveil de l'Univers Participatif : It from Bit | The Sun Standard" />
     <meta property="og:description" content="Acte I : De John Archibald Wheeler et Philip K. Dick à la singularité thermodynamique du 3 janvier 2009. Un univers fait de chair et d'information." />
-    <meta property="og:url" content="https://www.thesunstandard.net/blog/l-univers-jumeau.html" />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/l-univers-participatif.html" />
     <meta property="og:image" content="https://www.thesunstandard.net/blog/img/UniversJumeau.png" />
 
     <!-- X / Twitter Card -->
@@ -560,7 +560,7 @@
         <a href="#sec-twin-3d"><span lang="fr">6. Univers Jumeau 3D</span><span lang="en">6. 3D Twin Universe</span></a>
     </div>
     <div class="nav-right-tools">
-        <button type="button" class="nav-dl-btn" onclick="downloadStandaloneHTML()" title="Télécharger l-univers-jumeau.html">⬇️ .HTML</button>
+        <button type="button" class="nav-dl-btn" onclick="downloadStandaloneHTML()" title="Télécharger l-univers-participatif.html">⬇️ .HTML</button>
         <div class="lang-toggle">
             <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
             <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
@@ -588,8 +588,8 @@
     <!-- BOÎTE D'EXPORT AUTONOME -->
     <div class="export-toolkit-bar">
         <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 610px;">
-            <span lang="fr">👁️ <strong>Acte I Open-Source Interactif :</strong> Téléchargez le code source complet de cet essai fondateur (<code>l-univers-jumeau.html</code>, incluant ses 6 laboratoires cosmologiques et quantiques) pour l'archiver ou l'explorer avec votre IA locale.</span>
-            <span lang="en">👁️ <strong>Interactive Open-Source Act I:</strong> Download the complete standalone HTML source of this foundational essay (<code>l-univers-jumeau.html</code>, including all 6 cosmological and quantum labs) for archiving or local AI study.</span>
+            <span lang="fr">👁️ <strong>Acte I Open-Source Interactif :</strong> Téléchargez le code source complet de cet essai fondateur (<code>l-univers-participatif.html</code>, incluant ses 6 laboratoires cosmologiques et quantiques) pour l'archiver ou l'explorer avec votre IA locale.</span>
+            <span lang="en">👁️ <strong>Interactive Open-Source Act I:</strong> Download the complete standalone HTML source of this foundational essay (<code>l-univers-participatif.html</code>, including all 6 cosmological and quantum labs) for archiving or local AI study.</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
             <button type="button" class="ui-btn green-cta" onclick="downloadStandaloneHTML()">
@@ -1358,12 +1358,12 @@ function downloadStandaloneHTML() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'l-univers-jumeau.html';
+        a.download = 'l-univers-participatif.html';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         setTimeout(() => window.URL.revokeObjectURL(url), 1500);
-        showToast('✅ l-univers-jumeau.html téléchargé !', '✅ l-univers-jumeau.html downloaded!');
+        showToast('✅ l-univers-participatif.html téléchargé !', '✅ l-univers-participatif.html downloaded!');
     } catch (e) {
         copySafe(PRISTINE_ACT1_HTML);
         showToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
@@ -1381,7 +1381,7 @@ function copyAct1Bibtex() {
   title = {The Awakening of the Participatory Universe: From Wheeler's It from Bit to the Thermodynamic Singularity},
   journal = {The Sun Standard Research},
   year = {2026},
-  url = {https://www.thesunstandard.net/blog/l-univers-jumeau.html}
+  url = {https://www.thesunstandard.net/blog/l-univers-participatif.html}
 }
 
 @incollection{wheeler_1990_itfrombit,
@@ -2074,7 +2074,6 @@ function setLang(lang) {
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 200);
     camera.position.set(0, 3.2, 15.5);
     camera.lookAt(0, 0, 0);
-
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
