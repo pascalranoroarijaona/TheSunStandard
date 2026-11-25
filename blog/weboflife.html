@@ -1,10 +1,28 @@
 <!doctype html>
 <html lang="fr">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFDV8LWZSL');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Toile de la Vie | The Open Source Code of Reality</title>
-    <meta name="description" content="Earth modeled as an open-energy, finite-matter thermodynamic structure. Every biological, geological, and human system is represented as a thermodynamic monad." />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>La Toile de la Vie (Web of Life) — Le Code Source Ouvert du Réel | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/weboflife.html" />
+    <meta name="description" content="La Toile de la Vie (Web of Life) : la Terre modélisée comme un Mega-POD thermodynamique à énergie ouverte et matière finie. Blockchains fractales PoW & PoEW." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="La Toile de la Vie (Web of Life) | L'Étalon Solaire" />
+    <meta property="og:description" content="Où la thermodynamique rencontre la conscience planétaire : Mega-POD terrestre, Solid PODs biologiques, PoEW et cogénération symbiotique." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/weboflife.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/HorizonZero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="La Toile de la Vie — The Open Source Code of Reality" />
+    <meta name="twitter:description" content="Le Proof-of-Work sécurise la Noosphère ; le Proof-of-Ecological-Work sécurise la Biosphère." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/HorizonZero.png" />
     
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
@@ -22,16 +40,21 @@
         :root {
             --bg-deep: #02050a;
             --bg-dark: #04060a;
-            --text-main: #e0e0e0;
+            --text-main: #e2e8f0;
             --text-muted: #8899aa;
-            --sun-yellow: #ffaa00;
+            --sun-yellow: #ffcc00;
+            --sun-orange: #ff6600;
             --earth-blue: #0088ff;
-            --bio-green: #00ff66;
+            --bio-green: #44ee77;
             --fauna-red: #ff3366;
             --fungi-purple: #c084fc;
+            --purple-l4: #b366ff;
+            --magenta-l3: #e040fb;
+            --cyan-l2: #00e5ff;
             --human-cyan: #00e1ff;
             --cogeneration: #ff5500;
-            --border-glow: rgba(0, 225, 255, 0.2);
+            --stone-grey: #2a2d30;
+            --border-glow: rgba(0, 225, 255, 0.25);
             --font-main: 'Georgia', serif;
             --font-ui: 'Inter', 'Helvetica Neue', sans-serif;
             --font-mono: 'Fira Code', monospace;
@@ -41,45 +64,84 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(0, 225, 255, 0.05) 0%, transparent 60%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(0, 225, 255, 0.08) 0%, rgba(68, 238, 119, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(255, 85, 0, 0.05) 0%, transparent 55%);
             overflow-x: hidden;
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--human-cyan), var(--bio-green), var(--sun-yellow), var(--cogeneration));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(0, 225, 255, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 225, 255, 0.14), rgba(68, 238, 119, 0.06)), rgba(4, 6, 10, 0.9);
+            color: var(--human-cyan); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(0, 225, 255, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(2,5,10,0.92);
+        nav.top-tetralogy-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(2, 5, 10, 0.92);
             border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
             backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--human-cyan); text-decoration: none; }
-        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav a.back:hover { color: #fff; }
+        nav.top-tetralogy-nav .logo {
+            font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--human-cyan); text-decoration: none; white-space: nowrap;
+        }
+        nav.top-tetralogy-nav .nav-links {
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav.top-tetralogy-nav .nav-links a {
+            color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav.top-tetralogy-nav .nav-links a:hover { color: #fff; background: rgba(0, 225, 255, 0.15); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(0, 225, 255, 0.13); border: 1px solid rgba(0, 225, 255, 0.45);
+            color: var(--human-cyan); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(0, 225, 255, 0.26); color: #fff; transform: translateY(-1px); }
 
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.3rem; color: white;
-            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en, body.lang-fr #btn-fr {
-            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(0, 225, 255, 0.4));
+            opacity: 1; filter: grayscale(0%); border-color: var(--human-cyan);
+            background: rgba(0, 225, 255, 0.16); box-shadow: 0 0 12px rgba(0, 225, 255, 0.35);
+        }
+        @media (max-width: 980px) {
+            nav.top-tetralogy-nav .nav-links { display: none; }
         }
 
         article {
-            max-width: 1000px; margin: 7rem auto 6rem; padding: 0 2rem;
-            font-size: 1.15rem; color: #d4d4d4;
+            max-width: 1040px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #sim-pwa, #det-pod, #det-consensus, #det-51, #det-marl {
+            scroll-margin-top: 5.5rem;
         }
 
         header {
@@ -196,8 +258,8 @@
             border-left: 4px solid var(--human-cyan);
         }
         details[open] { 
-            background: rgba(0, 0, 0, 0.7); 
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 25px currentColor; 
+            background: rgba(0, 0, 0, 0.72); 
+            box-shadow: inset 0 0 22px rgba(0,0,0,0.65), 0 10px 30px rgba(0, 225, 255, 0.08); 
         }
         summary {
             padding: 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.25rem;
@@ -303,23 +365,37 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav>
-    <a href="index.html" class="logo">☀ The Sun Standard</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-tetralogy-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🕸️ L'Étalon Solaire · Web of Life</a>
+    <div class="nav-links">
+        <a href="#sim-pwa"><span lang="fr">1. Simulation Terre</span><span lang="en">1. Earth Sim</span></a>
+        <a href="#det-pod"><span lang="fr">2. Mega-POD H3</span><span lang="en">2. H3 Mega-POD</span></a>
+        <a href="#det-consensus"><span lang="fr">3. Consensus Bio</span><span lang="en">3. Bio Consensus</span></a>
+        <a href="#det-51"><span lang="fr">4. Attaque 51%</span><span lang="en">4. 51% Attack</span></a>
+        <a href="#det-marl"><span lang="fr">5. Cogén. & MARL</span><span lang="en">5. Cogen & MARL</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadWebOfLifeHTML()" title="Télécharger weboflife.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
 <article>
     <header>
+        <div style="margin-bottom: 1rem;">
+            <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(0, 225, 255, 0.13); border: 1px solid rgba(0, 225, 255, 0.45); color: var(--human-cyan); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Jumeau Numérique Planétaire · Monades Thermodynamiques & Blockchains Fractales
+            </span>
+            <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(0, 225, 255, 0.13); border: 1px solid rgba(0, 225, 255, 0.45); color: var(--human-cyan); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Planetary Digital Twin · Thermodynamic Monads & Fractal Blockchains
+            </span>
+        </div>
         <h1>
             <span lang="fr">La Toile de la Vie</span>
             <span lang="en">Web Of Life</span>
@@ -338,6 +414,22 @@
         </p>
     </header>
 
+    <!-- BOÎTE D'EXPORT AUTONOME & DÉPÔT GITHUB -->
+    <div class="export-toolkit-bar" style="margin: -1.5rem 0 2.5rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(0, 225, 255, 0.08) 0%, rgba(68, 238, 119, 0.07) 52%, rgba(255, 85, 0, 0.07) 100%); border: 1px solid rgba(0, 225, 255, 0.34); border-left: 4px solid var(--human-cyan); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 610px;">
+            <span lang="fr">🕸️ <strong>Architecture Open-Source TypeScript & Physique :</strong> Téléchargez le code source de cet essai (<code>weboflife.html</code>) ou inspectez le moteur multi-agents complet sur <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" style="color:var(--human-cyan);">GitHub (WebOfLife)</a>.</span>
+            <span lang="en">🕸️ <strong>Open-Source TypeScript & Physics Architecture:</strong> Download this standalone essay (<code>weboflife.html</code>) or inspect the full multi-agent engine on <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" style="color:var(--human-cyan);">GitHub (WebOfLife)</a>.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadWebOfLifeHTML()" style="background: rgba(0, 225, 255, 0.16); border: 1px solid #00e1ff; color: #00e1ff; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyWebOfLifeHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
+
     <!-- ENCART DE VULGARISATION -->
     <div class="vulgarisation-box">
         <h3>
@@ -352,10 +444,10 @@
             A living organism is not just a biological entity: it is an open <strong>dissipative structure</strong> that consumes energy to maintain its internal order while rejecting disorder (entropy). In this project, every living creature or individual is modeled as a <strong>POD</strong> (a thermodynamic data structure) coupled with its own <strong>autonomous Proof-of-Work (PoW) blockchain</strong>.
         </p>
         <p lang="fr">
-            🌐 <strong>La Membrane de Souveraineté (Solid Pods) :</strong> Tout comme le Web de Tim Berners-Lee redéfinit le stockage des données personnelles via des PODs sécurisés où l'utilisateur choisit précisément qui peut lire quoi, notre modélisation biologique et informatique confère à chaque monade une "membrane" inviolable. C'est cette membrane qui définit précisément l'intérieur et l'extérieur du corps. Vos données, votre métabonnée et votre empreinte d'exergie restent sous votre contrôle strict.
+            🌐 <strong>La Membrane de Souveraineté (Solid PODs & Couverture de Markov) :</strong> Tout comme le protocole <em>Solid</em> de Tim Berners-Lee redéfinit le stockage des données personnelles via des PODs souverains où l'individu choisit précisément qui peut lire quoi, notre modélisation confère à chaque monade une membrane statistique inviolable (au sens de la <em>Couverture de Markov</em> de Karl Friston étudiée dans l'<a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Acte III</a>). Vos données, vos métadonnées et votre empreinte d'exergie demeurent sous votre contrôle cryptographique strict.
         </p>
         <p lang="en">
-            🌐 <strong>The Sovereignty Membrane (Solid Pods):</strong> Much like Tim Berners-Lee's Web redefine personal data storage through secure PODs where users precisely choose who reads what, our biological and computational modeling gives each monad an inviolable "membrane." This membrane defines precisely the inside and outside of the body. Your data, metadata, and exergy footprint remain under your strict control.
+            🌐 <strong>The Sovereignty Membrane (Solid PODs & Markov Blanket):</strong> Much like Tim Berners-Lee's <em>Solid</em> protocol redefines personal data storage through sovereign PODs where users precisely choose who reads what, our modeling endows each monad with an inviolable statistical membrane (mirroring Karl Friston's <em>Markov Blanket</em> formalized in <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Act III</a>). Your data, metadata, and exergy footprint remain under your strict cryptographic control.
         </p>
         <p lang="fr">
             Respirer, chasser ou se nourrir équivaut à "miner" sa propre existence à travers des transactions biochimiques. 
@@ -374,7 +466,24 @@
         <span lang="en">"Proof of Nakamoto work is to secure the Noosphere. Proof of Ecological Work (PoEW) is to secure the Biosphere. The useful exergy certificate coming from Proof of Work mining has to be used with cogeneration to ensure Symbiosis between the Mind and the Body of the Earth."</span>
     </div>
 
-    <h3 style="color: var(--human-cyan); font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 1rem; margin-top: 3rem;">
+    <!-- PONT D'UNIFICATION MATHÉMATIQUE AVEC LA TÉTRALOGIE -->
+    <div style="margin: 2.5rem 0; padding: 1.7rem 2rem; background: linear-gradient(145deg, rgba(6,13,22,0.94), rgba(4,9,14,0.96)); border: 1px solid rgba(0, 225, 255, 0.3); border-left: 4px solid var(--bio-green); border-radius: 12px; font-family: var(--font-ui); box-shadow: 0 14px 36px rgba(0,0,0,0.6);">
+        <h4 style="color: var(--sun-yellow); margin: 0 0 0.75rem; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 1.4px;">
+            <span lang="fr">🔗 Continuité Systémique : Du Bit de Landauer au Simulateur Multi-Agents du Vivant</span>
+            <span lang="en">🔗 Systemic Continuity: From Landauer's Bit to the Living Multi-Agent Simulator</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 0.95rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.85rem;">
+            $$ \underbrace{\Phi_{\odot,\text{abs}} \approx 1,22 \times 10^{17}\text{ W}}_{\text{Étalon Solaire (Ouvert)}} \;\longrightarrow\; \underbrace{\Delta M_\oplus = 0 \;\land\; \dot{I} = T_0\dot{S}_{\text{gen}} \ge 0}_{\text{Mega-POD Terrestre (H3)}} \;\longrightarrow\; \underbrace{\text{PoW (Noosphère)} \oplus \text{PoEW (Biosphère)}}_{\text{Cogénération · Acte IV & Wood Wide Web}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            Si <a href="wood-wide-web.html" style="color:var(--bio-green);">The Wood Wide Web</a> dévoilait comment l'arbre et le mycélium ont inventé le consensus thermodynamique il y a $450\text{ millions}$ d'années, <strong>La Toile de la Vie</strong> l'encode en TypeScript orienté objet : chaque maille hexagonale H3 de la Terre couple le registre cryptographique humain (PoW) au registre métabolique des espèces (PoEW) et à la cogénération de <a href="matrice-inversee.html" style="color:var(--cogeneration);">La Matrice Inversée</a>.
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            While <a href="wood-wide-web.html" style="color:var(--bio-green);">The Wood Wide Web</a> revealed how trees and fungal mycelium pioneered thermodynamic consensus $450\text{ million}$ years ago, <strong>Web of Life</strong> encodes it into object-oriented TypeScript: each H3 hexagonal cell of Earth couples human cryptographic Proof-of-Work (PoW) with species-level Ecological Proof-of-Work (PoEW) and the thermal cogeneration of <a href="matrice-inversee.html" style="color:var(--cogeneration);">The Inverted Matrix</a>.
+        </p>
+    </div>
+
+    <h3 id="sim-pwa" style="color: var(--human-cyan); font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 1rem; margin-top: 3rem;">
         <span lang="fr">🌍 Simulation Planétaire en Temps Réel</span>
         <span lang="en">🌍 Real-Time Planetary Simulation</span>
     </h3>
@@ -394,7 +503,7 @@
     </div>
 
     <!-- SECTION 1: README REVIEW & ARCHITECTURE -->
-    <details class="layer-sun" open>
+    <details id="det-pod" class="layer-sun" open>
         <summary>
             <span lang="fr">I. L'Anatomie du Mega-POD Terrestre</span>
             <span lang="en">I. Anatomy of the Mega-POD</span>
@@ -416,21 +525,21 @@
 
             <div class="modelling-grid">
                 <div class="model-card">
-                    <h4 style="color: var(--sun-yellow);"><span lang="fr">Première Loi (Conservation de Masse)</span><span lang="en">First Law (Mass Conservation)</span></h4>
-                    <p lang="fr">$\Delta \text{Stock}_i = \sum \text{Entrants} - \sum \text{Sortants}$. La matière ne peut être créée ou détruite dans le Mega-POD. Les audits IA statiques et les middlewares de validation bloquent impitoyablement toute interaction de l'environnement qui violerait l'équilibre stœchiométrique atomique ou les réserves géologiques finies.</p>
-                    <p lang="en">$\Delta \text{Stock}_i = \sum \text{Inbound} - \sum \text{Outbound}$. Matter cannot be created or destroyed within the Mega-POD. Static AI audits and validation middlewares ruthlessly block any environmental interaction that would violate atomic stoichiometric equilibrium or finite geological reserves.</p>
+                    <h4 style="color: var(--human-cyan);"><span lang="fr">Loi de Lavoisier (Clôture Matérielle)</span><span lang="en">Lavoisier's Law (Finite-Matter Closure)</span></h4>
+                    <p lang="fr">$\Delta M_k = \sum \dot{m}_{k,\text{in}} - \sum \dot{m}_{k,\text{out}}$ ($\sum_k \Delta M_k = 0$ sur Terre). Aucun atome ($\text{C, N, P, Cu, Au}$) ne peut être créé ex nihilo dans le Mega-POD. Les middlewares de validation bloquent toute transaction violant la stœchiométrie ou les stocks géologiques finis.</p>
+                    <p lang="en">$\Delta M_k = \sum \dot{m}_{k,\text{in}} - \sum \dot{m}_{k,\text{out}}$ ($\sum_k \Delta M_k = 0$ on Earth). No atom ($\text{C, N, P, Cu, Au}$) can be conjured ex nihilo inside the Mega-POD. Validation middlewares reject any interaction violating stoichiometry or finite lithospheric stocks.</p>
                 </div>
                 <div class="model-card">
-                    <h4 style="color: var(--sun-yellow);"><span lang="fr">Seconde Loi (Destruction d'Exergie)</span><span lang="en">Second Law (Exergy Destruction)</span></h4>
-                    <p lang="fr">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Toute action, qu'il s'agisse de l'extraction minière humaine (<code>SatoshiHumanMonad</code>) ou de la photosynthèse végétale, dissipe irrémédiablement de la chaleur fatale selon le théorème de Gouy-Stodola. La nature force la "punition" de l'irréversibilité systémique.</p>
-                    <p lang="en">$\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Every action, whether human mining extraction (<code>SatoshiHumanMonad</code>) or vegetal photosynthesis, irremediably dissipates fatal heat according to the Gouy-Stodola theorem. Nature mathematically enforces the "punishment" of systemic irreversibility.</p>
+                    <h4 style="color: var(--sun-yellow);"><span lang="fr">1<sup>er</sup> & 2<sup>nd</sup> Principes (Flux Solaire & Gouy-Stodola)</span><span lang="en">1st & 2nd Laws (Solar Flux & Gouy-Stodola)</span></h4>
+                    <p lang="fr">$\dot{U}_\oplus = \Phi_{\odot,\text{in}} - \Phi_{\text{IR,out}}$ et $\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Ouverte aux photons solaires de basse entropie ($T_\odot \approx 5\,778\text{ K}$) et rejetant ses infrarouges vers l'espace ($T_0 \approx 255\text{ K}$), toute monade (fougère ou <code>SatoshiHumanMonad</code>) détruit irréversiblement de l'exergie selon Gouy-Stodola.</p>
+                    <p lang="en">$\dot{U}_\oplus = \Phi_{\odot,\text{in}} - \Phi_{\text{IR,out}}$ and $\dot{I} = T_0 \dot{S}_{\text{gen}} \ge 0$. Open to low-entropy solar photons ($T_\odot \approx 5,778\text{ K}$) and radiating IR entropy to space ($T_0 \approx 255\text{ K}$), every monad (fern or <code>SatoshiHumanMonad</code>) irreversibly destroys exergy under the Gouy-Stodola theorem.</p>
                 </div>
             </div>
         </div>
     </details>
 
     <!-- SECTION 2: DISCRETIZATION OF STATE & INTERNAL CONSENSUS -->
-    <details class="layer-math">
+    <details id="det-consensus" class="layer-math">
         <summary>
             <span lang="fr">II. Discrétisation du Temps et Consensus Biochimique Interne</span>
             <span lang="en">II. Discretization of Time and Internal Biochemical Consensus</span>
@@ -469,7 +578,7 @@
     </details>
 
     <!-- SECTION 3: FRACTAL BLOCKCHAINS -->
-    <details class="layer-bio">
+    <details id="det-51" class="layer-bio">
         <summary>
             <span lang="fr">III. Blockchains Fractales et L'Attaque des 51% (Extinction)</span>
             <span lang="en">III. Fractal Blockchains and The 51% Attack (Extinction)</span>
@@ -505,7 +614,7 @@
     </details>
 
     <!-- SECTION 4: COGENERATION & SYMBIOSIS -->
-    <details class="layer-cog">
+    <details id="det-marl" class="layer-cog">
         <summary>
             <span lang="fr">IV. Symbiose : Cogénération, Exergie Utile et Modèles MARL</span>
             <span lang="en">IV. Symbiosis: Cogeneration, Useful Exergy and MARL Models</span>
@@ -553,7 +662,11 @@
             </ul>
 
             <div class="math-block" style="color: var(--cogeneration); border-color: rgba(255, 85, 0, 0.3); background: rgba(20, 10, 0, 0.8);">
-                $$ \max_{\mathbf{u}(t)} \int_{0}^{\infty} e^{-\gamma t} \left( \mathcal{W}_{\text{human}}(t) \times \mathcal{B}_{\text{biodiversity}}(t) \times \mathcal{E}_{\text{explorability}}(t) \right) dt $$
+                $$ \max_{\mathbf{u}(t)} \int_{0}^{\infty} e^{-\gamma t} \Big( \mathcal{W}_{\text{human}}(t) \cdot \mathcal{B}_{\text{biodiversity}}(t) \cdot \mathcal{E}_{\text{explorability}}(t) \Big) dt \quad \text{avec } \mathcal{W},\mathcal{B},\mathcal{E} \in [0,1] $$
+                <div class="math-legend">
+                    <span lang="fr">Propriété d'annihilation multiplicative (Produit de Nash) : si une politique industrielle provoque l'extinction du vivant ($\mathcal{B}_{\text{biodiversity}} \to 0$), la récompense globale s'effondre identiquement à $0$ (et $\ln \mathcal{B} \to -\infty$), rendant l'écocide mathématiquement non-optimal quelle que soit la richesse humaine immédiate.</span>
+                    <span lang="en">Multiplicative zero-absorbing property (Nash Product): if any industrial policy drives biodiversity toward extinction ($\mathcal{B}_{\text{biodiversity}} \to 0$), total reward collapses identically to $0$ (and $\ln \mathcal{B} \to -\infty$), making ecocide mathematically suboptimal regardless of short-term human output.</span>
+                </div>
             </div>
             
             <p lang="fr" style="text-align: center; color: #aab1b8; font-size: 0.95rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
@@ -579,21 +692,46 @@
         </h2>
     </div>
 
-    <!-- NAVIGATION ENTRE ARTICLES -->
-    <div class="article-navigation">
-        <a href="horizon-zero-2044.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
-            <div class="nav-title"><span lang="fr">Horizon Zéro 2044</span><span lang="en">Horizon Zéro 2044</span></div>
-            <img src="img/HorizonZero.png" alt="Horizon Zéro" style="width:100%; max-width:280px; border-radius:6px;">
-        </a>
+    <!-- SECTION FEEDBACK FORMSPREE UNIFIÉE -->
+    <div style="margin: 4.5rem auto 3.5rem; padding: 2.3rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 225, 255, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 720px; text-align: center; font-family: var(--font-ui);">
+        <h3 style="color: var(--human-cyan); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800;">
+            <span lang="fr">Contribuer au Mega-POD (Web of Life)</span>
+            <span lang="en">Contribute to the Mega-POD (Web of Life)</span>
+        </h3>
+        <p style="color: #9ca3af; font-style: italic; font-size: 0.94rem; margin-bottom: 1.5rem;">
+            <span lang="fr">Vos retours sur la modélisation thermodynamique, les équations PoEW ou le moteur H3 sont précieux.</span>
+            <span lang="en">Your feedback on the thermodynamic modeling, PoEW equations, or H3 engine is invaluable.</span>
+        </p>
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="La Toile de la Vie (Web of Life)">
+            <textarea name="feedback" style="width: 100%; background: #05070c; border: 1px solid rgba(0, 225, 255, 0.25); border-radius: 8px; color: #fff; padding: 1.1rem; font-family: var(--font-main); font-size: 1.05rem; min-height: 140px; resize: vertical; margin-bottom: 1.2rem; outline: none;" placeholder="Vos remarques scientifiques ou d'ingénierie logicielle... / Your scientific or software engineering notes..." required></textarea>
+            <button type="submit" id="feedback-btn" style="background: rgba(0, 225, 255, 0.12); border: 1px solid var(--human-cyan); color: var(--human-cyan); padding: 11px 32px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui); font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; transition: 0.25s;">
+                <span lang="fr">Transmettre au Mega-POD</span>
+                <span lang="en">Transmit to Mega-POD</span>
+            </button>
+        </form>
+    </div>
+    <div id="success-popup" style="display:none; position:fixed; bottom:30px; right:30px; background:rgba(68, 238, 119, 0.14); border:1px solid #44ee77; color:#44ee77; padding:14px 24px; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,0.65); z-index:1000; backdrop-filter:blur(6px); font-family:var(--font-ui); font-weight:700;">
+        <span lang="en">✅ Feedback received! Thank you.</span>
+        <span lang="fr">✅ Retour reçu avec succès ! Merci.</span>
     </div>
 
-    <!-- NAVIGATION ENTRE ARTICLES -->
+    <!-- NAVIGATION ENTRE ARTICLES UNIFIÉE (CÔTE À CÔTE) -->
     <div class="article-navigation">
+        <a href="horizon-zero-2044.html" class="nav-card">
+            <div style="width: 100%;">
+                <div class="nav-direction"><span lang="fr">← Article Précédent</span><span lang="en">← Previous Article</span></div>
+                <div class="nav-title"><span lang="fr">Horizon Zéro 2044 : L'Éveil de la Noosphère (v3.0)</span><span lang="en">Horizon Zero 2044: Awakening the Noosphere (v3.0)</span></div>
+            </div>
+            <img src="img/HorizonZero.png" alt="Horizon Zéro 2044" style="width:100%; max-width:300px; border-radius:8px;" onerror="this.style.display='none'">
+        </a>
+
         <a href="horloge-cosmo-btc-cadran-mu.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
-            <div class="nav-title"><span lang="fr">Cadran Mu - Les Gardiens Du Temps et de la Galaxie</span><span lang="en">Cadran Mu - Guardians of Time and of the Galaxy</span></div>
-            <img src="img/cadran.jpg" alt="Cadran Mu - Temps Complexe" style="width:100%; max-width:280px; border-radius:6px;">
+            <div style="width: 100%;">
+                <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+                <div class="nav-title"><span lang="fr">Cadran Mu : Les Gardiens du Temps et de la Galaxie</span><span lang="en">Mu Dial: Guardians of Time and of the Galaxy</span></div>
+            </div>
+            <img src="img/cadran.jpg" alt="Cadran Mu - Temps Complexe" style="width:100%; max-width:300px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
     </div>
 
@@ -614,11 +752,25 @@
             <span lang="fr">Ressources & Projets Liés</span><span lang="en">Related Resources & Projects</span>
         </div>
         <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
+            <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" class="resource-card">
+                <h4 style="color:var(--human-cyan);">🕸️ WebOfLife (GitHub Repo)</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Code source complet TypeScript, maillage hexagonal Uber H3, monades thermodynamiques et pipeline multi-agents.</span>
+                    <span lang="en">Full TypeScript source code, Uber H3 hexagonal grid, thermodynamic monads, and multi-agent orchestration pipeline.</span>
+                </p>
+            </a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌱 Regenerative Compute (Lemuria Tech)</h4>
+                <p style="font-size:0.85rem; color:#888;">
+                    <span lang="fr">Incarnation matérielle de la cogénération : du bureau (BitTerrarium™ 17 W) aux mines réhabilitées mégawatt.</span>
+                    <span lang="en">Physical cogeneration execution: from 17 W desktop biospheres (BitTerrarium™) to megawatt rehabilitated mines.</span>
+                </p>
+            </a>
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
                 <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
                 <p style="font-size:0.85rem; color:#888;">
-                    <span lang="fr">Monétisation de l'entropie et thermodynamique économique appliquée.</span>
-                    <span lang="en">Entropy monetization and applied economic thermodynamics.</span>
+                    <span lang="fr">Portail théorique : temps thermique KMS, preuves formelles Lean 4 et éconophysique solaire post-PIB.</span>
+                    <span lang="en">Theoretical portal: KMS thermal time, Lean 4 formal proofs, and post-GDP solar econophysics.</span>
                 </p>
             </a>
             <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
@@ -653,29 +805,75 @@
     <p>Pascal Ranoroarijaona · 2026</p>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "La Toile de la Vie (Web of Life) — Le Code Source Ouvert de la Réalité | L'Étalon Solaire",
+  "alternativeHeadline": "Web of Life: Earth Modeled as an Open-Energy, Finite-Matter Mega-POD with Fractal Blockchains",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/weboflife.html",
+  "codeRepository": "https://github.com/pascalranoroarijaona/WebOfLife",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(4, 16, 22, 0.96); border: 1px solid #00e1ff; color: #00e1ff; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
 <script>
-    // Lang switch logic
+    window.updateReadingProgressUI = function () {
+        const progressTop = document.getElementById('reading-progress');
+        const progressPercent = document.getElementById('reading-progress-percent');
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        if (progressTop) progressTop.style.width = `${progress}%`;
+        if (progressPercent) {
+            const isEn = document.body.classList.contains('lang-en');
+            progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+        }
+    };
+    window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+    window.addEventListener('resize', window.updateReadingProgressUI);
+
     function setLang(lang) {
-        lang = lang.toLowerCase();
+        lang = (lang || 'fr').toLowerCase();
         if (lang !== 'en' && lang !== 'fr') lang = 'fr';
         document.body.className = 'lang-' + lang;
-        localStorage.setItem('sun-std-lang', lang);
-        const url = new URL(window.location);
-        url.searchParams.set('lg', lang.toUpperCase());
-        window.history.replaceState({}, '', url);
+        const btnEn = document.getElementById('btn-en');
+        const btnFr = document.getElementById('btn-fr');
+        if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+        if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
+
+        try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lg', lang.toUpperCase());
+            window.history.replaceState({}, '', url);
+        } catch (e) {}
+
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
     }
+
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lg');
-        const savedLang = urlLang ? urlLang : (localStorage.getItem('sun-std-lang') || 'fr');
-        setLang(savedLang);
-    });
+        let savedLang = 'fr';
+        try { savedLang = localStorage.getItem('sun-std-lang') || 'fr'; } catch (e) {}
+        setLang(urlLang ? urlLang : savedLang);
+        window.updateReadingProgressUI();
 
-    // Auto-open details on click (UX)
-    document.addEventListener("DOMContentLoaded", () => {
-        const links = document.querySelectorAll("a[href^='#det-']");
-        links.forEach(link => {
-            link.addEventListener("click", function(e) {
+        // Auto-open <details> quand on clique sur une ancre dans la barre de navigation
+        document.querySelectorAll("a[href^='#det-']").forEach(link => {
+            link.addEventListener("click", function() {
                 const targetId = this.getAttribute("href").substring(1);
                 const targetDetails = document.getElementById(targetId);
                 if (targetDetails && !targetDetails.hasAttribute("open")) {
@@ -683,7 +881,100 @@
                 }
             });
         });
+
+        // Gestionnaire AJAX Formspree
+        const form = document.getElementById('feedback-form');
+        const popup = document.getElementById('success-popup');
+        const btn = document.getElementById('feedback-btn');
+        if (form && btn) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const orig = btn.innerHTML;
+                btn.innerHTML = '⏳ ...';
+                btn.disabled = true;
+                try {
+                    const res = await fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        form.reset();
+                        if (popup) {
+                            popup.style.display = 'block';
+                            setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                        }
+                    }
+                } catch (err) {} finally {
+                    btn.innerHTML = orig;
+                    btn.disabled = false;
+                }
+            });
+        }
     });
+
+    (function() {
+        function getCleanWoLHTML() {
+            const clone = document.documentElement.cloneNode(true);
+            clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+            const toast = clone.querySelector('#sun-toast');
+            if (toast) toast.style.opacity = '0';
+            return "<!doctype html>\n" + clone.outerHTML;
+        }
+
+        function showWoLToast(msgFr, msgEn) {
+            const t = document.getElementById('sun-toast');
+            if (!t) return;
+            t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+            t.style.opacity = '1';
+            t.style.transform = 'translateY(0)';
+            clearTimeout(window._wolToastTimer);
+            window._wolToastTimer = setTimeout(() => {
+                t.style.opacity = '0';
+                t.style.transform = 'translateY(12px)';
+            }, 3200);
+        }
+
+        function copyFallback(txt) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(txt).catch(() => {});
+                return;
+            }
+            const ta = document.createElement('textarea');
+            ta.value = txt;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        window.downloadWebOfLifeHTML = function() {
+            const src = getCleanWoLHTML();
+            try {
+                const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'weboflife.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+                showWoLToast('✅ weboflife.html téléchargé !', '✅ weboflife.html downloaded!');
+            } catch (err) {
+                copyFallback(src);
+                showWoLToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+            }
+        };
+
+        window.copyWebOfLifeHTML = function() {
+            copyFallback(getCleanWoLHTML());
+            showWoLToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+        };
+    })();
 </script>
 
 </body>

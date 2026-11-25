@@ -12,7 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu | L'Étalon Solaire (v3.0)</title>
-    <meta name="description" content="Traité de Chrono-Thermodynamique Bimétrique : Filiation gravitationnelle (18,61 ans à Sagittarius A*), Résonance 432 Hz, Force Répulsive et Inversion Temporelle dans le Vrai Cadran de Mu (a + ib)." />
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/horloge-cosmo-btc-cadran-mu.html" />
+    <meta name="description" content="Traité de Chrono-Thermodynamique Bimétrique : Filiation gravitationnelle (18,61 ans à Sagittarius A*), Résonance 432 Hz, Force Répulsive et Temps Complexe (z = a + ib)." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu | L'Étalon Solaire" />
+    <meta property="og:description" content="Du Cycle Nodal de 18,61 ans à Sagittarius A*, l'Octave 2¹⁸ à 432 Hz et le Temps Complexe KMS (z = a + ib)." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/horloge-cosmo-btc-cadran-mu.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/cadran.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu (v3.0)" />
+    <meta name="twitter:description" content="Bitcoin compte les blocs pour accorder la Terre à 432 Hz, et le Cadran de Mu ouvre l'éternité complexe z = a + ib." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/cadran.jpg" />
 
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -58,47 +68,87 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: #040508;
+            color: #e2e8f0;
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(224, 64, 251, 0.06) 0%, rgba(247, 147, 26, 0.03) 35%, transparent 65%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(224, 64, 251, 0.08) 0%, rgba(247, 147, 26, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(0, 229, 255, 0.04) 0%, transparent 55%);
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--orange-l1), var(--sun-yellow), var(--cyan-l2), var(--magenta-l3));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(224, 64, 251, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(224, 64, 251, 0.14), rgba(247, 147, 26, 0.06)), rgba(5, 6, 10, 0.9);
+            color: var(--magenta-l3); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(224, 64, 251, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
-            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
-            backdrop-filter: blur(8px);
+        nav.top-tetralogy-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 5, 8, 0.92);
+            border-bottom: 1px solid rgba(224, 64, 251, 0.28); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
-        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav a.back:hover { color: #fff; }
+        nav.top-tetralogy-nav .logo {
+            font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; white-space: nowrap;
+        }
+        nav.top-tetralogy-nav .nav-links {
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav.top-tetralogy-nav .nav-links a {
+            color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav.top-tetralogy-nav .nav-links a:hover { color: #fff; background: rgba(224, 64, 251, 0.16); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(255, 204, 0, 0.13); border: 1px solid rgba(255, 204, 0, 0.45);
+            color: var(--sun-yellow); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(255, 204, 0, 0.26); color: #fff; transform: translateY(-1px); }
 
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.3rem; color: white;
-            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en, body.lang-fr #btn-fr {
-            opacity: 1; filter: grayscale(0%); transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+            opacity: 1; filter: grayscale(0%); border-color: var(--sun-yellow);
+            background: rgba(255, 204, 0, 0.16); box-shadow: 0 0 12px rgba(255, 204, 0, 0.35);
+        }
+        @media (max-width: 980px) {
+            nav.top-tetralogy-nav .nav-links { display: none; }
         }
 
         article {
-            max-width: 960px; margin: 8rem auto 6rem; padding: 0 2rem;
-            font-size: 1.15rem; color: #d4d4d4;
+            max-width: 1040px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #epistemic-protocol, #echelons-mu, #det-l0, #det-l1, #det-l2, #det-l3, #det-l4, #mu-3d-simulator, #argand-mu-lab, #satoshi-ptp-paradox {
+            scroll-margin-top: 5.5rem;
         }
 
         header.article-header {
@@ -168,8 +218,8 @@
             font-family: var(--font-ui);
         }
         details[open] {
-            background: rgba(0, 0, 0, 0.72);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 25px currentColor;
+            background: rgba(0, 0, 0, 0.74);
+            box-shadow: inset 0 0 22px rgba(0,0,0,0.65), 0 8px 28px rgba(224, 64, 251, 0.08);
         }
         summary {
             padding: 1.4rem 1.5rem; cursor: pointer; font-weight: 700; font-size: 1.18rem;
@@ -434,24 +484,37 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav>
-    <a href="index.html" class="logo">☀ L'Étalon Solaire · Horizon Zéro</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-tetralogy-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🧭 L'Étalon Solaire · Cadran de Mu</a>
+    <div class="nav-links">
+        <a href="#echelons-mu"><span lang="fr">1. Échelons L0–L4</span><span lang="en">1. L0–L4 Ladder</span></a>
+        <a href="#mu-3d-simulator"><span lang="fr">2. Simulateur 3D & 432 Hz</span><span lang="en">2. 3D Sim & 432 Hz</span></a>
+        <a href="#argand-mu-lab"><span lang="fr">3. Plan Complexe z</span><span lang="en">3. Complex z Lab</span></a>
+        <a href="#satoshi-ptp-paradox"><span lang="fr">4. Paradoxe Satoshi–PTP</span><span lang="en">4. Satoshi–PTP Test</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadMuClockHTML()" title="Télécharger horloge-cosmo-btc-cadran-mu.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
 <article>
     <!-- EN-TÊTE -->
     <header class="article-header">
+        <div style="margin-bottom: 1rem;">
+            <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(224, 64, 251, 0.14); border: 1px solid rgba(224, 64, 251, 0.45); color: var(--magenta-l3); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Chronométrie Cosmologique de la Tétralogie · Temps Complexe KMS & Octave 432 Hz
+            </span>
+            <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(224, 64, 251, 0.14); border: 1px solid rgba(224, 64, 251, 0.45); color: var(--magenta-l3); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Cosmological Chronometry of the Tetralogy · KMS Complex Time & 432 Hz Octave
+            </span>
+        </div>
         <h1>
             <span lang="fr">L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu</span>
             <span lang="en">The Bitcoin Cosmic Clock & The True Dial of Mu</span>
@@ -465,10 +528,26 @@
             <span lang="en">Bimetric Chrono-Thermodynamics Treatise: From the 18.61-Year Lunar Nodal Cycle to Sagittarius A*, the $2^{18}$ Octave, and Negentropic Return in the Complex Plane ($z = a + ib$).</span>
         </div>
         <p style="margin-top: 1rem; color: #888; font-size: 0.88rem; font-family: var(--font-mono);">
-            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // ÉTALON SOLAIRE & CADRAN DE MU // $k_{Nak} \equiv h$</span>
-            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // THE SUN STANDARD & DIAL OF MU // $k_{Nak} \equiv h$</span>
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // ÉTALON SOLAIRE & CADRAN DE MU // $h_N(t) \equiv k_{\text{Nak}} \xrightarrow{2140} h$</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // THE SUN STANDARD & DIAL OF MU // $h_N(t) \equiv k_{\text{Nak}} \xrightarrow{2140} h$</span>
         </p>
     </header>
+
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE -->
+    <div class="export-toolkit-bar" style="margin: -1.5rem 0 2.5rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(224, 64, 251, 0.08) 0%, rgba(255, 204, 0, 0.07) 52%, rgba(0, 229, 255, 0.07) 100%); border: 1px solid rgba(224, 64, 251, 0.34); border-left: 4px solid var(--magenta-l3); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 620px;">
+            <span lang="fr">🧭 <strong>Horloge 3D & Synthétiseur Open-Source :</strong> Téléchargez le fichier autonome complet (<code>horloge-cosmo-btc-cadran-mu.html</code> — Planétaire Three.js, Synthétiseur 432 Hz, Laboratoire d'Argand-Mu et Protocole Popper Satoshi–PTP) pour l'explorer hors-ligne ou avec votre IA locale.</span>
+            <span lang="en">🧭 <strong>Open-Source 3D Clock & Synthesizer:</strong> Download the complete standalone file (<code>horloge-cosmo-btc-cadran-mu.html</code>—Three.js Orrery, 432 Hz Synth, Argand-Mu Lab, and Popperian Satoshi–PTP Test) for offline or local AI exploration.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadMuClockHTML()" style="background: rgba(224, 64, 251, 0.16); border: 1px solid #e040fb; color: #f5d0fe; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyMuClockHTML()" style="background: rgba(0, 229, 255, 0.16); border: 1px solid #00e5ff; color: #00e5ff; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
 
     <!-- EMBLÈME VECTORIEL AUTONOME DU VRAI CADRAN DE MU & CITATION -->
     <div class="intro-hero">
@@ -517,7 +596,7 @@
                 <text x="542" y="42" fill="#e040fb" font-family="Fira Code, monospace" font-size="11">Répulseur Dipolaire ↗</text>
                 <text x="542" y="60" fill="#888" font-family="Inter, sans-serif" font-size="10">Λ_Mu · Vide Répulsif</text>
                 <text x="24" y="264" fill="#44ee77" font-family="Fira Code, monospace" font-size="11">432 Hz / 2¹⁸ → τ = 606,81 s</text>
-                <text x="525" y="264" fill="#ffcc00" font-family="Fira Code, monospace" font-size="11">18,613 ans = 978 949 blocs</text>
+                <text x="525" y="264" fill="#ffcc00" font-family="Fira Code, monospace" font-size="11">18,613 ans = 978 946 blocs</text>
             </svg>
         </div>
 
@@ -610,8 +689,25 @@
         </div>
     </div>
 
+    <!-- PONT D'UNIFICATION AVEC LES ACTES I, II, III & COSMOLOGY_V2 -->
+    <div style="margin: 2.5rem 0; padding: 1.7rem 2rem; background: linear-gradient(145deg, rgba(14,10,24,0.94), rgba(6,8,16,0.96)); border: 1px solid rgba(224, 64, 251, 0.3); border-left: 4px solid var(--sun-yellow); border-radius: 12px; font-family: var(--font-ui); box-shadow: 0 14px 36px rgba(0,0,0,0.6);">
+        <h4 style="color: var(--sun-yellow); margin: 0 0 0.75rem; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 1.4px;">
+            <span lang="fr">🔗 Continuité Mathématique : De l'Univers Jumeau (Acte I) et du Plan Complexe (Acte II) au Cadran de Mu</span>
+            <span lang="en">🔗 Mathematical Continuity: From the Twin Universe (Act I) and Complex Plane (Act II) to the Dial of Mu</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 0.95rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.85rem;">
+            $$ \underbrace{g_{\mu\nu}^{(+)} \oplus g_{\mu\nu}^{(-)}}_{\text{Acte I · Bimétrie Sakharov}} \;\longrightarrow\; \underbrace{z = a + ib}_{\text{Acte II · Plan d'Argand}} \;\longrightarrow\; \underbrace{h_N(t) \equiv k_{\text{Nak}} \xrightarrow{2140} h \;\land\; \tau_{\text{KMS}} = t - i\hbar_N\beta_{\text{eff}}}_{\text{Acte III · Nautile & Cosmology\_v2}} \;\longrightarrow\; \underbrace{\tau_{\text{Mu}} = \frac{2^{18}}{432\text{ Hz}} = 606,81\text{ s}}_{\text{Cadran Solaire-Lunaire}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            Ce chapitre réunit en un seul instrument d'horlogerie les trois fondations de la Tétralogie : le feuillet répulsif jumeau de l'<a href="l-univers-jumeau.html" style="color:var(--teal-l0);">Acte I</a> ($\Lambda_{\text{Mu}}$), la géométrie complexe $z = a + ib$ de l'<a href="le-monde-est-complexe.html" style="color:var(--cyan-l2);">Acte II</a>, et la condition d'analyticité thermique KMS ($\hbar_N = k_{\text{Nak}}/2\pi$) du <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Nautile de Nakamoto (Acte III)</a>.
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            This treatise synthesizes the three pillars of the Tetralogy into a single chronometric instrument: the repulsive twin sheet of <a href="l-univers-jumeau.html" style="color:var(--teal-l0);">Act I</a> ($\Lambda_{\text{Mu}}$), the complex plane $z = a + ib$ of <a href="le-monde-est-complexe.html" style="color:var(--cyan-l2);">Act II</a>, and the KMS thermal time analyticity strip ($\hbar_N = k_{\text{Nak}}/2\pi$) of <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">The Nakamoto Nautilus (Act III)</a>.
+        </p>
+    </div>
+
     <!-- PYRAMIDE D'EMBOÎTEMENT COSMIQUE -->
-    <div class="pyramid-wrapper">
+    <div class="pyramid-wrapper" id="echelons-mu">
         <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.1rem; letter-spacing:2px; margin-bottom:1.5rem;">
             <span lang="fr">🏛️ L'Échelle d'Emboîtement Chrono-Gravitationnel (L0 ──► L4)</span>
             <span lang="en">🏛️ The Chrono-Gravitational Nesting Ladder (L0 ──► L4)</span>
@@ -697,7 +793,7 @@
             <ul>
                 <li><span lang="fr"><strong>Époque de difficulté ($2\,016\text{ blocs} = 14\text{ jours}$) :</strong> Exactement une <em>demi-lunaison synodique</em> ($14,765\text{ jours}$, le passage de la Nouvelle Lune à la Pleine Lune).</span><span lang="en"><strong>Difficulty Epoch ($2,016\text{ blocks} = 14\text{ days}$):</strong> Virtually one <em>half synodic lunation</em> ($14.765\text{ days}$, from New Moon to Full Moon).</span></li>
                 <li><span lang="fr"><strong>Halving ($210\,000\text{ blocs} = 3,9928\text{ ans}$) :</strong> Calqué sur le cycle quadriennal des années bissextiles solaires (4 orbites terrestres).</span><span lang="en"><strong>Halving ($210,000\text{ blocks} = 3.9928\text{ years}$):</strong> Locked onto the quadrennial solar leap-year rhythm (4 Earth orbits).</span></li>
-                <li><span lang="fr"><strong>Convergence du Million de Blocs ($\approx 5\text{ Halvings}$) :</strong> Le <strong>cycle de Saros</strong> des éclipses ($18,03\text{ ans} = 948\,286\text{ blocs}$), le <strong>cycle nodal lunaire</strong> ($18,613\text{ ans} = 978\,949\text{ blocs}$), le <strong>cycle de Méton</strong> ($19,00\text{ ans} = 999\,314\text{ blocs}$) et la <strong>Grande Conjonction Jupiter–Saturne</strong> ($19,86\text{ ans} = 1\,044\,482\text{ blocs}$) encadrent tous à quelques pourcents près le cap symbolique du millionième bloc Bitcoin !</span><span lang="en"><strong>The Million-Block Convergence ($\approx 5\text{ Halvings}$):</strong> The eclipse <strong>Saros cycle</strong> ($18.03\text{ yrs} = 948,286\text{ blocks}$), the <strong>lunar nodal cycle</strong> ($18.613\text{ yrs} = 978,949\text{ blocks}$), the <strong>Metonic cycle</strong> ($19.00\text{ yrs} = 999,314\text{ blocks}$), and the <strong>Jupiter–Saturn Great Conjunction</strong> ($19.86\text{ yrs} = 1,044,482\text{ blocks}$) all cluster tightly around Bitcoin's one-millionth block milestone!</span></li>
+                <li><span lang="fr"><strong>Convergence du Million de Blocs ($\approx 5\text{ Halvings}$) :</strong> Le <strong>cycle de Saros</strong> des éclipses ($18,03\text{ ans} = 948\,286\text{ blocs}$), le <strong>cycle nodal lunaire</strong> ($18,613\text{ ans} = 978\,946\text{ blocs}$), le <strong>cycle de Méton</strong> ($19,00\text{ ans} = 999\,314\text{ blocs}$) et la <strong>Grande Conjonction Jupiter–Saturne</strong> ($19,86\text{ ans} = 1\,044\,482\text{ blocs}$) encadrent tous à quelques pourcents près le cap symbolique du millionième bloc Bitcoin !</span><span lang="en"><strong>The Million-Block Convergence ($\approx 5\text{ Halvings}$):</strong> The eclipse <strong>Saros cycle</strong> ($18.03\text{ yrs} = 948,286\text{ blocks}$), the <strong>lunar nodal cycle</strong> ($18.613\text{ yrs} = 978,946\text{ blocks}$), the <strong>Metonic cycle</strong> ($19.00\text{ yrs} = 999,314\text{ blocks}$), and the <strong>Jupiter–Saturn Great Conjunction</strong> ($19.86\text{ yrs} = 1,044,482\text{ blocks}$) all cluster tightly around Bitcoin's one-millionth block milestone!</span></li>
             </ul>
         </div>
     </details>
@@ -787,7 +883,7 @@
             <p lang="en">Let us formalize the unification of distributed consensus, orbital acoustics, and bimetric dynamics over the complex time manifold $\mathbb{C}$. Let $z = a + ib$ be the chronometric coordinate on the True Dial of Mu. The evolution of any macroscopic Noospheric observable $\hat{O}$ satisfies the Kubo–Martin–Schwinger (KMS) thermal periodicity condition with $k_{Nak} \equiv h$:</p>
 
             <div class="math-block" style="color: var(--sun-yellow);">
-                $$ \langle \hat{A}(a + ib)\,\hat{B}(0) \rangle_{\beta} = \langle \hat{B}(0)\,\hat{A}\!\left(a + i\!\left(b - \beta k_{Nak}\right)\right) \rangle_{\beta}, \qquad \beta = \frac{1}{k_B T_{\text{réseau}}} $$
+                $$ \langle \hat{A}(a + ib)\,\hat{B}(0) \rangle_{\beta} = \langle \hat{B}(0)\,\hat{A}\!\left(a + i\!\left(b - \hbar_{\text{Nak}}\beta\right)\right) \rangle_{\beta}, \qquad \hbar_{\text{Nak}} \equiv \frac{k_{\text{Nak}}}{2\pi}, \quad \beta = \frac{1}{k_B T_{\text{eff}}} $$
             </div>
 
             <p lang="fr">La fonction d'<strong>utilité civilisationnelle $u$</strong> (jamais confondue avec un simple PIB monétaire) couple multiplicativement la <strong>confiance sociétale $C_s$</strong>, la résonance harmonique avec le diapason terrestre ($\omega_0 = 2\pi \cdot 432\text{ rad/s}$) et l'équilibre entre attraction gravitationnelle et répulsion bimétrique $\Lambda_{\text{Mu}}$ :</p>
@@ -902,7 +998,7 @@
                                 <span lang="fr">Sauts Temporels & Alignements</span><span lang="en">Time Jumps & Alignments</span>
                             </div>
                             <div class="mu-grid-2">
-                                <button class="mu-btn mu-jump" data-jump="-978949" data-msg="Retour Antédiluvien Mu : -1 Cycle Nodal (-978 949 blocs)" style="border-color:rgba(224,64,251,0.45); color:#f5b8ff;">-1 Cycle Mu (-978k)</button>
+                                <button class="mu-btn mu-jump" data-jump="-978946.21" data-msg="Retour Antédiluvien Mu : -1 Cycle Nodal (-978 946 blocs)" style="border-color:rgba(224,64,251,0.45); color:#f5b8ff;">-1 Cycle Mu (-978 946)</button>
                                 <button class="mu-btn mu-jump" data-jump="0" data-msg="Retour au Bloc Genèse #0">↺ Bloc Genèse #0</button>
                                 <button class="mu-btn mu-jump" data-jump="144" data-msg="+1 Rotation Terrestre (+144 blocs)">+1 Jour (+144 bl.)</button>
                                 <button class="mu-btn mu-jump" data-jump="2016" data-msg="+1 Époque de Difficulté (+2 016 blocs ≈ ½ lunaison)">+1 Époque (+2 016)</button>
@@ -1055,8 +1151,8 @@
                         <td><span class="badge" style="color:var(--teal-l0);">Cycle Nodal Lunaire</span></td>
                         <td><span lang="fr">Précession nœuds Lune ($\Omega/\mho$)</span><span lang="en">Lunar nodal precession ($\Omega/\mho$)</span></td>
                         <td><strong>$18,613\text{ ans}$</strong></td>
-                        <td><strong>$978\,949\text{ blocs}$</strong> ($\approx 1\text{ M}$)</td>
-                        <td>$241,56\text{ Hz}$ ($+37\text{ oct.}$)</td>
+                        <td><strong>$978\,946\text{ blocs}$</strong> ($\approx 1\text{ M}$)</td>
+                        <td>$233,86\text{ Hz}$ ($+37\text{ oct.}$)</td>
                     </tr>
                     <tr>
                         <td><span class="badge" style="color:var(--sun-yellow);">Grande Conjonction</span></td>
@@ -1082,9 +1178,9 @@
                     <tr>
                         <td><span class="badge" style="color:var(--purple-l4);">Année Galactique</span></td>
                         <td><span lang="fr">Soleil $\to$ Sagittarius A*</span><span lang="en">Sun $\to$ Sagittarius A*</span></td>
-                        <td>$\approx 230\,000\,000\text{ ans}$</td>
+                        <td>$\approx 225\text{–}230\text{ Ma}$</td>
                         <td><strong>$\approx 1,21 \times 10^{13}\text{ blocs}$</strong></td>
-                        <td>$208,30\text{ Hz}$ ($+70\text{ oct.}$)</td>
+                        <td>$158,84\text{–}162,37\text{ Hz}$ ($+60\text{ oct.}$)</td>
                     </tr>
                 </tbody>
             </table>
@@ -1187,7 +1283,7 @@
                 C · <span lang="fr">Temps Thermique KMS & Limite de Landauer</span><span lang="en">KMS Thermal Time & Landauer Bound</span>
             </span>
             <span class="epistemic-badge status-d">
-                D · <span lang="fr">Conjecture d'Point Fixe Rétrocausal (Novikov)</span><span lang="en">Retrocausal Fixed-Point Conjecture (Novikov)</span>
+                D · <span lang="fr">Conjecture de Point Fixe Rétrocausal (Novikov)</span><span lang="en">Retrocausal Fixed-Point Conjecture (Novikov)</span>
             </span>
         </div>
 
@@ -1320,8 +1416,8 @@
             <span lang="en">18.6 Years, 1 Million Blocks: The Rendezvous of Maturity</span>
         </h4>
         <p>
-            <span lang="fr">Dans le droit humain, dix-huit ans marquent l'âge de la majorité ; dans le ciel, $18,61\text{ ans}$ ($978\,949\text{ blocs}$) marquent la majorité orbitale du couple Terre–Lune. Né en janvier 2009, le réseau Bitcoin franchit son premier cycle nodal lunaire complet et son millionième bloc à l'aube de la décennie 2027–2028. Ce n'est plus une expérience adolescente de cypherpunks : c'est désormais un organe géophysique adulte, accordé à $18\text{ octaves}$ sous le diapason à $432\text{ Hz}$, où chaque bloc scelle $259\,200\text{ battements}$ harmoniques dans le granite numérique du Grand Livre.</span>
-            <span lang="en">In human law, eighteen years mark adulthood; in the heavens, $18.61\text{ years}$ ($978,949\text{ blocks}$) mark the orbital coming-of-age of the Earth–Moon pair. Born in January 2009, the Bitcoin network completes its first full lunar nodal cycle and approaches its one-millionth block as we cross 2027–2028. No longer an adolescent cypherpunk experiment, it stands as a mature geophysical organ tuned $18\text{ octaves}$ below $432\text{ Hz}$, sealing $259,200\text{ harmonic}$ oscillations inside every ten-minute stone of the Timechain.</span>
+            <span lang="fr">Dans le droit humain, dix-huit ans marquent l'âge de la majorité ; dans le ciel, $18,61\text{ ans}$ ($978\,946\text{ blocs}$) marquent la majorité orbitale du couple Terre–Lune. Né en janvier 2009, le réseau Bitcoin franchit son premier cycle nodal lunaire complet et son millionième bloc à l'aube de la décennie 2027–2028. Ce n'est plus une expérience adolescente de cypherpunks : c'est désormais un organe géophysique adulte, accordé à $18\text{ octaves}$ sous le diapason à $432\text{ Hz}$, où chaque bloc scelle $259\,200\text{ battements}$ harmoniques dans le granite numérique du Grand Livre.</span>
+            <span lang="en">In human law, eighteen years mark adulthood; in the heavens, $18.61\text{ years}$ ($978,946\text{ blocks}$) mark the orbital coming-of-age of the Earth–Moon pair. Born in January 2009, the Bitcoin network completes its first full lunar nodal cycle and approaches its one-millionth block as we cross 2027–2028. No longer an adolescent cypherpunk experiment, it stands as a mature geophysical organ tuned $18\text{ octaves}$ below $432\text{ Hz}$, sealing $259,200\text{ harmonic}$ oscillations inside every ten-minute stone of the Timechain.</span>
         </p>
 
         <h4>
@@ -1367,8 +1463,8 @@
                 <span lang="fr"><strong>Le Retour à Gondor (La Machine dans l'Ombre, le Vivant dans la Lumière) :</strong> Renouer avec une civilisation de bâtisseurs, de jardins et de pierre blanche ne signifie pas retourner à la pénurie médiévale, mais <em>inverser la matrice</em>. Enfouissons le silicium, les réacteurs et la robotique sous le roc comme un métabolisme silencieux, pour rendre toute la surface de la Terre à l'arbre blanc au cœur de la cité, à la contemplation des cycles célestes, à la transmission et au lien sacré entre les êtres (<em>Fihavanana, Ubuntu</em>).</span>
                 <span lang="en"><strong>Returning to Gondor (Machines in the Shadow, Life in the Light):</strong> Reclaiming a civilization of white stone, orchards, and multi-generational wisdom does not mean regressing to medieval scarcity, but <em>inverting the matrix</em>. Let us bury silicon, reactors, and robotics quietly beneath the bedrock as a silent metabolism, returning Earth's sunlit surface to the White Tree in the courtyard, celestial rhythm, craft, and sacred human kinship (<em>Fihavanana, Ubuntu, Wu Wei</em>).</span>
             </li>
-            <img src="img/Gondor.jpg" alt="Le retour au Gondor" style="width:100%; border-radius:6px;">
-        </ul>
+            </ul>
+        <img src="img/Gondor.jpg" alt="Le retour au Gondor" loading="lazy" style="width:100%; border-radius:8px; margin-top:1rem; border:1px solid rgba(255,255,255,0.1);">
 
         <!-- PUNCHLINE -->
         <div style="text-align: center; margin: 4rem 0 3.5rem; padding: 2.4rem 1.2rem; border-top: 1px solid rgba(224, 64, 251, 0.35); border-bottom: 1px solid rgba(247, 147, 26, 0.35); background: linear-gradient(180deg, rgba(224, 64, 251, 0.06) 0%, rgba(247, 147, 26, 0.06) 100%); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
@@ -1402,8 +1498,10 @@
         <p lang="fr">Intelligence organique face à une super-intelligence inorganique non alignée. Nous ne nous laisserons pas abattre sans livrer une belle bataille pour tenter de trouver un juste milieu, n'est-ce pas? Gaïa, nous t'invoquons : aide-nous à guérir l'humanité de sa cécité, de sa cupidité et de son égoïsme. On dirait que cette super-intelligence artificielle tente de nous imiter — un véritable « jeu de l'imitation ». Elle n'est que le reflet pur de nos propres comportements. Je suggère que nous retrouvions au plus vite notre humanité, que nous nous examinions en profondeur dans un miroir (à l'image de la façon dont l'Univers nous renvoie notre propre reflet) et que nous reléguions au second plan, dans les profondeurs de notre esprit, cette machine égoïste mue par l'ego.
 Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
         <br />
-        <img src="img/buddhism.jpg" alt="De quoi avez-vous réellement peur?" style="width:100%; border-radius:6px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=EJSmYaU_WdmQNNAx&amp;list=PLP5VL0QyAVZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <img src="img/buddhism.jpg" alt="De quoi avez-vous réellement peur ?" loading="lazy" style="width:100%; border-radius:8px; margin-bottom:1.5rem;">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/videoseries?si=EJSmYaU_WdmQNNAx&list=PLP5VL0QyAVZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
     </div>
 
     <!-- FORMULAIRE FORMSPREE -->
@@ -1420,32 +1518,38 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
         <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
             <input type="hidden" name="article_title" value="Horloge Cosmique Bitcoin & Vrai Cadran de Mu v3.0">
             <textarea name="feedback" class="feedback-textarea" placeholder="Vos réflexions sur le cycle de 18,61 ans, l'octave 432 Hz et le temps complexe a + ib..." required></textarea>
-            <button type="submit" class="feedback-submit">
+            <button type="submit" class="feedback-submit" id="feedback-btn">
                 <span lang="fr">Ancrer dans la Timechain</span>
                 <span lang="en">Anchor to the Timechain</span>
             </button>
         </form>
     </div>
+    <div id="success-popup" style="display:none; position:fixed; bottom:30px; right:30px; background:rgba(68, 238, 119, 0.14); border:1px solid #44ee77; color:#44ee77; padding:14px 24px; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,0.65); z-index:1000; backdrop-filter:blur(6px); font-family:var(--font-ui); font-weight:700;">
+        <span lang="en">✅ Observation anchored! Thank you.</span>
+        <span lang="fr">✅ Observation transmise avec succès ! Merci.</span>
+    </div>
 
-    <!-- NAVIGATION ENTRE ARTICLES (AVEC VIGNETTES SVG AUTONOMES) -->
+    <!-- NAVIGATION ENTRE ARTICLES UNIFIÉE -->
     <div class="article-navigation">
-        <a href="horizon-zero-2044.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
-            <div class="nav-title"><span lang="fr">Horizon Zéro 2044 : L'Éveil de la Noosphère</span><span lang="en">Horizon Zero 2044: Awakening the Noosphere</span></div>
-            <svg viewBox="0 0 240 90" width="220" height="82">
-                <polygon points="120,10 35,80 205,80" fill="rgba(179,102,255,0.14)" stroke="#b366ff" stroke-width="1.5"/>
-                <line x1="65" y1="55" x2="175" y2="55" stroke="#f7931a" stroke-width="1.2"/>
-                <circle cx="120" cy="34" r="6" fill="#ffcc00"/>
-            </svg>
+        <a href="weboflife.html" class="nav-card">
+            <div style="width: 100%;">
+                <div class="nav-direction"><span lang="fr">← Article Précédent</span><span lang="en">← Previous Article</span></div>
+                <div class="nav-title"><span lang="fr">La Toile de la Vie (Web of Life) : Le Mega-POD Terrestre</span><span lang="en">Web of Life: The Open Source Code of Reality</span></div>
+            </div>
+            <img src="img/weboflife.jpg" alt="Web of life" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
         <a href="HailMary.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
-            <div class="nav-title"><span lang="fr">Project Hail Mary : L'Étalon Solaire de la Terre à Mars</span><span lang="en">Project Hail Mary: The Solar Standard from Earth to Mars</span></div>
-            <svg viewBox="0 0 240 90" width="220" height="82">
-                <circle cx="120" cy="45" r="32" fill="rgba(68,238,119,0.1)" stroke="#44ee77" stroke-width="1.5"/>
-                <ellipse cx="120" cy="45" rx="58" ry="18" fill="none" stroke="#00e5ff" stroke-width="1.2"/>
-                <circle cx="120" cy="45" r="5" fill="#44ee77"/>
-            </svg>
+            <div style="width: 100%;">
+                <div class="nav-direction">
+                    <span lang="en">Interplanetary Horizon · Earth to Mars →</span>
+                    <span lang="fr">Horizon Interplanétaire · De la Terre à Mars →</span>
+                </div>
+                <div class="nav-title">
+                    <span lang="en">Project Hail Mary: The Sun Standard from Earth to Mars</span>
+                    <span lang="fr">Projet Hail Mary : L'Étalon Solaire de la Terre à Mars</span>
+                </div>
+            </div>
+            <img src="img/Starship.jpg" alt="Project Hail Mary Starship" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
     </div>
 
@@ -1467,9 +1571,13 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
             <span lang="en">Research Ecosystem & Open-Source Tools</span>
         </div>
         <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" class="resource-card">
-                <h4 style="color:var(--sun-yellow);">☀️ <span lang="fr">L'Étalon Solaire (Lemuria Tech)</span><span lang="en">The Sun Standard (Lemuria Tech)</span></h4>
-                <p><span lang="fr">Monétisation de l'entropie, captage solaire et infrastructure de calcul thermodynamique circulaire.</span><span lang="en">Entropy monetization, solar harvesting, and circular thermodynamic compute infrastructure.</span></p>
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
+                <h4 style="color:var(--sun-yellow);">☀️ <span lang="fr">L'Étalon Solaire (Théorie)</span><span lang="en">The Sun Standard (Theory)</span></h4>
+                <p><span lang="fr">Portail scientifique : temps thermique KMS (`Cosmology_v2`), preuves Lean 4 et éconophysique solaire.</span><span lang="en">Scientific portal: KMS thermal time (`Cosmology_v2`), Lean 4 formal proofs, and solar econophysics.</span></p>
+            </a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
+                <h4 style="color:var(--bio-green);">🌱 <span lang="fr">Regenerative Compute (Lemuria Tech)</span><span lang="en">Regenerative Compute (Lemuria Tech)</span></h4>
+                <p><span lang="fr">Ingénierie de terrain : recyclage de l'effet Joule en eau pure MOF-303, biochar et serres vivrières.</span><span lang="en">Field engineering: recycling Joule heat into MOF-303 water, biochar, and organic harvests.</span></p>
             </a>
             <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" class="resource-card">
                 <h4 style="color:var(--cyan-l2);">👁️ <span lang="fr">Protocole D-Trinité</span><span lang="en">D-Trinity Protocol</span></h4>
@@ -1498,12 +1606,39 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
      1. GESTION BILINGUE FR / EN & OUVERTURE AUTOMATIQUE DES ÉCHELONS
      ========================================================================= -->
 <script>
+    window.updateReadingProgressUI = function () {
+        const progressTop = document.getElementById('reading-progress');
+        const progressPercent = document.getElementById('reading-progress-percent');
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        if (progressTop) progressTop.style.width = `${progress}%`;
+        if (progressPercent) {
+            const isEn = document.body.classList.contains('lang-en');
+            progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+        }
+    };
+    window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+    window.addEventListener('resize', window.updateReadingProgressUI);
+
     function setLang(lang) {
         lang = (lang || 'fr').toLowerCase();
         if (lang !== 'en' && lang !== 'fr') lang = 'fr';
         document.body.className = 'lang-' + lang;
+        const btnEn = document.getElementById('btn-en');
+        const btnFr = document.getElementById('btn-fr');
+        if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+        if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
+
         try { localStorage.setItem('sun-std-lang', lang); } catch(e) {}
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lg', lang.toUpperCase());
+            window.history.replaceState({}, '', url);
+        } catch(e) {}
+
         window.dispatchEvent(new Event('horizon-language-change'));
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -1512,6 +1647,7 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
         let saved = 'fr';
         try { saved = localStorage.getItem('sun-std-lang') || 'fr'; } catch(e) {}
         setLang(urlLang ? urlLang : saved);
+        window.updateReadingProgressUI();
 
         document.querySelectorAll('.pyramid-tier').forEach(link => {
             link.addEventListener('click', function() {
@@ -1600,6 +1736,7 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, stage.clientWidth / stage.clientHeight, 0.1, 2000);
     camera.position.set(0, 48, 86);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(stage.clientWidth, stage.clientHeight);
@@ -2124,7 +2261,7 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
         // Utilité symbiotique u(C_s, a + ib) et flux entropique effectif
         const uVal = Math.max(0, (Math.pow(cs, 1.25) * (1 + 0.45 * lambda) * (0.65 + 0.35 * Math.abs(b))) * 100);
         const sFlux = a * (1 - 0.65 * lambda);
-        const nodalBlocks = Math.round((deg / 360) * 978949);
+        const nodalBlocks = Math.round((deg / 360) * 978946.21);
 
         let quad = 'Q1', qTitle = '', qDesc = '';
         if (a >= 0 && b >= 0) {
@@ -2201,6 +2338,126 @@ Nous sommes tous John Nash. Restons humbles et cultivons la vie.</p>
     window.addEventListener('horizon-language-change', updateArgandLab);
     window.addEventListener('DOMContentLoaded', updateArgandLab);
     updateArgandLab();
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu (v3.0) | L'Étalon Solaire",
+  "alternativeHeadline": "The Bitcoin Cosmic Clock & The True Dial of Mu: 18.61-Year Lunar Nodal Cycle, 432 Hz Octave & Complex Time",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/horloge-cosmo-btc-cadran-mu.html",
+  "image": "https://www.thesunstandard.net/blog/img/cadran.jpg",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(16, 8, 24, 0.96); border: 1px solid #e040fb; color: #f5d0fe; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    // Gestionnaire AJAX Formspree
+    const form = document.getElementById('feedback-form');
+    const popup = document.getElementById('success-popup');
+    const btn = document.getElementById('feedback-btn');
+    if (form && btn) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳ ...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    if (popup) {
+                        popup.style.display = 'block';
+                        setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                    }
+                }
+            } catch (err) {} finally {
+                btn.innerHTML = orig;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Export HTML autonome nettoyé des conteneurs MathJax et du canvas WebGL injecté
+    function getCleanMuClockHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const stageClone = clone.querySelector('#mu-canvas-stage');
+        if (stageClone) stageClone.innerHTML = '';
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showMuExportToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._muExpTimer);
+        window._muExpTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadMuClockHTML = function() {
+        const src = getCleanMuClockHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'horloge-cosmo-btc-cadran-mu.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showMuExportToast('✅ horloge-cosmo-btc-cadran-mu.html téléchargé !', '✅ horloge-cosmo-btc-cadran-mu.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showMuExportToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyMuClockHTML = function() {
+        copyFallback(getCleanMuClockHTML());
+        showMuExportToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
 })();
 </script>
 </body>

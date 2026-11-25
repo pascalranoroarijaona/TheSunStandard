@@ -11,7 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>L'Invariant Critique : Riemann & Nakamoto / The Critical Invariant — The Sun Standard</title>
+    <title>L'Invariant Critique : Riemann & Nakamoto (144 Blocs/Jour) | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/nakamoto-riemann.html" />
     <meta name="description" content="De la ligne critique Re(s)=1/2 de Bernhard Riemann au battement de 144 blocs/jour de Satoshi Nakamoto : dualité spectrale, système de Bost-Connes, temps thermique et confinement diffusif en √N." />
 
     <!-- Open Graph / LinkedIn / WhatsApp / Social Preview Tags -->
@@ -1065,6 +1066,7 @@
 
                 const camera = new THREE.PerspectiveCamera(48, (container.clientWidth || 800) / 430, 0.1, 500);
                 camera.position.set(14, 8, 18);
+                camera.lookAt(0, 0, 0);
 
                 const renderer = new THREE.WebGLRenderer({ antialias: true });
                 renderer.setSize(container.clientWidth || 800, 430);

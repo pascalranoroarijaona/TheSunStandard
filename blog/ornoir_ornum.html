@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LFDV8LWZSL');
+    </script>
     <title>De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/ornoir_ornum.html" />
     <meta name="description" content="Traité d'ingénierie thermodynamique symbiotique : transition du pétrodollar extractif vers l'étalon solaire-numérique, ordres de grandeur matériaux L0-L5, MOF-303, Biochar et parcours interactif du Grand Filtre (2026-2044)." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="De l'Or Noir à l'Or Numérique — La Géodésique du Grand Filtre | L'Étalon Solaire" />
+    <meta property="og:description" content="De l'extraction fossile au calcul thermodynamique régénératif : invariance L0–L5, extinction des torchères, eau MOF-303 et parcours 2026–2044." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/ornoir_ornum.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/LongTermVision.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre" />
+    <meta name="twitter:description" content="Un baril de pétrole ne se brûle qu'une fois ; un photon solaire traversant du silicium immergé engendre vérité, chaleur, eau et Biochar." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/LongTermVision.png" />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       window.MathJax = {
@@ -32,6 +49,29 @@
         }
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
+
+        /* Barre de progression & Badge de lecture unifiés */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--sun-orange), var(--sun-yellow), var(--bio-green), var(--cyan-l2));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(247, 147, 26, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(247, 147, 26, 0.14), rgba(68, 238, 119, 0.06)), rgba(5, 6, 10, 0.9);
+            color: var(--sun-yellow); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(247, 147, 26, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
+        }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(255, 204, 0, 0.45);
+            color: var(--sun-yellow); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(255, 204, 0, 0.26); color: #fff; transform: translateY(-1px); }
 
         /* Navigation */
         nav {
@@ -227,27 +267,40 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
 <!-- BARRE DE NAVIGATION FIXE BILINGUE -->
-<nav>
-    <a href="#top" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
+<nav aria-label="Navigation principale">
+    <a href="index.html" class="logo">☀ L'Étalon Solaire · Or Noir → Or Numérique</a>
     <div class="nav-links">
         <a href="#invariance-fractale"><span lang="fr">1. Invariance</span><span lang="en">1. Invariance</span></a>
         <a href="#pyramide-echelles"><span lang="fr">2. Pyramide L0–L5</span><span lang="en">2. L0–L5 Pyramid</span></a>
         <a href="#explorateur-materiaux"><span lang="fr">3. Matériaux & Échelles</span><span lang="en">3. Materials & Scales</span></a>
         <a href="#ponts-symbiose"><span lang="fr">4. Cinq Ponts</span><span lang="en">4. Five Bridges</span></a>
-        <a href="#parcours-grand-filtre"><span lang="fr">5. Parcours Grand Filtre</span><span lang="en">5. Great Filter Course</span></a>
-        <a href="#ouroboros-sankey"><span lang="fr">6. Flux & Ouroboros</span><span lang="en">6. Flows & Ouroboros</span></a>
+        <a href="#parcours-grand-filtre"><span lang="fr">5. Parcours 2026–2044</span><span lang="en">5. 2026–2044 Course</span></a>
+        <a href="#ouroboros-sankey"><span lang="fr">6. Sankey & Ouroboros</span><span lang="en">6. Sankey & Ouroboros</span></a>
     </div>
-    <div class="lang-toggle">
-        <button type="button" onclick="setLang('en')" id="btn-en" aria-label="Switch to English">EN 🇬🇧</button>
-        <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Passer en Français">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadBlackGoldHTML()" title="Télécharger ornoir_ornum.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="Switch to English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Passer en Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
 <article id="top">
     <!-- EN-TÊTE -->
     <header class="article-header">
+        <div style="margin-bottom: 1rem;">
+            <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(247, 147, 26, 0.45); color: var(--sun-yellow); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Synthèse Macro-Énergétique · Transition Post-Pétrodollar & Invariance L0–L5
+            </span>
+            <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(247, 147, 26, 0.45); color: var(--sun-yellow); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Macro-Energetic Synthesis · Post-Petrodollar Transition & L0–L5 Scale Invariance
+            </span>
+        </div>
         <h1>
             <span lang="fr">De l'Or Noir à l'Or Numérique</span>
             <span lang="en">From Black Gold to Digital Gold</span>
@@ -261,10 +314,26 @@
             <span lang="en">Scale invariance from L0 to L5, critical material mass balances, flare-gas mitigation, MOF-303 atmospheric water wheels, and the 2026–2044 symbiotic course to defuse entropy wars.</span>
         </div>
         <div class="meta-stamp">
-            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $k_{\text{Nak}} \equiv h$</span>
-            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $k_{\text{Nak}} \equiv h$</span>
+            <span lang="fr">PAR PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $h_N(t) \equiv k_{\text{Nak}} \xrightarrow{2140} h$</span>
+            <span lang="en">BY PASCAL RANOROARIJAONA (RANAORA) // 2026 // LEMURIA TECHNOLOGIES // $h_N(t) \equiv k_{\text{Nak}} \xrightarrow{2140} h$</span>
         </div>
     </header>
+
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE -->
+    <div class="export-toolkit-bar" style="margin: -1rem 0 2.2rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(247, 147, 26, 0.08) 0%, rgba(0, 229, 255, 0.07) 52%, rgba(68, 238, 119, 0.07) 100%); border: 1px solid rgba(247, 147, 26, 0.34); border-left: 4px solid var(--sun-orange); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 620px;">
+            <span lang="fr">⚡ <strong>Simulateur Multi-Échelles Open-Source :</strong> Téléchargez le code source complet (<code>ornoir_ornum.html</code> — 5 Canvases interactifs : Transmutation, Radar Matériaux L0–L5, Géodésique 21 Clés et Sankey Ouroboros) pour l'explorer hors-ligne ou avec votre IA locale.</span>
+            <span lang="en">⚡ <strong>Open-Source Multi-Scale Simulator:</strong> Download the complete standalone file (<code>ornoir_ornum.html</code>—5 interactive Canvases: Transmutation, L0–L5 Materials Radar, 21-Key Geodesic Course, and Ouroboros Sankey) for offline or local AI audit.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadBlackGoldHTML()" style="background: rgba(247, 147, 26, 0.16); border: 1px solid #f7931a; color: #ffd280; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyBlackGoldHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
 
     <!-- MODULE 1 : SCÈNE HERO DE TRANSMUTATION ALCHIMIQUE -->
     <div class="hero-stage-card">
@@ -344,8 +413,8 @@
             <article class="model-card">
                 <span class="epistemic-badge status-c">C · Puits Miniers & CLR</span>
                 <h4><span lang="fr">Tirage convectif & Réponse < 50 ms</span><span lang="en">Shaft Draft & Sub-50ms Response</span></h4>
-                <p lang="fr">Réhabilitation de mines désaffectées (Lemuria Technologies) par tirage thermique naturel ($\Delta p \approx 560\text{ Pa}$) et effacement électrique instantané stabilisant les réseaux solaires/éoliens.</p>
-                <p lang="en">Rehabilitating decommissioned mine shafts (Lemuria Technologies) via natural buoyancy draft ($\Delta p \approx 560\text{ Pa}$) and sub-50ms demand response stabilizing VRE grids.</p>
+                <p lang="fr">Réhabilitation de mines désaffectées (Lemuria Technologies) : tirage thermique assisté ($\Delta p \approx 60\text{ Pa}$ à $50\text{ m}$ jusqu'à $\sim 550\text{ Pa}$ sur puits isolé de $400\text{ m}$) et effacement électrique en $<50\text{ ms}$.</p>
+                <p lang="en">Rehabilitating decommissioned mine shafts (Lemuria Technologies): buoyancy-assisted draft ($\Delta p \approx 60\text{ Pa}$ at $50\text{ m}$ up to $\sim 550\text{ Pa}$ in a $400\text{ m}$ insulated shaft) and sub-50ms grid response.</p>
             </article>
             <article class="model-card">
                 <span class="epistemic-badge status-d">D · Géodésique 2044</span>
@@ -482,7 +551,8 @@
             <div class="bom-strip">
                 <span class="bom-chip">Échangeurs Titane Gr.5 : 180 kg</span><span class="bom-chip">Bouclier Fluide H₂ : 4,5 t</span><span class="bom-chip">O₂ Produit (100 kW) : ~34 kg/j</span><span class="bom-chip">Masse Morte : 0 %</span>
             </div>
-        </details>
+        </div>
+    </details>
 
     <!-- SECTION 3 : EXPLORATEUR DYNAMIQUE DE MATÉRIAUX & ÉCHELLES -->
     <h2 class="section-heading" id="explorateur-materiaux">
@@ -534,7 +604,7 @@
             <div class="bom-card"><span class="bom-icon">4 · Fluide Diélectrique</span><span class="bom-val" id="bom-fluid">150,0 m³</span><span class="bom-sub"><span lang="fr">Caloporteur synthétique recyclable</span><span lang="en">Non-toxic recyclable coolant</span></span></div>
             <div class="bom-card" style="border-top-color:var(--water-blue);"><span class="bom-icon">5 · Sorbant MOF-303</span><span class="bom-val" id="bom-mof" style="color:var(--water-blue);">4,50 t</span><span class="bom-sub"><span lang="fr">Cristaux Al(OH)(PZDC) poreux</span><span lang="en">Porous Al-based water crystals</span></span></div>
             <div class="bom-card" style="border-top-color:var(--cyan-l2);"><span class="bom-icon">6 · Eau Pure Produite</span><span class="bom-val" id="bom-water" style="color:var(--cyan-l2);">64 800 L/j</span><span class="bom-sub"><span lang="fr">Condensation MOF / MED thermique</span><span lang="en">MOF atmospheric / MED output</span></span></div>
-            <div class="bom-card" style="border-top-color:var(--bio-green);"><span class="bom-icon">7 · Biochar Terra Preta</span><span class="bom-val" id="bom-biochar" style="color:var(--bio-green);">13 400 t/an</span><span class="bom-sub"><span lang="fr">Biomasse pré-séchée à 65 °C</span><span lang="en">65 °C pre-dried biomass pyrolysis</span></span></div>
+            <div class="bom-card" style="border-top-color:var(--bio-green);"><span class="bom-icon">7 · Biochar Terra Preta</span><span class="bom-val" id="bom-biochar" style="color:var(--bio-green);">6 240 t/an</span><span class="bom-sub"><span lang="fr">Biomasse pré-séchée à 65 °C (~250 t/MW)</span><span lang="en">65 °C pre-dried biomass pyrolysis (~250 t/MW)</span></span></div>
             <div class="bom-card" style="border-top-color:var(--sun-yellow);"><span class="bom-icon">8 · Bilan Carbone Net</span><span class="bom-val" id="bom-co2" style="color:var(--sun-yellow);">-42 900 t/an</span><span class="bom-sub"><span lang="fr">Séquestration + méthane évité</span><span lang="en">Sequestered C + avoided flare CH₄</span></span></div>
         </div>
 
@@ -711,36 +781,61 @@
         </div>
     </div>
 
-    <!-- NAVIGATION DU CORPUS -->
+    <!-- FORMULAIRE FEEDBACK FORMSPREE UNIFIÉ -->
+    <div style="margin: 4rem auto 3.2rem; padding: 2.2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(247, 147, 26, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 720px; text-align: center; font-family: var(--font-ui);">
+        <h3 style="color: var(--sun-yellow); font-size: 1.35rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800;">
+            <span lang="fr">Contribuer à la Géodésique 2026–2044</span>
+            <span lang="en">Contribute to the 2026–2044 Geodesic</span>
+        </h3>
+        <p style="color: #9ca3af; font-style: italic; font-size: 0.92rem; margin-bottom: 1.4rem;">
+            <span lang="fr">Vos retours sur les ordres de grandeur matériaux L0–L5, l'extinction des torchères ou les 21 clés du Grand Filtre sont les bienvenus.</span>
+            <span lang="en">Your feedback on the L0–L5 material balances, flare-gas mitigation, or the 21 Great Filter keys is welcome.</span>
+        </p>
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="De l'Or Noir a l'Or Numerique : Geodesique du Grand Filtre">
+            <textarea name="feedback" style="width: 100%; background: #05070c; border: 1px solid rgba(247, 147, 26, 0.25); border-radius: 8px; color: #fff; padding: 1.1rem; font-family: var(--font-main); font-size: 1.02rem; min-height: 130px; resize: vertical; margin-bottom: 1.2rem; outline: none;" placeholder="Vos remarques d'ingénierie énergétique ou économique... / Your energy or economic engineering notes..." required></textarea>
+            <button type="submit" id="feedback-btn" style="background: rgba(247, 147, 26, 0.14); border: 1px solid var(--sun-orange); color: var(--sun-yellow); padding: 11px 32px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui); font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; transition: 0.25s;">
+                <span lang="fr">Transmettre le retour</span>
+                <span lang="en">Submit Feedback</span>
+            </button>
+        </form>
+    </div>
+    <div id="success-popup" style="display:none; position:fixed; bottom:30px; right:30px; background:rgba(68, 238, 119, 0.14); border:1px solid #44ee77; color:#44ee77; padding:14px 24px; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,0.65); z-index:1000; backdrop-filter:blur(6px); font-family:var(--font-ui); font-weight:700;">
+        <span lang="en">✅ Feedback received! Thank you.</span>
+        <span lang="fr">✅ Retour transmis avec succès ! Merci.</span>
+    </div>
+
+    <!-- NAVIGATION DU CORPUS UNIFIÉE -->
     <div class="article-navigation">
         <a href="HailMary.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Exploration Connexe ←</span><span lang="en">Related Study ←</span></div>
-            <div class="nav-title"><span lang="fr">Project Hail Mary : Cogénération ASIC de la Terre à Mars</span><span lang="en">Project Hail Mary: ASIC Cogeneration from Earth to Mars</span></div>
-            <svg viewBox="0 0 220 64" width="200" height="58"><circle cx="45" cy="32" r="14" fill="rgba(255,204,0,0.2)" stroke="#ffcc00" stroke-width="1.5"/><line x1="65" y1="32" x2="155" y2="32" stroke="#f7931a" stroke-dasharray="4 3" stroke-width="1.5"/><circle cx="175" cy="32" r="14" fill="rgba(68,238,119,0.18)" stroke="#44ee77" stroke-width="1.5"/></svg>
+            <div class="nav-direction"><span lang="fr">← Article Précédent</span><span lang="en">← Previous Article</span></div>
+            <div class="nav-title"><span lang="fr">Projet Hail Mary : L'Étalon Solaire de la Terre à Mars</span><span lang="en">Project Hail Mary: The Sun Standard from Earth to Mars</span></div>
+            <img src="img/Starship.jpg" alt="Project Hail Mary Starship" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
         <a href="nakamoto-riemann.html" class="nav-card">
             <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
-            <div class="nav-title"><span lang="fr">L'Invariant Critique : Riemann & Nakamoto</span><span lang="en">The Critical Invariant : Riemann & Nakamoto</span></div>
-            <svg viewBox="0 0 220 64" width="200" height="58"><circle cx="110" cy="32" r="24" fill="none" stroke="#e040fb" stroke-dasharray="4 3" stroke-width="1.4"/><ellipse cx="110" cy="32" rx="46" ry="14" fill="none" stroke="#00e5ff" stroke-width="1.2"/><circle cx="110" cy="32" r="6" fill="#f7931a"/></svg>
+            <div class="nav-title"><span lang="fr">L'Invariant Critique : Riemann & Nakamoto (144 Blocs)</span><span lang="en">The Critical Invariant: Riemann & Nakamoto (144 Blocks)</span></div>
+            <img src="img/riemann-nakamoto.jpg" alt="Riemann Nakamoto Invariance" style="width:100%; max-width:320px; border-radius:8px;" onerror="this.style.display='none'">
         </a>
     </div>
 
-    <!-- AUTEUR & RESSOURCES -->
+    <!-- AUTEUR & RESSOURCES UNIFIÉES -->
     <div class="author-section">
         <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1.1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.1rem;">
             <div style="font-size:2.4rem;">☀️⛏️🌿</div>
             <div>
                 <h3 style="color:#fff; text-transform:uppercase; margin:0; font-size:1.1rem;">Pascal Ranoroarijaona (Ranaora)</h3>
                 <p style="color:#94a3b8; font-size:0.88rem; margin:0.25rem 0 0; text-align:left;">
-                    <span lang="fr">Architecte systèmes thermodynamiques, fondateur de Lemuria Technologies & chercheur sur L'Étalon Solaire.</span>
-                    <span lang="en">Thermodynamic systems architect, founder of Lemuria Technologies & researcher on The Sun Standard.</span>
+                    <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Fondateur de Lemuria Technologies & auteur de L'Étalon Solaire.</span>
+                    <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Founder of Lemuria Technologies & author of The Sun Standard.</span>
                 </p>
             </div>
         </div>
         <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4><p><span lang="fr">Réhabilitation minière Brownfield, roues MOF-303 et calcul symbiotique.</span><span lang="en">Brownfield mine rehabilitation, MOF-303 water wheels & symbiotic compute.</span></p></a>
-            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--cyan-l2);">👁️ Protocole D-Trinité</h4><p><span lang="fr">Provenance cryptographique SHA-256 + Nostr + OpenTimestamps face aux deepfakes.</span><span lang="en">SHA-256 + Nostr + OpenTimestamps provenance against synthetic manipulation.</span></p></a>
-            <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--sun-orange);">⏱️ Compteur Timechain</h4><p><span lang="fr">Télémétrie temps réel du consensus thermodynamique mondial.</span><span lang="en">Live telemetry of global thermodynamic Proof-of-Work consensus.</span></p></a>
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--bio-green);">🌱 Regenerative Compute</h4><p><span lang="fr">Déploiement matériel L1–L3 (Lemuria Tech) : du bureau (17 W) aux mines réhabilitées, roues MOF-303 et Biochar.</span><span lang="en">L1–L3 hardware execution (Lemuria Tech): from 17 W desktop biospheres to Brownfield mines, MOF-303 & Biochar.</span></p></a>
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4><p><span lang="fr">Fondation théorique : temps thermique KMS, preuves formelles Lean 4 et comptabilité solaire WU/kWh.</span><span lang="en">Theoretical foundation: KMS thermal time, Lean 4 formal proofs & solar WU/kWh accounting.</span></p></a>
+            <a href="wood-wide-web.html" class="resource-card"><h4 style="color:var(--cyan-l2);">🌲 The Wood Wide Web</h4><p><span lang="fr">La forêt et le mycélium : comment le vivant a résolu la double dépense énergétique bien avant Bitcoin.</span><span lang="en">The forest and mycelium: how biology solved energetic double-spending eons before Bitcoin.</span></p></a>
+            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card"><h4 style="color:var(--purple-l4);">👁️ Protocole D-Trinité</h4><p><span lang="fr">Provenance cryptographique SHA-256 + Nostr + OpenTimestamps face aux deepfakes.</span><span lang="en">SHA-256 + Nostr + OpenTimestamps provenance against synthetic manipulation.</span></p></a>
         </div>
     </div>
 </article>
@@ -754,15 +849,41 @@
      MOTEURS JAVASCRIPT MODULAIRES (BILINGUE + 5 CANVASES INTERACTIFS)
      ========================================================================== -->
 <script>
-/* 0. GESTION GLOBALE DE LA LANGUE & NAVIGATION PYRAMIDE */
+/* 0. GESTION GLOBALE DE LA LANGUE, PROGRESSION DE LECTURE & NAVIGATION PYRAMIDE */
 let currentLang = 'fr';
 function isEn() { return currentLang === 'en'; }
 
+window.updateReadingProgressUI = function () {
+    const progressTop = document.getElementById('reading-progress');
+    const progressPercent = document.getElementById('reading-progress-percent');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+    if (progressTop) progressTop.style.width = `${progress}%`;
+    if (progressPercent) {
+        progressPercent.textContent = `${isEn() ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+    }
+};
+window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+window.addEventListener('resize', window.updateReadingProgressUI);
+
 function setLang(lang) {
-    currentLang = (lang === 'en') ? 'en' : 'fr';
+    currentLang = (lang && lang.toLowerCase() === 'en') ? 'en' : 'fr';
     document.body.className = 'lang-' + currentLang;
+    const btnEn = document.getElementById('btn-en');
+    const btnFr = document.getElementById('btn-fr');
+    if (btnEn) btnEn.setAttribute('aria-current', currentLang === 'en' ? 'true' : 'false');
+    if (btnFr) btnFr.setAttribute('aria-current', currentLang === 'fr' ? 'true' : 'false');
+
     try { localStorage.setItem('sun-std-lang', currentLang); } catch (e) {}
+    try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lg', currentLang.toUpperCase());
+        window.history.replaceState({}, '', url);
+    } catch (e) {}
+
     window.dispatchEvent(new Event('sun-lang-change'));
+    if (window.updateReadingProgressUI) window.updateReadingProgressUI();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -1029,8 +1150,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const steelKg = kw * 17.0;
         const fluidL = kw * fluidFactor;
         const mofKg = kw * 0.18 * (eta / 0.96);
-        const waterDayL = kw * 2.7 * eta;
-        const biocharYrKg = kw * 560 * eta;
+        const waterDayL = kw * 2.5 * eta;   // ~2 400 L/j/MW en cible MOF-303 réaliste (cohérent Acte IV)
+        const biocharYrKg = kw * 260 * eta; // ~250 t/an/MW de Biochar (cohérent Acte IV & Échelon L2)
         const flareBonus = src === 'flare' ? 4.1 : (src === 'solar' ? 1.75 : 1.55); // t CO2e / kW / an
         const co2YrTons = (kw * flareBonus * eta);
 
@@ -1538,10 +1659,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const xIn = W * 0.1, xCore = W * 0.44, xOut = W * 0.86, cy = H * 0.46;
 
         const branches = solarMode ? [
-            { yEnd: H * 0.20, w: 26, col: '#00e5ff', fr: 'Eau MOF-303 & MED (34 %)', en: 'MOF-303 & MED Water (34%)' },
-            { yEnd: H * 0.42, w: 28, col: '#44ee77', fr: 'Séchage Biochar & Serres (42 %)', en: 'Biochar Drying & Greenhouses (42%)' },
-            { yEnd: H * 0.64, w: 18, col: '#ffcc00', fr: 'Preuve PoW + Inférence IA (20 %)', en: 'PoW Truth + Edge-AI (20%)' },
-            { yEnd: H * 0.84, w: 6,  col: '#64748b', fr: 'Pertes résiduelles (4 %)', en: 'Residual Loss (4%)' }
+            { yEnd: H * 0.20, w: 26, col: '#00e5ff', fr: 'Eau Pure MOF-303 & MED (34 % th.)', en: 'MOF-303 & MED Water (34% th.)' },
+            { yEnd: H * 0.42, w: 28, col: '#44ee77', fr: 'Serres Racinaires & Aquaponie (42 % th.)', en: 'Root-Zone Greenhouses & RAS (42% th.)' },
+            { yEnd: H * 0.64, w: 18, col: '#ffcc00', fr: 'Séchage Biochar & Ouroboros 65°C (20 % th.)', en: 'Biochar Drying & Ouroboros 65°C (20% th.)' },
+            { yEnd: H * 0.84, w: 6,  col: '#64748b', fr: 'Pertes résiduelles conduites (4 %)', en: 'Piping Residual Loss (4%)' }
         ] : [
             { yEnd: H * 0.24, w: 46, col: '#ef4444', fr: 'Fumées CO₂ & Chaleur Perdue (64 %)', en: 'Exhaust CO₂ & Waste Heat (64%)' },
             { yEnd: H * 0.54, w: 24, col: '#f59e0b', fr: 'Travail Mécanique / Élec. (36 %)', en: 'Mechanical / Grid Work (36%)' },
@@ -1609,15 +1730,134 @@ window.addEventListener('DOMContentLoaded', () => {
         ctx.lineWidth = 2;
         ctx.beginPath(); ctx.roundRect(xCore - 58, cy - 34, 116, 68, 10); ctx.fill(); ctx.stroke();
         ctx.fillStyle = '#ffffff'; ctx.font = '700 11px "Fira Code", monospace'; ctx.textAlign = 'center';
-        ctx.fillText(solarMode ? 'IMMERSION ASIC' : (isEn() ? 'COMBUSTION' : 'COMBUSTION'), xCore, cy - 6);
+        ctx.fillText(solarMode ? '100% PoW + IA' : (isEn() ? 'COMBUSTION' : 'COMBUSTION'), xCore, cy - 6);
         ctx.fillStyle = solarMode ? '#44ee77' : '#fca5a5';
-        ctx.fillText(solarMode ? 'PUE 1.02 · 60°C' : 'CARNOT ~36%', xCore, cy + 13);
+        ctx.fillText(solarMode ? '→ 96% Chaleur 60°C' : 'CARNOT ~36%', xCore, cy + 13);
 
         // Étiquette d'entrée
         ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'left';
         ctx.fillText(solarMode ? (isEn() ? '100% SOLAR / FLARE' : '100 % SOLAIRE / TORCHÈRE') : (isEn() ? '100% CRUDE OIL / GAS' : '100 % PÉTROLE / GAZ'), 16, cy - 34);
     }
     requestAnimationFrame(renderSankey);
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "De l'Or Noir à l'Or Numérique : La Géodésique du Grand Filtre | L'Étalon Solaire",
+  "alternativeHeadline": "From Black Gold to Digital Gold: Scale-Invariant L0–L5 Regenerative Compute & The 2026–2044 Symbiotic Geodesic",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire / Lemuria Technologies",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/ornoir_ornum.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(18, 13, 6, 0.96); border: 1px solid #f7931a; color: #ffd280; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    if (window.updateReadingProgressUI) window.updateReadingProgressUI();
+
+    // Gestionnaire AJAX Formspree
+    const form = document.getElementById('feedback-form');
+    const popup = document.getElementById('success-popup');
+    const btn = document.getElementById('feedback-btn');
+    if (form && btn) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳ ...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    if (popup) {
+                        popup.style.display = 'block';
+                        setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                    }
+                }
+            } catch (err) {} finally {
+                btn.innerHTML = orig;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Export HTML autonome nettoyé des conteneurs MathJax
+    function getCleanBlackGoldHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showBGToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._bgToastTimer);
+        window._bgToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadBlackGoldHTML = function() {
+        const src = getCleanBlackGoldHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ornoir_ornum.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showBGToast('✅ ornoir_ornum.html téléchargé !', '✅ ornoir_ornum.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showBGToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyBlackGoldHTML = function() {
+        copyFallback(getCleanBlackGoldHTML());
+        showBGToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
 })();
 </script>
 </body>

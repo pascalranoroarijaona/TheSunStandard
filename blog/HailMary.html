@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Project Hail Mary : Cogénération ASIC & Support de Vie | L'Étalon Solaire</title>
-    <meta name="description" content="Ingénierie thermodynamique appliquée : récupération de chaleur par immersion ASIC, aquaponie centrifuge en transit interplanétaire, serres martiennes et régénération terrestre." />
+    <title>Projet Hail Mary : L'Étalon Solaire de la Terre à Mars — Cogénération ASIC & Support de Vie</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/HailMary.html" />
+    <meta name="description" content="Ingénierie thermodynamique appliquée : récupération de chaleur par immersion ASIC, aquaponie centrifuge (0,38 g) en transit interplanétaire, serres martiennes et régénération terrestre." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Projet Hail Mary : L'Étalon Solaire de la Terre à Mars | L'Étalon Solaire" />
+    <meta property="og:description" content="Cogénération thermique par immersion ASIC, aquaponie centrifuge 0,38 g, Spacechain interplanétaire et support de vie en boucle fermée." />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/HailMary.html" />
+    <meta property="og:image" content="https://www.thesunstandard.net/blog/img/Starship.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projet Hail Mary : L'Étalon Solaire de la Terre à Mars" />
+    <meta name="twitter:description" content="Valoriser chaque photon solaire deux fois : une fois en calcul, une fois en support de vie." />
+    <meta name="twitter:image" content="https://www.thesunstandard.net/blog/img/Starship.jpg" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFDV8LWZSL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LFDV8LWZSL');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <!-- MathJax v3 -->
@@ -43,47 +59,87 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: #040508;
+            color: #e2e8f0;
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(247, 147, 26, 0.07) 0%, rgba(68, 238, 119, 0.03) 35%, transparent 65%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(247, 147, 26, 0.08) 0%, rgba(68, 238, 119, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(0, 229, 255, 0.04) 0%, transparent 55%);
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--orange-l1), var(--sun-yellow), var(--bio-green), var(--cyan-l2));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(247, 147, 26, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(247, 147, 26, 0.14), rgba(68, 238, 119, 0.06)), rgba(5, 6, 10, 0.9);
+            color: var(--orange-l1); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(247, 147, 26, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5,5,5,0.92);
-            border-bottom: 1px solid var(--border-glow); font-family: var(--font-ui);
-            backdrop-filter: blur(8px);
+        nav.top-tetralogy-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 5, 8, 0.92);
+            border-bottom: 1px solid rgba(247, 147, 26, 0.3); font-family: var(--font-ui);
+            backdrop-filter: blur(12px);
         }
-        nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
-        nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav a.back:hover { color: #fff; }
+        nav.top-tetralogy-nav .logo {
+            font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; white-space: nowrap;
+        }
+        nav.top-tetralogy-nav .nav-links {
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center;
+        }
+        nav.top-tetralogy-nav .nav-links a {
+            color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s;
+        }
+        nav.top-tetralogy-nav .nav-links a:hover { color: #fff; background: rgba(247, 147, 26, 0.16); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(247, 147, 26, 0.45);
+            color: var(--orange-l1); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(247, 147, 26, 0.28); color: #fff; transform: translateY(-1px); }
 
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.15rem; color: white;
-            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.08); }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en, body.lang-fr #btn-fr {
-            opacity: 1; filter: grayscale(0%); transform: scale(1.08);
-            filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.4));
+            opacity: 1; filter: grayscale(0%); border-color: var(--orange-l1);
+            background: rgba(247, 147, 26, 0.18); box-shadow: 0 0 12px rgba(247, 147, 26, 0.35);
+        }
+        @media (max-width: 980px) {
+            nav.top-tetralogy-nav .nav-links { display: none; }
         }
 
         article {
-            max-width: 960px; margin: 8rem auto 6rem; padding: 0 2rem;
-            font-size: 1.12rem; color: #d4d4d4;
+            max-width: 1040px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #starship-hero-box, #echelons-mars, #det-l0, #det-l1, #det-l2, #det-l3, #det-l4, #cybernetic-simulator {
+            scroll-margin-top: 5.5rem;
         }
 
         header.article-header {
@@ -376,27 +432,41 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav>
-    <a href="index.html" class="logo">☀ L'Étalon Solaire · Ingénierie Planétaire</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-tetralogy-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🚀 L'Étalon Solaire · Hail Mary</a>
+    <div class="nav-links">
+        <a href="#starship-hero-box"><span lang="fr">1. Arche 0,38 g</span><span lang="en">1. 0.38g Ark</span></a>
+        <a href="#echelons-mars"><span lang="fr">2. Échelons L0–L4</span><span lang="en">2. L0–L4 Tiers</span></a>
+        <a href="#det-l2"><span lang="fr">3. Kit Biologique</span><span lang="en">3. Bio Kit</span></a>
+        <a href="#det-l3"><span lang="fr">4. Spacechain</span><span lang="en">4. Spacechain</span></a>
+        <a href="#cybernetic-simulator"><span lang="fr">5. Simulateur ECLSS</span><span lang="en">5. ECLSS Sim</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadHailMaryHTML()" title="Télécharger HailMary.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
 <article>
     <!-- EN-TÊTE -->
     <header class="article-header">
+        <div style="margin-bottom: 1rem;">
+            <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(247, 147, 26, 0.45); color: var(--orange-l1); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Ingénierie Interplanétaire de l'Étalon Solaire · Cogénération ECLSS & Spacechain
+            </span>
+            <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(247, 147, 26, 0.14); border: 1px solid rgba(247, 147, 26, 0.45); color: var(--orange-l1); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Interplanetary Sun Standard Engineering · ECLSS Cogeneration & Spacechain
+            </span>
+        </div>
         <h1>
-            <span lang="fr">Project Hail Mary : L'Étalon Solaire de la Terre à Mars</span>
-            <span lang="en">Project Hail Mary: The Solar Standard from Earth to Mars</span>
+            <span lang="fr">Projet Hail Mary : L'Étalon Solaire de la Terre à Mars</span>
+            <span lang="en">Project Hail Mary: The Sun Standard from Earth to Mars</span>
         </h1>
         <h2 class="header-subtitle">
             <span lang="fr">Cogénération Thermique par Immersion ASIC, Aquaponie Centrifuge & Support de Vie en Boucle Fermée</span>
@@ -411,6 +481,22 @@
             <span lang="en">PUBLISHED 2026-11-06 // PASCAL RANOROARIJAONA (RANAORA) // APPLIED THERMODYNAMICS</span>
         </p>
     </header>
+
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE -->
+    <div class="export-toolkit-bar" style="margin: -1.5rem 0 2.5rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(247, 147, 26, 0.08) 0%, rgba(68, 238, 119, 0.07) 52%, rgba(0, 229, 255, 0.07) 100%); border: 1px solid rgba(247, 147, 26, 0.34); border-left: 4px solid var(--orange-l1); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 620px;">
+            <span lang="fr">🚀 <strong>Étude Thermodynamique Spatiale Open-Source :</strong> Téléchargez le code source complet (<code>HailMary.html</code> — Animation Arche Starship $0,38\,g$, Architecture L0–L4 et Simulateur ECLSS NASA BVAD) pour l'explorer ou le tester avec votre IA locale.</span>
+            <span lang="en">🚀 <strong>Open-Source Space Thermodynamics Study:</strong> Download the complete standalone source (<code>HailMary.html</code>—$0.38\,g$ Starship Ark Animation, L0–L4 Architecture, and NASA BVAD ECLSS Simulator) for local AI verification.</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadHailMaryHTML()" style="background: rgba(247, 147, 26, 0.16); border: 1px solid #f7931a; color: #ffd280; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyHailMaryHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
+            </button>
+        </div>
+    </div>
     
     <!-- EMBLÈME VECTORIEL DU CYCLE PHOTON -> SILICIUM -> VIVANT -->
     <div class="intro-hero">
@@ -491,8 +577,25 @@
         </div>
     </div>
 
+    <!-- PONT D'UNIFICATION AVEC LA TÉTRALOGIE & LE CADRAN DE MU -->
+    <div style="margin: 2.5rem 0; padding: 1.7rem 2rem; background: linear-gradient(145deg, rgba(16,12,8,0.94), rgba(6,10,14,0.96)); border: 1px solid rgba(247, 147, 26, 0.3); border-left: 4px solid var(--bio-green); border-radius: 12px; font-family: var(--font-ui); box-shadow: 0 14px 36px rgba(0,0,0,0.6);">
+        <h4 style="color: var(--sun-yellow); margin: 0 0 0.75rem; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 1.4px;">
+            <span lang="fr">🔗 Continuité Invariante d'Échelle : De La Matrice Inversée Terrestre au Cône Causal Terre–Mars</span>
+            <span lang="en">🔗 Scale-Invariant Continuity: From Earth's Inverted Matrix to the Earth–Mars Causal Cone</span>
+        </h4>
+        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #e2e8f0; background: rgba(0,0,0,0.5); padding: 0.95rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); overflow-x: auto; text-align: center; margin-bottom: 0.85rem;">
+            $$ \underbrace{\eta_{\text{Joule}} = 100\,\% \; (\text{PUE} \to 1,008)}_{\text{Acte IV · Matrice Inversée}} \;\longrightarrow\; \underbrace{\tau_L \in [182\text{ s},\, 1\,340\text{ s}] \implies \tau_L > \tau_B \text{ (Cône Causal Brisé)}}_{\text{Acte III · Relativité de Nakamoto}} \;\longrightarrow\; \underbrace{\text{Spacechain Martienne } (\tau_{B,mars} \gg \tau_{L,mars})}_{\text{Échelon L3 · Hail Mary}} $$
+        </div>
+        <p lang="fr" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            Dans l'<a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Acte III (Section 3 & 4)</a>, nous avons démontré que la température effective du registre $k_B T_{\text{eff}} \propto \frac{\tau_L}{\tau_B - \tau_L}$ diverge lorsque la latence $\tau_L$ franchit l'intervalle de bloc $\tau_B = 600\text{ s}$. Entre la Terre et Mars ($\tau_L = 3\text{ à }22,3\text{ min}$), cette barrière relativiste s'incarne concrètement : elle impose une hiérarchie de chaînes locales synchronisées de manière asynchrone sur le <a href="horloge-cosmo-btc-cadran-mu.html" style="color:var(--magenta-l3);">Cadran Cosmique</a>, tout en exportant dans les tubes de lave martiens l'exacte cogénération souterraine de <a href="matrice-inversee.html" style="color:var(--bio-green);">La Matrice Inversée</a>.
+        </p>
+        <p lang="en" style="margin: 0; font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; text-align: justify;">
+            In <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Act III (Sections 3 & 4)</a>, we proved that effective ledger temperature $k_B T_{\text{eff}} \propto \frac{\tau_L}{\tau_B - \tau_L}$ diverges whenever propagation latency $\tau_L$ approaches the block interval $\tau_B = 600\text{ s}$. Across Earth–Mars light-time ($\tau_L = 3\text{ to }22.3\text{ min}$), this relativistic percolation wall becomes tangible—mandating local Spacechains asynchronously anchored to the <a href="horloge-cosmo-btc-cadran-mu.html" style="color:var(--magenta-l3);">Cosmic Clock</a> while deploying <a href="matrice-inversee.html" style="color:var(--bio-green);">The Inverted Matrix</a> inside Martian lava tubes.
+        </p>
+    </div>
+
     <!-- PYRAMIDE D'INGÉNIERIE SYSTÈME -->
-    <div class="pyramid-wrapper">
+    <div class="pyramid-wrapper" id="echelons-mars">
         <h3 style="color:var(--sun-yellow); font-family:var(--font-ui); text-transform:uppercase; text-align:center; font-size:1.05rem; letter-spacing:2px; margin-bottom:1.5rem;">
             <span lang="fr">🏛️ Architecture Thermodynamique & Biologique (Échelons L0 ──► L4)</span>
             <span lang="en">🏛️ Thermodynamic & Biological Architecture (Tiers L0 ──► L4)</span>
@@ -533,8 +636,8 @@
             <span lang="en">Tier 0 (L0): The Myth of Thermal Waste — Joule Heating Serving Biology</span>
         </summary>
         <div class="drawer-content">
-            <p lang="fr">L'établissement d'avant-postes martiens se heurte à des contraintes physiques sévères : une atmosphère résiduelle composée à $95\,\%$ de dioxyde de carbone ($\text{CO}_2$), une pression inférieure à $1\,\%$ de celle de la Terre et une température moyenne avoisinant $-63\,^\circ\text{C}$. Pourtant, à $228\text{ millions}$ de kilomètres du Soleil, l'irradiance au zénith atteint encore près de $500\text{ W/m}^2$.</p>
-            <p lang="en">Establishing Martian outposts confronts stark physical constraints: a thin atmosphere of $95\%$ carbon dioxide ($\text{CO}_2$), surface pressure below $1\%$ of Earth's, and mean temperatures around $-63\,^\circ\text{C}$. Yet even $228\text{ million}$ kilometers from the Sun, zenith solar irradiance reaches nearly $500\text{ W/m}^2$.</p>
+            <p lang="fr">L'établissement d'avant-postes martiens se heurte à des contraintes physiques sévères : une atmosphère résiduelle composée à $95\,\%$ de dioxyde de carbone ($\text{CO}_2$), une pression inférieure à $1\,\%$ de celle de la Terre et une température moyenne avoisinant $-63\,^\circ\text{C}$. Pourtant, à une distance moyenne de $228\text{ millions}$ de kilomètres du Soleil ($1,524\text{ UA}$), l'irradiance solaire hors atmosphère s'élève à $586\text{ W/m}^2$ ($492\text{ à }715\text{ W/m}^2$ entre l'aphélie et le périhélie), délivrant près de $500\text{ W/m}^2$ au sol au zénith par ciel clair.</p>
+            <p lang="en">Establishing Martian outposts confronts stark physical constraints: a thin atmosphere of $95\%$ carbon dioxide ($\text{CO}_2$), surface pressure below $1\%$ of Earth's, and mean temperatures around $-63\,^\circ\text{C}$. Yet at a mean distance of $228\text{ million}$ kilometers from the Sun ($1.524\text{ AU}$), orbital solar irradiance still reaches $586\text{ W/m}^2$ ($492\text{–}715\text{ W/m}^2$ from aphelion to perihelion), delivering nearly $500\text{ W/m}^2$ at the surface at clear-sky zenith.</p>
 
             <p lang="fr">En vertu du premier principe de la thermodynamique, un processeur ASIC ou HPC affiche une efficacité de conversion électro-thermique de $100\,\%$ : chaque watt électrique qui traverse ses portes logiques se dissipe intégralement sous forme de chaleur ($Q_{\text{th}} = P_{\text{élec}}$). À dépense énergétique strictement identique à celle d'une résistance chauffante inerte, une cuve de calcul refroidie par immersion liquide maintient un habitat souterrain à $+22\,^\circ\text{C}$ face à une roche environnante à $-60\,^\circ\text{C}$, tout en exécutant du calcul cryptographique et scientifique.</p>
             <p lang="en">By the First Law of Thermodynamics, an ASIC or HPC processor acts as a $100\%$ efficient electric heater: every electrical watt traversing its logic gates dissipates completely as heat ($Q_{\text{th}} = P_{\text{elec}}$). Using the exact same power budget as a dumb resistive heater, liquid-immersion compute tanks keep subterranean habitats at $+22\,^\circ\text{C}$ against $-60\,^\circ\text{C}$ bedrock while simultaneously executing cryptographic and scientific workloads.</p>
@@ -571,7 +674,7 @@
             <p lang="en">Hauling powered-down servers for $6\text{ to }9\text{ months}$ along a Hohmann transfer wastes payload as dead mass. Powering up ASIC and AI/HPC racks during cruise inside a <strong>Starship</strong> ($\approx 1,000\text{ m}^3$ pressurized volume, $100\text{–}150\text{ t}$ payload) fitted with a $0.38\,g$ centrifugal ring turns compute cargo into active life support:</p>
 
             <ul>
-                <li><span lang="fr"><strong>Hydraulique centrifuge & Thermorégulation :</strong> La gravité artificielle de $0,38\,g$ rétablit la poussée d'Archimède (évitant l'asphyxie racinaire par bulles stagnantes) et le repère vestibulaire des poissons. Les échangeurs en titane maintiennent l'eau aquaponique à $26\,^\circ\text{C}$ et l'air à $22\,^\circ\text{C}$ sans brûler de méthane.</span><span lang="en"><strong>Centrifugal hydraulics & Thermoregulation:</strong> Artificial $0.38\,g$ gravity restores buoyancy-driven gas exchange around roots and fish vestibular orientation, while titanium heat exchangers hold aquaponic tanks at $26\,^\circ\text{C}$ and cabin air at $22\,^\circ\text{C}$ with zero methane burn.</span></li>
+                <li><span lang="fr"><strong>Hydraulique centrifuge ($a_c = \omega^2 r = 3,71\text{ m/s}^2 \equiv 0,38\,g$) & Thermorégulation :</strong> Que ce soit via un tambour aquaponique interne dédié ($r = 4,0\text{ m}$ à $9,2\text{ tr/min}$) ou une paire de Starships reliés par câble ($r = 35\text{ m}$ à $3,1\text{ tr/min}$, éliminant l'effet de Coriolis pour l'équipage), la gravité artificielle martienne rétablit la poussée d'Archimède (évitant l'asphyxie racinaire par bulles stagnantes en microgravité) et le repère vestibulaire des poissons. Les échangeurs en titane maintiennent l'eau à $26\,^\circ\text{C}$ et l'air à $22\,^\circ\text{C}$ sans brûler un gramme de méthane.</span><span lang="en"><strong>Centrifugal hydraulics ($a_c = \omega^2 r = 3.71\text{ m/s}^2 \equiv 0.38\,g$) & Thermoregulation:</strong> Whether via a dedicated internal bioreactor drum ($r = 4.0\text{ m}$ at $9.2\text{ RPM}$) or tethered twin Starships ($r = 35\text{ m}$ at $3.1\text{ RPM}$, eliminating crew Coriolis sickness), Martian-equivalent gravity restores buoyancy-driven root gas exchange and fish vestibular orientation, while titanium exchangers hold water at $26\,^\circ\text{C}$ and cabin air at $22\,^\circ\text{C}$ with zero methane burn.</span></li>
                 <li><span lang="fr"><strong>Bouclier anti-radiations passif :</strong> Placés sur la paroi périphérique, l'eau aquaponique, le fluide diélectrique riche en hydrogène et la biomasse atténuent les protons solaires (SPE) et les rayons cosmiques (GCR) sans rayonnement de freinage secondaire (*Bremsstrahlung*).</span><span lang="en"><strong>Passive radiation shielding:</strong> Positioned along the outer hull perimeter, hydrogen-rich aquaponic water, dielectric fluid, and plant biomass attenuate SPE protons and GCRs without secondary Bremsstrahlung.</span></li>
             </ul>
 
@@ -662,12 +765,12 @@
             <span lang="en">🧮 Thermal & Metabolic Balance Simulator (Cruise & Outpost)</span>
         </h3>
         <p class="modelling-lead">
-            <span lang="fr">Modélisez les équations de référence du système couplé : ajustez la puissance des processeurs immergés ($P_{\text{ASIC}}$), la taille de l'équipage ($N_{\text{éq}}$) et la répartition surfacique Hydroponie / Aquaponie ($R_{\text{hydro}}$).</span>
-            <span lang="en">Model the coupled reference equations: adjust immersed processor power ($P_{\text{ASIC}}$), crew size ($N_{\text{crew}}$), and the Hydroponic / Aquaponic surface split ($R_{\text{hydro}}$).</span>
+            <span lang="fr">Modélisez les standards métaboliques (NASA BVAD : $0,84\text{ kg O}_2/\text{pers./j}$, $2\,500\text{ kcal/j}$) : ajustez la puissance du module hybride ($P_{\text{sys}}$ couplant cuves d'immersion ASIC et LED horticoles PAR), la taille de l'équipage ($N_{\text{éq}}$) et la fraction surfacique Phytotron/Spiruline ($R_{\text{hydro}}$).</span>
+            <span lang="en">Model NASA BVAD metabolic baselines ($0.84\text{ kg O}_2/\text{crew/d}$, $2,500\text{ kcal/d}$): adjust hybrid module power ($P_{\text{sys}}$ coupling immersed ASICs with PAR horticultural LEDs), crew size ($N_{\text{crew}}$), and Phytotron/Spirulina ratio ($R_{\text{hydro}}$).</span>
         </p>
 
         <div class="math-block" style="color: var(--bio-green);">
-            $$ Q_{\text{th}} = 1,0 \cdot P_{\text{ASIC}}, \qquad \text{O}_{2,\text{req}} = 0,84\,N_{\text{éq}}\;\text{kg/j}, \qquad \text{O}_{2,\text{prod}} = (0,42\,P_{\text{ASIC}})(0,5 + 0,5\,R_{\text{hydro}})\;\text{kg/j} $$
+            $$ Q_{\text{th}} \approx 0,97 \cdot P_{\text{sys}}\;\text{(hors }\Delta H_{\text{biomasse}}\text{)}, \qquad \text{O}_{2,\text{req}} = 0,84\,N_{\text{éq}}\;\text{kg/j}, \qquad \text{O}_{2,\text{prod}} = (0,42\,P_{\text{sys}})(0,5 + 0,5\,R_{\text{hydro}})\;\text{kg/j} $$
         </div>
 
         <div class="scenario-controls-stack">
@@ -729,15 +832,15 @@
         </h3>
         <div class="media-gallery">
             <figure class="media-card">
-                <img src="https://media.licdn.com/dms/image/v2/D5612AQG7aA-Ou0RZzA/article-inline_image-shrink_1500_2232/B56aG4CgMcLAAQ-/0/1794089026738?e=1796256000&v=beta&t=pc7qhRh77tB5iRAPaSqTs00MkwJGHHbl_i1VSXzGAZE" alt="Transition du modèle extractif vers la cogénération régénérative souterraine">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQG7aA-Ou0RZzA/article-inline_image-shrink_1500_2232/B56aG4CgMcLAAQ-/0/1794089026738?e=1796256000&v=beta&t=pc7qhRh77tB5iRAPaSqTs00MkwJGHHbl_i1VSXzGAZE" alt="Transition du modèle extractif vers la cogénération régénérative souterraine" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/VieOrganiqueSurface.png';}else{this.style.display='none';}">
                 <figcaption><span lang="fr">Du modèle extractif fossile au calcul régénératif souterrain.</span><span lang="en">From fossil extraction to subterranean regenerative compute.</span></figcaption>
             </figure>
             <figure class="media-card">
-                <img src="https://media.licdn.com/dms/image/v2/D5612AQGTKXUY8SCGSw/article-inline_image-shrink_1000_1488/B56aG4fjHCHUAI-/0/1794096640683?e=1796256000&v=beta&t=EjbqgY09raMkbOZ3PcqreF1rdUkjsfDxJdphBe2DYiQ" alt="Manifeste de chargement Starship Arche Thermodynamique">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQGTKXUY8SCGSw/article-inline_image-shrink_1000_1488/B56aG4fjHCHUAI-/0/1794096640683?e=1796256000&v=beta&t=EjbqgY09raMkbOZ3PcqreF1rdUkjsfDxJdphBe2DYiQ" alt="Manifeste de chargement Starship Arche Thermodynamique" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/Starship.jpg';}else{this.style.display='none';}">
                 <figcaption><span lang="fr">Manifeste de chargement Starship — Configuration « Arche Thermodynamique ».</span><span lang="en">Starship Payload Manifest — "Thermodynamic Ark" Configuration.</span></figcaption>
             </figure>
             <figure class="media-card">
-                <img src="https://media.licdn.com/dms/image/v2/D5612AQHNGzlTvtsa9w/article-inline_image-shrink_1500_2232/B56aG4JJgpJ4AY-/0/1794090768926?e=1796256000&v=beta&t=FgZy8pRrkzMiUx0LOWGuGaoSR4H2QJnP93kH5qQdYaA" alt="Intégration aquaponique et serre pressurisée">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQHNGzlTvtsa9w/article-inline_image-shrink_1500_2232/B56aG4JJgpJ4AY-/0/1794090768926?e=1796256000&v=beta&t=FgZy8pRrkzMiUx0LOWGuGaoSR4H2QJnP93kH5qQdYaA" alt="Intégration aquaponique et serre pressurisée" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/M2.png';}else{this.style.display='none';}">
                 <figcaption><span lang="fr">Intégration thermique entre cuves d'immersion et bioréacteurs.</span><span lang="en">Thermal coupling between immersion tanks and bioreactors.</span></figcaption>
             </figure>
         </div>
@@ -759,16 +862,74 @@
         </p>
     </div>
 
-    <!-- NAVIGATION DU BLOG -->
+    <!-- FORMULAIRE FEEDBACK FORMSPREE UNIFIÉ -->
+    <div style="margin: 4.5rem auto 3.5rem; padding: 2.3rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(247, 147, 26, 0.25); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 720px; text-align: center; font-family: var(--font-ui);">
+        <h3 style="color: var(--sun-yellow); font-size: 1.38rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; font-weight: 800;">
+            <span lang="fr">Contribuer à l'Ingénierie Hail Mary</span>
+            <span lang="en">Contribute to Hail Mary Engineering</span>
+        </h3>
+        <p style="color: #9ca3af; font-style: italic; font-size: 0.94rem; margin-bottom: 1.5rem;">
+            <span lang="fr">Partagez vos retours sur le dimensionnement ECLSS, l'aquaponie centrifuge $0,38\,g$ ou l'architecture Spacechain.</span>
+            <span lang="en">Share your thoughts on ECLSS sizing, $0.38\,g$ centrifugal aquaponics, or Spacechain architecture.</span>
+        </p>
+        <form id="feedback-form" action="https://formspree.io/f/xrejrzrz" method="POST">
+            <input type="hidden" name="article_title" value="Project Hail Mary : Cogeneration ASIC & Support de Vie">
+            <textarea name="feedback" style="width: 100%; background: #05070a; border: 1px solid rgba(247, 147, 26, 0.25); border-radius: 8px; color: #fff; padding: 1.1rem; font-family: var(--font-main); font-size: 1.05rem; min-height: 135px; resize: vertical; margin-bottom: 1.2rem; outline: none;" placeholder="Vos observations thermodynamiques ou biologiques... / Your thermodynamic or biological insights..." required></textarea>
+            <button type="submit" id="feedback-btn" style="background: rgba(247, 147, 26, 0.14); border: 1px solid var(--orange-l1); color: var(--sun-yellow); padding: 11px 32px; border-radius: 30px; cursor: pointer; font-family: var(--font-ui); font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; transition: 0.25s;">
+                <span lang="fr">Transmettre à l'Arche</span>
+                <span lang="en">Transmit to the Ark</span>
+            </button>
+        </form>
+    </div>
+    <div id="success-popup" style="display:none; position:fixed; bottom:30px; right:30px; background:rgba(68, 238, 119, 0.14); border:1px solid #44ee77; color:#44ee77; padding:14px 24px; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,0.65); z-index:1000; backdrop-filter:blur(6px); font-family:var(--font-ui); font-weight:700;">
+        <span lang="en">✅ Telemetry received! Thank you.</span>
+        <span lang="fr">✅ Télémétrie transmise avec succès ! Merci.</span>
+    </div>
+
+    <!-- NAVIGATION DU BLOG (HORLOGE COSMIQUE <- -> OR NOIR À OR NUMÉRIQUE) -->
     <div class="article-navigation">
-        <a href="matrice-inversee.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Précédent ←</span><span lang="en">Previous Article ←</span></div>
-            <div class="nav-title"><span lang="fr">La Matrice Inversée : Infrastructure Souterraine</span><span lang="en">The Inverted Matrix: Subterranean Infrastructure</span></div>
+        <a href="horloge-cosmo-btc-cadran-mu.html" class="nav-card" style="display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
+            <div style="width:100%;">
+                <div class="nav-direction"><span lang="fr">← Article Précédent</span><span lang="en">← Previous Article</span></div>
+                <div class="nav-title"><span lang="fr">L'Horloge Cosmique Bitcoin & Le Vrai Cadran de Mu</span><span lang="en">The Bitcoin Cosmic Clock & The True Dial of Mu</span></div>
+            </div>
+            <img src="img/cadran.jpg" alt="Horloge Cosmique & Cadran de Mu" style="width:100%; max-width:290px; border-radius:8px; margin-top:1rem;" onerror="this.style.display='none'">
         </a>
-        <a href="ornoir_ornum.html" class="nav-card">
-            <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
-            <div class="nav-title"><span lang="fr">De l'Or Noir à l'Or Numérique - de l'Extraction Fossile au Calcul Thermodynamique Régénératif</span><span lang="en">From Black Gold (Oil) to Digital Gold</span></div>
+        <a href="ornoir_ornum.html" class="nav-card" style="display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
+            <div style="width:100%;">
+                <div class="nav-direction"><span lang="fr">Article Suivant →</span><span lang="en">Next Article →</span></div>
+                <div class="nav-title"><span lang="fr">De l'Or Noir à l'Or Numérique : De l'Extraction Fossile au Calcul Régénératif</span><span lang="en">From Black Gold to Digital Gold: Regenerative Thermodynamic Compute</span></div>
+            </div>
+            <img src="img/ornoir_ornum.jpg" alt="De l'Or Noir à l'Or Numérique" style="width:100%; max-width:290px; border-radius:8px; margin-top:1rem;" onerror="this.style.display='none'">
         </a>
+    </div>
+
+    <!-- SECTION AUTEUR & RESSOURCES UNIFIÉE -->
+    <div style="margin: 3.5rem auto; padding: 2.2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 204, 0, 0.22); border-top: 4px solid var(--orange-l1); border-radius: 14px; font-family: var(--font-ui);">
+        <div style="display:flex; align-items:center; gap:1.3rem; margin-bottom:1.3rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1.2rem;">
+            <div style="font-size:2.6rem;">🚀☀️🌱</div>
+            <div>
+                <h3 style="color:#fff; text-transform:uppercase; margin:0; font-size:1.15rem;">Pascal Ranoroarijaona (Ranaora)</h3>
+                <p style="color:#94a3b8; font-size:0.9rem; margin:0.3rem 0 0;">
+                    <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Thermodynamique hors équilibre, systèmes ECLSS circulaires & calcul régénératif.</span>
+                    <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Non-equilibrium thermodynamics, closed-loop ECLSS & regenerative compute.</span>
+                </p>
+            </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:1rem;">
+            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+                <h4 style="color:var(--bio-green); font-size:0.95rem; margin:0 0 0.4rem;">🌱 Regenerative Compute (Lemuria Tech)</h4>
+                <p style="font-size:0.82rem; color:#94a3b8; line-height:1.5; margin:0;"><span lang="fr">Prototypes terrestres : de 17 W (BitTerrarium™) aux mines réhabilitées mégawatt en Australie.</span><span lang="en">Terrestrial prototypes: from 17 W desktop biospheres to megawatt rehabilitated Australian mines.</span></p>
+            </a>
+            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+                <h4 style="color:var(--sun-yellow); font-size:0.95rem; margin:0 0 0.4rem;">☀️ The Sun Standard</h4>
+                <p style="font-size:0.82rem; color:#94a3b8; line-height:1.5; margin:0;"><span lang="fr">Portail théorique : temps thermique KMS, preuves Lean 4 et comptabilité solaire WU/kWh.</span><span lang="en">Theoretical portal: KMS thermal time, Lean 4 formal proofs, and solar WU/kWh accounting.</span></p>
+            </a>
+            <a href="wood-wide-web.html" style="display:block; padding:1.1rem; background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:10px; text-decoration:none;">
+                <h4 style="color:var(--cyan-l2); font-size:0.95rem; margin:0 0 0.4rem;">🌲 The Wood Wide Web</h4>
+                <p style="font-size:0.82rem; color:#94a3b8; line-height:1.5; margin:0;"><span lang="fr">La forêt et le mycélium : le prototype terrestre millénaire de toute arche spatiale fermée.</span><span lang="en">The forest and mycelium: Earth's 450-million-year blueprint for every closed-loop space ark.</span></p>
+            </a>
+        </div>
     </div>
 </article>
 
@@ -780,11 +941,38 @@
 </footer>
 
 <script>
+    window.updateReadingProgressUI = function () {
+        const progressTop = document.getElementById('reading-progress');
+        const progressPercent = document.getElementById('reading-progress-percent');
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        if (progressTop) progressTop.style.width = `${progress}%`;
+        if (progressPercent) {
+            const isEn = document.body.classList.contains('lang-en');
+            progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+        }
+    };
+    window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+    window.addEventListener('resize', window.updateReadingProgressUI);
+
     function setLang(lang) {
         lang = (lang || 'fr').toLowerCase() === 'en' ? 'en' : 'fr';
         document.body.className = 'lang-' + lang;
+        const btnEn = document.getElementById('btn-en');
+        const btnFr = document.getElementById('btn-fr');
+        if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+        if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
+
         try { localStorage.setItem('sun-std-lang', lang); } catch(e) {}
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lg', lang.toUpperCase());
+            window.history.replaceState({}, '', url);
+        } catch(e) {}
+
         updateSimulator();
+        if (window.updateReadingProgressUI) window.updateReadingProgressUI();
     }
 
     function updateSimulator() {
@@ -899,7 +1087,11 @@
     canvas.addEventListener('click', triggerPulse);
     document.getElementById('sh-btn-pulse').addEventListener('click', triggerPulse);
     document.getElementById('sh-btn-fs').addEventListener('click', () => {
-        window.open('starship_arche_thermodynamique_c_ur_vibrant.html', '_blank');
+        if (!document.fullscreenElement) {
+            if (stageBox.requestFullscreen) stageBox.requestFullscreen().catch(() => {});
+        } else {
+            if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+        }
     });
 
     const spinInput = document.getElementById('sh-spin');
@@ -1261,6 +1453,127 @@
     }
 
     requestAnimationFrame(render);
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Projet Hail Mary : L'Étalon Solaire de la Terre à Mars — Cogénération ASIC & Support de Vie",
+  "alternativeHeadline": "Project Hail Mary: Immersion ASIC Thermal Cogeneration, Centrifugal Aquaponics & Closed-Loop Life Support",
+  "datePublished": "2026-11-06",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/HailMary.html",
+  "image": "https://www.thesunstandard.net/blog/img/Starship.jpg",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(18, 12, 6, 0.96); border: 1px solid #f7931a; color: #ffd280; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    if (window.updateReadingProgressUI) window.updateReadingProgressUI();
+
+    // Gestionnaire AJAX Formspree
+    const form = document.getElementById('feedback-form');
+    const popup = document.getElementById('success-popup');
+    const btn = document.getElementById('feedback-btn');
+    if (form && btn) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const orig = btn.innerHTML;
+            btn.innerHTML = '⏳ ...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    if (popup) {
+                        popup.style.display = 'block';
+                        setTimeout(() => { popup.style.display = 'none'; }, 4000);
+                    }
+                }
+            } catch (err) {} finally {
+                btn.innerHTML = orig;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Export HTML autonome nettoyé des conteneurs MathJax
+    function getCleanHailMaryHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showHMToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._hmToastTimer);
+        window._hmToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadHailMaryHTML = function() {
+        const src = getCleanHailMaryHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'HailMary.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showHMToast('✅ HailMary.html téléchargé !', '✅ HailMary.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showHMToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyHailMaryHTML = function() {
+        copyFallback(getCleanHailMaryHTML());
+        showHMToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
 })();
 </script>
 </body>
