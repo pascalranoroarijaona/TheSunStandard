@@ -67,51 +67,83 @@
             --font-mono: 'Fira Code', monospace;
         }
 
+        html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: #04060a;
+            color: #e2e8f0;
             font-family: var(--font-main);
-            line-height: 1.8;
-            background-image: radial-gradient(circle at top center, rgba(0, 229, 255, 0.06) 0%, rgba(247, 147, 26, 0.03) 35%, transparent 65%);
-            transition: all 0.3s ease;
+            line-height: 1.85;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.08) 0%, rgba(247, 147, 26, 0.04) 38%, transparent 68%),
+                radial-gradient(circle at 88% 45%, rgba(179, 102, 255, 0.04) 0%, transparent 55%);
+        }
+
+        /* --- Barre de progression & Badge de lecture unifiés --- */
+        #reading-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--cyan-l2), var(--sun-yellow), var(--orange-l1), var(--bio-green));
+            z-index: 9999;
+        }
+        #reading-progress-percent {
+            position: fixed; left: 1rem; bottom: 1rem; z-index: 9999;
+            min-width: 78px; text-align: center; padding: 0.48rem 0.8rem;
+            border: 1px solid rgba(0, 229, 255, 0.45); border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.14), rgba(247, 147, 26, 0.06)), rgba(4, 6, 12, 0.9);
+            color: var(--cyan-l2); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.22); backdrop-filter: blur(8px);
+            pointer-events: none; user-select: none;
         }
 
         /* --- Système Bilingue Zero-JS --- */
         body.lang-en [lang="fr"] { display: none !important; }
         body.lang-fr [lang="en"] { display: none !important; }
 
-        /* Navigation Minimaliste */
+        /* Navigation Unifiée */
         nav.top-nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2rem; background: rgba(5, 5, 8, 0.92);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255, 204, 0, 0.2); font-family: var(--font-ui);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.9rem;
+            padding: 0.8rem 1.6rem; background: rgba(4, 6, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.28); font-family: var(--font-ui);
         }
-        nav.top-nav .logo { font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sun-yellow); text-decoration: none; }
-        nav.top-nav .nav-center { flex-grow: 1; margin-left: 2rem; }
-        nav.top-nav a.back { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        nav.top-nav a.back:hover { color: #fff; }
+        nav.top-nav .logo { font-size: 0.86rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--cyan-l2); text-decoration: none; white-space: nowrap; }
+        nav.top-nav .nav-links { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: center; }
+        nav.top-nav .nav-links a { color: #8b9bb0; text-decoration: none; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; transition: 0.2s; }
+        nav.top-nav .nav-links a:hover { color: #fff; background: rgba(0, 229, 255, 0.15); }
+        .nav-right-tools { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-dl-btn {
+            background: rgba(0, 229, 255, 0.13); border: 1px solid rgba(0, 229, 255, 0.45);
+            color: var(--cyan-l2); border-radius: 7px; padding: 4px 10px;
+            font-size: 0.73rem; font-family: var(--font-mono); font-weight: 700; cursor: pointer; transition: 0.22s;
+        }
+        .nav-dl-btn:hover { background: rgba(0, 229, 255, 0.26); color: #fff; transform: translateY(-1px); }
 
-        /* Language Toggle Buttons */
         .lang-toggle {
-            display: flex; gap: 10px; align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 1.5rem;
+            display: flex; gap: 8px; align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.12); padding-left: 0.85rem;
         }
         .lang-toggle button {
-            background: transparent; border: none; font-size: 1.35rem; color: white;
-            cursor: pointer; opacity: 0.5; transition: all 0.3s ease; filter: grayscale(100%);
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-family: var(--font-mono);
+            color: white; cursor: pointer; opacity: 0.52; transition: all 0.25s ease; filter: grayscale(100%);
         }
-        .lang-toggle button:hover { opacity: 0.9; transform: scale(1.1); }
+        .lang-toggle button:hover { opacity: 0.92; transform: translateY(-1px); }
         body.lang-en #btn-en, body.lang-fr #btn-fr {
-            opacity: 1; color: white; filter: grayscale(0%) drop-shadow(0 0 8px rgba(0, 229, 255, 0.5));
-            transform: scale(1.1);
+            opacity: 1; filter: grayscale(0%); border-color: var(--cyan-l2);
+            background: rgba(0, 229, 255, 0.16); box-shadow: 0 0 12px rgba(0, 229, 255, 0.35);
+        }
+        @media (max-width: 980px) {
+            nav.top-nav .nav-links { display: none; }
         }
 
         /* Conteneur de l'Article */
         article {
-            max-width: 1100px; margin: 8rem auto 6rem; padding: 0 2rem;
-            font-size: 1.15rem; color: #d4d4d4;
+            max-width: 1050px; margin: 6.8rem auto 5.5rem; padding: 0 1.8rem;
+            font-size: 1.12rem; color: #d4dce6;
+        }
+        #partie-spectrale, #zeta-resonator-stage, #manifeste-thermique, #tiroir-dossier-scientifique, #simulateur-spectral, #live-clock {
+            scroll-margin-top: 5.5rem;
         }
 
         /* --- Hero Header avec Pluie Spectrale Zêta & Blocs --- */
@@ -460,18 +492,25 @@
     </style>
 </head>
 <body class="lang-fr">
+<div id="reading-progress"></div>
+<div id="reading-progress-percent" aria-label="Progression de lecture">Lecture : 0%</div>
 
-<nav class="top-nav">
-    <a href="index.html" class="logo">☀ Blog</a>
-    <div class="nav-center">
-        <a href="index.html" class="back">
-            <span lang="en">← Back to articles</span>
-            <span lang="fr">← Retour aux articles</span>
-        </a>
+<nav class="top-nav" aria-label="Navigation principale">
+    <a href="index.html" class="logo">🎼 L'Étalon Solaire · Riemann & Nakamoto</a>
+    <div class="nav-links">
+        <a href="#zeta-resonator-stage"><span lang="fr">1. Résonateur 144</span><span lang="en">1. 144 Resonator</span></a>
+        <a href="#partie-spectrale"><span lang="fr">2. Niveaux 1–4</span><span lang="en">2. Levels 1–4</span></a>
+        <a href="#manifeste-thermique"><span lang="fr">3. Bost–Connes</span><span lang="en">3. Bost–Connes</span></a>
+        <a href="#tiroir-dossier-scientifique"><span lang="fr">4. Dossier 4 Preuves</span><span lang="en">4. 4-Proof Dossier</span></a>
+        <a href="#simulateur-spectral"><span lang="fr">5. Simulateur</span><span lang="en">5. Simulator</span></a>
+        <a href="#live-clock"><span lang="fr">6. Live Clock</span><span lang="en">6. Live Clock</span></a>
     </div>
-    <div class="lang-toggle">
-        <button onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
-        <button onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+    <div class="nav-right-tools">
+        <button type="button" class="nav-dl-btn" onclick="downloadRiemannHTML()" title="Télécharger nakamoto-riemann.html">⬇️ .HTML</button>
+        <div class="lang-toggle" role="group" aria-label="Changement de langue">
+            <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
+            <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
+        </div>
     </div>
 </nav>
 
@@ -495,57 +534,46 @@
 
     <div id="partie-spectrale"></div>
 
-    <!-- HERO HEADER AVEC PLUIE SPECTRALE ZÊTA-NAKAMOTO -->
     <header class="matrix-hero">
         <canvas id="zetaMatrixCanvas"></canvas>
         <div class="matrix-hero-content">
+            <div style="margin-bottom: 1rem;">
+                <span lang="fr" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(0, 229, 255, 0.13); border: 1px solid rgba(0, 229, 255, 0.45); color: var(--cyan-l2); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                    Pont Mathématique de la Tétralogie · Théorie Spectrale & Mécanique de Bost–Connes
+                </span>
+                <span lang="en" style="display: inline-block; padding: 5px 15px; border-radius: 999px; background: rgba(0, 229, 255, 0.13); border: 1px solid rgba(0, 229, 255, 0.45); color: var(--cyan-l2); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                    Mathematical Bridge of the Tetralogy · Spectral Theory & Bost–Connes Mechanics
+                </span>
+            </div>
             <h1>
-                <span lang="fr">L'Invariant Critique · Riemann &amp; Nakamoto</span>
-                <span lang="en">The Critical Invariant · Riemann &amp; Nakamoto</span>
+                <span lang="fr">L'Invariant Critique · Riemann & Nakamoto</span>
+                <span lang="en">The Critical Invariant · Riemann & Nakamoto</span>
             </h1>
             <div class="subtitle">
-                <span lang="fr">De la Ligne Critique $\mathrm{Re}(s) = \frac{1}{2}$ de Bernhard Riemann au Métronome Thermodynamique de 144 Blocs/Jour de Satoshi Nakamoto : Dualité Spectrale, Système de Bost-Connes &amp; Géométrie de l'Équilibre.</span>
-                <span lang="en">From Bernhard Riemann's Critical Line $\mathrm{Re}(s) = \frac{1}{2}$ to Satoshi Nakamoto's 144-Block/Day Thermodynamic Metronome: Spectral Duality, Bost-Connes Mechanics &amp; The Geometry of Equilibrium.</span>
+                <span lang="fr">De la Ligne Critique $\mathrm{Re}(s) = \frac{1}{2}$ de Bernhard Riemann au Métronome Thermodynamique de 144 Blocs/Jour de Satoshi Nakamoto : Dualité Spectrale, Système de Bost-Connes & Géométrie de l'Équilibre.</span>
+                <span lang="en">From Bernhard Riemann's Critical Line $\mathrm{Re}(s) = \frac{1}{2}$ to Satoshi Nakamoto's 144-Block/Day Thermodynamic Metronome: Spectral Duality, Bost-Connes Mechanics & The Geometry of Equilibrium.</span>
             </div>
             <p style="margin-top: 1.4rem; color: #94a3b8; font-size: 0.88rem; font-family: var(--font-mono);">
-                <span lang="fr">2026-11-22 // RECHERCHE OUVERTE EN ÉCONOPHYSIQUE &amp; THÉORIE SPECTRALE — L'ÉTALON SOLAIRE</span>
-                <span lang="en">2026-11-22 // OPEN RESEARCH IN ECONOPHYSICS &amp; SPECTRAL THEORY — THE SUN STANDARD</span>
+                <span lang="fr">2026-11-22 // RECHERCHE OUVERTE EN ÉCONOPHYSIQUE & THÉORIE SPECTRALE — L'ÉTALON SOLAIRE</span>
+                <span lang="en">2026-11-22 // OPEN RESEARCH IN ECONOPHYSICS & SPECTRAL THEORY — THE SUN STANDARD</span>
             </p>
         </div>
     </header>
 
-    <!-- ENCADRÉ OPEN-SOURCE & TÉLÉCHARGEMENT HTML -->
-    <div class="ai-download-box" style="margin: -1.5rem auto 3rem; padding: 1.5rem; background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.25); border-left: 4px solid var(--cyan-l2); border-radius: 6px; font-family: var(--font-ui); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-        <div lang="fr">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
-                🧠 <strong>Don't Trust, Verify — Vérifiez les équations et le code !</strong> Téléchargez le code source HTML complet de cet article (incluant les moteurs numériques des zéros de Riemann, la simulation de Poisson et la télémétrie Blockchain) pour l'inspecter, le modifier ou l'analyser avec votre IA locale.
-            </p>
+    <!-- BOÎTE D'EXPORT AUTONOME UNIFIÉE -->
+    <div class="export-toolkit-bar" style="margin: -1.5rem auto 2.8rem; padding: 1.15rem 1.4rem; background: linear-gradient(90deg, rgba(0, 229, 255, 0.08) 0%, rgba(247, 147, 26, 0.07) 52%, rgba(68, 238, 119, 0.07) 100%); border: 1px solid rgba(0, 229, 255, 0.34); border-left: 4px solid var(--cyan-l2); border-radius: 12px; font-family: var(--font-ui); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
+        <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 630px;">
+            <span lang="fr">🎼 <strong>Don't Trust, Verify — Code & Preuves Numériques :</strong> Téléchargez le code source autonome (<code>nakamoto-riemann.html</code> — Crible de Tchebychev $\psi(x)$ sur 40 000 entiers, 40 zéros de Riemann, synthèse Web Audio et télémétrie live) pour l'auditer localement.</span>
+            <span lang="en">🎼 <strong>Don't Trust, Verify — Code & Numerical Proofs:</strong> Download the standalone HTML source (<code>nakamoto-riemann.html</code>—exact Chebyshev $\psi(x)$ sieve up to 40,000, 40 Riemann zeros, Web Audio synth, and live telemetry) for local audit.</span>
         </div>
-        <div lang="en">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: #fff;">
-                🧠 <strong>Don't Trust, Verify — Audit the Math &amp; Code!</strong> Download the complete standalone HTML source of this article (including the Riemann explicit-formula engine, Poisson retargeting simulator, and live blockchain telemetry) to inspect or extend with your favorite AI.
-            </p>
-        </div>
-        <div style="text-align: center;">
-            <button onclick="telechargerPageActuelle()" class="feedback-submit" style="padding: 8px 24px; font-size: 0.82rem;">
-                <span lang="fr">⬇️ Télécharger l'HTML autonome (nakamoto-riemann.html)</span>
-                <span lang="en">⬇️ Download Standalone HTML (nakamoto-riemann.html)</span>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="downloadRiemannHTML()" style="background: rgba(0, 229, 255, 0.16); border: 1px solid #00e5ff; color: #00e5ff; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">⬇️ Télécharger l'HTML</span><span lang="en">⬇️ Download HTML</span>
+            </button>
+            <button type="button" onclick="copyRiemannHTML()" style="background: rgba(68, 238, 119, 0.16); border: 1px solid #44ee77; color: #44ee77; border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; cursor: pointer;">
+                <span lang="fr">📋 Copier le code</span><span lang="en">📋 Copy Source</span>
             </button>
         </div>
-        <script>
-            function telechargerPageActuelle() {
-                const codeHTML = "<!doctype html>\n" + document.documentElement.outerHTML;
-                const blob = new Blob([codeHTML], { type: "text/html;charset=utf-8" });
-                const blobUrl = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = blobUrl;
-                a.download = "nakamoto-riemann.html";
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(blobUrl);
-            }
-        </script>
     </div>
 
     <!-- ===================================================================== -->
@@ -737,7 +765,7 @@
                     En 1859, Bernhard Riemann dévoile l'énigme la plus profonde des mathématiques pures : les nombres premiers — ces atomes indivisibles de l'arithmétique qui surgissent localement comme un jet de dés — obéissent globalement à une symphonie spectrale gouvernée par les zéros non triviaux $\rho_k = \frac{1}{2} + i\gamma_k$ de la fonction zêta $\zeta(s)$. Tant que tous ces zéros demeurent ancrés sur la <strong>ligne critique $\mathrm{Re}(s) = \frac{1}{2}$</strong>, le chaos arithmétique ne peut jamais diverger : il reste prisonnier d'une enveloppe diffusive optimale en $\mathcal{O}(\sqrt{x}\ln x)$.
                 </p>
                 <p style="margin-bottom: 1.2rem;">
-                    Cent cinquante ans plus tard, en 2008, Satoshi Nakamoto résout un problème structurellement isomorphe dans le monde physique : comment extraire une <strong>invariant causal universel de 144 blocs par jour</strong> ($\tau_0 = 600\text{ s}$) à partir d'un océan mondial de collisions SHA-256 sans mémoire et d'une puissance énergétique en mutation permanente ? Sa réponse est un thermostat cybernétique — la boucle de rétroaction des <strong>2 016 blocs</strong> — qui piège l'entropie énergétique dans une bande d'équilibre en $\sqrt{N}$. Ce cadre théorique développé sur <a href="https://www.thesunstandard.net/" target="_blank" style="color: var(--sun-yellow);">thesunstandard.net</a> nourrit directement les architectures matérielles de <a href="https://www.regenerativecompute.io/" target="_blank" style="color: var(--bio-green); font-weight: bold;">regenerativecompute.io</a>.
+                    Cent cinquante ans plus tard, en 2008, Satoshi Nakamoto résout un problème structurellement isomorphe dans le monde physique : comment extraire un <strong>invariant causal universel de 144 blocs par jour</strong> ($\tau_0 = 600\text{ s}$) à partir d'un océan mondial de collisions SHA-256 sans mémoire et d'une puissance énergétique en mutation permanente ? Sa réponse est un thermostat cybernétique — la boucle de rétroaction des <strong>2 016 blocs</strong> — qui piège l'entropie énergétique dans une bande d'équilibre en $\sqrt{N}$. Ce cadre théorique développé sur <a href="https://www.thesunstandard.net/" target="_blank" style="color: var(--sun-yellow);">thesunstandard.net</a> nourrit directement les architectures matérielles de <a href="https://www.regenerativecompute.io/" target="_blank" style="color: var(--bio-green); font-weight: bold;">regenerativecompute.io</a>.
                 </p>
                 <div style="margin-top: 1.4rem; padding: 1.2rem 1.4rem; background: rgba(0, 0, 0, 0.45); border-left: 3px solid var(--cyan-l2); border-radius: 0 6px 6px 0; font-style: italic; color: #f0f6fc;">
                     « Qu'est-ce qu'une civilisation souveraine, sinon une architecture capable d'accueillir l'imprévisibilité radicale du vivant et du libre arbitre micro-échelle, tout en maintenant une ligne critique inviolable qui interdit l'emballement entropique du tout ? »
@@ -1203,11 +1231,11 @@
         <div class="drawer-content">
             <div lang="fr">
                 <p>Le lien entre la fonction $\zeta(s)$ de Riemann et la thermodynamique du temps n'est pas une simple métaphore poétique : c'est un théorème fondamental de la géométrie non commutative établi par <strong>Jean-Benoît Bost et Alain Connes (1995)</strong>, directement relié à l'<strong>Hypothèse du Temps Thermique de Connes et Rovelli (1994)</strong>.</p>
-                <p>Dans un système hors d'équilibre dépourvu d'horloge maîtresse externe, Connes et Rovelli démontrent que le flux du temps physique émerge de l'état statistique $\omega$ lui-même via le groupe modulaire d'automorphismes de Tomita–Takesaki $\sigma_t^\omega(A) = \Delta^{-it} A \Delta^{it}$. Appliqué à l'algèbre arithmétique de Hecke dont les niveaux d'énergie fondamentaux sont les logarithmes des nombres premiers $E_p = \ln p$, le flot temporel engendre une fonction de partition thermodynamique à la température inverse $\beta = \frac{1}{k_B T}$ qui est <strong>identiquement égale à la fonction zêta de Riemann</strong> :</p>
+                <p>Dans un système hors d'équilibre dépourvu d'horloge maîtresse externe, Connes et Rovelli démontrent que le flux du temps physique émerge de l'état statistique $\omega$ lui-même via le groupe modulaire d'automorphismes de Tomita–Takesaki $\sigma_s^\omega(A) = \Delta_\omega^{is} A \Delta_\omega^{-is}$ (relié au temps physique par $t = \hbar_N \beta_{\mathrm{eff}} s$, cf. <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Acte III</a>). Appliqué à l'algèbre arithmétique de Hecke dont les niveaux d'énergie fondamentaux sont les logarithmes des nombres premiers $E_p = \ln p$, le flot temporel engendre une fonction de partition thermodynamique à la température inverse $\beta = \frac{1}{k_B T}$ qui est <strong>identiquement égale à la fonction zêta de Riemann</strong> :</p>
             </div>
             <div lang="en">
                 <p>The bridge uniting Riemann's $\zeta(s)$ and thermodynamic time is not merely poetic—it is a celebrated theorem in noncommutative geometry proved by <strong>Jean-Benoît Bost and Alain Connes (1995)</strong>, directly rooted in the <strong>Connes–Rovelli Thermal Time Hypothesis (1994)</strong>.</p>
-                <p>In any system lacking an external Newtonian clock, Connes and Rovelli showed that physical time flows endogenously from the statistical state $\omega$ via the Tomita–Takesaki modular automorphism group $\sigma_t^\omega(A) = \Delta^{-it} A \Delta^{it}$. Applied to the arithmetic Hecke C*-algebra whose single-particle energy levels are the prime logarithms $E_p = \ln p$, the partition function at inverse temperature $\beta = \frac{1}{k_B T}$ is <strong>identically the Riemann zeta function</strong>:</p>
+                <p>In any system lacking an external Newtonian clock, Connes and Rovelli showed that physical time flows endogenously from the statistical state $\omega$ via the Tomita–Takesaki modular automorphism group $\sigma_s^\omega(A) = \Delta_\omega^{is} A \Delta_\omega^{-is}$ (mapped to physical time via $t = \hbar_N \beta_{\mathrm{eff}} s$, cf. <a href="nautile-nakamoto.html" style="color:var(--sun-yellow);">Act III</a>). Applied to the arithmetic Hecke C*-algebra whose single-particle energy levels are the prime logarithms $E_p = \ln p$, the partition function at inverse temperature $\beta = \frac{1}{k_B T}$ is <strong>identically the Riemann zeta function</strong>:</p>
             </div>
 
             <div class="math-block" style="border-color: rgba(68, 238, 119, 0.35);">
@@ -1349,7 +1377,7 @@ if __name__ == "__main__":
                         <tr>
                             <td><strong><span lang="fr">Fonction de Partition</span><span lang="en">Thermodynamic Partition</span></strong></td>
                             <td>$Z_{\mathrm{BC}}(\beta) = \mathrm{Tr}(e^{-\beta H}) = \zeta(\beta)$ ($\beta_c = 1$) [5]</td>
-                            <td>$Z_{\mathrm{PoW}}(\beta) = \sum_{\mathcal{C}} e^{-\beta E_{\mathrm{cum}}(\mathcal{C})}$ ( Sélection chaîne lourde) [19]</td>
+                            <td>$Z_{\mathrm{PoW}}(\beta_{\mathrm{eff}}) = \sum_{\mathcal{C}} e^{-\beta_{\mathrm{eff}} \mathcal{H}_{\mathrm{diss}}(\mathcal{C})} = \sum_{\mathcal{C}} e^{+\beta_{\mathrm{eff}} E_{\mathrm{cum}}(\mathcal{C})}$ (Sélection chaîne lourde) [19]</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1620,7 +1648,7 @@ if __name__ == "__main__":
     <!-- ===================================================================== -->
     <!-- TÉLÉMÉTRIE LIVE DE LA TIMECHAIN (API MEMPOOL.SPACE + FALLBACK)        -->
     <!-- ===================================================================== -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="live-clock">
         <h3 style="color: var(--sun-yellow); text-align: center; margin-top: 0; text-transform: uppercase; letter-spacing: 1.5px;">
             <span lang="fr">🌍 Télémétrie Live de l'Horloge de Nakamoto (Mempool.space)</span>
             <span lang="en">🌍 Live Nakamoto Clock Telemetry (Mempool.space)</span>
@@ -1775,29 +1803,29 @@ if __name__ == "__main__":
         <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
     </div>
 
-    <!-- NAVIGATION INTER-ARTICLES -->
+    <!-- NAVIGATION INTER-ARTICLES UNIFIÉE -->
     <div class="article-navigation">
-        <a href="matrice-inversee.html" class="nav-card">
+        <a href="ornoir_ornum.html" class="nav-card">
             <div class="nav-direction">
-                <span lang="en">← Companion Architecture</span>
-                <span lang="fr">← Architecture Compagne</span>
+                <span lang="en">← Previous Article</span>
+                <span lang="fr">← Article Précédent</span>
             </div>
             <div class="nav-title">
-                <span lang="en">The Inverted Matrix · Subterranean Regenerative Compute</span>
-                <span lang="fr">La Matrice Inversée · Calcul Régénératif Souterrain</span>
+                <span lang="en">From Black Gold to Digital Gold · The Great Filter Geodesic</span>
+                <span lang="fr">De l'Or Noir à l'Or Numérique · La Géodésique du Grand Filtre</span>
             </div>
-            <img src="img/LongTermVision.png" alt="Long Term Vision" style="width:100%; max-width:280px; border-radius:6px;">
+            <img src="img/LongTermVision.png" alt="De l'Or Noir à l'Or Numérique" style="width:100%; max-width:280px; border-radius:8px; margin-top:0.8rem;" onerror="this.style.display='none'">
         </a>
         <a href="wood-wide-web.html" class="nav-card">
             <div class="nav-direction">
-                <span lang="en">Next Horizon →</span>
-                <span lang="fr">Horizon Suivant →</span>
+                <span lang="en">Next Article · Symbiotic Forest →</span>
+                <span lang="fr">Article Suivant · La Forêt Symbiotique →</span>
             </div>
             <div class="nav-title">
-                <span lang="en">The Blockchain and the Forest — The Wood Wide Web</span>
-                <span lang="fr">La Blockchain et la Forêt : Le Wood Wide Web</span>
+                <span lang="en">The Wood Wide Web — The Blockchain and the Forest</span>
+                <span lang="fr">The Wood Wide Web : La Blockchain et la Forêt</span>
             </div>
-            <img src="img/wood-wide-web-cover.jpg" alt="Blockchain and Forest" style="width:100%; max-width:280px; border-radius:6px;">
+            <img src="img/wood-wide-web-cover.jpg" alt="The Wood Wide Web" style="width:100%; max-width:280px; border-radius:8px; margin-top:0.8rem;" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/VieOrganiqueSurface.png';}else{this.style.display='none';}">
         </a>
     </div>
 </article>
@@ -1867,15 +1895,19 @@ function explicitPsiAt(x, kZeros, sigmaFirst) {
     const lim = Math.min(kZeros, RIEMANN_GAMMAS.length);
     for (let i = 0; i < lim; i++) {
         const g = RIEMANN_GAMMAS[i];
-        const sig = (i === 0) ? sigmaFirst : 0.5;
-        const amp = (i === 0 && sig !== 0.5) ? Math.pow(x, sig) : sqrtX;
-        const denom = sig * sig + g * g;
         const cosPart = Math.cos(g * lnX);
         const sinPart = Math.sin(g * lnX);
-        // Re(x^(sig + i*g) / (sig + i*g)) = amp * (sig*cos + g*sin) / (sig^2 + g^2)
-        osc += 2.0 * amp * (sig * cosPart + g * sinPart) / denom;
+        if (i === 0 && Math.abs(sigmaFirst - 0.5) > 1e-6) {
+            // Par l'équation fonctionnelle xi(s) = xi(1-s), un zéro hors ligne critique forme un quadruplet :
+            // {sigma + i*g, sigma - i*g, (1-sigma) + i*g, (1-sigma) - i*g}
+            const s1 = sigmaFirst, s2 = 1.0 - sigmaFirst;
+            osc += 2.0 * Math.pow(x, s1) * (s1 * cosPart + g * sinPart) / (s1 * s1 + g * g);
+            osc += 2.0 * Math.pow(x, s2) * (s2 * cosPart + g * sinPart) / (s2 * s2 + g * g);
+        } else {
+            osc += 2.0 * sqrtX * (0.5 * cosPart + g * sinPart) / (0.25 + g * g);
+        }
     }
-    return x - osc - Math.log(2 * Math.PI);
+    return x - osc - Math.log(2 * Math.PI) - 0.5 * Math.log(1.0 - 1.0 / (x * x));
 }
 
 // Générateur pseudo-aléatoire déterministe pour reproductibilité des courbes
@@ -2460,18 +2492,39 @@ async function fetchBitcoinClockTelemetry() {
     anim = requestAnimationFrame(draw);
 })();
 
-// 6. GESTION BILINGUE FR / EN & INITIALISATION
+// 6. GESTION BILINGUE FR / EN, BARRE DE PROGRESSION & INITIALISATION
+window.updateReadingProgressUI = function () {
+    const progressTop = document.getElementById('reading-progress');
+    const progressPercent = document.getElementById('reading-progress-percent');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+    if (progressTop) progressTop.style.width = `${progress}%`;
+    if (progressPercent) {
+        const isEn = document.body.classList.contains('lang-en');
+        progressPercent.textContent = `${isEn ? 'Reading' : 'Lecture'} : ${Math.round(progress)}%`;
+    }
+};
+window.addEventListener('scroll', window.updateReadingProgressUI, { passive: true });
+window.addEventListener('resize', window.updateReadingProgressUI);
+
 function setLang(lang) {
     lang = (lang || 'fr').toLowerCase() === 'en' ? 'en' : 'fr';
     document.body.className = 'lang-' + lang;
+    const btnEn = document.getElementById('btn-en');
+    const btnFr = document.getElementById('btn-fr');
+    if (btnEn) btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+    if (btnFr) btnFr.setAttribute('aria-current', lang === 'fr' ? 'true' : 'false');
+
     try { localStorage.setItem('sun-std-lang', lang); } catch (e) {}
     try {
-        const url = new URL(window.location);
+        const url = new URL(window.location.href);
         url.searchParams.set('lg', lang.toUpperCase());
         window.history.replaceState({}, '', url);
     } catch (e) {}
     renderDossierCharts();
     runSpectralSimulator();
+    if (window.updateReadingProgressUI) window.updateReadingProgressUI();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -2510,6 +2563,99 @@ window.addEventListener('resize', () => {
     renderDossierCharts();
     runSpectralSimulator();
 });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "L'Invariant Critique : De la Zêta de Riemann au Métronome de Nakamoto (144 Blocs/Jour)",
+  "alternativeHeadline": "The Critical Clock: Spectral Duality Between Riemann's Zeta Function and Nakamoto's 144-Block Rhythm",
+  "datePublished": "2026-11-22",
+  "author": {
+    "@type": "Person",
+    "name": "Pascal Ranoroarijaona"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "L'Étalon Solaire",
+    "url": "https://www.thesunstandard.net/"
+  },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/nakamoto-riemann.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+
+<div id="sun-toast" style="position: fixed; bottom: 26px; right: 26px; z-index: 10000; background: rgba(4, 15, 22, 0.96); border: 1px solid #00e5ff; color: #00e5ff; padding: 13px 22px; border-radius: 10px; font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,0.78); opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease;" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+    if (window.updateReadingProgressUI) window.updateReadingProgressUI();
+
+    function getCleanRiemannHTML() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+        const helixClone = clone.querySelector('#three-helix-container');
+        if (helixClone) helixClone.innerHTML = '';
+        const toast = clone.querySelector('#sun-toast');
+        if (toast) toast.style.opacity = '0';
+        return "<!doctype html>\n" + clone.outerHTML;
+    }
+
+    function showRiemannToast(msgFr, msgEn) {
+        const t = document.getElementById('sun-toast');
+        if (!t) return;
+        t.textContent = document.body.classList.contains('lang-fr') ? msgFr : msgEn;
+        t.style.opacity = '1';
+        t.style.transform = 'translateY(0)';
+        clearTimeout(window._riemToastTimer);
+        window._riemToastTimer = setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(12px)';
+        }, 3200);
+    }
+
+    function copyFallback(txt) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(txt).catch(() => {});
+            return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    window.downloadRiemannHTML = function() {
+        const src = getCleanRiemannHTML();
+        try {
+            const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'nakamoto-riemann.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 1500);
+            showRiemannToast('✅ nakamoto-riemann.html téléchargé !', '✅ nakamoto-riemann.html downloaded!');
+        } catch (err) {
+            copyFallback(src);
+            showRiemannToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        }
+    };
+
+    window.copyRiemannHTML = function() {
+        copyFallback(getCleanRiemannHTML());
+        showRiemannToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    };
+
+    window.telechargerPageActuelle = window.downloadRiemannHTML;
+})();
 </script>
 </body>
 </html>
