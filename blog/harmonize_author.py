@@ -535,6 +535,7 @@ def insert_if_missing(html_text, img_prefix=""):
 
 def main():
     articles = [
+        "../index.html",
         "focker-planck.html",
         "HailMary.html",
         "horizon-zero-2044.html",
@@ -560,11 +561,17 @@ def main():
         with open(fname, "r", encoding="utf-8") as f:
             content = f.read()
 
-        updated_content, replaced = replace_author_block(content)
+        # Si le fichier est dans le dossier parent (../index.html), ajuster les chemins vers blog/img/
+        # (sauf si le dossier racine possède son propre dossier ../img/)
+        img_prefix = ""
+        if fname.startswith("../") and not os.path.exists("../img"):
+            img_prefix = "blog/"
+
+        updated_content, replaced = replace_author_block(content, img_prefix=img_prefix)
         action = "Mis à jour"
 
         if not replaced:
-            updated_content, replaced = insert_if_missing(content)
+            updated_content, replaced = insert_if_missing(content, img_prefix=img_prefix)
             action = "Inséré (était absent)"
 
         if replaced:
