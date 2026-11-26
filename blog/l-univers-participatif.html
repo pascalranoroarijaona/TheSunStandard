@@ -13,13 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>L'Éveil de l'Univers Participatif : It from Bit | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/l-univers-participatif.html" />
     <meta name="description" content="Acte I de la Tétralogie : de l'Univers Participatif de John Archibald Wheeler (It from bit) et du vide médian de Lao Tseu au Bloc Genesis du 3 janvier 2009 — comment la thermodynamique donne à l'intangible la persistance de la roche.">
 
     <!-- Open Graph / LinkedIn / Social Preview -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="L'Éveil de l'Univers Participatif : It from Bit | The Sun Standard" />
     <meta property="og:description" content="Acte I : De John Archibald Wheeler et Philip K. Dick à la singularité thermodynamique du 3 janvier 2009. Un univers fait de chair et d'information." />
-    <meta property="og:url" content="https://www.thesunstandard.net/blog/l-univers-jumeau.html" />
+    <meta property="og:url" content="https://www.thesunstandard.net/blog/l-univers-participatif.html" />
     <meta property="og:image" content="https://www.thesunstandard.net/blog/img/UniversJumeau.png" />
 
     <!-- X / Twitter Card -->
@@ -260,7 +261,26 @@
         .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
         .status-d { color: #c864ff; background: rgba(200,100,255,0.08); }
         .modelling-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr)); gap: 1rem;
+            display: grid;
+            gap: 1.1rem;
+            /* Default (1, 2, or 4 items): 2 columns per row (e.g., 4 items = 2 then 2) */
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Exactly 3 items: 1 row of 3 columns (3rd child is also the last child) */
+        .modelling-grid:has(> :nth-child(3):last-child),
+        /* 5 or more items: 3 columns per row */
+        .modelling-grid:has(> :nth-child(5)) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Mobile fallback so cards never get squished on narrow screens */
+        @media (max-width: 768px) {
+            .modelling-grid,
+            .modelling-grid:has(> :nth-child(3):last-child),
+            .modelling-grid:has(> :nth-child(5)) {
+                grid-template-columns: 1fr;
+            }
         }
         .model-card {
             padding: 1.15rem; background: rgba(5, 8, 15, 0.88);
@@ -530,6 +550,7 @@
         .sun-toast { opacity: 0; pointer-events: none; transform: translateY(12px); transition: 0.28s ease; }
         .sun-toast.visible { opacity: 1; transform: translateY(0); }
 
+        
         footer { font-family: var(--font-ui); text-align: center; padding: 2.8rem 2rem; border-top: 1px solid var(--border-glow); color: var(--text-muted); font-size: 0.82rem; }
 
         @media (max-width: 920px) {
@@ -541,6 +562,209 @@
         @media (max-width: 580px) {
             article { padding: 0 1.1rem; margin-top: 5.8rem; }
             #wheelerHeroCanvas { height: 340px; }
+        }
+        /* ==========================================================================
+        SOLAR CIVILIZATION — 8-ACT PLAYLIST & POEM MODULE
+        ========================================================================== */
+        .solar-acts-container {
+            max-width: 880px;
+            margin: 3.5rem auto 2.5rem auto;
+            background: radial-gradient(circle at top center, rgba(255, 204, 0, 0.05) 0%, rgba(8, 8, 12, 0.85) 70%);
+            border: 1px solid var(--border-glow, rgba(255, 170, 0, 0.24));
+            border-top: 3px solid var(--sun-yellow, #ffcc00);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+            font-family: var(--font-ui, 'Inter', 'Helvetica Neue', sans-serif);
+        }
+
+        .solar-acts-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.16);
+            padding-bottom: 1.2rem;
+        }
+
+        .solar-acts-header h4 {
+            color: var(--sun-yellow, #ffcc00);
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0 0 0.45rem 0;
+        }
+
+        .solar-acts-header p {
+            color: var(--text-muted, #8b9bb0);
+            font-size: 0.92rem;
+            font-style: italic;
+            margin: 0;
+            text-align: center;
+        }
+
+        .acts-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.4rem 0 0.4rem 0;
+        }
+
+        .btn-act-toggle {
+            background: rgba(255, 204, 0, 0.08);
+            border: 1px solid rgba(255, 204, 0, 0.35);
+            color: var(--sun-yellow, #ffcc00);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.22s ease;
+        }
+
+        .btn-act-toggle:hover {
+            background: var(--sun-yellow, #ffcc00);
+            color: #040508;
+            transform: translateY(-1px);
+            box-shadow: 0 0 16px rgba(255, 204, 0, 0.35);
+        }
+
+        details.act-card {
+            background: rgba(5, 6, 10, 0.72);
+            border: 1px solid rgba(255, 204, 0, 0.14);
+            border-radius: 10px;
+            margin-bottom: 0.85rem;
+            overflow: hidden;
+            transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        details.act-card:hover {
+            border-color: rgba(255, 204, 0, 0.32);
+        }
+
+        details.act-card[open] {
+            border-color: rgba(255, 204, 0, 0.48);
+            background: rgba(11, 13, 20, 0.92);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        summary.act-header {
+            padding: 1.05rem 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            font-weight: 700;
+            font-size: 0.96rem;
+            color: var(--sun-orange, #ff6600);
+            list-style: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        summary.act-header::-webkit-details-marker {
+            display: none;
+        }
+
+        summary.act-header:hover {
+            background: rgba(255, 204, 0, 0.06);
+            color: var(--sun-yellow, #ffcc00);
+        }
+
+        /* Rotate the ▾ chevron smoothly when opened */
+        summary.act-header > span:last-child {
+            display: inline-block;
+            transition: transform 0.25s ease;
+            color: var(--sun-yellow, #ffcc00);
+        }
+
+        details.act-card[open] > summary.act-header > span:last-child {
+            transform: rotate(180deg);
+        }
+
+        .act-content-box {
+            padding: 0.4rem 1.3rem 1.3rem 1.3rem;
+            color: #e2e8f0;
+            font-size: 0.98rem;
+            line-height: 1.85;
+        }
+
+        .act-poem-text {
+            font-family: var(--font-main, 'Georgia', serif);
+            font-style: italic;
+            border-left: 3px solid var(--sun-orange, #ff6600);
+            padding: 0.7rem 1.1rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, rgba(255, 102, 0, 0.06) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+        }
+
+        details.act-tracklist-drawer {
+            background: rgba(0, 0, 0, 0.48);
+            border: 1px dashed rgba(255, 204, 0, 0.24);
+            border-radius: 8px;
+            padding: 0.65rem 0.95rem;
+            margin-top: 0.85rem;
+        }
+
+        summary.tracklist-title {
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            color: var(--cyan-glow, #00e5ff);
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        summary.tracklist-title::-webkit-details-marker {
+            display: none;
+        }
+
+        summary.tracklist-title::before {
+            content: '▶';
+            font-size: 0.7rem;
+            transition: transform 0.2s ease;
+        }
+
+        details.act-tracklist-drawer[open] > summary.tracklist-title::before {
+            transform: rotate(90deg);
+        }
+
+        summary.tracklist-title:hover {
+            color: var(--sun-yellow, #ffcc00);
+        }
+
+        .act-tracklist-items {
+            margin-top: 0.75rem;
+            padding-left: 1.4rem;
+            font-size: 0.84rem;
+            color: #9ca3af;
+            line-height: 1.65;
+        }
+
+        .act-tracklist-items li {
+            margin-bottom: 0.3rem;
+        }
+
+        .act-tracklist-items strong {
+            color: #f8fafc;
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .solar-acts-container {
+                padding: 1.25rem;
+            }
+            summary.act-header {
+                font-size: 0.88rem;
+                padding: 0.9rem 1rem;
+            }
         }
     </style>
 </head>
@@ -560,7 +784,7 @@
         <a href="#sec-twin-3d"><span lang="fr">6. Univers Jumeau 3D</span><span lang="en">6. 3D Twin Universe</span></a>
     </div>
     <div class="nav-right-tools">
-        <button type="button" class="nav-dl-btn" onclick="downloadStandaloneHTML()" title="Télécharger l-univers-jumeau.html">⬇️ .HTML</button>
+        <button type="button" class="nav-dl-btn" onclick="downloadStandaloneHTML()" title="Télécharger l-univers-participatif.html">⬇️ .HTML</button>
         <div class="lang-toggle">
             <button type="button" onclick="setLang('en')" id="btn-en" aria-label="English">EN 🇬🇧</button>
             <button type="button" onclick="setLang('fr')" id="btn-fr" aria-label="Français">FR 🇫🇷</button>
@@ -588,8 +812,8 @@
     <!-- BOÎTE D'EXPORT AUTONOME -->
     <div class="export-toolkit-bar">
         <div style="font-size: 0.88rem; color: #e2e8f0; max-width: 610px;">
-            <span lang="fr">👁️ <strong>Acte I Open-Source Interactif :</strong> Téléchargez le code source complet de cet essai fondateur (<code>l-univers-jumeau.html</code>, incluant ses 6 laboratoires cosmologiques et quantiques) pour l'archiver ou l'explorer avec votre IA locale.</span>
-            <span lang="en">👁️ <strong>Interactive Open-Source Act I:</strong> Download the complete standalone HTML source of this foundational essay (<code>l-univers-jumeau.html</code>, including all 6 cosmological and quantum labs) for archiving or local AI study.</span>
+            <span lang="fr">👁️ <strong>Acte I Open-Source Interactif :</strong> Téléchargez le code source complet de cet essai fondateur (<code>l-univers-participatif.html</code>, incluant ses 6 laboratoires cosmologiques et quantiques) pour l'archiver ou l'explorer avec votre IA locale.</span>
+            <span lang="en">👁️ <strong>Interactive Open-Source Act I:</strong> Download the complete standalone HTML source of this foundational essay (<code>l-univers-participatif.html</code>, including all 6 cosmological and quantum labs) for archiving or local AI study.</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
             <button type="button" class="ui-btn green-cta" onclick="downloadStandaloneHTML()">
@@ -1210,33 +1434,480 @@ blockHash     : 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
         </div>
     </details>
 
-    <!-- À PROPOS DE L'AUTEUR & RESSOURCES -->
-    <div class="author-section">
-        <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
-            <div style="font-size:2.3rem;">👁️☀️🪨</div>
-            <div>
-                <h3 style="color:#fff; margin:0; font-size:1.12rem; text-transform:uppercase;">Pascal Ranoroarijaona (Ranaora)</h3>
-                <p style="color:#94a3b8; font-size:0.87rem; margin:0.25rem 0 0; text-align:left;">
-                    <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Physique de l'information, thermodynamique hors équilibre & éconophysique du vivant.</span>
-                    <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Information physics, non-equilibrium thermodynamics & living econophysics.</span>
-                </p>
+    <!-- SECTION AUTEUR & RESSOURCES OPEN-SOURCE UNIFIÉE (CORPUS L'ÉTALON SOLAIRE) -->
+<section class="author-section unified-author-card" aria-label="À propos de l'auteur et ressources">
+    <style>
+        .unified-author-card {
+            margin: 4rem auto 3rem;
+            padding: 2.2rem;
+            background: linear-gradient(145deg, rgba(12, 16, 26, 0.94), rgba(5, 7, 12, 0.98));
+            border: 1px solid rgba(255, 204, 0, 0.28);
+            border-top: 4px solid var(--sun-yellow, #ffcc00);
+            border-radius: 14px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+            font-family: var(--font-ui, 'Inter', 'Helvetica Neue', sans-serif);
+            max-width: 1020px;
+        }
+        .unified-author-header {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .unified-author-emblem {
+            font-size: 2.6rem;
+            line-height: 1;
+            padding: 0.85rem;
+            border-radius: 14px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.14) 0%, rgba(0, 229, 255, 0.06) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.32);
+            box-shadow: 0 0 24px rgba(255, 204, 0, 0.14);
+            flex-shrink: 0;
+        }
+        .unified-author-info h3 {
+            color: #ffffff;
+            margin: 0 0 0.4rem 0;
+            font-size: 1.28rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        .unified-author-role {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            display: block;
+        }
+        .unified-author-info p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.62;
+            margin: 0;
+            text-align: left;
+        }
+        .unified-author-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.85rem;
+        }
+        .unified-social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.22s ease;
+        }
+        .unified-social-pill:hover {
+            border-color: var(--sun-yellow, #ffcc00);
+            color: var(--sun-yellow, #ffcc00);
+            transform: translateY(-1px);
+        }
+        .unified-author-video {
+            margin: 1.5rem auto 1.8rem;
+            max-width: 680px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 204, 0, 0.25);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+        .unified-author-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        .unified-resources-heading {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+        .unified-resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+        .unified-res-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-top: 3px solid var(--card-accent, #ffcc00);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+        }
+        .unified-res-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.048);
+            border-color: var(--card-accent, #ffcc00);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+        }
+        .unified-card-head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .unified-card-logo {
+            width: 176px;
+            height: 176px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #060911;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo {
+            transform: scale(1.06);
+            border-color: var(--card-accent, #ffcc00);
+        }
+        .unified-card-logo-dual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .unified-card-logo-dual img {
+            width: 76px;
+            height: 76px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #060911;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo-dual img {
+            transform: scale(1.05);
+            border-color: var(--card-accent, #ffcc00);
+        }
+        .unified-res-card h4 {
+            color: var(--card-accent, #ffcc00);
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.35;
+            text-align: center;
+        }
+        .unified-res-card h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .unified-res-card h4 a:hover {
+            text-decoration: underline;
+        }
+        .unified-res-card p {
+            color: #94a3b8;
+            font-size: 0.82rem;
+            line-height: 1.52;
+            margin: 0;
+            text-align: left;
+        }
+        .unified-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.85rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+        .unified-repo-tag {
+            display: inline-block;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.71rem;
+            font-weight: 600;
+            color: var(--card-accent, #ffcc00);
+            text-decoration: none;
+            opacity: 0.92;
+        }
+        .unified-repo-tag:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        @media (max-width: 860px) {
+            .unified-resources-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .unified-author-header { flex-direction: column; text-align: center; }
+            .unified-author-info p { text-align: center; }
+            .unified-author-links { justify-content: center; }
+            .unified-resources-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <div class="unified-author-header">
+        <div class="unified-author-emblem" aria-hidden="true">☀️🌱🐚</div>
+        <div class="unified-author-info">
+            <h3>Pascal Ranoroarijaona (Ranaora)</h3>
+            <span class="unified-author-role">
+                <span lang="fr">Ingénieur en Informatique (HPC) &amp; Chercheur Indépendant · Information Physics Institute (Sydney)</span>
+                <span lang="en">Computer Engineer (HPC) &amp; Independent Researcher · Information Physics Institute (Sydney)</span>
+            </span>
+            <p lang="fr">
+                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Il utilise l'Intelligence Artificielle comme levier d'apprentissage pour explorer les grandes disciplines humaines — <strong>philosophie, économie, éconophysique, physique, mathématiques, écologie, environnement, agriculture et informatique</strong> — un cheminement qui lui a fait prendre conscience à quel point nous sommes devenus aveugles au monde réel dans lequel nous habitons, oubliant la physique, les mathématiques et les limites planétaires au profit d'une opulence fictive et court-termiste. Il garde néanmoins une foi profonde en l'ingéniosité humaine : en réconciliant la science, la sobriété et la technologie au service du vivant, nous avons déjà entre nos mains tout ce qu'il faut pour inverser la vapeur.
+            </p>
+            <p lang="en">
+                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. He uses Artificial Intelligence as a learning catalyst to explore major fields of human knowledge—<strong>philosophy, economics, econophysics, physics, mathematics, ecology, environment, agriculture, and computer science</strong>—a journey that revealed how blind we have become to the physical world we inhabit, forgetting physics, mathematics, and planetary boundaries to indulge in a fictitious, short-term opulence. Yet he remains deeply optimistic and steadfast in his faith in Humanity: by realigning science, temperance, and technology in service of the living world, we already hold everything needed to turn the tide.
+            </p>
+            <div class="unified-author-links">
+                <a href="https://github.com/pascalranoroarijaona/" target="_blank" rel="noopener" class="unified-social-pill">🐙 GitHub</a>
+                <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-social-pill">☀️ TheSunStandard.net</a>
+                <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-social-pill">🌱 RegenerativeCompute.io</a>
+                <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">📘 Livre-Bitcoin.fr</a>
+                <a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">⛏️ Simulateur-Bitcoin.fr</a>
+                <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">📈 Compteur-Bitcoin.fr</a>
+                <span class="unified-social-pill" style="cursor:default; color:#44ee77; border-color:rgba(68,238,119,0.3);">📍 French/Australian/Madagascan located Sydney/Antsirabe, Lemuria - Born in Nairobi Kenya, Married to China/Indonesia/Malaysia, Middle-Earth Human · Fihavanana</span>
             </div>
         </div>
-        <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
-                <p><span lang="fr">Portail de recherche ouverte : cosmologie thermo-cryptographique, temps thermique et preuves Lean 4.</span><span lang="en">Open-science portal: thermo-cryptographic cosmology, thermal time, and Lean 4 formal proofs.</span></p>
-            </a>
-            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--bio-green);">🌱 Regenerative Compute</h4>
-                <p><span lang="fr">Symbiose matérielle : enfouir les machines sous roche pour régénérer l'eau douce et les jardins en surface.</span><span lang="en">Hardware symbiosis: burying compute underground to regenerate freshwater and surface gardens.</span></p>
-            </a>
-            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--cyan-glow);">👁️ Protocole D-Trinité</h4>
-                <p><span lang="fr">Ancrage épistémologique SHA-256 + Nostr + OpenTimestamps satisfaisant le test de réalité de Philip K. Dick.</span><span lang="en">SHA-256 + Nostr + OpenTimestamps provenance satisfying Philip K. Dick's reality test.</span></p>
-            </a>
+    </div>
+
+    <div class="unified-author-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/hpMTGpB0zM0?si=PRPLvFPxi1Krexno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="unified-resources-heading">
+        <span lang="fr">🧭 Explorez mon Univers : Écosystème de Recherche, Livres, ONG &amp; Dépôts Open-Source</span>
+        <span lang="en">🧭 Explore my Universe: Research Ecosystem, Books, NGO &amp; Open-Source Repositories</span>
+    </div>
+
+    <div class="unified-resources-grid">
+        <!-- 1 : The Sun Standard -->
+        <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #ffcc00;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-sunstandard.jpg" alt="The Sun Standard" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>☀️ The Sun Standard</h4>
+                </div>
+                <p>
+                    <span lang="fr">Portail théorique bilingue : temps thermique KMS, preuves formelles Lean 4 et éconophysique solaire post-PIB.</span>
+                    <span lang="en">Bilingual theoretical portal: KMS thermal time, Lean 4 formal proofs, and post-GDP solar econophysics.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌐 www.thesunstandard.net</span>
+            </div>
+        </a>
+
+        <!-- 2 : Regenerative Compute -->
+        <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #44ee77;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-lemuriatech.jpg" alt="Lemuria Technologies" class="unified-card-logo" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
+                    <h4>🌱 Regenerative Compute</h4>
+                </div>
+                <p>
+                    <span lang="fr">Ingénierie matérielle (Lemuria Tech) : du BitTerrarium™ de bureau (17 W) aux mines Brownfield mégawatt &amp; MOF-303.</span>
+                    <span lang="en">Hardware execution (Lemuria Tech): from 17 W desktop BitTerrarium™ units to megawatt Brownfield mines &amp; MOF-303.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌐 www.regenerativecompute.io</span>
+            </div>
+        </a>
+
+        <!-- 3 : Protocole Trinité -->
+        <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #00e5ff;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-trinity.png" alt="Protocole Trinité" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>👁️ Protocole Trinité</h4>
+                </div>
+                <p>
+                    <span lang="fr">Comme dans <em>Matrix</em>, il faut toujours <strong>Trinity</strong> pour nous sauver de la folie des hallucinations synthétiques et nous ouvrir l'accès direct à <strong>la Source</strong> : intégrité prouvée par le triplet <strong>Qui · Quoi · Quand</strong> (Nostr + SHA-256 + OpenTimestamps).</span>
+                    <span lang="en">Just like in <em>The Matrix</em>, it takes <strong>Trinity</strong> to rescue us from the madness of synthetic hallucinations and guide us straight back to <strong>the Source</strong>: integrity anchored via the <strong>Who · What · When</strong> triplet (Nostr + SHA-256 + OpenTimestamps).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🕶️ Qui · Quoi · Quand → La Source</span>
+            </div>
+        </a>
+
+        <!-- 4 : Web of Life (Mega-POD) -->
+        <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #34d399;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/weboflife.jpg" alt="Web of Life" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🕸️ Web of Life (Mega-POD)</h4>
+                </div>
+                <p>
+                    <span lang="fr">Jumeau numérique planétaire open-source en TypeScript sur grille hexagonale H3 couplant PoW, PoEW et cogénération MARL.</span>
+                    <span lang="en">Open-source planetary TypeScript digital twin on Uber H3 hexagonal grid coupling PoW, PoEW, and MARL cogeneration.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 5 : Wellbeing Framework (WU) -->
+        <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #fb923c;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-wellbeingframework.png" alt="Wellbeing Framework" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🌿 Wellbeing Framework (WU)</h4>
+                </div>
+                <p>
+                    <span lang="fr">Comptabilité biophysique open-source en Unités de Bien-Être (WU/kWh) pour transcender les limites destructrices du PIB.</span>
+                    <span lang="en">Open-source biophysical accounting in Wellbeing Units (WU/kWh) designed to transcend destructive GDP metrics.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 6 : Sufficiency Protocol -->
+        <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #c084fc;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-sufficiencyprotocol.png" alt="Sufficiency Protocol" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>⚙️ Protocole de Suffisance</h4>
+                </div>
+                <p>
+                    <span lang="fr">Limites planétaires, budgets exergétiques et gouvernance écologique open-source auditables par Preuve de Travail.</span>
+                    <span lang="en">Open-source planetary boundaries, exergy budgets, and ecological governance auditable via Proof-of-Work.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 7 : Kaya Wellbeing Identity -->
+        <a href="https://github.com/pascalranoroarijaona/wellbeing-identity" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #22d3ee;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-kayawellbeing.png" alt="Kaya Wellbeing Identity" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🪪 Kaya Wellbeing Identity</h4>
+                </div>
+                <p>
+                    <span lang="fr">Identité souveraine open-source (Solid PODs &amp; Preuve d'Humanité) reliant la couverture de Markov de l'individu à son empreinte biophysique.</span>
+                    <span lang="en">Open-source sovereign identity (Solid PODs &amp; Proof-of-Personhood) linking an individual's Markov blanket to their biophysical footprint.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 wellbeing-identity →</span>
+            </div>
+        </a>
+
+        <!-- 8 : Homo Biodiversitas & Horizon Zéro (Livres Gratuits en Ligne) -->
+        <div class="unified-res-card" style="--card-accent: #a3e635;">
+            <div>
+                <div class="unified-card-head">
+                    <div class="unified-card-logo-dual">
+                        <img src="img/logo-homobiodiversitas.png" alt="Homo Biodiversitas" onerror="this.style.display='none'">
+                        <img src="img/HorizonZero.png" alt="Horizon Zéro" onerror="this.style.display='none'">
+                    </div>
+                    <h4>📚 Homo Biodiversitas &amp; Horizon Zéro</h4>
+                </div>
+                <p>
+                    <span lang="fr">Mes deux livres gratuits en accès libre : la symbiose entre la Noosphère et le vivant (<em>Homo Biodiversitas</em>) et l'ingénierie régénérative (<em>Horizon Zéro</em>).</span>
+                    <span lang="en">My two free open-access books: symbiosis between the Noosphere and living ecosystems (<em>Homo Biodiversitas</em>) and regenerative engineering (<em>Horizon Zero</em>).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" class="unified-repo-tag">📄 HomoBiodiversitas.pdf</a>
+                <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" class="unified-repo-tag">📄 HorizonZero.pdf</a>
+            </div>
+        </div>
+
+        <!-- 9 : Angovo (Projet ONG Madagascar — IA & Énergie) -->
+        <div class="unified-res-card" style="--card-accent: #10b981;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-angovo.png" alt="Projet ONG Angovo Madagascar" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🇲🇬 Angovo · ONG Madagascar</h4>
+                </div>
+                <p>
+                    <span lang="fr">Projet d'ONG dédié à Madagascar pour développer l'accès souverain à l'énergie décarbonée et l'éducation à l'Intelligence Artificielle au service des communautés locales.</span>
+                    <span lang="en">NGO initiative dedicated to Madagascar to develop sovereign clean energy access and local Artificial Intelligence education empowering Malagasy communities.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌱 Énergie &amp; IA · Antsirabe / Madagascar</span>
+            </div>
+        </div>
+
+        <!-- 10 : Le Livre Bitcoin (édition publiée / dépôt privé) -->
+        <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #f7931a;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/JohnNashPoW.png" alt="Le Livre Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>📘 Le Livre Bitcoin</h4>
+                </div>
+                <p>
+                    <span lang="fr">Ouvrage de référence accessible sur la souveraineté monétaire, la thermodynamique de la rareté et l'histoire de Bitcoin (édition publiée, dépôt privé).</span>
+                    <span lang="en">Comprehensive French reference book on monetary sovereignty, thermodynamics of scarcity, and Bitcoin's foundations (published edition, private repo).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">📖 www.livre-bitcoin.fr</span>
+            </div>
+        </a>
+
+        <!-- 11 : Simulateur Bitcoin (simulateur de minage + code open-source) -->
+        <div class="unified-res-card" style="--card-accent: #fbbf24;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-simbtc.png" alt="Simulateur Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4><a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener">⛏️ Simulateur Bitcoin</a></h4>
+                </div>
+                <p>
+                    <span lang="fr">Simulateur open-source de minage Bitcoin : modélisation du hashrate, de la consommation électrique, de la difficulté réseau et de la rentabilité des ASICs.</span>
+                    <span lang="en">Open-source Bitcoin mining simulator: modeling hashrate, power consumption, network difficulty adjustments, and ASIC profitability.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-repo-tag">🌐 App</a>
+                <a href="https://github.com/pascalranoroarijaona/simulateur-bitcoin" target="_blank" rel="noopener" class="unified-repo-tag">🐙 Inspecter le code →</a>
+            </div>
+        </div>
+
+        <!-- 12 : Compteur Bitcoin (trajectoire & rendement possible + code open-source) -->
+        <div class="unified-res-card" style="--card-accent: #38bdf8;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-countbtc.png" alt="Compteur Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4><a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener">📈 Compteur Bitcoin</a></h4>
+                </div>
+                <p>
+                    <span lang="fr">Observatoire open-source en temps réel de la trajectoire du réseau Bitcoin, des cycles de Halving et des projections de rendement possible.</span>
+                    <span lang="en">Open-source real-time observatory tracking Bitcoin's network trajectory, Halving cycles, and potential yield projections.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-repo-tag">🌐 Live</a>
+                <a href="https://github.com/pascalranoroarijaona/compteur-bitcoin" target="_blank" rel="noopener" class="unified-repo-tag">🐙 Inspecter le code →</a>
+            </div>
         </div>
     </div>
+</section>
 
     <!-- FORMULAIRE DE RETOUR -->
     <div class="feedback-container">
@@ -1304,6 +1975,384 @@ blockHash     : 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
             <img src="img/ComplexWorld.png" alt="Le monde est complexe" onerror="this.style.display='none'">
         </a>
     </div>
+    <div class="solar-acts-container">
+    <div class="solar-acts-header">
+        <h4 lang="en">☀ The Solar Civilization — 8-Act Solar Octave (150 Tracks ≈ 1 Bitcoin Day | 144 ± 12)</h4>
+        <h4 lang="fr">☀ La Civilisation Solaire — Octave Solaire en 8 Actes (150 Titres ≈ 1 Jour Bitcoin | 144 ± 12)</h4>
+        <p lang="en">A continuous philosophical poem composed exclusively of the 150 track titles (Poisson process: λ = 144, σ = √N = ±12)</p>
+        <p lang="fr">Un poème philosophique continu composé exclusivement des 150 titres de la playlist (processus de Poisson : λ = 144, σ = √N = ±12)</p>
+        
+        <div style="margin-top: 2.5rem;">
+            <iframe
+                title="Lecteur Spotify : Playlist d'ambiance"
+                data-testid="embed-iframe"
+                style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 204, 0, 0.2);"
+                src="https://open.spotify.com/embed/playlist/4BIYpE4exfv5JWwtZ6zKyH?utm_source=generator"
+                width="100%"
+                height="580"
+                frameborder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture;"
+                loading="lazy"
+            ></iframe>
+        </div>
+
+        <div class="acts-controls">
+            <button class="btn-act-toggle" onclick="toggleAllActs(true)">
+                <span lang="en">Expand All</span>
+                <span lang="fr">Tout Déplier</span>
+            </button>
+            <button class="btn-act-toggle" onclick="toggleAllActs(false)">
+                <span lang="en">Collapse All</span>
+                <span lang="fr">Tout Replier</span>
+            </button>
+            <script>
+                function toggleAllActs(isOpen) {
+                    document.querySelectorAll('.solar-acts-container details.act-card').forEach(card => {
+                        card.open = isOpen;
+                    });
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- ACT I (1–22 : 22 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act I — The Oracle & The Entropic Threshold</span>
+            <span lang="fr">Acte I — L'Oracle & Le Seuil Entropique</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Beyond the imitation game, with a gift of a thistle on the way of the shogun:<br>
+                morning shall come with a heart of courage for the child of ash and stars.<br>
+                Through self-control, <strong style="color: #fff;">rise, House of the Rising Sun!</strong><br>
+                Ayana reality circle — meet me by the ocean at old sunrise.<br>
+                I am the Oracle: open the door, be yourself and take a cookie.<br>
+                Never forget the 2nd law of thermodynamics — on the nature of daylight.
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (1–22)</span><span lang="fr">Voir les morceaux (1–22)</span></summary>
+                <ol class="act-tracklist-items" start="1">
+                    <li><strong>The Imitation Game</strong> — Alexandre Desplat, London Symphony Orchestra</li>
+                    <li><strong>A Gift Of A Thistle</strong> — James Horner, London Symphony Orchestra</li>
+                    <li><strong>The Way Of The Shogun</strong> — LUDEN</li>
+                    <li><strong>Morning Shall Come</strong> — Bear McCreary, AURORA</li>
+                    <li><strong>Heart of Courage</strong> — Thomas Bergersen, Two Steps from Hell</li>
+                    <li><strong>The Witcher IV - Main Theme: Child of Ash and Stars</strong> — Boris Harizanov</li>
+                    <li><strong>Self Control - Afrohouse</strong> — Sefu Aura</li>
+                    <li><strong>RISE</strong> — ALCHEMYSOUND</li>
+                    <li><strong>House Of The Rising Sun</strong> — Nora Van Elken</li>
+                    <li><strong>AYANA (Deep Organic House)</strong> — DEEP AFRO HITS</li>
+                    <li><strong>Reality</strong> — Lost Frequencies, Janieck</li>
+                    <li><strong>Circle</strong> — Be Svendsen, Kamilla Kovacs</li>
+                    <li><strong>Meet Me by the Ocean</strong> — Stick Figure</li>
+                    <li><strong>Old Sunrise</strong> — Stick Figure</li>
+                    <li><strong>I am</strong> — Shift to Abundance</li>
+                    <li><strong>THE ORACLE</strong> — ALCHEMYSOUND, Raphael Hélion, Evelien, PAN BEATS</li>
+                    <li><strong>Open The Door</strong> — The Movement, Collie Buddz</li>
+                    <li><strong>Be Yourself</strong> — Audioslave</li>
+                    <li><strong>Take a cookie</strong> — Kazyasbeats</li>
+                    <li><strong>Never Forget</strong> — Kupla</li>
+                    <li><strong>The 2nd Law: Unsustainable</strong> — Muse</li>
+                    <li><strong>On the Nature of Daylight</strong> — Max Richter, Louisa Fuller, Natalia Bonner, John Metcalfe, Philip Sheppard, Chris Worsey</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT II (23–43 : 21 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act II — Cosmological Genesis & Universal Geometry</span>
+            <span lang="fr">Acte II — Genèse Cosmologique & Géométrie Universelle</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Everything is connected when we awaken, humans — a cornfield chase into fortitude and honor.<br>
+                In human legacy made of Earth, made of stardust from past to present:<br>
+                legends never die; hero memories crystallize time.<br>
+                Space, energy, attraction, gravity, black hole behind me, monad.<br>
+                <strong style="color: #fff;">We are all made of stars.</strong>
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (23–43)</span><span lang="fr">Voir les morceaux (23–43)</span></summary>
+                <ol class="act-tracklist-items" start="23">
+                    <li><strong>Everything is Connected</strong> — Pinar Toprak, Tyler Durham</li>
+                    <li><strong>Awaken</strong> — Damien Escobar</li>
+                    <li><strong>Humans</strong> — The Faim</li>
+                    <li><strong>Cornfield Chase</strong> — Hans Zimmer</li>
+                    <li><strong>Fortitude and Honor</strong> — Lance Conrad</li>
+                    <li><strong>Human Legacy</strong> — Iván Torrent</li>
+                    <li><strong>Made of Earth</strong> — Thomas Bergersen</li>
+                    <li><strong>Made of Stardust</strong> — Epic Soul Factory, Cesc Vilà, Fran Soto</li>
+                    <li><strong>From Past to Present</strong> — Jeremy Soule</li>
+                    <li><strong>Legends Never Die</strong> — Iván Torrent</li>
+                    <li><strong>Hero Memories</strong> — Epic Soul Factory, Cesc Vilà, Fran Soto</li>
+                    <li><strong>Crystallize</strong> — Lindsey Stirling</li>
+                    <li><strong>Time - Alan Walker Remix</strong> — Alan Walker, Hans Zimmer</li>
+                    <li><strong>Space</strong> — French Fuse</li>
+                    <li><strong>Energy</strong> — Afrofy</li>
+                    <li><strong>Attraction</strong> — Sébastien Tellier, Juliette Armanet</li>
+                    <li><strong>Gravity</strong> — John Mayer</li>
+                    <li><strong>Black Hole</strong> — Ben Böhmer, Monolink</li>
+                    <li><strong>Behind Me</strong> — Teho</li>
+                    <li><strong>Monad</strong> — yutaka hirasaka</li>
+                    <li><strong>We Are All Made of Stars</strong> — Moby</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT III (44–56 : 13 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act III — Alchemical Initiation & Individuation</span>
+            <span lang="fr">Acte III — Initiation Alchimique & Individuation</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Travel inside for an individuation ritual: rebirth through ego death; after the fall, memento mori.<br>
+                Civilization solaire, time is so precious: feed the fire!<br>
+                You are larger than life.<br>
+                <strong style="color: #fff;">Remember who you are.</strong>
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (44–56)</span><span lang="fr">Voir les morceaux (44–56)</span></summary>
+                <ol class="act-tracklist-items" start="44">
+                    <li><strong>Travel Inside</strong> — Pao Pamaki</li>
+                    <li><strong>Individuation Ritual</strong> — The Power Alchemist</li>
+                    <li><strong>Rebirth</strong> — Tinlicker, Hero Baldwin</li>
+                    <li><strong>Ego Death</strong> — Mannymore</li>
+                    <li><strong>After the Fall</strong> — Kimo Sounds</li>
+                    <li><strong>Memento Mori</strong> — ELITE TRANCE MUSIC, UNKNX, zylarion</li>
+                    <li><strong>Civilization</strong> — Rusez1</li>
+                    <li><strong>Solaire</strong> — Yael Naim</li>
+                    <li><strong>Time Is So Precious</strong> — Julia Wanza</li>
+                    <li><strong>Feed The Fire</strong> — Oliverse</li>
+                    <li><strong>You Are</strong> — Pearl Jam</li>
+                    <li><strong>Larger than life</strong> — Keroverz</li>
+                    <li><strong>Remember who you are</strong> — NORDVAR</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT IV (57–75 : 19 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act IV — The Source & The Great Awakening</span>
+            <span lang="fr">Acte IV — La Source & Le Grand Réveil</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                I remember now: we are one, unity.<br>
+                Keep the fire burning bright.<br>
+                In the beginning, we were a kaleidoscope of mathematics — can you hear the music?<br>
+                The Great Awakening! It's time to wake up — réveillez-vous! Wake up, open your eyes!<br>
+                <strong style="color: var(--sun-yellow, #ffd700);">Be the light!</strong> Breathe in the air.<br>
+                A change is gonna come — I can see clearly now, sunny humans.
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (57–75)</span><span lang="fr">Voir les morceaux (57–75)</span></summary>
+                <ol class="act-tracklist-items" start="57">
+                    <li><strong>I Remember Now</strong> — Kimo Sounds</li>
+                    <li><strong>We are one</strong> — Afro House Galaxy</li>
+                    <li><strong>UNITY-Deep Afro Hits</strong> — DEEP AFRO HITS</li>
+                    <li><strong>Keep the Fire Burning Bright</strong> — Benny Rivers</li>
+                    <li><strong>In The Beginning</strong> — K'NAAN</li>
+                    <li><strong>We Were</strong> — Keith Urban</li>
+                    <li><strong>A Kaleidoscope Of Mathematics</strong> — James Horner</li>
+                    <li><strong>Can You Hear The Music</strong> — Ludwig Göransson</li>
+                    <li><strong>The Great Awakening</strong> — Gwairoch</li>
+                    <li><strong>It's Time to Wake Up 2023</strong> — La Femme</li>
+                    <li><strong>Réveillez-vous</strong> — Keny Arkana</li>
+                    <li><strong>Wake Up</strong> — Rage Against The Machine</li>
+                    <li><strong>Open Your Eyes</strong> — Snow Patrol</li>
+                    <li><strong>Be The Light</strong> — lladywolf</li>
+                    <li><strong>Breathe (In the Air)</strong> — Pink Floyd</li>
+                    <li><strong>A Change Is Gonna Come</strong> — Sam Cooke</li>
+                    <li><strong>I Can See Clearly Now</strong> — Johnny Nash</li>
+                    <li><strong>Sunny</strong> — Booker T. & the M.G.'s</li>
+                    <li><strong>Humans</strong> — Night Tapes</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT V (76–90 : 15 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act V — The Matrix of Life & Memory of Mu</span>
+            <span lang="fr">Acte V — La Toile du Vivant & La Mémoire de Mu</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Web of life on the blue planet: arrival of the birds.<br>
+                The remembering: Lemuria, Atlantis, and the integration — through gateways to the sun into the flow of life, a prayer for all beings.<br>
+                Children of the sun, Hijos Del Sol, Pachamama.<br>
+                The host of seraphim and Earth walkers sailing the solar flares.<br>
+                Float with me in Kalia breeze, <strong style="color: #fff;">home.</strong>
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (76–90)</span><span lang="fr">Voir les morceaux (76–90)</span></summary>
+                <ol class="act-tracklist-items" start="76">
+                    <li><strong>Web of Life</strong> — SNOW RAVEN, Andreas OM</li>
+                    <li><strong>The Blue Planet</strong> — Hans Zimmer, Jacob Shea, David Fleming</li>
+                    <li><strong>Arrival of the Birds</strong> — The Cinematic Orchestra, London Metropolitan Orchestra</li>
+                    <li><strong>THE REMEMBERING (LEMURIA, ATLANTIS, AND THE INTEGRATION)</strong> — Na'Tari'Kai'Lum</li>
+                    <li><strong>Gateways to the Sun</strong> — Liquid Bloom, Bloomurian, Sudakra</li>
+                    <li><strong>Flow of Life - Prayer for All Beings</strong> — Liquid Bloom, Rara Avis, Tara of Destiny</li>
+                    <li><strong>Children of the Sun</strong> — One Juno</li>
+                    <li><strong>Hijos Del Sol</strong> — Hermanos Gutiérrez</li>
+                    <li><strong>Pachamama (BC Version)</strong> — Beautiful Chorus</li>
+                    <li><strong>The Host of Seraphim</strong> — Dead Can Dance</li>
+                    <li><strong>Earth Walkers</strong> — Liquid Bloom, Share The Light, Bloomurian, Biko Casini</li>
+                    <li><strong>Sailing the Solar Flares - Remix</strong> — Dirtwire, Liquid Bloom, Bloomurian</li>
+                    <li><strong>Float With Me - Dub Edit</strong> — The Polish Ambassador</li>
+                    <li><strong>KALIA BREEZE</strong> — DEEP AFRO HITS</li>
+                    <li><strong>Home</strong> — Ben Böhmer, JONAH</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT VI (91–109 : 19 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act VI — Sovereignty, Ethics & The Return to Truth</span>
+            <span lang="fr">Acte VI — Souveraineté, Éthique & Retour au Réel</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Leap of faith, the long day is over.<br>
+                The truth comes out eventually.<br>
+                Break the circle! Break your chains, free yourself, take control.<br>
+                <strong style="color: #fff;">Hold your keys for yourself. Think!</strong><br>
+                Be strong and courageous, be responsible.<br>
+                Tell the truth, own your mistakes.<br>
+                Time is to rebel: each one teach one; wind of change in your radioactive soul.
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (91–109)</span><span lang="fr">Voir les morceaux (91–109)</span></summary>
+                <ol class="act-tracklist-items" start="91">
+                    <li><strong>Leap Of Faith</strong> — Christopher</li>
+                    <li><strong>The Long Day Is Over</strong> — Norah Jones</li>
+                    <li><strong>The Truth Comes Out Eventually</strong> — Connor Selby</li>
+                    <li><strong>Break The Circle</strong> — manifestica_studio</li>
+                    <li><strong>Break Your Chains</strong> — Talisman</li>
+                    <li><strong>Free Yourself</strong> — Dogma</li>
+                    <li><strong>Take Control</strong> — Kodaline</li>
+                    <li><strong>Hold Your Keys</strong> — Michael Isaak</li>
+                    <li><strong>For Yourself</strong> — Motor Ace</li>
+                    <li><strong>Think</strong> — Aretha Franklin</li>
+                    <li><strong>Be Strong and Courageous</strong> — Michael W. Smith</li>
+                    <li><strong>Be Responsible</strong> — Sabat Beatto</li>
+                    <li><strong>Tell the Truth</strong> — Otis Redding, Jimmy Douglass</li>
+                    <li><strong>Own Your Mistakes</strong> — Lee Ishvar</li>
+                    <li><strong>Time Is to Rebel</strong> — Naâman</li>
+                    <li><strong>Each One Teach One</strong> — Rasta Roots Riddim</li>
+                    <li><strong>Wind of Change</strong> — Scorpions</li>
+                    <li><strong>Your Soul</strong> — Forrest., Biskwiq</li>
+                    <li><strong>Radioactive</strong> — Coopex, Yohan Gerber, Nito-Onna</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT VII (110–124 : 15 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act VII — Emancipation & Flight</span>
+            <span lang="fr">Acte VII — Émancipation & Envol</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                Rise slow into liberation: the time is now.<br>
+                Calling all Autobots... Autobots reunite! Captain Marvel, hope is feeling good.<br>
+                Learn to fly, spread your wings, dream on, don't stop believin' — beyond the outro:<br>
+                <strong style="color: #fff;">Liberta, freedom!</strong>
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (110–124)</span><span lang="fr">Voir les morceaux (110–124)</span></summary>
+                <ol class="act-tracklist-items" start="110">
+                    <li><strong>Rise Slow</strong> — Kimo Sounds</li>
+                    <li><strong>Liberation - Extended Re-Edit</strong> — Harold van Lennep</li>
+                    <li><strong>The Time Is Now - Can 7 Soulfood Mix</strong> — Moloko, Guido Craveiro, Levent Canseven</li>
+                    <li><strong>Calling All Autobots</strong> — Steve Jablonsky</li>
+                    <li><strong>Autobots Reunite</strong> — Steve Jablonsky</li>
+                    <li><strong>Captain Marvel</strong> — Pinar Toprak</li>
+                    <li><strong>Hope</strong> — AVAION</li>
+                    <li><strong>Feeling Good</strong> — Avicii</li>
+                    <li><strong>Learn to Fly</strong> — Foo Fighters</li>
+                    <li><strong>Spread Your Wings - Remastered 2011</strong> — Queen</li>
+                    <li><strong>Dream On</strong> — Aerosmith</li>
+                    <li><strong>Don't Stop Believin'</strong> — Teddy Swims</li>
+                    <li><strong>Outro</strong> — M83</li>
+                    <li><strong>Liberta</strong> — Pep's</li>
+                    <li><strong>FREEDOM</strong> — Jon Batiste</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+
+    <!-- ACT VIII (125–150 : 26 tracks) -->
+    <details class="act-card">
+        <summary class="act-header">
+            <span lang="en">Act VIII — The Solar Civilization & Radiant Dawn</span>
+            <span lang="fr">Acte VIII — La Civilisation Solaire & L'Aube Radieuse</span>
+            <span>▾</span>
+        </summary>
+        <div class="act-content-box">
+            <div class="act-poem-text">
+                House of the rising sun: the sun is coming at first light, morning sun, sunlight.<br>
+                It's a beautiful day over the rainbow, wonderful life.<br>
+                Imagine cascades, time... stairway to heaven, paradise.<br>
+                Humanity... Man I need you & me: humanity, humanidad, we are one.<br>
+                Time, freedom for a change: the seed, let go and trust the universe.<br>
+                <strong style="color: var(--sun-yellow, #ffd700);">Fihavanana, Ubuntu, Wu wei.</strong>
+            </div>
+            <details class="act-tracklist-drawer">
+                <summary class="tracklist-title"><span lang="en">View Tracks (125–150)</span><span lang="fr">Voir les morceaux (125–150)</span></summary>
+                <ol class="act-tracklist-items" start="125">
+                    <li><strong>House Of The Rising Sun</strong> — Joan Baez</li>
+                    <li><strong>The Sun is Coming</strong> — Felipe Baldomir</li>
+                    <li><strong>At first light</strong> — Bass Temple, Lil Fish</li>
+                    <li><strong>Morning Sun</strong> — Melody Gardot</li>
+                    <li><strong>Sunlight</strong> — Lane 8</li>
+                    <li><strong>It's a Beautiful Day (Reprise)</strong> — The Kiffness, Rushawn, Jermaine Edwards</li>
+                    <li><strong>Over the Rainbow</strong> — Israel Kamakawiwo'ole</li>
+                    <li><strong>Wonderful Life</strong> — Katie Melua</li>
+                    <li><strong>Imagine - Reggae Version</strong> — Dub Silence</li>
+                    <li><strong>Cascades</strong> — Emilio Piano, Ibrahim Maalouf</li>
+                    <li><strong>Time</strong> — Hans Zimmer</li>
+                    <li><strong>Stairway to Heaven</strong> — Rodrigo y Gabriela</li>
+                    <li><strong>Paradise</strong> — Coldplay</li>
+                    <li><strong>Humanity</strong> — Pia Maya</li>
+                    <li><strong>Man I Need</strong> — Olivia Dean</li>
+                    <li><strong>You & Me</strong> — MEUTE</li>
+                    <li><strong>Humanity</strong> — Jenny Morris</li>
+                    <li><strong>Humanidad (feat. Los Macorinos)</strong> — Natalia Lafourcade, Los Macorinos</li>
+                    <li><strong>We Are One</strong> — Sam Garrett</li>
+                    <li><strong>Time</strong> — NTO</li>
+                    <li><strong>Freedom For a Change</strong> — Gizmo Varillas</li>
+                    <li><strong>The Seed</strong> — AURORA</li>
+                    <li><strong>Let Go and Trust the Universe</strong> — Ivy Ravenwood</li>
+                    <li><strong>Fihavanana</strong> — Lola</li>
+                    <li><strong>Ubuntu</strong> — Sona Jobarteh</li>
+                    <li><strong>Wu wei</strong> — Chinese Traditional</li>
+                </ol>
+            </details>
+        </div>
+    </details>
+</div>
 </article>
 
 <div id="sun-toast" class="sun-toast" role="status" aria-live="polite"></div>
@@ -1320,8 +2369,16 @@ blockHash     : 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
      MOTEURS JAVASCRIPT COMPLETS : EXPORT, I18N & 6 LABORATOIRES INTERACTIFS
      ========================================================================== -->
 <script>
-/* 0. CAPTURE PRISTINE DU CODE SOURCE AVANT TRANSFORMATION MATHJAX */
-const PRISTINE_ACT1_HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+/* 0. EXTRACTION PROPRE DU CODE SOURCE (SANS CONTENEURS MATHJAX NI CANVAS WEBGL) */
+function getCleanAct1HTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+    const t3d = clone.querySelector('#twinUniverse3DContainer');
+    if (t3d) t3d.innerHTML = '';
+    const toast = clone.querySelector('#sun-toast');
+    if (toast) toast.classList.remove('visible');
+    return "<!DOCTYPE html>\n" + clone.outerHTML;
+}
 
 let currentLang = 'fr';
 function isFr() { return currentLang === 'fr'; }
@@ -1354,24 +2411,24 @@ function copySafe(text) {
 
 function downloadStandaloneHTML() {
     try {
-        const blob = new Blob([PRISTINE_ACT1_HTML], { type: 'text/html;charset=utf-8' });
+        const blob = new Blob([getCleanAct1HTML()], { type: 'text/html;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'l-univers-jumeau.html';
+        a.download = 'l-univers-participatif.html';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         setTimeout(() => window.URL.revokeObjectURL(url), 1500);
-        showToast('✅ l-univers-jumeau.html téléchargé !', '✅ l-univers-jumeau.html downloaded!');
+        showToast('✅ l-univers-participatif.html téléchargé !', '✅ l-univers-participatif.html downloaded!');
     } catch (e) {
-        copySafe(PRISTINE_ACT1_HTML);
+        copySafe(getCleanAct1HTML());
         showToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
     }
 }
 
 function copyStandaloneHTML() {
-    copySafe(PRISTINE_ACT1_HTML);
+    copySafe(getCleanAct1HTML());
     showToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
 }
 
@@ -1381,7 +2438,7 @@ function copyAct1Bibtex() {
   title = {The Awakening of the Participatory Universe: From Wheeler's It from Bit to the Thermodynamic Singularity},
   journal = {The Sun Standard Research},
   year = {2026},
-  url = {https://www.thesunstandard.net/blog/l-univers-jumeau.html}
+  url = {https://www.thesunstandard.net/blog/l-univers-participatif.html}
 }
 
 @incollection{wheeler_1990_itfrombit,
@@ -2074,7 +3131,6 @@ function setLang(lang) {
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 200);
     camera.position.set(0, 3.2, 15.5);
     camera.lookAt(0, 0, 0);
-
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -2221,5 +3277,52 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "L'Éveil de l'Univers Participatif : It from Bit",
+  "alternativeHeadline": "The Awakening of the Participatory Universe: From Wheeler's It from Bit to the Thermodynamic Singularity of January 3, 2009",
+  "datePublished": "2026-06-14",
+  "author": { "@type": "Person", "name": "Pascal Ranoroarijaona" },
+  "publisher": { "@type": "Organization", "name": "L'Étalon Solaire", "url": "https://www.thesunstandard.net/" },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/l-univers-participatif.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<script defer src="corpus-atlas.js"></script>
+<script>/* ==========================================================================
+   SOLAR CIVILIZATION PLAYLIST CONTROLLER
+   ========================================================================== */
+function toggleAllActs(isOpen) {
+    document.querySelectorAll('.solar-acts-container details.act-card').forEach(card => {
+        card.open = isOpen;
+        // Also close inner tracklist drawers when collapsing all
+        if (!isOpen) {
+            const drawer = card.querySelector('details.act-tracklist-drawer');
+            if (drawer) drawer.open = false;
+        }
+    });
+}
+
+function toggleAllTracklists(isOpen) {
+    document.querySelectorAll('.solar-acts-container details.act-card').forEach(card => {
+        if (isOpen) card.open = true;
+        const drawer = card.querySelector('details.act-tracklist-drawer');
+        if (drawer) drawer.open = isOpen;
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    // Auto-open a specific act if navigated via URL hash (e.g. #act-1 ... #act-8)
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#act-')) {
+        const targetAct = document.querySelector(hash);
+        if (targetAct && targetAct.tagName === 'DETAILS') {
+            targetAct.open = true;
+            setTimeout(() => targetAct.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+        }
+    }
+});</script>
 </body>
 </html>

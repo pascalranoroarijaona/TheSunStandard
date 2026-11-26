@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Le monde est complexe : L'Équation Primordiale | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/le-monde-est-complexe.html" />
     <meta name="description" content="Acte II de la Tétralogie : exploration mathématique, thermodynamique et cybernétique du plan complexe z = a + ib appliqué à l'émergie d'Odum, à la condition KMS, à Kuramoto et à l'Homo Biodiversitas.">
 
     <!-- Open Graph / LinkedIn / Social Preview -->
@@ -261,8 +262,27 @@
         .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
         .status-d { color: #c864ff; background: rgba(200,100,255,0.08); }
         .modelling-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr)); gap: 1rem;
-        }
+    display: grid;
+    gap: 1.1rem;
+    /* Default (1, 2, or 4 items): 2 columns per row (e.g., 4 items = 2 then 2) */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Exactly 3 items: 1 row of 3 columns (3rd child is also the last child) */
+.modelling-grid:has(> :nth-child(3):last-child),
+/* 5 or more items: 3 columns per row */
+.modelling-grid:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile fallback so cards never get squished on narrow screens */
+@media (max-width: 768px) {
+    .modelling-grid,
+    .modelling-grid:has(> :nth-child(3):last-child),
+    .modelling-grid:has(> :nth-child(5)) {
+        grid-template-columns: 1fr;
+    }
+}
         .model-card {
             padding: 1.15rem; background: rgba(5, 8, 15, 0.88);
             border: 1px solid var(--border-subtle); border-radius: 12px; transition: 0.25s;
@@ -806,8 +826,8 @@
 
     <!-- SECTION 1 : L'AXE RÉEL -->
     <h2 id="sec-emergy">
-        <span lang="en">1. The Real Axis ($a$): The Sun Standard and Odum's Emergy</span>
-        <span lang="fr">1. L'Axe Réel ($a$) : L'Étalon Solaire et l'Émergie d'Odum</span>
+        <span lang="en">1. The Real Axis (a): The Sun Standard and Odum's Emergy</span>
+        <span lang="fr">1. L'Axe Réel (a) : L'Étalon Solaire et l'Émergie d'Odum</span>
     </h2>
 
     <p lang="en">The real coordinate of our existence, $a = \operatorname{Re}(z)$, is clay, rock, metabolic flesh, and above all: energy. For decades, neoclassical economics has operated under the delusion that value is a purely subjective psychological preference, allowing central banks to decree purchasing power ex nihilo via fiat currency. This violation of conservation laws has unleashed a predatory asymmetry—the <strong>Cantillon Effect</strong>—financing the accelerated liquidation of our biosphere.</p>
@@ -825,8 +845,8 @@
 
     <!-- SECTION 2 : L'AXE IMAGINAIRE ET L'OPÉRATEUR i -->
     <h2 id="sec-orthogonal">
-        <span lang="en">2. The Orthogonal Space ($ib$): The Operator $i$ as a Thermodynamic Transducer</span>
-        <span lang="fr">2. L'Espace Orthogonal ($ib$) : L'Opérateur $i$ comme Transducteur Thermodynamique</span>
+        <span lang="en">2. The Orthogonal Space (ib): The Operator $i$ as a Thermodynamic Transducer</span>
+        <span lang="fr">2. L'Espace Orthogonal (ib) : L'Opérateur $i$ comme Transducteur Thermodynamique</span>
     </h2>
 
     <blockquote lang="en">
@@ -938,14 +958,14 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
     <h3 lang="fr">La Physique Profonde de $i$ : Rotation de Wick et Temps Thermique KMS</h3>
 
     <p lang="en">Even time itself is complex. In quantum field theory and statistical mechanics, the most profound bridge discovered in the 20th century—formalized by Kubo, Martin, and Schwinger (the <strong>KMS Condition</strong>) and explored in the <em>Thermal Time Hypothesis</em> of Alain Connes and Carlo Rovelli—reveals that replacing real Lorentzian time $t$ via a $90^\circ$ <strong>Wick Rotation</strong> ($t \to -i\hbar\beta$) transforms the unitary quantum evolution operator $e^{-i\hat{H}t/\hbar}$ directly into the Boltzmann thermodynamic partition weight $e^{-\beta\hat{H}}$! Time then unfolds on a complex cylinder:</p>
-    <p lang="fr">Même le temps est complexe. En théorie quantique des champs et en physique statistique hors équilibre, le pont le plus vertigineux du XX<sup>e</sup> siècle — formalisé par la <strong>Condition KMS</strong> (Kubo-Martin-Schwinger) et l'<em>Hypothèse du Temps Thermique</em> d'Alain Connes et Carlo Rovelli — révèle qu'opérer une <strong>Rotation de Wick</strong> de $90^\circ$ sur le temps réel ($t \to -i\hbar\beta$) transforme directement l'opérateur d'évolution quantique $e^{-i\hat{H}t/\hbar}$ en la distribution thermodynamique de Boltzmann $e^{-\beta\hat{H}}$ ! Le temps se déploie alors comme une variable complexe :</p>
+    <p lang="fr">Même le temps est complexe. En théorie quantique des champs et en physique statistique hors équilibre, le pont le plus vertigineux du XX<sup>e</sup> siècle — formalisé par la <strong>Condition KMS</strong> (Kubo-Martin-Schwinger) et l'<em>Hypothèse du Temps Thermique</em> d'Alain Connes et Carlo Rovelli — révèle qu'opérer une <strong>Rotation de Wick</strong> de $90^\circ$ sur le temps réel ($t \to -i\hbar\beta$) transforme directement l'opérateur d'évolution quantique $e^{-i\hat{H}t/\hbar}$ en la distribution thermodynamique de Boltzmann $e^{-\beta\hat{H}}$. Le temps se déploie alors comme une variable complexe :</p>
 
     <div class="math-block">
         $$ \tau_{\mathbb{C}} = t - i\,\hbar\beta \qquad \Longleftrightarrow \qquad \langle \hat{A}(\tau_{\mathbb{C}})\hat{B}(0) \rangle_{\beta} = \langle \hat{B}(0)\hat{A}(t + i\hbar\beta) \rangle_{\beta} $$
     </div>
 
-    <p lang="en">In the Nakamoto consensus, this complex thermal time ceases to be an abstraction: the real axis $t$ is the external wall-clock time of human society, while the imaginary thermal circumference $\beta_{\mathrm{eff}}$ is governed by the network's <strong>Difficulty Adjustment Algorithm (DAA)</strong> every $2016\text{ blocks}$, acting as an endogenous thermostat keeping proper block-time invariant ($\Delta\tau_0 \approx 600\text{ s}$) regardless of external hashrate storms!</p>
-    <p lang="fr">Dans le consensus de Nakamoto, ce temps thermique complexe cesse d'être une abstraction : la partie réelle $t$ correspond au temps civil externe, tandis que la circonférence thermique imaginaire $\beta_{\mathrm{eff}}$ est régulée tous les $2016\text{ blocs}$ par l'<strong>Algorithme d'Ajustement de Difficulté (DAA)</strong>, qui agit comme un thermostat homéostatique maintenant la cadence du temps propre invariante ($\Delta\tau_0 \approx 600\text{ s}$) face aux tempêtes de puissance énergétique externes !</p>
+    <p lang="en">In the Nakamoto consensus, this complex thermal time ceases to be an abstraction: the real axis $t$ is the external wall-clock time of human society, while the imaginary thermal circumference $\beta_{\mathrm{eff}}$ is governed by the network's <strong>Difficulty Adjustment Algorithm (DAA)</strong> every $2016\text{ blocks}$, acting as an endogenous thermostat keeping proper block-time invariant ($\Delta\tau_0 \approx 600\text{ s}$) regardless of external hashrate storms.</p>
+    <p lang="fr">Dans le consensus de Nakamoto, ce temps thermique complexe cesse d'être une abstraction : la partie réelle $t$ correspond au temps civil externe, tandis que la circonférence thermique imaginaire $\beta_{\mathrm{eff}}$ est régulée tous les $2016\text{ blocs}$ par l'<strong>Algorithme d'Ajustement de Difficulté (DAA)</strong>, qui agit comme un thermostat homéostatique maintenant la cadence du temps propre invariante ($\Delta\tau_0 \approx 600\text{ s}$) face aux tempêtes de puissance énergétique externes.</p>
 
     <!-- MODULE 2 : SIMULATEUR CYLINDRE THERMIQUE KMS & ROTATION DE WICK (#wickKmsCanvas) -->
     <div class="simulator-card purple-theme">
@@ -1033,8 +1053,8 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
                 <span lang="fr">⚡ Anneau de Transition de Phase de Kuramoto en Temps Réel (N = 120 Nœuds Couplés)</span>
             </h4>
             <p style="font-size:0.84rem; color:#94a3b8; text-align:center; margin:0;">
-                <span lang="en">Cross the critical threshold $K_c \approx 1.4$ to witness spontaneous collective synchronization ($R \to 1$), or inject a Fiat/Deepfake Noise Shock!</span>
-                <span lang="fr">Franchissez le seuil critique $K_c \approx 1,4$ pour observer l'émergence spontanée du consensus ($R \to 1$), ou injectez un Choc de Bruit Fiat/Deepfake !</span>
+                <span lang="en">Cross the critical threshold $K_c \approx 1.4$ to witness spontaneous collective synchronization ($R \to 1$), or inject a Fiat/Deepfake Noise Shock.</span>
+                <span lang="fr">Franchissez le seuil critique $K_c \approx 1,4$ pour observer l'émergence spontanée du consensus ($R \to 1$), ou injectez un Choc de Bruit Fiat/Deepfake.</span>
             </p>
         </div>
 
@@ -1085,8 +1105,8 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
 
     <!-- SECTION 5 : LE MODULE |z| ET LA SPIRALE D'OR -->
     <h2 id="sec-argand-lab">
-        <span lang="en">5. The Modulus ($\vert{}z\vert{}$) and the Golden Spiral ($\varphi$): The Advent of <em>Homo Biodiversitas</em></span>
-        <span lang="fr">5. Le Module ($\vert{}z\vert{}$) et la Spirale d'Or ($\varphi$) : L'Avènement de l'<em>Homo Biodiversitas</em></span>
+        <span lang="en">5. The Modulus (|z|) and the Golden Spiral ($\varphi$): The Advent of <em>Homo Biodiversitas</em></span>
+        <span lang="fr">5. Le Module (|z|) et la Spirale d'Or ($\varphi$) : L'Avènement de l'<em>Homo Biodiversitas</em></span>
     </h2>
 
     <p lang="en">The true wealth of a civilization cannot be read solely on the material axis ($\psi = 0^\circ$, which leads to blind extractivism and entropic heat death), nor solely on the virtual axis ($\psi = 90^\circ$, which leads to disembodied transhumanist nihilism). True civilizational wealth is the Euclidean norm of the complex vector:</p>
@@ -1149,7 +1169,7 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
             </div>
         </div>
 
-        <canvas id="complexPlaneCanvas" width="880" height="440" style="width:100%; height:auto; background:#040609; border-radius:10px; border:1px solid rgba(255,255,255,0.09); display:block; cursor:crosshair;"></canvas>
+        <canvas id="complexPlaneCanvas" width="880" height="800" style="width:100%; height:auto; background:#040609; border-radius:10px; border:1px solid rgba(255,255,255,0.09); display:block; cursor:crosshair;"></canvas>
 
         <div class="sim-metrics">
             <div class="sim-metric-box" style="border-left-color:var(--sun-yellow);">
@@ -1185,7 +1205,7 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
         <div lang="fr">
             <h4>Éclairage de Physique Expérimentale : Défauts Topologiques et Embryogenèse (MIT, 2020)</h4>
             <p>Cette vision bimétrique n'est pas qu'une métaphore philosophique ; elle fait directement écho aux découvertes récentes de la biophysique expérimentale. En 2020, une équipe du M.I.T. (<a href="https://news.mit.edu/2020/growth-organism-waves-0323" target="_blank" rel="noopener">Tan et al., <em>Nature Physics</em>, 2020</a>) a démontré que le développement cellulaire d'un embryon d'étoile de mer est piloté par des <strong>ondes d'énergie métabolique</strong> balayant sa surface et générant des <strong>singularités de phase (défauts topologiques)</strong>.</p>
-            <p style="margin-bottom:1.2rem;">En termes mathématiques, l'organisme utilise littéralement la dissipation thermodynamique réelle (l'axe $a$) pour sculpter des singularités géométriques de phase $\psi(\vec{r}, t)$ (l'axe $ib$) de charge topologique $\oint \nabla\psi \cdot d\vec{\ell} = \pm 2\pi$. Cliquez sur le champ complexe ci-dessous pour nucléer une paire vortex/antivortex et observer comment l'énergie écrit la topologie !</p>
+            <p style="margin-bottom:1.2rem;">En termes mathématiques, l'organisme utilise littéralement la dissipation thermodynamique réelle (l'axe $a$) pour sculpter des singularités géométriques de phase $\psi(\vec{r}, t)$ (l'axe $ib$) de charge topologique $\oint \nabla\psi \cdot d\vec{\ell} = \pm 2\pi$. Cliquez sur le champ complexe ci-dessous pour nucléer une paire vortex/antivortex et observer comment l'énergie écrit la topologie.</p>
         </div>
 
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:0.7rem; font-family:var(--font-ui);">
@@ -1211,12 +1231,12 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
     <div class="simulator-card green-theme">
         <div class="sim-header">
             <h4 style="color:var(--bio-green);">
-                <span lang="en">🐚 3D WebGL Bridge to Act III: Extruding $z = a + ib$ Along Block-Time ($\theta$)</span>
-                <span lang="fr">🐚 Pont WebGL 3D vers l'Acte III : L'Extrusion de $z = a + ib$ le long du Temps-Bloc ($\theta$)</span>
+                <span lang="en">🐚 3D WebGL Bridge to Act III: Extruding z = a + ib Along Block-Time (θ)</span>
+                <span lang="fr">🐚 Pont WebGL 3D vers l'Acte III : L'Extrusion de z = a + ib le long du Temps-Bloc (θ)</span>
             </h4>
             <p style="font-size:0.84rem; color:#94a3b8; text-align:center; margin:0;">
                 <span lang="en">Slide Time Extrusion from $0\%$ (flat 2D Argand spiral) to $100\%$ to witness the birth of the 3D Bimetric Double Helix ($z$ and its conjugate $\bar{z}$ bridged by Proof-of-Work rungs). Drag to orbit in 3D!</span>
-                <span lang="fr">Faites glisser l'Extrusion Temporelle de $0\,\%$ (spirale 2D plate d'Argand) à $100\,\%$ pour assister à la naissance de la Double Hélice Bimétrique 3D ($z$ et son miroir $\bar{z}$ reliés par les barreaux de Preuve de Travail). Glissez pour tourner en 3D !</span>
+                <span lang="fr">Faites glisser l'Extrusion Temporelle de $0\,\%$ (spirale 2D plate d'Argand) à $100\,\%$ pour assister à la naissance de la Double Hélice Bimétrique 3D ($z$ et son miroir $\bar{z}$ reliés par les barreaux de Preuve de Travail). Glissez pour tourner en 3D.</span>
             </p>
         </div>
 
@@ -1313,33 +1333,480 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
         <a target="_blank" href="../articles/NakamotoSpaceTime.pdf" lang="fr">📄 Pour les plus curieux, cliquez ici pour lire l'ébauche du modèle cosmologique associé (NakamotoSpaceTime.pdf).</a>
     </p>
 
-    <!-- À PROPOS DE L'AUTEUR & RESSOURCES -->
-    <div class="author-section">
-        <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
-            <div style="font-size:2.3rem;">☀️🧭🐚</div>
-            <div>
-                <h3 style="color:#fff; margin:0; font-size:1.12rem; text-transform:uppercase;">Pascal Ranoroarijaona (Ranaora)</h3>
-                <p style="color:#94a3b8; font-size:0.87rem; margin:0.25rem 0 0; text-align:left;">
-                    <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Physique statistique hors équilibre, éconophysique & calcul régénératif.</span>
-                    <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Non-equilibrium statistical physics, econophysics & regenerative compute.</span>
-                </p>
+    <!-- SECTION AUTEUR & RESSOURCES OPEN-SOURCE UNIFIÉE (CORPUS L'ÉTALON SOLAIRE) -->
+<section class="author-section unified-author-card" aria-label="À propos de l'auteur et ressources">
+    <style>
+        .unified-author-card {
+            margin: 4rem auto 3rem;
+            padding: 2.2rem;
+            background: linear-gradient(145deg, rgba(12, 16, 26, 0.94), rgba(5, 7, 12, 0.98));
+            border: 1px solid rgba(255, 204, 0, 0.28);
+            border-top: 4px solid var(--sun-yellow, #ffcc00);
+            border-radius: 14px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+            font-family: var(--font-ui, 'Inter', 'Helvetica Neue', sans-serif);
+            max-width: 1020px;
+        }
+        .unified-author-header {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .unified-author-emblem {
+            font-size: 2.6rem;
+            line-height: 1;
+            padding: 0.85rem;
+            border-radius: 14px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.14) 0%, rgba(0, 229, 255, 0.06) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.32);
+            box-shadow: 0 0 24px rgba(255, 204, 0, 0.14);
+            flex-shrink: 0;
+        }
+        .unified-author-info h3 {
+            color: #ffffff;
+            margin: 0 0 0.4rem 0;
+            font-size: 1.28rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        .unified-author-role {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            display: block;
+        }
+        .unified-author-info p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.62;
+            margin: 0;
+            text-align: left;
+        }
+        .unified-author-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.85rem;
+        }
+        .unified-social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.22s ease;
+        }
+        .unified-social-pill:hover {
+            border-color: var(--sun-yellow, #ffcc00);
+            color: var(--sun-yellow, #ffcc00);
+            transform: translateY(-1px);
+        }
+        .unified-author-video {
+            margin: 1.5rem auto 1.8rem;
+            max-width: 680px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 204, 0, 0.25);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+        .unified-author-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        .unified-resources-heading {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+        .unified-resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+        .unified-res-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-top: 3px solid var(--card-accent, #ffcc00);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+        }
+        .unified-res-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.048);
+            border-color: var(--card-accent, #ffcc00);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+        }
+        .unified-card-head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .unified-card-logo {
+            width: 176px;
+            height: 176px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #060911;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo {
+            transform: scale(1.06);
+            border-color: var(--card-accent, #ffcc00);
+        }
+        .unified-card-logo-dual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .unified-card-logo-dual img {
+            width: 76px;
+            height: 76px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #060911;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo-dual img {
+            transform: scale(1.05);
+            border-color: var(--card-accent, #ffcc00);
+        }
+        .unified-res-card h4 {
+            color: var(--card-accent, #ffcc00);
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.35;
+            text-align: center;
+        }
+        .unified-res-card h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .unified-res-card h4 a:hover {
+            text-decoration: underline;
+        }
+        .unified-res-card p {
+            color: #94a3b8;
+            font-size: 0.82rem;
+            line-height: 1.52;
+            margin: 0;
+            text-align: left;
+        }
+        .unified-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.85rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+        .unified-repo-tag {
+            display: inline-block;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.71rem;
+            font-weight: 600;
+            color: var(--card-accent, #ffcc00);
+            text-decoration: none;
+            opacity: 0.92;
+        }
+        .unified-repo-tag:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        @media (max-width: 860px) {
+            .unified-resources-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .unified-author-header { flex-direction: column; text-align: center; }
+            .unified-author-info p { text-align: center; }
+            .unified-author-links { justify-content: center; }
+            .unified-resources-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <div class="unified-author-header">
+        <div class="unified-author-emblem" aria-hidden="true">☀️🌱🐚</div>
+        <div class="unified-author-info">
+            <h3>Pascal Ranoroarijaona (Ranaora)</h3>
+            <span class="unified-author-role">
+                <span lang="fr">Ingénieur en Informatique (HPC) &amp; Chercheur Indépendant · Information Physics Institute (Sydney)</span>
+                <span lang="en">Computer Engineer (HPC) &amp; Independent Researcher · Information Physics Institute (Sydney)</span>
+            </span>
+            <p lang="fr">
+                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Il utilise l'Intelligence Artificielle comme levier d'apprentissage pour explorer les grandes disciplines humaines — <strong>philosophie, économie, éconophysique, physique, mathématiques, écologie, environnement, agriculture et informatique</strong> — un cheminement qui lui a fait prendre conscience à quel point nous sommes devenus aveugles au monde réel dans lequel nous habitons, oubliant la physique, les mathématiques et les limites planétaires au profit d'une opulence fictive et court-termiste. Il garde néanmoins une foi profonde en l'ingéniosité humaine : en réconciliant la science, la sobriété et la technologie au service du vivant, nous avons déjà entre nos mains tout ce qu'il faut pour inverser la vapeur.
+            </p>
+            <p lang="en">
+                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. He uses Artificial Intelligence as a learning catalyst to explore major fields of human knowledge—<strong>philosophy, economics, econophysics, physics, mathematics, ecology, environment, agriculture, and computer science</strong>—a journey that revealed how blind we have become to the physical world we inhabit, forgetting physics, mathematics, and planetary boundaries to indulge in a fictitious, short-term opulence. Yet he remains deeply optimistic and steadfast in his faith in Humanity: by realigning science, temperance, and technology in service of the living world, we already hold everything needed to turn the tide.
+            </p>
+            <div class="unified-author-links">
+                <a href="https://github.com/pascalranoroarijaona/" target="_blank" rel="noopener" class="unified-social-pill">🐙 GitHub</a>
+                <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-social-pill">☀️ TheSunStandard.net</a>
+                <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-social-pill">🌱 RegenerativeCompute.io</a>
+                <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">📘 Livre-Bitcoin.fr</a>
+                <a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">⛏️ Simulateur-Bitcoin.fr</a>
+                <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-social-pill">📈 Compteur-Bitcoin.fr</a>
+                <span class="unified-social-pill" style="cursor:default; color:#44ee77; border-color:rgba(68,238,119,0.3);">📍 French/Australian/Madagascan located Sydney/Antsirabe, Lemuria - Born in Nairobi Kenya, Married to China/Indonesia/Malaysia, Middle-Earth Human · Fihavanana</span>
             </div>
         </div>
-        <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
-                <p><span lang="fr">Portail théorique : temps thermique complexe, preuves formelles Lean 4 et éconophysique solaire.</span><span lang="en">Theoretical portal: complex thermal time, Lean 4 formal proofs, and solar econophysics.</span></p>
-            </a>
-            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--bio-green);">🌱 Regenerative Compute</h4>
-                <p><span lang="fr">Incarnation matérielle : recyclage de l'effet Joule (axe $a$) pour l'eau MOF-303, le biochar et le vivant.</span><span lang="en">Hardware execution: recycling Joule heat (axis $a$) into MOF-303 water, biochar, and living gardens.</span></p>
-            </a>
-            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--cyan-glow);">👁️ Protocole D-Trinité</h4>
-                <p><span lang="fr">Ancrage orthogonal SHA-256 + Nostr + OpenTimestamps contre la fragmentation cognitive ($R \to 1$).</span><span lang="en">Orthogonal SHA-256 + Nostr + OpenTimestamps provenance restoring phase coherence ($R \to 1$).</span></p>
-            </a>
+    </div>
+
+    <div class="unified-author-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/hpMTGpB0zM0?si=PRPLvFPxi1Krexno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="unified-resources-heading">
+        <span lang="fr">🧭 Explorez mon Univers : Écosystème de Recherche, Livres, ONG &amp; Dépôts Open-Source</span>
+        <span lang="en">🧭 Explore my Universe: Research Ecosystem, Books, NGO &amp; Open-Source Repositories</span>
+    </div>
+
+    <div class="unified-resources-grid">
+        <!-- 1 : The Sun Standard -->
+        <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #ffcc00;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-sunstandard.jpg" alt="The Sun Standard" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>☀️ The Sun Standard</h4>
+                </div>
+                <p>
+                    <span lang="fr">Portail théorique bilingue : temps thermique KMS, preuves formelles Lean 4 et éconophysique solaire post-PIB.</span>
+                    <span lang="en">Bilingual theoretical portal: KMS thermal time, Lean 4 formal proofs, and post-GDP solar econophysics.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌐 www.thesunstandard.net</span>
+            </div>
+        </a>
+
+        <!-- 2 : Regenerative Compute -->
+        <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #44ee77;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-lemuriatech.jpg" alt="Lemuria Technologies" class="unified-card-logo" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
+                    <h4>🌱 Regenerative Compute</h4>
+                </div>
+                <p>
+                    <span lang="fr">Ingénierie matérielle (Lemuria Tech) : du BitTerrarium™ de bureau (17 W) aux mines Brownfield mégawatt &amp; MOF-303.</span>
+                    <span lang="en">Hardware execution (Lemuria Tech): from 17 W desktop BitTerrarium™ units to megawatt Brownfield mines &amp; MOF-303.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌐 www.regenerativecompute.io</span>
+            </div>
+        </a>
+
+        <!-- 3 : Protocole Trinité -->
+        <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #00e5ff;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-trinity.png" alt="Protocole Trinité" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>👁️ Protocole Trinité</h4>
+                </div>
+                <p>
+                    <span lang="fr">Comme dans <em>Matrix</em>, il faut toujours <strong>Trinity</strong> pour nous sauver de la folie des hallucinations synthétiques et nous ouvrir l'accès direct à <strong>la Source</strong> : intégrité prouvée par le triplet <strong>Qui · Quoi · Quand</strong> (Nostr + SHA-256 + OpenTimestamps).</span>
+                    <span lang="en">Just like in <em>The Matrix</em>, it takes <strong>Trinity</strong> to rescue us from the madness of synthetic hallucinations and guide us straight back to <strong>the Source</strong>: integrity anchored via the <strong>Who · What · When</strong> triplet (Nostr + SHA-256 + OpenTimestamps).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🕶️ Qui · Quoi · Quand → La Source</span>
+            </div>
+        </a>
+
+        <!-- 4 : Web of Life (Mega-POD) -->
+        <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #34d399;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/weboflife.jpg" alt="Web of Life" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🕸️ Web of Life (Mega-POD)</h4>
+                </div>
+                <p>
+                    <span lang="fr">Jumeau numérique planétaire open-source en TypeScript sur grille hexagonale H3 couplant PoW, PoEW et cogénération MARL.</span>
+                    <span lang="en">Open-source planetary TypeScript digital twin on Uber H3 hexagonal grid coupling PoW, PoEW, and MARL cogeneration.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 5 : Wellbeing Framework (WU) -->
+        <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #fb923c;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-wellbeingframework.png" alt="Wellbeing Framework" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🌿 Wellbeing Framework (WU)</h4>
+                </div>
+                <p>
+                    <span lang="fr">Comptabilité biophysique open-source en Unités de Bien-Être (WU/kWh) pour transcender les limites destructrices du PIB.</span>
+                    <span lang="en">Open-source biophysical accounting in Wellbeing Units (WU/kWh) designed to transcend destructive GDP metrics.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 6 : Sufficiency Protocol -->
+        <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #c084fc;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-sufficiencyprotocol.png" alt="Sufficiency Protocol" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>⚙️ Protocole de Suffisance</h4>
+                </div>
+                <p>
+                    <span lang="fr">Limites planétaires, budgets exergétiques et gouvernance écologique open-source auditables par Preuve de Travail.</span>
+                    <span lang="en">Open-source planetary boundaries, exergy budgets, and ecological governance auditable via Proof-of-Work.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 Open-Source Repo →</span>
+            </div>
+        </a>
+
+        <!-- 7 : Kaya Wellbeing Identity -->
+        <a href="https://github.com/pascalranoroarijaona/wellbeing-identity" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #22d3ee;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-kayawellbeing.png" alt="Kaya Wellbeing Identity" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🪪 Kaya Wellbeing Identity</h4>
+                </div>
+                <p>
+                    <span lang="fr">Identité souveraine open-source (Solid PODs &amp; Preuve d'Humanité) reliant la couverture de Markov de l'individu à son empreinte biophysique.</span>
+                    <span lang="en">Open-source sovereign identity (Solid PODs &amp; Proof-of-Personhood) linking an individual's Markov blanket to their biophysical footprint.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🐙 wellbeing-identity →</span>
+            </div>
+        </a>
+
+        <!-- 8 : Homo Biodiversitas & Horizon Zéro (Livres Gratuits en Ligne) -->
+        <div class="unified-res-card" style="--card-accent: #a3e635;">
+            <div>
+                <div class="unified-card-head">
+                    <div class="unified-card-logo-dual">
+                        <img src="img/logo-homobiodiversitas.png" alt="Homo Biodiversitas" onerror="this.style.display='none'">
+                        <img src="img/HorizonZero.png" alt="Horizon Zéro" onerror="this.style.display='none'">
+                    </div>
+                    <h4>📚 Homo Biodiversitas &amp; Horizon Zéro</h4>
+                </div>
+                <p>
+                    <span lang="fr">Mes deux livres gratuits en accès libre : la symbiose entre la Noosphère et le vivant (<em>Homo Biodiversitas</em>) et l'ingénierie régénérative (<em>Horizon Zéro</em>).</span>
+                    <span lang="en">My two free open-access books: symbiosis between the Noosphere and living ecosystems (<em>Homo Biodiversitas</em>) and regenerative engineering (<em>Horizon Zero</em>).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" class="unified-repo-tag">📄 HomoBiodiversitas.pdf</a>
+                <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" class="unified-repo-tag">📄 HorizonZero.pdf</a>
+            </div>
+        </div>
+
+        <!-- 9 : Angovo (Projet ONG Madagascar — IA & Énergie) -->
+        <div class="unified-res-card" style="--card-accent: #10b981;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-angovo.png" alt="Projet ONG Angovo Madagascar" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>🇲🇬 Angovo · ONG Madagascar</h4>
+                </div>
+                <p>
+                    <span lang="fr">Projet d'ONG dédié à Madagascar pour développer l'accès souverain à l'énergie décarbonée et l'éducation à l'Intelligence Artificielle au service des communautés locales.</span>
+                    <span lang="en">NGO initiative dedicated to Madagascar to develop sovereign clean energy access and local Artificial Intelligence education empowering Malagasy communities.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">🌱 Énergie &amp; IA · Antsirabe / Madagascar</span>
+            </div>
+        </div>
+
+        <!-- 10 : Le Livre Bitcoin (édition publiée / dépôt privé) -->
+        <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #f7931a;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/JohnNashPoW.png" alt="Le Livre Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4>📘 Le Livre Bitcoin</h4>
+                </div>
+                <p>
+                    <span lang="fr">Ouvrage de référence accessible sur la souveraineté monétaire, la thermodynamique de la rareté et l'histoire de Bitcoin (édition publiée, dépôt privé).</span>
+                    <span lang="en">Comprehensive French reference book on monetary sovereignty, thermodynamics of scarcity, and Bitcoin's foundations (published edition, private repo).</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <span class="unified-repo-tag">📖 www.livre-bitcoin.fr</span>
+            </div>
+        </a>
+
+        <!-- 11 : Simulateur Bitcoin (simulateur de minage + code open-source) -->
+        <div class="unified-res-card" style="--card-accent: #fbbf24;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-simbtc.png" alt="Simulateur Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4><a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener">⛏️ Simulateur Bitcoin</a></h4>
+                </div>
+                <p>
+                    <span lang="fr">Simulateur open-source de minage Bitcoin : modélisation du hashrate, de la consommation électrique, de la difficulté réseau et de la rentabilité des ASICs.</span>
+                    <span lang="en">Open-source Bitcoin mining simulator: modeling hashrate, power consumption, network difficulty adjustments, and ASIC profitability.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.simulateur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-repo-tag">🌐 App</a>
+                <a href="https://github.com/pascalranoroarijaona/simulateur-bitcoin" target="_blank" rel="noopener" class="unified-repo-tag">🐙 Inspecter le code →</a>
+            </div>
+        </div>
+
+        <!-- 12 : Compteur Bitcoin (trajectoire & rendement possible + code open-source) -->
+        <div class="unified-res-card" style="--card-accent: #38bdf8;">
+            <div>
+                <div class="unified-card-head">
+                    <img src="img/logo-countbtc.png" alt="Compteur Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <h4><a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener">📈 Compteur Bitcoin</a></h4>
+                </div>
+                <p>
+                    <span lang="fr">Observatoire open-source en temps réel de la trajectoire du réseau Bitcoin, des cycles de Halving et des projections de rendement possible.</span>
+                    <span lang="en">Open-source real-time observatory tracking Bitcoin's network trajectory, Halving cycles, and potential yield projections.</span>
+                </p>
+            </div>
+            <div class="unified-card-footer">
+                <a href="https://www.compteur-bitcoin.fr/" target="_blank" rel="noopener" class="unified-repo-tag">🌐 Live</a>
+                <a href="https://github.com/pascalranoroarijaona/compteur-bitcoin" target="_blank" rel="noopener" class="unified-repo-tag">🐙 Inspecter le code →</a>
+            </div>
         </div>
     </div>
+</section>
 
     <!-- FORMULAIRE DE RETOUR -->
     <div class="feedback-container">
@@ -1382,7 +1849,7 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
 
     <div id="success-popup" class="feedback-popup">
         <span lang="en">✅ Feedback successfully submitted! Thank you.</span>
-        <span lang="fr">✅ Retour envoyé avec succès ! Merci.</span>
+        <span lang="fr">✅ Retour envoyé avec succès. Merci.</span>
     </div>
 
     <!-- NAVIGATION INTER-ARTICLES -->
@@ -1423,8 +1890,16 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
      MOTEURS JAVASCRIPT COMPLETS : EXPORT, I18N & 6 LABORATOIRES INTERACTIFS
      ========================================================================== -->
 <script>
-/* 0. CAPTURE PRISTINE DU CODE SOURCE AVANT TRANSFORMATION MATHJAX */
-const PRISTINE_COMPLEX_HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+/* 0. EXTRACTION PROPRE DU CODE SOURCE (SANS CONTENEURS MATHJAX NI CANVAS WEBGL) */
+function getCleanComplexHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+    const n3d = clone.querySelector('#nautilus3DContainer');
+    if (n3d) n3d.innerHTML = '';
+    const toast = clone.querySelector('#sun-toast');
+    if (toast) toast.classList.remove('visible');
+    return "<!DOCTYPE html>\n" + clone.outerHTML;
+}
 
 let currentLang = 'fr';
 function isFr() { return currentLang === 'fr'; }
@@ -1457,7 +1932,7 @@ function copySafe(text) {
 
 function downloadStandaloneHTML() {
     try {
-        const blob = new Blob([PRISTINE_COMPLEX_HTML], { type: 'text/html;charset=utf-8' });
+        const blob = new Blob([getCleanComplexHTML()], { type: 'text/html;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -1466,16 +1941,16 @@ function downloadStandaloneHTML() {
         a.click();
         document.body.removeChild(a);
         setTimeout(() => window.URL.revokeObjectURL(url), 1500);
-        showToast('✅ le-monde-est-complexe.html téléchargé !', '✅ le-monde-est-complexe.html downloaded!');
+        showToast('✅ le-monde-est-complexe.html téléchargé.', '✅ le-monde-est-complexe.html downloaded!');
     } catch (e) {
-        copySafe(PRISTINE_COMPLEX_HTML);
-        showToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
+        copySafe(getCleanComplexHTML());
+        showToast('📋 HTML complet copié dans le presse-papiers.', '📋 Complete HTML copied to clipboard!');
     }
 }
 
 function copyStandaloneHTML() {
-    copySafe(PRISTINE_COMPLEX_HTML);
-    showToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
+    copySafe(getCleanComplexHTML());
+    showToast('📋 Code HTML complet copié.', '📋 Complete HTML source copied!');
 }
 
 function copyComplexBibtex() {
@@ -1498,7 +1973,7 @@ function copyComplexBibtex() {
   doi = {10.59973/ipil.325}
 }`;
     copySafe(bib);
-    showToast('📋 Références BibTeX copiées !', '📋 BibTeX references copied!');
+    showToast('📋 Références BibTeX copiées.', '📋 BibTeX references copied!');
 }
 
 window.addEventListener("scroll", () => {
@@ -1559,7 +2034,7 @@ function setLang(lang) {
 
         const diagEl = document.getElementById('hud-diag-val');
         if (psiDeg < 18) {
-            diagEl.textContent = isFr() ? 'Extractivisme Aveugle (mathbb{R})' : 'Blind Extractivism (1D)';
+            diagEl.textContent = isFr() ? 'Extractivisme Aveugle (ℝ · 1D)' : 'Blind Extractivism (ℝ · 1D)';
             diagEl.style.color = '#ff8800';
         } else if (psiDeg > 72) {
             diagEl.textContent = isFr() ? 'Nihilisme Virtuel Hors-Sol' : 'Disembodied Virtual Drift';
@@ -1734,7 +2209,7 @@ function setLang(lang) {
     daaBtn.addEventListener('click', () => {
         diffTarget = parseFloat(hSl.value) / 100;
         updateWickMetrics();
-        showToast('⚖️ Époque DAA (2016 blocs) recalibrée : Δτ₀ = 600 s restauré !', '⚖️ 2016-Block DAA recalibrated: Δτ₀ = 600 s restored!');
+        showToast('⚖️ Époque DAA (2016 blocs) recalibrée : Δτ₀ = 600 s restauré.', '⚖️ 2016-Block DAA recalibrated: Δτ₀ = 600 s restored!');
     });
     window.addEventListener('sun-lang-change', updateWickMetrics);
     updateWickMetrics();
@@ -2373,5 +2848,19 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Le monde est complexe : L'Équation Primordiale de la Réalité",
+  "alternativeHeadline": "The World is Complex: From One-Dimensional Accounting to the Hermitian Synthesis of Energy and Information",
+  "datePublished": "2026-06-14",
+  "author": { "@type": "Person", "name": "Pascal Ranoroarijaona" },
+  "publisher": { "@type": "Organization", "name": "L'Étalon Solaire", "url": "https://www.thesunstandard.net/" },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/le-monde-est-complexe.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<script defer src="corpus-atlas.js"></script>
 </body>
 </html>
