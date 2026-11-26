@@ -1333,33 +1333,221 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
         <a target="_blank" href="../articles/NakamotoSpaceTime.pdf" lang="fr">📄 Pour les plus curieux, cliquez ici pour lire l'ébauche du modèle cosmologique associé (NakamotoSpaceTime.pdf).</a>
     </p>
 
-    <!-- À PROPOS DE L'AUTEUR & RESSOURCES -->
-    <div class="author-section">
-        <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
-            <div style="font-size:2.3rem;">☀️🧭🐚</div>
-            <div>
-                <h3 style="color:#fff; margin:0; font-size:1.12rem; text-transform:uppercase;">Pascal Ranoroarijaona (Ranaora)</h3>
-                <p style="color:#94a3b8; font-size:0.87rem; margin:0.25rem 0 0; text-align:left;">
-                    <span lang="fr">Ingénieur en informatique & chercheur indépendant affilié à l'Information Physics Institute (Sydney) — Physique statistique hors équilibre, éconophysique & calcul régénératif.</span>
-                    <span lang="en">Computer Engineer & Independent Researcher affiliated with the Information Physics Institute (Sydney) — Non-equilibrium statistical physics, econophysics & regenerative compute.</span>
-                </p>
+    <!-- SECTION AUTEUR & RESSOURCES OPEN-SOURCE UNIFIÉE (CORPUS L'ÉTALON SOLAIRE) -->
+<section class="author-section unified-author-card" aria-label="À propos de l'auteur et ressources">
+    <style>
+        .unified-author-card {
+            margin: 4rem auto 3rem;
+            padding: 2.2rem;
+            background: linear-gradient(145deg, rgba(12, 16, 26, 0.94), rgba(5, 7, 12, 0.98));
+            border: 1px solid rgba(255, 204, 0, 0.28);
+            border-top: 4px solid var(--sun-yellow, #ffcc00);
+            border-radius: 14px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+            font-family: var(--font-ui, 'Inter', 'Helvetica Neue', sans-serif);
+            max-width: 980px;
+        }
+        .unified-author-header {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .unified-author-emblem {
+            font-size: 2.6rem;
+            line-height: 1;
+            padding: 0.85rem;
+            border-radius: 14px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.14) 0%, rgba(0, 229, 255, 0.06) 100%);
+            border: 1px solid rgba(255, 204, 0, 0.32);
+            box-shadow: 0 0 24px rgba(255, 204, 0, 0.14);
+            flex-shrink: 0;
+        }
+        .unified-author-info h3 {
+            color: #ffffff;
+            margin: 0 0 0.4rem 0;
+            font-size: 1.28rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        .unified-author-role {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            display: block;
+        }
+        .unified-author-info p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.62;
+            margin: 0;
+            text-align: left;
+        }
+        .unified-author-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.85rem;
+        }
+        .unified-social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.22s ease;
+        }
+        .unified-social-pill:hover {
+            border-color: var(--sun-yellow, #ffcc00);
+            color: var(--sun-yellow, #ffcc00);
+            transform: translateY(-1px);
+        }
+        .unified-resources-heading {
+            color: var(--sun-yellow, #ffcc00);
+            font-family: var(--font-mono, 'Fira Code', monospace);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+        .unified-resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.95rem;
+        }
+        .unified-res-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.1rem 1.15rem;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-top: 2px solid var(--card-accent, #ffcc00);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+        .unified-res-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.045);
+            border-color: var(--card-accent, #ffcc00);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+        }
+        .unified-res-card h4 {
+            color: var(--card-accent, #ffcc00);
+            font-size: 0.94rem;
+            font-weight: 700;
+            margin: 0 0 0.45rem 0;
+        }
+        .unified-res-card p {
+            color: #94a3b8;
+            font-size: 0.81rem;
+            line-height: 1.48;
+            margin: 0;
+            text-align: left;
+        }
+        @media (max-width: 820px) {
+            .unified-resources-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .unified-author-header { flex-direction: column; text-align: center; }
+            .unified-author-info p { text-align: center; }
+            .unified-author-links { justify-content: center; }
+            .unified-resources-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <div class="unified-author-header">
+        <div class="unified-author-emblem" aria-hidden="true">☀️🌱🐚</div>
+        <div class="unified-author-info">
+            <h3>Pascal Ranoroarijaona (Ranaora)</h3>
+            <span class="unified-author-role">
+                <span lang="fr">Ingénieur en Informatique (HPC) &amp; Chercheur Indépendant · Information Physics Institute (Sydney)</span>
+                <span lang="en">Computer Engineer (HPC) &amp; Independent Researcher · Information Physics Institute (Sydney)</span>
+            </span>
+            <p lang="fr">
+                Fondateur de <strong>Lemuria Technologies</strong> et auteur de <em>L'Étalon Solaire</em>. Ses travaux unifient la physique statistique hors d'équilibre, le temps thermique modulaire, la vérification formelle en Lean 4, l'éconophysique du consensus de Nakamoto et les infrastructures de calcul régénératif souterrain.
+            </p>
+            <p lang="en">
+                Founder of <strong>Lemuria Technologies</strong> and author of <em>The Sun Standard</em>. His research unifies non-equilibrium statistical physics, modular thermal time, Lean 4 formal theorem proving, Nakamoto consensus econophysics, and subterranean regenerative compute infrastructure.
+            </p>
+            <div class="unified-author-links">
+                <a href="https://github.com/pascalranoroarijaona/" target="_blank" rel="noopener" class="unified-social-pill">🐙 GitHub</a>
+                <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-social-pill">☀️ TheSunStandard.net</a>
+                <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-social-pill">🌱 RegenerativeCompute.io</a>
+                <span class="unified-social-pill" style="cursor:default; color:#44ee77; border-color:rgba(68,238,119,0.3);">📍 French/Australian/Madagascan located Sydney/Antsirabe, Lemuria - Born in Nairobi Kenya, Married to China/Indonesia/Malaysia, Middle-Earth Human · Fihavanana</span>
             </div>
         </div>
-        <div class="resources-grid">
-            <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--sun-yellow);">☀️ The Sun Standard</h4>
-                <p><span lang="fr">Portail théorique : temps thermique complexe, preuves formelles Lean 4 et éconophysique solaire.</span><span lang="en">Theoretical portal: complex thermal time, Lean 4 formal proofs, and solar econophysics.</span></p>
-            </a>
-            <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--bio-green);">🌱 Regenerative Compute</h4>
-                <p><span lang="fr">Incarnation matérielle : recyclage de l'effet Joule (axe $a$) pour l'eau MOF-303, le biochar et le vivant.</span><span lang="en">Hardware execution: recycling Joule heat (axis $a$) into MOF-303 water, biochar, and living gardens.</span></p>
-            </a>
-            <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="resource-card">
-                <h4 style="color:var(--cyan-glow);">👁️ Protocole D-Trinité</h4>
-                <p><span lang="fr">Ancrage orthogonal SHA-256 + Nostr + OpenTimestamps contre la fragmentation cognitive ($R \to 1$).</span><span lang="en">Orthogonal SHA-256 + Nostr + OpenTimestamps provenance restoring phase coherence ($R \to 1$).</span></p>
-            </a>
-        </div>
     </div>
+
+    <div class="unified-resources-heading">
+        <span lang="fr">🧭 Écosystème de Recherche &amp; Dépôts Open-Source</span>
+        <span lang="en">🧭 Research Ecosystem &amp; Open-Source Repositories</span>
+    </div>
+
+    <div class="unified-resources-grid">
+        <a href="https://www.thesunstandard.net/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #ffcc00;">
+            <h4>☀️ The Sun Standard</h4>
+            <p>
+                <span lang="fr">Portail théorique bilingue : temps thermique KMS, preuves formelles Lean 4 et éconophysique solaire post-PIB.</span>
+                <span lang="en">Bilingual theoretical portal: KMS thermal time, Lean 4 formal proofs, and post-GDP solar econophysics.</span>
+            </p>
+        </a>
+
+        <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #44ee77;">
+            <h4>🌱 Regenerative Compute</h4>
+            <p>
+                <span lang="fr">Ingénierie matérielle (Lemuria Tech) : du BitTerrarium™ de bureau (17 W) aux mines Brownfield mégawatt &amp; MOF-303.</span>
+                <span lang="en">Hardware execution (Lemuria Tech): from 17 W desktop BitTerrarium™ units to megawatt Brownfield mines &amp; MOF-303.</span>
+            </p>
+        </a>
+
+        <a href="https://github.com/pascalranoroarijaona/Trinity" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #00e5ff;">
+            <h4>👁️ Protocole Trinité</h4>
+            <p>
+                <span lang="fr">Ancrage épistémologique (SHA-256 + Nostr + OpenTimestamps) satisfaisant le critère de réalité de Philip K. Dick.</span>
+                <span lang="en">Epistemic provenance (SHA-256 + Nostr + OpenTimestamps) satisfying Philip K. Dick's reality criterion.</span>
+            </p>
+        </a>
+
+        <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #38bdf8;">
+            <h4>🕸️ Web of Life (Mega-POD)</h4>
+            <p>
+                <span lang="fr">Jumeau numérique planétaire en TypeScript sur grille hexagonale H3 couplant PoW, PoEW et cogénération MARL.</span>
+                <span lang="en">Planetary TypeScript digital twin on Uber H3 hexagonal grid coupling PoW, PoEW, and MARL cogeneration.</span>
+            </p>
+        </a>
+
+        <a href="https://github.com/pascalranoroarijaona/wellbeing-framework" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #f7931a;">
+            <h4>🌿 Wellbeing Framework (WU)</h4>
+            <p>
+                <span lang="fr">Comptabilité biophysique en Unités de Bien-Être (WU/kWh) pour transcender les limites destructrices du PIB.</span>
+                <span lang="en">Biophysical accounting in Wellbeing Units (WU/kWh) designed to transcend destructive GDP metrics.</span>
+            </p>
+        </a>
+
+        <a href="https://github.com/pascalranoroarijaona/sufficiency-protocol" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #c084fc;">
+            <h4>⚙️ Sufficiency Protocol</h4>
+            <p>
+                <span lang="fr">Limites planétaires, budgets exergétiques et gouvernance écologique auditables par Preuve de Travail.</span>
+                <span lang="en">Planetary boundaries, exergy budgets, and ecological governance auditable via Proof-of-Work.</span>
+            </p>
+        </a>
+    </div>
+</section>
 
     <!-- FORMULAIRE DE RETOUR -->
     <div class="feedback-container">
