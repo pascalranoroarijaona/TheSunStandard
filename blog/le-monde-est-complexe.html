@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Le monde est complexe : L'Équation Primordiale | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/le-monde-est-complexe.html" />
     <meta name="description" content="Acte II de la Tétralogie : exploration mathématique, thermodynamique et cybernétique du plan complexe z = a + ib appliqué à l'émergie d'Odum, à la condition KMS, à Kuramoto et à l'Homo Biodiversitas.">
 
     <!-- Open Graph / LinkedIn / Social Preview -->
@@ -1442,8 +1443,16 @@ uint256 OrthogonalProjection(CBlockHeader& header, uint64_t& joules_burned) {
      MOTEURS JAVASCRIPT COMPLETS : EXPORT, I18N & 6 LABORATOIRES INTERACTIFS
      ========================================================================== -->
 <script>
-/* 0. CAPTURE PRISTINE DU CODE SOURCE AVANT TRANSFORMATION MATHJAX */
-const PRISTINE_COMPLEX_HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+/* 0. EXTRACTION PROPRE DU CODE SOURCE (SANS CONTENEURS MATHJAX NI CANVAS WEBGL) */
+function getCleanComplexHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+    const n3d = clone.querySelector('#nautilus3DContainer');
+    if (n3d) n3d.innerHTML = '';
+    const toast = clone.querySelector('#sun-toast');
+    if (toast) toast.classList.remove('visible');
+    return "<!DOCTYPE html>\n" + clone.outerHTML;
+}
 
 let currentLang = 'fr';
 function isFr() { return currentLang === 'fr'; }
@@ -1476,7 +1485,7 @@ function copySafe(text) {
 
 function downloadStandaloneHTML() {
     try {
-        const blob = new Blob([PRISTINE_COMPLEX_HTML], { type: 'text/html;charset=utf-8' });
+        const blob = new Blob([getCleanComplexHTML()], { type: 'text/html;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -1487,13 +1496,13 @@ function downloadStandaloneHTML() {
         setTimeout(() => window.URL.revokeObjectURL(url), 1500);
         showToast('✅ le-monde-est-complexe.html téléchargé.', '✅ le-monde-est-complexe.html downloaded!');
     } catch (e) {
-        copySafe(PRISTINE_COMPLEX_HTML);
+        copySafe(getCleanComplexHTML());
         showToast('📋 HTML complet copié dans le presse-papiers.', '📋 Complete HTML copied to clipboard!');
     }
 }
 
 function copyStandaloneHTML() {
-    copySafe(PRISTINE_COMPLEX_HTML);
+    copySafe(getCleanComplexHTML());
     showToast('📋 Code HTML complet copié.', '📋 Complete HTML source copied!');
 }
 
@@ -1578,7 +1587,7 @@ function setLang(lang) {
 
         const diagEl = document.getElementById('hud-diag-val');
         if (psiDeg < 18) {
-            diagEl.textContent = isFr() ? 'Extractivisme Aveugle (mathbb{R})' : 'Blind Extractivism (1D)';
+            diagEl.textContent = isFr() ? 'Extractivisme Aveugle (ℝ · 1D)' : 'Blind Extractivism (ℝ · 1D)';
             diagEl.style.color = '#ff8800';
         } else if (psiDeg > 72) {
             diagEl.textContent = isFr() ? 'Nihilisme Virtuel Hors-Sol' : 'Disembodied Virtual Drift';
@@ -2392,5 +2401,19 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Le monde est complexe : L'Équation Primordiale de la Réalité",
+  "alternativeHeadline": "The World is Complex: From One-Dimensional Accounting to the Hermitian Synthesis of Energy and Information",
+  "datePublished": "2026-06-14",
+  "author": { "@type": "Person", "name": "Pascal Ranoroarijaona" },
+  "publisher": { "@type": "Organization", "name": "L'Étalon Solaire", "url": "https://www.thesunstandard.net/" },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/le-monde-est-complexe.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<script defer src="corpus-atlas.js"></script>
 </body>
 </html>

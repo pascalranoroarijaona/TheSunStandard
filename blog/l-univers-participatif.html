@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>L'Éveil de l'Univers Participatif : It from Bit | L'Étalon Solaire</title>
+    <link rel="canonical" href="https://www.thesunstandard.net/blog/l-univers-participatif.html" />
     <meta name="description" content="Acte I de la Tétralogie : de l'Univers Participatif de John Archibald Wheeler (It from bit) et du vide médian de Lao Tseu au Bloc Genesis du 3 janvier 2009 — comment la thermodynamique donne à l'intangible la persistance de la roche.">
 
     <!-- Open Graph / LinkedIn / Social Preview -->
@@ -1339,8 +1340,16 @@ blockHash     : 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
      MOTEURS JAVASCRIPT COMPLETS : EXPORT, I18N & 6 LABORATOIRES INTERACTIFS
      ========================================================================== -->
 <script>
-/* 0. CAPTURE PRISTINE DU CODE SOURCE AVANT TRANSFORMATION MATHJAX */
-const PRISTINE_ACT1_HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+/* 0. EXTRACTION PROPRE DU CODE SOURCE (SANS CONTENEURS MATHJAX NI CANVAS WEBGL) */
+function getCleanAct1HTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('mjx-container, style#MJX-SVG-styles, style#MJX-CHTML-styles').forEach(el => el.remove());
+    const t3d = clone.querySelector('#twinUniverse3DContainer');
+    if (t3d) t3d.innerHTML = '';
+    const toast = clone.querySelector('#sun-toast');
+    if (toast) toast.classList.remove('visible');
+    return "<!DOCTYPE html>\n" + clone.outerHTML;
+}
 
 let currentLang = 'fr';
 function isFr() { return currentLang === 'fr'; }
@@ -1373,7 +1382,7 @@ function copySafe(text) {
 
 function downloadStandaloneHTML() {
     try {
-        const blob = new Blob([PRISTINE_ACT1_HTML], { type: 'text/html;charset=utf-8' });
+        const blob = new Blob([getCleanAct1HTML()], { type: 'text/html;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -1384,13 +1393,13 @@ function downloadStandaloneHTML() {
         setTimeout(() => window.URL.revokeObjectURL(url), 1500);
         showToast('✅ l-univers-participatif.html téléchargé !', '✅ l-univers-participatif.html downloaded!');
     } catch (e) {
-        copySafe(PRISTINE_ACT1_HTML);
+        copySafe(getCleanAct1HTML());
         showToast('📋 HTML complet copié dans le presse-papiers !', '📋 Complete HTML copied to clipboard!');
     }
 }
 
 function copyStandaloneHTML() {
-    copySafe(PRISTINE_ACT1_HTML);
+    copySafe(getCleanAct1HTML());
     showToast('📋 Code HTML complet copié !', '📋 Complete HTML source copied!');
 }
 
@@ -2239,5 +2248,19 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "L'Éveil de l'Univers Participatif : It from Bit",
+  "alternativeHeadline": "The Awakening of the Participatory Universe: From Wheeler's It from Bit to the Thermodynamic Singularity of January 3, 2009",
+  "datePublished": "2026-06-14",
+  "author": { "@type": "Person", "name": "Pascal Ranoroarijaona" },
+  "publisher": { "@type": "Organization", "name": "L'Étalon Solaire", "url": "https://www.thesunstandard.net/" },
+  "mainEntityOfPage": "https://www.thesunstandard.net/blog/l-univers-participatif.html",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<script defer src="corpus-atlas.js"></script>
 </body>
 </html>
