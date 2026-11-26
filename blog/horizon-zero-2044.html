@@ -378,10 +378,27 @@
         }
 
         .modelling-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-            gap: 1rem;
-        }
+    display: grid;
+    gap: 1.1rem;
+    /* Default (1, 2, or 4 items): 2 columns per row (e.g., 4 items = 2 then 2) */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Exactly 3 items: 1 row of 3 columns (3rd child is also the last child) */
+.modelling-grid:has(> :nth-child(3):last-child),
+/* 5 or more items: 3 columns per row */
+.modelling-grid:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile fallback so cards never get squished on narrow screens */
+@media (max-width: 768px) {
+    .modelling-grid,
+    .modelling-grid:has(> :nth-child(3):last-child),
+    .modelling-grid:has(> :nth-child(5)) {
+        grid-template-columns: 1fr;
+    }
+}
 
         .model-card {
             position: relative;

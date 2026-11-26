@@ -279,8 +279,27 @@
             max-width: 850px; margin: 0 auto 2rem; color: #aeb8c2; text-align: center; font-size: 1rem; font-family: var(--font-ui);
         }
         .modelling-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1.1rem;
-        }
+    display: grid;
+    gap: 1.1rem;
+    /* Default (1, 2, or 4 items): 2 columns per row (e.g., 4 items = 2 then 2) */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Exactly 3 items: 1 row of 3 columns (3rd child is also the last child) */
+.modelling-grid:has(> :nth-child(3):last-child),
+/* 5 or more items: 3 columns per row */
+.modelling-grid:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile fallback so cards never get squished on narrow screens */
+@media (max-width: 768px) {
+    .modelling-grid,
+    .modelling-grid:has(> :nth-child(3):last-child),
+    .modelling-grid:has(> :nth-child(5)) {
+        grid-template-columns: 1fr;
+    }
+}
         .model-card {
             position: relative; overflow: hidden; padding: 1.3rem;
             background: rgba(4, 5, 7, 0.86); border: 1px solid rgba(255,255,255,0.1);

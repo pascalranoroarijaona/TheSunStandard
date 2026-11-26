@@ -127,7 +127,28 @@
         .status-b { color: #00ccff; background: rgba(0,204,255,0.08); }
         .status-c { color: #ffcc00; background: rgba(255,204,0,0.08); }
         .status-d { color: #b366ff; background: rgba(179,102,255,0.08); }
-        .modelling-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1rem; }
+        .modelling-grid {
+    display: grid;
+    gap: 1.1rem;
+    /* Default (1, 2, or 4 items): 2 columns per row (e.g., 4 items = 2 then 2) */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Exactly 3 items: 1 row of 3 columns (3rd child is also the last child) */
+.modelling-grid:has(> :nth-child(3):last-child),
+/* 5 or more items: 3 columns per row */
+.modelling-grid:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Mobile fallback so cards never get squished on narrow screens */
+@media (max-width: 768px) {
+    .modelling-grid,
+    .modelling-grid:has(> :nth-child(3):last-child),
+    .modelling-grid:has(> :nth-child(5)) {
+        grid-template-columns: 1fr;
+    }
+}
         .model-card { padding: 1.2rem; background: rgba(4, 6, 10, 0.88); border: 1px solid var(--border-subtle); border-radius: 12px; transition: 0.25s; }
         .model-card:hover { transform: translateY(-3px); border-color: rgba(255, 204, 0, 0.4); }
         .model-card h4 { margin: 0.5rem 0 0.45rem; color: #fff; font-family: var(--font-ui); font-size: 0.98rem; }
