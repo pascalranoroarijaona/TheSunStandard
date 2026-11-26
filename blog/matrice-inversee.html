@@ -8961,61 +8961,75 @@
         .unified-resources-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 1.1rem;
         }
         .unified-res-card {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 1.15rem 1.2rem;
+            padding: 1.2rem;
             background: rgba(255, 255, 255, 0.025);
             border: 1px solid rgba(255, 255, 255, 0.09);
             border-top: 3px solid var(--card-accent, #ffcc00);
             border-radius: 12px;
             text-decoration: none;
-            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+            transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
         }
         .unified-res-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             background: rgba(255, 255, 255, 0.048);
             border-color: var(--card-accent, #ffcc00);
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
         }
         .unified-card-head {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             gap: 0.75rem;
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.75rem;
         }
         .unified-card-logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 9px;
+            width: 176px;
+            height: 176px;
+            border-radius: 14px;
             object-fit: cover;
             background: #060911;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo {
+            transform: scale(1.06);
+            border-color: var(--card-accent, #ffcc00);
         }
         .unified-card-logo-dual {
             display: flex;
             align-items: center;
-            gap: 4px;
-            flex-shrink: 0;
+            justify-content: center;
+            gap: 10px;
         }
         .unified-card-logo-dual img {
-            width: 34px;
-            height: 34px;
-            border-radius: 7px;
+            width: 76px;
+            height: 76px;
+            border-radius: 12px;
             object-fit: cover;
             background: #060911;
-            border: 1px solid rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+        .unified-res-card:hover .unified-card-logo-dual img {
+            transform: scale(1.05);
+            border-color: var(--card-accent, #ffcc00);
         }
         .unified-res-card h4 {
             color: var(--card-accent, #ffcc00);
-            font-size: 0.94rem;
+            font-size: 0.98rem;
             font-weight: 700;
             margin: 0;
-            line-height: 1.3;
+            line-height: 1.35;
+            text-align: center;
         }
         .unified-res-card h4 a {
             color: inherit;
@@ -9026,8 +9040,8 @@
         }
         .unified-res-card p {
             color: #94a3b8;
-            font-size: 0.81rem;
-            line-height: 1.5;
+            font-size: 0.82rem;
+            line-height: 1.52;
             margin: 0;
             text-align: left;
         }
@@ -9037,8 +9051,8 @@
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 0.75rem;
-            padding-top: 0.55rem;
+            margin-top: 0.85rem;
+            padding-top: 0.6rem;
             border-top: 1px dashed rgba(255, 255, 255, 0.08);
         }
         .unified-repo-tag {
@@ -9074,10 +9088,10 @@
                 <span lang="en">Computer Engineer (HPC) &amp; Independent Researcher · Information Physics Institute (Sydney)</span>
             </span>
             <p lang="fr">
-                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="http://sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Ses travaux unifient physique statistique hors d'équilibre, temps thermique modulaire, preuves formelles Lean 4 et calcul régénératif.
+                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Ses travaux unifient physique statistique hors d'équilibre, temps thermique modulaire, preuves formelles Lean 4 et calcul régénératif.
             </p>
             <p lang="en">
-                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="http://sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. His work unifies non-equilibrium statistical physics, modular thermal time, Lean 4 formal proofs, and regenerative compute.
+                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. His work unifies non-equilibrium statistical physics, modular thermal time, Lean 4 formal proofs, and regenerative compute.
             </p>
             <div class="unified-author-links">
                 <a href="https://github.com/pascalranoroarijaona/" target="_blank" rel="noopener" class="unified-social-pill">🐙 GitHub</a>
@@ -9092,7 +9106,7 @@
     </div>
 
     <div class="unified-resources-heading">
-        <span lang="fr">🧭 Explorez mon Univers: Écosystème de Recherche, Livres, ONG &amp; Dépôts Open-Source</span>
+        <span lang="fr">🧭 Explorez mon Univers : Écosystème de Recherche, Livres, ONG &amp; Dépôts Open-Source</span>
         <span lang="en">🧭 Explore my Universe: Research Ecosystem, Books, NGO &amp; Open-Source Repositories</span>
     </div>
 
@@ -9118,7 +9132,7 @@
         <a href="https://www.regenerativecompute.io/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #44ee77;">
             <div>
                 <div class="unified-card-head">
-                    <img src="img/logo-lemuriatech.png" alt="Lemuria Technologies" class="unified-card-logo" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
+                    <img src="img/logo-lemuriatech.jpg" alt="Lemuria Technologies" class="unified-card-logo" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='img/logo-lemuriatech.jpg';}else{this.style.display='none';}">
                     <h4>🌱 Regenerative Compute</h4>
                 </div>
                 <p>
@@ -9152,7 +9166,7 @@
         <a href="https://github.com/pascalranoroarijaona/WebOfLife" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #34d399;">
             <div>
                 <div class="unified-card-head">
-                    <img src="img/logo-homocryptographicus.png" alt="Web of Life" class="unified-card-logo" onerror="this.style.display='none'">
+                    <img src="img/weboflife.jpg" alt="Web of Life" class="unified-card-logo" onerror="this.style.display='none'">
                     <h4>🕸️ Web of Life (Mega-POD)</h4>
                 </div>
                 <p>
@@ -9222,7 +9236,7 @@
                 <div class="unified-card-head">
                     <div class="unified-card-logo-dual">
                         <img src="img/logo-homobiodiversitas.png" alt="Homo Biodiversitas" onerror="this.style.display='none'">
-                        <img src="img/logo-horizonzero.png" alt="Horizon Zéro" onerror="this.style.display='none'">
+                        <img src="img/HorizonZero.png" alt="Horizon Zéro" onerror="this.style.display='none'">
                     </div>
                     <h4>📚 Homo Biodiversitas &amp; Horizon Zéro</h4>
                 </div>
@@ -9258,7 +9272,7 @@
         <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" class="unified-res-card" style="--card-accent: #f7931a;">
             <div>
                 <div class="unified-card-head">
-                    <img src="img/logo-riemann-nakamoto.jpg" alt="Le Livre Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
+                    <img src="img/JohnNashPoW.png" alt="Le Livre Bitcoin" class="unified-card-logo" onerror="this.style.display='none'">
                     <h4>📘 Le Livre Bitcoin</h4>
                 </div>
                 <p>
