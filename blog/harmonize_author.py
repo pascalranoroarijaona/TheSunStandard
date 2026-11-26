@@ -238,10 +238,10 @@ UNIFIED_AUTHOR_HTML = """<!-- SECTION AUTEUR & RESSOURCES OPEN-SOURCE UNIFIÉE (
                 <span lang="en">Computer Engineer (HPC) &amp; Independent Researcher · Information Physics Institute (Sydney)</span>
             </span>
             <p lang="fr">
-                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Il utilise l'Intelligence Artificielle comme levier d'apprentissage pour explorer les grandes disciplines humaines — <strong>philosophie, économie, éconophysique, physique, mathématiques, écologie, environnement, agriculture et informatique</strong> — un cheminement qui lui a fait prendre conscience à quel point nous sommes devenus aveugles au monde réel dans lequel nous habitons, oubliant la physique, les mathématiques et les limites planétaires au profit d'une opulence fictive et court-termiste. Il garde néanmoins une foi profonde en l'ingéniosité humaine : en réconciliant la science, la sobriété et la technologie au service du vivant, nous avons déjà entre nos mains tout ce qu'il faut pour inverser la vapeur.
+                Fondateur de <strong>Lemuria Technologies</strong> et de l'ONG <strong>Angovo</strong> (Madagascar), auteur de <em>L'Étalon Solaire</em>, de <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>Le Livre Bitcoin</em></a> et des ouvrages libres <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zéro</em></a>. Ayant vécu sur <strong>4 continents</strong> et parcouru <strong>plus de 40 pays</strong>, il a absorbé au fil d'une vie dense une mosaïque d'expériences culturelles, humaines et scientifiques. Il utilise aujourd'hui l'Intelligence Artificielle comme levier de synthèse pour relier les grandes disciplines humaines — <strong>philosophie, économie, éconophysique, physique, mathématiques, écologie, environnement, agriculture, informatique, psychisme, mythes et traditions</strong> — un cheminement qui lui a fait mesurer à quel point nous sommes devenus aveugles au monde réel dans lequel nous habitons, oubliant la physique, les mathématiques et les limites planétaires au profit d'une opulence fictive et court-termiste. Il garde néanmoins une foi profonde en l'ingéniosité humaine : en réconciliant la science, la sobriété et la technologie au service du vivant, nous avons déjà entre nos mains tout ce qu'il faut pour inverser la vapeur.
             </p>
             <p lang="en">
-                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. He uses Artificial Intelligence as a learning catalyst to explore major fields of human knowledge—<strong>philosophy, economics, econophysics, physics, mathematics, ecology, environment, agriculture, and computer science</strong>—a journey that revealed how blind we have become to the physical world we inhabit, forgetting physics, mathematics, and planetary boundaries to indulge in a fictitious, short-term opulence. Yet he remains deeply optimistic and steadfast in his faith in Humanity: by realigning science, temperance, and technology in service of the living world, we already hold everything needed to turn the tide.
+                Founder of <strong>Lemuria Technologies</strong> and the <strong>Angovo</strong> NGO (Madagascar), author of <em>The Sun Standard</em>, <a href="https://www.livre-bitcoin.fr/" target="_blank" rel="noopener" style="color:var(--sun-yellow, #ffcc00);"><em>The Bitcoin Book</em></a>, and free online books <a href="https://www.thesunstandard.net/HomoBiodiversitas.pdf" target="_blank" rel="noopener" style="color:#44ee77;"><em>Homo Biodiversitas</em></a> &amp; <a href="https://www.sufficiencyprotocol.org/HorizonZero.pdf" target="_blank" rel="noopener" style="color:#00e5ff;"><em>Horizon Zero</em></a>. Having lived across <strong>4 continents</strong> and traveled through <strong>more than 40 countries</strong>, he has absorbed a dense tapestry of cultural, human, and scientific perspectives along his journey. Today, he uses Artificial Intelligence as a synthesis catalyst to bridge major fields of human knowledge—<strong>philosophy, economics, econophysics, physics, mathematics, ecology, environment, agriculture, computer science, psyche, myths, and traditional wisdom</strong>—a path that revealed how blind we have become to the physical world we inhabit, forgetting physics, mathematics, and planetary boundaries to indulge in a fictitious, short-term opulence. Yet he remains deeply optimistic and steadfast in his faith in Humanity: by realigning science, temperance, and technology in service of the living world, we already hold everything needed to turn the tide.
             </p>
             <div class="unified-author-links">
                 <a href="https://github.com/pascalranoroarijaona/" target="_blank" rel="noopener" class="unified-social-pill">🐙 GitHub</a>
@@ -478,14 +478,24 @@ UNIFIED_AUTHOR_HTML = """<!-- SECTION AUTEUR & RESSOURCES OPEN-SOURCE UNIFIÉE (
 </section>"""
 
 
-def replace_author_block(html_text):
+def get_author_html(img_prefix=""):
+    """Retourne le bloc HTML auteur avec le préfixe de chemin d'image adapté (ex: 'blog/' pour ../index.html)."""
+    if not img_prefix:
+        return UNIFIED_AUTHOR_HTML
+    html = UNIFIED_AUTHOR_HTML.replace('src="img/', f'src="{img_prefix}img/')
+    html = html.replace("this.src='img/", f"this.src='{img_prefix}img/")
+    return html
+
+
+def replace_author_block(html_text, img_prefix=""):
     """Trouve le bloc <section class="...unified-author-card"> ou <div class="...author-section"> et le remplace."""
+    author_html = get_author_html(img_prefix)
     sec_pattern = re.compile(
         r'(?:<!--[^\n]*AUTEUR[^\n]*-->\s*)?<section\s+class=["\'][^"\']*\bunified-author-card\b[^"\']*["\'][^>]*>.*?</section>',
         re.IGNORECASE | re.DOTALL
     )
     if sec_pattern.search(html_text):
-        return sec_pattern.sub(lambda _: UNIFIED_AUTHOR_HTML, html_text, count=1), True
+        return sec_pattern.sub(lambda _: author_html, html_text, count=1), True
 
     match = re.search(r'<div\s+class=["\'][^"\']*\bauthor-section\b[^"\']*["\'][^>]*>', html_text)
     if not match:
@@ -509,16 +519,17 @@ def replace_author_block(html_text):
     prefix = html_text[:start_idx]
     prefix = re.sub(r'<!--[^\n]*AUTEUR[^\n]*-->\s*$', '', prefix, flags=re.IGNORECASE)
 
-    new_html = prefix + UNIFIED_AUTHOR_HTML + html_text[pos:]
+    new_html = prefix + author_html + html_text[pos:]
     return new_html, True
 
 
-def insert_if_missing(html_text):
+def insert_if_missing(html_text, img_prefix=""):
     """Insère la section auteur avant le formulaire de feedback ou avant le footer si absente."""
+    author_html = get_author_html(img_prefix)
     for anchor in ['<div class="feedback-container">', '<div class="article-navigation">', '<footer>']:
         idx = html_text.find(anchor)
         if idx != -1:
-            return html_text[:idx] + UNIFIED_AUTHOR_HTML + "\n\n    " + html_text[idx:], True
+            return html_text[:idx] + author_html + "\n\n    " + html_text[idx:], True
     return html_text, False
 
 
