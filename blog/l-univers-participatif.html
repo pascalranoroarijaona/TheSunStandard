@@ -208,10 +208,10 @@
             gap: 12px; padding: 11px 16px; background: rgba(5, 8, 15, 0.95);
             border-top: 1px solid var(--border-subtle); font-family: var(--font-ui);
         }
-        .hero-slider-group { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 230px; }
+        .hero-slider-group { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px; }
         .hero-slider-group label {
-            font-size: 0.74rem; font-weight: 700; color: var(--sun-yellow);
-            text-transform: uppercase; letter-spacing: 0.7px; white-space: nowrap;
+            font-size: 0.54rem; font-weight: 700; color: var(--sun-yellow);
+            text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap;
         }
         .hero-slider-group input[type="range"] { flex: 1; accent-color: var(--sun-yellow); cursor: pointer; }
         .hud-metrics-strip {
@@ -837,12 +837,14 @@
                 <input type="range" id="wheeler-obs-slider" min="0" max="100" value="78">
                 <span id="wheeler-obs-readout" style="font-family:var(--font-mono); font-size:0.84rem; color:#fff; font-weight:700; min-width:44px;">78 %</span>
             </div>
+            <br />
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 <button type="button" class="ui-btn" id="wheeler-btn-fog"><span lang="fr">0 % · Brouillard Quantique</span><span lang="en">0% · Quantum Fog</span></button>
                 <button type="button" class="ui-btn active" id="wheeler-btn-bit"><span lang="fr">100 % · It from Bit</span><span lang="en">100% · It from Bit</span></button>
                 <button type="button" class="ui-btn blue-cta" id="wheeler-btn-pulse">⚡ <span lang="fr">Mesure Participative</span><span lang="en">Participatory Collapse</span></button>
             </div>
         </div>
+        
         <div class="hud-metrics-strip">
             <div class="hud-pill-stat">
                 <span class="lbl"><span lang="fr">État Cosmologique</span><span lang="en">Cosmological State</span></span>
